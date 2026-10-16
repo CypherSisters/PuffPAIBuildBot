@@ -1,0 +1,43 @@
+{
+  "schema": "puffpai_app/v1",
+  "id": "space_pictures",
+  "name": "Space Pictures",
+  "blurb": "A NASA picture on a subject you pick, fetched by this box and shown as a card.",
+  "version": "0.1.0",
+  "author": "BuildBot example",
+  "license": "Apache-2.0",
+  "order": 700,
+  "surfaces": ["knowledge.library"],
+  "ui": { "route": "/dashboard/apps/space_pictures", "icon": "mdiRss" },
+  "vocabulary": {
+    "keywords": ["space pictures"],
+    "examples": ["show me the latest space pictures"]
+  },
+  "credential": { "kind": "none" },
+  "feed": {
+    "service": {
+      "name": "NASA Image and Video Library",
+      "host": "images-api.nasa.gov",
+      "image_host": "images-assets.nasa.gov"
+    },
+    "url": "https://images-api.nasa.gov/search?q={subject}&media_type=image&page_size=5",
+    "params": {
+      "subject": {
+        "label": "Subject",
+        "choices": ["saturn", "jupiter", "mars", "moon", "nebula"],
+        "default": "saturn"
+      }
+    },
+    "refresh_minutes": 360,
+    "max_age_minutes": 2880,
+    "card": {
+      "kind": "image",
+      "title": "Live from NASA Image and Video Library",
+      "image": "collection.items[0].links[0].href",
+      "headline": "collection.items[0].data[0].title",
+      "caption": "collection.items[0].data[0].description"
+    },
+    "credit": "Pictures: NASA Image and Video Library (images-api.nasa.gov).",
+    "license": "NASA media guidelines (most items not copyrighted)"
+  }
+}

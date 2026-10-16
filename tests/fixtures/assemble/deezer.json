@@ -1,0 +1,12 @@
+{"data": [
+  {"id": 3135556, "readable": true, "title": "Harder, Better, Faster, Stronger", "duration": 224, "rank": 912345,
+   "preview": "https://cdnt-preview.dzcdn.net/api/1/1/a/b/c/0/abc123.mp3?hdnea=exp=1",
+   "artist": {"id": 27, "name": "Daft Punk", "picture_medium": "https://e-cdns-images.dzcdn.net/images/artist/f2bc0/250x250-000000-80-0-0.jpg"},
+   "album": {"id": 302127, "title": "Discovery", "cover_medium": "https://e-cdns-images.dzcdn.net/images/cover/2e018/250x250-000000-80-0-0.jpg"},
+   "type": "track"},
+  {"id": 3135553, "readable": true, "title": "One More Time", "duration": 320, "rank": 899112,
+   "preview": "https://cdnt-preview.dzcdn.net/api/1/1/d/e/f/0/def456.mp3?hdnea=exp=1",
+   "artist": {"id": 27, "name": "Daft Punk", "picture_medium": "https://e-cdns-images.dzcdn.net/images/artist/f2bc0/250x250-000000-80-0-0.jpg"},
+   "album": {"id": 302127, "title": "Discovery", "cover_medium": "https://e-cdns-images.dzcdn.net/images/cover/2e018/250x250-000000-80-0-0.jpg"},
+   "type": "track"}
+ ], "total": 2}

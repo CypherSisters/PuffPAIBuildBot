@@ -1,0 +1,44 @@
+{
+  "schema": "puffpai_package/v1",
+  "id": "crew",
+  "kind": "skill",
+  "version": "1.0.0",
+  "author": "puffpai",
+  "license": "Apache-2.0",
+  "label": "Who does what",
+  "description": "The crew this machine can run, who owns what, and how far each may go.",
+  "reads": [
+    "tools",
+    "persona",
+    "brain",
+    "knowledge"
+  ],
+  "writes": "crew",
+  "permissions": {
+    "network_hosts": [],
+    "files": [
+      "data"
+    ],
+    "ha_domains": [],
+    "secrets": []
+  },
+  "doors": [],
+  "secrets": [],
+  "egress": "none",
+  "estimate": {
+    "bytes": 0,
+    "seconds": 0,
+    "basis": "unknown"
+  },
+  "rerun": "idempotent",
+  "undo": "reversible",
+  "blocking": false,
+  "provides": [
+    "crew.ownership",
+    "crew.ceiling"
+  ],
+  "needs": [
+    "machine.census"
+  ],
+  "builtin": true
+}

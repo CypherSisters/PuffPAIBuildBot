@@ -1,0 +1,65 @@
+{
+ "goal_id": "dnd",
+ "timing": {
+  "wall_s": 6.45,
+  "first_token_s": 0.06,
+  "first_job_s": 0,
+  "load_s": 0.0,
+  "prompt_tokens": 212,
+  "prompt_s": 0.04,
+  "out_tokens": 300,
+  "gen_s": 6.39,
+  "tok_per_s": 46.9,
+  "done_reason": "stop"
+ },
+ "parsed": {
+  "kind": "Dungeons & Dragons helper",
+  "asked": [
+   "track initiative",
+   "roll dice",
+   "make up NPCs",
+   "loot and stats",
+   "session notes",
+   "spell lookup"
+  ],
+  "jobs": [
+   {
+    "name": "Initiative Tracker",
+    "does": "Maintains a list of characters and their initiative order."
+   },
+   {
+    "name": "Dice Roller",
+    "does": "Rolls dice for various outcomes in the game."
+   },
+   {
+    "name": "NPC Creator",
+    "does": "Generates non-player characters for the campaign."
+   },
+   {
+    "name": "Loot and Stats Generator",
+    "does": "Creates random loot and monster statistics."
+   },
+   {
+    "name": "Session Notetaker",
+    "does": "Records important events and details from each session."
+   },
+   {
+    "name": "Spell Lookup",
+    "does": "Finds spell descriptions and rules."
+   },
+   {
+    "name": "Event Scheduler",
+    "does": "Reminds the user of upcoming sessions."
+   },
+   {
+    "name": "Rulebook Reference",
+    "does": "Provides quick access to game rules and mechanics."
+   },
+   {
+    "name": "Player Interaction",
+    "does": "Answers questions from players about the game."
+   }
+  ]
+ },
+ "recall": 0.875
+}

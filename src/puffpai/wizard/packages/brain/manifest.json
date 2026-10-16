@@ -1,0 +1,42 @@
+{
+  "schema": "puffpai_package/v1",
+  "id": "brain",
+  "kind": "skill",
+  "version": "1.0.0",
+  "author": "puffpai",
+  "license": "Apache-2.0",
+  "label": "What does the thinking",
+  "description": "The model this build runs on, fitted to this machine, and the check that it answers.",
+  "reads": [
+    "machine",
+    "persona"
+  ],
+  "writes": "brain",
+  "permissions": {
+    "network_hosts": [],
+    "files": [
+      "data"
+    ],
+    "ha_domains": [],
+    "secrets": []
+  },
+  "doors": [],
+  "secrets": [],
+  "egress": "build_only",
+  "estimate": {
+    "bytes": 0,
+    "seconds": 0,
+    "basis": "unknown"
+  },
+  "rerun": "additive",
+  "undo": "reversible_with_residue",
+  "blocking": true,
+  "provides": [
+    "brain.model",
+    "brain.routing_tier"
+  ],
+  "needs": [
+    "machine.census"
+  ],
+  "builtin": true
+}

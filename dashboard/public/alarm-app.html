@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AlarmFlow</title>
+<link rel="stylesheet" href="vendor/fonts/app-fonts.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --sky:#2196F3;--sky-light:#64B5F6;--sky-pale:#BBDEFB;
+  --green:#4CAF50;--green-light:#81C784;
+  --sun:#FFD54F;--orange:#FFA726;
+  --rose:#EF5350;--rose-pale:#FFCDD2;
+  --purple:#7E57C2;--purple-pale:#D1C4E9;
+  --white-glass:rgba(255,255,255,0.55);
+  --white-glass-h:rgba(255,255,255,0.72);
+  --border:rgba(255,255,255,0.5);
+  --text:#1a3a4a;--text-sub:#4a7a8a;--text-faint:#7aabb8;
+  --r:16px;--r-sm:10px;--r-pill:50px;
+  --shadow:0 4px 24px rgba(0,60,120,0.12);
+}
+html{font-size:15px}
+body{
+  font-family:var(--app-sans);color:var(--text);min-height:100vh;
+  background:linear-gradient(170deg,#1565C0 0%,#42A5F5 25%,#81D4FA 50%,#C8E6C9 75%,#66BB6A 100%);
+  background-attachment:fixed;
+  display:flex;flex-direction:column;align-items:center;padding:24px 16px;
+}
+.bubbles{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+.bubbles span{
+  position:absolute;bottom:-60px;border-radius:50%;
+  background:radial-gradient(circle at 30% 30%,rgba(255,255,255,0.6),rgba(255,255,255,0.15));
+  border:1px solid rgba(255,255,255,0.35);animation:rise linear infinite;
+}
+@keyframes rise{0%{transform:translateY(0) scale(1);opacity:.7}100%{transform:translateY(-110vh) scale(.5);opacity:0}}
+.app{max-width:540px;width:100%;position:relative;z-index:1}
+.hdr{text-align:center;margin-bottom:20px}
+.hdr h1{font-size:1.8rem;font-weight:800;color:white;text-shadow:0 2px 12px rgba(0,60,120,0.25)}
+.hdr p{font-size:.82rem;color:rgba(255,255,255,.85);margin-top:2px}
+.hdr-row{display:flex;justify-content:center;gap:10px;margin-top:12px}
+.hdr-btn{
+  padding:7px 16px;border-radius:var(--r-pill);border:1px solid var(--border);
+  background:var(--white-glass);backdrop-filter:blur(12px);
+  font-family:inherit;font-size:.82rem;font-weight:700;color:var(--text);
+  cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:5px;
+}
+.hdr-btn:hover{background:var(--white-glass-h);transform:translateY(-1px);box-shadow:var(--shadow)}
+.hdr-btn.voice{background:rgba(126,87,194,.2);color:white;border-color:rgba(255,255,255,.3)}
+.hdr-btn.voice.on{background:var(--rose);animation:vp 1s ease infinite}
+@keyframes vp{50%{box-shadow:0 0 0 10px rgba(239,83,80,0)}}
+
+/* Tabs */
+.tabs{display:flex;gap:0;margin-bottom:16px;background:var(--white-glass);backdrop-filter:blur(16px);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow)}
+.tab{flex:1;padding:10px;text-align:center;font-weight:700;font-size:.9rem;cursor:pointer;transition:all .2s;border:none;background:none;color:var(--text-sub);font-family:inherit}
+.tab:hover{background:rgba(255,255,255,.25)}
+.tab.active{background:rgba(255,255,255,.5);color:var(--text)}
+.tab.active.timer-tab{border-bottom:3px solid var(--sky)}
+.tab.active.alarm-tab{border-bottom:3px solid var(--purple)}
+
+/* Card */
+.card{
+  background:var(--white-glass);backdrop-filter:blur(20px);
+  border:1px solid var(--border);border-radius:var(--r);
+  padding:20px;margin-bottom:16px;box-shadow:var(--shadow);
+}
+.card h2{font-size:.92rem;font-weight:700;margin-bottom:14px}
+.row{display:flex;gap:10px;margin-bottom:10px}
+.field{flex:1;display:flex;flex-direction:column;gap:3px}
+.field label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--text-sub)}
+.field input,.field select{
+  padding:8px 10px;border-radius:var(--r-sm);
+  border:1px solid rgba(255,255,255,.4);background:rgba(255,255,255,.4);
+  font-family:inherit;font-size:.88rem;color:var(--text);outline:none;transition:all .2s;
+}
+.field input:focus,.field select:focus{border-color:var(--sky);background:rgba(255,255,255,.65);box-shadow:0 0 0 3px rgba(33,150,243,.15)}
+.field input::placeholder{color:var(--text-faint)}
+.desc-field{flex:2}
+.presets{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:10px}
+.preset{
+  padding:4px 12px;border-radius:var(--r-pill);border:1px solid rgba(255,255,255,.35);
+  background:rgba(255,255,255,.2);font-size:.78rem;font-weight:700;color:var(--text-sub);
+  cursor:pointer;transition:all .15s;
+}
+.preset:hover{background:rgba(255,255,255,.45);color:var(--sky)}
+.go-btn{
+  width:100%;padding:10px;border-radius:var(--r-sm);border:none;
+  color:white;font-family:inherit;font-size:.92rem;font-weight:700;cursor:pointer;
+  transition:all .2s;margin-top:2px;
+}
+.go-btn.timer-go{background:linear-gradient(135deg,var(--sky),var(--sky-light));box-shadow:0 4px 16px rgba(33,150,243,.3)}
+.go-btn.alarm-go{background:linear-gradient(135deg,var(--purple),#9575CD);box-shadow:0 4px 16px rgba(126,87,194,.3)}
+.go-btn:hover{transform:translateY(-1px)}
+.voice-hint{font-size:.76rem;color:var(--text-faint);text-align:center;padding:6px;display:none}
+.voice-hint.on{display:block}
+.pane{display:none}.pane.active{display:block}
+
+/* Alarm item */
+.item{
+  background:var(--white-glass);backdrop-filter:blur(20px);
+  border:1px solid var(--border);border-radius:var(--r);
+  padding:14px 16px;margin-bottom:10px;box-shadow:var(--shadow);
+  transition:all .3s;animation:slideIn .3s ease;
+}
+@keyframes slideIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.item.ringing{border-color:var(--rose);box-shadow:0 0 30px rgba(239,83,80,.2);animation:rp 1.5s ease infinite}
+@keyframes rp{50%{box-shadow:0 0 40px rgba(239,83,80,.3)}}
+.item.paused{opacity:.5}
+.item-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.item-desc{font-weight:700;font-size:.9rem;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-right:8px}
+.item-badges{display:flex;gap:4px;flex-shrink:0}
+.badge{font-size:.6rem;font-weight:700;text-transform:uppercase;padding:2px 7px;border-radius:var(--r-pill);letter-spacing:.3px}
+.b-manual{background:var(--sky-pale);color:var(--sky)}.b-voice{background:var(--purple-pale);color:var(--purple)}
+.b-llm{background:#C8E6C9;color:#2E7D32}.b-n8n{background:#FFE0B2;color:#E65100}
+.b-timer{background:var(--sky-pale);color:var(--sky)}.b-alarm{background:var(--purple-pale);color:var(--purple)}
+.item-time{font-size:2.4rem;font-weight:800;text-align:center;letter-spacing:1px;line-height:1;padding:6px 0;color:var(--text)}
+.item.ringing .item-time{color:var(--rose)}
+.item-sub{text-align:center;font-size:.72rem;font-weight:600;color:var(--text-faint);margin-bottom:8px}
+.item.ringing .item-sub{color:var(--rose);font-weight:700}
+.item-bar{height:4px;background:rgba(0,0,0,.06);border-radius:2px;overflow:hidden;margin-bottom:10px}
+.item-bar-fill{height:100%;border-radius:2px;transition:width 1s linear;background:linear-gradient(90deg,var(--sky),var(--sky-light))}
+.item.ringing .item-bar-fill{background:linear-gradient(90deg,var(--rose),#EF9A9A)}
+.item.is-alarm .item-bar-fill{background:linear-gradient(90deg,var(--purple),#9575CD)}
+.item-btns{display:flex;gap:5px;justify-content:center;flex-wrap:wrap}
+.ib{
+  padding:4px 11px;border-radius:var(--r-pill);border:1px solid rgba(255,255,255,.3);
+  background:rgba(255,255,255,.25);font-family:inherit;font-size:.73rem;font-weight:700;
+  color:var(--text-sub);cursor:pointer;transition:all .15s;
+}
+.ib:hover{background:rgba(255,255,255,.5);transform:translateY(-1px)}
+.ib.dismiss{background:rgba(239,83,80,.15);border-color:var(--rose);color:var(--rose)}
+.ib.dismiss:hover{background:var(--rose);color:white}
+.ib.x:hover{color:var(--rose);border-color:var(--rose)}
+.sound-tag{font-size:.62rem;color:var(--text-faint);text-align:center;margin-top:6px}
+.empty-msg{text-align:center;color:rgba(255,255,255,.7);padding:24px;font-weight:600;font-size:.9rem}
+
+.toast{
+  position:fixed;top:16px;right:16px;z-index:999;padding:10px 18px;border-radius:var(--r-sm);
+  background:var(--white-glass-h);backdrop-filter:blur(16px);border:1px solid var(--border);
+  box-shadow:var(--shadow);font-weight:700;font-size:.82rem;
+  animation:tIn .3s ease,tOut .3s ease 2.5s forwards;pointer-events:none;
+}
+@keyframes tIn{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes tOut{to{opacity:0;transform:translateY(-10px)}}
+@media(max-width:500px){.row{flex-wrap:wrap}.field{min-width:70px}.item-time{font-size:2rem}}
+</style>
+</head>
+<body>
+<div class="bubbles" id="bubbles"></div>
+<div class="app">
+  <div class="hdr">
+    <h1>&#9200; AlarmFlow <span id="activeCount" style="font-size:.6em;background:rgba(255,255,255,.35);padding:2px 10px;border-radius:20px;vertical-align:middle;display:none"></span></h1>
+    <p>Timers &amp; alarms &middot; local &amp; private</p>
+    <div class="hdr-row">
+      <button class="hdr-btn voice" id="voiceBtn" onclick="A.voice()">&#127908; Voice</button>
+    </div>
+  </div>
+
+  <div class="tabs">
+    <button class="tab timer-tab active" onclick="A.showTab('timer')">&#9201; Timer</button>
+    <button class="tab alarm-tab" onclick="A.showTab('alarm')">&#128276; Alarm</button>
+  </div>
+
+  <!-- TIMER PANE -->
+  <div class="pane active" id="paneTimer">
+    <div class="card">
+      <h2>&#9201; New Timer</h2>
+      <div class="row"><div class="field desc-field"><label>Description</label><input id="tDesc" placeholder="What's this timer for?"></div></div>
+      <div class="row">
+        <div class="field"><label>Hours</label><input type="number" id="tH" min="0" max="99" value="0"></div>
+        <div class="field"><label>Min</label><input type="number" id="tM" min="0" max="59" value="5"></div>
+        <div class="field"><label>Sec</label><input type="number" id="tS" min="0" max="59" value="0"></div>
+      </div>
+      <div class="presets">
+        <span class="preset" onclick="A.tPre(0,1,0)">1m</span>
+        <span class="preset" onclick="A.tPre(0,5,0)">5m</span>
+        <span class="preset" onclick="A.tPre(0,10,0)">10m</span>
+        <span class="preset" onclick="A.tPre(0,15,0)">15m</span>
+        <span class="preset" onclick="A.tPre(0,30,0)">30m</span>
+        <span class="preset" onclick="A.tPre(1,0,0)">1h</span>
+      </div>
+      <div class="row">
+        <div class="field"><label>Sound</label>
+          <select id="tSound">
+            <option value="chime">&#128276; Chime</option>
+            <option value="alert">&#9888;&#65039; Alert</option>
+            <option value="gentle">&#127925; Gentle</option>
+            <option value="bell">&#128276; Bell</option>
+            <option value="none">&#128263; Silent</option>
+          </select>
+        </div>
+      </div>
+      <button class="go-btn timer-go" onclick="A.addTimer()">Start Timer</button>
+      <div class="voice-hint" id="vHintT">&#127908; Listening&hellip; say &quot;10 minute pizza timer&quot;</div>
+    </div>
+  </div>
+
+  <!-- ALARM PANE -->
+  <div class="pane" id="paneAlarm">
+    <div class="card">
+      <h2>&#128276; New Alarm</h2>
+      <div class="row"><div class="field desc-field"><label>Description</label><input id="aDesc" placeholder="What's this alarm for?"></div></div>
+      <div class="row">
+        <div class="field" style="flex:2"><label>Time</label><input type="time" id="aTime" value=""></div>
+        <div class="field"><label>Sound</label>
+          <select id="aSound">
+            <option value="chime">&#128276; Chime</option>
+            <option value="alert">&#9888;&#65039; Alert</option>
+            <option value="gentle">&#127925; Gentle</option>
+            <option value="bell">&#128276; Bell</option>
+            <option value="none">&#128263; Silent</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="field"><label>Repeat</label>
+          <select id="aRepeat">
+            <option value="none">Once</option>
+            <option value="daily">Daily</option>
+            <option value="weekdays">Weekdays</option>
+            <option value="weekends">Weekends</option>
+          </select>
+        </div>
+      </div>
+      <button class="go-btn alarm-go" onclick="A.addAlarm()">Set Alarm</button>
+      <div class="voice-hint" id="vHintA">&#127908; Listening&hellip; say &quot;wake me up at 7:30 AM&quot;</div>
+    </div>
+  </div>
+
+  <div id="list"></div>
+</div>
+
+<script>
+/*
+  Agent Team (design-time):
+    Theme Agent   - Frutiger Aero: sky/grass gradient, glass, bubbles, Nunito
+    Engine Agent  - Dual-mode tick (countdown timers + clock-target alarms), Web Audio
+    Cap Agent     - Voice, LLM API, n8n bridge, localStorage, notifications
+*/
+const A = (() => {
+  const KEY = 'alarmflow_v2';
+  let items = [], iv = null, actx = null, curTab = 'timer', wakeLock = null;
+
+  // -- Persist --
+  const save = () => { try{localStorage.setItem(KEY,JSON.stringify(items))}catch(e){} };
+  const load = () => { try{const r=localStorage.getItem(KEY);if(r)items=JSON.parse(r)}catch(e){items=[]} };
+
+  // -- PuffPAI Sync --
+  const SYNC_API = '/api/pai/apps/alarmflow';
+  let _syncTimer = null, _lastSyncTs = '';
+
+  function syncPush() {
+    clearTimeout(_syncTimer);
+    _syncTimer = setTimeout(async () => {
+      try {
+        await fetch(SYNC_API + '/data', {
+          method: 'PUT',
+          headers: {'Content-Type':'application/json'},
+          body: JSON.stringify({items: items.filter(a => a.status !== 'stopped')})
+        });
+        _lastSyncTs = new Date().toISOString();
+      } catch(e) { /* server offline */ }
+    }, 800);
+  }
+
+  async function syncPull() {
+    try {
+      const chk = await fetch(SYNC_API + '/updated');
+      if (!chk.ok) return;
+      const {last_updated} = await chk.json();
+      if (!last_updated || last_updated === _lastSyncTs) return;
+
+      const r = await fetch(SYNC_API + '/data');
+      if (!r.ok) return;
+      const data = await r.json();
+      _lastSyncTs = last_updated;
+
+      // Merge: add new items from PuffPAI that we don't have locally
+      const myIds = new Set(items.map(a => a.id));
+      let added = false;
+      (data.items || []).forEach(item => {
+        if (!myIds.has(item.id)) {
+          items.push(item);
+          added = true;
+          if (item.status === 'running') startTick();
+        }
+      });
+      if (added) { save(); render(); }
+    } catch(e) { /* server offline */ }
+  }
+
+  // -- Helpers --
+  const $ = id => document.getElementById(id);
+  const uid = () => 'a'+Date.now()+Math.random().toString(36).slice(2,6);
+  const esc = s => {const d=document.createElement('div');d.textContent=s;return d.innerHTML};
+  const pad2 = n => String(n).padStart(2,'0');
+  const fmtSec = s => {
+    const h=Math.floor(s/3600),m=Math.floor(s%3600/60),sc=s%60;
+    return h>0 ? pad2(h)+':'+pad2(m)+':'+pad2(sc) : pad2(m)+':'+pad2(sc);
+  };
+  const fmtTime12 = (h,m) => {
+    const ampm = h>=12?'PM':'AM';
+    const h12 = h%12||12;
+    return h12+':'+pad2(m)+' '+ampm;
+  };
+  function toast(msg){const t=document.createElement('div');t.className='toast';t.textContent=msg;document.body.appendChild(t);setTimeout(()=>t.remove(),3000)}
+
+  // -- Audio --
+  function getAC(){if(!actx)actx=new(window.AudioContext||window.webkitAudioContext)();return actx}
+  function playSound(type){
+    if(type==='none')return;
+    try{
+      const c=getAC(),n=c.currentTime;
+      if(type==='chime'){
+        [523,659,784].forEach((f,i)=>{
+          const o=c.createOscillator(),g=c.createGain();
+          o.type='sine';o.frequency.value=f;
+          g.gain.setValueAtTime(.25,n+i*.15);g.gain.exponentialRampToValueAtTime(.001,n+i*.15+.7);
+          o.connect(g).connect(c.destination);o.start(n+i*.15);o.stop(n+i*.15+.7);
+        });
+      } else if(type==='alert'){
+        [880,440,880,440].forEach((f,i)=>{
+          const o=c.createOscillator(),g=c.createGain();
+          o.type='square';o.frequency.value=f;
+          g.gain.setValueAtTime(.12,n+i*.12);g.gain.exponentialRampToValueAtTime(.001,n+i*.12+.1);
+          o.connect(g).connect(c.destination);o.start(n+i*.12);o.stop(n+i*.12+.12);
+        });
+      } else if(type==='gentle'){
+        const o=c.createOscillator(),g=c.createGain();
+        o.type='triangle';o.frequency.value=392;
+        g.gain.setValueAtTime(0,n);g.gain.linearRampToValueAtTime(.2,n+.3);g.gain.exponentialRampToValueAtTime(.001,n+1.2);
+        o.connect(g).connect(c.destination);o.start(n);o.stop(n+1.2);
+      } else if(type==='bell'){
+        [440,554,659].forEach((f,i)=>{
+          const o=c.createOscillator(),g=c.createGain();
+          o.type='sine';o.frequency.value=f;
+          g.gain.setValueAtTime(.2,n);g.gain.exponentialRampToValueAtTime(.001,n+1.5);
+          o.connect(g).connect(c.destination);o.start(n+i*.08);o.stop(n+1.5);
+        });
+        // metallic overtone
+        const o2=c.createOscillator(),g2=c.createGain();
+        o2.type='square';o2.frequency.value=1760;
+        g2.gain.setValueAtTime(.03,n);g2.gain.exponentialRampToValueAtTime(.001,n+.5);
+        o2.connect(g2).connect(c.destination);o2.start(n);o2.stop(n+.5);
+      }
+    }catch(e){}
+  }
+
+  // -- Tick --
+  // -- Wake Lock --
+  async function acquireWake(){
+    if(wakeLock||!('wakeLock' in navigator))return;
+    try{wakeLock=await navigator.wakeLock.request('screen')}catch(e){}
+  }
+  async function releaseWake(){
+    if(!wakeLock)return;
+    try{await wakeLock.release()}catch(e){}
+    wakeLock=null;
+  }
+  document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&items.some(a=>a.status==='running'||a.status==='ringing'))acquireWake()});
+
+  function startTick(){if(iv)return;iv=setInterval(tick,1000);acquireWake()}
+  function tick(){
+    let changed=false, active=false;
+    const now=new Date();
+    items.forEach(a=>{
+      if(a.status==='running'){
+        active=true;
+        if(a.mode==='timer'){
+          a.rem--;changed=true;
+          if(a.rem<=0){a.rem=0;fire(a)}
+        } else {
+          // alarm mode: check if target time reached
+          const secsLeft = Math.floor((a.targetMs - now.getTime())/1000);
+          if(secsLeft<=0){fire(a);a.rem=0;changed=true}
+          else{a.rem=secsLeft;changed=true}
+        }
+      } else if(a.status==='ringing') active=true;
+    });
+    if(changed){render();save()}
+    if(!active){clearInterval(iv);iv=null;releaseWake()}
+  }
+  function fire(a){
+    a.status='ringing';
+    playSound(a.sound);
+    a._ri=setInterval(()=>{if(a.status==='ringing')playSound(a.sound)},4000);
+    if(Notification.permission==='granted')new Notification('AlarmFlow',{body:a.desc});
+  }
+
+  // -- Create --
+  function createTimer(o){
+    const tot=(o.hours||0)*3600+(o.minutes||0)*60+(o.seconds||0);
+    if(tot<=0)return null;
+    const it={id:uid(),mode:'timer',desc:o.description||'Timer',tot,rem:tot,sound:o.sound||'chime',status:'running',source:o.source||'manual',ts:Date.now()};
+    items.push(it);save();syncPush();startTick();render();
+    toast('\u23f1 '+it.desc+' started');return it;
+  }
+  function createAlarm(o){
+    let targetMs;
+    if(o.targetMs){
+      targetMs=o.targetMs;
+    } else if(o.hour!=null && o.minute!=null){
+      const now=new Date();
+      const t=new Date(now.getFullYear(),now.getMonth(),now.getDate(),o.hour,o.minute,0);
+      if(t<=now) t.setDate(t.getDate()+1); // next day if already passed
+      targetMs=t.getTime();
+    } else return null;
+    const rem=Math.max(0,Math.floor((targetMs-Date.now())/1000));
+    const tDate=new Date(targetMs);
+    const label=o.description||('Alarm '+fmtTime12(tDate.getHours(),tDate.getMinutes()));
+    const it={id:uid(),mode:'alarm',desc:label,targetMs,tot:rem,rem,sound:o.sound||'chime',status:'running',source:o.source||'manual',repeat:o.repeat||'none',repeatDays:o.repeatDays||[],ts:Date.now()};
+    items.push(it);save();syncPush();startTick();render();
+    toast('🔔 '+it.desc+' set');return it;
+  }
+
+  // -- Actions --
+  function dismiss(id){
+    const a=items.find(x=>x.id===id);if(!a)return;
+    if(a._ri)clearInterval(a._ri);
+    // If recurring alarm, reschedule for next occurrence
+    if(a.mode==='alarm'&&a.repeat&&a.repeat!=='none'){
+      const next=nextRecurrence(a);
+      if(next){a.targetMs=next;a.rem=Math.max(0,Math.floor((next-Date.now())/1000));a.tot=a.rem;a.status='running';startTick();toast('🔔 '+a.desc+' rescheduled');save();syncPush();render();return}
+    }
+    a.status='stopped';save();syncPush();render();
+  }
+  function nextRecurrence(a){
+    const now=new Date();
+    const orig=new Date(a.targetMs);
+    const h=orig.getHours(),m=orig.getMinutes();
+    if(a.repeat==='daily'){
+      const t=new Date(now.getFullYear(),now.getMonth(),now.getDate(),h,m,0);
+      if(t<=now)t.setDate(t.getDate()+1);
+      return t.getTime();
+    }
+    if(a.repeat==='weekdays'||a.repeat==='weekends'||a.repeat==='custom'){
+      const days=a.repeat==='weekdays'?[1,2,3,4,5]:a.repeat==='weekends'?[0,6]:(a.repeatDays||[]);
+      for(let d=1;d<=7;d++){
+        const t=new Date(now.getFullYear(),now.getMonth(),now.getDate()+d,h,m,0);
+        if(days.includes(t.getDay()))return t.getTime();
+      }
+    }
+    return null;
+  }
+  function del(id){const a=items.find(x=>x.id===id);if(a&&a._ri)clearInterval(a._ri);items=items.filter(x=>x.id!==id);save();syncPush();render()}
+  function pause(id){const a=items.find(x=>x.id===id);if(a&&a.status==='running'){a.status='paused';if(a.mode==='alarm')a._pausedAt=Date.now();save();syncPush();render()}}
+  function resume(id){const a=items.find(x=>x.id===id);if(a&&a.status==='paused'){a.status='running';if(a.mode==='alarm'&&a._pausedAt){const elapsed=Date.now()-a._pausedAt;a.targetMs+=elapsed;delete a._pausedAt}save();syncPush();startTick();render()}}
+  function adjust(id,secs){
+    const a=items.find(x=>x.id===id);if(!a)return;
+    if(a.mode==='timer'){
+      a.rem=Math.max(0,a.rem+secs);a.tot=Math.max(a.tot,a.rem);
+    } else {
+      a.targetMs+=secs*1000;a.rem=Math.max(0,Math.floor((a.targetMs-Date.now())/1000));a.tot=Math.max(a.tot,a.rem);
+    }
+    if(a.status==='ringing'&&secs>0){if(a._ri)clearInterval(a._ri);a.status='running';startTick()}
+    save();syncPush();render();
+  }
+  function reset(id){const a=items.find(x=>x.id===id);if(!a)return;if(a._ri)clearInterval(a._ri);if(a.mode==='timer'){a.rem=a.tot;a.status='running'}else{del(id);return}save();syncPush();startTick();render()}
+
+  // -- Render --
+  function render(){
+    const el=$('list');
+    const active=items.filter(a=>a.status!=='stopped');
+    // Update active count badge
+    const countEl=$('activeCount');
+    const runCount=active.filter(a=>a.status==='running'||a.status==='ringing').length;
+    if(runCount>0){countEl.textContent=runCount+' active';countEl.style.display='inline'}else{countEl.style.display='none'}
+    if(!active.length){el.innerHTML='<div class="empty-msg">No active timers or alarms</div>';return}
+    const sorted=[...active].sort((a,b)=>{const o={ringing:0,running:1,paused:2};return(o[a.status]||3)-(o[b.status]||3)});
+    const srcBadge={manual:'b-manual',voice:'b-voice',llm:'b-llm',n8n:'b-n8n'};
+    const srcLabel={manual:'Manual',voice:'Voice',llm:'LLM',n8n:'n8n'};
+    const soundNames={chime:'Chime',alert:'Alert',gentle:'Gentle',bell:'Bell',none:'Silent'};
+
+    el.innerHTML=sorted.map(a=>{
+      const pct=a.tot>0?((a.tot-a.rem)/a.tot*100):100;
+      const isAlarm=a.mode==='alarm';
+      let subText='';
+      if(a.status==='ringing') subText='\u26a0\ufe0f TIME\'S UP';
+      else if(a.status==='paused') subText='Paused';
+      else if(isAlarm){const d=new Date(a.targetMs);subText='Rings at '+fmtTime12(d.getHours(),d.getMinutes())}
+      else subText='of '+fmtSec(a.tot);
+
+      return '<div class="item'+(a.status==='ringing'?' ringing':'')+(a.status==='paused'?' paused':'')+(isAlarm?' is-alarm':'')+'">'
+        +'<div class="item-top"><div class="item-desc">'+esc(a.desc)+'</div><div class="item-badges">'
+        +'<span class="badge '+(isAlarm?'b-alarm':'b-timer')+'">'+(isAlarm?'Alarm':'Timer')+'</span>'
+        +'<span class="badge '+(srcBadge[a.source]||'b-manual')+'">'+(srcLabel[a.source]||a.source)+'</span>'
+        +'</div></div>'
+        +'<div class="item-time">'+fmtSec(a.rem)+'</div>'
+        +'<div class="item-sub">'+subText+'</div>'
+        +'<div class="item-bar"><div class="item-bar-fill" style="width:'+pct+'%"></div></div>'
+        +'<div class="item-btns">'
+        +(a.status==='ringing'
+          ?'<button class="ib dismiss" onclick="A.dismiss(\''+a.id+'\')">Dismiss</button>'
+           +'<button class="ib" onclick="A.adjust(\''+a.id+'\',300)">+5m</button>'
+           +'<button class="ib" onclick="A.adjust(\''+a.id+'\',600)">+10m</button>'
+          :a.status==='running'
+          ?'<button class="ib" onclick="A.adjust(\''+a.id+'\',-60)">&minus;1m</button>'
+           +'<button class="ib" onclick="A.pause(\''+a.id+'\')">Pause</button>'
+           +'<button class="ib" onclick="A.adjust(\''+a.id+'\',60)">+1m</button>'
+           +'<button class="ib" onclick="A.adjust(\''+a.id+'\',300)">+5m</button>'
+           +'<button class="ib x" onclick="A.del(\''+a.id+'\')">\u2715</button>'
+          :'<button class="ib" onclick="A.resume(\''+a.id+'\')">\u25b6 Resume</button>'
+           +'<button class="ib" onclick="A.reset(\''+a.id+'\')">Reset</button>'
+           +'<button class="ib x" onclick="A.del(\''+a.id+'\')">\u2715</button>')
+        +'</div>'
+        +'<div class="sound-tag">🔊 '+(soundNames[a.sound]||a.sound)+(a.repeat&&a.repeat!=='none'?' · 🔁 '+({daily:'Daily',weekdays:'Weekdays',weekends:'Weekends',custom:'Custom'}[a.repeat]||a.repeat):'')+'</div>'
+        +'</div>';
+    }).join('');
+  }
+
+  // -- Form actions --
+  function addTimerFromForm(){
+    const desc=$('tDesc').value.trim()||'Timer';
+    const h=parseInt($('tH').value)||0,m=parseInt($('tM').value)||0,s=parseInt($('tS').value)||0;
+    const sound=$('tSound').value;
+    if(h+m+s<=0){toast('Set a time first');return}
+    createTimer({description:desc,hours:h,minutes:m,seconds:s,sound});
+    $('tDesc').value='';$('tH').value=0;$('tM').value=5;$('tS').value=0;
+  }
+  function addAlarmFromForm(){
+    const desc=$('aDesc').value.trim();
+    const timeVal=$('aTime').value;
+    const sound=$('aSound').value;
+    const repeat=$('aRepeat').value;
+    if(!timeVal){toast('Pick a time');return}
+    const [hh,mm]=timeVal.split(':').map(Number);
+    createAlarm({description:desc||'',hour:hh,minute:mm,sound,repeat});
+    $('aDesc').value='';$('aTime').value='';$('aRepeat').value='none';
+  }
+  function tPre(h,m,s){$('tH').value=h;$('tM').value=m;$('tS').value=s}
+
+  // -- Tabs --
+  function showTab(t){
+    curTab=t;
+    document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
+    document.querySelector('.tab.'+(t==='timer'?'timer-tab':'alarm-tab')).classList.add('active');
+    $('paneTimer').classList.toggle('active',t==='timer');
+    $('paneAlarm').classList.toggle('active',t==='alarm');
+  }
+
+  // -- Voice --
+  let recog=null,listening=false;
+  function initVoice(){
+    const SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR)return;
+    recog=new SR();recog.continuous=false;recog.interimResults=false;recog.lang='en-US';
+    recog.onresult=e=>{
+      const tx=e.results[0][0].transcript;
+      toast('🎤 '+tx);
+      const lo=tx.toLowerCase();
+      // detect alarm-style: "at 7:30", "at 3pm"
+      const atMatch=lo.match(/(?:at|for)\s+(\d{1,2})(?::(\d{2}))?\s*(am|pm)?/i);
+      if(atMatch){
+        let hr=parseInt(atMatch[1]),mn=parseInt(atMatch[2])||0;
+        const ampm=atMatch[3];
+        if(ampm==='pm'&&hr<12)hr+=12;
+        if(ampm==='am'&&hr===12)hr=0;
+        showTab('alarm');
+        const desc=tx.replace(/(?:set\s+(?:an?\s+)?alarm\s+)?(?:at|for)\s+\d.*/i,'').trim();
+        $('aDesc').value=desc||tx;
+        $('aTime').value=pad2(hr)+':'+pad2(mn);
+        return;
+      }
+      // detect timer-style: "5 minutes", "1 hour 30 minutes"
+      let h=0,m=0,s=0;
+      const hx=lo.match(/(\d+)\s*h(?:our)?s?/);if(hx)h=parseInt(hx[1]);
+      const mx=lo.match(/(\d+)\s*m(?:in(?:ute)?s?)?/);if(mx)m=parseInt(mx[1]);
+      const sx=lo.match(/(\d+)\s*s(?:ec(?:ond)?s?)?/);if(sx)s=parseInt(sx[1]);
+      if(h+m+s>0){
+        showTab('timer');
+        $('tDesc').value=tx;$('tH').value=h;$('tM').value=m;$('tS').value=s;
+      } else {
+        $('tDesc').value=tx;
+      }
+    };
+    recog.onend=()=>{listening=false;$('voiceBtn').classList.remove('on');$('vHintT').classList.remove('on');$('vHintA').classList.remove('on')};
+  }
+  function toggleVoice(){
+    if(!recog){initVoice();if(!recog){toast('Voice not supported');return}}
+    if(listening){recog.stop();return}
+    recog.start();listening=true;$('voiceBtn').classList.add('on');
+    $(curTab==='timer'?'vHintT':'vHintA').classList.add('on');
+  }
+
+  // -- Public API --
+  const api={
+    createTimer:o=>createTimer({...o,source:o.source||'llm'}),
+    createAlarm:o=>createAlarm({...o,source:o.source||'llm'}),
+    list:()=>items.filter(a=>a.status!=='stopped').map(a=>({id:a.id,mode:a.mode,desc:a.desc,rem:a.rem,status:a.status,source:a.source,sound:a.sound})),
+    get:id=>{const a=items.find(x=>x.id===id);return a||null},
+    pause:id=>{pause(id);return{ok:true}},
+    resume:id=>{resume(id);return{ok:true}},
+    adjust:(id,s)=>{adjust(id,s);return{ok:true}},
+    dismiss:id=>{dismiss(id);return{ok:true}},
+    delete:id=>{del(id);return{ok:true}},
+    dismissAll:()=>{items.filter(a=>a.status==='ringing').forEach(a=>dismiss(a.id));return{ok:true}},
+    snapshot:()=>({items:items.filter(a=>a.status!=='stopped'),stats:{running:items.filter(a=>a.status==='running').length,ringing:items.filter(a=>a.status==='ringing').length}})
+  };
+
+  // -- n8n postMessage bridge --
+  window.addEventListener('message',e=>{
+    if(!e.data||e.data.type!=='puffpai_alarm')return;
+    const{action,params={}}=e.data;let r;
+    switch(action){
+      case'createTimer':r=api.createTimer({...params,source:'n8n'});break;
+      case'createAlarm':r=api.createAlarm({...params,source:'n8n'});break;
+      case'list':r=api.list();break;
+      case'pause':r=api.pause(params.id);break;
+      case'resume':r=api.resume(params.id);break;
+      case'adjust':r=api.adjust(params.id,params.seconds);break;
+      case'dismiss':r=api.dismiss(params.id);break;
+      case'delete':r=api.delete(params.id);break;
+      case'dismissAll':r=api.dismissAll();break;
+      case'snapshot':r=api.snapshot();break;
+      default:r={error:'Unknown action'}
+    }
+    if(e.source)e.source.postMessage({type:'puffpai_alarm_response',action,result:r},'*');
+  });
+
+  // -- Bubbles --
+  function makeBubbles(){const c=$('bubbles');for(let i=0;i<10;i++){const s=document.createElement('span');const sz=12+Math.random()*35;s.style.width=sz+'px';s.style.height=sz+'px';s.style.left=Math.random()*100+'%';s.style.animationDuration=(10+Math.random()*20)+'s';s.style.animationDelay=Math.random()*15+'s';c.appendChild(s)}}
+
+  // -- Init --
+  function init(){
+    load();makeBubbles();initVoice();render();
+    syncPull(); // Pull any items created by PuffPAI
+    setInterval(syncPull, 4000); // Poll for new items
+    // set default alarm time to +1 hour
+    const d=new Date(Date.now()+3600000);$('aTime').value=pad2(d.getHours())+':'+pad2(d.getMinutes());
+    if(items.some(a=>a.status==='running'))startTick();
+    if('Notification' in window&&Notification.permission==='default')Notification.requestPermission();
+    document.addEventListener('keydown',e=>{if(e.key==='Enter'){
+      if(document.activeElement?.closest('#paneTimer'))addTimerFromForm();
+      else if(document.activeElement?.closest('#paneAlarm'))addAlarmFromForm();
+    }});
+    setInterval(()=>{const n=items.filter(a=>a.status==='running'||a.status==='ringing').length;document.title=n>0?'('+n+') AlarmFlow':'AlarmFlow'},1000);
+  }
+
+  return{init,addTimer:addTimerFromForm,addAlarm:addAlarmFromForm,tPre,showTab,voice:toggleVoice,dismiss,del,pause,resume,adjust,reset,api};
+})();
+document.addEventListener('DOMContentLoaded',A.init);
+</script>
+</body>
+</html>

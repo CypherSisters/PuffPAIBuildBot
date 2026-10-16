@@ -1,0 +1,172 @@
+{
+ "goal_id": "fitness",
+ "model": "qwen2.5:7b-instruct",
+ "prompt_tag": "v5",
+ "at": "2026-09-27T00:29:00",
+ "timing": {
+  "wall_s": 17.37,
+  "first_token_s": 5.11,
+  "first_job_s": 7.57,
+  "load_s": 0.01,
+  "prompt_tokens": 717,
+  "prompt_s": 0.04,
+  "out_tokens": 571,
+  "gen_s": 12.25,
+  "tok_per_s": 46.6,
+  "done_reason": "stop"
+ },
+ "raw": "{\n  \"kind\": \"fitness coach bot\",\n  \"asked\": [\n    \"log runs\",\n    \"follow training plan\",\n    \"track weight\",\n    \"track sleep\",\n    \"remind to stretch\"\n  ],\n  \"also_needed\": [\n    \"log lifts\"\n  ],\n  \"jobs\": [\n    {\n      \"name\": \"log runs\",\n      \"does\": \"Records the user's running activities.\",\n      \"parts\": [\n        {\n          \"kind\": \"code-app\",\n          \"search\": [\"fitness tracking app\", \"running log\"]\n        },\n        {\n          \"kind\": \"data-template\",\n          \"search\": [\"running log template\", \"fitness tracking spreadsheet\"]\n        }\n      ]\n    },\n    {\n      \"name\": \"follow training plan\",\n      \"does\": \"Provides a structured workout plan for the user.\",\n      \"parts\": [\n        {\n          \"kind\": \"code-app\",\n          \"search\": [\"personal trainer app\", \"training plan generator\"]\n        },\n        {\n          \"kind\": \"data-template\",\n          \"search\": [\"training plan template\", \"workout schedule\"]\n        }\n      ]\n    },\n    {\n      \"name\": \"track weight\",\n      \"does\": \"Monitors the user's weight over time.\",\n      \"parts\": [\n        {\n          \"kind\": \"code-app\",\n          \"search\": [\"weight tracker app\", \"body weight log\"]\n        },\n        {\n          \"kind\": \"device\",\n          \"search\": [\"smart scale\", \"wireless scale\"]\n        }\n      ]\n    },\n    {\n      \"name\": \"track sleep\",\n      \"does\": \"Records the user's sleep patterns and quality.\",\n      \"parts\": [\n        {\n          \"kind\": \"code-app\",\n          \"search\": [\"sleep tracker app\", \"sleep log\"]\n        },\n        {\n          \"kind\": \"live-info\",\n          \"search\": [\"sleep quality\", \"sleep duration\"]\n        }\n      ]\n    },\n    {\n      \"name\": \"remind to stretch\",\n      \"does\": \"Sends reminders to the user to perform stretching exercises.\",\n      \"parts\": [\n        {\n          \"kind\": \"code-app\",\n          \"search\": [\"reminder app\", \"stretch reminder\"]\n        },\n        {\n          \"kind\": \"knowledge\",\n          \"search\": [\"stretching exercises\", \"yoga poses\"]\n        }\n      ]\n    },\n    {\n      \"name\": \"log lifts\",\n      \"does\": \"Records the user's weightlifting activities.\",\n      \"parts\": [\n        {\n          \"kind\": \"code-app\",\n          \"search\": [\"fitness tracking app\", \"weightlifting log\"]\n        },\n        {\n          \"kind\": \"data-template\",\n          \"search\": [\"lifting log template\", \"weight training spreadsheet\"]\n        }\n      ]\n    }\n  ]\n}",
+ "parsed": {
+  "kind": "fitness coach bot",
+  "asked": [
+   "log runs",
+   "follow training plan",
+   "track weight",
+   "track sleep",
+   "remind to stretch"
+  ],
+  "also_needed": [
+   "log lifts"
+  ],
+  "jobs": [
+   {
+    "name": "log runs",
+    "does": "Records the user's running activities.",
+    "parts": [
+     {
+      "kind": "code-app",
+      "search": [
+       "fitness tracking app",
+       "running log"
+      ]
+     },
+     {
+      "kind": "data-template",
+      "search": [
+       "running log template",
+       "fitness tracking spreadsheet"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "follow training plan",
+    "does": "Provides a structured workout plan for the user.",
+    "parts": [
+     {
+      "kind": "code-app",
+      "search": [
+       "personal trainer app",
+       "training plan generator"
+      ]
+     },
+     {
+      "kind": "data-template",
+      "search": [
+       "training plan template",
+       "workout schedule"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "track weight",
+    "does": "Monitors the user's weight over time.",
+    "parts": [
+     {
+      "kind": "code-app",
+      "search": [
+       "weight tracker app",
+       "body weight log"
+      ]
+     },
+     {
+      "kind": "device",
+      "search": [
+       "smart scale",
+       "wireless scale"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "track sleep",
+    "does": "Records the user's sleep patterns and quality.",
+    "parts": [
+     {
+      "kind": "code-app",
+      "search": [
+       "sleep tracker app",
+       "sleep log"
+      ]
+     },
+     {
+      "kind": "live-info",
+      "search": [
+       "sleep quality",
+       "sleep duration"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "remind to stretch",
+    "does": "Sends reminders to the user to perform stretching exercises.",
+    "parts": [
+     {
+      "kind": "code-app",
+      "search": [
+       "reminder app",
+       "stretch reminder"
+      ]
+     },
+     {
+      "kind": "knowledge",
+      "search": [
+       "stretching exercises",
+       "yoga poses"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "log lifts",
+    "does": "Records the user's weightlifting activities.",
+    "parts": [
+     {
+      "kind": "code-app",
+      "search": [
+       "fitness tracking app",
+       "weightlifting log"
+      ]
+     },
+     {
+      "kind": "data-template",
+      "search": [
+       "lifting log template",
+       "weight training spreadsheet"
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "check": {
+  "valid": true,
+  "kind": "fitness coach bot",
+  "jobs": 6,
+  "jobs_in_range": true,
+  "phrases": 24,
+  "unique_phrases": 23,
+  "parts_with_bad_phrase_count": 0,
+  "kinds": {
+   "code-app": 6,
+   "data-template": 3,
+   "device": 1,
+   "live-info": 1,
+   "knowledge": 1
+  },
+  "leaks": [],
+  "kind_leak": []
+ }
+}

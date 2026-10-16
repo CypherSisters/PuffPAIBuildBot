@@ -1,0 +1,55 @@
+{
+ "goal_id": "spanish",
+ "timing": {
+  "wall_s": 4.23,
+  "first_token_s": 0.06,
+  "first_job_s": 0,
+  "load_s": 0.0,
+  "prompt_tokens": 204,
+  "prompt_s": 0.04,
+  "out_tokens": 194,
+  "gen_s": 4.17,
+  "tok_per_s": 46.6,
+  "done_reason": "stop"
+ },
+ "parsed": {
+  "kind": "Spanish tutor bot",
+  "asked": [
+   "practice conversation",
+   "drill vocabulary",
+   "correct grammar",
+   "teach phrases"
+  ],
+  "jobs": [
+   {
+    "name": "Spanish conversation practice",
+    "does": "Conduct live conversations to improve fluency."
+   },
+   {
+    "name": "Vocabulary flashcard drill",
+    "does": "Provide flashcards with Spanish words and their meanings."
+   },
+   {
+    "name": "Grammar correction",
+    "does": "Check and correct grammatical errors in sentences."
+   },
+   {
+    "name": "Phrases for restaurants",
+    "does": "Teach common phrases for dining out."
+   },
+   {
+    "name": "Phrases for taxis",
+    "does": "Teach common phrases for taxi rides."
+   },
+   {
+    "name": "Customized learning plan",
+    "does": "Create a personalized study plan based on user's progress."
+   },
+   {
+    "name": "Cultural insights",
+    "does": "Provide cultural context and tips for the trip."
+   }
+  ]
+ },
+ "recall": 0.5714285714285714
+}

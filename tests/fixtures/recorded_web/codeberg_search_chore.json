@@ -1,0 +1,1031 @@
+{
+ "ok": true,
+ "data": [
+  {
+   "id": 1410643,
+   "name": "chorizard",
+   "full_name": "Tony4dev/chorizard",
+   "description": "Chore planning made easy",
+   "topics": [],
+   "stars_count": 13,
+   "size": 519,
+   "language": "TypeScript",
+   "default_branch": "main",
+   "updated_at": "2026-06-14T21:47:28+02:00",
+   "archived": false,
+   "fork": false,
+   "mirror": false,
+   "private": false,
+   "internal": false,
+   "owner": {
+    "login": "Tony4dev"
+   }
+  },
+  {
+   "id": 769726,
+   "name": "infra",
+   "full_name": "ziglang/infra",
+   "description": "Documentation and tools for Zig Software Foundation infrastructure and development chores.",
+   "topics": [],
+   "stars_count": 9,
+   "size": 102,
+   "language": "Zig",
+   "default_branch": "master",
+   "updated_at": "2026-09-18T10:07:59+02:00",
+   "archived": false,
+   "fork": false,
+   "mirror": false,
+   "private": false,
+   "internal": false,
+   "owner": {
+    "login": "ziglang"
+   }
+  },
+  {
+   "id": 470219,
+   "name": "Synthercise",
+   "full_name": "zool/Synthercise",
+   "description": "Programme and choreography notes for an open licensed chiptune dance fitness class, originally run at Electromagnetic Field 2024",
+   "topics": [],
+   "stars_count": 3,
+   "size": 45474,
+   "language": "",
+   "default_branch": "main",
+   "updated_at": "2026-07-11T15:01:44+02:00",
+   "archived": false,
+   "fork": false,
+   "mirror": false,
+   "private": false,
+   "internal": false,
+   "owner": {
+    "login": "zool"
+   }
+  },
+  {
+   "id": 1309715,
+   "name": "zerotrust",
+   "full_name": "sunshine-it/zerotrust",
+   "description": "Reference architecture for hardware-anchored, zero-trust on-premises compute platform",
+   "topics": [],
+   "stars_count": 1,
+   "size": 3123,
+   "language": "Python",
+   "default_branch": "main",
+   "updated_at": "2026-02-27T22:47:32+01:00",
+   "archived": false,
+   "fork": false,
+   "mirror": false,
+   "private": false,
+   "internal": false,
+   "owner": {
+    "login": "sunshine-it"
+   }
+  },
+  {
+   "id": 1328456,
+   "name": "ChoreStrike",
+   "full_name": "WillyWompel/ChoreStrike",
+   "description": "",
+   "topics": [],
+   "stars_count": 1,
+   "size": 6184,
+   "language": "PHP",
+   "default_branch": "master",
+   "updated_at": "2026-08-30T23:41:49+02:00",
+   "archived": false,
+   "fork": false,
+   "mirror": false,
+   "private": false,
+   "internal": false,
+   "owner": {
+    "login": "WillyWompel"
+   }
+  },
+  {
+   "id": 326314,
+   "name": "nachorez",
+   "full_name": "kita/nachorez",
+   "description": "Nachorez is an alternative frontend for Zerochan",
+   "topics": [
+    "alternative-frontend",
+    "asyncio",
+    "flask",
+    "python",
+    "quart",
+    "zerochan"
+   ],
+   "stars_count": 1,
+   "size": 25,
+   "language": "Python",
+   "default_branch": "main",
+   "updated_at": "2025-03-14T10:17:42+01:00",
+   "archived": false,
+   "fork": false,
+   "mirror": false,
+   "private": false,
+   "internal": false,
+   "owner": {
+    "login": "kita"
+   }
+  },
+  {
+   "id": 220417,
+   "name": "chore-counter",
+   "full_name": "vishalscodes/chore-counter",
+   "description": "Counts the chores you've done with money values.",
+   "topics": [],
+   "stars_count": 0,
+   "size": 13,
+   "language": "HTML",
+   "default_branch": "main",
+   "updated_at": "2024-05-26T14:17:38+02:00",
+   "archived": false,
+   "fork": false,
+   "mirror": false,
+   "private": false,
+   "internal": false,
+   "owner": {
+    "login": "vishalscodes"
+   }
+  },
+  {
+   "id": 2565,
+   "name": "ChoreoListGenerator",
+   "full_name": "florian98/ChoreoListGenerator",
+   "description": "",
+   "topics": [
+    "java",
+    "choreomaster"
+   ],
+   "stars_count": 0,
+   "size": 24,
+   "language": "Java",
+   "default_branch": "master",
+   "updated_at": "2024-12-03T05:09:46+01:00",
+   "archived": false,
+   "fork": false,
+   "mirror": false,
+   "private": false,
+   "internal": false,
+   "owner": {
+    "login": "florian98"
+   }
+  },
+  {
+   "id": 1751558,
+   "name": "hackingchoreography",
+   "full_name": "sicchio/hackingchoreography",
+   "description": "pseudo code for programming/choreographing dancers",
+   "topics": [],
+   "stars_count": 0,
+   "size": 5,
+   "language": "",
+   "default_branch": "master",
+   "updated_at": "2026-05-06T17:27:54+02:00",
+   "archived": false,
+   "fork": false,
+   "mirror": false,
+   "private": false,
+   "internal": false,
+   "owner": {
+    "login": "sicchio"
+   }
+  },
+  {
+   "id": 1762310,
+   "name": "soundchoreographer",
+   "full_name": "sicchio/soundchoreographer",
+   "description": "Sound Choreographer",
+   "topics": [],
+   "stars_count": 0,
+   "size": 35,
+   "language": "Processing",
+   "default_branch": "master",
+   "updated_at": "2026-05-07T18:30:34+02:00",
+   "archived": false,
+   "fork": false,
+   "mirror": false,
+   "private": false,
+   "internal": false,
+   "owner": {
+    "login": "sicchio"
+   }
+  },
+  {
+   "id": 1028361,
+   "name": "Frim-LockX",
+   "full_name": "princetheprogrammerbtw/Frim-LockX",
+   "description": "Comprehensive documentation for FIRM-LOCK: a hardware-anchored attestation platform ensuring verifiable integrity for edge IoT devices.",
+   "topics": [],
+   "stars_count": 0,
+   "size": 96,
+   "language": "",
+   "default_branch": "main",
+   "updated_at": "2025-12-15T14:55:22+01:00",
+   "archived": false,
+   "fork": false,
+   "mirror": false,
+   "private": false,
+   "internal": false,
+   "owner": {
+    "login": "princetheprogrammerbtw"
+   }
+  },
+  {
+   "id": 1751564,
+   "name": "p5.score",
+   "full_name": "sicchio/p5.score",
+   "description": "a p5js library for making choreographic scores",
+   "topics": [],
+   "stars_count": 0,
+   "size": 918,
+   "language": "JavaScript",
+   "default_branch": "main",
+   "updated_at": "2026-05-06T17:28:52+02:00",
+   "archived": false,
+   "fork": false,
+   "mirror": false,
+   "private": false,
+   "internal": false,
+   "owner": {
+    "login": "sicchio"
+   }
+  },
+  {
+   "id": 1762316,
+   "name": "web_soundchoreographer",
+   "full_name": "sicchio/web_soundchoreographer",
+   "description": "",
+   "topics": [],
+   "stars_count": 0,
+   "size": 312,
+   "language": "JavaScript",
+   "default_branch": "master",
+   "updated_at": "2026-05-07T18:31:15+02:00",
+   "archived": false,
+   "fork": false,
+   "mirror": false,
+   "private": false,
+   "internal": false,
+   "owner": {
+    "login": "sicchio"
+   }
+  },
+  {
+   "id": 1127189,
+   "name": "chorex_compiler",
+   "full_name": "ashton314/chorex_compiler",
+   "description": "Next-generation choreography compiler",
+   "topics": [],
+   "stars_count": 0,
+   "size": 416,
+   "language": "Elixir",
+   "default_branch": "main",
+   "updated_at": "2026-09-24T01:02:21+02:00",
+   "archived": false,
+   "fork": false,
+   "mirror": false,
+   "private": false,
+   "internal": false,
+   "owner": {
+    "login": "ashton314"
+   }
+  },
+  {
+   "id": 760853,
+   "name": "kata-choreography",
+   "full_name": "dmerej/kata-choreography",
+   "description": "",
+   "topics": [],
+   "stars_count": 0,
+   "size": 90,
+   "language": "",
+   "default_branch": "main",
+   "updated_at": "2025-09-06T16:20:22+02:00",
+   "archived": false,
+   "fork": false,
+   "mirror": false,
+   "private": false,
+   "internal": false,
+   "owner": {
+    "login": "dmerej"
+   }
+  },
+  {
+   "id": 1123358,
+   "name": "Anchored",
+   "full_name": "3d/Anchored",
+   "description": "Keeps your inventory visually centered even with status effects.",
+   "topics": [],
+   "stars_count": 0,
+   "size": 139,
+   "language": "Java",
+   "default_branch": "master",
+   "updated_at": "2026-01-11T05:47:14+01:00",
+   "archived": false,
+   "fork": false,
+   "mirror": false,
+   "private": false,
+   "internal": false,
+   "owner": {
+    "login": "3d"
+   }
+  },
+  {
+   "id": 2334751,
+   "name": "corvees",
+   "full_name": "sama-gharib/corvees",
+   "description": "A simple fullstack application to help manage chores!",
+   "topics": [],
+   "stars_count": 0,
+   "size": 478,
+   "language": "Rust",
+   "default_branch": "main",
+   "updated_at": "2026-07-26T14:37:14+02:00",
+   "archived": false,
+   "fork": false,
+   "mirror": false,
+   "private": false,
+   "internal": false,
+   "owner": {
+    "login": "sama-gharib"
+   }
+  },
+  {
+   "id": 1688096,
+   "name": "quest-forge",
+   "full_name": "sleuthy-sloth/quest-forge",
+   "description": "Quest Forge is a chore and educational learning app with a high fantasy RPG wrapper",
+   "topics": [],
+   "stars_count": 0,
+   "size": 64362,
+   "language": "TypeScript",
+   "default_branch": "main",
+   "updated_at": "2026-05-24T04:11:38+02:00",
+   "archived": false,
+   "fork": false,
+   "mirror": false,
+   "private": false,
+   "internal": false,
+   "owner": {
+    "login": "sleuthy-sloth"
+   }
+  },
+  {
+   "id": 2147105,
+   "name": "Chore-Door",
+   "full_name": "ziaddev/Chore-Door",
+   "description": "a front end game ",
+   "topics": [],
+   "stars_count": 0,
+   "size": 6,
+   "language": "JavaScript",
+   "default_branch": "main",
+   "updated_at": "2026-06-23T08:48:30+02:00",
+   "archived": false,
+   "fork": false,
+   "mirror": false,
+   "private": false,
+   "internal": false,
+   "owner": {
+    "login": "ziaddev"
+   }
+  },
+  {
+   "id": 893744,
+   "name": "terrarium-chore-dashboard",
+   "full_name": "pea-green-boat/terrarium-chore-dashboard",
+   "description": "chores dashboard for our house",
+   "topics": [],
+   "stars_count": 0,
+   "size": 39,
+   "language": "HTML",
+   "default_branch": "pea-green-boat",
+   "updated_at": "2026-02-22T23:08:22+01:00",
+   "archived": false,
+   "fork": true,
+   "mirror": false,
+   "private": false,
+   "internal": false,
+   "owner": {
+    "login": "pea-green-boat"
+   }
+  },
+  {
+   "id": 827719,
+   "name": "terrarium-chore-dashboard",
+   "full_name": "blackle/terrarium-chore-dashboard",
+   "description": "chores dashboard for our house",
+   "topics": [],
+   "stars_count": 0,
+   "size": 27,
+   "language": "HTML",
+   "default_branch": "main",
+   "updated_at": "2025-10-04T06:03:59+02:00",
+   "archived": false,
+   "fork": false,
+   "mirror": false,
+   "private": false,
+   "internal": false,
+   "owner": {
+    "login": "blackle"
+   }
+  },
+  {
+   "id": 188236,
+   "name": "chore",
+   "full_name": "polarhive/chore",
+   "description": "[wip]: todo-app written in c",
+   "topics": [
+    "c",
+    "todo",
+    "todoapp",
+    "sync-server"
+   ],
+   "stars_count": 0,
+   "size": 18,
+   "language": "C",
+   "default_branch": "main",
+   "updated_at": "2024-12-03T05:46:50+01:00",
+   "archived": false,
+   "fork": false,
+   "mirror": false,
+   "private": false,
+   "internal": false,
+   "owner": {
+    "login": "polarhive"
+   }
+  },
+  {
+   "id": 1582671,
+   "name": "MoreChores",
+   "full_name": "peetsnack/MoreChores",
+   "description": "Adds a list of daily chores to assigne to unused party members.",
+   "topics": [],
+   "stars_count": 0,
+   "size": 128,
+   "language": "JavaScript",
+   "default_branch": "main",
+   "updated_at": "2026-09-13T23:18:21+02:00",
+   "archived": false,
+   "fork": false,
+   "mirror": false,
+   "private": false,
+   "internal": false,
+   "owner": {
+    "login": "peetsnack"
+   }
+  },
+  {
+   "id": 2215766,
+   "name": "chorcy",
+   "full_name": "briansbum/chorcy",
+   "description": "AI Generated Grocy Chores PWA",
+   "topics": [],
+   "stars_count": 0,
+   "size": 216,
+   "language": "TypeScript",
+   "default_branch": "main",
+   "updated_at": "2026-09-23T20:07:04+02:00",
+   "archived": false,
+   "fork": false,
+   "mirror": false,
+   "private": false,
+   "internal": false,
+   "owner": {
+    "login": "briansbum"
+   }
+  },
+  {
+   "id": 763230,
+   "name": "choreography",
+   "full_name": "dmerej/choreography",
+   "description": "",
+   "topics": [],
+   "stars_count": 0,
+   "size": 0,
+   "language": "",
+   "default_branch": "main",
+   "updated_at": "2025-09-07T13:22:39+02:00",
+   "archived": false,
+   "fork": false,
+   "mirror": false,
+   "private": false,
+   "internal": false,
+   "owner": {
+    "login": "dmerej"
+   }
+  },
+  {
+   "id": 666979,
+   "name": "StarChores",
+   "full_name": "Kehvarl/StarChores",
+   "description": "Give yourself credit for completing things.",
+   "topics": [],
+   "stars_count": 0,
+   "size": 18,
+   "language": "Elm",
+   "default_branch": "master",
+   "updated_at": "2025-08-06T14:45:23+02:00",
+   "archived": false,
+   "fork": false,
+   "mirror": false,
+   "private": false,
+   "internal": false,
+   "owner": {
+    "login": "Kehvarl"
+   }
+  },
+  {
+   "id": 2087279,
+   "name": "keyboard-speedster",
+   "full_name": "herguer/keyboard-speedster",
+   "description": "An interactive touch-typing tutor for the terminal and Web. Learn the home-row\r\nmethod (index fingers anchored on \"F\" and \"J\"), fingers moving instead of\r\nhands.",
+   "topics": [],
+   "stars_count": 0,
+   "size": 338,
+   "language": "TypeScript",
+   "default_branch": "main",
+   "updated_at": "2026-06-26T17:07:11+02:00",
+   "archived": false,
+   "fork": false,
+   "mirror": false,
+   "private": false,
+   "internal": false,
+   "owner": {
+    "login": "herguer"
+   }
+  },
+  {
+   "id": 1844853,
+   "name": "syft",
+   "full_name": "PRISMA-OSS/syft",
+   "description": "SBOM generation \u2014 mirror of github.com/anchore/syft. Contributions go upstream.",
+   "topics": [],
+   "stars_count": 0,
+   "size": 28075,
+   "language": "Go",
+   "default_branch": "main",
+   "updated_at": "2026-08-19T20:32:24+02:00",
+   "archived": false,
+   "fork": false,
+   "mirror": false,
+   "private": false,
+   "internal": false,
+   "owner": {
+    "login": "PRISMA-OSS"
+   }
+  },
+  {
+   "id": 1827957,
+   "name": "choreo-apps",
+   "full_name": "lgarron/choreo-apps",
+   "description": "Choreo apps (Dawn Mazurka & Crosss-Step Waltz Variations)",
+   "topics": [
+    "dance"
+   ],
+   "stars_count": 0,
+   "size": 358755,
+   "language": "HTML",
+   "default_branch": "main",
+   "updated_at": "2026-09-02T04:11:53+02:00",
+   "archived": false,
+   "fork": false,
+   "mirror": false,
+   "private": false,
+   "internal": false,
+   "owner": {
+    "login": "lgarron"
+   }
+  },
+  {
+   "id": 1844865,
+   "name": "grype",
+   "full_name": "PRISMA-OSS/grype",
+   "description": "Vulnerability scanning \u2014 mirror of github.com/anchore/grype. Contributions go upstream.",
+   "topics": [],
+   "stars_count": 0,
+   "size": 11201,
+   "language": "Go",
+   "default_branch": "main",
+   "updated_at": "2026-08-19T20:31:34+02:00",
+   "archived": false,
+   "fork": false,
+   "mirror": false,
+   "private": false,
+   "internal": false,
+   "owner": {
+    "login": "PRISMA-OSS"
+   }
+  },
+  {
+   "id": 2606467,
+   "name": "OneChance",
+   "full_name": "crzPhys/OneChance",
+   "description": "Choreo files for OneChance",
+   "topics": [],
+   "stars_count": 0,
+   "size": 95,
+   "language": "",
+   "default_branch": "master",
+   "updated_at": "2026-09-18T22:33:09+02:00",
+   "archived": false,
+   "fork": false,
+   "mirror": false,
+   "private": false,
+   "internal": false,
+   "owner": {
+    "login": "crzPhys"
+   }
+  },
+  {
+   "id": 1296521,
+   "name": "Clean-and-Set",
+   "full_name": "Grace-and-Truth/Clean-and-Set",
+   "description": "Save and prioritize recurring tasks for housecleaning or any regular chores. ",
+   "topics": [],
+   "stars_count": 0,
+   "size": 7755,
+   "language": "Dart",
+   "default_branch": "main",
+   "updated_at": "2026-05-19T04:30:52+02:00",
+   "archived": false,
+   "fork": false,
+   "mirror": false,
+   "private": false,
+   "internal": false,
+   "owner": {
+    "login": "Grace-and-Truth"
+   }
+  },
+  {
+   "id": 1496202,
+   "name": "matrix-chore-bot",
+   "full_name": "EdTheDev/matrix-chore-bot",
+   "description": "A matrix bot that maintains a daily chore list",
+   "topics": [],
+   "stars_count": 0,
+   "size": 87,
+   "language": "Python",
+   "default_branch": "main",
+   "updated_at": "2026-06-30T01:30:48+02:00",
+   "archived": false,
+   "fork": false,
+   "mirror": false,
+   "private": false,
+   "internal": false,
+   "owner": {
+    "login": "EdTheDev"
+   }
+  },
+  {
+   "id": 1830033,
+   "name": "Nise",
+   "full_name": "beside/Nise",
+   "description": "A small human-like creature wearing a red cap and gray clothing, doing house and stable chores.",
+   "topics": [],
+   "stars_count": 0,
+   "size": 5,
+   "language": "Ruby",
+   "default_branch": "main",
+   "updated_at": "2026-06-06T20:22:07+02:00",
+   "archived": false,
+   "fork": false,
+   "mirror": false,
+   "private": false,
+   "internal": false,
+   "owner": {
+    "login": "beside"
+   }
+  },
+  {
+   "id": 1323410,
+   "name": "zerotrust",
+   "full_name": "bbaassssiiee/zerotrust",
+   "description": "hardware-anchored, zero-trust on-premises compute platform",
+   "topics": [],
+   "stars_count": 0,
+   "size": 3038,
+   "language": "",
+   "default_branch": "main",
+   "updated_at": "2026-02-24T06:43:26+01:00",
+   "archived": false,
+   "fork": true,
+   "mirror": false,
+   "private": false,
+   "internal": false,
+   "owner": {
+    "login": "bbaassssiiee"
+   }
+  },
+  {
+   "id": 1643417,
+   "name": "waldo-chores-backend",
+   "full_name": "plethorachutney/waldo-chores-backend",
+   "description": "Backend for waldo chores",
+   "topics": [],
+   "stars_count": 0,
+   "size": 38,
+   "language": "Python",
+   "default_branch": "main",
+   "updated_at": "2026-04-25T00:06:21+02:00",
+   "archived": false,
+   "fork": false,
+   "mirror": false,
+   "private": false,
+   "internal": false,
+   "owner": {
+    "login": "plethorachutney"
+   }
+  },
+  {
+   "id": 566175,
+   "name": "Shosett",
+   "full_name": "Fargeol/Shosett",
+   "description": "Priority-based chore manager for Android",
+   "topics": [
+    "android",
+    "jetpack-compose"
+   ],
+   "stars_count": 0,
+   "size": 463,
+   "language": "Kotlin",
+   "default_branch": "main",
+   "updated_at": "2026-04-19T13:55:23+02:00",
+   "archived": false,
+   "fork": false,
+   "mirror": false,
+   "private": false,
+   "internal": false,
+   "owner": {
+    "login": "Fargeol"
+   }
+  },
+  {
+   "id": 1231778,
+   "name": "instant_choreography",
+   "full_name": "jpburstrom/instant_choreography",
+   "description": "",
+   "topics": [],
+   "stars_count": 0,
+   "size": 70,
+   "language": "C++",
+   "default_branch": "master",
+   "updated_at": "2026-02-03T18:10:00+01:00",
+   "archived": false,
+   "fork": false,
+   "mirror": false,
+   "private": false,
+   "internal": false,
+   "owner": {
+    "login": "jpburstrom"
+   }
+  },
+  {
+   "id": 2555299,
+   "name": "begin-again",
+   "full_name": "kflak/begin-again",
+   "description": "Music for the piece \"Begin Again\" for the MA1 choreography students at Tallinn University, BFM",
+   "topics": [],
+   "stars_count": 0,
+   "size": 381593,
+   "language": "Common Lisp",
+   "default_branch": "main",
+   "updated_at": "2026-09-24T15:29:03+02:00",
+   "archived": false,
+   "fork": false,
+   "mirror": false,
+   "private": false,
+   "internal": false,
+   "owner": {
+    "login": "kflak"
+   }
+  },
+  {
+   "id": 2054069,
+   "name": "x39matrix",
+   "full_name": "x39matrix/x39matrix",
+   "description": "Sovereign post-quantum cryptographic protocol \u2014 Bitcoin-anchored",
+   "topics": [],
+   "stars_count": 0,
+   "size": 22936,
+   "language": "Standard ML",
+   "default_branch": "main",
+   "updated_at": "2026-06-28T21:54:00+02:00",
+   "archived": false,
+   "fork": false,
+   "mirror": false,
+   "private": false,
+   "internal": false,
+   "owner": {
+    "login": "x39matrix"
+   }
+  },
+  {
+   "id": 1751735,
+   "name": "choreo_privacy",
+   "full_name": "sicchio/choreo_privacy",
+   "description": "CCI performance",
+   "topics": [],
+   "stars_count": 0,
+   "size": 211436,
+   "language": "HTML",
+   "default_branch": "main",
+   "updated_at": "2026-05-06T18:07:45+02:00",
+   "archived": false,
+   "fork": false,
+   "mirror": false,
+   "private": false,
+   "internal": false,
+   "owner": {
+    "login": "sicchio"
+   }
+  },
+  {
+   "id": 1985210,
+   "name": "JustDoIt",
+   "full_name": "joostvdg/JustDoIt",
+   "description": "Application to track recurring chores.",
+   "topics": [],
+   "stars_count": 0,
+   "size": 14700,
+   "language": "Java",
+   "default_branch": "main",
+   "updated_at": "2026-06-26T00:58:34+02:00",
+   "archived": false,
+   "fork": false,
+   "mirror": false,
+   "private": false,
+   "internal": false,
+   "owner": {
+    "login": "joostvdg"
+   }
+  },
+  {
+   "id": 1638081,
+   "name": "waldo-chores",
+   "full_name": "plethorachutney/waldo-chores",
+   "description": "",
+   "topics": [],
+   "stars_count": 0,
+   "size": 0,
+   "language": "",
+   "default_branch": "main",
+   "updated_at": "2026-04-21T21:44:08+02:00",
+   "archived": false,
+   "fork": false,
+   "mirror": false,
+   "private": false,
+   "internal": false,
+   "owner": {
+    "login": "plethorachutney"
+   }
+  },
+  {
+   "id": 2190536,
+   "name": "schemschema",
+   "full_name": "rtk/schemschema",
+   "description": "schema system for schematic so naming them isnt a chore",
+   "topics": [],
+   "stars_count": 0,
+   "size": 24,
+   "language": "Nix",
+   "default_branch": "main",
+   "updated_at": "2026-08-29T11:22:58+02:00",
+   "archived": true,
+   "fork": false,
+   "mirror": false,
+   "private": false,
+   "internal": false,
+   "owner": {
+    "login": "rtk"
+   }
+  },
+  {
+   "id": 2546380,
+   "name": "ChoreoCompiler",
+   "full_name": "crzPhys/ChoreoCompiler",
+   "description": "Program to create PDFs or Anki cards from ChoreoMaster",
+   "topics": [],
+   "stars_count": 0,
+   "size": 105,
+   "language": "C++",
+   "default_branch": "master",
+   "updated_at": "2026-09-23T14:29:33+02:00",
+   "archived": false,
+   "fork": false,
+   "mirror": false,
+   "private": false,
+   "internal": false,
+   "owner": {
+    "login": "crzPhys"
+   }
+  },
+  {
+   "id": 2518222,
+   "name": "Rk1Shell",
+   "full_name": "Rakosn1cek/Rk1Shell",
+   "description": "A custom desktop Hyprland shell written in Quickshell and built around a single idea: a minimalist floating pill anchored to the screen edge that smoothly morphs into whichever tool or widget you tap on.",
+   "topics": [],
+   "stars_count": 0,
+   "size": 383,
+   "language": "QML",
+   "default_branch": "main",
+   "updated_at": "2026-09-10T01:02:03+02:00",
+   "archived": false,
+   "fork": false,
+   "mirror": false,
+   "private": false,
+   "internal": false,
+   "owner": {
+    "login": "Rakosn1cek"
+   }
+  },
+  {
+   "id": 2251217,
+   "name": "dev-tools",
+   "full_name": "martinlikescoffee/dev-tools",
+   "description": "CLI toolkit for day-to-day development chores",
+   "topics": [],
+   "stars_count": 0,
+   "size": 27,
+   "language": "PHP",
+   "default_branch": "main",
+   "updated_at": "2026-07-18T12:25:32+02:00",
+   "archived": false,
+   "fork": false,
+   "mirror": false,
+   "private": false,
+   "internal": false,
+   "owner": {
+    "login": "martinlikescoffee"
+   }
+  },
+  {
+   "id": 256472,
+   "name": "DeskClock_Cpp",
+   "full_name": "Dr-42/DeskClock_Cpp",
+   "description": "A Clock anchored to your desktop for windows",
+   "topics": [],
+   "stars_count": 0,
+   "size": 10044,
+   "language": "C++",
+   "default_branch": "master",
+   "updated_at": "2024-09-10T06:25:58+02:00",
+   "archived": false,
+   "fork": false,
+   "mirror": false,
+   "private": false,
+   "internal": false,
+   "owner": {
+    "login": "Dr-42"
+   }
+  },
+  {
+   "id": 1570776,
+   "name": "choreflow-api",
+   "full_name": "davesaah/choreflow-api",
+   "description": "[Mirror] API for choreflow",
+   "topics": [],
+   "stars_count": 0,
+   "size": 56,
+   "language": "Go",
+   "default_branch": "main",
+   "updated_at": "2026-04-08T20:21:34+02:00",
+   "archived": false,
+   "fork": false,
+   "mirror": false,
+   "private": false,
+   "internal": false,
+   "owner": {
+    "login": "davesaah"
+   }
+  },
+  {
+   "id": 1376221,
+   "name": "WinVitalsMonitor",
+   "full_name": "ivanhercaz/WinVitalsMonitor",
+   "description": "Simple desktop widget for Windows that displays real-time CPU, GPU, RAM, and network stats. Anchored to the desktop \u2014 survives Win+D.",
+   "topics": [
+    "system-monitor",
+    "system-monitoring",
+    "widget",
+    "windows",
+    "windows11"
+   ],
+   "stars_count": 0,
+   "size": 570,
+   "language": "C#",
+   "default_branch": "main",
+   "updated_at": "2026-03-06T18:49:54+01:00",
+   "archived": false,
+   "fork": false,
+   "mirror": false,
+   "private": false,
+   "internal": false,
+   "owner": {
+    "login": "ivanhercaz"
+   }
+  }
+ ]
+}

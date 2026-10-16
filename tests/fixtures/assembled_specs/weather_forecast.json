@@ -1,0 +1,23 @@
+{
+  "spec": {
+    "schema": "assembled_app/v1", "id": "weather", "title": "Weather where you live", "caps": ["cap-weather"],
+    "settings": [{"key": "home_town", "kind": "place", "use": "home_location", "label": "your town"},
+                 {"key": "units", "kind": "choice", "choices": ["metric", "imperial"]},
+                 {"key": "api_key", "kind": "key", "label": "Weather service key"}],
+    "vault_url": "http://localhost:3000/dashboard/things/weather-abcdefgh",
+    "sources": [{"id": "wx", "kind": "glue", "module": "glue/wx.py", "fn": "forecast",
+      "args": {"lat": "setting:home_town.lat", "lon": "setting:home_town.lon"}}],
+    "views": [{"type": "forecast", "source": "wx", "units": {"temp": "°C", "wind": "m/s"}},
+              {"type": "chart", "source": "wx", "x": "when", "y": ["temp"]}],
+    "actions": [{"id": "forecast", "source": "wx", "input": {}}],
+    "checks": []
+  },
+  "rows": {
+    "forecast": [
+      {"when": "2026-10-08T12:00:00Z", "temp": 14, "sky": "pcloudyday", "wind": 3, "rain": 0},
+      {"when": "2026-10-08T15:00:00Z", "temp": 16, "sky": "lightrain", "wind": 5, "rain": 1},
+      {"when": "2026-10-08T18:00:00Z", "temp": 11, "cloud": 9, "wind": 2},
+      {"when": "2026-10-08T21:00:00Z", "temp": 8, "sky": "clearnight", "wind": 1}
+    ]
+  }
+}

@@ -1,0 +1,3050 @@
+{
+ "note": "Architect labels (2026-09-27) for the recorded wedding finds in candidates.json, against the recorded qwen v5 wedding jobs. kind: tool|page|library|other. fit: FIT (a tool for one of the jobs), RELATED (about the topic, or a page/library), OFF. One labeller: the acceptance judge is independent. Synthetic negatives from critique K2 are appended. Found records built by lane L2 from k2_measure/candidates.json, corpus.json (modes, licence read, data storage) and k2_measure/readmes (feature lines via meaning.feature_lines); trust paths computed with the pinned trust-floor rules as of 2026-09-27.",
+ "items": [
+  {
+   "schema": "found/v1",
+   "id": "github:restylianos/bulma-wedding-planner-template",
+   "source": "github",
+   "part": "code-app",
+   "name": "bulma-wedding-planner-template",
+   "friendly": "bulma-wedding-planner-template",
+   "what_it_is": "A bulma template for wedding planners 👰",
+   "url": "https://github.com/restylianos/bulma-wedding-planner-template",
+   "repo": {
+    "host": "github.com",
+    "owner": "restylianos",
+    "name": "bulma-wedding-planner-template",
+    "default_branch": "master",
+    "stars": 21,
+    "pushed_at": "2024-06-23",
+    "archived": false,
+    "fork": false,
+    "license_reported": "MIT",
+    "license_read": "MIT",
+    "size_kb": 1131,
+    "language": "HTML",
+    "topics": [
+     "bulma",
+     "bulma-css-framework",
+     "free",
+     "wedding-website"
+    ],
+    "in_awesome_selfhosted": false
+   },
+   "details": {
+    "feature_lines": [
+     "illustrations https //undraw.co",
+     "Colors https //coolors.co",
+     "Lorem ipsum text https //loremipsum.io",
+     "Licensed under MIT"
+    ],
+    "keeps_data": null
+   },
+   "mode_guess": "theme",
+   "integrable": false,
+   "trust": {
+    "floor_ok": true,
+    "path": "stars",
+    "pretick_ok": true,
+    "reasons": []
+   },
+   "meaning": null,
+   "label": {
+    "kind": "page",
+    "fit": "RELATED"
+   },
+   "mode_from": "corpus.json"
+  },
+  {
+   "schema": "found/v1",
+   "id": "github:gabriel1ll7/Seating-Planner",
+   "source": "github",
+   "part": "code-app",
+   "name": "Seating-Planner",
+   "friendly": "Seating-Planner",
+   "what_it_is": " Beautiful, intuitive visual seating chart planner for events. Drag-and-drop interface for weddings, conferences, and celebrations.",
+   "url": "https://github.com/gabriel1ll7/Seating-Planner",
+   "repo": {
+    "host": "github.com",
+    "owner": "gabriel1ll7",
+    "name": "Seating-Planner",
+    "default_branch": "main",
+    "stars": 6,
+    "pushed_at": "2025-11-11",
+    "archived": false,
+    "fork": false,
+    "license_reported": "MIT",
+    "license_read": "MIT",
+    "size_kb": 468,
+    "language": "TypeScript",
+    "topics": [
+     "drag-and-drop",
+     "event-management",
+     "event-planning",
+     "guest-management",
+     "seating-arrangement",
+     "seating-chart",
+     "wedding-planner"
+    ],
+    "in_awesome_selfhosted": false
+   },
+   "details": {
+    "feature_lines": [
+     "Interactive canvas with zoom, pan, and drag-and-drop",
+     "Circular tables with 6-12 adjustable seats",
+     "Custom venue elements for bars, dance floors, DJ booths, and more",
+     "Venue space boundary to define your event area",
+     "Real-time visual feedback with hover highlights and tooltips",
+     "Keyboard shortcuts Ctrl 0 to fit all, Delete to remove, Alt drag to pan",
+     "Drag-and-drop guests between tables",
+     "Quick-add guests directly from the sidebar",
+     "Bidirectional highlighting between canvas and guest list",
+     "Capacity indicators showing filled/total seats per table",
+     "Unassigned guests section for easy organization",
+     "Guest search by hovering over chairs or names",
+     "Shareable URLs with unique slugs e.g., happy-table-742",
+     "PIN protection for edit access",
+     "View-only mode by default for shared links"
+    ],
+    "keeps_data": null
+   },
+   "mode_guess": "web_build",
+   "integrable": true,
+   "trust": {
+    "floor_ok": true,
+    "path": "stars",
+    "pretick_ok": true,
+    "reasons": []
+   },
+   "meaning": null,
+   "label": {
+    "kind": "tool",
+    "fit": "FIT"
+   },
+   "mode_from": "corpus.json"
+  },
+  {
+   "schema": "found/v1",
+   "id": "github:rampatra/wedding-website",
+   "source": "github",
+   "part": "code-app",
+   "name": "wedding-website",
+   "friendly": "wedding-website",
+   "what_it_is": "Our Wedding Website 👫",
+   "url": "https://github.com/rampatra/wedding-website",
+   "repo": {
+    "host": "github.com",
+    "owner": "rampatra",
+    "name": "wedding-website",
+    "default_branch": "master",
+    "stars": 1832,
+    "pushed_at": "2025-10-08",
+    "archived": false,
+    "fork": false,
+    "license_reported": "GPL-3.0",
+    "license_read": "GPL-3.0",
+    "size_kb": 60058,
+    "language": "HTML",
+    "topics": [
+     "design",
+     "google-sheets",
+     "rsvp",
+     "template",
+     "templates",
+     "website",
+     "website-builder",
+     "website-design",
+     "website-template",
+     "website-theme",
+     "wedding",
+     "wedding-invitation",
+     "wedding-page",
+     "wedding-rsvp",
+     "wedding-website",
+     "weddings"
+    ],
+    "in_awesome_selfhosted": false
+   },
+   "details": {
+    "feature_lines": [
+     "Slick and fully responsive design.",
+     "RSVP feature which directly uploads data to a Google sheet.",
+     "Receive email alerts when someone RSVPs.",
+     "Add to Calendar feature which supports four different calendars.",
+     "Book Uber button lets guests book a cab to the venue with just a single tap.",
+     "A nice Youtube video showing your venue.",
+     "Google Map showing your venue's location.",
+     "Start and run the website completely free. No hosting, backend server, or database required as you can use",
+     "gulp - compile sass to css, minify js, etc.",
+     "That's it, open index.html file on your browser by just double-clicking on it."
+    ],
+    "keeps_data": false
+   },
+   "mode_guess": "static_web",
+   "integrable": true,
+   "trust": {
+    "floor_ok": true,
+    "path": "stars",
+    "pretick_ok": true,
+    "reasons": []
+   },
+   "meaning": null,
+   "label": {
+    "kind": "page",
+    "fit": "RELATED"
+   },
+   "mode_from": "corpus.json"
+  },
+  {
+   "schema": "found/v1",
+   "id": "github:ZEDLABS-TEKNOLOGI-INDONESIA/wedding-invitation",
+   "source": "github",
+   "part": "code-app",
+   "name": "wedding-invitation",
+   "friendly": "wedding-invitation",
+   "what_it_is": "Website undangan pernikahan yang elegan, modern, dan interaktif dibangun menggunakan Astro, React, Tailwind CSS, dan SQLite. Dilengkapi dengan sistem manajemen tamu yang komprehensif, pelacakan RSVP real-time, notifikasi otomatis, dan tools desain profesional.",
+   "url": "https://github.com/ZEDLABS-TEKNOLOGI-INDONESIA/wedding-invitation",
+   "repo": {
+    "host": "github.com",
+    "owner": "ZEDLABS-TEKNOLOGI-INDONESIA",
+    "name": "wedding-invitation",
+    "default_branch": "main",
+    "stars": 25,
+    "pushed_at": "2026-06-25",
+    "archived": false,
+    "fork": false,
+    "license_reported": "MIT",
+    "license_read": null,
+    "size_kb": 23588,
+    "language": "TypeScript",
+    "topics": [
+     "invitation",
+     "pernikahan",
+     "undangan",
+     "undangan-digital",
+     "undangan-online",
+     "undangan-pernikahan",
+     "wedding",
+     "wedding-invitation"
+    ],
+    "in_awesome_selfhosted": false
+   },
+   "details": {
+    "feature_lines": [
+     "Fitur Utama",
+     "Arsitektur Konfigurasi",
+     "Struktur Proyek",
+     "Instalasi & Development",
+     "Deployment Production",
+     "Panduan Penggunaan",
+     "Stack Teknologi",
+     "Animasi pembuka undangan yang elegan",
+     "Personalisasi otomatis nama tamu",
+     "Transisi smooth dengan backdrop blur",
+     "Floating petals animation",
+     "Light Mode dan Dark Mode",
+     "Auto-detect preferensi sistem",
+     "Smooth transition antar tema",
+     "Persistent state menggunakan localStorage"
+    ],
+    "keeps_data": null
+   },
+   "mode_guess": "web_build",
+   "integrable": true,
+   "trust": {
+    "floor_ok": true,
+    "path": "stars",
+    "pretick_ok": true,
+    "reasons": []
+   },
+   "meaning": null,
+   "label": {
+    "kind": "page",
+    "fit": "RELATED"
+   },
+   "mode_from": "lane (README and language)"
+  },
+  {
+   "schema": "found/v1",
+   "id": "github:dannycahyo/weddingly-builder",
+   "source": "github",
+   "part": "code-app",
+   "name": "weddingly-builder",
+   "friendly": "weddingly-builder",
+   "what_it_is": "A beautiful, simple, and efficient wedding website builder that allows couples to create stunning single-page wedding sites with RSVP management. Built with Astro, React, Tailwind CSS, and Prisma.",
+   "url": "https://github.com/dannycahyo/weddingly-builder",
+   "repo": {
+    "host": "github.com",
+    "owner": "dannycahyo",
+    "name": "weddingly-builder",
+    "default_branch": "master",
+    "stars": 23,
+    "pushed_at": "2025-12-28",
+    "archived": false,
+    "fork": false,
+    "license_reported": "MIT",
+    "license_read": "MIT",
+    "size_kb": 552,
+    "language": "TypeScript",
+    "topics": [
+     "astrojs",
+     "cloudinary",
+     "postgresql",
+     "prisma",
+     "react",
+     "typescript"
+    ],
+    "in_awesome_selfhosted": false
+   },
+   "details": {
+    "feature_lines": [
+     "Visual Builder - Single-page builder with intuitive section-based editing",
+     "Customization - Global color palette and font selection",
+     "Media Management - Image and audio upload via Cloudinary",
+     "Background Music - Upload custom music for guest pages",
+     "RSVP Management - View, track, and export guest responses",
+     "Password Protection - Optional password for guest access",
+     "Unique URLs - Each wedding gets a custom shareable link",
+     "Mobile-First Design - Optimized for all devices",
+     "Envelope Animation - Beautiful entrance with envelope opening",
+     "Background Music - Automatic music playback on interaction",
+     "Event Details - Clear display of ceremony and reception info",
+     "Google Maps Integration - Easy location navigation",
+     "RSVP Form - Simple form with dietary restrictions",
+     "Photo Gallery - Carousel display of couple's photos",
+     "Love Story - Share your journey with guests"
+    ],
+    "keeps_data": null
+   },
+   "mode_guess": "server_app",
+   "integrable": false,
+   "trust": {
+    "floor_ok": true,
+    "path": "stars",
+    "pretick_ok": true,
+    "reasons": []
+   },
+   "meaning": null,
+   "label": {
+    "kind": "page",
+    "fit": "RELATED"
+   },
+   "mode_from": "corpus.json"
+  },
+  {
+   "schema": "found/v1",
+   "id": "github:kbichave/wedding-invite",
+   "source": "github",
+   "part": "code-app",
+   "name": "wedding-invite",
+   "friendly": "wedding-invite",
+   "what_it_is": "Beautiful, free wedding website template built with React & Tailwind CSS. 100% FREE - no credit card required. Fully customizable with photo uploads, RSVP, blessings & more.",
+   "url": "https://github.com/kbichave/wedding-invite",
+   "repo": {
+    "host": "github.com",
+    "owner": "kbichave",
+    "name": "wedding-invite",
+    "default_branch": "main",
+    "stars": 7,
+    "pushed_at": "2025-12-12",
+    "archived": false,
+    "fork": false,
+    "license_reported": "ISC",
+    "license_read": null,
+    "size_kb": 13024,
+    "language": "JavaScript",
+    "topics": [
+     "customizable",
+     "free-template",
+     "google-drive",
+     "google-sheets",
+     "modern-ui",
+     "netlify",
+     "netlify-functions",
+     "open-source",
+     "react",
+     "react-router",
+     "responsive-design",
+     "serverless",
+     "tailwindcss",
+     "wedding-planning",
+     "wedding-website"
+    ],
+    "in_awesome_selfhosted": false
+   },
+   "details": {
+    "feature_lines": [
+     "Beautiful, Modern UI - Apple-inspired design that looks great on all devices",
+     "Photo Upload & Gallery - Guests can upload photos and view them in the gallery stored in Google Drive - FREE, automatically displayed",
+     "Blessings & Messages - Collect heartfelt messages stored in Google Sheets - FREE",
+     "Event Management & RSVP - Display multiple events with RSVP functionality",
+     "Our Story - Share your love story with customizable sections",
+     "Wedding Party - Showcase bridesmaids and groomsmen",
+     "Registry - Link to gift registries and cash funds",
+     "Travel & Accommodation - Share hotel info and travel details",
+     "FAQ - Answer common questions",
+     "Timeline - Show relationship milestones",
+     "Multi-Cultural Support - Pre-configured for Hindu and Christian weddings",
+     "Fully Configurable - Enable/disable features, customize everything",
+     "Free Deployment - Deploy to Netlify FREE tier",
+     "A Google account FREE - for Drive and Sheets",
+     "A Netlify account FREE - for hosting"
+    ],
+    "keeps_data": null
+   },
+   "mode_guess": "static_web",
+   "integrable": true,
+   "trust": {
+    "floor_ok": true,
+    "path": "stars",
+    "pretick_ok": true,
+    "reasons": []
+   },
+   "meaning": null,
+   "label": {
+    "kind": "page",
+    "fit": "RELATED"
+   },
+   "mode_from": "lane (README and language)"
+  },
+  {
+   "schema": "found/v1",
+   "id": "github:cybertiwari/WeddingInvitation",
+   "source": "github",
+   "part": "code-app",
+   "name": "WeddingInvitation",
+   "friendly": "WeddingInvitation",
+   "what_it_is": "Digital Wedding Invitation is an open-source project that provides a visually appealing, customizable, and interactive wedding invitation webpage. It incorporates countdown timers, animations, and media integration to make the event memorable and engaging.",
+   "url": "https://github.com/cybertiwari/WeddingInvitation",
+   "repo": {
+    "host": "github.com",
+    "owner": "cybertiwari",
+    "name": "WeddingInvitation",
+    "default_branch": "master",
+    "stars": 7,
+    "pushed_at": "2024-12-12",
+    "archived": false,
+    "fork": false,
+    "license_reported": "MIT",
+    "license_read": null,
+    "size_kb": 34534,
+    "language": "CSS",
+    "topics": [
+     "digital-invitation",
+     "invitation",
+     "rsvp",
+     "wedding-invitation",
+     "wedding-website"
+    ],
+    "in_awesome_selfhosted": false
+   },
+   "details": {
+    "feature_lines": [
+     "Elegant design with floral decorations and animations.",
+     "Real-time countdown timer until the wedding day.",
+     "Interactive elements for venue directions and invitation card download.",
+     "Fully responsive for mobile and desktop views.",
+     "HTML5, CSS3, and JavaScript Core technologies for structure, styling, and interactivity.",
+     "Font Awesome For beautiful icons.",
+     "Google Fonts For custom font styles.",
+     "SweetAlert For dynamic alerts.",
+     "Clone the repository",
+     "Navigate to the project directory",
+     "Open the project in a web browser.",
+     "View the countdown timer and interactive invitation design.",
+     "Click on venue and download options for more details."
+    ],
+    "keeps_data": null
+   },
+   "mode_guess": "static_web",
+   "integrable": true,
+   "trust": {
+    "floor_ok": true,
+    "path": "stars",
+    "pretick_ok": true,
+    "reasons": []
+   },
+   "meaning": null,
+   "label": {
+    "kind": "page",
+    "fit": "RELATED"
+   },
+   "mode_from": "lane (README and language)"
+  },
+  {
+   "schema": "found/v1",
+   "id": "github:mshumayl/wedding-rsvp",
+   "source": "github",
+   "part": "code-app",
+   "name": "wedding-rsvp",
+   "friendly": "wedding-rsvp",
+   "what_it_is": "Digital card with RSVP, wishes, countdown. Created for my wedding reception.",
+   "url": "https://github.com/mshumayl/wedding-rsvp",
+   "repo": {
+    "host": "github.com",
+    "owner": "mshumayl",
+    "name": "wedding-rsvp",
+    "default_branch": "main",
+    "stars": 8,
+    "pushed_at": "2024-03-20",
+    "archived": false,
+    "fork": false,
+    "license_reported": "GPL-3.0",
+    "license_read": null,
+    "size_kb": 2697,
+    "language": "TypeScript",
+    "topics": [],
+    "in_awesome_selfhosted": false
+   },
+   "details": {
+    "feature_lines": [
+     "AWS Amplify",
+     "Wedding RSVP\nDigital card with RSVP, wishes, countdown.",
+     "Tech stack:\nThe application was created with the following tools.",
+     "- NextJS\n- Prisma\n- Tailwind\n- shadcn/ui",
+     "Deployed on\nThis is what I've used, but you can change it to any other services.",
+     "- AWS Amplify\n- Supabase"
+    ],
+    "keeps_data": null
+   },
+   "mode_guess": "web_build",
+   "integrable": true,
+   "trust": {
+    "floor_ok": true,
+    "path": "stars",
+    "pretick_ok": true,
+    "reasons": []
+   },
+   "meaning": null,
+   "label": {
+    "kind": "page",
+    "fit": "RELATED"
+   },
+   "mode_from": "lane (README and language)"
+  },
+  {
+   "schema": "found/v1",
+   "id": "github:Shin-da/wedding-invitation",
+   "source": "github",
+   "part": "code-app",
+   "name": "wedding-invitation",
+   "friendly": "wedding-invitation",
+   "what_it_is": "A beautiful, responsive wedding invitation website created as a commissioned project. This elegant digital invitation features a countdown timer, photo gallery with lightbox, Google Maps integration, and a classy design perfect for modern couples.",
+   "url": "https://github.com/Shin-da/wedding-invitation",
+   "repo": {
+    "host": "github.com",
+    "owner": "Shin-da",
+    "name": "wedding-invitation",
+    "default_branch": "development",
+    "stars": 6,
+    "pushed_at": "2026-06-11",
+    "archived": false,
+    "fork": false,
+    "license_reported": "NOASSERTION",
+    "license_read": null,
+    "size_kb": 518383,
+    "language": "HTML",
+    "topics": [
+     "html-css-javascript",
+     "invitation",
+     "php",
+     "rsvp",
+     "website",
+     "wedding-invitation"
+    ],
+    "in_awesome_selfhosted": false
+   },
+   "details": {
+    "feature_lines": [
+     "Digital wedding invitation with smooth animations",
+     "Photo gallery with lightbox",
+     "Wedding timeline / Our Story section",
+     "Event details with map integration",
+     "Optional RSVP system PHP/MySQL",
+     "Fully responsive design",
+     "Set up a local server XAMPP/WAMP/LAMP .",
+     "Copy config/database.example.php to config/database.php and fill in your own credentials.",
+     "Create the database using your own schema a sample structure is described in the docs no real data is included ."
+    ],
+    "keeps_data": null
+   },
+   "mode_guess": "static_web",
+   "integrable": true,
+   "trust": {
+    "floor_ok": false,
+    "path": "",
+    "pretick_ok": false,
+    "reasons": [
+     "license"
+    ]
+   },
+   "meaning": null,
+   "label": {
+    "kind": "page",
+    "fit": "RELATED"
+   },
+   "mode_from": "lane (README and language)"
+  },
+  {
+   "schema": "found/v1",
+   "id": "github:alistairjoelquinn/wedding-invites",
+   "source": "github",
+   "part": "code-app",
+   "name": "wedding-invites",
+   "friendly": "wedding-invites",
+   "what_it_is": "Application for managing wedding RSVPs with user admin dashboard. Nextjs, MUI, MongoDB and AWS SES.",
+   "url": "https://github.com/alistairjoelquinn/wedding-invites",
+   "repo": {
+    "host": "github.com",
+    "owner": "alistairjoelquinn",
+    "name": "wedding-invites",
+    "default_branch": "main",
+    "stars": 10,
+    "pushed_at": "2024-05-20",
+    "archived": false,
+    "fork": false,
+    "license_reported": "MIT",
+    "license_read": null,
+    "size_kb": 791,
+    "language": "TypeScript",
+    "topics": [
+     "aws-ses",
+     "mongodb",
+     "mui",
+     "nextjs",
+     "typescript"
+    ],
+    "in_awesome_selfhosted": false
+   },
+   "details": {
+    "feature_lines": [
+     "This application allows the user to manage RSVPs to their wedding from a single location.",
+     "Guests can respond by simply visiting the URL.",
+     "They will first of all be prompted to login with pre-set credentials.",
+     "Auth has been handled using NextAuth.",
+     "Once logged in, users will arrive on a scrollable home page giving them all the information they need about the wedding."
+    ],
+    "keeps_data": null
+   },
+   "mode_guess": "server_app",
+   "integrable": false,
+   "trust": {
+    "floor_ok": true,
+    "path": "stars",
+    "pretick_ok": true,
+    "reasons": []
+   },
+   "meaning": null,
+   "label": {
+    "kind": "tool",
+    "fit": "FIT"
+   },
+   "mode_from": "lane (README and language)"
+  },
+  {
+   "schema": "found/v1",
+   "id": "github:smileyface12349/wedding-website",
+   "source": "github",
+   "part": "code-app",
+   "name": "wedding-website",
+   "friendly": "wedding-website",
+   "what_it_is": "A customisable wedding website with individual logins for guests, supporting RSVPs and a registry. Designed to be as easy as possible to hot-swap in your own wedding details, and customise the layout/theming of the site.",
+   "url": "https://github.com/smileyface12349/wedding-website",
+   "repo": {
+    "host": "github.com",
+    "owner": "smileyface12349",
+    "name": "wedding-website",
+    "default_branch": "main",
+    "stars": 5,
+    "pushed_at": "2026-09-12",
+    "archived": false,
+    "fork": false,
+    "license_reported": "NOASSERTION",
+    "license_read": null,
+    "size_kb": 94335,
+    "language": "C#",
+    "topics": [
+     "blazor",
+     "customizable",
+     "rspv",
+     "wedding",
+     "wedding-invitation",
+     "wedding-page",
+     "wedding-rsvp",
+     "wedding-website",
+     "weddings"
+    ],
+    "in_awesome_selfhosted": false
+   },
+   "details": {
+    "feature_lines": [
+     "Customisable homepage with a large selection of pre-built sections to choose from.",
+     "Robust theming support to change the colours and styles of individual sections. A library of pre-made themes.",
+     "Fully customisable RSVP form and various tools to analyse responses including CSV export .",
+     "Individual accounts for all of your guests or one account per household so you can restrict access and collect RSVPs with confidence.",
+     "Fully featured admin panel to give you insights into what your guests are doing on the website and who has RSVPed.",
+     "Custom registry that allows items from any retailer with no fee. Individual guests claim items using their accounts.",
+     "Seating plan creator so you can drag and drop guests into different tables.",
+     "Lift sharing feature so that guests can seamlessly share lifts with each other.",
+     "Responsive interface for all screen sizes.",
+     "Photos upload TBD .",
+     "Fork this repository.",
+     "Install .NET 9 SDK.",
+     "Run dotnet restore.",
+     "Install dotnet ef, then run dotnet ef database update in /WeddingWebsite to set up the database.",
+     "Run the website with dotnet run Program.cs in /WeddingWebsite . This will host your website locally."
+    ],
+    "keeps_data": null
+   },
+   "mode_guess": "web_build",
+   "integrable": true,
+   "trust": {
+    "floor_ok": false,
+    "path": "",
+    "pretick_ok": false,
+    "reasons": [
+     "license"
+    ]
+   },
+   "meaning": null,
+   "label": {
+    "kind": "page",
+    "fit": "RELATED"
+   },
+   "mode_from": "lane (README and language)"
+  },
+  {
+   "schema": "found/v1",
+   "id": "github:aravindhsampath/hobbyboardv3",
+   "source": "github",
+   "part": "code-app",
+   "name": "hobbyboardv3",
+   "friendly": "hobbyboardv3",
+   "what_it_is": "hobbyboard is a self hosted image search and organization tool for hobbyists, makers, and collectors.",
+   "url": "https://github.com/aravindhsampath/hobbyboardv3",
+   "repo": {
+    "host": "github.com",
+    "owner": "aravindhsampath",
+    "name": "hobbyboardv3",
+    "default_branch": "main",
+    "stars": 13,
+    "pushed_at": "2026-07-22",
+    "archived": false,
+    "fork": false,
+    "license_reported": "MIT",
+    "license_read": null,
+    "size_kb": 111521,
+    "language": "Rust",
+    "topics": [
+     "masonry-grid",
+     "moodboard",
+     "pinterest-like",
+     "rust",
+     "self-hosted",
+     "semantic-search"
+    ],
+    "in_awesome_selfhosted": false
+   },
+   "details": {
+    "feature_lines": [
+     "Woodworkers / Makers I saw a joinery technique once...",
+     "Designers I need that specific shade of 'depressed corporate blue'...",
+     "Hobbyists You know who you are, with large inspiration collections.",
+     "Backend Rust Axum, Tokio .",
+     "Frontend HTML, CSS and vanilla JS",
+     "Database SQLite Metadata USearch Embedded Vectors .",
+     "AI fastembed-rs for local embedding, plus vision capable model - local or accessible via API.",
+     "Download the configuration",
+     "Run hobbyboard Run the interactive setup wizard to configure your media path, AI provider, and download models.",
+     "CLI Tools",
+     "FFmpeg Required for generating video thumbnails and transcoding videos for web streaming.",
+     "macOS brew install ffmpeg",
+     "Ubuntu sudo apt install ffmpeg",
+     "System Libraries",
+     "Run Hobbyboard"
+    ],
+    "keeps_data": null
+   },
+   "mode_guess": "server_app",
+   "integrable": false,
+   "trust": {
+    "floor_ok": true,
+    "path": "stars",
+    "pretick_ok": true,
+    "reasons": []
+   },
+   "meaning": null,
+   "label": {
+    "kind": "tool",
+    "fit": "RELATED"
+   },
+   "mode_from": "lane (README and language)"
+  },
+  {
+   "schema": "found/v1",
+   "id": "github:Valiera00/SPITE",
+   "source": "github",
+   "part": "code-app",
+   "name": "SPITE",
+   "friendly": "SPITE",
+   "what_it_is": "AI-powered pre-production canvas for filmmakers. Flagship models, infinite canvas, auto-export.",
+   "url": "https://github.com/Valiera00/SPITE",
+   "repo": {
+    "host": "github.com",
+    "owner": "Valiera00",
+    "name": "SPITE",
+    "default_branch": "main",
+    "stars": 27,
+    "pushed_at": "2026-09-10",
+    "archived": false,
+    "fork": false,
+    "license_reported": "AGPL-3.0",
+    "license_read": null,
+    "size_kb": 20556,
+    "language": "TypeScript",
+    "topics": [
+     "ai",
+     "ai-filmmaking",
+     "cloudflare-r2",
+     "fal-ai",
+     "filmmaking",
+     "generative-ai",
+     "image-generation",
+     "moodboard",
+     "neon",
+     "nextjs",
+     "node-editor",
+     "nodebased",
+     "open-source",
+     "react",
+     "self-hosted",
+     "storyboard",
+     "text-to-video",
+     "typescript",
+     "video-generation"
+    ],
+    "in_awesome_selfhosted": false
+   },
+   "details": {
+    "feature_lines": [
+     "Flow mode. Prefer something simpler Flow is a linear, conversational",
+     "Character consistency. Tag images to a named folder",
+     "Multi-model. Nano Banana Pro, FLUX, Kling, Seedance, Veo, Wan 3.0,",
+     "Asset library. Every generation persists, organised by date, model,",
+     "Generation recovery. When fal.ai stalls or the page reloads",
+     "Cost-aware UX. Estimated cost on every Generate button. Live fal.ai",
+     "Export. Storyboard zip with one folder per scene, files named by shot",
+     "Snapshots. Canvas state saves every three seconds. Point-in-time",
+     "Auth. Single-user password gate. The internet does not need to see",
+     "No video editing SPITE is pre-production.",
+     "No real-time multi-user collaboration single-user by design.",
+     "No automation that makes creative decisions for you.",
+     "No credit system, no markup, no subscription.",
+     "Any PostgreSQL database. DATABASEURL is a standard",
+     "S3-compatible object storage. Cloudflare R2"
+    ],
+    "keeps_data": null
+   },
+   "mode_guess": "server_app",
+   "integrable": false,
+   "trust": {
+    "floor_ok": true,
+    "path": "stars",
+    "pretick_ok": true,
+    "reasons": []
+   },
+   "meaning": null,
+   "label": {
+    "kind": "tool",
+    "fit": "OFF"
+   },
+   "mode_from": "lane (README and language)"
+  },
+  {
+   "schema": "found/v1",
+   "id": "github:Gianluca-Improta/cinekive",
+   "source": "github",
+   "part": "code-app",
+   "name": "cinekive",
+   "friendly": "cinekive",
+   "what_it_is": "Local-first cinematic still archive for filmmakers. Search your frames by look, mood, technique or director with SigLIP semantic search; ingest video and URLs; build moodboards. Free desktop app for Win/Mac/Linux, Pro unlocks studio tools. Your library stays on your disk.",
+   "url": "https://github.com/Gianluca-Improta/cinekive",
+   "repo": {
+    "host": "github.com",
+    "owner": "Gianluca-Improta",
+    "name": "cinekive",
+    "default_branch": "main",
+    "stars": 106,
+    "pushed_at": "2026-09-08",
+    "archived": false,
+    "fork": false,
+    "license_reported": "MIT",
+    "license_read": null,
+    "size_kb": 11231,
+    "language": "TypeScript",
+    "topics": [
+     "archive",
+     "cinema",
+     "computer-vision",
+     "davinci-resolve",
+     "electron",
+     "fastapi",
+     "film-still",
+     "filmmaking",
+     "local-first",
+     "moodboard",
+     "nextjs",
+     "open-source",
+     "privacy",
+     "qdrant",
+     "self-hosted",
+     "semantic-search",
+     "shot-library",
+     "siglip",
+     "visual-search",
+     "yt-dlp"
+    ],
+    "in_awesome_selfhosted": false
+   },
+   "details": {
+    "feature_lines": [
+     "Editors & directors building lookbooks without scrubbing a full timeline",
+     "Commercial / social teams who need client-safe references on a studio drive",
+     "Cinephiles & students collecting stills they have rights to access",
+     "Anyone who wants a local FilmGrab-style archive plus ingest and moodboards",
+     "Download the file for your OS links above",
+     "Open Cinekive pick a folder for your stills click Start Cinekive",
+     "Wait while the native engine downloads once 550 MB . Next launches are instant.",
+     "Semantic search actually works again a filter mismatch had been silently",
+     "Free by default everywhere source builds no longer unlock Pro Pro needs a",
+     "14-day trial keys for testers, with absolute expiry and clock-rollback checks",
+     "Offline archive previews 12 public-domain film stills bundled, so Seed cards",
+     "Spacebar play hover autoplay on stills delete button on empty projects",
+     "Cloud VLM Pro OpenRouter, ChatGPT/OpenAI, Claude via OpenRouter , Kimi local Ollama stays free",
+     "Board PNG/PDF export Pro folder watcher auto-ingest",
+     "Cinekive Pro open-core 19 one-time Gumroad license Free stays useful"
+    ],
+    "keeps_data": null
+   },
+   "mode_guess": "other",
+   "integrable": false,
+   "trust": {
+    "floor_ok": true,
+    "path": "stars",
+    "pretick_ok": true,
+    "reasons": []
+   },
+   "meaning": null,
+   "label": {
+    "kind": "tool",
+    "fit": "OFF"
+   },
+   "mode_from": "lane (README and language)"
+  },
+  {
+   "schema": "found/v1",
+   "id": "github:Cirx08/WeddingShare",
+   "source": "github",
+   "part": "code-app",
+   "name": "WeddingShare",
+   "friendly": "WeddingShare",
+   "what_it_is": "A place for guests to view and drop pictures of the big day",
+   "url": "https://github.com/Cirx08/WeddingShare",
+   "repo": {
+    "host": "github.com",
+    "owner": "Cirx08",
+    "name": "WeddingShare",
+    "default_branch": "main",
+    "stars": 878,
+    "pushed_at": "2026-05-08",
+    "archived": false,
+    "fork": false,
+    "license_reported": "GPL-3.0",
+    "license_read": "GPL-3.0",
+    "size_kb": 101225,
+    "language": "C#",
+    "topics": [
+     "gallery",
+     "photos",
+     "selfhosted",
+     "wedding"
+    ],
+    "in_awesome_selfhosted": false
+   },
+   "details": {
+    "feature_lines": [
+     "WeddingShare is Rebranding to Memtly",
+     "Due to high demand from non-wedding events WeddingShare is rebranding to Memtly.",
+     "Where can I find the new repository?",
+     "To  check out the new look please visit the new repository at - Memtly.Community",
+     "Why are we rebranding?"
+    ],
+    "keeps_data": null
+   },
+   "mode_guess": "server_app",
+   "integrable": false,
+   "trust": {
+    "floor_ok": true,
+    "path": "stars",
+    "pretick_ok": true,
+    "reasons": []
+   },
+   "meaning": null,
+   "label": {
+    "kind": "tool",
+    "fit": "RELATED"
+   },
+   "mode_from": "corpus.json"
+  },
+  {
+   "schema": "found/v1",
+   "id": "github:dewanakl/undangan",
+   "source": "github",
+   "part": "code-app",
+   "name": "undangan",
+   "friendly": "undangan",
+   "what_it_is": "💌 Template website undangan pernikahan HTML sederhana menggunakan Bootstrap, AOS, Font Awesome, Canvas Confetti, Google Fonts, dan Vanilla JS.",
+   "url": "https://github.com/dewanakl/undangan",
+   "repo": {
+    "host": "github.com",
+    "owner": "dewanakl",
+    "name": "undangan",
+    "default_branch": "4.x",
+    "stars": 805,
+    "pushed_at": "2025-10-05",
+    "archived": false,
+    "fork": false,
+    "license_reported": "MIT",
+    "license_read": null,
+    "size_kb": 20318,
+    "language": "JavaScript",
+    "topics": [
+     "invitation",
+     "nikah",
+     "pernikahan",
+     "template",
+     "template-pernikahan",
+     "template-undangan",
+     "undangan",
+     "undangan-digital",
+     "undangan-online",
+     "undangan-pernikahan",
+     "website",
+     "website-invitation",
+     "website-pernikahan",
+     "website-undangan",
+     "wedding",
+     "wedding-invitation",
+     "wedding-page",
+     "wedding-rsvp",
+     "wedding-template",
+     "wedding-website"
+    ],
+    "in_awesome_selfhosted": false
+   },
+   "details": {
+    "feature_lines": [
+     "Ubah isi file index.html sesuai keinginanmu.",
+     "Jika tidak ingin menggunakan fitur komentar, hapus atribut data-url dan data-key di elemen pada index.html.",
+     "Sesuaikan data-url pada di index dan dashboard sesuai dengan URL backend jika kamu meng-hosting sendiri .",
+     "Sesuaikan juga data-key di index dengan access key yang bisa kamu ambil dari dashboard.",
+     "Jika ingin menggunakan GIF, dapatkan Tenor API key di developers.google.com/tenor.",
+     "Untuk backend self-hosting, lihat penjelasan di bawah, atau gunakan trial API secara gratis.",
+     "Bootstrap 5.3.8",
+     "AOS 2.3.4",
+     "Fontawesome 7.1.0",
+     "Canvas Confetti 1.9.3",
+     "Google Fonts",
+     "Vanilla JS"
+    ],
+    "keeps_data": null
+   },
+   "mode_guess": "static_web",
+   "integrable": true,
+   "trust": {
+    "floor_ok": true,
+    "path": "stars",
+    "pretick_ok": true,
+    "reasons": []
+   },
+   "meaning": null,
+   "label": {
+    "kind": "page",
+    "fit": "RELATED"
+   },
+   "mode_from": "lane (README and language)"
+  },
+  {
+   "schema": "found/v1",
+   "id": "github:PhotoboothProject/photobooth",
+   "source": "github",
+   "part": "code-app",
+   "name": "photobooth",
+   "friendly": "photobooth",
+   "what_it_is": "Self-hosted photo booth / photo box web app for events with live preview, collages, and printing.",
+   "url": "https://github.com/PhotoboothProject/photobooth",
+   "repo": {
+    "host": "github.com",
+    "owner": "PhotoboothProject",
+    "name": "photobooth",
+    "default_branch": "dev",
+    "stars": 673,
+    "pushed_at": "2026-09-24",
+    "archived": false,
+    "fork": false,
+    "license_reported": "MIT",
+    "license_read": "MIT",
+    "size_kb": 31682,
+    "language": "PHP",
+    "topics": [
+     "photobooth",
+     "photobooth-wedding",
+     "raspberry",
+     "raspberry-pi",
+     "wedding"
+    ],
+    "in_awesome_selfhosted": false
+   },
+   "details": {
+    "feature_lines": [
+     "Works on Windows and Linux.",
+     "Images are processed with GD.",
+     "Gallery based on PhotoSwipe v5",
+     "Multi-language support",
+     "Translate on Crowdin",
+     "Login to protect Admin Panel, Start page and/or Manual & FAQ can be enabled.",
+     "Hardware Button functionality, supports two separate modes of operation select via admin panel",
+     "Button Mode Distinct hardware buttons can be connected to distinct GPIOs. Each button will trigger a separate functionality i.e. take photo .",
+     "Gallery allow to adjust the look and feel settings explained inside the manual .",
+     "Choose between date-formatted or random image names.",
+     "Choose an image filter after taking a picture.",
+     "QR-Code to allow downloading pictures from your Photobooth.",
+     "Pictures can be directly downloaded from the gallery.",
+     "Print feature",
+     "Optional Print a frame on your picture"
+    ],
+    "keeps_data": null
+   },
+   "mode_guess": "server_app",
+   "integrable": false,
+   "trust": {
+    "floor_ok": true,
+    "path": "stars",
+    "pretick_ok": true,
+    "reasons": []
+   },
+   "meaning": null,
+   "label": {
+    "kind": "tool",
+    "fit": "RELATED"
+   },
+   "mode_from": "corpus.json"
+  },
+  {
+   "schema": "found/v1",
+   "id": "github:dmfeisal/simple-wedding-invitation",
+   "source": "github",
+   "part": "code-app",
+   "name": "simple-wedding-invitation",
+   "friendly": "simple-wedding-invitation",
+   "what_it_is": "Wedding Invitation Landing Page ",
+   "url": "https://github.com/dmfeisal/simple-wedding-invitation",
+   "repo": {
+    "host": "github.com",
+    "owner": "dmfeisal",
+    "name": "simple-wedding-invitation",
+    "default_branch": "master",
+    "stars": 300,
+    "pushed_at": "2026-09-07",
+    "archived": false,
+    "fork": false,
+    "license_reported": "MIT",
+    "license_read": null,
+    "size_kb": 150521,
+    "language": "HTML",
+    "topics": [
+     "bulma-css",
+     "css",
+     "html",
+     "indonesian",
+     "indonesian-language",
+     "invitation",
+     "landing-page",
+     "netlify",
+     "nikah",
+     "wedding",
+     "wedding-invitation"
+    ],
+    "in_awesome_selfhosted": false
+   },
+   "details": {
+    "feature_lines": [
+     "Main Info",
+     "Countdown to D-Day",
+     "Time and Place Info",
+     "Add to Calendar Button Google Calendar",
+     "Map Direction Button Google Map",
+     "Send Message Button Whatssapp API",
+     "Netlify https //netlify.com",
+     "Bulma CSS https //bulma.io",
+     "Check demo at https //simple-wedding-invitation.netlify.app/",
+     "Rouge Script Google Font",
+     "Raleway Google Font",
+     "Floral vector created by BiZkettE1 - www.freepik.com https //www.freepik.com/free-photos-vectors/background",
+     "Photos from unsplash.com https //www.unsplash.com"
+    ],
+    "keeps_data": null
+   },
+   "mode_guess": "static_web",
+   "integrable": true,
+   "trust": {
+    "floor_ok": true,
+    "path": "stars",
+    "pretick_ok": true,
+    "reasons": []
+   },
+   "meaning": null,
+   "label": {
+    "kind": "page",
+    "fit": "RELATED"
+   },
+   "mode_from": "lane (README and language)"
+  },
+  {
+   "schema": "found/v1",
+   "id": "github:vinitshahdeo/Wedding-Invitation",
+   "source": "github",
+   "part": "code-app",
+   "name": "Wedding-Invitation",
+   "friendly": "Wedding-Invitation",
+   "what_it_is": "Animated website for my Elder Sister's wedding Invitation (also contains timer & background music) | Save the Date: Nov 29, 2020",
+   "url": "https://github.com/vinitshahdeo/Wedding-Invitation",
+   "repo": {
+    "host": "github.com",
+    "owner": "vinitshahdeo",
+    "name": "Wedding-Invitation",
+    "default_branch": "master",
+    "stars": 254,
+    "pushed_at": "2024-07-17",
+    "archived": false,
+    "fork": false,
+    "license_reported": "AGPL-3.0",
+    "license_read": null,
+    "size_kb": 18590,
+    "language": "CSS",
+    "topics": [
+     "indian-wedding-website",
+     "wedding",
+     "wedding-invitation",
+     "wedding-page",
+     "wedding-rsvp",
+     "wedding-website"
+    ],
+    "in_awesome_selfhosted": false
+   },
+   "details": {
+    "feature_lines": [
+     "Download the Invitation card",
+     "Find venue on Google map",
+     "Visit the website for more details",
+     "See the Facebook post",
+     "See the Tweet",
+     "Replace the date in script.js to have a timer running for your big day",
+     "If you wish to change the track which plays on click, edit the src in index.html"
+    ],
+    "keeps_data": null
+   },
+   "mode_guess": "static_web",
+   "integrable": true,
+   "trust": {
+    "floor_ok": true,
+    "path": "stars",
+    "pretick_ok": true,
+    "reasons": []
+   },
+   "meaning": null,
+   "label": {
+    "kind": "page",
+    "fit": "RELATED"
+   },
+   "mode_from": "lane (README and language)"
+  },
+  {
+   "schema": "found/v1",
+   "id": "github:aaronyi97/wedding-video-guided-wizard",
+   "source": "github",
+   "part": "code-app",
+   "name": "wedding-video-guided-wizard",
+   "friendly": "wedding-video-guided-wizard",
+   "what_it_is": "真实故事婚礼视频的 14 步引导式 Skill：故事采集、Kimi 写作包、配音、外部 GPT 生图、视频打包、音乐与字幕剪辑。",
+   "url": "https://github.com/aaronyi97/wedding-video-guided-wizard",
+   "repo": {
+    "host": "github.com",
+    "owner": "aaronyi97",
+    "name": "wedding-video-guided-wizard",
+    "default_branch": "main",
+    "stars": 240,
+    "pushed_at": "2026-09-10",
+    "archived": false,
+    "fork": false,
+    "license_reported": "MIT",
+    "license_read": null,
+    "size_kb": 100,
+    "language": "Python",
+    "topics": [
+     "ai-video",
+     "codex-skill",
+     "guided-workflow",
+     "wedding"
+    ],
+    "in_awesome_selfhosted": false
+   },
+   "details": {
+    "feature_lines": [
+     "可以演绎表达 不能虚构经历 文案和每个分镜都能回溯到本单故事卡或已确认补充 不把示例剧情套给所有新人",
+     "强烈建议 Kimi K3 写文案 写作包为 ZIP 独立可复制全文 嵌入本单事实 叙事安排和 白描而有文采 自然口播 克制真挚 的写作方法",
+     "生图始终由使用者在外部 GPT 对话操作 上传明确标注的参考图 复制提示词 即使配置了 API Codex 也不自动生图 修图或点击生成",
+     "完整旁白先于正式分镜 按真实配音和情绪留白安排画面 减少后期硬凑时长",
+     "声音与画面都先试听/试图 再铺开 视频词依据实际选用首帧 BGM 推荐 Suno V5.5 也可使用用户选择的可用服务或手动生成",
+     "确认绑定版本 技术检测 助手审查 制作方听看 新人验收分别记录 文件生成成功不等于满意"
+    ],
+    "keeps_data": null
+   },
+   "mode_guess": "other",
+   "integrable": false,
+   "trust": {
+    "floor_ok": true,
+    "path": "stars",
+    "pretick_ok": true,
+    "reasons": []
+   },
+   "meaning": null,
+   "label": {
+    "kind": "other",
+    "fit": "RELATED"
+   },
+   "mode_from": "lane (README and language)"
+  },
+  {
+   "schema": "found/v1",
+   "id": "github:zouyaoji/wedding-invitation",
+   "source": "github",
+   "part": "code-app",
+   "name": "wedding-invitation",
+   "friendly": "wedding-invitation",
+   "what_it_is": "微信小程序婚礼请柬",
+   "url": "https://github.com/zouyaoji/wedding-invitation",
+   "repo": {
+    "host": "github.com",
+    "owner": "zouyaoji",
+    "name": "wedding-invitation",
+    "default_branch": "master",
+    "stars": 219,
+    "pushed_at": "2023-10-18",
+    "archived": false,
+    "fork": false,
+    "license_reported": "NOASSERTION",
+    "license_read": null,
+    "size_kb": 38171,
+    "language": "CSS",
+    "topics": [
+     "invitation",
+     "mpvue",
+     "wechat-mini-program",
+     "wedding"
+    ],
+    "in_awesome_selfhosted": false
+   },
+   "details": {
+    "feature_lines": [
+     "Date 2020-12-12 16 15 26",
+     "LastEditTime 2023-09-26 17 44 51",
+     "LastEditors zouyaoji 370681295 qq.com",
+     "FilePath wedding-invitation README.md",
+     "增加留言板删除功能 指定某个 openid 可以删除",
+     "修改 audio 标签为 innerAudioContext",
+     "修改我要出席逻辑 已经填过出席的再次填是修改之前填的",
+     "增加 CSS 动画过渡效果",
+     "改为 uniapp vue3 ts vite 技术栈",
+     "适配了微信小程序 头像昵称填写 能力",
+     "一次性赞助 288 托管到我服务器上 提供运维接口 支持通过接口上传静态资源 获取和配置相关参数 赞赏后请联系我分配账号和接口地址",
+     "微信 / 支付宝"
+    ],
+    "keeps_data": null
+   },
+   "mode_guess": "static_web",
+   "integrable": true,
+   "trust": {
+    "floor_ok": false,
+    "path": "",
+    "pretick_ok": false,
+    "reasons": [
+     "license"
+    ]
+   },
+   "meaning": null,
+   "label": {
+    "kind": "page",
+    "fit": "RELATED"
+   },
+   "mode_from": "lane (README and language)"
+  },
+  {
+   "schema": "found/v1",
+   "id": "github:sakeenah-wedding/template",
+   "source": "github",
+   "part": "code-app",
+   "name": "template",
+   "friendly": "template",
+   "what_it_is": "Elegant and modern digital wedding invitation template for the Sakeenah platform",
+   "url": "https://github.com/sakeenah-wedding/template",
+   "repo": {
+    "host": "github.com",
+    "owner": "sakeenah-wedding",
+    "name": "template",
+    "default_branch": "main",
+    "stars": 207,
+    "pushed_at": "2026-07-29",
+    "archived": false,
+    "fork": false,
+    "license_reported": "NOASSERTION",
+    "license_read": null,
+    "size_kb": 13607,
+    "language": "JavaScript",
+    "topics": [
+     "bun",
+     "cloudflare-workers",
+     "docker",
+     "hono",
+     "islam",
+     "islamic",
+     "javascript",
+     "motion",
+     "postgresql",
+     "react",
+     "tailwindcss",
+     "vite",
+     "wedding",
+     "wedding-invitation",
+     "wedding-template",
+     "wedding-website"
+    ],
+    "in_awesome_selfhosted": false
+   },
+   "details": {
+    "feature_lines": [
+     "Guest mgmt personalized links, attendance tracking, real-time wishes",
+     "Multi-tenant one deployment, unlimited weddings, isolated data",
+     "UX Motion animations, audio, countdown, Google Maps, digital envelope"
+    ],
+    "keeps_data": null
+   },
+   "mode_guess": "static_web",
+   "integrable": true,
+   "trust": {
+    "floor_ok": false,
+    "path": "",
+    "pretick_ok": false,
+    "reasons": [
+     "license"
+    ]
+   },
+   "meaning": null,
+   "label": {
+    "kind": "page",
+    "fit": "RELATED"
+   },
+   "mode_from": "lane (README and language)"
+  },
+  {
+   "schema": "found/v1",
+   "id": "github:dewanakl/undangan-api",
+   "source": "github",
+   "part": "code-app",
+   "name": "undangan-api",
+   "friendly": "undangan-api",
+   "what_it_is": "🔥 API Backend undangan digital Ulems yang andal, sederhana, mudah diintegrasikan, berperforma tinggi, dan dibangun dengan \"Kamu PHP Framework\".",
+   "url": "https://github.com/dewanakl/undangan-api",
+   "repo": {
+    "host": "github.com",
+    "owner": "dewanakl",
+    "name": "undangan-api",
+    "default_branch": "4.x",
+    "stars": 117,
+    "pushed_at": "2025-10-06",
+    "archived": false,
+    "fork": false,
+    "license_reported": "MIT",
+    "license_read": null,
+    "size_kb": 430,
+    "language": "PHP",
+    "topics": [
+     "invitation",
+     "nikah",
+     "pernikahan",
+     "template",
+     "template-pernikahan",
+     "template-undangan",
+     "undangan",
+     "undangan-digital",
+     "undangan-online",
+     "undangan-pernikahan",
+     "website",
+     "website-invitation",
+     "website-pernikahan",
+     "website-undangan",
+     "wedding",
+     "wedding-invitation",
+     "wedding-page",
+     "wedding-rsvp",
+     "wedding-template",
+     "wedding-website"
+    ],
+    "in_awesome_selfhosted": false
+   },
+   "details": {
+    "feature_lines": [
+     "Create file env",
+     "Install package",
+     "Create key application",
+     "Execute migration database",
+     "Run in development server",
+     "Create file env",
+     "Change and customize env file",
+     "Build and run image",
+     "Execute migration",
+     "Create .env file",
+     "Install package",
+     "Create key application",
+     "Execute migration database",
+     "Create new project in vercel.",
+     "Import from your repository."
+    ],
+    "keeps_data": null
+   },
+   "mode_guess": "server_app",
+   "integrable": false,
+   "trust": {
+    "floor_ok": true,
+    "path": "stars",
+    "pretick_ok": true,
+    "reasons": []
+   },
+   "meaning": null,
+   "label": {
+    "kind": "page",
+    "fit": "RELATED"
+   },
+   "mode_from": "lane (README and language)"
+  },
+  {
+   "schema": "found/v1",
+   "id": "github:zerosoul/tristan-wedding",
+   "source": "github",
+   "part": "code-app",
+   "name": "tristan-wedding",
+   "friendly": "tristan-wedding",
+   "what_it_is": "给自己做的婚礼页面",
+   "url": "https://github.com/zerosoul/tristan-wedding",
+   "repo": {
+    "host": "github.com",
+    "owner": "zerosoul",
+    "name": "tristan-wedding",
+    "default_branch": "main",
+    "stars": 58,
+    "pushed_at": "2026-01-31",
+    "archived": false,
+    "fork": false,
+    "license_reported": "MIT",
+    "license_read": null,
+    "size_kb": 62264,
+    "language": "JavaScript",
+    "topics": [
+     "wedding",
+     "wedding-page",
+     "wedding-photography",
+     "wedding-website"
+    ],
+    "in_awesome_selfhosted": false
+   },
+   "details": {
+    "feature_lines": [],
+    "keeps_data": null
+   },
+   "mode_guess": "static_web",
+   "integrable": true,
+   "trust": {
+    "floor_ok": true,
+    "path": "stars",
+    "pretick_ok": true,
+    "reasons": []
+   },
+   "meaning": null,
+   "label": {
+    "kind": "page",
+    "fit": "RELATED"
+   },
+   "mode_from": "lane (README and language)"
+  },
+  {
+   "schema": "found/v1",
+   "id": "github:MSamor/WeddingShow",
+   "source": "github",
+   "part": "code-app",
+   "name": "WeddingShow",
+   "friendly": "WeddingShow",
+   "what_it_is": "婚庆互动项目，包括婚礼电子邀请函，婚庆现场互动活动，大屏在线轮播图以及弹幕发送展示，现场抽奖活动等。wedding，weddingShow",
+   "url": "https://github.com/MSamor/WeddingShow",
+   "repo": {
+    "host": "github.com",
+    "owner": "MSamor",
+    "name": "WeddingShow",
+    "default_branch": "master",
+    "stars": 52,
+    "pushed_at": "2024-12-23",
+    "archived": false,
+    "fork": false,
+    "license_reported": "GPL-2.0",
+    "license_read": null,
+    "size_kb": 21851,
+    "language": "JavaScript",
+    "topics": [
+     "activity",
+     "bullet",
+     "h5",
+     "invite",
+     "marry",
+     "prize",
+     "vue",
+     "wedding",
+     "weddingshow"
+    ],
+    "in_awesome_selfhosted": false
+   },
+   "details": {
+    "feature_lines": [
+     "token:\n  wechat:\n     公众号配置\n    public-program:\n      app-id: xxxxxxxxxxxxxxxxx\n      app-secret: xxxxxxxxxxxxxxxxxxxxx",
+     "| 字段              | 说明                  |\n| ----------------- | --------------------- |\n| activityname     | 活动名称              |\n| activityenddate | 活动结束时间,开奖时间 |\n| winnum           | 中奖人数              |\n| code              | timePrize ，抽奖code  |\n| activitydesc     | 活动描述              |",
+     "| 字段        | 说明     |\n| ----------- | -------- |\n| prizename  | 奖品名称 |\n| count       | 数量     |\n| activityid | 活动id   |\n| order       | 排序码   |",
+     "token:\n  wechat:\n     小程序配置\n    mini-program:\n      app-id: xxxxxxxxxxxxx\n      app-secret: xxxxxxxxxxxxxxxxxxxxx",
+     "share:\n  link: xxxxxxxxxx\n  title: xxxxxxxxxx\n  desc: xxxxxxxxxxx\n  image-url: xxxxxxxx"
+    ],
+    "keeps_data": null
+   },
+   "mode_guess": "static_web",
+   "integrable": true,
+   "trust": {
+    "floor_ok": true,
+    "path": "stars",
+    "pretick_ok": true,
+    "reasons": []
+   },
+   "meaning": null,
+   "label": {
+    "kind": "page",
+    "fit": "RELATED"
+   },
+   "mode_from": "lane (README and language)"
+  },
+  {
+   "schema": "found/v1",
+   "id": "github:Holymaiden/wedding-app",
+   "source": "github",
+   "part": "code-app",
+   "name": "wedding-app",
+   "friendly": "wedding-app",
+   "what_it_is": "💍 Elegant digital wedding invitation app with interactive letter opening animation, real-time countdown, music player, and multi-language support. Built with Next.js 15, TypeScript, Framer Motion & Tailwind CSS.",
+   "url": "https://github.com/Holymaiden/wedding-app",
+   "repo": {
+    "host": "github.com",
+    "owner": "Holymaiden",
+    "name": "wedding-app",
+    "default_branch": "main",
+    "stars": 32,
+    "pushed_at": "2025-06-20",
+    "archived": false,
+    "fork": false,
+    "license_reported": "MIT",
+    "license_read": null,
+    "size_kb": 7300,
+    "language": "TypeScript",
+    "topics": [
+     "digital-invitation",
+     "framer-motion",
+     "interactive",
+     "nextjs",
+     "react",
+     "responsive-design",
+     "tailwindcss",
+     "typescript",
+     "wedding"
+    ],
+    "in_awesome_selfhosted": false
+   },
+   "details": {
+    "feature_lines": [
+     "Interactive letter animation that opens when clicked",
+     "3D envelope effect with wax seal",
+     "Floating hearts and sparkle effects",
+     "Support for query parameter to name for personalization",
+     "Responsive layout with perfect screen height h-screen",
+     "Animated couple photos with emoji avatars",
+     "Gradient backgrounds with floating decorations",
+     "CTA buttons for navigation between sections",
+     "Music player with auto-play detection",
+     "Audio controls with progress bar",
+     "Background music with fallback for browser restrictions",
+     "Floating navigation bar with blur effect",
+     "Mobile-friendly FAB Floating Action Button",
+     "Scroll progress indicator",
+     "Auto-detect active section with scroll spy"
+    ],
+    "keeps_data": null
+   },
+   "mode_guess": "web_build",
+   "integrable": true,
+   "trust": {
+    "floor_ok": true,
+    "path": "stars",
+    "pretick_ok": true,
+    "reasons": []
+   },
+   "meaning": null,
+   "label": {
+    "kind": "page",
+    "fit": "RELATED"
+   },
+   "mode_from": "lane (README and language)"
+  },
+  {
+   "schema": "found/v1",
+   "id": "github:web-codings123/EazyWed",
+   "source": "github",
+   "part": "code-app",
+   "name": "EazyWed",
+   "friendly": "EazyWed",
+   "what_it_is": "EazyWed is a MERN-stack wedding planning platform that simplifies vendor booking, budget tracking, and digital invitations. With personalized recommendations and an AI-powered chatbot, it ensures an elegant and joyful wedding planning experience.",
+   "url": "https://github.com/web-codings123/EazyWed",
+   "repo": {
+    "host": "github.com",
+    "owner": "web-codings123",
+    "name": "EazyWed",
+    "default_branch": "main",
+    "stars": 16,
+    "pushed_at": "2025-04-25",
+    "archived": false,
+    "fork": false,
+    "license_reported": "MIT",
+    "license_read": "MIT",
+    "size_kb": 1018,
+    "language": "JavaScript",
+    "topics": [
+     "ai-chatbot",
+     "digital-invitations",
+     "expressjs",
+     "mern-stack-project",
+     "mongodb-atlas",
+     "nodejs",
+     "personalized-recommendations",
+     "reactjs",
+     "vendor-booking-budget-tracking",
+     "wedding-planning"
+    ],
+    "in_awesome_selfhosted": false
+   },
+   "details": {
+    "feature_lines": [
+     "Vendor Booking and Management",
+     "Personalized Recommendations",
+     "Real-Time Budget Tracking",
+     "Customizable Digital Invitations",
+     "User and Vendor Profiles",
+     "Feedback and Review System",
+     "AI-Customized Chatbot Assistance"
+    ],
+    "keeps_data": null
+   },
+   "mode_guess": "server_app",
+   "integrable": false,
+   "trust": {
+    "floor_ok": true,
+    "path": "stars",
+    "pretick_ok": true,
+    "reasons": []
+   },
+   "meaning": null,
+   "label": {
+    "kind": "tool",
+    "fit": "FIT"
+   },
+   "mode_from": "corpus.json"
+  },
+  {
+   "schema": "found/v1",
+   "id": "github:pinry/pinry",
+   "source": "github",
+   "part": "code-app",
+   "name": "pinry",
+   "friendly": "pinry",
+   "what_it_is": "Pinry, a tiling image board system for people who want to save, tag, and share images, videos and webpages in an easy to skim through format. It's open-source and self-hosted.",
+   "url": "https://github.com/pinry/pinry",
+   "repo": {
+    "host": "github.com",
+    "owner": "pinry",
+    "name": "pinry",
+    "default_branch": "master",
+    "stars": 3423,
+    "pushed_at": "2026-01-05",
+    "archived": false,
+    "fork": false,
+    "license_reported": "BSD-2-Clause",
+    "license_read": "BSD-2-Clause",
+    "size_kb": 9819,
+    "language": "Python",
+    "topics": [
+     "django",
+     "huaban",
+     "images",
+     "node",
+     "pinterest",
+     "python",
+     "self-hosted",
+     "vue"
+    ],
+    "in_awesome_selfhosted": false
+   },
+   "details": {
+    "feature_lines": [
+     "Image fetch and online preview",
+     "Tagging system for Pins",
+     "Browser Extensions",
+     "Multi-user support",
+     "Both public and private boards add 2020.02.11",
+     "Search by tags / Search boards with name add 2020.02.14",
+     "Full API support via DRF add 2022.02.19",
+     "CLI support Add image or url to Pinry via command-line tool add 2022.02.20",
+     "i18n support if you want to help to translate, please contact us in issues add 2020.04.23",
+     "x English",
+     "x 简体中文",
+     "x French Support by Lilian",
+     "Isaac Bythewood",
+     "Krzysztof Klimonda",
+     "Lapo Luchini"
+    ],
+    "keeps_data": null
+   },
+   "mode_guess": "server_app",
+   "integrable": false,
+   "trust": {
+    "floor_ok": true,
+    "path": "stars",
+    "pretick_ok": true,
+    "reasons": []
+   },
+   "meaning": null,
+   "label": {
+    "kind": "tool",
+    "fit": "FIT"
+   },
+   "mode_from": "corpus.json"
+  },
+  {
+   "schema": "found/v1",
+   "id": "github:trypostit/trypost",
+   "source": "github",
+   "part": "code-app",
+   "name": "trypost",
+   "friendly": "trypost",
+   "what_it_is": "Open-source Social Media Scheduling",
+   "url": "https://github.com/trypostit/trypost",
+   "repo": {
+    "host": "github.com",
+    "owner": "trypostit",
+    "name": "trypost",
+    "default_branch": "main",
+    "stars": 650,
+    "pushed_at": "2026-09-25",
+    "archived": false,
+    "fork": false,
+    "license_reported": "AGPL-3.0",
+    "license_read": null,
+    "size_kb": 22787,
+    "language": "PHP",
+    "topics": [
+     "content-scheduling",
+     "creators",
+     "facebook",
+     "instragram",
+     "laravel",
+     "linkedin",
+     "marketing",
+     "open-source",
+     "php",
+     "pinterest",
+     "self-hosted",
+     "social-media",
+     "social-media-management",
+     "social-media-marketing",
+     "social-media-scheduler",
+     "threads",
+     "tiktok",
+     "twitter",
+     "vuejs",
+     "youtube"
+    ],
+    "in_awesome_selfhosted": false
+   },
+   "details": {
+    "feature_lines": [
+     "Run your whole social presence from one calendar",
+     "An open-source social media scheduler with an AI copilot, native publishing to 12 networks,\n  and an MCP server so your AI assistant can post for you.",
+     "Self-host it, or skip the setup on cloud.",
+     "Try on Cloud &nbsp;&bull;&nbsp;\n  Documentation &nbsp;&bull;&nbsp;\n  Community",
+     "|  |  |\n| --- | --- |\n| 📅&nbsp; One calendar, every network | Plan a month at a glance, drag any post to a new slot, and publish natively to 12 platforms."
+    ],
+    "keeps_data": null
+   },
+   "mode_guess": "server_app",
+   "integrable": false,
+   "trust": {
+    "floor_ok": true,
+    "path": "stars",
+    "pretick_ok": true,
+    "reasons": []
+   },
+   "meaning": null,
+   "label": {
+    "kind": "tool",
+    "fit": "OFF"
+   },
+   "mode_from": "lane (README and language)"
+  },
+  {
+   "schema": "found/v1",
+   "id": "github:google-research/mood-board-search",
+   "source": "github",
+   "part": "code-app",
+   "name": "mood-board-search",
+   "friendly": "mood-board-search",
+   "what_it_is": "",
+   "url": "https://github.com/google-research/mood-board-search",
+   "repo": {
+    "host": "github.com",
+    "owner": "google-research",
+    "name": "mood-board-search",
+    "default_branch": "main",
+    "stars": 179,
+    "pushed_at": "2026-06-19",
+    "archived": false,
+    "fork": false,
+    "license_reported": "Apache-2.0",
+    "license_read": "Apache-2.0",
+    "size_kb": 41118,
+    "language": "Jupyter Notebook",
+    "topics": [],
+    "in_awesome_selfhosted": false
+   },
+   "details": {
+    "feature_lines": [
+     "Select an image set to search.",
+     "Train your Concept Activation Vector CAV and explore the results to see how well the model expresses your concept.",
+     "You can retrain your CAV as many times as you like by upweighting, downweighting, deleting, or adding new images to your mood board.",
+     "Email cav-experiments-support google.com",
+     "Submit your project to the Experiments with Google page",
+     "Nord Projects",
+     "Been Kim",
+     "Emily Reif"
+    ],
+    "keeps_data": null
+   },
+   "mode_guess": "server_app",
+   "integrable": false,
+   "trust": {
+    "floor_ok": true,
+    "path": "stars",
+    "pretick_ok": true,
+    "reasons": []
+   },
+   "meaning": null,
+   "label": {
+    "kind": "other",
+    "fit": "RELATED"
+   },
+   "mode_from": "corpus.json"
+  },
+  {
+   "schema": "found/v1",
+   "id": "github:bycs-lp/moodle-mod_kanban",
+   "source": "github",
+   "part": "code-app",
+   "name": "moodle-mod_kanban",
+   "friendly": "moodle-mod_kanban",
+   "what_it_is": "A kanban board activity for moodle",
+   "url": "https://github.com/bycs-lp/moodle-mod_kanban",
+   "repo": {
+    "host": "github.com",
+    "owner": "bycs-lp",
+    "name": "moodle-mod_kanban",
+    "default_branch": "master",
+    "stars": 15,
+    "pushed_at": "2026-09-21",
+    "archived": false,
+    "fork": false,
+    "license_reported": "GPL-3.0",
+    "license_read": null,
+    "size_kb": 969,
+    "language": "PHP",
+    "topics": [],
+    "in_awesome_selfhosted": false
+   },
+   "details": {
+    "feature_lines": [
+     "The course board, accessible to everyone who has access to the activity unless it's disabled in favour of personal",
+     "Personal boards for each user accessible only by the user or with one of the viewallboards / editallboards",
+     "Group boards Can be enabled in the activity settings visible or separate groups",
+     "Template boards Anyone with the manageboards capability can copy an existing board as a template board. Any board",
+     "You have been un assigned to a card",
+     "A card you are assigned to has been moved, discussed, closed or reopened.",
+     "A card you are assigned to and which is not closed is due.",
+     "Log in to your Moodle site as an admin and go to Site administration",
+     "Upload the ZIP file with the plugin code. You should only be prompted to add",
+     "Check the plugin validation report and finish the installation."
+    ],
+    "keeps_data": null
+   },
+   "mode_guess": "other",
+   "integrable": false,
+   "trust": {
+    "floor_ok": true,
+    "path": "stars",
+    "pretick_ok": true,
+    "reasons": []
+   },
+   "meaning": null,
+   "label": {
+    "kind": "tool",
+    "fit": "OFF"
+   },
+   "mode_from": "lane (README and language)"
+  },
+  {
+   "schema": "found/v1",
+   "id": "github:EyeOdin/Imagine_Board",
+   "source": "github",
+   "part": "code-app",
+   "name": "Imagine_Board",
+   "friendly": "Imagine_Board",
+   "what_it_is": "Krita - Plugin - Browse images and create reference mood boards.",
+   "url": "https://github.com/EyeOdin/Imagine_Board",
+   "repo": {
+    "host": "github.com",
+    "owner": "EyeOdin",
+    "name": "Imagine_Board",
+    "default_branch": "main",
+    "stars": 72,
+    "pushed_at": "2026-09-01",
+    "archived": false,
+    "fork": false,
+    "license_reported": "GPL-3.0",
+    "license_read": null,
+    "size_kb": 118197,
+    "language": "Python",
+    "topics": [
+     "animated-gifs",
+     "batch-script",
+     "image-viewer",
+     "kra-files",
+     "krita",
+     "krita-plugin",
+     "reference-manager",
+     "rename-files",
+     "save-files",
+     "svg-images",
+     "threading",
+     "zip-files"
+    ],
+    "in_awesome_selfhosted": false
+   },
+   "details": {
+    "feature_lines": [
+     "Display Modes Preview, Grid, Reference",
+     "File Explorer Preview, Grid, Drive",
+     "Color Picker",
+     "Grid Bookmarks",
+     "Grid Search Null, Copy",
+     "Grid Modify Fix, Pre-multiply",
+     "Reference Boards File EO , Link KRA",
+     "Color Analyse, LUT",
+     "Batch processing Keyenter, Reorder",
+     "Support to various File Formats Images, Animation, Compressed, Krita, Internet",
+     "Read for more information",
+     "How to"
+    ],
+    "keeps_data": null
+   },
+   "mode_guess": "other",
+   "integrable": false,
+   "trust": {
+    "floor_ok": true,
+    "path": "stars",
+    "pretick_ok": true,
+    "reasons": []
+   },
+   "meaning": null,
+   "label": {
+    "kind": "tool",
+    "fit": "RELATED"
+   },
+   "mode_from": "lane (README and language)"
+  },
+  {
+   "schema": "found/v1",
+   "id": "github:Saadzwak/design-office",
+   "source": "github",
+   "part": "code-app",
+   "name": "design-office",
+   "friendly": "design-office",
+   "what_it_is": "A quiet co-architect for office interiors. Built with Claude Opus 4.7 for the Anthropic Built with Opus 4.7 hackathon. Brief → 3D test fit → mood board → client argumentaire → DXF export, all driven by managed-agent orchestration, Vision HD plan parsing, and a double SketchUp+AutoCAD MCP.",
+   "url": "https://github.com/Saadzwak/design-office",
+   "repo": {
+    "host": "github.com",
+    "owner": "Saadzwak",
+    "name": "design-office",
+    "default_branch": "main",
+    "stars": 9,
+    "pushed_at": "2026-04-26",
+    "archived": false,
+    "fork": false,
+    "license_reported": "MIT",
+    "license_read": null,
+    "size_kb": 28237,
+    "language": "Python",
+    "topics": [],
+    "in_awesome_selfhosted": false
+   },
+   "details": {
+    "feature_lines": [
+     "Vision HD as the plan-reading brain every PDF upload is sent to",
+     "Managed agents at three levels each level solves a real planning",
+     "MCP Resources consulted at planning time 10 curated Markdown",
+     "SketchUp MCP with editorial Ruby ops we forked mhyrr/sketchup-mcp",
+     "Vision HD as a content classifier every cached editorial",
+     "Windows 10/11 primary target scripts are PowerShell",
+     "SketchUp Pro trial OK optional for backend dev, required for 3D demo",
+     "AutoCAD LT 2024 trial OK optional, ezdxf backend works without it",
+     "Copy vendor/sketchup-mcp/sumcp.rb and vendor/sketchup-mcp/sumcp/",
+     "Copy sketchup-plugin/designofficeextensions.rb into the same",
+     "Restart SketchUp, then Extensions MCP Server Start Server",
+     "Open the SketchUp file referenced in vendor/sketchup-mcp/",
+     "Trigger a Test Fit run from the web UI Archoff will drive",
+     "AutoCAD / AutoCAD LT double-click. The five Archoff layers",
+     "Revit Insert Link CAD keeps the layers linked."
+    ],
+    "keeps_data": null
+   },
+   "mode_guess": "other",
+   "integrable": false,
+   "trust": {
+    "floor_ok": true,
+    "path": "stars",
+    "pretick_ok": true,
+    "reasons": []
+   },
+   "meaning": null,
+   "label": {
+    "kind": "tool",
+    "fit": "OFF"
+   },
+   "mode_from": "lane (README and language)"
+  },
+  {
+   "schema": "found/v1",
+   "id": "github:lokesh/color-thief",
+   "source": "github",
+   "part": "code-app",
+   "name": "color-thief",
+   "friendly": "color-thief",
+   "what_it_is": "Grab the color palette from an image using just Javascript.  Works in the browser and in Node.",
+   "url": "https://github.com/lokesh/color-thief",
+   "repo": {
+    "host": "github.com",
+    "owner": "lokesh",
+    "name": "color-thief",
+    "default_branch": "master",
+    "stars": 13644,
+    "pushed_at": "2026-08-03",
+    "archived": false,
+    "fork": false,
+    "license_reported": "MIT",
+    "license_read": "MIT",
+    "size_kb": 3486,
+    "language": "TypeScript",
+    "topics": [],
+    "in_awesome_selfhosted": false
+   },
+   "details": {
+    "feature_lines": [
+     "TypeScript full type definitions included",
+     "Live extraction observe watches video, canvas, or img elements and emits palette updates reactively",
+     "Worker friendly runs inside your own Web Worker via ImageBitmap or OffscreenCanvas",
+     "Progressive extraction 3-pass refinement for instant rough results",
+     "OKLCH quantization perceptually uniform palettes via colorSpace 'oklch'",
+     "Semantic swatches Vibrant, Muted, DarkVibrant, DarkMuted, LightVibrant, LightMuted",
+     "Rich Color objects .hex , .rgb , .hsl , .oklch , .css , contrast ratios, text color recommendations",
+     "WCAG contrast color.contrast.white, color.contrast.black, color.contrast.foreground",
+     "AbortSignal cancel in-flight extractions",
+     "CLI colorthief photo.jpg with JSON, CSS, and ANSI output",
+     "Zero runtime dependencies",
+     "Demo page & live examples"
+    ],
+    "keeps_data": null
+   },
+   "mode_guess": "node_lib",
+   "integrable": false,
+   "trust": {
+    "floor_ok": true,
+    "path": "stars",
+    "pretick_ok": true,
+    "reasons": []
+   },
+   "meaning": null,
+   "label": {
+    "kind": "library",
+    "fit": "RELATED"
+   },
+   "mode_from": "corpus.json"
+  },
+  {
+   "schema": "found/v1",
+   "id": "github:ksubileau/color-thief-php",
+   "source": "github",
+   "part": "code-app",
+   "name": "color-thief-php",
+   "friendly": "color-thief-php",
+   "what_it_is": "Grabs the dominant color or a representative color palette from an image. Uses PHP and GD, Imagick or Gmagick.",
+   "url": "https://github.com/ksubileau/color-thief-php",
+   "repo": {
+    "host": "github.com",
+    "owner": "ksubileau",
+    "name": "color-thief-php",
+    "default_branch": "main",
+    "stars": 638,
+    "pushed_at": "2026-06-26",
+    "archived": false,
+    "fork": false,
+    "license_reported": "MIT",
+    "license_read": null,
+    "size_kb": 3992,
+    "language": "PHP",
+    "topics": [
+     "color-palette",
+     "dominant-colors",
+     "gd",
+     "image-processing",
+     "imagick",
+     "php"
+    ],
+    "in_awesome_selfhosted": false
+   },
+   "details": {
+    "feature_lines": [
+     "PHP 8.2 or higher",
+     "Fileinfo extension",
+     "One or more PHP extensions for image processing",
+     "GD 2.0",
+     "Imagick 2.0 but 3.0 for CMYK images",
+     "Gmagick 1.0",
+     "Supports JPEG, PNG, GIF and WEBP images.",
+     "A file path string '/path/to/image.jpg' You must ensure that the path is sanitized before calling ColorThief",
+     "A GD resource GdImage",
+     "An Imagick instance",
+     "A Gmagick instance",
+     "Raw image binary content as a string",
+     "Lokesh Dhakar - For creating the original project.",
+     "Nick Rabinowitz - For creating quantize.js."
+    ],
+    "keeps_data": null
+   },
+   "mode_guess": "other",
+   "integrable": false,
+   "trust": {
+    "floor_ok": true,
+    "path": "stars",
+    "pretick_ok": true,
+    "reasons": []
+   },
+   "meaning": null,
+   "label": {
+    "kind": "library",
+    "fit": "RELATED"
+   },
+   "mode_from": "lane (README and language)"
+  },
+  {
+   "schema": "found/v1",
+   "id": "github:DenDmitriev/DominantColors",
+   "source": "github",
+   "part": "code-app",
+   "name": "DominantColors",
+   "friendly": "DominantColors",
+   "what_it_is": "Extractor dominant colors from image",
+   "url": "https://github.com/DenDmitriev/DominantColors",
+   "repo": {
+    "host": "github.com",
+    "owner": "DenDmitriev",
+    "name": "DominantColors",
+    "default_branch": "main",
+    "stars": 142,
+    "pushed_at": "2025-02-11",
+    "archived": false,
+    "fork": false,
+    "license_reported": "MIT",
+    "license_read": null,
+    "size_kb": 16012,
+    "language": "Swift",
+    "topics": [
+     "color-palette",
+     "colors",
+     "library",
+     "palette",
+     "swift",
+     "swiftpackagemanager"
+    ],
+    "in_awesome_selfhosted": false
+   },
+   "details": {
+    "feature_lines": [
+     "How to use",
+     "Contrast colors",
+     "Average colors",
+     "Cluster colors",
+     "How the algorithm works",
+     "Open the DominantColors.xcworkspace file.",
+     "PreviewMacOS in package,",
+     "App MacOSPreview in example folder.",
+     "PreviewiOS in package,",
+     "App iOSDominantColorsPreview in example folder."
+    ],
+    "keeps_data": null
+   },
+   "mode_guess": "other",
+   "integrable": false,
+   "trust": {
+    "floor_ok": true,
+    "path": "stars",
+    "pretick_ok": true,
+    "reasons": []
+   },
+   "meaning": null,
+   "label": {
+    "kind": "library",
+    "fit": "RELATED"
+   },
+   "mode_from": "lane (README and language)"
+  },
+  {
+   "schema": "found/v1",
+   "id": "github:yamoridon/ColorThiefSwift",
+   "source": "github",
+   "part": "code-app",
+   "name": "ColorThiefSwift",
+   "friendly": "ColorThiefSwift",
+   "what_it_is": "Grabs the dominant color or a representative color palette from an image.  A Swift port of Sven Woltmann's Java implementation.",
+   "url": "https://github.com/yamoridon/ColorThiefSwift",
+   "repo": {
+    "host": "github.com",
+    "owner": "yamoridon",
+    "name": "ColorThiefSwift",
+    "default_branch": "master",
+    "stars": 286,
+    "pushed_at": "2024-01-27",
+    "archived": false,
+    "fork": false,
+    "license_reported": "MIT",
+    "license_read": null,
+    "size_kb": 1945,
+    "language": "Swift",
+    "topics": [],
+    "in_awesome_selfhosted": false
+   },
+   "details": {
+    "feature_lines": [
+     "Xcode 10.2",
+     "Swift 5",
+     "iOS 12, macOS 10.13, tvOS 12, or watchOS 4",
+     "Sven Woltmann - for the Java Implementation. ColorThiefSwift is a port of this.",
+     "Lokesh Dhakar - for the original JavaScript version.",
+     "http //lokeshdhakar.com/projects/color-thief/"
+    ],
+    "keeps_data": null
+   },
+   "mode_guess": "other",
+   "integrable": false,
+   "trust": {
+    "floor_ok": true,
+    "path": "stars",
+    "pretick_ok": true,
+    "reasons": []
+   },
+   "meaning": null,
+   "label": {
+    "kind": "library",
+    "fit": "RELATED"
+   },
+   "mode_from": "lane (README and language)"
+  },
+  {
+   "schema": "found/v1",
+   "id": "github:qTipTip/Pylette",
+   "source": "github",
+   "part": "code-app",
+   "name": "Pylette",
+   "friendly": "Pylette",
+   "what_it_is": "A Python library for extracting color palettes from supplied images.",
+   "url": "https://github.com/qTipTip/Pylette",
+   "repo": {
+    "host": "github.com",
+    "owner": "qTipTip",
+    "name": "Pylette",
+    "default_branch": "master",
+    "stars": 170,
+    "pushed_at": "2026-07-21",
+    "archived": false,
+    "fork": false,
+    "license_reported": "MIT",
+    "license_read": null,
+    "size_kb": 3130,
+    "language": "Python",
+    "topics": [
+     "color",
+     "color-palette",
+     "color-scheme",
+     "colorpicker",
+     "command-line-interface",
+     "image-analysis",
+     "image-processing",
+     "pillow",
+     "python",
+     "visualization-tools"
+    ],
+    "in_awesome_selfhosted": false
+   },
+   "details": {
+    "feature_lines": [
+     "Extract palettes from single images or batch process multiple files",
+     "Export to JSON format with metadata and hex colors",
+     "Support for different colorspaces RGB, HSV, HLS",
+     "Handle transparent images with alpha channel masking",
+     "Fast parallel processing for multiple images",
+     "Rich progress display with color previews",
+     "RGB rgb 255, 128, 64 , hex FF8040 , frequency 0.25",
+     "HSV hsv 0.08, 0.75, 1.0 , rgb 255, 128, 64 , hex FF8040 , frequency 0.25",
+     "HLS hls 0.08, 0.63, 0.75 , rgb 255, 128, 64 , hex FF8040 , frequency 0.25",
+     "Clean, Visual Output No more raw CSV dumps - see your colors in beautiful tables",
+     "Rich Metadata Every palette includes extraction details, timing, and image info",
+     "Flexible Export JSON format with semantic field names for easy parsing",
+     "Batch Ready Process hundreds of images with parallel processing and progress bars",
+     "Modern CLI Intuitive commands that guide you toward the right options"
+    ],
+    "keeps_data": null
+   },
+   "mode_guess": "python_lib",
+   "integrable": false,
+   "trust": {
+    "floor_ok": true,
+    "path": "stars",
+    "pretick_ok": true,
+    "reasons": []
+   },
+   "meaning": null,
+   "label": {
+    "kind": "library",
+    "fit": "RELATED"
+   },
+   "mode_from": "lane (README and language)"
+  },
+  {
+   "schema": "found/v1",
+   "id": "github:jordond/kmpalette",
+   "source": "github",
+   "part": "code-app",
+   "name": "kmpalette",
+   "friendly": "kmpalette",
+   "what_it_is": "🎨 A Compose multiplatform port for Androidx Palette. Generate a color palette from an image.",
+   "url": "https://github.com/jordond/kmpalette",
+   "repo": {
+    "host": "github.com",
+    "owner": "jordond",
+    "name": "kmpalette",
+    "default_branch": "main",
+    "stars": 296,
+    "pushed_at": "2026-09-24",
+    "archived": false,
+    "fork": false,
+    "license_reported": "MIT",
+    "license_read": null,
+    "size_kb": 8744,
+    "language": "Kotlin",
+    "topics": [
+     "android",
+     "androidx",
+     "androidx-palette",
+     "compose",
+     "compose-multiplatform",
+     "dominant-color",
+     "ios",
+     "kotlin",
+     "kotlin-js",
+     "kotlin-multiplatform",
+     "palette",
+     "palette-generation"
+    ],
+    "in_awesome_selfhosted": false
+   },
+   "details": {
+    "feature_lines": [
+     "What's New in 4.0",
+     "Dynamic Material Themes",
+     "Version Catalog",
+     "Standalone Palette No Compose",
+     "One-shot Generation",
+     "Dominant Color",
+     "Generate a color Palette",
+     "Selecting Swatches",
+     "Swatch Colors",
+     "Feature Requests",
+     "Changes from the original source",
+     "androidx-palette is now a dependency-free Kotlin Multiplatform module. It no longer depends",
+     "New kmpalette-loader module published as loader containing the ImageBitmapLoader",
+     "New Maven coordinates. The group is now com.materialkolor.palette and the core artifact is",
+     "PaletteResult a sealed Loading/Success/Error result type replaces the previous"
+    ],
+    "keeps_data": null
+   },
+   "mode_guess": "other",
+   "integrable": false,
+   "trust": {
+    "floor_ok": true,
+    "path": "stars",
+    "pretick_ok": true,
+    "reasons": []
+   },
+   "meaning": null,
+   "label": {
+    "kind": "library",
+    "fit": "RELATED"
+   },
+   "mode_from": "lane (README and language)"
+  },
+  {
+   "schema": "found/v1",
+   "id": "github:zumbov2/colorfindr",
+   "source": "github",
+   "part": "code-app",
+   "name": "colorfindr",
+   "friendly": "colorfindr",
+   "what_it_is": "Extracts colors from various image types, plots treemaps and 3D scatterplots of color compositions, create color palettes.",
+   "url": "https://github.com/zumbov2/colorfindr",
+   "repo": {
+    "host": "github.com",
+    "owner": "zumbov2",
+    "name": "colorfindr",
+    "default_branch": "master",
+    "stars": 149,
+    "pushed_at": "2026-03-03",
+    "archived": false,
+    "fork": false,
+    "license_reported": "NOASSERTION",
+    "license_read": null,
+    "size_kb": 60378,
+    "language": "R",
+    "topics": [
+     "3d-scatter-plot",
+     "colors",
+     "plotly",
+     "rstats",
+     "treemap"
+    ],
+    "in_awesome_selfhosted": false
+   },
+   "details": {
+    "feature_lines": [
+     "colorfindr\nThis R package allows you to extract colors from various image types (currently JPEG, PNG, TIFF, SVG, BMP).",
+     "Either a tailored report (directly with the main function getcolors), a treemap (plotcolors) or a 3D scatterplot (plotcolors3d) with the image color composition can be returned.",
+     "Version 0.1.4 provides several methods for creating discrete color palettes.",
+     "Installation\nVersion 0.1.6 is on CRAN and can be installed as follows:\nr\ninstall.packages(\"colorfindr\")",
+     "Treemap examples\n Color composition of the South African flag"
+    ],
+    "keeps_data": null
+   },
+   "mode_guess": "other",
+   "integrable": false,
+   "trust": {
+    "floor_ok": false,
+    "path": "",
+    "pretick_ok": false,
+    "reasons": [
+     "license"
+    ]
+   },
+   "meaning": null,
+   "label": {
+    "kind": "library",
+    "fit": "RELATED"
+   },
+   "mode_from": "lane (README and language)"
+  },
+  {
+   "schema": "found/v1",
+   "id": "github:angristan/palette",
+   "source": "github",
+   "part": "code-app",
+   "name": "palette",
+   "friendly": "palette",
+   "what_it_is": "Extract color palette from an image with k-means and k-NN // Project for the AI/ML class at Hanyang University",
+   "url": "https://github.com/angristan/palette",
+   "repo": {
+    "host": "github.com",
+    "owner": "angristan",
+    "name": "palette",
+    "default_branch": "master",
+    "stars": 31,
+    "pushed_at": "2024-12-10",
+    "archived": false,
+    "fork": false,
+    "license_reported": "MIT",
+    "license_read": null,
+    "size_kb": 1739,
+    "language": "Python",
+    "topics": [
+     "color-palette",
+     "flask",
+     "kmeans",
+     "knn",
+     "opencv",
+     "pandas",
+     "python",
+     "scikit-learn"
+    ],
+    "in_awesome_selfhosted": false
+   },
+   "details": {
+    "feature_lines": [
+     "Palette is a website where you can upload an image and get the dominant colors (using k-means clustering) as well as the associated color names (using k-nearest neighbor).",
+     "This is a project for the Introduction to Artificial Intelligence at Hanyang University under professor Youngjoon Won.",
+     "Motivation, technical details and methodology cam be found in our so-called \"blog post\" as part the assignment."
+    ],
+    "keeps_data": null
+   },
+   "mode_guess": "other",
+   "integrable": false,
+   "trust": {
+    "floor_ok": true,
+    "path": "stars",
+    "pretick_ok": true,
+    "reasons": []
+   },
+   "meaning": null,
+   "label": {
+    "kind": "tool",
+    "fit": "RELATED"
+   },
+   "mode_from": "lane (README and language)"
+  },
+  {
+   "schema": "found/v1",
+   "id": "github:microlinkhq/splashy",
+   "source": "github",
+   "part": "code-app",
+   "name": "splashy",
+   "friendly": "splashy",
+   "what_it_is": "Extract predominant and palette colors from an image URL or file buffer.",
+   "url": "https://github.com/microlinkhq/splashy",
+   "repo": {
+    "host": "github.com",
+    "owner": "microlinkhq",
+    "name": "splashy",
+    "default_branch": "master",
+    "stars": 122,
+    "pushed_at": "2026-08-31",
+    "archived": false,
+    "fork": false,
+    "license_reported": "MIT",
+    "license_read": null,
+    "size_kb": 12077,
+    "language": "TypeScript",
+    "topics": [
+     "canvas",
+     "color",
+     "colorthief",
+     "dominant",
+     "extract",
+     "image",
+     "palette",
+     "photo",
+     "swatch",
+     "theme"
+    ],
+    "in_awesome_selfhosted": false
+   },
+   "details": {
+    "feature_lines": [
+     "color-microservice Get color information from any URL image microservice.",
+     "colorable-dominant Create ARIA-compliant color themes based on a predominant color palette."
+    ],
+    "keeps_data": null
+   },
+   "mode_guess": "node_lib",
+   "integrable": false,
+   "trust": {
+    "floor_ok": true,
+    "path": "stars",
+    "pretick_ok": true,
+    "reasons": []
+   },
+   "meaning": null,
+   "label": {
+    "kind": "library",
+    "fit": "RELATED"
+   },
+   "mode_from": "lane (README and language)"
+  },
+  {
+   "schema": "found/v1",
+   "id": "github:Thiritin/streaming",
+   "source": "github",
+   "part": "code-app",
+   "name": "streaming",
+   "friendly": "streaming",
+   "what_it_is": "Self-hosted livestream platform for conventions: RTMP ingest, ABR HLS across edge servers you add during the event, chat with moderation, programme planning and cut-from-archive recordings.",
+   "url": "https://github.com/Thiritin/streaming",
+   "repo": {
+    "host": "github.com",
+    "owner": "Thiritin",
+    "name": "streaming",
+    "default_branch": "main",
+    "stars": 17,
+    "pushed_at": "2026-08-30",
+    "archived": false,
+    "fork": false,
+    "license_reported": "GPL-3.0",
+    "license_read": null,
+    "size_kb": 62525,
+    "language": "PHP",
+    "topics": [
+     "conventions",
+     "dvr",
+     "ffmpeg",
+     "hls",
+     "inertiajs",
+     "laravel",
+     "live-chat",
+     "livestreaming",
+     "php",
+     "rtmp",
+     "self-hosted",
+     "srs",
+     "streaming-server",
+     "video-streaming",
+     "vuejs"
+    ],
+    "in_awesome_selfhosted": false
+   },
+   "details": {
+    "feature_lines": [
+     "docs/dev-stack.md the local video stack",
+     "docs/admin/release-checklist.md the order to deploy a release in, and what to verify afterwards",
+     "docs/admin/settings.md what lives in the database and what stays in .env",
+     "docs/admin/authentication.md the sign-in modes, accounts and recovery",
+     "docs/admin/server-credentials.md how servers authenticate, and rotating their credentials",
+     "docs/admin/pretalx-import.md importing the programme",
+     "docs/admin/auto-mode.md starting and stopping shows without a human",
+     "docs/admin/show-statistics.md what the viewer numbers on a show count",
+     "docs/dvr-archive-plan.md how the archive and cutting work"
+    ],
+    "keeps_data": null
+   },
+   "mode_guess": "server_app",
+   "integrable": false,
+   "trust": {
+    "floor_ok": true,
+    "path": "stars",
+    "pretick_ok": true,
+    "reasons": []
+   },
+   "meaning": null,
+   "label": {
+    "kind": "tool",
+    "fit": "OFF"
+   },
+   "mode_from": "lane (README and language)"
+  },
+  {
+   "schema": "found/v1",
+   "id": "github:artwork-software/artwork",
+   "source": "github",
+   "part": "code-app",
+   "name": "artwork",
+   "friendly": "artwork",
+   "what_it_is": "Operations software for cultural venues: theatres, production houses, festivals and event-driven museums plan events, rooms, shifts, inventory, contacts and budgets in one open-source system (Laravel/Vue, AGPL-3.0).",
+   "url": "https://github.com/artwork-software/artwork",
+   "repo": {
+    "host": "github.com",
+    "owner": "artwork-software",
+    "name": "artwork",
+    "default_branch": "main",
+    "stars": 32,
+    "pushed_at": "2026-09-25",
+    "archived": false,
+    "fork": false,
+    "license_reported": "AGPL-3.0",
+    "license_read": null,
+    "size_kb": 101314,
+    "language": "PHP",
+    "topics": [
+     "agpl",
+     "arts-management",
+     "cultural-institutions",
+     "event-management",
+     "festivals",
+     "germany",
+     "inertiajs",
+     "inventory-management",
+     "laravel",
+     "open-source",
+     "php",
+     "room-booking",
+     "scheduling",
+     "self-hosted",
+     "shift-planning",
+     "theatre",
+     "venue-management",
+     "vue"
+    ],
+    "in_awesome_selfhosted": false
+   },
+   "details": {
+    "feature_lines": [
+     "Theatres and production houses",
+     "Concert halls",
+     "Museums and exhibition venues with an event programme",
+     "Not a ticketing or box-office system artwork plans and runs events, it does not sell tickets.",
+     "Not financial accounting project budgets live in artwork, your bookkeeping stays in your accounting software.",
+     "Not payroll shift planning and hour tracking are covered, wage processing is not.",
+     "Website artwork.software",
+     "Documentation Wiki",
+     "Copy .env.example to .env and adjust the values",
+     "Build and start",
+     "Generate an app key",
+     "Restart to load the new key",
+     "PHP 8.4 with extensions",
+     "wkhtmltopdf 0.12.6 patched Qt",
+     "MariaDB 11"
+    ],
+    "keeps_data": null
+   },
+   "mode_guess": "server_app",
+   "integrable": false,
+   "trust": {
+    "floor_ok": true,
+    "path": "stars",
+    "pretick_ok": true,
+    "reasons": []
+   },
+   "meaning": null,
+   "label": {
+    "kind": "tool",
+    "fit": "OFF"
+   },
+   "mode_from": "lane (README and language)"
+  },
+  {
+   "schema": "found/v1",
+   "id": "github:sfaisal2/wedding-tracker",
+   "source": "github",
+   "part": "code-app",
+   "name": "wedding-tracker",
+   "friendly": "wedding-tracker",
+   "what_it_is": "Free, single-file wedding budget, guest list, tasks, and timeline tracker",
+   "url": "https://github.com/sfaisal2/wedding-tracker",
+   "repo": {
+    "host": "github.com",
+    "owner": "sfaisal2",
+    "name": "wedding-tracker",
+    "default_branch": "master",
+    "stars": 0,
+    "pushed_at": "2026-08-14",
+    "archived": false,
+    "fork": false,
+    "license_reported": null,
+    "license_read": null,
+    "size_kb": 22,
+    "language": "HTML",
+    "topics": [],
+    "in_awesome_selfhosted": false
+   },
+   "details": {
+    "feature_lines": [
+     "Download or clone this repo.",
+     "Double-click index.html or open it in any browser via File Open .",
+     "Everything is saved automatically to your browser's localStorage, scoped to this file. Nothing is sent to a server your data never leaves your computer.",
+     "Venue tracker optional, click to add compare multiple venue options side by side cost, capacity, status, contact while you're still deciding.",
+     "Tasks a to-do list with category, due date, priority, and status.",
+     "Day-of timeline optional, click to add a run-of-show schedule time, duration, activity, location, notes for the actual day.",
+     "Invitation image link to an invitation image file that lives in the same folder as index.html it renders as a preview."
+    ],
+    "keeps_data": true
+   },
+   "mode_guess": "static_web",
+   "integrable": true,
+   "trust": {
+    "floor_ok": false,
+    "path": "",
+    "pretick_ok": false,
+    "reasons": [
+     "license"
+    ]
+   },
+   "meaning": null,
+   "label": {
+    "kind": "tool",
+    "fit": "FIT"
+   },
+   "mode_from": "corpus.json"
+  },
+  {
+   "schema": "found/v1",
+   "id": "github:SubchiBeats/wedding-planner",
+   "source": "github",
+   "part": "code-app",
+   "name": "wedding-planner",
+   "friendly": "wedding-planner",
+   "what_it_is": "Bunny's Big Day — an elegant, self-contained single-file wedding planning dashboard with a visual drag-to-arrange seating floor-plan builder, guest list, budget, timeline, vendors, checklist and export. No build, no dependencies.",
+   "url": "https://github.com/SubchiBeats/wedding-planner",
+   "repo": {
+    "host": "github.com",
+    "owner": "SubchiBeats",
+    "name": "wedding-planner",
+    "default_branch": "main",
+    "stars": 2,
+    "pushed_at": "2026-06-18",
+    "archived": false,
+    "fork": false,
+    "license_reported": "MIT",
+    "license_read": "MIT",
+    "size_kb": 547,
+    "language": "HTML",
+    "topics": [
+     "budget-tracker",
+     "dashboard",
+     "event-planning",
+     "guest-list",
+     "html-css-js",
+     "localstorage",
+     "no-build",
+     "responsive",
+     "seating-chart",
+     "single-file",
+     "vanilla-js",
+     "web-app",
+     "wedding",
+     "wedding-planner"
+    ],
+    "in_awesome_selfhosted": false
+   },
+   "details": {
+    "feature_lines": [
+     "Everything is computed guest totals, meal counts, budget balances and checklist",
+     "Persists locally refresh-safe via localStorage back up / restore with JSON.",
+     "Editable setup wedding date, guest goal, budget, vibe, location and ceremony-end",
+     "Confirmation prompts before any destructive action delete / reset / import .",
+     "Responsive & accessible mobile-first, keyboard-friendly, labelled forms, good contrast.",
+     "Elegant aesthetic soft blush / sage / champagne palette, rounded cards, serif display type."
+    ],
+    "keeps_data": true
+   },
+   "mode_guess": "static_web",
+   "integrable": true,
+   "trust": {
+    "floor_ok": true,
+    "path": "static_small",
+    "pretick_ok": false,
+    "reasons": []
+   },
+   "meaning": null,
+   "label": {
+    "kind": "tool",
+    "fit": "FIT"
+   },
+   "mode_from": "corpus.json"
+  },
+  {
+   "schema": "found/v1",
+   "id": "github:Prajktac210/wedding_planner",
+   "source": "github",
+   "part": "code-app",
+   "name": "wedding_planner",
+   "friendly": "wedding_planner",
+   "what_it_is": "A wedding business showcase website for a wedding planning company",
+   "url": "https://github.com/Prajktac210/wedding_planner",
+   "repo": {
+    "host": "github.com",
+    "owner": "Prajktac210",
+    "name": "wedding_planner",
+    "stars": 50,
+    "pushed_at": "2026-05-01",
+    "archived": false,
+    "fork": false,
+    "license_reported": "MIT",
+    "license_read": "MIT",
+    "topics": []
+   },
+   "details": {
+    "feature_lines": [],
+    "keeps_data": null
+   },
+   "mode_guess": "static_web",
+   "integrable": true,
+   "trust": {
+    "floor_ok": true,
+    "path": "stars",
+    "pretick_ok": true,
+    "reasons": []
+   },
+   "meaning": null,
+   "label": {
+    "kind": "page",
+    "fit": "RELATED"
+   },
+   "mode_from": "synthetic (critique K2), given 50 stars so only the page check can stop it"
+  },
+  {
+   "schema": "found/v1",
+   "id": "knowledge:wikipedia:wedding-planner",
+   "source": "wikipedia",
+   "part": "knowledge",
+   "name": "Wedding planner",
+   "friendly": "Wedding planner",
+   "what_it_is": "A wedding planner is a professional who assists with the design, planning and management of a client's wedding.",
+   "url": null,
+   "repo": null,
+   "details": {
+    "feature_lines": []
+   },
+   "mode_guess": "other",
+   "integrable": false,
+   "trust": {
+    "floor_ok": true,
+    "path": "",
+    "pretick_ok": false,
+    "reasons": []
+   },
+   "meaning": null,
+   "label": {
+    "kind": "other",
+    "fit": "RELATED"
+   },
+   "mode_from": "synthetic (critique K2)"
+  }
+ ]
+}

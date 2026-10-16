@@ -1,0 +1,150 @@
+{
+"schema": "clawhub.skill.verify.v1",
+"ok": false,
+"decision": "fail",
+"reasons": [
+"security.status_not_clean"
+],
+"slug": "stock-analysis",
+"displayName": "Stock Analysis",
+"pageUrl": "https://clawhub.ai/udiedrichsen/skills/stock-analysis",
+"publisherHandle": "udiedrichsen",
+"publisherDisplayName": "udiedrichsen",
+"publisherProfileUrl": "https://clawhub.ai/udiedrichsen",
+"version": "6.2.0",
+"resolvedFrom": "latest",
+"tag": null,
+"createdAt": 1770041353575,
+"card": {
+"available": true,
+"path": "skill-card.md",
+"url": "https://wry-manatee-359.convex.site/api/v1/skills/stock-analysis/card?ownerHandle=udiedrichsen&version=6.2.0",
+"sha256": "8850685afe8350661127a3d9b790716c5a1444d2caebf0fea5f91f2a1a0cbdf6",
+"size": 2547,
+"contentType": "text/markdown; charset=utf-8"
+},
+"artifact": {
+"sourceFingerprint": "41c5c6ff275dc49cd846457c7c9c33996e91ff380a464ab1aaef4438988ff2dd",
+"bundleFingerprints": [
+"2ef91277d7a4bb82d883f3f73b17d1d3bc50368611c1220679ec3827b7e4c380",
+"cecaf7a68a45672b0d0317860ec7739b21377e6d0891ea94f03625a2bebc117b",
+"6de6f998041a3ae670d735d77fa3764d618946d7001014d9e34e025a472a1e69"
+],
+"files": [
+{
+"path": "App-Plan.md",
+"size": 14708,
+"sha256": "98276ba3eb8d91373827e7941abf66e3b1affb684fc8dc758721ba49d50d9f31",
+"contentType": "text/markdown"
+},
+{
+"path": "README.md",
+"size": 6390,
+"sha256": "899b51e9272962824c9f789f493224410fed6b87f2df7dbdf3f05d0d1edc617c",
+"contentType": "text/markdown"
+},
+{
+"path": "SKILL.md",
+"size": 8230,
+"sha256": "6ae566bdf7f099f0926c58966a5d9d11531c366264217237de281387bf47964d",
+"contentType": "text/markdown"
+},
+{
+"path": "TODO.md",
+"size": 12848,
+"sha256": "3e3cc7022797587ee8298e1a0503bebf4a3494c9ebda15a9f951799a7b310682",
+"contentType": "text/markdown"
+},
+{
+"path": "docs/ARCHITECTURE.md",
+"size": 16594,
+"sha256": "b2a86717592fd7f719cbc1022711cd03af4f5dcfd709c738d049f7c0de0b3856",
+"contentType": "text/markdown"
+},
+{
+"path": "docs/CONCEPT.md",
+"size": 9101,
+"sha256": "3df36f8710cb6e64d3f0bc3c091b1c70e7eac979ba352f46fa4ac09b865c5517",
+"contentType": "text/markdown"
+},
+{
+"path": "docs/HOT_SCANNER.md",
+"size": 5865,
+"sha256": "0c42df93f631b30f834d3eff27805650965b62afdf855e7e40d950415dc2666b",
+"contentType": "text/markdown"
+},
+{
+"path": "docs/README.md",
+"size": 2405,
+"sha256": "86c36fdce36c7c9ebb52f70966b16bdfe17016a54a4861932fc01d4b8c711912",
+"contentType": "text/markdown"
+},
+{
+"path": "docs/USAGE.md",
+"size": 8898,
+"sha256": "9cc1aada593ae985ea755003eafed3a8f564f1af77853501c89ac48439cf9174",
+"contentType": "text/markdown"
+},
+{
+"path": "scripts/analyze_stock.py",
+"size": 89930,
+"sha256": "24e05932926903ccee7e8fb5c621da5d354ae01857a020e26e77bdcb37df345a",
+"contentType": "text/plain"
+},
+{
+"path": "scripts/dividends.py",
+"size": 13130,
+"sha256": "f7345eda9b5eb164502cd770fedf6230bdc9eaabc2d949d9b48b1ab02d4f4169",
+"contentType": "text/plain"
+},
+{
+"path": "scripts/hot_scanner.py",
+"size": 24620,
+"sha256": "9a0f9d57a2cc919b351e210072a061b58deaca47294b0ce67dc5bbb7839741f5",
+"contentType": "text/plain"
+},
+{
+"path": "scripts/portfolio.py",
+"size": 18897,
+"sha256": "2ef732f6c0a0a9bff4ed016d75007c44d2ddd43a52bd5e25ca8716a56355523a",
+"contentType": "text/plain"
+},
+{
+"path": "scripts/rumor_scanner.py",
+"size": 11578,
+"sha256": "315360567ac98f7edae0c9e448360ee4bdecfe3463b07954481a95c17c12dd5a",
+"contentType": "text/plain"
+},
+{
+"path": "scripts/test_stock_analysis.py",
+"size": 11958,
+"sha256": "2fe52876bdc2aa5f8dda67a7230b3b798ebdb0ccbc426c9aa959237310fe255c",
+"contentType": "text/plain"
+},
+{
+"path": "scripts/watchlist.py",
+"size": 11542,
+"sha256": "342730d649fb27e3a179adebd8842b236658c4cf706cccf32e42c3c133c42dac",
+"contentType": "text/plain"
+}
+]
+},
+"provenance": {
+"source": "unavailable",
+"reason": "No server-resolved GitHub import provenance is stored for this version."
+},
+"security": {
+"status": "suspicious",
+"passed": false,
+"rawStatus": "suspicious",
+"verdict": "suspicious",
+"confidence": "high",
+"summary": "This stock-analysis skill is mostly coherent, but its optional X/Twitter scanning asks users to expose live session credentials to a third-party CLI with overly broad environment access.",
+"model": null,
+"checkedAt": 1789015754220,
+"scannerReports": null
+},
+"signature": {
+"status": "unsigned"
+}
+}

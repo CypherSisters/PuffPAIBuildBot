@@ -1,0 +1,211 @@
+{
+"sha": "8d795f56343edce7ef6b9413e02f7a92318f8229",
+"url": "https://api.github.com/repos/earthtojake/text-to-cad/git/trees/8d795f56343edce7ef6b9413e02f7a92318f8229",
+"tree": [
+{
+"path": "LICENSE",
+"mode": "100644",
+"type": "blob",
+"sha": "30be518b2415d9a7514d4bfb879c157d18673b6b",
+"size": 1074,
+"url": "https://api.github.com/repos/earthtojake/text-to-cad/git/blobs/30be518b2415d9a7514d4bfb879c157d18673b6b"
+},
+{
+"path": "README.md",
+"mode": "100644",
+"type": "blob",
+"sha": "fbf2e6f876f14474371e465db25cbd84d523a9a5",
+"size": 12113,
+"url": "https://api.github.com/repos/earthtojake/text-to-cad/git/blobs/fbf2e6f876f14474371e465db25cbd84d523a9a5"
+},
+{
+"path": "skills/bambu-labs",
+"mode": "040000",
+"type": "tree",
+"sha": "6667db1eac475555bcbc43a9c7bf72aaea381121",
+"url": "https://api.github.com/repos/earthtojake/text-to-cad/git/trees/6667db1eac475555bcbc43a9c7bf72aaea381121"
+},
+{
+"path": "skills/bambu-labs/LICENSE",
+"mode": "100644",
+"type": "blob",
+"sha": "30be518b2415d9a7514d4bfb879c157d18673b6b",
+"size": 1074,
+"url": "https://api.github.com/repos/earthtojake/text-to-cad/git/blobs/30be518b2415d9a7514d4bfb879c157d18673b6b"
+},
+{
+"path": "skills/bambu-labs/SKILL.md",
+"mode": "100644",
+"type": "blob",
+"sha": "f62eb87272dba8a972502b513125251d236f497c",
+"size": 3443,
+"url": "https://api.github.com/repos/earthtojake/text-to-cad/git/blobs/f62eb87272dba8a972502b513125251d236f497c"
+},
+{
+"path": "skills/bambu-labs/agents",
+"mode": "040000",
+"type": "tree",
+"sha": "c8d138131427c0035011c4878044effc737d4b18",
+"url": "https://api.github.com/repos/earthtojake/text-to-cad/git/trees/c8d138131427c0035011c4878044effc737d4b18"
+},
+{
+"path": "skills/bambu-labs/agents/openai.yaml",
+"mode": "100644",
+"type": "blob",
+"sha": "1b2756cb7968e26766c698df23038b34158f825a",
+"size": 218,
+"url": "https://api.github.com/repos/earthtojake/text-to-cad/git/blobs/1b2756cb7968e26766c698df23038b34158f825a"
+},
+{
+"path": "skills/cad/LICENSE",
+"mode": "100644",
+"type": "blob",
+"sha": "30be518b2415d9a7514d4bfb879c157d18673b6b",
+"size": 1074,
+"url": "https://api.github.com/repos/earthtojake/text-to-cad/git/blobs/30be518b2415d9a7514d4bfb879c157d18673b6b"
+},
+{
+"path": "skills/cad/SKILL.md",
+"mode": "100644",
+"type": "blob",
+"sha": "0d9a997c6e088243a103a6d4eb8e2a2bfd729778",
+"size": 11088,
+"url": "https://api.github.com/repos/earthtojake/text-to-cad/git/blobs/0d9a997c6e088243a103a6d4eb8e2a2bfd729778"
+},
+{
+"path": "skills/cad/agents",
+"mode": "040000",
+"type": "tree",
+"sha": "8d5ac8c1568c00dd225f5c9c01c1b6b7142e2eb6",
+"url": "https://api.github.com/repos/earthtojake/text-to-cad/git/trees/8d5ac8c1568c00dd225f5c9c01c1b6b7142e2eb6"
+},
+{
+"path": "skills/cad/agents/openai.yaml",
+"mode": "100644",
+"type": "blob",
+"sha": "127367f1faee21a5dfdb3953ebddbc9d97bfdef2",
+"size": 287,
+"url": "https://api.github.com/repos/earthtojake/text-to-cad/git/blobs/127367f1faee21a5dfdb3953ebddbc9d97bfdef2"
+},
+{
+"path": "skills/cad/references",
+"mode": "040000",
+"type": "tree",
+"sha": "c28fb100bfda1e7b55bef3d9c174ba1f97d0b375",
+"url": "https://api.github.com/repos/earthtojake/text-to-cad/git/trees/c28fb100bfda1e7b55bef3d9c174ba1f97d0b375"
+},
+{
+"path": "skills/cad/references/animation-deformation.md",
+"mode": "100644",
+"type": "blob",
+"sha": "8df9a03db22052c97978583ee0de594bf57a3821",
+"size": 3622,
+"url": "https://api.github.com/repos/earthtojake/text-to-cad/git/blobs/8df9a03db22052c97978583ee0de594bf57a3821"
+},
+{
+"path": "skills/cad/references/build123d-modeling.md",
+"mode": "100644",
+"type": "blob",
+"sha": "a6b59746894b295ebbd697f755383d2afe5695ba",
+"size": 11128,
+"url": "https://api.github.com/repos/earthtojake/text-to-cad/git/blobs/a6b59746894b295ebbd697f755383d2afe5695ba"
+},
+{
+"path": "skills/cad/references/cad-brief.md",
+"mode": "100644",
+"type": "blob",
+"sha": "7d88f3cdcb34824eb111cd1cc0d53139ece58845",
+"size": 2085,
+"url": "https://api.github.com/repos/earthtojake/text-to-cad/git/blobs/7d88f3cdcb34824eb111cd1cc0d53139ece58845"
+},
+{
+"path": "skills/cad/references/inspection-and-validation.md",
+"mode": "100644",
+"type": "blob",
+"sha": "ffc090cd065af474ed136dc4f8dc9c281575ea69",
+"size": 11794,
+"url": "https://api.github.com/repos/earthtojake/text-to-cad/git/blobs/ffc090cd065af474ed136dc4f8dc9c281575ea69"
+},
+{
+"path": "skills/cad/references/kinematics.md",
+"mode": "100644",
+"type": "blob",
+"sha": "894fff5c643db6cb76e8831f259d3a04f16d86b4",
+"size": 19492,
+"url": "https://api.github.com/repos/earthtojake/text-to-cad/git/blobs/894fff5c643db6cb76e8831f259d3a04f16d86b4"
+},
+{
+"path": "skills/cad/references/migrations.md",
+"mode": "100644",
+"type": "blob",
+"sha": "4bf6d7447fd24d305320bd53b66c7fc891cb18ec",
+"size": 4463,
+"url": "https://api.github.com/repos/earthtojake/text-to-cad/git/blobs/4bf6d7447fd24d305320bd53b66c7fc891cb18ec"
+},
+{
+"path": "skills/cad/references/positioning.md",
+"mode": "100644",
+"type": "blob",
+"sha": "6b0410f6fdf06dbeef47937ebd0962cbe38fb598",
+"size": 5812,
+"url": "https://api.github.com/repos/earthtojake/text-to-cad/git/blobs/6b0410f6fdf06dbeef47937ebd0962cbe38fb598"
+},
+{
+"path": "skills/cad/references/project-layout.md",
+"mode": "100644",
+"type": "blob",
+"sha": "f4edce9847c727a97d52abe096b4d0857a3deff0",
+"size": 8964,
+"url": "https://api.github.com/repos/earthtojake/text-to-cad/git/blobs/f4edce9847c727a97d52abe096b4d0857a3deff0"
+},
+{
+"path": "skills/cad/references/project-template.md",
+"mode": "100644",
+"type": "blob",
+"sha": "59f5e143989ddcc88a3f2c652293aa6f6d275d58",
+"size": 4636,
+"url": "https://api.github.com/repos/earthtojake/text-to-cad/git/blobs/59f5e143989ddcc88a3f2c652293aa6f6d275d58"
+},
+{
+"path": "skills/cad/references/repair-loop.md",
+"mode": "100644",
+"type": "blob",
+"sha": "c9aa3b8d7a650796a32fed5c4fd096ab53f49e63",
+"size": 3849,
+"url": "https://api.github.com/repos/earthtojake/text-to-cad/git/blobs/c9aa3b8d7a650796a32fed5c4fd096ab53f49e63"
+},
+{
+"path": "skills/cad/references/snapshot-review.md",
+"mode": "100644",
+"type": "blob",
+"sha": "4849484f3880eb86f68b04ac050f0e2a167ca2ba",
+"size": 14525,
+"url": "https://api.github.com/repos/earthtojake/text-to-cad/git/blobs/4849484f3880eb86f68b04ac050f0e2a167ca2ba"
+},
+{
+"path": "skills/cad/references/step-generation.md",
+"mode": "100644",
+"type": "blob",
+"sha": "efe909e46d820de276735c732a7b3e1400b7661d",
+"size": 26555,
+"url": "https://api.github.com/repos/earthtojake/text-to-cad/git/blobs/efe909e46d820de276735c732a7b3e1400b7661d"
+},
+{
+"path": "skills/cad/references/supported-exports.md",
+"mode": "100644",
+"type": "blob",
+"sha": "64448b9b470840eb6a296814b2b16f7f992c853e",
+"size": 10070,
+"url": "https://api.github.com/repos/earthtojake/text-to-cad/git/blobs/64448b9b470840eb6a296814b2b16f7f992c853e"
+},
+{
+"path": "skills/cad/requirements.txt",
+"mode": "100644",
+"type": "blob",
+"sha": "2a0e1aca050ad601ba4c0dce3882e710904c6f26",
+"size": 25,
+"url": "https://api.github.com/repos/earthtojake/text-to-cad/git/blobs/2a0e1aca050ad601ba4c0dce3882e710904c6f26"
+}
+],
+"truncated": false
+}

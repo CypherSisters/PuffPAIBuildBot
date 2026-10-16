@@ -1,0 +1,65 @@
+{
+  "kiwix": {
+    "url": "",
+    "timeout": 10,
+    "_note": "Kiwix HTTP server optional -- offline ZIM packs are read via paths.zim_dirs"
+  },
+  "ollama": {
+    "url": "http://localhost:11434",
+    "model": "qwen2.5:7b-instruct",
+    "temperature": 0.6,
+    "num_ctx": 8192,
+    "num_predict": 512,
+    "_model_note": "Any Ollama instruct model works. Pick one that fits your local VRAM/RAM budget."
+  },
+  "nabu": {
+    "enabled": false,
+    "ha_voice_pipeline": "puffpai_voice",
+    "wake_word": "hey puffpai",
+    "voice_max_length": 500
+  },
+  "api_server": {
+    "host": "127.0.0.1",
+    "port": 8000,
+    "_note": "Bind address for `puffpai serve`. Keep host on 127.0.0.1 unless you intend to expose the API on your LAN."
+  },
+  "dashboard": {
+    "_note": "Where the Next.js dashboard is served. The wizard's closing message and anything else that hands the owner off reads this. Set 'url' if you run it somewhere other than the default; PUFFPAI_DASHBOARD_URL overrides both.",
+    "url": "",
+    "host": "localhost",
+    "port": 3003
+  },
+  "identity": {
+    "name": "PuffPAI",
+    "avatar_style": "notionists",
+    "avatar_seed": "PuffPAI"
+  },
+  "models": {
+    "llm_gguf_path": "",
+    "vosk_model_dir": "models/vosk-model-en-us",
+    "piper_model_path": "models/en_US-hfc_female-medium.onnx",
+    "wake_word_model_path": "models/hey_puffpai.tflite",
+    "embedding_model": "all-MiniLM-L6-v2",
+    "llm_n_ctx": 2048,
+    "llm_n_gpu_layers": 0,
+    "_note": "llm_gguf_path selects the llama.cpp backend when set; otherwise Ollama is used."
+  },
+  "paths": {
+    "zim_dirs": [],
+    "zim_files": [],
+    "chromadb_path": "./kiwix_rag_db",
+    "vault_data_dir": "vault_data",
+    "chat_history_dir": "chat_history",
+    "feedback_data_path": "feedback_data.jsonl"
+  },
+  "knowledge": {
+    "zim_dir": "",
+    "auto_index": true,
+    "_note": "Point zim_dir at the folder holding your .zim knowledge packs. With auto_index on, new packs dropped there are indexed in the background on startup. See docs/KNOWLEDGE_PACKS.md for a starter catalog."
+  },
+  "web_search_consent": false,
+  "location": "",
+  "egress_doors": {
+    "_note": "Named doors to the public internet. The keys are DELIBERATELY ABSENT here rather than shipped as false: an explicit value in this file outranks the build manifest, so shipping 'weather': false would silently override an owner who chose that door in the wizard. Absent means 'ask the manifest', and the manifest's default is shut. 'puffpai setup' writes the real table here once you answer the posture step. A door can ONLY open on a build whose run posture is 'enumerated' (build_manifest.json -> posture.run_egress): under 'sealed' or 'island' a true here changes nothing. PUFFPAI_EGRESS_<DOOR> in the environment overrides this file. Doors in this build: weather, air_quality, news_rss. See src/puffpai/security/egress_doors.py for what each one sends."
+  }
+}

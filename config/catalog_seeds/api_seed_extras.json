@@ -1,0 +1,15 @@
+{
+ "schema": "api_seed_extras/v1",
+ "_maintainer_note": "Optional notes on rows of apis.json, kept beside it so its snapshot vectors stay as they are. time_base: each answer row's moment is the answer's own start time (start, read with format, in zone) plus the row's offset field in unit; the made view shows it in the owner's own time. value_words: words for a field's scale values, as [upper bound, words] steps, lowest first (from the service's own documentation).",
+ "rows": {
+  "seventimer": {
+   "time_base": {"start": "init", "format": "%Y%m%d%H", "zone": "UTC", "offset": "timepoint", "unit": "hours"},
+   "value_words": {
+    "cloudcover": [[2, "clear"], [4, "mostly clear"], [6, "partly cloudy"], [8, "mostly cloudy"], [9, "overcast"]],
+    "seeing": [[1, "excellent"], [3, "good"], [5, "fair"], [7, "poor"], [8, "bad"]],
+    "transparency": [[1, "excellent"], [3, "good"], [5, "fair"], [7, "poor"], [8, "bad"]],
+    "wind10m.speed": [[1, "calm"], [2, "light"], [3, "moderate"], [4, "fresh"], [5, "strong"], [6, "gale"], [7, "storm"], [8, "hurricane"]]
+   }
+  }
+ }
+}

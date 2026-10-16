@@ -1,0 +1,31 @@
+{
+  "schema": "rulepack/v1",
+  "surface": "action",
+  "category": "action",
+  "route": "agent",
+  "min_tier": "light",
+  "order": 60,
+  "match": "substring",
+  "blurb": "Small jobs done with a tool rather than talked about: arithmetic and reading or writing a file.",
+  "title": "Quick jobs",
+  "examples": [
+    "calculate 17 times 4",
+    "compute the total for me",
+    "what is the sum of those numbers",
+    "multiply 12 by 8",
+    "divide 144 by 12",
+    "save to my project notes"
+  ],
+  "keywords": [
+    "calculate",
+    "compute",
+    "multiply",
+    "divide",
+    "sum of",
+    "create file",
+    "write file",
+    "save to",
+    "read file",
+    "open file"
+  ]
+}

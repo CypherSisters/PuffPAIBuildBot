@@ -1,0 +1,222 @@
+{
+"total_count": 4606,
+"items": [
+{
+"name": "wedding-event-management-group15-project1-icp7",
+"full_name": "Prajyot5015/wedding-event-management-group15-project1-icp7",
+"owner": {
+"login": "Prajyot5015"
+},
+"private": false,
+"description": "Wedding-Planner",
+"html_url": "https://github.com/Prajyot5015/wedding-event-management-group15-project1-icp7",
+"homepage": "https://weddiing-planner.netlify.app/",
+"stargazers_count": 10,
+"pushed_at": "2024-02-12T13:13:43Z",
+"archived": false,
+"fork": false,
+"license": null,
+"size": 12146,
+"language": "HTML",
+"topics": [],
+"default_branch": "master"
+},
+{
+"name": "wedding-planner",
+"full_name": "wedding-planner-app/wedding-planner",
+"owner": {
+"login": "wedding-planner-app"
+},
+"private": false,
+"description": "MAJOR PROJECT #2- Summer weddings are in full swing!! To help make wedding planning easier, we would like to develop a wedding planner web application that will help any wedding planner easily plan and organize all the details surrounding the big day. ",
+"html_url": "https://github.com/wedding-planner-app/wedding-planner",
+"homepage": "https://wedding-planner-platform.herokuapp.com/",
+"stargazers_count": 25,
+"pushed_at": "2020-08-10T16:41:36Z",
+"archived": false,
+"fork": false,
+"license": {
+"spdx_id": "MIT",
+"name": "MIT License"
+},
+"size": 15778,
+"language": "JavaScript",
+"topics": [],
+"default_branch": "master"
+},
+{
+"name": "Wedding-Planner",
+"full_name": "nonomu/Wedding-Planner",
+"owner": {
+"login": "nonomu"
+},
+"private": false,
+"description": "We Do - wedding management platform",
+"html_url": "https://github.com/nonomu/Wedding-Planner",
+"homepage": "",
+"stargazers_count": 12,
+"pushed_at": "2023-01-11T03:53:30Z",
+"archived": false,
+"fork": false,
+"license": null,
+"size": 51409,
+"language": "JavaScript",
+"topics": [
+"mobx",
+"mysql",
+"node-js",
+"react"
+],
+"default_branch": "master"
+},
+{
+"name": "wedding-tables-planner-web",
+"full_name": "juanignaciosl/wedding-tables-planner-web",
+"owner": {
+"login": "juanignaciosl"
+},
+"private": false,
+"description": "AngularJS, Play and Scala web interface to Wedding Tables Planner",
+"html_url": "https://github.com/juanignaciosl/wedding-tables-planner-web",
+"homepage": null,
+"stargazers_count": 21,
+"pushed_at": "2015-08-17T21:29:28Z",
+"archived": false,
+"fork": false,
+"license": {
+"spdx_id": "NOASSERTION",
+"name": "Other"
+},
+"size": 70198,
+"language": "JavaScript",
+"topics": [],
+"default_branch": "master"
+},
+{
+"name": "MultiAgent_Wedding_Planner_With_Langchain",
+"full_name": "Mohamad-Hachem/MultiAgent_Wedding_Planner_With_Langchain",
+"owner": {
+"login": "Mohamad-Hachem"
+},
+"private": false,
+"description": null,
+"html_url": "https://github.com/Mohamad-Hachem/MultiAgent_Wedding_Planner_With_Langchain",
+"homepage": null,
+"stargazers_count": 17,
+"pushed_at": "2026-08-21T13:38:30Z",
+"archived": false,
+"fork": false,
+"license": null,
+"size": 904,
+"language": "Python",
+"topics": [],
+"default_branch": "main"
+},
+{
+"name": "The-wedding-Story-book",
+"full_name": "vrushalikhedkar/The-wedding-Story-book",
+"owner": {
+"login": "vrushalikhedkar"
+},
+"private": false,
+"description": "The wedding planner website",
+"html_url": "https://github.com/vrushalikhedkar/The-wedding-Story-book",
+"homepage": "https://theweddingstorybook.netlify.app",
+"stargazers_count": 2,
+"pushed_at": "2023-06-05T16:06:46Z",
+"archived": false,
+"fork": false,
+"license": null,
+"size": 212910,
+"language": "HTML",
+"topics": [],
+"default_branch": "main"
+},
+{
+"name": "wedding-tables-planner",
+"full_name": "juanignaciosl/wedding-tables-planner",
+"owner": {
+"login": "juanignaciosl"
+},
+"private": false,
+"description": "Wedding Tables Planner (loved, known and hated guests) powered by OptaPlanner",
+"html_url": "https://github.com/juanignaciosl/wedding-tables-planner",
+"homepage": null,
+"stargazers_count": 15,
+"pushed_at": "2014-05-26T17:49:59Z",
+"archived": false,
+"fork": false,
+"license": null,
+"size": 129,
+"language": "Java",
+"topics": [],
+"default_branch": "master"
+},
+{
+"name": "wedding-planner",
+"full_name": "CatherineEvelyn/wedding-planner",
+"owner": {
+"login": "CatherineEvelyn"
+},
+"private": false,
+"description": "Wedding Planner Web",
+"html_url": "https://github.com/CatherineEvelyn/wedding-planner",
+"homepage": null,
+"stargazers_count": 2,
+"pushed_at": "2018-02-04T18:33:44Z",
+"archived": false,
+"fork": false,
+"license": null,
+"size": 14804,
+"language": "CSS",
+"topics": [],
+"default_branch": "master"
+},
+{
+"name": "App_Wedding",
+"full_name": "mdipietro09/App_Wedding",
+"owner": {
+"login": "mdipietro09"
+},
+"private": false,
+"description": "Wedding Planner Web App",
+"html_url": "https://github.com/mdipietro09/App_Wedding",
+"homepage": "https://app-wedding-planner.herokuapp.com/",
+"stargazers_count": 7,
+"pushed_at": "2021-06-14T20:03:22Z",
+"archived": false,
+"fork": false,
+"license": null,
+"size": 38,
+"language": "Python",
+"topics": [
+"dash",
+"data-visualization",
+"python",
+"web-application",
+"web-development"
+],
+"default_branch": "master"
+},
+{
+"name": "Wedding-Planner",
+"full_name": "Akramovic1/Wedding-Planner",
+"owner": {
+"login": "Akramovic1"
+},
+"private": false,
+"description": "The website offers a full wedding package that initially concerns the reservation of weddings and offers all its features to the customers specifying the location , schedule, capacity and other features like photographers, singers and make-up artists. The application mainly consists of two types of users. The first type is the customer who needs the service. The other type is the person who offers the service. The application mainly links the person who needs the service to the person offering it by displaying to the customers all the offers provided by the service providers and he chooses one offer from them and the application ensures the connection between both users.",
+"html_url": "https://github.com/Akramovic1/Wedding-Planner",
+"homepage": "",
+"stargazers_count": 5,
+"pushed_at": "2022-05-08T15:42:07Z",
+"archived": false,
+"fork": false,
+"license": null,
+"size": 63478,
+"language": "Vue",
+"topics": [],
+"default_branch": "main"
+}
+]
+}

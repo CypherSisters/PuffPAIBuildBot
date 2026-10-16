@@ -1,0 +1,12 @@
+Home
+News
+Hacker News
+Show HN: a tiny search engine
+Weather
+London 14 C, light rain
+Markets
+S&P 500 5,120.33
+Videos
+ERROR
+Releases
+glanceapp/glance v0.8.0

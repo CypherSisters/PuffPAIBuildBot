@@ -1,0 +1,150 @@
+{
+  "name": "PuffPAI - Daily Briefing",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "daily-briefing",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "wh-brief-1",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [250, 300],
+      "webhookId": "daily-briefing"
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "=https://api.weather.gov/points/{{ $json.body.lat || '0' }},{{ $json.body.lon || '0' }}",
+        "options": {}
+      },
+      "id": "brief-weather-1",
+      "name": "Weather Lookup",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [480, 150]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "={{ $json.properties.forecast }}",
+        "options": {}
+      },
+      "id": "brief-forecast-1",
+      "name": "Get Forecast",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [710, 150]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "=http://localhost:8000/apps/calendar/data",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-API-Key",
+              "value": "={{ $node['Webhook'].json.body.api_key || '' }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "brief-cal-1",
+      "name": "Get Calendar",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [480, 350]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml",
+        "options": {}
+      },
+      "id": "brief-news-1",
+      "name": "Get News",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [480, 520]
+    },
+    {
+      "parameters": {
+        "jsCode": "const forecast = $('Get Forecast').first().json?.properties?.periods || [];\nconst calData = $('Get Calendar').first().json || {};\nconst newsRaw = $('Get News').first().json || '';\n\n// Weather\nconst today = forecast[0] || {};\nconst tonight = forecast[1] || {};\n\n// Calendar\nconst now = new Date();\nconst todayStr = now.toDateString();\nconst events = (calData.events || []).filter(e => {\n  const d = new Date(e.date || e.start);\n  return d.toDateString() === todayStr;\n});\nconst tasks = (calData.tasks || []).filter(t => t.status !== 'done');\nconst meds = calData.meds || [];\n\n// News (basic RSS parsing)\nconst newsText = typeof newsRaw === 'string' ? newsRaw : JSON.stringify(newsRaw);\nconst titles = (newsText.match(/<title>([^<]+)<\\/title>/g) || []).slice(1, 6).map(t => t.replace(/<\\/?title>/g, ''));\n\n// Time greeting\nconst hour = now.getHours();\nlet greeting = 'Good morning';\nif (hour >= 12 && hour < 17) greeting = 'Good afternoon';\nelse if (hour >= 17) greeting = 'Good evening';\n\nconst dateStr = now.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });\n\nconst briefing = [\n  `${greeting}! Here's your briefing for ${dateStr}:`,\n  '',\n  `WEATHER: ${today.shortForecast || 'Unavailable'}, ${today.temperature || '?'}°${today.temperatureUnit || 'F'}. Tonight: ${tonight.shortForecast || '?'}, ${tonight.temperature || '?'}°.`,\n  '',\n  `TODAY'S EVENTS (${events.length}):`,\n  events.length ? events.map(e => `  - ${e.time || ''} ${e.title || e.name}`).join('\\n') : '  No events today.',\n  '',\n  `PENDING TASKS (${tasks.length}):`,\n  tasks.length ? tasks.slice(0, 5).map(t => `  - ${t.title || t.name} (due: ${t.due || 'no date'})`).join('\\n') : '  All caught up!',\n  '',\n  `MEDICATIONS:`,\n  meds.length ? meds.map(m => `  - ${m.name}: ${m.dose} (${m.frequency})`).join('\\n') : '  None tracked.',\n  '',\n  `TOP HEADLINES:`,\n  titles.length ? titles.map((t, i) => `  ${i+1}. ${t}`).join('\\n') : '  No news available.'\n].join('\\n');\n\nreturn {\n  json: {\n    greeting: greeting,\n    date: dateStr,\n    briefing_text: briefing,\n    weather: {\n      forecast: today.shortForecast,\n      temperature: today.temperature,\n      unit: today.temperatureUnit,\n      tonight: tonight.shortForecast\n    },\n    calendar: {\n      events_today: events.length,\n      pending_tasks: tasks.length,\n      events: events,\n      tasks: tasks.slice(0, 5)\n    },\n    meds: meds,\n    news: titles,\n    generated_at: now.toISOString()\n  }\n};"
+      },
+      "id": "compile-brief-1",
+      "name": "Compile Briefing",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [940, 350]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "respond-brief-1",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [1170, 350]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          { "node": "Weather Lookup", "type": "main", "index": 0 },
+          { "node": "Get Calendar", "type": "main", "index": 0 },
+          { "node": "Get News", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Weather Lookup": {
+      "main": [
+        [
+          { "node": "Get Forecast", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Get Forecast": {
+      "main": [
+        [
+          { "node": "Compile Briefing", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Get Calendar": {
+      "main": [
+        [
+          { "node": "Compile Briefing", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Get News": {
+      "main": [
+        [
+          { "node": "Compile Briefing", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Compile Briefing": {
+      "main": [
+        [
+          { "node": "Respond to Webhook", "type": "main", "index": 0 }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "tags": [
+    { "name": "puffpai" },
+    { "name": "briefing" },
+    { "name": "automation" }
+  ]
+}

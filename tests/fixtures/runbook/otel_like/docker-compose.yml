@@ -1,0 +1,15 @@
+services:
+  ad:
+    image: example/ad:1
+    ports:
+      - "9464:9464"
+  frontend:
+    image: example/frontend:1
+  frontend-proxy:
+    image: example/envoy:1
+    ports:
+      - "${ENVOY_PORT:-8080}:${ENVOY_PORT:-8080}"
+  otel-collector:
+    image: example/collector:1
+    ports:
+      - "4317:4317"

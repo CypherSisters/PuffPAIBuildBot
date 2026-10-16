@@ -1,0 +1,5 @@
+#EXTM3U
+#EXTINF:-1 tvg-id="nasa.us" tvg-logo="https://example.org/logos/nasa.png" group-title="Science",NASA Live
+https://example.org/live/nasa/master.m3u8
+#EXTINF:-1 tvg-id="iss.us" tvg-logo="https://example.org/logos/iss.png" group-title="Science",Space Station View
+https://example.org/live/iss/index.m3u8

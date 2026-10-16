@@ -1,0 +1,20 @@
+{"total_count": 3, "incomplete_results": false, "items": [
+ {"name": "weather-hub", "full_name": "lingfeng-dev/weather-hub",
+  "owner": {"login": "lingfeng-dev"}, "private": false,
+  "description": "一个简单的天气看板，支持多个城市，数据来自公开的天气接口",
+  "html_url": "https://github.com/lingfeng-dev/weather-hub",
+  "stargazers_count": 412, "pushed_at": "2026-08-30T03:11:02Z", "archived": false,
+  "fork": false, "license": {"spdx_id": "MIT"}, "language": "Vue", "topics": []},
+ {"name": "tiempo", "full_name": "sol-y-nube/tiempo",
+  "owner": {"login": "sol-y-nube"}, "private": false,
+  "description": "Un panel del tiempo para tu ciudad con la temperatura de cada día",
+  "html_url": "https://github.com/sol-y-nube/tiempo",
+  "stargazers_count": 150, "pushed_at": "2026-07-01T00:00:00Z", "archived": false,
+  "fork": false, "license": {"spdx_id": "MIT"}, "language": "Vue", "topics": []},
+ {"name": "skycast", "full_name": "mara-builds/skycast",
+  "owner": {"login": "mara-builds"}, "private": false,
+  "description": "A tiny weather board for your town, with the high and low for each day",
+  "html_url": "https://github.com/mara-builds/skycast",
+  "stargazers_count": 97, "pushed_at": "2026-09-12T10:00:00Z", "archived": false,
+  "fork": false, "license": {"spdx_id": "Apache-2.0"}, "language": "TypeScript", "topics": []}
+]}

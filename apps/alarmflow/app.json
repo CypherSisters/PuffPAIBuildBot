@@ -1,0 +1,54 @@
+{
+  "schema": "puffpai_app/v1",
+  "id": "alarmflow",
+  "name": "AlarmFlow",
+  "blurb": "Alarms and timers, with the sound played on this box.",
+  "version": "1.0.0",
+  "author": "Cypher Sisters",
+  "license": "Apache-2.0",
+  "order": 10,
+
+  "surfaces": ["comms.timers"],
+
+  "data": { "default": { "items": [], "last_updated": "" } },
+
+  "ui": { "route": "/dashboard/apps/alarmflow", "icon": "mdiAlarmLight" },
+
+  "vocabulary": {
+    "keywords": [
+      "timer",
+      "alarm",
+      "countdown",
+      "remind me in",
+      "remind me to",
+      "set a timer",
+      "set an alarm"
+    ],
+    "examples": [
+      "set a timer for ten minutes",
+      "remind me to call the vet at four"
+    ]
+  },
+
+  "actions": [
+    { "id": "alarm_create_timer", "says": "set a timer for ten minutes" },
+    { "id": "alarm_create_alarm", "says": "set an alarm for six in the morning" },
+    { "id": "alarm_list", "says": "what timers are running" },
+    { "id": "alarm_snooze", "says": "snooze the alarm for ten minutes" },
+    { "id": "alarm_pause", "says": "pause the pasta timer" },
+    { "id": "alarm_resume", "says": "resume the pasta timer" },
+    { "id": "alarm_dismiss", "says": "stop the pasta timer" }
+  ],
+
+  "doors": [
+    {
+      "hosts": [],
+      "purpose": "None. Alarms and timers are kept and rung on this box.",
+      "data_sent_plain": "nothing"
+    }
+  ],
+  "credential": { "kind": "none" },
+  "children": { "may_be_used_by_minor": true },
+
+  "requires": { "home_assistant": false, "network": false, "ollama": false }
+}

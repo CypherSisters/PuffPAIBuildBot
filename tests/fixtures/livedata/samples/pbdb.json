@@ -1,0 +1,15 @@
+{
+"elapsed_time":0.00261,
+"records": [
+{"oid":"txn:427309","flg":"IF","rnk":"genus","nam":"Bellatoripes","att":"McCrea et al. 2014","par":"txn:427308","rid":"ref:73950","ext":"0","noc":1},
+{"oid":"txn:142075","flg":"IF","rnk":"genus","nam":"Tyrannosauripus","att":"Lockley and Hunt 1994","par":"txn:427308","rid":"ref:29230","ext":"0","noc":2},
+{"oid":"txn:38607","rnk":"genus","nam":"Albertosaurus","att":"Osborn 1905","par":"txn:67658","rid":"ref:9259","ext":"0","noc":32},
+{"oid":"txn:53193","rnk":"genus","nam":"Gorgosaurus","att":"Lambe 1914","par":"txn:67658","rid":"ref:17547","ext":"0","noc":20},
+{"oid":"txn:289801","rnk":"genus","nam":"Nanuqsaurus","att":"Fiorillo and Tykoski 2014","par":"txn:65352","rid":"ref:50357","ext":"0","noc":1},
+{"oid":"txn:163807","rnk":"genus","nam":"Bistahieversor","att":"Carr and Williamson 2010","par":"txn:503935","rid":"ref:32137","ext":"0","noc":4},
+{"oid":"txn:38627","rnk":"genus","nam":"Labocania","att":"Molnar 1974","par":"txn:503935","rid":"ref:14601","ext":"0","noc":2},
+{"oid":"txn:435346","rnk":"genus","nam":"Dynamoterror","att":"McDonald et al. 2018","par":"txn:503935","rid":"ref:76219","ext":"0","noc":1},
+{"oid":"txn:176780","rnk":"genus","nam":"Teratophoneus","att":"Carr et al. 2011","par":"txn:503935","rid":"ref:35113","ext":"0","noc":3},
+{"oid":"txn:294659","rnk":"genus","nam":"Lythronax","att":"Loewen et al. 2013","par":"txn:65352","rid":"ref:51074","ext":"0","noc":1}
+]
+}

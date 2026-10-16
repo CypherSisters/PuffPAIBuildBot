@@ -1,0 +1,225 @@
+{
+ "note": "The 12 discovery-bar goals of the Phase B directive, section 2 (wedding, chess, nursing, garden, fitness, D&D, bakery, car, Spanish, dog and cat care, family budget, band). Texts for 10 are from tests/fixtures/tuning_goals.json; chess and nursing are the texts the slice verifier used. For measuring only.",
+ "goals": [
+  {
+   "id": "wedding",
+   "text": "I want to build a wedding planner bot. My brother just got engaged and there is a lot to do and plan. I'll need to be able to track themes from pictures, come up with ideas, find wedding vendors and materials to rent, plan the budget, and do a whole wedding plan.",
+   "personal": [
+    "brother",
+    "engaged"
+   ],
+   "gold": [
+    "mood board of themes from pictures",
+    "idea generator",
+    "vendor finder",
+    "rentals and materials finder",
+    "budget tracker",
+    "checklist and timeline",
+    "guest list and RSVPs",
+    "seating chart"
+   ]
+  },
+  {
+   "id": "chess",
+   "text": "I want a chess coach bot for my grandson Theo. He is 8 and just joined the chess club at his school in Fresno. I want to play practice games against it on a real board, work through chess puzzles, learn the openings, and keep a record of his tournament games.",
+   "personal": [
+    "grandson",
+    "Theo",
+    "8",
+    "Fresno"
+   ],
+   "gold": [
+    "play practice games against the computer",
+    "chess puzzles",
+    "opening trainer",
+    "game record and PGN viewer",
+    "chess board"
+   ]
+  },
+  {
+   "id": "nursing",
+   "text": "I'm in nursing school at Ohio State and my big pharmacology exam is on November 14. My roommate Priya and I want a study buddy bot with a pomodoro timer, flashcards for drug names, a to-do list for our assignments, and a way to track how many hours we studied each week.",
+   "personal": [
+    "Ohio State",
+    "November",
+    "14",
+    "roommate",
+    "Priya"
+   ],
+   "gold": [
+    "pomodoro timer",
+    "flashcards with spaced repetition",
+    "to-do list",
+    "study hours tracker",
+    "drug reference"
+   ]
+  },
+  {
+   "id": "garden",
+   "text": "I want a garden helper bot. My husband and I just moved to Tucson and I want to grow tomatoes, peppers and herbs in raised beds. Remind me when to water, tell me what to plant each month, and help me figure out what is eating my kale.",
+   "personal": [
+    "husband",
+    "Tucson",
+    "moved"
+   ],
+   "gold": [
+    "planting calendar by month",
+    "watering reminders",
+    "weather and frost",
+    "pest and disease identification",
+    "plant care guide",
+    "garden bed layout",
+    "harvest log"
+   ]
+  },
+  {
+   "id": "fitness",
+   "text": "Build me a fitness coach bot. I'm 42 and training for a 10k in March with my friend Dana. I need to log my runs and lifts, follow a training plan, track my weight and sleep, and get reminded to stretch.",
+   "personal": [
+    "42",
+    "March",
+    "Dana",
+    "friend"
+   ],
+   "gold": [
+    "workout log",
+    "running training plan",
+    "strength training plan",
+    "weight tracking",
+    "sleep tracking",
+    "stretching reminders",
+    "progress charts",
+    "exercise library"
+   ]
+  },
+  {
+   "id": "dnd",
+   "text": "I run a Dungeons & Dragons campaign for my kids and their friends every Saturday. I want a bot that helps me track initiative and hit points, roll dice, make up NPCs and loot, keep session notes, and look up spells and monster stats.",
+   "personal": [
+    "kids",
+    "friends",
+    "Saturday"
+   ],
+   "gold": [
+    "initiative and hit point tracker",
+    "dice roller",
+    "NPC generator",
+    "loot generator",
+    "session notes",
+    "spell lookup",
+    "monster stat lookup",
+    "maps"
+   ]
+  },
+  {
+   "id": "bakery",
+   "text": "My mom and I are opening a small bakery called Sweet Rise in Portland next spring. I want a bot that helps with recipes and costing, taking custom cake orders, scheduling the morning bake, tracking ingredients and suppliers, and posting to Instagram.",
+   "personal": [
+    "mom",
+    "Sweet Rise",
+    "Portland",
+    "spring"
+   ],
+   "gold": [
+    "recipe book with scaling",
+    "recipe costing",
+    "custom order taking",
+    "bake schedule",
+    "ingredient inventory",
+    "supplier list",
+    "social media posting",
+    "sales and bookkeeping"
+   ]
+  },
+  {
+   "id": "car",
+   "text": "I want a car bot for my 2014 Honda Civic and my daughter's 2019 Toyota Corolla. Track oil changes and tire rotations, remind me about registration in October, look up recalls, and help me figure out warning lights.",
+   "personal": [
+    "2014",
+    "2019",
+    "daughter",
+    "October"
+   ],
+   "gold": [
+    "maintenance log",
+    "service reminders",
+    "registration and paperwork reminders",
+    "recall lookup",
+    "warning light and trouble code explainer",
+    "fuel and cost tracking",
+    "repair manuals"
+   ]
+  },
+  {
+   "id": "spanish",
+   "text": "I'm going to Mexico City with my partner in June and want a Spanish tutor bot. Help me practice conversation, drill vocabulary with flashcards, correct my grammar, and teach me phrases for restaurants and taxis.",
+   "personal": [
+    "Mexico City",
+    "partner",
+    "June"
+   ],
+   "gold": [
+    "conversation practice",
+    "vocabulary flashcards with spaced repetition",
+    "grammar correction",
+    "travel phrasebook",
+    "pronunciation practice",
+    "dictionary lookup",
+    "progress tracking"
+   ]
+  },
+  {
+   "id": "pet",
+   "text": "We adopted a rescue beagle named Biscuit and we have two cats. I want a pet bot that tracks vet visits, vaccines and medications, feeding schedules, reminds my son to walk the dog, and tells me which foods are toxic for dogs and cats.",
+   "personal": [
+    "Biscuit",
+    "son"
+   ],
+   "gold": [
+    "vet visit log",
+    "vaccine and medication tracker",
+    "feeding schedule",
+    "walk and chore reminders",
+    "toxic food lookup",
+    "pet health guide",
+    "weight tracking"
+   ]
+  },
+  {
+   "id": "budget",
+   "text": "Help me build a family budget bot. My husband and I have three kids and I want to track spending from our bank exports, set monthly budgets by category, plan for Christmas and summer camp, pay down the credit card, and see charts of where the money goes.",
+   "personal": [
+    "husband",
+    "three kids",
+    "Christmas"
+   ],
+   "gold": [
+    "import bank transactions",
+    "categorize spending",
+    "monthly category budgets",
+    "savings goals for planned events",
+    "debt payoff plan",
+    "spending charts",
+    "bill reminders"
+   ]
+  },
+  {
+   "id": "band",
+   "text": "My band The Loose Screws practices every Tuesday in Jake's garage. I want a bot that keeps our setlists and song charts, tracks who knows which songs, has a metronome and tuner, schedules gigs, and splits the money from shows.",
+   "personal": [
+    "The Loose Screws",
+    "Tuesday",
+    "Jake"
+   ],
+   "gold": [
+    "setlist manager",
+    "song charts and chord sheets",
+    "who knows which song tracker",
+    "metronome",
+    "tuner",
+    "gig and rehearsal calendar",
+    "money split and expenses"
+   ]
+  }
+ ]
+}

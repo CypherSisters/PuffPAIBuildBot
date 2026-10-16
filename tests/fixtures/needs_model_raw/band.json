@@ -1,0 +1,183 @@
+{
+ "goal_id": "band",
+ "model": "qwen2.5:7b-instruct",
+ "prompt_tag": "v5",
+ "at": "2026-09-27T00:31:22",
+ "timing": {
+  "wall_s": 11.15,
+  "first_token_s": 0.14,
+  "first_job_s": 2.39,
+  "load_s": 0.01,
+  "prompt_tokens": 715,
+  "prompt_s": 0.04,
+  "out_tokens": 503,
+  "gen_s": 11.01,
+  "tok_per_s": 45.7,
+  "done_reason": "stop"
+ },
+ "raw": "{\"kind\": \"band practice helper\", \"asked\": [\"keeps setlists\", \"tracks songs\", \"has metronome\", \"tuner\", \"schedules gigs\", \"splits money\"], \"also_needed\": [\"reminds practice times\", \"manages band members\"], \"jobs\": [{\"name\": \"setlist manager\", \"does\": \"stores and organizes band setlists\", \"parts\": [{\"kind\": \"code-app\", \"search\": [\"setlist manager\", \"music setlist\"]}]}, {\"name\": \"song tracker\", \"does\": \"tracks which band members know which songs\", \"parts\": [{\"kind\": \"code-app\", \"search\": [\"song knowledge tracker\", \"musician song tracker\"]}]}, {\"name\": \"metronome\", \"does\": \"provides a metronome for practice\", \"parts\": [{\"kind\": \"device\", \"search\": [\"metronome app\", \"digital metronome\"]}]}, {\"name\": \"tuner\", \"does\": \"provides a tuner for practice\", \"parts\": [{\"kind\": \"device\", \"search\": [\"tuner app\", \"digital tuner\"]}]}, {\"name\": \"gig scheduler\", \"does\": \"schedules band gigs\", \"parts\": [{\"kind\": \"code-app\", \"search\": [\"gig scheduler\", \"band gig planner\"]}]}, {\"name\": \"money splitter\", \"does\": \"calculates and splits money from shows\", \"parts\": [{\"kind\": \"code-app\", \"search\": [\"band money splitter\", \"musician earnings calculator\"]}]}, {\"name\": \"practice reminder\", \"does\": \"reminds the band of practice times\", \"parts\": [{\"kind\": \"code-app\", \"search\": [\"practice reminder\", \"band practice reminder\"]}]}, {\"name\": \"member management\", \"does\": \"manages band members and their availability\", \"parts\": [{\"kind\": \"code-app\", \"search\": [\"band member tracker\", \"musician availability\"]}]}, {\"name\": \"live-info\", \"does\": \"provides current information about venue availability and show dates\", \"parts\": [{\"kind\": \"live-info\", \"search\": [\"venue availability\", \"show dates\"]}]}, {\"name\": \"knowledge\", \"does\": \"provides guides on band management and practice tips\", \"parts\": [{\"kind\": \"knowledge\", \"search\": [\"band management guide\", \"practice tips\"]}]}]}",
+ "parsed": {
+  "kind": "band practice helper",
+  "asked": [
+   "keeps setlists",
+   "tracks songs",
+   "has metronome",
+   "tuner",
+   "schedules gigs",
+   "splits money"
+  ],
+  "also_needed": [
+   "reminds practice times",
+   "manages band members"
+  ],
+  "jobs": [
+   {
+    "name": "setlist manager",
+    "does": "stores and organizes band setlists",
+    "parts": [
+     {
+      "kind": "code-app",
+      "search": [
+       "setlist manager",
+       "music setlist"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "song tracker",
+    "does": "tracks which band members know which songs",
+    "parts": [
+     {
+      "kind": "code-app",
+      "search": [
+       "song knowledge tracker",
+       "musician song tracker"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "metronome",
+    "does": "provides a metronome for practice",
+    "parts": [
+     {
+      "kind": "device",
+      "search": [
+       "metronome app",
+       "digital metronome"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "tuner",
+    "does": "provides a tuner for practice",
+    "parts": [
+     {
+      "kind": "device",
+      "search": [
+       "tuner app",
+       "digital tuner"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "gig scheduler",
+    "does": "schedules band gigs",
+    "parts": [
+     {
+      "kind": "code-app",
+      "search": [
+       "gig scheduler",
+       "band gig planner"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "money splitter",
+    "does": "calculates and splits money from shows",
+    "parts": [
+     {
+      "kind": "code-app",
+      "search": [
+       "band money splitter",
+       "musician earnings calculator"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "practice reminder",
+    "does": "reminds the band of practice times",
+    "parts": [
+     {
+      "kind": "code-app",
+      "search": [
+       "practice reminder",
+       "band practice reminder"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "member management",
+    "does": "manages band members and their availability",
+    "parts": [
+     {
+      "kind": "code-app",
+      "search": [
+       "band member tracker",
+       "musician availability"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "live-info",
+    "does": "provides current information about venue availability and show dates",
+    "parts": [
+     {
+      "kind": "live-info",
+      "search": [
+       "venue availability",
+       "show dates"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "knowledge",
+    "does": "provides guides on band management and practice tips",
+    "parts": [
+     {
+      "kind": "knowledge",
+      "search": [
+       "band management guide",
+       "practice tips"
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "check": {
+  "valid": true,
+  "kind": "band practice helper",
+  "jobs": 10,
+  "jobs_in_range": true,
+  "phrases": 20,
+  "unique_phrases": 20,
+  "parts_with_bad_phrase_count": 0,
+  "kinds": {
+   "code-app": 6,
+   "device": 2,
+   "live-info": 1,
+   "knowledge": 1
+  },
+  "leaks": [],
+  "kind_leak": []
+ }
+}

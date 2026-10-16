@@ -1,0 +1,143 @@
+name: Mac
+
+# The only real Mac proof we have: a macOS 14 Apple silicon runner installs
+# BuildBot from nothing the way a tester's Mac does (no Python, Node.js or
+# Ollama of its own), starts it, stops it, and runs the tests about the
+# installer, the Mac paths, what the bot starts and the apps it runs here.
+#
+# macOS minutes cost ten Linux minutes on a private repository, so this runs
+# only when something it covers changes, or by hand. The whole test suite on
+# the Mac (about 50 minutes, so about 500 billed) is by hand only: Actions,
+# Mac, Run workflow, tick "the whole test suite".
+
+on:
+  push:
+    paths:
+      - "install.sh"
+      - "scripts/install_tools.sh"
+      - "setup.py"
+      - "requirements.txt"
+      - "dashboard/package.json"
+      - "dashboard/package-lock.json"
+      - "src/puffpai/security/host_programs.py"
+      - "src/puffpai/start_cli.py"
+      - "src/puffpai/remove_cli.py"
+      - "src/puffpai/procflags.py"
+      - "src/puffpai/deps.py"
+      - "src/puffpai/webapps/host.py"
+      - "src/puffpai/integrate/run_here.py"
+      - "src/puffpai/assemble/server/**"
+      - "src/puffpai/assemble/glue_runtime/**"
+      - "tests/test_install_*.py"
+      - "tests/test_integrate_run_here.py"
+      - ".github/workflows/mac.yml"
+  pull_request:
+    paths:
+      - "install.sh"
+      - "scripts/install_tools.sh"
+      - "setup.py"
+      - "requirements.txt"
+      - ".github/workflows/mac.yml"
+  workflow_dispatch:
+    inputs:
+      full_suite:
+        description: "Also run the whole test suite on the Mac (about 500 billed minutes)"
+        type: boolean
+        default: false
+
+concurrency:
+  group: mac-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  mac:
+    name: macOS 14 (Apple silicon), green install
+    runs-on: macos-14
+    timeout-minutes: 45
+    env:
+      # The runner has Homebrew's Python and Node.js; setup acts as if it
+      # had none, so it downloads exactly what a tester's Mac gets.
+      PUFFPAI_INSTALL_PRETEND_MISSING: python,node,ollama
+      PYTHON_KEYRING_BACKEND: keyring.backends.fail.Keyring
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install from nothing (stops before any AI model)
+        run: bash install.sh --no-questions --yes-install-tools --with-dev --port 18300 --dashboard-port 13300
+
+      - name: What it made
+        run: |
+          set -eu
+          TOOLS="$HOME/Library/Application Support/PuffPAI-tools"
+          ENV_FILE="$HOME/Library/Application Support/PuffPAI/buildbot.env"
+          real="$(venv/bin/python -c 'import os, sys; print(os.path.realpath(sys.executable))')"
+          case "$real" in "$TOOLS/python-3.12.15-20261003/"*) ;; *) echo "venv Python is $real"; exit 1 ;; esac
+          grep -qx "$TOOLS/node-v24.21.0-darwin-arm64/bin/node" node_path.txt
+          # The env file holds the key: only grep -q it, never print it.
+          grep -qx "PUFFPAI_OLLAMA_BIN=$TOOLS/ollama-0.40.2/ollama" "$ENV_FILE"
+          grep -qx "PUFFPAI_NODE_HOME=$TOOLS/node-v24.21.0-darwin-arm64" "$ENV_FILE"
+          test "$(stat -f '%Lp' "$ENV_FILE")" = "600"
+          test -f dashboard/.next/BUILD_ID
+          # The downloaded Python checks https certificates with no extra setup.
+          venv/bin/python -c "import urllib.request; urllib.request.urlopen('https://nodejs.org/dist/index.json', timeout=30).read(1)"
+          test -x "Start BuildBot.command" && test -x "Stop BuildBot.command"
+          /usr/bin/codesign --verify --strict \
+            -R='anchor apple generic and certificate leaf[subject.OU] = "3MU9H2V9Y9"' \
+            "$TOOLS/ollama-0.40.2/ollama"
+          if xattr -r "$TOOLS" | grep -q com.apple.quarantine; then echo "quarantine left"; exit 1; fi
+
+      - name: A second run downloads nothing
+        run: |
+          set -eu
+          bash install.sh --no-questions --port 18300 --dashboard-port 13300 > second-run.txt
+          grep -q "Python 3.12.15 is already in" second-run.txt || grep -q "Using Python 3.12.15" second-run.txt
+          if grep -q "Downloading" second-run.txt; then cat second-run.txt; exit 1; fi
+
+      - name: Start and stop from the double-click files
+        run: |
+          set -eu
+          PUFFPAI_NO_BROWSER=1 bash "Start BuildBot.command"
+          curl -fsS --max-time 5 http://127.0.0.1:18300/health > /dev/null
+          curl -fsS --max-time 5 http://127.0.0.1:11434/api/version
+          # Everything listens on this computer only.
+          if lsof -nP -iTCP -sTCP:LISTEN | awk 'NR > 1 {print $9}' \
+               | grep -E ':(18300|13300|11434)$' | grep -vE '^(127\.0\.0\.1|\[::1\]):'; then
+            echo "something listens beyond this computer"; exit 1
+          fi
+          bash "Stop BuildBot.command"
+          sleep 3
+          if curl -fsS --max-time 2 http://127.0.0.1:18300/health; then echo "bot still up"; exit 1; fi
+          if curl -fsS --max-time 2 http://127.0.0.1:11434/api/version; then echo "Ollama still up"; exit 1; fi
+          if pgrep -f "puffpai serve --host 127.0.0.1 --port 18300"; then echo "bot process left"; exit 1; fi
+
+      - name: Tests (installer, Mac paths, what the bot starts, apps run here)
+        run: >-
+          venv/bin/python -m pytest -q -rfE -p no:cacheprovider
+          tests/test_install_tools_sh.py tests/test_install_frontdoor.py
+          tests/test_install_scripts.py tests/test_installer_node_and_remove.py
+          tests/test_install_pointer.py tests/test_per_build_secrets.py
+          tests/test_host_programs_full_paths.py tests/test_skill_missing_deps.py tests/test_procflags.py
+          tests/test_start_cli.py tests/test_app_host_static_paths.py tests/test_webapp_host_headers.py
+          tests/test_release_ollama_url_env.py tests/test_release_defaults.py
+          tests/test_integrate_run_here.py tests/test_run_here_deps_app_keys.py
+          tests/test_assemble_server.py tests/test_assemble_server_frame.py
+          tests/test_assemble_glue.py tests/test_assemble_glue_network.py
+
+      - name: The whole test suite (by hand only)
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.full_suite }}
+        run: venv/bin/python -m pytest -q -rfE -p no:cacheprovider
+
+      - name: Keep the logs when something failed
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mac-logs
+          # Logs only: never buildbot.env (it holds this run's key).
+          path: |
+            ~/Library/Application Support/PuffPAI/logs/
+            second-run.txt
+          if-no-files-found: ignore
+          retention-days: 7

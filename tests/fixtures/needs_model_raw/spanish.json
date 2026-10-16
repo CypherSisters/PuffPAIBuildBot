@@ -1,0 +1,170 @@
+{
+ "goal_id": "spanish",
+ "model": "qwen2.5:7b-instruct",
+ "prompt_tag": "v5",
+ "at": "2026-09-27T00:30:38",
+ "timing": {
+  "wall_s": 12.37,
+  "first_token_s": 0.11,
+  "first_job_s": 2.71,
+  "load_s": 0.0,
+  "prompt_tokens": 706,
+  "prompt_s": 0.04,
+  "out_tokens": 564,
+  "gen_s": 12.28,
+  "tok_per_s": 45.9,
+  "done_reason": "stop"
+ },
+ "raw": "{\n  \"kind\": \"spanish tutor bot\",\n  \"asked\": [\n    \"practice conversation\",\n    \"drill vocabulary\",\n    \"correct grammar\",\n    \"teach phrases\"\n  ],\n  \"also_needed\": [\n    \"translate\",\n    \"create schedule\"\n  ],\n  \"jobs\": [\n    {\n      \"name\": \"practice conversation\",\n      \"does\": \"facilitate real-time conversation practice with a native speaker.\",\n      \"parts\": [\n        {\n          \"kind\": \"code-app\",\n          \"search\": [\"language exchange app\", \"conversation practice bot\"]\n        },\n        {\n          \"kind\": \"knowledge\",\n          \"search\": [\"conversation practice techniques\", \"language learning methods\"]\n        }\n      ]\n    },\n    {\n      \"name\": \"drill vocabulary\",\n      \"does\": \"generate and manage flashcards for vocabulary practice.\",\n      \"parts\": [\n        {\n          \"kind\": \"code-app\",\n          \"search\": [\"flashcard app\", \"vocabulary trainer\"]\n        },\n        {\n          \"kind\": \"data-template\",\n          \"search\": [\"vocabulary list\", \"word bank\"]\n        }\n      ]\n    },\n    {\n      \"name\": \"correct grammar\",\n      \"does\": \"provide feedback on grammar and sentence structure.\",\n      \"parts\": [\n        {\n          \"kind\": \"code-app\",\n          \"search\": [\"grammar checker\", \"language correction tool\"]\n        },\n        {\n          \"kind\": \"knowledge\",\n          \"search\": [\"grammar rules\", \"language learning resources\"]\n        }\n      ]\n    },\n    {\n      \"name\": \"teach phrases\",\n      \"does\": \"teach common phrases for specific situations.\",\n      \"parts\": [\n        {\n          \"kind\": \"code-app\",\n          \"search\": [\"language learning app\", \"phrasebook app\"]\n        },\n        {\n          \"kind\": \"knowledge\",\n          \"search\": [\"common phrases\", \"language learning guides\"]\n        }\n      ]\n    },\n    {\n      \"name\": \"translate\",\n      \"does\": \"translate text between English and Spanish.\",\n      \"parts\": [\n        {\n          \"kind\": \"code-app\",\n          \"search\": [\"translation app\", \"language translator\"]\n        },\n        {\n          \"kind\": \"knowledge\",\n          \"search\": [\"translation techniques\", \"language learning resources\"]\n        }\n      ]\n    },\n    {\n      \"name\": \"create schedule\",\n      \"does\": \"help create a study schedule for the trip.\",\n      \"parts\": [\n        {\n          \"kind\": \"code-app\",\n          \"search\": [\"schedule planner\", \"time management app\"]\n        },\n        {\n          \"kind\": \"data-template\",\n          \"search\": [\"study schedule\", \"planner template\"]\n        }\n      ]\n    }\n  ]\n}",
+ "parsed": {
+  "kind": "spanish tutor bot",
+  "asked": [
+   "practice conversation",
+   "drill vocabulary",
+   "correct grammar",
+   "teach phrases"
+  ],
+  "also_needed": [
+   "translate",
+   "create schedule"
+  ],
+  "jobs": [
+   {
+    "name": "practice conversation",
+    "does": "facilitate real-time conversation practice with a native speaker.",
+    "parts": [
+     {
+      "kind": "code-app",
+      "search": [
+       "language exchange app",
+       "conversation practice bot"
+      ]
+     },
+     {
+      "kind": "knowledge",
+      "search": [
+       "conversation practice techniques",
+       "language learning methods"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "drill vocabulary",
+    "does": "generate and manage flashcards for vocabulary practice.",
+    "parts": [
+     {
+      "kind": "code-app",
+      "search": [
+       "flashcard app",
+       "vocabulary trainer"
+      ]
+     },
+     {
+      "kind": "data-template",
+      "search": [
+       "vocabulary list",
+       "word bank"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "correct grammar",
+    "does": "provide feedback on grammar and sentence structure.",
+    "parts": [
+     {
+      "kind": "code-app",
+      "search": [
+       "grammar checker",
+       "language correction tool"
+      ]
+     },
+     {
+      "kind": "knowledge",
+      "search": [
+       "grammar rules",
+       "language learning resources"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "teach phrases",
+    "does": "teach common phrases for specific situations.",
+    "parts": [
+     {
+      "kind": "code-app",
+      "search": [
+       "language learning app",
+       "phrasebook app"
+      ]
+     },
+     {
+      "kind": "knowledge",
+      "search": [
+       "common phrases",
+       "language learning guides"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "translate",
+    "does": "translate text between English and Spanish.",
+    "parts": [
+     {
+      "kind": "code-app",
+      "search": [
+       "translation app",
+       "language translator"
+      ]
+     },
+     {
+      "kind": "knowledge",
+      "search": [
+       "translation techniques",
+       "language learning resources"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "create schedule",
+    "does": "help create a study schedule for the trip.",
+    "parts": [
+     {
+      "kind": "code-app",
+      "search": [
+       "schedule planner",
+       "time management app"
+      ]
+     },
+     {
+      "kind": "data-template",
+      "search": [
+       "study schedule",
+       "planner template"
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "check": {
+  "valid": true,
+  "kind": "spanish tutor bot",
+  "jobs": 6,
+  "jobs_in_range": true,
+  "phrases": 24,
+  "unique_phrases": 23,
+  "parts_with_bad_phrase_count": 0,
+  "kinds": {
+   "code-app": 6,
+   "knowledge": 4,
+   "data-template": 2
+  },
+  "leaks": [],
+  "kind_leak": []
+ }
+}

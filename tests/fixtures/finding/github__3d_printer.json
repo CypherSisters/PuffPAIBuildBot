@@ -1,0 +1,260 @@
+{
+"total_count": 12834,
+"items": [
+{
+"name": "klipper",
+"full_name": "Klipper3d/klipper",
+"owner": {
+"login": "Klipper3d"
+},
+"private": false,
+"description": "Klipper is a 3d-printer firmware",
+"html_url": "https://github.com/Klipper3d/klipper",
+"homepage": null,
+"stargazers_count": 11927,
+"pushed_at": "2026-09-30T22:38:23Z",
+"archived": false,
+"fork": false,
+"license": {
+"spdx_id": "GPL-3.0",
+"name": "GNU General Public License v3.0"
+},
+"size": 253291,
+"language": "C",
+"topics": [],
+"default_branch": "master"
+},
+{
+"name": "Voron-2",
+"full_name": "VoronDesign/Voron-2",
+"owner": {
+"login": "VoronDesign"
+},
+"private": false,
+"description": "Voron 2 CoreXY 3D Printer design",
+"html_url": "https://github.com/VoronDesign/Voron-2",
+"homepage": null,
+"stargazers_count": 4546,
+"pushed_at": "2025-05-30T18:35:52Z",
+"archived": false,
+"fork": false,
+"license": {
+"spdx_id": "GPL-3.0",
+"name": "GNU General Public License v3.0"
+},
+"size": 2294875,
+"language": null,
+"topics": [],
+"default_branch": "Voron2.4"
+},
+{
+"name": "Slic3r",
+"full_name": "slic3r/Slic3r",
+"owner": {
+"login": "slic3r"
+},
+"private": false,
+"description": "Open Source toolpath generator for 3D printers",
+"html_url": "https://github.com/slic3r/Slic3r",
+"homepage": "https://slic3r.org/",
+"stargazers_count": 3659,
+"pushed_at": "2024-06-18T02:49:57Z",
+"archived": false,
+"fork": false,
+"license": {
+"spdx_id": "AGPL-3.0",
+"name": "GNU Affero General Public License v3.0"
+},
+"size": 167468,
+"language": "C++",
+"topics": [
+"3d-printer",
+"3d-printing",
+"cam",
+"digital-fabrication",
+"stl"
+],
+"default_branch": "master"
+},
+{
+"name": "PrusaSlicer",
+"full_name": "prusa3d/PrusaSlicer",
+"owner": {
+"login": "prusa3d"
+},
+"private": false,
+"description": "G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)",
+"html_url": "https://github.com/prusa3d/PrusaSlicer",
+"homepage": "https://www.prusa3d.com/prusaslicer/",
+"stargazers_count": 9384,
+"pushed_at": "2026-09-21T14:33:18Z",
+"archived": false,
+"fork": false,
+"license": {
+"spdx_id": "AGPL-3.0",
+"name": "GNU Affero General Public License v3.0"
+},
+"size": 479621,
+"language": "C++",
+"topics": [],
+"default_branch": "master"
+},
+{
+"name": "BambuStudio",
+"full_name": "bambulab/BambuStudio",
+"owner": {
+"login": "bambulab"
+},
+"private": false,
+"description": "PC Software for BambuLab and other 3D printers",
+"html_url": "https://github.com/bambulab/BambuStudio",
+"homepage": "",
+"stargazers_count": 5083,
+"pushed_at": "2026-09-29T07:48:20Z",
+"archived": false,
+"fork": false,
+"license": {
+"spdx_id": "AGPL-3.0",
+"name": "GNU Affero General Public License v3.0"
+},
+"size": 952448,
+"language": "C++",
+"topics": [],
+"default_branch": "master"
+},
+{
+"name": "OctoPrint",
+"full_name": "OctoPrint/OctoPrint",
+"owner": {
+"login": "OctoPrint"
+},
+"private": false,
+"description": "OctoPrint is the snappy web interface for your 3D printer!",
+"html_url": "https://github.com/OctoPrint/OctoPrint",
+"homepage": "https://octoprint.org",
+"stargazers_count": 9119,
+"pushed_at": "2026-10-01T09:56:48Z",
+"archived": false,
+"fork": false,
+"license": {
+"spdx_id": "AGPL-3.0",
+"name": "GNU Affero General Public License v3.0"
+},
+"size": 60884,
+"language": "Python",
+"topics": [
+"3d-printer",
+"octoprint",
+"python",
+"raspberry-pi"
+],
+"default_branch": "dev"
+},
+{
+"name": "Cura",
+"full_name": "Ultimaker/Cura",
+"owner": {
+"login": "Ultimaker"
+},
+"private": false,
+"description": "3D printer / slicing GUI built on top of the Uranium framework",
+"html_url": "https://github.com/Ultimaker/Cura",
+"homepage": "",
+"stargazers_count": 7050,
+"pushed_at": "2026-10-01T17:06:29Z",
+"archived": false,
+"fork": false,
+"license": {
+"spdx_id": "LGPL-3.0",
+"name": "GNU Lesser General Public License v3.0"
+},
+"size": 574140,
+"language": "Python",
+"topics": [
+"3d-printing",
+"cura",
+"gcode",
+"gui",
+"pyqt6",
+"python",
+"qml",
+"slicer",
+"uranium"
+],
+"default_branch": "main"
+},
+{
+"name": "Voron-0",
+"full_name": "VoronDesign/Voron-0",
+"owner": {
+"login": "VoronDesign"
+},
+"private": false,
+"description": "Voron 0 CoreXY 3D Printer design",
+"html_url": "https://github.com/VoronDesign/Voron-0",
+"homepage": null,
+"stargazers_count": 1659,
+"pushed_at": "2024-12-16T14:35:30Z",
+"archived": false,
+"fork": false,
+"license": {
+"spdx_id": "GPL-3.0",
+"name": "GNU General Public License v3.0"
+},
+"size": 913015,
+"language": null,
+"topics": [],
+"default_branch": "Voron0.2r1"
+},
+{
+"name": "VzBoT-Vz330",
+"full_name": "VzBoT3D/VzBoT-Vz330",
+"owner": {
+"login": "VzBoT3D"
+},
+"private": false,
+"description": "The VzBot 3D-printer",
+"html_url": "https://github.com/VzBoT3D/VzBoT-Vz330",
+"homepage": "",
+"stargazers_count": 1283,
+"pushed_at": "2025-10-08T19:37:56Z",
+"archived": false,
+"fork": false,
+"license": null,
+"size": 3261473,
+"language": null,
+"topics": [],
+"default_branch": "master"
+},
+{
+"name": "OrcaSlicer",
+"full_name": "OrcaSlicer/OrcaSlicer",
+"owner": {
+"login": "OrcaSlicer"
+},
+"private": false,
+"description": "G-code generator for 3D printers (Bambu, Prusa, Voron, VzBot, RatRig, Creality, etc.)",
+"html_url": "https://github.com/OrcaSlicer/OrcaSlicer",
+"homepage": "https://www.orcaslicer.com",
+"stargazers_count": 15843,
+"pushed_at": "2026-10-04T07:50:24Z",
+"archived": false,
+"fork": false,
+"license": {
+"spdx_id": "AGPL-3.0",
+"name": "GNU Affero General Public License v3.0"
+},
+"size": 1366421,
+"language": "C++",
+"topics": [
+"3d-printer",
+"3d-printing",
+"makers",
+"orca",
+"orcaslicer",
+"slicer"
+],
+"default_branch": "main"
+}
+]
+}

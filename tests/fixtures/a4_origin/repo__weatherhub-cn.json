@@ -1,0 +1,7 @@
+{"id": 734512, "name": "weather-hub", "full_name": "lingfeng-dev/weather-hub",
+ "owner": {"login": "lingfeng-dev", "id": 90321, "type": "User"},
+ "private": false, "html_url": "https://github.com/lingfeng-dev/weather-hub",
+ "description": "一个简单的天气看板，支持多个城市",
+ "fork": false, "stargazers_count": 412, "language": "Vue",
+ "license": {"key": "mit", "name": "MIT License", "spdx_id": "MIT"},
+ "default_branch": "main", "pushed_at": "2026-08-30T03:11:02Z"}

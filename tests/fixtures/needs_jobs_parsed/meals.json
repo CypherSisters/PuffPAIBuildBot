@@ -1,0 +1,51 @@
+{
+ "goal_id": "meals",
+ "timing": {
+  "wall_s": 5.09,
+  "first_token_s": 0.06,
+  "first_job_s": 0,
+  "load_s": 0.0,
+  "prompt_tokens": 213,
+  "prompt_s": 0.04,
+  "out_tokens": 234,
+  "gen_s": 5.03,
+  "tok_per_s": 46.5,
+  "done_reason": "stop"
+ },
+ "parsed": {
+  "kind": "meal planner",
+  "asked": [
+   "plan weekly dinners",
+   "save recipes from websites",
+   "make a grocery list",
+   "use up what is in the fridge"
+  ],
+  "jobs": [
+   {
+    "name": "Weekly Dinner Planning",
+    "does": "Create a balanced weekly dinner menu for five family members."
+   },
+   {
+    "name": "Recipe Saving",
+    "does": "Automatically save recipes from provided URLs."
+   },
+   {
+    "name": "Grocery List Generation",
+    "does": "Generate a grocery list sorted by aisle for weekly meals."
+   },
+   {
+    "name": "Fridge Inventory Management",
+    "does": "Utilize existing ingredients to suggest meals and reduce waste."
+   },
+   {
+    "name": "Allergy and Dietary Compliance",
+    "does": "Ensure all planned meals comply with gluten-free and peanut-free requirements."
+   },
+   {
+    "name": "User Feedback Integration",
+    "does": "Allow users to rate and provide feedback on meals for future planning."
+   }
+  ]
+ },
+ "recall": 0.8571428571428571
+}

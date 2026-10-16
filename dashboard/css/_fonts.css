@@ -1,0 +1,34 @@
+/* Dashboard type roles, offline.
+ *
+ * app/layout.tsx once declared Fredoka / Nunito / JetBrains Mono through Next's
+ * Google-fonts helper. That helper self-hosts the files in the shipped bundle,
+ * but it *downloads* them from Google at build time — so a build on a box with
+ * no egress (which is the normal case for this product) fails with
+ * "Failed to fetch <family> from Google Fonts".
+ *
+ * So the three families are vendored into the repository instead, under
+ * app/_fonts/ (OFL 1.1 — see app/_fonts/LICENSE-fonts.txt for copyright lines
+ * and upstream URLs), and declared with next/font/local. Same design, no
+ * request, no build-time network.
+ *
+ * next/font publishes one variable per family (--font-fredoka-file etc.) on the
+ * <html> element. This file composes them into the three variables the theme
+ * actually reads, each as "our vendored file first, then the closest
+ * operating-system stack" — so if a font file ever fails to load, the role
+ * degrades to a system face rather than to a default serif.
+ *
+ * Variable names are load-bearing: css/_theme.css and a dozen pages read
+ * var(--font-fredoka) / var(--font-nunito) / var(--font-jbmono) directly.
+ */
+:root {
+  /* Display headings — the rounded, friendly role: Fredoka. */
+  --font-fredoka: var(--font-fredoka-file), "Segoe UI Variable Display",
+                  "Segoe UI Rounded", "SF Pro Rounded", "Segoe UI", system-ui,
+                  -apple-system, Roboto, "Trebuchet MS", sans-serif;
+  /* Body / UI text — Nunito. */
+  --font-nunito: var(--font-nunito-file), system-ui, -apple-system, "Segoe UI",
+                 Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  /* Stats, code and numerals — JetBrains Mono. */
+  --font-jbmono: var(--font-jbmono-file), ui-monospace, "Cascadia Mono",
+                 "Segoe UI Mono", SFMono-Regular, Consolas, Menlo, monospace;
+}

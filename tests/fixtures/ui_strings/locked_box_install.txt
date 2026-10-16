@@ -1,0 +1,217 @@
+The locked box is there but is missing parts or did not pass its safety check. It needs to be set up again.
+The locked box was set up the old way and cannot lock code in. It needs to be set up again.
+BuildBot did not understand how that folder should be shared.
+Folders on other computers or special places cannot be shared.
+That is a file, not a folder.
+That folder is not there.
+That folder holds too many files for BuildBot to check them all. Pick a smaller folder inside it.
+Only folders inside Pictures, Documents, Music, Videos, Desktop or Downloads can be shared.
+That folder holds private PuffPAI or system files, so no app can have it.
+An app can only save files in its own folder that BuildBot makes in Documents.
+BuildBot can set up a locked box for outside code later, when you pick something that needs it.
+BuildBot needs the "bubblewrap" program to run outside code. Install it with your system's package manager, then try again.
+The locked box stays off because Windows' Linux feature (WSL) is set to share this computer's own network. Its settings file, .wslconfig in your user folder, would need the usual network setting back.
+The locked box for outside code is not set up yet. Setting it up downloads about 4 MB, then about 130 MB of tools.
+Windows' Linux feature (WSL) is not turned on, and the locked box needs it. BuildBot can turn it on for you: Windows asks for your permission, then you restart the computer once.
+There is a locked box left over from a BuildBot that was deleted ({size}). Remove it?
+The locked box is ready.
+  the apps BuildBot added: {path} ({size})
+The apps BuildBot added stay in {path}, because another BuildBot on this computer may use them.
+  the locked box BuildBot set up: {distro} ({size})
+Press Enter to close this window.
+Remove all of this? Type Y and press Enter. Anything else keeps it.
+BuildBot's other files stay in {path}, because that folder is outside BuildBot's own folders.
+Deleting ...
+ done
+BuildBot is removed.
+  the BuildBot folder: {path} ({size})
+This stops your bot and its web page, then deletes:
+Nothing was removed.
+  {n} saved entries BuildBot kept in this computer's password store
+  {n} saved entries BuildBot kept in Windows Credential Manager
+  1 saved entry BuildBot kept in this computer's password store
+  1 saved entry BuildBot kept in Windows Credential Manager
+Windows is still using a file in {path}. Restart the computer, then run Remove BuildBot again.
+The removal goes on in a new window, because this window uses a file inside the BuildBot folder.
+There is nothing of BuildBot left to remove.
+The locked box and the saved entries could not be checked, so they were left as they are.
+Your own files in Pictures, Documents and other folders are not touched.
+BuildBot will not delete {path}, because it is {why}. Nothing was deleted.
+  your bot's settings, books and chats: {path} ({size})
+Stopping your bot ...
+Remove BuildBot
+To remove BuildBot, double-click Remove BuildBot.cmd in {path}.
+Your vault (your private files and keys) is deleted too, and that cannot be undone.
+  Type K to keep a copy of the vault in Documents first, or press Enter to go on.
+Kept a copy of the vault in {path}.
+The copy of the vault did not work, so nothing was removed.
+a whole drive
+a link to another place
+one of your own main folders, or holds one
+not a BuildBot folder
+This removal file belongs to a different BuildBot folder, so nothing was removed.
+Another BuildBot on this computer already set up the locked box. Say yes to let this one share it.
+The locked box is also used by another BuildBot on this computer, so it stays.
+Something else on this computer already uses the name {distro}, so BuildBot leaves it alone.
+This part needs to build or run outside code, which BuildBot only does inside its locked box on Windows or Linux.
+Windows' Linux feature (WSL) is on this computer, but the computer's virtualization setting is off, so the locked box cannot start. It is a switch in the computer's startup (BIOS) settings.
+Windows' Linux feature (WSL) is on this computer but did not answer. Restart the computer and try again.
+takes BuildBot off this computer (it asks first)
+The removal file is missing from this folder. Run install.cmd again, then try once more.
+BuildBot's own parts are missing from {path}, so it cannot remove itself. Delete that folder by hand.
+bash install.sh remove [--yes] [--keep-vault]   (takes BuildBot off this computer; it asks first)
+Node.js {version} is too old for BuildBot; it needs 22.12 or newer.
+Node.js 22.12 or newer is not on this computer. BuildBot needs it.
+would write the node program's place to {path}
+Your bot's settings stay in {path}, because they belong to another BuildBot folder.
+Your bot can now use it to: {abilities}.
+Adding {name} ...
+That file is not in the folder you gave {name}.
+{name} finished.
+{name} did not finish. Nothing in your folder was changed by BuildBot.
+BuildBot could not find that one any more. Nothing was changed.
+Putting {name} into the locked box (the exact version the plan showed) ...
+{name} did not install in the locked box. It was left out; nothing else changed.
+Reading what {name} can do ...
+{name} was left out: {reason}. Nothing else changed.
+{name} needs the locked box, which is not set up. It was left out; set up the locked box, then add it again.
+Your bot can open it for you, but cannot use it by itself yet (it works in a way BuildBot cannot drive).
+Choose a folder for {name} first, on its page.
+Added {name}. It runs in the locked box. Choose a folder for it on its page, and your bot can use it on files there.
+Use {command} on a file from its folder
+Drawbridge stopped this one: {reason}. It was not added.
+{name} took too long, so the locked box stopped it.
+{name} is waiting for the locked box.
+Finish adding {n} things that were waiting for the locked box
+Finish adding 1 thing that was waiting for the locked box
+Nothing is waiting for the locked box.
+Windows' Linux feature (WSL) is still not on, so the things that need the locked box are still waiting.
+{name} can now read the files in {folder}.
+{name} can now save files in {folder}.
+That is not a tool that can be given a folder.
+A separate, locked Linux space on this computer where outside code is built and run. It cannot see your files, your vault or the rest of this computer. About 140 MB.
+A separate, locked Linux space on this computer for outside code. About 140 MB.
+Set up the locked box for outside code (one time)
+Windows needs its Linux feature turned on first. BuildBot will ask Windows to turn it on after you say Looks good; Windows asks for permission, then you restart the computer and open BuildBot again.
+The locked box was already set up.
+Setting up the locked box stopped partway, so BuildBot took it back out. Nothing else changed.
+Checking that the locked box is locked ...
+The locked box is set up.
+Downloading the base of the locked box (about 4 MB) ...
+The download for the locked box did not work. Check the internet and try again.
+Could not set up the locked box: {message} Things that need it were left out.
+The folder for the locked box already has files in it, so BuildBot did not set it up there.
+The download for the locked box was not the one BuildBot expects, so it was not used.
+Setting up the locked box is not in this build yet.
+This needs the internet to download, and the build is offline. It was left out; you can add it later from the Add page.
+This BuildBot now shares the locked box that is already on this computer.
+Adding the tools it needs (about 130 MB) ...
+Putting the locked box in place ...
+Windows did not turn it on, so the {n} things that need it were left out. You can try again from the home page.
+Windows did not turn it on, so the 1 thing that needs it was left out. You can try again from the home page.
+Windows needs its Linux feature turned on for {n} things you picked. Windows will ask for permission when you turn it on. After that, restart the computer and open BuildBot. It will finish them then.
+Windows needs its Linux feature turned on for 1 thing you picked. Windows will ask for permission when you turn it on. After that, restart the computer and open BuildBot. It will finish it then.
+Windows is turning on its Linux feature. Restart the computer when it says it is done, then open BuildBot.
+it is not exactly the version the plan showed
+it would run its own install steps
+its parts could not all be fingerprinted
+some of its parts come from somewhere other than the package site
+its list of parts changed since it was first added
+its licence does not let everyone use it
+it points at a code project with another name
+it wants to reach the internet while it runs
+the way it would be started is not safe
+the download was not the one BuildBot expects
+This device is not paired with your bot, so it cannot say yes to this.
+The locked box is already being set up. Wait for it to finish.
+Something went wrong. Nothing half-made was kept.
+Set up the locked box for outside code? It downloads about 4 MB, then about 130 MB of tools. Type Y and press Enter. Anything else keeps things as they are.
+Remove this BuildBot's locked box? Anything BuildBot built in it goes too. Type Y and press Enter. Anything else keeps it.
+Remove the locked boxes left over from BuildBots that were deleted? Type Y and press Enter. Anything else keeps them.
+Nothing was changed.
+The locked box is removed.
+The locked box was not removed.
+Something went wrong adding this. Nothing else changed.
+Windows is still using a file in {path}, so nothing was deleted. Close the program that uses it, or restart the computer, then run Remove BuildBot again.
+Still running from it: {names}.
+BuildBot could not put back the name of {path} after checking it. It is now called {now}. Nothing was deleted. Rename it back, then run Remove BuildBot again.
+Deleting stopped part way, because Windows is still using a file in {path}.
+Deleting stopped part way, because this computer is still using a file in {path}.
+Deleting stopped part way, because something in {path} changed while it was being deleted, so BuildBot left it alone.
+Still here:
+  the rest of the BuildBot folder: {path}
+  your bot's settings, books and chats: {path}
+  your vault: {path}
+  the apps BuildBot added: {path}
+Close the program that uses it, or restart the computer, then double-click Remove BuildBot.cmd in {path} again to finish.
+Close the program that uses it, or restart the computer, then run "bash install.sh remove" in {path} again to finish.
+The locked box could not be told which of BuildBot's own folders stay private, so no folder was shared with it. Nothing ran. Try again.
+  the {n} apps this BuildBot added, in {path} ({size})
+  the 1 app this BuildBot added, in {path} ({size})
+  the 1 app or tool this BuildBot put in the locked box
+  the {n} apps and tools this BuildBot put in the locked box
+Other apps in {path} stay, because another BuildBot on this computer may use them.
+The locked box has an older copy of BuildBot's own programs, and BuildBot could not update them, so nothing runs in it. It needs to be set up again.
+It could not be built. It stopped while {step}: {cause}. It was left out; nothing else changed.
+It built, but it made no page to open, so it cannot be an app on its own (it may be a part made for another program). It was left out; nothing else changed.
+It could not be built. It stopped while copying it into the locked box: it took longer than the locked box allows. It was left out; nothing else changed.
+It could not be built. It stopped while copying it into the locked box: it needed more memory than the locked box allows. It was left out; nothing else changed.
+It could not be built. It stopped while copying it into the locked box: it needed more room than the locked box gives it. It was left out; nothing else changed.
+It could not be built. It stopped while copying it into the locked box: the locked box would not run it. It was left out; nothing else changed.
+It could not be built. It stopped while copying it into the locked box: it was made for an older version of Node (the program that builds it) than the one in the locked box. It was left out; nothing else changed.
+It could not be built. It stopped while copying it into the locked box: one of its parts has to run its own install steps, which the locked box never does. It was left out; nothing else changed.
+It could not be built. It stopped while copying it into the locked box: its list of parts does not match the project, so it cannot be built the same way twice. It was left out; nothing else changed.
+It could not be built. It stopped while copying it into the locked box: a part on its list is no longer on the package site. It was left out; nothing else changed.
+It could not be built. It stopped while copying it into the locked box: a part on the package site no longer matches its fingerprint. It was left out; nothing else changed.
+It could not be built. It stopped while copying it into the locked box: it has no build step. It was left out; nothing else changed.
+It could not be built. It stopped while copying it into the locked box: getting its parts stopped with an error. It was left out; nothing else changed.
+It could not be built. It stopped while copying it into the locked box: its own build step stopped with an error. It was left out; nothing else changed.
+It could not be built. It stopped while copying it into the locked box: BuildBot could not copy it in. It was left out; nothing else changed.
+It could not be built. It stopped while copying it into the locked box: BuildBot could not copy the finished files out. It was left out; nothing else changed.
+It could not be built. It stopped while getting its parts: it took longer than the locked box allows. It was left out; nothing else changed.
+It could not be built. It stopped while getting its parts: it needed more memory than the locked box allows. It was left out; nothing else changed.
+It could not be built. It stopped while getting its parts: it needed more room than the locked box gives it. It was left out; nothing else changed.
+It could not be built. It stopped while getting its parts: the locked box would not run it. It was left out; nothing else changed.
+It could not be built. It stopped while getting its parts: it was made for an older version of Node (the program that builds it) than the one in the locked box. It was left out; nothing else changed.
+It could not be built. It stopped while getting its parts: one of its parts has to run its own install steps, which the locked box never does. It was left out; nothing else changed.
+It could not be built. It stopped while getting its parts: its list of parts does not match the project, so it cannot be built the same way twice. It was left out; nothing else changed.
+It could not be built. It stopped while getting its parts: a part on its list is no longer on the package site. It was left out; nothing else changed.
+It could not be built. It stopped while getting its parts: a part on the package site no longer matches its fingerprint. It was left out; nothing else changed.
+It could not be built. It stopped while getting its parts: it has no build step. It was left out; nothing else changed.
+It could not be built. It stopped while getting its parts: getting its parts stopped with an error. It was left out; nothing else changed.
+It could not be built. It stopped while getting its parts: its own build step stopped with an error. It was left out; nothing else changed.
+It could not be built. It stopped while getting its parts: BuildBot could not copy it in. It was left out; nothing else changed.
+It could not be built. It stopped while getting its parts: BuildBot could not copy the finished files out. It was left out; nothing else changed.
+It could not be built. It stopped while building it: it took longer than the locked box allows. It was left out; nothing else changed.
+It could not be built. It stopped while building it: it needed more memory than the locked box allows. It was left out; nothing else changed.
+It could not be built. It stopped while building it: it needed more room than the locked box gives it. It was left out; nothing else changed.
+It could not be built. It stopped while building it: the locked box would not run it. It was left out; nothing else changed.
+It could not be built. It stopped while building it: it was made for an older version of Node (the program that builds it) than the one in the locked box. It was left out; nothing else changed.
+It could not be built. It stopped while building it: one of its parts has to run its own install steps, which the locked box never does. It was left out; nothing else changed.
+It could not be built. It stopped while building it: its list of parts does not match the project, so it cannot be built the same way twice. It was left out; nothing else changed.
+It could not be built. It stopped while building it: a part on its list is no longer on the package site. It was left out; nothing else changed.
+It could not be built. It stopped while building it: a part on the package site no longer matches its fingerprint. It was left out; nothing else changed.
+It could not be built. It stopped while building it: it has no build step. It was left out; nothing else changed.
+It could not be built. It stopped while building it: getting its parts stopped with an error. It was left out; nothing else changed.
+It could not be built. It stopped while building it: its own build step stopped with an error. It was left out; nothing else changed.
+It could not be built. It stopped while building it: BuildBot could not copy it in. It was left out; nothing else changed.
+It could not be built. It stopped while building it: BuildBot could not copy the finished files out. It was left out; nothing else changed.
+It could not be built. It stopped while copying the finished app out of the locked box: it took longer than the locked box allows. It was left out; nothing else changed.
+It could not be built. It stopped while copying the finished app out of the locked box: it needed more memory than the locked box allows. It was left out; nothing else changed.
+It could not be built. It stopped while copying the finished app out of the locked box: it needed more room than the locked box gives it. It was left out; nothing else changed.
+It could not be built. It stopped while copying the finished app out of the locked box: the locked box would not run it. It was left out; nothing else changed.
+It could not be built. It stopped while copying the finished app out of the locked box: it was made for an older version of Node (the program that builds it) than the one in the locked box. It was left out; nothing else changed.
+It could not be built. It stopped while copying the finished app out of the locked box: one of its parts has to run its own install steps, which the locked box never does. It was left out; nothing else changed.
+It could not be built. It stopped while copying the finished app out of the locked box: its list of parts does not match the project, so it cannot be built the same way twice. It was left out; nothing else changed.
+It could not be built. It stopped while copying the finished app out of the locked box: a part on its list is no longer on the package site. It was left out; nothing else changed.
+It could not be built. It stopped while copying the finished app out of the locked box: a part on the package site no longer matches its fingerprint. It was left out; nothing else changed.
+It could not be built. It stopped while copying the finished app out of the locked box: it has no build step. It was left out; nothing else changed.
+It could not be built. It stopped while copying the finished app out of the locked box: getting its parts stopped with an error. It was left out; nothing else changed.
+It could not be built. It stopped while copying the finished app out of the locked box: its own build step stopped with an error. It was left out; nothing else changed.
+It could not be built. It stopped while copying the finished app out of the locked box: BuildBot could not copy it in. It was left out; nothing else changed.
+It could not be built. It stopped while copying the finished app out of the locked box: BuildBot could not copy the finished files out. It was left out; nothing else changed.
+{name} was left out: its download grows more than 100 times bigger when it is opened, a trick harmful downloads use, so BuildBot did not open it. Nothing else changed.
+{name} was left out: its download is bigger than BuildBot takes. Nothing else changed.
+{name} was left out: its download has more files than BuildBot takes. Nothing else changed.
+{name} was left out: its download did not work. Nothing else changed.
+{name} was left out: its download could not be opened safely. Nothing else changed.

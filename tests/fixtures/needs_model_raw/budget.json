@@ -1,0 +1,213 @@
+{
+ "goal_id": "budget",
+ "model": "qwen2.5:7b-instruct",
+ "prompt_tag": "v5",
+ "at": "2026-09-27T00:31:11",
+ "timing": {
+  "wall_s": 16.3,
+  "first_token_s": 0.1,
+  "first_job_s": 2.97,
+  "load_s": 0.0,
+  "prompt_tokens": 718,
+  "prompt_s": 0.04,
+  "out_tokens": 740,
+  "gen_s": 16.2,
+  "tok_per_s": 45.7,
+  "done_reason": "stop"
+ },
+ "raw": "{\n  \"kind\": \"family budget bot\",\n  \"asked\": [\n    \"track spending\",\n    \"set monthly budgets\",\n    \"plan for Christmas\",\n    \"plan for summer camp\",\n    \"pay down credit card\",\n    \"see charts\"\n  ],\n  \"also_needed\": [\n    \"import bank data\",\n    \"send reminders\"\n  ],\n  \"jobs\": [\n    {\n      \"name\": \"import bank data\",\n      \"does\": \"connect to bank accounts and import transaction data\",\n      \"parts\": [\n        {\n          \"kind\": \"code-app\",\n          \"search\": [\"bank import\", \"bank data import\"]\n        },\n        {\n          \"kind\": \"device\",\n          \"search\": [\"smart home finance\", \"finance automation\"]\n        }\n      ]\n    },\n    {\n      \"name\": \"track spending\",\n      \"does\": \"log and categorize transactions\",\n      \"parts\": [\n        {\n          \"kind\": \"code-app\",\n          \"search\": [\"transaction tracker\", \"expense tracker\"]\n        },\n        {\n          \"kind\": \"data-template\",\n          \"search\": [\"expense log template\", \"transaction log\"]\n        }\n      ]\n    },\n    {\n      \"name\": \"set monthly budgets\",\n      \"does\": \"create and enforce monthly spending limits\",\n      \"parts\": [\n        {\n          \"kind\": \"code-app\",\n          \"search\": [\"budget planner\", \"monthly budget\"]\n        },\n        {\n          \"kind\": \"knowledge\",\n          \"search\": [\"personal finance\", \"budgeting strategies\"]\n        }\n      ]\n    },\n    {\n      \"name\": \"plan for Christmas\",\n      \"does\": \"track and allocate funds for holiday expenses\",\n      \"parts\": [\n        {\n          \"kind\": \"code-app\",\n          \"search\": [\"holiday budget planner\", \"gift budget\"]\n        },\n        {\n          \"kind\": \"data-template\",\n          \"search\": [\"holiday spending plan\", \"gift budget spreadsheet\"]\n        }\n      ]\n    },\n    {\n      \"name\": \"plan for summer camp\",\n      \"does\": \"track and allocate funds for summer activities\",\n      \"parts\": [\n        {\n          \"kind\": \"code-app\",\n          \"search\": [\"summer camp budget\", \"activity budget\"]\n        },\n        {\n          \"kind\": \"data-template\",\n          \"search\": [\"summer camp expense tracker\", \"activity budget template\"]\n        }\n      ]\n    },\n    {\n      \"name\": \"pay down credit card\",\n      \"does\": \"manage and automate credit card payments\",\n      \"parts\": [\n        {\n          \"kind\": \"code-app\",\n          \"search\": [\"credit card payment planner\", \"debt repayment\"]\n        },\n        {\n          \"kind\": \"knowledge\",\n          \"search\": [\"debt management\", \"credit card repayment strategies\"]\n        }\n      ]\n    },\n    {\n      \"name\": \"see charts\",\n      \"does\": \"generate visual representations of spending data\",\n      \"parts\": [\n        {\n          \"kind\": \"code-app\",\n          \"search\": [\"data visualization\", \"chart generator\"]\n        },\n        {\n          \"kind\": \"knowledge\",\n          \"search\": [\"data visualization techniques\", \"chart types\"]\n        }\n      ]\n    },\n    {\n      \"name\": \"send reminders\",\n      \"does\": \"notify about upcoming bills and deadlines\",\n      \"parts\": [\n        {\n          \"kind\": \"code-app\",\n          \"search\": [\"reminder app\", \"automated reminders\"]\n        },\n        {\n          \"kind\": \"knowledge\",\n          \"search\": [\"reminder strategies\", \"automated reminder systems\"]\n        }\n      ]\n    }\n  ]\n}",
+ "parsed": {
+  "kind": "family budget bot",
+  "asked": [
+   "track spending",
+   "set monthly budgets",
+   "plan for Christmas",
+   "plan for summer camp",
+   "pay down credit card",
+   "see charts"
+  ],
+  "also_needed": [
+   "import bank data",
+   "send reminders"
+  ],
+  "jobs": [
+   {
+    "name": "import bank data",
+    "does": "connect to bank accounts and import transaction data",
+    "parts": [
+     {
+      "kind": "code-app",
+      "search": [
+       "bank import",
+       "bank data import"
+      ]
+     },
+     {
+      "kind": "device",
+      "search": [
+       "smart home finance",
+       "finance automation"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "track spending",
+    "does": "log and categorize transactions",
+    "parts": [
+     {
+      "kind": "code-app",
+      "search": [
+       "transaction tracker",
+       "expense tracker"
+      ]
+     },
+     {
+      "kind": "data-template",
+      "search": [
+       "expense log template",
+       "transaction log"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "set monthly budgets",
+    "does": "create and enforce monthly spending limits",
+    "parts": [
+     {
+      "kind": "code-app",
+      "search": [
+       "budget planner",
+       "monthly budget"
+      ]
+     },
+     {
+      "kind": "knowledge",
+      "search": [
+       "personal finance",
+       "budgeting strategies"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "plan for Christmas",
+    "does": "track and allocate funds for holiday expenses",
+    "parts": [
+     {
+      "kind": "code-app",
+      "search": [
+       "holiday budget planner",
+       "gift budget"
+      ]
+     },
+     {
+      "kind": "data-template",
+      "search": [
+       "holiday spending plan",
+       "gift budget spreadsheet"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "plan for summer camp",
+    "does": "track and allocate funds for summer activities",
+    "parts": [
+     {
+      "kind": "code-app",
+      "search": [
+       "summer camp budget",
+       "activity budget"
+      ]
+     },
+     {
+      "kind": "data-template",
+      "search": [
+       "summer camp expense tracker",
+       "activity budget template"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "pay down credit card",
+    "does": "manage and automate credit card payments",
+    "parts": [
+     {
+      "kind": "code-app",
+      "search": [
+       "credit card payment planner",
+       "debt repayment"
+      ]
+     },
+     {
+      "kind": "knowledge",
+      "search": [
+       "debt management",
+       "credit card repayment strategies"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "see charts",
+    "does": "generate visual representations of spending data",
+    "parts": [
+     {
+      "kind": "code-app",
+      "search": [
+       "data visualization",
+       "chart generator"
+      ]
+     },
+     {
+      "kind": "knowledge",
+      "search": [
+       "data visualization techniques",
+       "chart types"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "send reminders",
+    "does": "notify about upcoming bills and deadlines",
+    "parts": [
+     {
+      "kind": "code-app",
+      "search": [
+       "reminder app",
+       "automated reminders"
+      ]
+     },
+     {
+      "kind": "knowledge",
+      "search": [
+       "reminder strategies",
+       "automated reminder systems"
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "check": {
+  "valid": true,
+  "kind": "family budget bot",
+  "jobs": 8,
+  "jobs_in_range": true,
+  "phrases": 32,
+  "unique_phrases": 32,
+  "parts_with_bad_phrase_count": 0,
+  "kinds": {
+   "code-app": 8,
+   "device": 1,
+   "data-template": 3,
+   "knowledge": 4
+  },
+  "leaks": [],
+  "kind_leak": []
+ }
+}

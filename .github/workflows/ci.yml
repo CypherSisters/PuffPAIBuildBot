@@ -1,0 +1,136 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+# A newer push to the same branch replaces a run still going (saves minutes).
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  python:
+    # The supported Pythons: 3.11 is the floor (tomllib, ExceptionGroup);
+    # 3.12 is the one install.sh downloads on a computer that has none.
+    name: Linux, Python ${{ matrix.python-version }}
+    # Pinned: ubuntu-latest moves to Ubuntu 26 from 2026-10-19.
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12"]
+    env:
+      PYTHON_KEYRING_BACKEND: keyring.backends.fail.Keyring
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+
+      - name: Install
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[dev]"
+
+      # Many wizard and build tests expect the reading helper (83 MB) to be on
+      # the computer, as it is on every set-up one (install.sh fetches it) and
+      # on the computers these tests were written on (~/.cache/chroma). Fetched
+      # from the one address reading_helper.py pins, checked against its
+      # SHA-256 before unpacking; reading_helper checks every file again.
+      - uses: actions/cache@v4
+        with:
+          path: ~/.cache/chroma/onnx_models/all-MiniLM-L6-v2
+          key: reading-helper-913d7300ceae3b2dbc2c50d1de4baacab4be7b9380491c27fab7418616a16ec3
+
+      - name: The reading helper
+        run: |
+          set -eu
+          d="$HOME/.cache/chroma/onnx_models/all-MiniLM-L6-v2"
+          if [ ! -f "$d/onnx/model.onnx" ]; then
+            mkdir -p "$d"
+            curl --proto '=https' --tlsv1.2 -fsSL -o "$d/onnx.tar.gz" \
+              https://chroma-onnx-models.s3.amazonaws.com/all-MiniLM-L6-v2/onnx.tar.gz
+            echo "913d7300ceae3b2dbc2c50d1de4baacab4be7b9380491c27fab7418616a16ec3  $d/onnx.tar.gz" | sha256sum -c -
+            tar -xzf "$d/onnx.tar.gz" -C "$d"
+          fi
+          python -c "from puffpai.knowledge import reading_helper as r; s = r.status(); print(s); assert s['state'] == 'ready'"
+
+      - name: Tests
+        # -rfE: the reason for every failure, listed at the end.
+        run: python -m pytest -q -rfE -p no:cacheprovider
+
+      - name: Types (reported, not yet blocking)
+        # 938 type errors (mypy 1.19, Linux, 3.11) were already in src from
+        # before this check ever ran to the end. Until
+        # they are fixed this step reports them without failing the run, so
+        # the tests above stay the signal. Make it blocking again by removing
+        # continue-on-error once the count is 0.
+        if: matrix.python-version == '3.11'
+        continue-on-error: true
+        env:
+          MYPYPATH: src
+        run: python -m mypy src
+
+  linux-green:
+    # A Linux computer with no Python or Node.js of its own: install.sh
+    # downloads the pinned, checked copies after its one yes (here the flag),
+    # builds the web page with that Node.js, and stops before any AI model.
+    # Ollama's own install script needs sudo and is not run here.
+    name: Linux, green install
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      PUFFPAI_INSTALL_PRETEND_MISSING: python,node,ollama
+      PYTHON_KEYRING_BACKEND: keyring.backends.fail.Keyring
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install from nothing
+        run: bash install.sh --no-questions --yes-install-tools --port 18300 --dashboard-port 13300
+
+      - name: What it made
+        run: |
+          set -eu
+          TOOLS="$HOME/.local/share/puffpai-tools"
+          real="$(venv/bin/python -c 'import os, sys; print(os.path.realpath(sys.executable))')"
+          case "$real" in "$TOOLS/python-3.12.15-20261003/"*) ;; *) echo "venv Python is $real"; exit 1 ;; esac
+          grep -qx "$TOOLS/node-v24.21.0-linux-x64/bin/node" node_path.txt
+          test -f dashboard/.next/BUILD_ID
+          # The downloaded Python checks https certificates with no extra setup.
+          venv/bin/python -c "import urllib.request; urllib.request.urlopen('https://nodejs.org/dist/index.json', timeout=30).read(1)"
+          test -x start-bot.sh && test -x stop-bot.sh && test -x start-ollama.sh
+          if ls ./*.command >/dev/null 2>&1; then echo "Mac files on Linux"; exit 1; fi
+
+  dashboard:
+    name: Dashboard (Node 24)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: dashboard
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          # The version install.sh downloads (scripts/install_tools.sh).
+          node-version: "24.21.0"
+          cache: npm
+          cache-dependency-path: dashboard/package-lock.json
+
+      - name: Install
+        run: npm ci
+
+      - name: Types
+        run: npx tsc --noEmit
+
+      - name: Build
+        run: npm run build

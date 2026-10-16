@@ -1,0 +1,20 @@
+{
+  "spec": {
+    "schema": "assembled_app/v1", "id": "live", "title": "Live streams", "caps": ["cap-live"],
+    "media_proxy": "/media",
+    "settings": [],
+    "sources": [{"id": "live", "kind": "http_json", "service": "streams", "url": "https://example.org/streams.json",
+      "items": "$.streams[*]", "fields": {"title": "name", "stream": "url"}}],
+    "views": [{"type": "player", "source": "live", "mode": "hls"},
+              {"type": "links", "items": [{"label": "The stream list", "url": "https://example.org/streams"}]}],
+    "actions": [{"id": "streams", "source": "live", "input": {}}],
+    "checks": []
+  },
+  "rows": {
+    "streams": [
+      {"title": "Live camera one", "stream": "https://example.org/live/one/index.m3u8"},
+      {"title": "Mission talk", "stream": "https://www.youtube.com/watch?v=abcdefghijk"},
+      {"title": "Radio", "stream": "https://example.org/radio.mp3"}
+    ]
+  }
+}

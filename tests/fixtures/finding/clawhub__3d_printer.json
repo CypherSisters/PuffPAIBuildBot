@@ -1,0 +1,187 @@
+{
+"results": [
+{
+"canonicalUrl": "/redtechsupplylabs/skills/local-3d-printer-maintenance",
+"displayName": "Local-Only 3D Printer Maintenance Assistant",
+"downloads": 736,
+"featured": false,
+"icon": "lucide:Wrench",
+"id": "clawhub:kd72hyyjg8nytswfyh1nam7hvs86zp0f",
+"install": {
+"kind": "clawhub",
+"reference": "redtechsupplylabs/local-3d-printer-maintenance",
+"sourceUrl": null
+},
+"links": {
+"canonical": "/redtechsupplylabs/skills/local-3d-printer-maintenance",
+"source": null
+},
+"metrics": {
+"bookmarks": 0,
+"rolling60DayInstalls": 1,
+"updatedAt": 1779110246766
+},
+"native": {
+"skill": {
+"isSuspicious": false,
+"stats": {
+"comments": 0,
+"downloads": 736,
+"installs": 16,
+"stars": 0,
+"versions": 1
+}
+}
+},
+"official": false,
+"ownerHandle": "redtechsupplylabs",
+"score": 5095,
+"slug": "local-3d-printer-maintenance",
+"source": "clawhub",
+"sourceIdentity": {
+"host": null,
+"id": "kd72hyyjg8nytswfyh1nam7hvs86zp0f",
+"lifetimeInstalls": null,
+"owner": "redtechsupplylabs",
+"repo": null
+},
+"summary": "Offline assistant for FDM 3D printer troubleshooting, maintenance guidance, image analysis, calibration G-code, profile management, and log export.",
+"trust": {
+"clawHubVerdict": null,
+"installability": "installable",
+"sourceFreshness": "native",
+"upstreamScanners": null,
+"visibility": "public"
+},
+"updatedAt": 1779110246766,
+"version": null,
+"owner": {
+"handle": "redtechsupplylabs",
+"displayName": "redtechsupplylabs",
+"image": "https://avatars.githubusercontent.com/u/255622393?v=4"
+}
+},
+{
+"canonicalUrl": "/g9pedro/skills/bambu",
+"displayName": "Bambu Lab 3D Printer",
+"downloads": 1555,
+"featured": false,
+"icon": null,
+"id": "clawhub:kd7d2p59pf0cs9h9bj5d4g5cxh823jjs",
+"install": {
+"kind": "clawhub",
+"reference": "g9pedro/bambu",
+"sourceUrl": null
+},
+"links": {
+"canonical": "/g9pedro/skills/bambu",
+"source": null
+},
+"metrics": {
+"bookmarks": 0,
+"rolling60DayInstalls": 0,
+"updatedAt": 1778994123550
+},
+"native": {
+"skill": {
+"isSuspicious": false,
+"stats": {
+"comments": 0,
+"downloads": 1555,
+"installs": 38,
+"stars": 2,
+"versions": 1
+}
+}
+},
+"official": false,
+"ownerHandle": "g9pedro",
+"score": 5095,
+"slug": "bambu",
+"source": "clawhub",
+"sourceIdentity": {
+"host": null,
+"id": "kd7d2p59pf0cs9h9bj5d4g5cxh823jjs",
+"lifetimeInstalls": null,
+"owner": "g9pedro",
+"repo": null
+},
+"summary": "Control Bambu Lab 3D printers (H2D, X1C, P1S, A1) via CLI. Print management, AMS filament control, temperature, fans, lights, calibration, file management, a...",
+"trust": {
+"clawHubVerdict": null,
+"installability": "installable",
+"sourceFreshness": "native",
+"upstreamScanners": null,
+"visibility": "public"
+},
+"updatedAt": 1778994123550,
+"version": null,
+"owner": {
+"handle": "g9pedro",
+"displayName": "G9Pedro",
+"image": "https://avatars.githubusercontent.com/u/78662829?v=4"
+}
+},
+{
+"canonicalUrl": "/tobiasbischoff/skills/bambu-cli",
+"displayName": "Manage Bambu Labs 3D Printers thru your Agent",
+"downloads": 4354,
+"featured": false,
+"icon": null,
+"id": "clawhub:kd75d1pnr8g79w42a71e8k96557ytcc9",
+"install": {
+"kind": "clawhub",
+"reference": "tobiasbischoff/bambu-cli",
+"sourceUrl": null
+},
+"links": {
+"canonical": "/tobiasbischoff/skills/bambu-cli",
+"source": null
+},
+"metrics": {
+"bookmarks": 0,
+"rolling60DayInstalls": 0,
+"updatedAt": 1778485729679
+},
+"native": {
+"skill": {
+"isSuspicious": false,
+"stats": {
+"comments": 0,
+"downloads": 4354,
+"installs": 143,
+"stars": 18,
+"versions": 1
+}
+}
+},
+"official": false,
+"ownerHandle": "tobiasbischoff",
+"score": 4080,
+"slug": "bambu-cli",
+"source": "clawhub",
+"sourceIdentity": {
+"host": null,
+"id": "kd75d1pnr8g79w42a71e8k96557ytcc9",
+"lifetimeInstalls": null,
+"owner": "tobiasbischoff",
+"repo": null
+},
+"summary": "Operate and troubleshoot BambuLab printers with the bambu-cli (status/watch, print start/pause/resume/stop, files, camera, gcode, AMS, calibration, motion, fans, light, config, doctor). Use when a user asks to control or monitor a BambuLab printer, set up profiles or access codes, or translate a task into safe bambu-cli commands with correct flags, output format, and confirmations.",
+"trust": {
+"clawHubVerdict": null,
+"installability": "installable",
+"sourceFreshness": "native",
+"upstreamScanners": null,
+"visibility": "public"
+},
+"updatedAt": 1778485729679,
+"version": null,
+"owner": {
+"handle": "tobiasbischoff",
+"displayName": "tobiasbischoff",
+"image": "https://avatars.githubusercontent.com/u/711564?v=4"
+}
+}
+]
+}

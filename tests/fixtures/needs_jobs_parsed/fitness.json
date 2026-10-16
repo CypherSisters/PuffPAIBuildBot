@@ -1,0 +1,56 @@
+{
+ "goal_id": "fitness",
+ "timing": {
+  "wall_s": 4.09,
+  "first_token_s": 0.06,
+  "first_job_s": 0,
+  "load_s": 0.0,
+  "prompt_tokens": 215,
+  "prompt_s": 0.04,
+  "out_tokens": 190,
+  "gen_s": 4.03,
+  "tok_per_s": 47.1,
+  "done_reason": "stop"
+ },
+ "parsed": {
+  "kind": "fitness coach",
+  "asked": [
+   "log runs",
+   "follow training plan",
+   "track weight",
+   "track sleep",
+   "remind to stretch"
+  ],
+  "jobs": [
+   {
+    "name": "Log Runs",
+    "does": "Records user's running distance and time."
+   },
+   {
+    "name": "Follow Training Plan",
+    "does": "Suggests exercises and routines based on the plan."
+   },
+   {
+    "name": "Track Weight",
+    "does": "Monitors user's weight and provides trends."
+   },
+   {
+    "name": "Track Sleep",
+    "does": "Reminds user to log sleep and tracks patterns."
+   },
+   {
+    "name": "Remind to Stretch",
+    "does": "Sends notifications to encourage stretching."
+   },
+   {
+    "name": "Provide Nutrition Tips",
+    "does": "Offers advice on diet and nutrition."
+   },
+   {
+    "name": "Motivational Messages",
+    "does": "Sends encouraging messages to keep user motivated."
+   }
+  ]
+ },
+ "recall": 0.75
+}

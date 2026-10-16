@@ -1,0 +1,406 @@
+{
+ "objects": [
+  {
+   "downloads": {
+    "monthly": 188,
+    "weekly": 3
+   },
+   "dependents": 0,
+   "updated": "2026-09-21T22:21:33.260Z",
+   "searchScore": 86.37686,
+   "package": {
+    "name": "@xuda.dev/event-wedding-planner-ai-agent",
+    "keywords": [
+     "xuda",
+     "ai-agent",
+     "cli",
+     "event-wedding-planner-ai-agent",
+     "industry-specific",
+     "events",
+     "wedding",
+     "run-sheet",
+     "budget",
+     "suppliers",
+     "guest-list",
+     "xlsx",
+     "docx"
+    ],
+    "version": "0.1.1",
+    "description": "Event & Wedding Planner",
+    "sanitized_name": "@xuda-dev/event-wedding-planner-ai-agent",
+    "license": "MIT",
+    "date": "2026-08-31T22:07:33.421Z",
+    "links": {
+     "homepage": "https://dev.xuda.ai/marketplace/agents/7fc_agn_126c24a6515c",
+     "repository": "git+https://github.com/xudaio/xuda.git",
+     "bugs": "https://github.com/xudaio/xuda/issues",
+     "npm": "https://www.npmjs.com/package/@xuda.dev/event-wedding-planner-ai-agent"
+    }
+   },
+   "score": {
+    "final": 86.37686,
+    "detail": {
+     "popularity": 1,
+     "quality": 1,
+     "maintenance": 1
+    }
+   },
+   "flags": {
+    "insecure": 0
+   }
+  },
+  {
+   "downloads": {
+    "monthly": 1065563,
+    "weekly": 337251
+   },
+   "dependents": "6",
+   "updated": "2026-09-26T19:14:19.970Z",
+   "searchScore": 82.79414,
+   "package": {
+    "name": "@apollo/query-planner",
+    "keywords": [
+     "graphql",
+     "federation",
+     "gateway",
+     "server",
+     "apollo"
+    ],
+    "version": "2.14.4",
+    "description": "Apollo Query Planner",
+    "sanitized_name": "@apollo/query-planner",
+    "license": "Elastic-2.0",
+    "date": "2026-08-18T20:28:43.997Z",
+    "links": {
+     "homepage": "https://github.com/apollographql/federation#readme",
+     "repository": "git+https://github.com/apollographql/federation.git",
+     "bugs": "https://github.com/apollographql/federation/issues",
+     "npm": "https://www.npmjs.com/package/@apollo/query-planner"
+    }
+   },
+   "score": {
+    "final": 82.79414,
+    "detail": {
+     "popularity": 1,
+     "quality": 1,
+     "maintenance": 1
+    }
+   },
+   "flags": {
+    "insecure": 0
+   }
+  },
+  {
+   "downloads": {
+    "monthly": 3355,
+    "weekly": 793
+   },
+   "dependents": 0,
+   "updated": "2026-09-25T15:52:58.057Z",
+   "searchScore": 69.63891,
+   "package": {
+    "name": "honeybook-mcp",
+    "keywords": [
+     "mcp",
+     "honeybook",
+     "wedding",
+     "contracts",
+     "invoices",
+     "model-context-protocol",
+     "claude",
+     "messages",
+     "meetings"
+    ],
+    "version": "1.2.1",
+    "description": "HoneyBook client-portal MCP server for Claude",
+    "sanitized_name": "honeybook-mcp",
+    "license": "MIT",
+    "date": "2026-09-25T15:52:26.863Z",
+    "links": {
+     "homepage": "https://github.com/chrischall/honeybook-mcp#readme",
+     "repository": "git+https://github.com/chrischall/honeybook-mcp.git",
+     "bugs": "https://github.com/chrischall/honeybook-mcp/issues",
+     "npm": "https://www.npmjs.com/package/honeybook-mcp"
+    }
+   },
+   "score": {
+    "final": 69.63891,
+    "detail": {
+     "popularity": 1,
+     "quality": 1,
+     "maintenance": 1
+    }
+   },
+   "flags": {
+    "insecure": 0
+   }
+  },
+  {
+   "downloads": {
+    "monthly": 18282,
+    "weekly": 7047
+   },
+   "dependents": 0,
+   "updated": "2026-09-26T04:34:02.601Z",
+   "searchScore": 66.43582,
+   "package": {
+    "name": "@thanh01.pmt/curriculum-kit",
+    "keywords": [],
+    "version": "1.5.27",
+    "description": "A high-fidelity AI curriculum & content generation engine powered by Vercel AI SDK, Zod, and Bloom-aligned pedagogical standards.",
+    "sanitized_name": "@thanh01-pmt/curriculum-kit",
+    "license": "MIT",
+    "date": "2026-09-26T04:33:31.537Z",
+    "links": {
+     "npm": "https://www.npmjs.com/package/@thanh01.pmt/curriculum-kit"
+    }
+   },
+   "score": {
+    "final": 66.43582,
+    "detail": {
+     "popularity": 1,
+     "quality": 1,
+     "maintenance": 1
+    }
+   },
+   "flags": {
+    "insecure": 0
+   }
+  },
+  {
+   "downloads": {
+    "monthly": 240911,
+    "weekly": 67743
+   },
+   "dependents": "5",
+   "updated": "2026-09-26T19:11:57.502Z",
+   "searchScore": 66.25841,
+   "package": {
+    "name": "jscad-planner",
+    "keywords": [],
+    "version": "0.0.14",
+    "description": "jscad-planner is a TypeScript library that allows you to serialize JSCAD operations into a JSON plan, which can be executed later. This is particularly useful for storing JSCAD operations and executing them on demand.",
+    "sanitized_name": "jscad-planner",
+    "date": "2026-02-06T21:28:04.819Z",
+    "links": {
+     "homepage": "https://github.com/tscircuit/jscad-planner#readme",
+     "repository": "git+https://github.com/tscircuit/jscad-planner.git",
+     "bugs": "https://github.com/tscircuit/jscad-planner/issues",
+     "npm": "https://www.npmjs.com/package/jscad-planner"
+    }
+   },
+   "score": {
+    "final": 66.25841,
+    "detail": {
+     "popularity": 1,
+     "quality": 1,
+     "maintenance": 1
+    }
+   },
+   "flags": {
+    "insecure": 0
+   }
+  },
+  {
+   "downloads": {
+    "monthly": 2797,
+    "weekly": 660
+   },
+   "dependents": 0,
+   "updated": "2026-09-25T15:52:50.548Z",
+   "searchScore": 63.457603,
+   "package": {
+    "name": "zola-mcp",
+    "keywords": [
+     "mcp",
+     "zola",
+     "wedding",
+     "wedding-planning",
+     "model-context-protocol",
+     "claude",
+     "ai",
+     "vendors",
+     "registry",
+     "guests",
+     "budget",
+     "seating",
+     "rsvp"
+    ],
+    "version": "2.1.4",
+    "description": "Zola wedding MCP server for Claude",
+    "sanitized_name": "zola-mcp",
+    "license": "MIT",
+    "date": "2026-09-25T15:52:19.230Z",
+    "links": {
+     "homepage": "https://github.com/chrischall/zola-mcp#readme",
+     "repository": "git+https://github.com/chrischall/zola-mcp.git",
+     "bugs": "https://github.com/chrischall/zola-mcp/issues",
+     "npm": "https://www.npmjs.com/package/zola-mcp"
+    }
+   },
+   "score": {
+    "final": 63.457603,
+    "detail": {
+     "popularity": 1,
+     "quality": 1,
+     "maintenance": 1
+    }
+   },
+   "flags": {
+    "insecure": 0
+   }
+  },
+  {
+   "downloads": {
+    "monthly": 73927,
+    "weekly": 20606
+   },
+   "dependents": 0,
+   "updated": "2026-09-26T19:19:08.285Z",
+   "searchScore": 62.645115,
+   "package": {
+    "name": "@metaharness/harness",
+    "keywords": [
+     "agent-harness",
+     "control-plane",
+     "metaharness",
+     "receipts",
+     "verification",
+     "circuit-breaker",
+     "contextual-bandit",
+     "consensus",
+     "governance"
+    ],
+    "version": "0.2.0",
+    "description": "Algorithmic Agent Harness (ADR-047) — a deterministic control plane that wraps any model/tool/skill as a replaceable worker: utility-scored decisions, four-gate safety, hash-chained receipts, circuit-breaker recovery, adversarial verification, and a bandi",
+    "sanitized_name": "@metaharness/harness",
+    "license": "MIT",
+    "date": "2026-08-02T16:41:35.411Z",
+    "links": {
+     "homepage": "https://github.com/ruvnet/agent-harness-generator",
+     "repository": "git+https://github.com/ruvnet/agent-harness-generator.git",
+     "bugs": "https://github.com/ruvnet/agent-harness-generator/issues",
+     "npm": "https://www.npmjs.com/package/@metaharness/harness"
+    }
+   },
+   "score": {
+    "final": 62.645115,
+    "detail": {
+     "popularity": 1,
+     "quality": 1,
+     "maintenance": 1
+    }
+   },
+   "flags": {
+    "insecure": 0
+   }
+  },
+  {
+   "downloads": {
+    "monthly": 2107,
+    "weekly": 414
+   },
+   "dependents": "0",
+   "updated": "2026-09-21T21:11:14.092Z",
+   "searchScore": 62.455982,
+   "package": {
+    "name": "@rulvar/planner",
+    "keywords": [],
+    "version": "1.253.0",
+    "description": "Rulvar flagship hybrid mode: plan agent, compileScript, WorkerSandboxRunner, self-repair loop. Plans before the run; not the PlanRunner orchestration extension, which is @rulvar/plan.",
+    "sanitized_name": "@rulvar/planner",
+    "license": "Apache-2.0",
+    "date": "2026-09-07T21:02:58.348Z",
+    "links": {
+     "homepage": "https://rulvar.com",
+     "repository": "git+https://github.com/o-stepper/rulvar.git",
+     "bugs": "https://github.com/o-stepper/rulvar/issues",
+     "npm": "https://www.npmjs.com/package/@rulvar/planner"
+    }
+   },
+   "score": {
+    "final": 62.455982,
+    "detail": {
+     "popularity": 1,
+     "quality": 1,
+     "maintenance": 1
+    }
+   },
+   "flags": {
+    "insecure": 0
+   }
+  },
+  {
+   "downloads": {
+    "monthly": 398905,
+    "weekly": 98057
+   },
+   "dependents": "2",
+   "updated": "2026-09-26T19:17:37.603Z",
+   "searchScore": 60.57882,
+   "package": {
+    "name": "oci-budget",
+    "keywords": [],
+    "version": "2.142.0",
+    "description": "OCI NodeJS client for Budget Service",
+    "sanitized_name": "oci-budget",
+    "license": "(UPL-1.0 OR Apache-2.0)",
+    "date": "2026-09-22T19:55:47.206Z",
+    "links": {
+     "homepage": "https://github.com/oracle/oci-typescript-sdk#readme",
+     "repository": "git+https://github.com/oracle/oci-typescript-sdk.git",
+     "bugs": "https://github.com/oracle/oci-typescript-sdk/issues",
+     "npm": "https://www.npmjs.com/package/oci-budget"
+    }
+   },
+   "score": {
+    "final": 60.57882,
+    "detail": {
+     "popularity": 1,
+     "quality": 1,
+     "maintenance": 1
+    }
+   },
+   "flags": {
+    "insecure": 0
+   }
+  },
+  {
+   "downloads": {
+    "monthly": 1538039,
+    "weekly": 474243
+   },
+   "dependents": "34",
+   "updated": "2026-09-26T19:11:12.385Z",
+   "searchScore": 56.811974,
+   "package": {
+    "name": "@deepseek-ai/dsh-compaction-tool-result-pruner",
+    "keywords": [],
+    "version": "0.0.1-rc.3",
+    "description": "Replay-safe model-free head/middle/tail pruning for tool-result surface nodes",
+    "sanitized_name": "@deepseek-ai/dsh-compaction-tool-result-pruner",
+    "license": "BSD-3-Clause",
+    "date": "2026-08-12T20:31:26.989Z",
+    "links": {
+     "homepage": "https://github.com/deepseek-ai/deepseek-harness#readme",
+     "repository": "git+https://github.com/deepseek-ai/deepseek-harness.git",
+     "bugs": "https://github.com/deepseek-ai/deepseek-harness/issues",
+     "npm": "https://www.npmjs.com/package/@deepseek-ai/dsh-compaction-tool-result-pruner"
+    }
+   },
+   "score": {
+    "final": 56.811974,
+    "detail": {
+     "popularity": 1,
+     "quality": 1,
+     "maintenance": 1
+    }
+   },
+   "flags": {
+    "insecure": 0
+   }
+  }
+ ],
+ "total": 10484,
+ "time": "2026-09-27T04:46:58.182Z"
+}

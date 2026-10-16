@@ -1,0 +1,201 @@
+{
+ "ok": true,
+ "jobs": [
+  {
+   "id": "guest-list",
+   "name": "Guest list",
+   "does": "Keeps the guest list and who said yes.",
+   "action": "do",
+   "subject": [
+    "guests"
+   ],
+   "output": "action",
+   "needs": [
+    "none"
+   ],
+   "ask": "Who has not answered yet?",
+   "route": "A",
+   "pick": {
+    "ref": "gh-guest-list-manager",
+    "class": "APP",
+    "score": 0.6,
+    "why": ""
+   },
+   "ingredients": [
+    "gh-guest-list-manager"
+   ],
+   "view": "app",
+   "page": "job-guest-list",
+   "status": "waiting_yes",
+   "reason": "Waits for your yes."
+  },
+  {
+   "id": "venues-near-us",
+   "name": "Venues near us",
+   "does": "Shows wedding venues on a map.",
+   "action": "show",
+   "subject": [
+    "venues"
+   ],
+   "output": "places",
+   "needs": [
+    "place",
+    "account_key"
+   ],
+   "ask": "Show venues near me.",
+   "route": "C",
+   "pick": {
+    "ref": "places-api",
+    "class": "DATA",
+    "score": 0.6,
+    "why": ""
+   },
+   "ingredients": [
+    "places-api"
+   ],
+   "view": "map",
+   "page": "job-venues-near-us",
+   "status": "needs_setup",
+   "reason": "It needs a key for the places directory."
+  },
+  {
+   "id": "reminders",
+   "name": "Reminders",
+   "does": "Reminds you of wedding tasks.",
+   "action": "remind",
+   "subject": [
+    "tasks"
+   ],
+   "output": "action",
+   "needs": [
+    "time"
+   ],
+   "ask": "Remind me to call the florist on Friday.",
+   "route": "B",
+   "pick": {
+    "ref": "builtin:routine",
+    "class": "TOOL",
+    "score": 0.6,
+    "why": ""
+   },
+   "ingredients": [
+    "builtin:routine"
+   ],
+   "view": "form",
+   "page": "job-reminders",
+   "status": "planned",
+   "reason": ""
+  }
+ ],
+ "setup": [
+  {
+   "id": "program-node",
+   "kind": "program",
+   "label": "Node.js 20",
+   "detail": "Runs Guest List Manager.",
+   "job_ids": [
+    "guest-list"
+   ],
+   "done": false
+  },
+  {
+   "id": "package-glm",
+   "kind": "package",
+   "label": "guest-list-manager from GitHub",
+   "detail": "Checked by Drawbridge.",
+   "job_ids": [
+    "guest-list"
+   ],
+   "done": false
+  },
+  {
+   "id": "key-places",
+   "kind": "key",
+   "label": "Places directory key",
+   "detail": "Goes into your vault, used only by this job.",
+   "job_ids": [
+    "venues-near-us"
+   ],
+   "done": false
+  },
+  {
+   "id": "address-places",
+   "kind": "address",
+   "label": "Allow Places directory to reach api.places.example",
+   "detail": "",
+   "job_ids": [
+    "venues-near-us"
+   ],
+   "done": false
+  },
+  {
+   "id": "home-town",
+   "kind": "setting",
+   "label": "Your home town",
+   "detail": "",
+   "job_ids": [
+    "venues-near-us"
+   ],
+   "done": true
+  }
+ ],
+ "yes": {
+  "given": false,
+  "at": "",
+  "sha": "def"
+ },
+ "dropped": [],
+ "running": false,
+ "lines": [],
+ "words": {
+  "status": {
+   "planned": "Planned",
+   "needs_setup": "Needs setup",
+   "waiting_yes": "Waiting for your yes",
+   "building": "Being built",
+   "working": "Working",
+   "not_yet": "Not yet",
+   "nothing_found": "Nothing found yet"
+  },
+  "route": {
+   "A": "Uses it as it is",
+   "B": "Connects a tool",
+   "C": "Puts together a <view>",
+   "D": "Nothing found yet"
+  },
+  "view": {
+   "gallery": "picture gallery",
+   "chart": "chart",
+   "map": "map",
+   "player": "player",
+   "list": "list",
+   "form": "form",
+   "app": "its own screen"
+  },
+  "class": {
+   "APP": "an app",
+   "TOOL": "a tool",
+   "DATA": "a source of data",
+   "TEXT": "a book",
+   "GUIDE": "a guide your bot reads"
+  }
+ },
+ "parts": {
+  "gh-guest-list-manager": {
+   "name": "Guest List Manager",
+   "class": "APP",
+   "check": {
+    "ok": true,
+    "reason": "No hidden install steps."
+   }
+  },
+  "places-api": {
+   "name": "Places directory",
+   "class": "DATA"
+  },
+  "builtin:routine": {
+   "name": "Your bot's reminders",
+   "class": "TOOL"
+  }
+ }
+}

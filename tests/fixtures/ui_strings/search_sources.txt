@@ -1,0 +1,95 @@
+GitHub asked BuildBot to slow down, so it is waiting 42 seconds.
+GitHub is busy right now, so BuildBot did not get to look there this time.
+Openverse asked BuildBot to slow down, so it is waiting 42 seconds.
+Wikimedia Commons is busy right now, so BuildBot did not get to look there this time.
+Looking on Codeberg is not in this build yet, so nothing was sent there.
+Searching online is not in this build yet, so nothing was sent.
+Free to use and change (MIT).
+Free to use and change; if you share changes, they must stay open (GPL-3.0).
+Free to use with credit (CC-BY-4.0).
+Free for personal use only (CC-BY-NC-4.0).
+A look from the tweakcn list.
+A free book by an unknown author.
+awesome-selfhosted list
+Home Assistant community add-ons (HACS)
+MCP Registry
+Our checked list of free live-info websites
+public-apis list
+apis.guru directory
+Kiwix library
+Project Gutenberg catalog
+OpenStax textbooks
+tweakcn looks
+shadcn looks
+GitHub
+Codeberg
+npm
+PyPI
+Hugging Face datasets
+Wikimedia Commons
+Openverse
+Wikipedia
+Wikibooks
+Brave web search
+Marginalia search
+GitHub project details
+GitHub project download
+GitLab
+Docker Hub
+Software Heritage
+grep.app
+Sourcegraph
+PyPI search
+Internet Archive
+Mwmbl search
+ecosyste.ms
+Gutendex live search
+Library of Congress
+Its search answers were mostly copies and download spam.
+Its search answers did not fit the jobs, and its programs need a server.
+Its free search allowance is too small for a build.
+It refused every search we tried (too many requests).
+Its public search did not return useful projects.
+Its search page asks for a browser check, so only exact names are looked up.
+Its answers were mostly spam for these searches.
+Its terms of use could not be read yet.
+It failed often; the Gutenberg catalog saved on this computer is used instead.
+Its answers did not fit the jobs.
+GitHub asked BuildBot to slow down, so it is waiting 1 second.
+BuildBot is waiting 42 seconds so it does not ask GitHub too often.
+BuildBot is waiting 1 second so it does not ask Openverse too often.
+GitHub turned BuildBot away, so it is waiting 60 seconds before it tries once more.
+Free for personal use only (CC-BY-NC-ND-4.0).
+Last changed 2019.
+Codeberg project details
+Codeberg asked BuildBot to slow down, so it is waiting 42 seconds.
+Codeberg is busy right now, so BuildBot did not get to look there this time.
+npm package details
+PyPI package details
+A picture by Jane Doe.
+A Home Assistant add-on (a connection): Local lights.
+A Home Assistant dashboard card: Shows the weather.
+A Home Assistant theme.
+A data set.
+Free to use and change (Public domain).
+A free book by an unknown author.
+Searching GitHub three times faster.
+Sign in to GitHub. A free account is enough.
+On the new token page, give the token a name such as BuildBot and pick when it runs out.
+Leave every permission off and choose Public repositories only. BuildBot only searches.
+Press Generate token and copy it.
+Free. No payment card.
+about 2 minutes
+While your GitHub key is used, GitHub can link these searches to your account.
+Codeberg asked BuildBot to slow down, so it is waiting 42 seconds.
+Looking on Hugging Face datasets is not in this build yet, so nothing was sent there.
+No readable name
+Articles such as Tea, Tea ceremony and Tea culture.
+Web search is busy right now, so BuildBot did not get to look there this time.
+Wikipedia is busy right now, so BuildBot did not get to look there this time.
+Free to use and change (MIT), check this licence yourself: the name in it has words that could limit how you use it.
+Free to use and change (MIT), check this licence yourself: it names someone other than the author.
+Free to use and change (MIT), check this licence yourself: the name in it adds words to the author's name.
+Free to use and change (MIT), check this licence yourself: it adds an address next to the author's name.
+Free to use and change (MIT), check this licence yourself: it names no one by name, only general words.
+Free to use and change (MIT), check this licence yourself: BuildBot could not match it to the author.

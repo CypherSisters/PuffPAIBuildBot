@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/">
+ <channel>
+  <title>Sky Notes</title>
+  <link>https://example.org/</link>
+  <item>
+   <title>Saturn at its brightest this week</title>
+   <link>https://example.org/saturn-brightest</link>
+   <pubDate>Tue, 07 Oct 2026 18:00:00 GMT</pubDate>
+   <description>Saturn reaches opposition, rising at sunset and staying up all night long for anyone with a small telescope.</description>
+   <media:thumbnail url="https://example.org/img/saturn.jpg"/>
+  </item>
+  <item>
+   <title>Draconid meteors peak</title>
+   <link>https://example.org/draconids</link>
+   <pubDate>Wed, 08 Oct 2026 18:00:00 GMT</pubDate>
+   <description>Look north-west after dark; the Draconids are best in the early evening this year, away from city lights.</description>
+   <media:thumbnail url="https://example.org/img/draconids.jpg"/>
+  </item>
+ </channel>
+</rss>

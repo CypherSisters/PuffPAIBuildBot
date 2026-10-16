@@ -1,0 +1,214 @@
+{
+ "goal_id": "pet",
+ "model": "qwen2.5:7b-instruct",
+ "prompt_tag": "v5",
+ "at": "2026-09-27T00:30:55",
+ "timing": {
+  "wall_s": 17.01,
+  "first_token_s": 0.09,
+  "first_job_s": 3.07,
+  "load_s": 0.01,
+  "prompt_tokens": 717,
+  "prompt_s": 0.04,
+  "out_tokens": 774,
+  "gen_s": 16.92,
+  "tok_per_s": 45.7,
+  "done_reason": "stop"
+ },
+ "raw": "{\n  \"kind\": \"pet care helper\",\n  \"asked\": [\n    \"tracks vet visits\",\n    \"vaccines\",\n    \"medications\",\n    \"feeding schedules\",\n    \"reminds son to walk the dog\",\n    \"toxic foods\"\n  ],\n  \"also_needed\": [\n    \"pet health info\",\n    \"dog and cat diet\"\n  ],\n  \"jobs\": [\n    {\n      \"name\": \"vet visit tracker\",\n      \"does\": \"records and reminds of upcoming vet visits\",\n      \"parts\": [\n        {\n          \"kind\": \"code-app\",\n          \"search\": [\"vet visit reminder\", \"pet health tracker\"]\n        },\n        {\n          \"kind\": \"data-template\",\n          \"search\": [\"vet visit log template\", \"pet health record form\"]\n        }\n      ]\n    },\n    {\n      \"name\": \"vaccine scheduler\",\n      \"does\": \"tracks and reminds of upcoming vaccinations\",\n      \"parts\": [\n        {\n          \"kind\": \"code-app\",\n          \"search\": [\"vaccine reminder\", \"pet health scheduler\"]\n        },\n        {\n          \"kind\": \"data-template\",\n          \"search\": [\"vaccine schedule template\", \"pet vaccination log\"]\n        }\n      ]\n    },\n    {\n      \"name\": \"medication manager\",\n      \"does\": \"tracks and reminds of pet medications\",\n      \"parts\": [\n        {\n          \"kind\": \"code-app\",\n          \"search\": [\"medication reminder\", \"pet health app\"]\n        },\n        {\n          \"kind\": \"data-template\",\n          \"search\": [\"medication schedule template\", \"pet medication log\"]\n        }\n      ]\n    },\n    {\n      \"name\": \"feeding schedule keeper\",\n      \"does\": \"tracks and reminds of feeding times\",\n      \"parts\": [\n        {\n          \"kind\": \"code-app\",\n          \"search\": [\"feeding reminder\", \"pet diet tracker\"]\n        },\n        {\n          \"kind\": \"data-template\",\n          \"search\": [\"feeding schedule template\", \"pet feeding log\"]\n        }\n      ]\n    },\n    {\n      \"name\": \"dog walker reminder\",\n      \"does\": \"reminds the son to walk the dog\",\n      \"parts\": [\n        {\n          \"kind\": \"code-app\",\n          \"search\": [\"dog walking reminder\", \"pet care reminder\"]\n        },\n        {\n          \"kind\": \"knowledge\",\n          \"search\": [\"pet care tips\", \"dog walking schedule\"]\n        }\n      ]\n    },\n    {\n      \"name\": \"toxic food lister\",\n      \"does\": \"provides a list of toxic foods for dogs and cats\",\n      \"parts\": [\n        {\n          \"kind\": \"knowledge\",\n          \"search\": [\"pet toxic food list\", \"dog and cat poison\"]\n        },\n        {\n          \"kind\": \"pictures\",\n          \"search\": [\"toxic pet food images\", \"pet food safety\"]\n        }\n      ]\n    },\n    {\n      \"name\": \"pet health reference\",\n      \"does\": \"provides general pet health information\",\n      \"parts\": [\n        {\n          \"kind\": \"knowledge\",\n          \"search\": [\"pet health guide\", \"dog and cat care\"]\n        },\n        {\n          \"kind\": \"live-info\",\n          \"search\": [\"pet health news\", \"veterinary advice\"]\n        }\n      ]\n    },\n    {\n      \"name\": \"pet diet planner\",\n      \"does\": \"suggests appropriate diets for pets\",\n      \"parts\": [\n        {\n          \"kind\": \"knowledge\",\n          \"search\": [\"pet diet guide\", \"dog and cat nutrition\"]\n        },\n        {\n          \"kind\": \"pictures\",\n          \"search\": [\"pet food images\", \"dog and cat diet\"]\n        }\n      ]\n    }\n  ]\n}",
+ "parsed": {
+  "kind": "pet care helper",
+  "asked": [
+   "tracks vet visits",
+   "vaccines",
+   "medications",
+   "feeding schedules",
+   "reminds son to walk the dog",
+   "toxic foods"
+  ],
+  "also_needed": [
+   "pet health info",
+   "dog and cat diet"
+  ],
+  "jobs": [
+   {
+    "name": "vet visit tracker",
+    "does": "records and reminds of upcoming vet visits",
+    "parts": [
+     {
+      "kind": "code-app",
+      "search": [
+       "vet visit reminder",
+       "pet health tracker"
+      ]
+     },
+     {
+      "kind": "data-template",
+      "search": [
+       "vet visit log template",
+       "pet health record form"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "vaccine scheduler",
+    "does": "tracks and reminds of upcoming vaccinations",
+    "parts": [
+     {
+      "kind": "code-app",
+      "search": [
+       "vaccine reminder",
+       "pet health scheduler"
+      ]
+     },
+     {
+      "kind": "data-template",
+      "search": [
+       "vaccine schedule template",
+       "pet vaccination log"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "medication manager",
+    "does": "tracks and reminds of pet medications",
+    "parts": [
+     {
+      "kind": "code-app",
+      "search": [
+       "medication reminder",
+       "pet health app"
+      ]
+     },
+     {
+      "kind": "data-template",
+      "search": [
+       "medication schedule template",
+       "pet medication log"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "feeding schedule keeper",
+    "does": "tracks and reminds of feeding times",
+    "parts": [
+     {
+      "kind": "code-app",
+      "search": [
+       "feeding reminder",
+       "pet diet tracker"
+      ]
+     },
+     {
+      "kind": "data-template",
+      "search": [
+       "feeding schedule template",
+       "pet feeding log"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "dog walker reminder",
+    "does": "reminds the son to walk the dog",
+    "parts": [
+     {
+      "kind": "code-app",
+      "search": [
+       "dog walking reminder",
+       "pet care reminder"
+      ]
+     },
+     {
+      "kind": "knowledge",
+      "search": [
+       "pet care tips",
+       "dog walking schedule"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "toxic food lister",
+    "does": "provides a list of toxic foods for dogs and cats",
+    "parts": [
+     {
+      "kind": "knowledge",
+      "search": [
+       "pet toxic food list",
+       "dog and cat poison"
+      ]
+     },
+     {
+      "kind": "pictures",
+      "search": [
+       "toxic pet food images",
+       "pet food safety"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "pet health reference",
+    "does": "provides general pet health information",
+    "parts": [
+     {
+      "kind": "knowledge",
+      "search": [
+       "pet health guide",
+       "dog and cat care"
+      ]
+     },
+     {
+      "kind": "live-info",
+      "search": [
+       "pet health news",
+       "veterinary advice"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "pet diet planner",
+    "does": "suggests appropriate diets for pets",
+    "parts": [
+     {
+      "kind": "knowledge",
+      "search": [
+       "pet diet guide",
+       "dog and cat nutrition"
+      ]
+     },
+     {
+      "kind": "pictures",
+      "search": [
+       "pet food images",
+       "dog and cat diet"
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "check": {
+  "valid": true,
+  "kind": "pet care helper",
+  "jobs": 8,
+  "jobs_in_range": true,
+  "phrases": 32,
+  "unique_phrases": 32,
+  "parts_with_bad_phrase_count": 0,
+  "kinds": {
+   "code-app": 5,
+   "data-template": 4,
+   "knowledge": 4,
+   "pictures": 2,
+   "live-info": 1
+  },
+  "leaks": [],
+  "kind_leak": []
+ }
+}

@@ -1,0 +1,287 @@
+{
+ "ok": true,
+ "jobs": [
+  {
+   "id": "pictures-of-earth",
+   "name": "Pictures of Earth",
+   "does": "Shows the newest pictures of Earth from space.",
+   "action": "show",
+   "subject": [
+    "earth",
+    "pictures"
+   ],
+   "output": "pictures",
+   "needs": [
+    "none"
+   ],
+   "ask": "Show me today's picture of Earth.",
+   "route": "C",
+   "pick": {
+    "ref": "app:nasa_epic_earth_photos",
+    "class": "DATA",
+    "score": 0.6,
+    "why": ""
+   },
+   "ingredients": [
+    "app:nasa_epic_earth_photos",
+    "nasa-images-api",
+    "assembled:pictures-of-earth"
+   ],
+   "view": "gallery",
+   "page": "job-pictures-of-earth",
+   "status": "working",
+   "reason": ""
+  },
+  {
+   "id": "rocket-launches",
+   "name": "Rocket launches",
+   "does": "Lists the next rocket launches.",
+   "action": "show",
+   "subject": [
+    "rocket",
+    "launches"
+   ],
+   "output": "text",
+   "needs": [
+    "time"
+   ],
+   "ask": "When is the next launch?",
+   "route": "C",
+   "pick": {
+    "ref": "app:launch_library_2_the_space",
+    "class": "DATA",
+    "score": 0.6,
+    "why": ""
+   },
+   "ingredients": [
+    "app:launch_library_2_the_space"
+   ],
+   "view": "list",
+   "page": "job-rocket-launches",
+   "status": "not_yet",
+   "reason": "Its outside service is off."
+  },
+  {
+   "id": "sky-tonight-near-me",
+   "name": "Sky tonight near me",
+   "does": "What you can see in the sky tonight.",
+   "action": "show",
+   "subject": [
+    "sky",
+    "tonight"
+   ],
+   "output": "places",
+   "needs": [
+    "place",
+    "time"
+   ],
+   "ask": "What can I see in the sky tonight?",
+   "route": "C",
+   "pick": {
+    "ref": "app:noaa_space_weather",
+    "class": "DATA",
+    "score": 0.6,
+    "why": ""
+   },
+   "ingredients": [
+    "app:noaa_space_weather"
+   ],
+   "view": "map",
+   "page": "job-sky-tonight-near-me",
+   "status": "needs_setup",
+   "reason": "It needs your home town."
+  },
+  {
+   "id": "space-facts",
+   "name": "Space facts",
+   "does": "Answers questions about space.",
+   "action": "learn",
+   "subject": [
+    "space"
+   ],
+   "output": "text",
+   "needs": [
+    "none"
+   ],
+   "ask": "How far away is the Moon?",
+   "route": "B",
+   "pick": {
+    "ref": "book-gutenberg-12345",
+    "class": "TEXT",
+    "score": 0.6,
+    "why": ""
+   },
+   "ingredients": [
+    "book-gutenberg-12345"
+   ],
+   "view": "list",
+   "page": "job-space-facts",
+   "status": "working",
+   "reason": ""
+  },
+  {
+   "id": "name-that-star",
+   "name": "Name that star",
+   "does": "Tells you a star's name from a photo.",
+   "action": "ask",
+   "subject": [
+    "star",
+    "photo"
+   ],
+   "output": "text",
+   "needs": [
+    "none"
+   ],
+   "ask": "What star is this?",
+   "route": "D",
+   "pick": {
+    "ref": "",
+    "class": "",
+    "score": 0.0,
+    "why": ""
+   },
+   "ingredients": [],
+   "view": "",
+   "page": "job-name-that-star",
+   "status": "nothing_found",
+   "reason": "Nothing found yet"
+  },
+  {
+   "id": "odd",
+   "name": "A job with a status from the future",
+   "route": "Z",
+   "status": "teleporting"
+  }
+ ],
+ "setup": [
+  {
+   "id": "home-town",
+   "kind": "setting",
+   "label": "Your home town",
+   "detail": "For the sky over you. Kept on this computer.",
+   "job_ids": [
+    "sky-tonight-near-me"
+   ],
+   "done": false
+  },
+  {
+   "id": "switch-ll2",
+   "kind": "switch",
+   "label": "Let Launch Library 2 go online",
+   "detail": "Sends only the request for launches.",
+   "job_ids": [
+    "rocket-launches"
+   ],
+   "done": false
+  },
+  {
+   "id": "switch-epic",
+   "kind": "switch",
+   "label": "Let NASA EPIC go online",
+   "detail": "",
+   "job_ids": [
+    "pictures-of-earth"
+   ],
+   "done": true
+  }
+ ],
+ "yes": {
+  "given": true,
+  "at": "2026-10-09T17:40:00Z",
+  "sha": "abc"
+ },
+ "dropped": [
+  {
+   "ref": "skill-horoscope",
+   "name": "Daily Horoscope Creator",
+   "why": "Not about any of this bot's jobs."
+  },
+  {
+   "ref": "constellation-design",
+   "name": "constellation-design",
+   "why": "It cannot give what pictures of earth needs."
+  }
+ ],
+ "running": false,
+ "lines": [
+  {
+   "agent": "majordomo",
+   "text": "Five jobs planned."
+  },
+  {
+   "agent": "toolsmith",
+   "text": "Put together the Earth pictures gallery."
+  },
+  {
+   "agent": "sentinel",
+   "text": "Checked NASA EPIC: reads one public site."
+  }
+ ],
+ "words": {
+  "status": {
+   "planned": "Planned",
+   "needs_setup": "Needs setup",
+   "waiting_yes": "Waiting for your yes",
+   "building": "Being built",
+   "working": "Working",
+   "not_yet": "Not yet",
+   "nothing_found": "Nothing found yet"
+  },
+  "route": {
+   "A": "Uses it as it is",
+   "B": "Connects a tool",
+   "C": "Puts together a <view>",
+   "D": "Nothing found yet"
+  },
+  "view": {
+   "gallery": "picture gallery",
+   "chart": "chart",
+   "map": "map",
+   "player": "player",
+   "list": "list",
+   "form": "form",
+   "app": "its own screen"
+  },
+  "class": {
+   "APP": "an app",
+   "TOOL": "a tool",
+   "DATA": "a source of data",
+   "TEXT": "a book",
+   "GUIDE": "a guide your bot reads"
+  }
+ },
+ "parts": {
+  "app:nasa_epic_earth_photos": {
+   "name": "NASA EPIC Earth photos",
+   "class": "DATA",
+   "check": {
+    "ok": true,
+    "reason": "Reads one public site."
+   }
+  },
+  "nasa-images-api": {
+   "name": "NASA Image and Video Library",
+   "class": "DATA"
+  },
+  "assembled:pictures-of-earth": {
+   "name": "Earth pictures",
+   "class": "APP"
+  },
+  "app:launch_library_2_the_space": {
+   "name": "Launch Library 2",
+   "class": "DATA",
+   "check": {
+    "ok": true,
+    "reason": "Reads one public site."
+   }
+  },
+  "app:noaa_space_weather": {
+   "name": "NOAA Space Weather",
+   "class": "DATA"
+  },
+  "book-gutenberg-12345": {
+   "name": "A Field Book of the Stars",
+   "class": "TEXT"
+  }
+ }
+}

@@ -1,0 +1,17 @@
+{
+ "schema": "subject_shelves/v1",
+ "_maintainer_note": "DATA, not per-bot code: which library shelf a subject word sits on, so a goal about knitting also looks on the crafts shelf and a goal about a Honda Civic on the motor vehicles shelf. Used only to widen the search for books; every book found still cites the catalog word that matched. Add rows freely; a shelf word should be one that appears in library titles or summaries. Words are lower case; a shelf word may be plural when the singular means something else (craft, as in Craft CMS).",
+ "shelves": {
+  "crafts": ["knitting", "knit", "crochet", "sewing", "sew", "quilting", "quilt", "embroidery", "weaving", "yarn", "needlework", "handicraft", "papercraft", "origami", "scrapbooking", "pottery", "jewelry", "beading", "felting", "macrame", "cross-stitch"],
+  "vehicle": ["car", "truck", "automobile", "motorcycle", "honda", "toyota", "ford", "chevrolet", "civic", "engine", "brake", "tire", "oil change"],
+  "mechanic": ["car", "truck", "automobile", "motorcycle", "engine", "brake", "repair"],
+  "paleontology": ["dinosaur", "fossil", "prehistoric", "jurassic", "cretaceous", "triassic"],
+  "gardening": ["garden", "vegetable", "tomato", "compost", "seedling", "raised bed", "flower", "lawn"],
+  "music": ["band", "album", "song", "singer", "guitar", "piano", "drum", "concert", "rock", "jazz"],
+  "astronomy": ["telescope", "planet", "star", "galaxy", "nebula", "stargazing", "moon"],
+  "cooking": ["recipe", "baking", "bread", "sourdough", "kitchen", "meal", "dinner"],
+  "pet": ["dog", "cat", "puppy", "kitten", "hamster", "aquarium"],
+  "woodworking": ["woodwork", "carpentry", "lathe", "furniture making"],
+  "bird": ["birding", "birdwatching", "bird watching"]
+ }
+}

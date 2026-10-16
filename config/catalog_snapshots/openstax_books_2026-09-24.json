@@ -1,0 +1,1377 @@
+{
+"schema": "openstax_books/v1",
+"taken_at": "2026-09-24",
+"source": "https://openstax.org/apps/cms/api/v2/pages/?type=books.Book&limit=250&fields=title%2Clicense_name%2Clicense_version%2Clicense_url%2Cbook_state%2Cbook_subjects%2Cbook_categories%2Cdescription",
+"books": [
+{
+"slug": "additive-manufacturing-essentials",
+"title": "Additive Manufacturing Essentials",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"Science",
+"Business",
+"Business Technologies",
+"Additive Manufacturing Essentials"
+],
+"summary": "Additive Manufacturing Essentials is an introduction to the core principles, technologies, and methods in the field of additive manufacturing. Rooted in industry practice and innovation, the material presents examples and approaches from an array of companies, equipment producers, and software devel",
+"pages": 72
+},
+{
+"slug": "algebra-1",
+"title": "Algebra 1",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"Math",
+"Secondary Math"
+],
+"summary": "Algebra 1 is a complete high school algebra curriculum that is 100% aligned with the Texas Essential Knowledge and Skills (TEKS) and the English Language Proficiency Standards (ELPS). OpenStax Algebra 1 is a high-quality instructional material (HQIM) that is flexible enough for core adoption and ada",
+"pages": 600
+},
+{
+"slug": "algebra-and-trigonometry",
+"title": "Algebra and Trigonometry",
+"state": "retired",
+"license": "CC-BY-4.0",
+"license_url": "https://creativecommons.org/licenses/by/4.0/",
+"subjects": [
+"Math"
+],
+"summary": "Algebra and Trigonometry provides a comprehensive exploration of algebraic principles and meets scope and sequence requirements for a typical introductory algebra and trigonometry course. The modular approach and the richness of content ensure that the book meets the needs of a variety of courses. A",
+"pages": 172
+},
+{
+"slug": "algebra-and-trigonometry-2e",
+"title": "Algebra and Trigonometry 2e",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"Math",
+"Algebra and Trigonometry"
+],
+"summary": "Algebra and Trigonometry 2e provides a comprehensive exploration of mathematical principles and meets scope and sequence requirements for a typical introductory algebra and trigonometry course. The modular approach and the richness of content ensure that the book addresses the needs of a variety of ",
+"pages": 172
+},
+{
+"slug": "american-government",
+"title": "American Government",
+"state": "retired",
+"license": "CC-BY-4.0",
+"license_url": "https://creativecommons.org/licenses/by/4.0/",
+"subjects": [
+"Social Sciences"
+],
+"summary": "American Government is designed to meet the scope and sequence requirements of the single-semester American government course. This title includes innovative features designed to enhance student learning, including Insider Perspective features and a Get Connected Module that shows students how they ",
+"pages": null
+},
+{
+"slug": "american-government-2e",
+"title": "American Government 2e",
+"state": "retired",
+"license": "CC-BY-4.0",
+"license_url": "https://creativecommons.org/licenses/by/4.0/",
+"subjects": [
+"Social Sciences"
+],
+"summary": "American Government 2e is designed to meet the scope and sequence requirements of the single-semester American Government course. This title includes innovative features designed to enhance student learning, including Insider Perspective features and a Get Connected module that shows students how th",
+"pages": null
+},
+{
+"slug": "american-government-3e",
+"title": "American Government 3e",
+"state": "retired",
+"license": "CC-BY-4.0",
+"license_url": "https://creativecommons.org/licenses/by/4.0/",
+"subjects": [
+"Social Sciences",
+"American Government"
+],
+"summary": "American Government 3e aligns with the topics and objectives of many government courses. Faculty involved in the project have endeavored to make government workings, issues, debates, and impacts meaningful and memorable to students while maintaining the conceptual coverage and rigor inherent in the ",
+"pages": 204
+},
+{
+"slug": "american-government-4e",
+"title": "American Government 4e",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"Social Sciences",
+"American Government"
+],
+"summary": "American Government 4e aligns with the topics and objectives of many government courses. The authors have worked to develop meaningful and memorable explanations, narratives, and examples regarding the actions, workings, and outputs of government. The offering focuses on the real-world impact of gov",
+"pages": 204
+},
+{
+"slug": "anatomy-and-physiology",
+"title": "Anatomy and Physiology",
+"state": "retired",
+"license": "CC-BY-4.0",
+"license_url": "https://creativecommons.org/licenses/by/4.0/",
+"subjects": [
+"Science",
+"Anatomy and Physiology"
+],
+"summary": "Anatomy and Physiology is a dynamic textbook for the two-semester human anatomy and physiology course for life science and allied health majors. The book is organized by body system and covers standard scope and sequence requirements. Its lucid text, strategically constructed art, career features, a",
+"pages": 336
+},
+{
+"slug": "anatomy-and-physiology-2e",
+"title": "Anatomy and Physiology 2e",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"Science",
+"Anatomy and Physiology"
+],
+"summary": "Anatomy and Physiology 2e is developed to meet the scope and sequence for a two-semester human anatomy and physiology course for life science and allied health majors. The book is organized by body systems. The revision focuses on inclusive and equitable instruction and includes new student support.",
+"pages": 336
+},
+{
+"slug": "college-physics-ap-courses",
+"title": "The AP Physics Collection",
+"state": "retired",
+"license": "CC-BY-4.0",
+"license_url": "https://creativecommons.org/licenses/by/4.0/",
+"subjects": [
+"Science",
+"Physics"
+],
+"summary": "The AP Physics Collection is a free, turnkey solution for your AP ® Physics course, brought to you through a collaboration between OpenStax and Rice Online Learning. The integrated collection features the OpenStax College Physics for AP ® Courses text, Concept Trailer videos, instructional videos, p",
+"pages": 486
+},
+{
+"slug": "astronomy",
+"title": "Astronomy",
+"state": "retired",
+"license": "CC-BY-4.0",
+"license_url": "https://creativecommons.org/licenses/by/4.0/",
+"subjects": [
+"Science",
+"Astronomy"
+],
+"summary": "Astronomy is designed to meet the scope and sequence requirements of one- or two-semester introductory astronomy courses. The book begins with relevant scientific fundamentals and progresses through an exploration of the solar system, stars, galaxies, and cosmology. The Astronomy textbook builds stu",
+"pages": 404
+},
+{
+"slug": "astronomy-2e",
+"title": "Astronomy 2e",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"Science",
+"Astronomy"
+],
+"summary": "Designed to meet the scope and sequence of your course, Astronomy 2e is written in clear non-technical language, with the occasional touch of humor and a wide range of clarifying illustrations. It has many analogies drawn from everyday life to help non-science majors appreciate, on their own terms, ",
+"pages": 404
+},
+{
+"slug": "biology",
+"title": "Biology",
+"state": "retired",
+"license": "CC-BY-4.0",
+"license_url": "https://creativecommons.org/licenses/by/4.0/",
+"subjects": [
+"Science"
+],
+"summary": "Biology is designed to cover the scope and sequence requirements of a typical two-semester biology course for science majors. The text provides comprehensive coverage of foundational research and core biology concepts through an evolutionary lens. Biology includes rich features that engage students ",
+"pages": 493
+},
+{
+"slug": "biology-2e",
+"title": "Biology 2e",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"Science",
+"Biology"
+],
+"summary": "Biology 2e is designed to cover the scope and sequence requirements of a typical two-semester biology course for science majors. The text provides comprehensive coverage of foundational research and core biology concepts through an evolutionary lens. Biology includes rich features that engage studen",
+"pages": 495
+},
+{
+"slug": "biology-ap-courses",
+"title": "Biology for AP® Courses",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"Science",
+"Biology"
+],
+"summary": "Biology for AP ® Courses covers the scope and sequence requirements of a typical two-semester Advanced Placement ® biology course. The text provides comprehensive coverage of foundational research and core biology concepts through an evolutionary lens. Biology for AP ® Courses was designed to meet a",
+"pages": 432
+},
+{
+"slug": "business-ethics",
+"title": "Business Ethics",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"Business",
+"Business Law and Ethics"
+],
+"summary": "Business Ethics is designed to meet the scope and sequence requirements of the single-semester business ethics course. This title includes innovative features designed to enhance student learning, including case studies, application scenarios, and links to video interviews with executives, all of wh",
+"pages": 113
+},
+{
+"slug": "business-law-i-essentials-2e",
+"title": "Business Law I Essentials 2e",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"Business",
+"Business Law and Ethics"
+],
+"summary": "Business Law I Essentials 2e is a brief introductory textbook designed to meet the scope and sequence requirements of courses on Business Law or the Legal Environment of Business. The concepts are presented in a streamlined manner, and cover the key concepts necessary to establish a strong foundatio",
+"pages": 90
+},
+{
+"slug": "calculus-volume-1",
+"title": "Calculus Volume 1",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"Math",
+"Calculus"
+],
+"summary": "Calculus is designed for the typical two- or three-semester general calculus course, incorporating innovative features to enhance student learning. The book guides students through the core concepts of calculus and helps them understand how those concepts apply to their lives and the world around th",
+"pages": 86
+},
+{
+"slug": "calculus-volume-2",
+"title": "Calculus Volume 2",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"Math",
+"Calculus"
+],
+"summary": "Calculus is designed for the typical two- or three-semester general calculus course, incorporating innovative features to enhance student learning. The book guides students through the core concepts of calculus and helps them understand how those concepts apply to their lives and the world around th",
+"pages": 90
+},
+{
+"slug": "calculus-volume-3",
+"title": "Calculus Volume 3",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"Math",
+"Calculus"
+],
+"summary": "Calculus is designed for the typical two- or three-semester general calculus course, incorporating innovative features to enhance student learning. The book guides students through the core concepts of calculus and helps them understand how those concepts apply to their lives and the world around th",
+"pages": 90
+},
+{
+"slug": "chemistry",
+"title": "Chemistry",
+"state": "retired",
+"license": "CC-BY-4.0",
+"license_url": "https://creativecommons.org/licenses/by/4.0/",
+"subjects": [
+"Science"
+],
+"summary": "Chemistry is designed to meet the scope and sequence requirements of the two-semester general chemistry course. The textbook provides an important opportunity for students to learn the core concepts of chemistry and understand how those concepts apply to their lives and the world around them. The bo",
+"pages": 252
+},
+{
+"slug": "chemistry-2e",
+"title": "Chemistry 2e",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"Science",
+"Chemistry"
+],
+"summary": "Chemistry 2e is designed to meet the scope and sequence requirements of the two-semester general chemistry course. The textbook provides an important opportunity for students to learn the core concepts of chemistry and understand how those concepts apply to their lives and the world around them. The",
+"pages": 252
+},
+{
+"slug": "chemistry-atoms-first-2e",
+"title": "Chemistry: Atoms First 2e",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"Science",
+"Chemistry"
+],
+"summary": "Chemistry: Atoms First 2e is a peer-reviewed, openly licensed introductory textbook produced through a collaborative publishing partnership between OpenStax and the University of Connecticut and UConn Undergraduate Student Government Association. This text is an atoms-first adaptation of OpenStax Ch",
+"pages": 252
+},
+{
+"slug": "chemistry-atoms-first",
+"title": "Chemistry: Atoms First",
+"state": "retired",
+"license": "CC-BY-4.0",
+"license_url": "https://creativecommons.org/licenses/by/4.0/",
+"subjects": [
+"Science"
+],
+"summary": "Chemistry: Atoms First is a peer-reviewed, openly licensed introductory textbook produced through a collaborative publishing partnership between OpenStax and the University of Connecticut and UConn Undergraduate Student Government Association. This title is an adaptation of the OpenStax Chemistry te",
+"pages": 252
+},
+{
+"slug": "clinical-nursing-skills",
+"title": "Clinical Nursing Skills",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"Nursing",
+"Fundamentals and Skills"
+],
+"summary": "Clinical Nursing Skills is designed to equip nursing students with the practical knowledge and hands-on skills necessary to provide comprehensive patient care. The material emphasizes the application of clinical judgment in a variety of settings, ensuring that students are prepared to deliver high-q",
+"pages": 379
+},
+{
+"slug": "college-algebra",
+"title": "College Algebra",
+"state": "retired",
+"license": "CC-BY-4.0",
+"license_url": "https://creativecommons.org/licenses/by/4.0/",
+"subjects": [
+"Math",
+"College Algebra"
+],
+"summary": "College Algebra provides a comprehensive exploration of algebraic principles and meets scope and sequence requirements for a typical introductory algebra course. The modular approach and richness of content ensure that the book meets the needs of a variety of courses. College Algebra offers a wealth",
+"pages": 123
+},
+{
+"slug": "college-algebra-2e",
+"title": "College Algebra 2e",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"Math",
+"College Algebra"
+],
+"summary": "College Algebra 2e provides a comprehensive exploration of algebraic principles and meets scope and sequence requirements for a typical introductory algebra course. The modular approach and richness of content ensure that the book addresses the needs of a variety of courses. College Algebra 2e offer",
+"pages": 123
+},
+{
+"slug": "college-algebra-corequisite-support",
+"title": "College Algebra with Corequisite Support",
+"state": "retired",
+"license": "CC-BY-4.0",
+"license_url": "https://creativecommons.org/licenses/by/4.0/",
+"subjects": [
+"Math"
+],
+"summary": "College Algebra with Corequisite Support integrates comprehensive algebraic principles with effective foundational review. Each textbook section is paired with a thoughtfully developed, topically aligned skills module that prepares students for the course material. The modules include conceptual ove",
+"pages": 123
+},
+{
+"slug": "college-algebra-corequisite-support-2e",
+"title": "College Algebra 2e with Corequisite Support",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"Math",
+"College Algebra"
+],
+"summary": "College Algebra 2e with Corequisite Support integrates comprehensive algebraic principles with effective foundational review. Each textbook section is paired with a thoughtfully developed, topically aligned skills module that prepares students for the course material. The modules include conceptual ",
+"pages": 123
+},
+{
+"slug": "college-physics",
+"title": "College Physics",
+"state": "retired",
+"license": "CC-BY-4.0",
+"license_url": "https://creativecommons.org/licenses/by/4.0/",
+"subjects": [
+"Science",
+"Physics"
+],
+"summary": "College Physics meets standard scope and sequence requirements for a two-semester introductory algebra-based physics course. The text is grounded in real-world examples to help students grasp fundamental physics concepts. It requires knowledge of algebra and some trigonometry, but not calculus. Coll",
+"pages": 420
+},
+{
+"slug": "college-physics-2e",
+"title": "College Physics 2e",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"Science",
+"Physics"
+],
+"summary": "College Physics 2e introduces topics conceptually and progresses through clear explanations in the context of career-oriented, practical applications, and meets the scope and sequence of an algebra-based physics course. The narrative of physics and scientific discovery has been even further expanded",
+"pages": 454
+},
+{
+"slug": "college-physics-ap-courses-2e",
+"title": "College Physics For AP® Courses 2e",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"Science",
+"Physics"
+],
+"summary": "College Physics for AP® Courses 2e is designed to engage students in their exploration of physics and help them apply these concepts to the Advanced Placement® test. Because physics is integral to modern technology and other sciences, the book also includes content that goes beyond the scope of the ",
+"pages": 486
+},
+{
+"slug": "college-physics-courseware",
+"title": "College Physics with Courseware",
+"state": "retired",
+"license": "",
+"license_url": "",
+"subjects": [],
+"summary": "",
+"pages": null
+},
+{
+"slug": "college-success",
+"title": "College Success",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"College Success"
+],
+"summary": "OpenStax College Success is a comprehensive and contemporary resource that serves First Year Experience, Student Success, and College Transition courses. Developed with the support of hundreds of faculty and coordinators, the book addresses the evolving challenges and opportunities of today’s divers",
+"pages": 118
+},
+{
+"slug": "college-success-concise",
+"title": "College Success Concise",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"College Success"
+],
+"summary": "OpenStax College Success Concise serves First Year Experience, Student Success, and College Transition courses, and can also be used as a supplementary resource in courses across the curriculum. With the input of hundreds of instructors and academic success experts, the authors carefully prioritized",
+"pages": 53
+},
+{
+"slug": "concepts-biology",
+"title": "Concepts of Biology",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"Science",
+"Biology"
+],
+"summary": "Concepts of Biology is designed for the typical introductory biology course for nonmajors, covering standard scope and sequence requirements. The text includes interesting applications and conveys the major themes of biology, with content that is meaningful and easy to understand. The book is design",
+"pages": 213
+},
+{
+"slug": "contemporary-mathematics",
+"title": "Contemporary Mathematics",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"Math",
+"Contemporary Math"
+],
+"summary": "Contemporary Mathematics is designed to meet the scope and sequence requirements for a liberal arts mathematics course. This resource provides stand-alone sections with a focus on showing relevance in the features as well as the examples, exercises, and exposition. Contemporary Mathematics integrate",
+"pages": 220
+},
+{
+"slug": "elementary-algebra",
+"title": "Elementary Algebra",
+"state": "retired",
+"license": "CC-BY-4.0",
+"license_url": "https://creativecommons.org/licenses/by/4.0/",
+"subjects": [
+"Math"
+],
+"summary": "Elementary Algebra is designed to meet the scope and sequence requirements of a one-semester elementary algebra course. The book’s organization makes it easy to adapt to a variety of course syllabi. The text expands on the fundamental concepts of algebra while addressing the needs of students with d",
+"pages": 133
+},
+{
+"slug": "elementary-algebra-2e",
+"title": "Elementary Algebra 2e",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"Math",
+"Developmental Math"
+],
+"summary": "Elementary Algebra 2e is designed to meet scope and sequence requirements for a one-semester elementary algebra course. The book’s organization makes it easy to adapt to a variety of course syllabi. The text expands on the fundamental concepts of algebra while addressing the needs of students with d",
+"pages": 133
+},
+{
+"slug": "entrepreneurship",
+"title": "Entrepreneurship",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"Business",
+"Management and Marketing"
+],
+"summary": "This textbook is intended for use in introductory Entrepreneurship classes at the undergraduate level. Due to the wide range of audiences and course approaches, the book is designed to be as flexible as possible. Theoretical and practical aspects are presented in a balanced manner, and specific comp",
+"pages": 170
+},
+{
+"slug": "foundations-information-systems",
+"title": "Foundations of Information Systems",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"Computer Science",
+"Information Systems"
+],
+"summary": "Foundations of Information Systems aligns to the topics and objectives of most introductory information systems courses in computer science and information technology, as well as in other subject areas such as health and business information systems. The offering helps students understand foundation",
+"pages": 132
+},
+{
+"slug": "fundamentals-nursing",
+"title": "Fundamentals of Nursing",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"Nursing",
+"Fundamentals and Skills"
+],
+"summary": "Fundamentals of Nursing aligns with the outcomes and competencies of a nursing fundamentals course. It is designed to provide students with the foundational knowledge and practical expertise essential for delivering holistic and patient-centered care. The authors emphasize the application of clinica",
+"pages": 586
+},
+{
+"slug": "intermediate-algebra",
+"title": "Intermediate Algebra",
+"state": "retired",
+"license": "CC-BY-4.0",
+"license_url": "https://creativecommons.org/licenses/by/4.0/",
+"subjects": [
+"Math"
+],
+"summary": "Intermediate Algebra is designed to meet the scope and sequence requirements of a one-semester intermediate algebra course. The book’s organization makes it easy to adapt to a variety of course syllabi. The text expands on the fundamental concepts of algebra while addressing the needs of students wi",
+"pages": 144
+},
+{
+"slug": "intermediate-algebra-2e",
+"title": "Intermediate Algebra 2e",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"Math",
+"Developmental Math"
+],
+"summary": "Intermediate Algebra 2e is designed to meet the scope and sequence requirements of a one-semester intermediate algebra course. The book’s organization makes it easy to adapt to a variety of course syllabi. The text expands on the fundamental concepts of algebra while addressing the needs of students",
+"pages": 144
+},
+{
+"slug": "introduction-anthropology",
+"title": "Introduction to Anthropology",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"Social Sciences",
+"Anthropology"
+],
+"summary": "Designed to meet the scope and sequence of your course, OpenStax Introduction to Anthropology is a four-field text integrating diverse voices, engaging field activities, and meaningful themes like Indigenous experiences and social inequality to engage students and enrich learning. The text showcases",
+"pages": 201
+},
+{
+"slug": "introduction-behavioral-neuroscience",
+"title": "Introduction to Behavioral Neuroscience",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"Social Sciences",
+"Science",
+"Biology",
+"Psychology"
+],
+"summary": "Introduction to Behavioral Neuroscience aligns to the topics and objectives of introductory behavioral neuroscience courses taught in psychology, biology, neuroscience, and similar departments. This offering is intended for undergraduates with no presumed college-level science coursework, and presen",
+"pages": 221
+},
+{
+"slug": "introduction-business-2e",
+"title": "Introduction to Business 2e",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"Business",
+"Introduction to Business"
+],
+"summary": "Introduction to Business 2e provides a strong, multidimensional foundation in the concepts, skills, and real-world examples of contemporary business. Welcoming and relevant narratives support students as they engage in core themes such as decision making, ethics, customer satisfaction, entrepreneurs",
+"pages": 267
+},
+{
+"slug": "introduction-computer-science",
+"title": "Introduction to Computer Science",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"Computer Science",
+"Foundations of Computer Science"
+],
+"summary": "Introduction to Computer Science provides a comprehensive foundation in core computer science concepts and principles, aligning with the scope and sequence of most introductory computer science courses. The offering serves as an engaging entry point for students pursuing diverse fields of study and ",
+"pages": 204
+},
+{
+"slug": "introduction-intellectual-property",
+"title": "Introduction to Intellectual Property",
+"state": "live",
+"license": "CC-BY-4.0",
+"license_url": "https://creativecommons.org/licenses/by/4.0/",
+"subjects": [
+"Business",
+"Business Law and Ethics"
+],
+"summary": "Introduction to Intellectual Property provides a clear, effective introduction to patents, copyright, trademarks, and trade secrets. The text may be used by students and instructors in formal courses, as well as those applying intellectual property considerations to entrepreneurship, marketing, law,",
+"pages": 65
+},
+{
+"slug": "introduction-philosophy",
+"title": "Introduction to Philosophy",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"Humanities",
+"Philosophy"
+],
+"summary": "Designed to meet the scope and sequence of your course, Introduction to Philosophy surveys logic, metaphysics, epistemology, theories of value, and history of philosophy thematically. To provide a strong foundation in global philosophical discourse, diverse primary sources and examples are central t",
+"pages": 126
+},
+{
+"slug": "introduction-political-science",
+"title": "Introduction to Political Science",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"Social Sciences",
+"Political Science"
+],
+"summary": "Designed to meet the scope and sequence of your course, OpenStax Introduction to Political Science provides a strong foundation in global political systems, exploring how and why political realities unfold. Rich with examples of individual and national social action, this text emphasizes students’ r",
+"pages": 173
+},
+{
+"slug": "introduction-python-programming",
+"title": "Introduction to Python Programming",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"Computer Science",
+"Python Programming"
+],
+"summary": "Introduction to Python Programming provides a comprehensive foundation in programming concepts and skills, and it is aligned to the scope of most introductory courses. A wide array of scenarios, contexts, and problems reflect programming applications in many disciplines and careers. The offering is ",
+"pages": 131
+},
+{
+"slug": "introduction-sociology",
+"title": "Introduction to Sociology",
+"state": "retired",
+"license": "CC-BY-4.0",
+"license_url": "https://creativecommons.org/licenses/by/4.0/",
+"subjects": [
+"Social Sciences"
+],
+"summary": "Introduction to Sociology adheres to the scope and sequence of a typical, one-semester introductory sociology course. It offers comprehensive coverage of core concepts, foundational scholars, and emerging theories. The textbook presents section reviews with rich questions, discussions that help stud",
+"pages": null
+},
+{
+"slug": "introduction-sociology-2e",
+"title": "Introduction to Sociology 2e",
+"state": "retired",
+"license": "CC-BY-4.0",
+"license_url": "https://creativecommons.org/licenses/by/4.0/",
+"subjects": [
+"Social Sciences"
+],
+"summary": "Introduction to Sociology 2e adheres to the scope and sequence of a typical, one-semester introductory sociology course. It offers comprehensive coverage of core concepts, foundational scholars, and emerging theories. The textbook presents section reviews with rich questions, discussions that help s",
+"pages": 222
+},
+{
+"slug": "introduction-sociology-3e",
+"title": "Introduction to Sociology 3e",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"Social Sciences",
+"Sociology"
+],
+"summary": "Introduction to Sociology 3e aligns to the topics and objectives of many introductory sociology courses. It is arranged in a manner that provides foundational sociological theories and contexts, then progresses through various aspects of human and societal interactions. The new edition is focused on",
+"pages": 243
+},
+{
+"slug": "introductory-business-statistics",
+"title": "Introductory Business Statistics",
+"state": "retired",
+"license": "CC-BY-4.0",
+"license_url": "https://creativecommons.org/licenses/by/4.0/",
+"subjects": [
+"Math",
+"Business",
+"Statistics",
+"Business Statistics"
+],
+"summary": "Introductory Business Statistics is designed to meet the scope and sequence requirements of the one-semester statistics course for business, economics, and related majors. Core statistical concepts and skills have been augmented with practical business examples, scenarios, and exercises. The result ",
+"pages": 169
+},
+{
+"slug": "introductory-business-statistics-2e",
+"title": "Introductory Business Statistics 2e",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"Business",
+"Math",
+"Statistics",
+"Business Statistics"
+],
+"summary": "Introductory Business Statistics 2e aligns with the topics and objectives of the typical one-semester statistics course for business, economics, and related majors. The text provides detailed and supportive explanations and extensive step-by-step walkthroughs. The author places a significant emphasi",
+"pages": 169
+},
+{
+"slug": "introductory-statistics",
+"title": "Introductory Statistics",
+"state": "retired",
+"license": "CC-BY-4.0",
+"license_url": "https://creativecommons.org/licenses/by/4.0/",
+"subjects": [
+"Math",
+"Statistics"
+],
+"summary": "Introductory Statistics follows scope and sequence requirements of a one-semester introduction to statistics course and is geared toward students majoring in fields other than math or engineering. The text assumes some knowledge of intermediate algebra and focuses on statistics application over theo",
+"pages": 200
+},
+{
+"slug": "introductory-statistics-2e",
+"title": "Introductory Statistics 2e",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"Math",
+"Statistics"
+],
+"summary": "Introductory Statistics 2e provides an engaging, practical, and thorough overview of the core concepts and skills taught in most one-semester statistics courses. The text focuses on diverse applications from a variety of fields and societal contexts, including business, healthcare, sciences, sociolo",
+"pages": 200
+},
+{
+"slug": "life-liberty-and-pursuit-happiness",
+"title": "Life, Liberty, and the Pursuit of Happiness",
+"state": "retired",
+"license": "CC-BY-4.0",
+"license_url": "https://creativecommons.org/licenses/by/4.0/",
+"subjects": [
+"Humanities"
+],
+"summary": "Life, Liberty, and the Pursuit of Happiness is produced through a collaborative publishing agreement between OpenStax and the Bill of Rights Institute. The course is designed to align with the curriculum guidelines for AP U.S. History from the College Board. The full list of authors and reviewers, w",
+"pages": null
+},
+{
+"slug": "lifespan-development",
+"title": "Lifespan Development",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"Social Sciences",
+"Lifespan Development"
+],
+"summary": "Lifespan Development aligns to the topics and objectives of most introductory developmental psychology courses taught across departments. Grounded in foundational theories and scientific research, the text teaches students about core aspects of human development—physical, cognitive, social, emotiona",
+"pages": 220
+},
+{
+"slug": "maternal-newborn-nursing",
+"title": "Maternal-Newborn Nursing",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"Nursing",
+"Maternal-Newborn Nursing"
+],
+"summary": "Maternal-Newborn Nursing introduces students to the concepts and skills related to pregnancy, birth, postpartum, newborn care, reproductive health, and social determinants related to those topics. Written and thoroughly reviewed by experienced nurse educators, the material focuses on patient safety,",
+"pages": 365
+},
+{
+"slug": "medical-surgical-nursing",
+"title": "Medical-Surgical Nursing",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"Nursing",
+"Medical-Surgical Nursing"
+],
+"summary": "Medical-Surgical Nursing is a comprehensive and engaging resource for nursing students, equipping them with the essential knowledge and skills required to provide high-quality care. Building on the foundational knowledge and skills acquired in previous nursing courses, this textbook expands students",
+"pages": 548
+},
+{
+"slug": "microbiology",
+"title": "Microbiology",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"Science",
+"Biology"
+],
+"summary": "Microbiology covers the scope and sequence requirements for a single-semester microbiology course for non-majors. The book presents the core concepts of microbiology with a focus on applications for careers in allied health. The pedagogical features of the text make the material interesting and acce",
+"pages": 335
+},
+{
+"slug": "nutrition",
+"title": "Nutrition for Nurses",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"Nursing",
+"Nutrition and Pharmacology"
+],
+"summary": "Nutrition for Nurses is structured to support the flexible integration of nutrition content across both system-based and nursing competency-based curricula. It can be used whether nutrition is taught as a standalone course or part of another nursing course. The table of contents for Nutrition for Nu",
+"pages": 195
+},
+{
+"slug": "organic-chemistry",
+"title": "Organic Chemistry: A Tenth Edition",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"Science",
+"Chemistry"
+],
+"summary": "John McMurry's Organic Chemistry is renowned as the most clearly written book available for organic chemistry. In John McMurry's words, \"I wrote this book because I love writing. I get great pleasure and satisfaction from taking a complicated subject, turning it around until I see it clearly from a ",
+"pages": 515
+},
+{
+"slug": "organizational-behavior",
+"title": "Organizational Behavior",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"Business",
+"Management and Marketing"
+],
+"summary": "This OpenStax resource aligns to introductory courses in Organizational Behavior. The text presents the theory, concepts, and applications with particular emphasis on the impact that individuals and groups can have on organizational performance and culture. An array of recurring features engages stu",
+"pages": 234
+},
+{
+"slug": "pharmacology",
+"title": "Pharmacology for Nurses",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"Nursing",
+"Nutrition and Pharmacology"
+],
+"summary": "Pharmacology for Nurses is intended for nursing students in an introductory program. It provides a fundamental understanding of the therapeutic use of drugs, so the nurse can provide safe and effective care to the client. Along with a discussion of each body system, the text also reviews the pathoph",
+"pages": 365
+},
+{
+"slug": "physics",
+"title": "Physics",
+"state": "live",
+"license": "CC-BY-4.0",
+"license_url": "https://creativecommons.org/licenses/by/4.0/",
+"subjects": [
+"Science",
+"Physics"
+],
+"summary": "This Physics resource was developed under the guidance and support of experienced high school teachers and subject matter experts. It is presented here in multiple formats: PDF, online, and low-cost print. Beginning with an introduction to physics and scientific processes and followed by chapters fo",
+"pages": 328
+},
+{
+"slug": "population-health",
+"title": "Population Health for Nurses",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"Nursing",
+"Population and Community Health"
+],
+"summary": "Population Health for Nurses prepares nurses to develop interventions, policies, and practices that promote health equity and improved health outcomes across the health care delivery continuum. The text emphasizes the social determinants of health and how nurses can plan and implement health promoti",
+"pages": 327
+},
+{
+"slug": "prealgebra",
+"title": "Prealgebra",
+"state": "retired",
+"license": "CC-BY-4.0",
+"license_url": "https://creativecommons.org/licenses/by/4.0/",
+"subjects": [
+"Math"
+],
+"summary": "Prealgebra is designed to meet scope and sequence requirements for a one-semester prealgebra course. The book’s organization makes it easy to adapt to a variety of course syllabi. The text introduces the fundamental concepts of algebra while addressing the needs of students with diverse backgrounds ",
+"pages": 131
+},
+{
+"slug": "prealgebra-2e",
+"title": "Prealgebra 2e",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"Math",
+"Developmental Math"
+],
+"summary": "Prealgebra 2e is designed to meet scope and sequence requirements for a one-semester prealgebra or basic math course. The book’s organization makes it easy to adapt to a variety of course syllabi. The text introduces the fundamental concepts of algebra while addressing the needs of students with div",
+"pages": 131
+},
+{
+"slug": "precalculus",
+"title": "Precalculus",
+"state": "retired",
+"license": "CC-BY-4.0",
+"license_url": "https://creativecommons.org/licenses/by/4.0/",
+"subjects": [
+"Math"
+],
+"summary": "Precalculus is adaptable and designed to fit the needs of a variety of precalculus courses. It is a comprehensive text that covers more ground than a typical one- or two-semester college-level precalculus course. The content is organized by clearly-defined learning objectives and includes worked exa",
+"pages": 160
+},
+{
+"slug": "precalculus-2e",
+"title": "Precalculus 2e",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"Math",
+"Precalculus"
+],
+"summary": "Precalculus 2e provides a comprehensive exploration of mathematical principles and meets scope and sequence requirements for a typical precalculus course. The text proceeds from functions through trigonometry and ends with an introduction to calculus. The modular approach and the richness of content",
+"pages": 160
+},
+{
+"slug": "preparing-for-college-success",
+"title": "Preparing for College Success",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"College Success"
+],
+"summary": "OpenStax’s Preparing for College Success is a comprehensive resource that provides secondary students critical information to prepare for their “to and through” college journey. The book addresses the evolving challenges and opportunities of today’s diverse students. College match, preparing for tra",
+"pages": 72
+},
+{
+"slug": "principles-financial-accounting",
+"title": "Principles of Accounting, Volume 1: Financial Accounting",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"Business",
+"Accounting and Finance"
+],
+"summary": "Principles of Accounting is designed to meet the scope and sequence requirements of a two-semester accounting course that covers the fundamentals of financial and managerial accounting. Due to the comprehensive nature of the material, we are offering the book in two volumes. This book is specificall",
+"pages": 260
+},
+{
+"slug": "principles-managerial-accounting",
+"title": "Principles of Accounting, Volume 2: Managerial Accounting",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"Business",
+"Accounting and Finance"
+],
+"summary": "Principles of Accounting is designed to meet the scope and sequence requirements of a two-semester accounting course that covers the fundamentals of financial and managerial accounting. Due to the comprehensive nature of the material, we are offering the book in two volumes. This book is specificall",
+"pages": 206
+},
+{
+"slug": "principles-data-science",
+"title": "Principles of Data Science",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"Computer Science",
+"Business",
+"Math",
+"Principles of Data Science",
+"Business Statistics"
+],
+"summary": "Principles of Data Science is intended to support one- or two-semester courses in data science. It is appropriate for data science majors and minors as well as students concentrating in business, finance, health care, engineering, the sciences, and a number of other fields where data science has bec",
+"pages": 112
+},
+{
+"slug": "principles-economics",
+"title": "Principles of Economics",
+"state": "retired",
+"license": "CC-BY-4.0",
+"license_url": "https://creativecommons.org/licenses/by/4.0/",
+"subjects": [],
+"summary": "Principles of Economics covers scope and sequence requirements for a two-semester introductory economics course. The authors take a balanced approach to micro- and macroeconomics, to both Keynesian and classical views, and to the theory and application of economics concepts. The text also includes m",
+"pages": null
+},
+{
+"slug": "principles-economics-2e",
+"title": "Principles of Economics 2e",
+"state": "retired",
+"license": "CC-BY-4.0",
+"license_url": "https://creativecommons.org/licenses/by/4.0/",
+"subjects": [
+"Social Sciences",
+"Economics"
+],
+"summary": "Principles of Economics 2e covers the scope and sequence of most introductory economics courses. The text includes many current examples, which are handled in a politically equitable way. The outcome is a balanced approach to the theory and application of economics concepts. The second edition has b",
+"pages": 418
+},
+{
+"slug": "principles-economics-3e",
+"title": "Principles of Economics 3e",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"Social Sciences",
+"Business",
+"Economics"
+],
+"summary": "Principles of Economics 3e covers the scope and sequence of most introductory economics courses. The third edition takes a balanced approach to the theory and application of economics concepts. The text uses conversational language and ample illustrations to explore economic theories, and provides a",
+"pages": 419
+},
+{
+"slug": "principles-finance-2e",
+"title": "Principles of Finance 2e",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"Business",
+"Accounting and Finance"
+],
+"summary": "Designed to meet the scope and sequence of your course, Principles of Finance 2e provides a strong foundation in financial applications using an innovative use-case approach to explore their role in business decision-making. An array of financial calculator and downloadable Microsoft Excel data exer",
+"pages": 261
+},
+{
+"slug": "principles-macroeconomics",
+"title": "Principles of Macroeconomics",
+"state": "retired",
+"license": "CC-BY-4.0",
+"license_url": "https://creativecommons.org/licenses/by/4.0/",
+"subjects": [],
+"summary": "Principles of Macroeconomics covers the scope and sequence requirements of most introductory macroeconomics courses. The text also includes many current examples, which are handled in a politically equitable way. The outcome is a balanced approach to both Keynesian and classical views, and to the th",
+"pages": null
+},
+{
+"slug": "principles-macroeconomics-2e",
+"title": "Principles of Macroeconomics 2e",
+"state": "retired",
+"license": "CC-BY-4.0",
+"license_url": "https://creativecommons.org/licenses/by/4.0/",
+"subjects": [
+"Social Sciences",
+"Economics"
+],
+"summary": "Principles of Macroeconomics 2e covers the scope and sequence of most introductory economics courses. The text includes many current examples, which are handled in a politically equitable way. The outcome is a balanced approach to the theory and application of economics concepts. The second edition ",
+"pages": 265
+},
+{
+"slug": "principles-macroeconomics-3e",
+"title": "Principles of Macroeconomics 3e",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"Social Sciences",
+"Business",
+"Economics"
+],
+"summary": "Principles of Macroeconomics 3e covers the scope and sequence of most one semester introductory macroeconomics courses. The third edition takes a balanced approach to the theory and application of macroeconomics concepts. The text uses conversational language and ample illustrations to explore econo",
+"pages": 266
+},
+{
+"slug": "principles-macroeconomics-ap-courses",
+"title": "Principles of Macroeconomics for AP® Courses",
+"state": "retired",
+"license": "CC-BY-4.0",
+"license_url": "https://creativecommons.org/licenses/by/4.0/",
+"subjects": [],
+"summary": "Principles of Macroeconomics for AP ® Courses covers scope and sequence requirements for an Advanced Placement ® macroeconomics course and is listed on the College Board’s AP ® example textbook list . The text covers classical and Keynesian views, with a prominent section on the Expenditure-Output m",
+"pages": null
+},
+{
+"slug": "principles-macroeconomics-ap-courses-2e",
+"title": "Principles of Macroeconomics for AP® Courses 2e",
+"state": "retired",
+"license": "CC-BY-4.0",
+"license_url": "https://creativecommons.org/licenses/by/4.0/",
+"subjects": [
+"Social Sciences",
+"Economics"
+],
+"summary": "Principles of Macroeconomics for AP ® Courses 2e covers the scope and sequence requirements for an Advanced Placement ® macroeconomics course and is listed on the College Board’s AP® example textbook list . The second edition includes many current examples and recent data from FRED (Federal Reserve ",
+"pages": null
+},
+{
+"slug": "principles-management",
+"title": "Principles of Management",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"Business",
+"Management and Marketing"
+],
+"summary": "Principles of Management is designed to meet the scope and sequence requirements of the introductory course on management. This is a traditional approach to management using the leading, planning, organizing, and controlling approach. Management is a broad business discipline, and the Principles of ",
+"pages": 240
+},
+{
+"slug": "principles-marketing",
+"title": "Principles of Marketing",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"Business",
+"Management and Marketing"
+],
+"summary": "Principles of Marketing is designed to meet the scope and sequence for a one-semester marketing course for undergraduate business majors and minors. Principles of Marketing provides a solid grounding in the core concepts and frameworks of marketing theory and analysis so that business students inter",
+"pages": 311
+},
+{
+"slug": "principles-microeconomics",
+"title": "Principles of Microeconomics",
+"state": "retired",
+"license": "CC-BY-4.0",
+"license_url": "https://creativecommons.org/licenses/by/4.0/",
+"subjects": [],
+"summary": "Principles of Microeconomics covers the scope and sequence of most introductory microeconomics courses. The text includes many current examples, which are handled in a politically equitable way. The outcome is a balanced approach to the theory and application of economics concepts. Principles of Mic",
+"pages": null
+},
+{
+"slug": "principles-microeconomics-2e",
+"title": "Principles of Microeconomics 2e",
+"state": "retired",
+"license": "CC-BY-4.0",
+"license_url": "https://creativecommons.org/licenses/by/4.0/",
+"subjects": [
+"Social Sciences",
+"Economics"
+],
+"summary": "Principles of Microeconomics 2e covers the scope and sequence of most introductory microeconomics courses. The text includes many current examples, which are handled in a politically equitable way. The outcome is a balanced approach to the theory and application of economics concepts. The second edi",
+"pages": 240
+},
+{
+"slug": "principles-microeconomics-3e",
+"title": "Principles of Microeconomics 3e",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"Social Sciences",
+"Business",
+"Economics"
+],
+"summary": "Principles of Microeconomics 3e covers the scope and sequence of most one semester introductory microeconomics courses. The third edition takes a balanced approach to the theory and application of microeconomics concepts. The text uses conversational language and ample illustrations to explore econo",
+"pages": 240
+},
+{
+"slug": "principles-microeconomics-ap-courses",
+"title": "Principles of Microeconomics for AP® Courses",
+"state": "retired",
+"license": "CC-BY-4.0",
+"license_url": "https://creativecommons.org/licenses/by/4.0/",
+"subjects": [],
+"summary": "Principles of Microeconomics for AP ® Courses covers scope and sequence requirements for an Advanced Placement ® microeconomics course and is listed on the College Board’s AP ® example textbook list. The text includes many current examples, which are presented in a politically equitable way. The out",
+"pages": null
+},
+{
+"slug": "principles-microeconomics-ap-courses-2e",
+"title": "Principles of Microeconomics for AP® Courses 2e",
+"state": "retired",
+"license": "CC-BY-4.0",
+"license_url": "https://creativecommons.org/licenses/by/4.0/",
+"subjects": [
+"Social Sciences",
+"Economics"
+],
+"summary": "Principles of Microeconomics for AP ® Courses 2e covers the scope and sequence requirements for an Advanced Placement ® microeconomics course and is listed on the College Board’s AP® example textbook list . The second edition includes many current examples and recent data from FRED (Federal Reserve ",
+"pages": null
+},
+{
+"slug": "psychiatric-mental-health",
+"title": "Psychiatric-Mental Health Nursing",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"Nursing",
+"Psychiatric-Mental Health Nursing"
+],
+"summary": "Psychiatric-Mental Health Nursing is designed to support a one-semester psychiatric-mental health nursing course offered at both two-year and four-year institutions. Serving students specializing in psychiatric nursing and those from other health disciplines, this learning resource integrates eviden",
+"pages": 382
+},
+{
+"slug": "psychology",
+"title": "Psychology",
+"state": "retired",
+"license": "CC-BY-4.0",
+"license_url": "https://creativecommons.org/licenses/by/4.0/",
+"subjects": [
+"Social Sciences"
+],
+"summary": "Psychology is designed to meet scope and sequence requirements for the single-semester introduction to psychology course. The book offers a comprehensive treatment of core concepts, grounded in both classic studies and current and emerging research. The text also includes coverage of the DSM-5 in ex",
+"pages": 187
+},
+{
+"slug": "psychology-2e",
+"title": "Psychology 2e",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"Social Sciences",
+"Psychology"
+],
+"summary": "Psychology 2e is designed to meet scope and sequence requirements for the single-semester introduction to psychology course. The book offers a comprehensive treatment of core concepts, grounded in both classic studies and current and emerging research. The text also includes coverage of the DSM-5 in",
+"pages": 187
+},
+{
+"slug": "statistics",
+"title": "Statistics",
+"state": "live",
+"license": "CC-BY-4.0",
+"license_url": "https://creativecommons.org/licenses/by/4.0/",
+"subjects": [
+"Math",
+"Secondary Math"
+],
+"summary": "This Statistics resource was developed under the guidance and support of experienced high school teachers and subject matter experts. It is presented here in multiple formats: PDF, online, and low-cost print. Statistics offers instruction in grade-level appropriate concepts and skills in a logical, ",
+"pages": 199
+},
+{
+"slug": "us-history",
+"title": "U.S. History",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"Humanities",
+"U.S. History"
+],
+"summary": "U.S. History is designed to meet the scope and sequence requirements of most introductory courses. The text provides a balanced approach to U.S. history, considering the people, events, and ideas that have shaped the United States from both the top down (politics, economics, diplomacy) and bottom up",
+"pages": 338
+},
+{
+"slug": "university-physics-volume-1",
+"title": "University Physics Volume 1",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"Science",
+"Physics"
+],
+"summary": "University Physics is a three-volume collection that meets the scope and sequence requirements for two- and three-semester calculus-based physics courses. Volume 1 covers mechanics, sound, oscillations, and waves. Volume 2 covers thermodynamics, electricity and magnetism, and Volume 3 covers optics ",
+"pages": 260
+},
+{
+"slug": "university-physics-volume-2",
+"title": "University Physics Volume 2",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"Science",
+"Physics"
+],
+"summary": "University Physics is a three-volume collection that meets the scope and sequence requirements for two- and three-semester calculus-based physics courses. Volume 1 covers mechanics, sound, oscillations, and waves. Volume 2 covers thermodynamics, electricity and magnetism, and Volume 3 covers optics ",
+"pages": 247
+},
+{
+"slug": "university-physics-volume-3",
+"title": "University Physics Volume 3",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"Science",
+"Physics"
+],
+"summary": "University Physics is a three-volume collection that meets the scope and sequence requirements for two- and three-semester calculus-based physics courses. Volume 1 covers mechanics, sound, oscillations, and waves. Volume 2 covers thermodynamics, electricity, and magnetism, and Volume 3 covers optics",
+"pages": 180
+},
+{
+"slug": "world-history-volume-1",
+"title": "World History, Volume 1: to 1500",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"Humanities",
+"World History"
+],
+"summary": "World History, Volume 1: to 1500 is designed to meet the scope and sequence of a world history course to 1500 offered at both two-year and four-year institutions. Suitable for both majors and non majors World History, Volume 1: to 1500 introduces students to a global perspective of history couched i",
+"pages": 171
+},
+{
+"slug": "workplace-software-skills",
+"title": "Workplace Software and Skills",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"Business",
+"Computer Science",
+"Business Technologies"
+],
+"summary": "Workplace Software and Skills is designed to flexibly support a range of courses covering computer literacy, Microsoft Office, and Google Suite applications. The textbook covers both hard and soft skills that are applicable to a broad range of academic majors and careers. Chapters combine studio lea",
+"pages": 195
+},
+{
+"slug": "world-history-volume-2",
+"title": "World History, Volume 2: from 1400",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"Humanities",
+"World History"
+],
+"summary": "World History, Volume 2: from 1400 is designed to meet the scope and sequence of a world history course from 1400 offered at both two-year and four-year institutions. Suitable for both majors and non majors World History, Volume 2: from 1400 introduces students to a global perspective of history cou",
+"pages": 156
+},
+{
+"slug": "writing-guide",
+"title": "Writing Guide with Handbook",
+"state": "live",
+"license": "CC-BY-NC-SA-4.0",
+"license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"subjects": [
+"Humanities",
+"Writing Guide with Handbook"
+],
+"summary": "Writing Guide with Handbook aligns to the goals, topics, and objectives of many first-year writing and composition courses. It is organized according to relevant genres, and focuses on the writing process, effective writing practices or strategies—including graphic organizers, writing frames, and wo",
+"pages": 229
+}
+]
+}

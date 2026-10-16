@@ -1,0 +1,11 @@
+{
+  "schema": "puffpai_pack/v1",
+  "id": "growbot",
+  "display_name": "GrowBot app pack",
+  "blurb": "The apps a growing build ships with.",
+  "version": "1.0.0",
+  "author": "You",
+  "license": "Apache-2.0",
+  "posture_min": "offline",
+  "apps": [{ "id": "greenhouse", "version": "1.0.0" }]
+}

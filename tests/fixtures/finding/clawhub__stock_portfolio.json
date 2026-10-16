@@ -1,0 +1,614 @@
+{
+"results": [
+{
+"canonicalUrl": "/yinshengf/skills/stock-portfolio",
+"displayName": "Stock Portfolio",
+"downloads": 992,
+"featured": false,
+"icon": null,
+"id": "clawhub:kd7aea1a6a7ggw5xqngcmcrf3583f8b4",
+"install": {
+"kind": "clawhub",
+"reference": "yinshengf/stock-portfolio",
+"sourceUrl": null
+},
+"links": {
+"canonical": "/yinshengf/skills/stock-portfolio",
+"source": null
+},
+"metrics": {
+"bookmarks": 0,
+"rolling60DayInstalls": 0,
+"updatedAt": 1778492131891
+},
+"native": {
+"skill": {
+"isSuspicious": false,
+"stats": {
+"comments": 0,
+"downloads": 992,
+"installs": 23,
+"stars": 0,
+"versions": 1
+}
+}
+},
+"official": false,
+"ownerHandle": "yinshengf",
+"score": 6110,
+"slug": "stock-portfolio",
+"source": "clawhub",
+"sourceIdentity": {
+"host": null,
+"id": "kd7aea1a6a7ggw5xqngcmcrf3583f8b4",
+"lifetimeInstalls": null,
+"owner": "yinshengf",
+"repo": null
+},
+"summary": "股票组合管理与预警技能。支持 A 股/港股/美股行情查询、持仓跟踪、收益计算、价格预警、每日推荐。使用免费 API（腾讯财经），数据本地存储。",
+"trust": {
+"clawHubVerdict": null,
+"installability": "installable",
+"sourceFreshness": "native",
+"upstreamScanners": null,
+"visibility": "public"
+},
+"updatedAt": 1778492131891,
+"version": null,
+"owner": {
+"handle": "yinshengf",
+"displayName": "yinshengf",
+"image": "https://avatars.githubusercontent.com/u/13606856?v=4"
+}
+},
+{
+"canonicalUrl": "/sunshinesdff/skills/a-stock-portfolio-monitor",
+"displayName": "A股持仓监控助手",
+"downloads": 3593,
+"featured": false,
+"icon": null,
+"id": "clawhub:kd77tnpnrjtxyqfsdfjcxzcxgn831ys8",
+"install": {
+"kind": "clawhub",
+"reference": "sunshinesdff/a-stock-portfolio-monitor",
+"sourceUrl": null
+},
+"links": {
+"canonical": "/sunshinesdff/skills/a-stock-portfolio-monitor",
+"source": null
+},
+"metrics": {
+"bookmarks": 0,
+"rolling60DayInstalls": 4,
+"updatedAt": 1779078310841
+},
+"native": {
+"skill": {
+"isSuspicious": false,
+"stats": {
+"comments": 0,
+"downloads": 3593,
+"installs": 105,
+"stars": 3,
+"versions": 1
+}
+}
+},
+"official": false,
+"ownerHandle": "sunshinesdff",
+"score": 5095,
+"slug": "a-stock-portfolio-monitor",
+"source": "clawhub",
+"sourceIdentity": {
+"host": null,
+"id": "kd77tnpnrjtxyqfsdfjcxzcxgn831ys8",
+"lifetimeInstalls": null,
+"owner": "sunshinesdff",
+"repo": null
+},
+"summary": "A股持仓监控助手 - 每日自动持仓报告、止损止盈提醒、实时盈亏跟踪。适合个人投资者管理多只股票持仓。",
+"trust": {
+"clawHubVerdict": null,
+"installability": "installable",
+"sourceFreshness": "native",
+"upstreamScanners": null,
+"visibility": "public"
+},
+"updatedAt": 1779078310841,
+"version": null,
+"owner": {
+"handle": "sunshinesdff",
+"displayName": "sunshinesdff",
+"image": "https://avatars.githubusercontent.com/u/177493562?v=4"
+}
+},
+{
+"canonicalUrl": "/holauv/skills/stock-portfolio-advisor",
+"displayName": "股票投资价值评分 / Stock Portfolio Investment Scoring",
+"downloads": 506,
+"featured": false,
+"icon": null,
+"id": "clawhub:kd7cqaseyjg4ed2jd3ctbfszs18dzje3",
+"install": {
+"kind": "clawhub",
+"reference": "holauv/stock-portfolio-advisor",
+"sourceUrl": null
+},
+"links": {
+"canonical": "/holauv/skills/stock-portfolio-advisor",
+"source": null
+},
+"metrics": {
+"bookmarks": 0,
+"rolling60DayInstalls": 0,
+"updatedAt": 1789399768728
+},
+"native": {
+"skill": {
+"isSuspicious": false,
+"stats": {
+"comments": 0,
+"downloads": 506,
+"installs": 0,
+"stars": 0,
+"versions": 4
+}
+}
+},
+"official": false,
+"ownerHandle": "holauv",
+"score": 5095,
+"slug": "stock-portfolio-advisor",
+"source": "clawhub",
+"sourceIdentity": {
+"host": null,
+"id": "kd7cqaseyjg4ed2jd3ctbfszs18dzje3",
+"lifetimeInstalls": null,
+"owner": "holauv",
+"repo": null
+},
+"summary": "分析A股自选与持仓，获取行情、财报、风险与新闻，按行业计算价值评分和独立交易环境分，输出基本面情景估值、数据缺口及受用户风险政策约束的配置参考，并生成离线HTML报告。适用于股票诊断、持仓复盘、投资价值评分和组合配置请求；不自动下单。 English — Deterministic value scoring and allocation for China A-share watchlists and holdings; sector-routed scoring, separate trading-environment score, scenario-based fundamental valuation, explicit data-gap reporting and constrained allocation reference; renders an offline HTML report. Pure Python stdlib, 77 unit tests. Not investment advice.",
+"trust": {
+"clawHubVerdict": null,
+"installability": "installable",
+"sourceFreshness": "native",
+"upstreamScanners": null,
+"visibility": "public"
+},
+"updatedAt": 1789399768728,
+"version": null,
+"owner": {
+"handle": "holauv",
+"displayName": "HoLauv",
+"image": "https://avatars.githubusercontent.com/u/49048240?v=4"
+}
+},
+{
+"canonicalUrl": "/aisadocs/skills/stock-portfolio-aisa-api",
+"displayName": "stock-portfolio-aisa-api",
+"downloads": 722,
+"featured": false,
+"icon": null,
+"id": "clawhub:kd75ps5zz0d76ehmpdmx69dxkx852tyf",
+"install": {
+"kind": "clawhub",
+"reference": "aisadocs/stock-portfolio-aisa-api",
+"sourceUrl": null
+},
+"links": {
+"canonical": "/aisadocs/skills/stock-portfolio-aisa-api",
+"source": null
+},
+"metrics": {
+"bookmarks": 0,
+"rolling60DayInstalls": 0,
+"updatedAt": 1778492654490
+},
+"native": {
+"skill": {
+"isSuspicious": false,
+"stats": {
+"comments": 0,
+"downloads": 722,
+"installs": 16,
+"stars": 0,
+"versions": 1
+}
+}
+},
+"official": false,
+"ownerHandle": "aisadocs",
+"score": 5095,
+"slug": "stock-portfolio-aisa-api",
+"source": "clawhub",
+"sourceIdentity": {
+"host": null,
+"id": "kd75ps5zz0d76ehmpdmx69dxkx852tyf",
+"lifetimeInstalls": null,
+"owner": "aisadocs",
+"repo": null
+},
+"summary": "Create and manage stock crypto portfolios with live AISA pricing and P&L tracking. Use when: the user wants to add holdings, inspect portfolio performance, r...",
+"trust": {
+"clawHubVerdict": null,
+"installability": "installable",
+"sourceFreshness": "native",
+"upstreamScanners": null,
+"visibility": "public"
+},
+"updatedAt": 1778492654490,
+"version": null,
+"owner": {
+"handle": "aisadocs",
+"displayName": "AIsa",
+"image": "https://avatars.githubusercontent.com/u/245991925?v=4"
+}
+},
+{
+"canonicalUrl": "/aisadocs/skills/stock-portfolio-zh-aisa",
+"displayName": "stock-portfolio-zh-aisa",
+"downloads": 735,
+"featured": false,
+"icon": null,
+"id": "clawhub:kd785dyven6dhzcr79sz95csgx8528ka",
+"install": {
+"kind": "clawhub",
+"reference": "aisadocs/stock-portfolio-zh-aisa",
+"sourceUrl": null
+},
+"links": {
+"canonical": "/aisadocs/skills/stock-portfolio-zh-aisa",
+"source": null
+},
+"metrics": {
+"bookmarks": 0,
+"rolling60DayInstalls": 0,
+"updatedAt": 1778492654490
+},
+"native": {
+"skill": {
+"isSuspicious": false,
+"stats": {
+"comments": 0,
+"downloads": 735,
+"installs": 16,
+"stars": 0,
+"versions": 1
+}
+}
+},
+"official": false,
+"ownerHandle": "aisadocs",
+"score": 5095,
+"slug": "stock-portfolio-zh-aisa",
+"source": "clawhub",
+"sourceIdentity": {
+"host": null,
+"id": "kd785dyven6dhzcr79sz95csgx8528ka",
+"lifetimeInstalls": null,
+"owner": "aisadocs",
+"repo": null
+},
+"summary": "通过 AISA 的实时价格与盈亏跟踪来创建和管理股票加密投资组合。触发条件：当用户想新增持仓、查看组合表现、重命名组合或审查当前盈亏时使用。",
+"trust": {
+"clawHubVerdict": null,
+"installability": "installable",
+"sourceFreshness": "native",
+"upstreamScanners": null,
+"visibility": "public"
+},
+"updatedAt": 1778492654490,
+"version": null,
+"owner": {
+"handle": "aisadocs",
+"displayName": "AIsa",
+"image": "https://avatars.githubusercontent.com/u/245991925?v=4"
+}
+},
+{
+"canonicalUrl": "/bibaofeng/skills/stock-portfolio-aisa",
+"displayName": "stock-portfolio-aisa",
+"downloads": 648,
+"featured": false,
+"icon": null,
+"id": "clawhub:kd73623t22hfw59hx6fywen6fn8501wv",
+"install": {
+"kind": "clawhub",
+"reference": "bibaofeng/stock-portfolio-aisa",
+"sourceUrl": null
+},
+"links": {
+"canonical": "/bibaofeng/skills/stock-portfolio-aisa",
+"source": null
+},
+"metrics": {
+"bookmarks": 0,
+"rolling60DayInstalls": 0,
+"updatedAt": 1778492647488
+},
+"native": {
+"skill": {
+"isSuspicious": false,
+"stats": {
+"comments": 0,
+"downloads": 648,
+"installs": 14,
+"stars": 0,
+"versions": 1
+}
+}
+},
+"official": false,
+"ownerHandle": "bibaofeng",
+"score": 5095,
+"slug": "stock-portfolio-aisa",
+"source": "clawhub",
+"sourceIdentity": {
+"host": null,
+"id": "kd73623t22hfw59hx6fywen6fn8501wv",
+"lifetimeInstalls": null,
+"owner": "bibaofeng",
+"repo": null
+},
+"summary": "Create and manage stock crypto portfolios with live AISA pricing and P&L tracking. Use when: the user wants to add holdings, inspect portfolio performance, r...",
+"trust": {
+"clawHubVerdict": null,
+"installability": "installable",
+"sourceFreshness": "native",
+"upstreamScanners": null,
+"visibility": "public"
+},
+"updatedAt": 1778492647488,
+"version": null,
+"owner": {
+"handle": "bibaofeng",
+"displayName": "bibaofeng",
+"image": "https://avatars.githubusercontent.com/u/86095131?v=4"
+}
+},
+{
+"canonicalUrl": "/bibaofeng/skills/stock-portfolio-zh",
+"displayName": "stock-portfolio-zh",
+"downloads": 794,
+"featured": false,
+"icon": null,
+"id": "clawhub:kd7c8dqvsf916gm47dwtzyh0x1850pdk",
+"install": {
+"kind": "clawhub",
+"reference": "bibaofeng/stock-portfolio-zh",
+"sourceUrl": null
+},
+"links": {
+"canonical": "/bibaofeng/skills/stock-portfolio-zh",
+"source": null
+},
+"metrics": {
+"bookmarks": 0,
+"rolling60DayInstalls": 0,
+"updatedAt": 1778492647488
+},
+"native": {
+"skill": {
+"isSuspicious": false,
+"stats": {
+"comments": 0,
+"downloads": 794,
+"installs": 18,
+"stars": 0,
+"versions": 1
+}
+}
+},
+"official": false,
+"ownerHandle": "bibaofeng",
+"score": 5095,
+"slug": "stock-portfolio-zh",
+"source": "clawhub",
+"sourceIdentity": {
+"host": null,
+"id": "kd7c8dqvsf916gm47dwtzyh0x1850pdk",
+"lifetimeInstalls": null,
+"owner": "bibaofeng",
+"repo": null
+},
+"summary": "通过 AISA 的实时价格与盈亏跟踪来创建和管理股票加密投资组合。触发条件：当用户想新增持仓、查看组合表现、重命名组合或审查当前盈亏时使用。",
+"trust": {
+"clawHubVerdict": null,
+"installability": "installable",
+"sourceFreshness": "native",
+"upstreamScanners": null,
+"visibility": "public"
+},
+"updatedAt": 1778492647488,
+"version": null,
+"owner": {
+"handle": "bibaofeng",
+"displayName": "bibaofeng",
+"image": "https://avatars.githubusercontent.com/u/86095131?v=4"
+}
+},
+{
+"canonicalUrl": "/udiedrichsen/skills/stock-analysis",
+"displayName": "Stock Analysis",
+"downloads": 58767,
+"featured": false,
+"icon": null,
+"id": "clawhub:kd7cwpp23jfes4w92xs5m9ebs17z6wgx",
+"install": {
+"kind": "clawhub",
+"reference": "udiedrichsen/stock-analysis",
+"sourceUrl": null
+},
+"links": {
+"canonical": "/udiedrichsen/skills/stock-analysis",
+"source": null
+},
+"metrics": {
+"bookmarks": 0,
+"rolling60DayInstalls": 2,
+"updatedAt": 1779147023400
+},
+"native": {
+"skill": {
+"isSuspicious": false,
+"stats": {
+"comments": 1,
+"downloads": 58767,
+"installs": 2083,
+"stars": 258,
+"versions": 10
+}
+}
+},
+"official": false,
+"ownerHandle": "udiedrichsen",
+"score": 3060,
+"slug": "stock-analysis",
+"source": "clawhub",
+"sourceIdentity": {
+"host": null,
+"id": "kd7cwpp23jfes4w92xs5m9ebs17z6wgx",
+"lifetimeInstalls": null,
+"owner": "udiedrichsen",
+"repo": null
+},
+"summary": "Analyze stocks and cryptocurrencies using Yahoo Finance data. Supports portfolio management, watchlists with alerts, dividend analysis, 8-dimension stock scoring, viral trend detection (Hot Scanner), and rumor/early signal detection. Use for stock analysis, portfolio tracking, earnings reactions, crypto monitoring, trending stocks, or finding rumors before they hit mainstream.",
+"trust": {
+"clawHubVerdict": null,
+"installability": "installable",
+"sourceFreshness": "native",
+"upstreamScanners": null,
+"visibility": "public"
+},
+"updatedAt": 1779147023400,
+"version": null,
+"owner": {
+"handle": "udiedrichsen",
+"displayName": "udiedrichsen",
+"image": "https://avatars.githubusercontent.com/u/4386398?v=4"
+}
+},
+{
+"canonicalUrl": "/sunerw-dev/skills/stock-analysis-6",
+"displayName": "Stock Analysis 6",
+"downloads": 2226,
+"featured": false,
+"icon": null,
+"id": "clawhub:kd77q7nk0hsdngb5p8h0r7x3ch8114ct",
+"install": {
+"kind": "clawhub",
+"reference": "sunerw-dev/stock-analysis-6",
+"sourceUrl": null
+},
+"links": {
+"canonical": "/sunerw-dev/skills/stock-analysis-6",
+"source": null
+},
+"metrics": {
+"bookmarks": 0,
+"rolling60DayInstalls": 1,
+"updatedAt": 1778990001971
+},
+"native": {
+"skill": {
+"isSuspicious": false,
+"stats": {
+"comments": 0,
+"downloads": 2226,
+"installs": 68,
+"stars": 1,
+"versions": 1
+}
+}
+},
+"official": false,
+"ownerHandle": "sunerw-dev",
+"score": 3060,
+"slug": "stock-analysis-6",
+"source": "clawhub",
+"sourceIdentity": {
+"host": null,
+"id": "kd77q7nk0hsdngb5p8h0r7x3ch8114ct",
+"lifetimeInstalls": null,
+"owner": "sunerw-dev",
+"repo": null
+},
+"summary": "Analyze stocks and cryptocurrencies using Yahoo Finance data. Supports portfolio management, watchlists with alerts, dividend analysis, 8-dimension stock scoring, viral trend detection (Hot Scanner), and rumor/early signal detection. Use for stock analysis, portfolio tracking, earnings reactions, crypto monitoring, trending stocks, or finding rumors before they hit mainstream.",
+"trust": {
+"clawHubVerdict": null,
+"installability": "installable",
+"sourceFreshness": "native",
+"upstreamScanners": null,
+"visibility": "public"
+},
+"updatedAt": 1778990001971,
+"version": null,
+"owner": {
+"handle": "sunerw-dev",
+"displayName": "sunerw-dev",
+"image": "https://avatars.githubusercontent.com/u/229715427?v=4"
+}
+},
+{
+"canonicalUrl": "/bytesagain1/skills/portfolio",
+"displayName": "Portfolio",
+"downloads": 1809,
+"featured": false,
+"icon": null,
+"id": "clawhub:kd74kcwz2nh5awhc4ncssj4kyd82zn9y",
+"install": {
+"kind": "clawhub",
+"reference": "bytesagain1/portfolio",
+"sourceUrl": null
+},
+"links": {
+"canonical": "/bytesagain1/skills/portfolio",
+"source": null
+},
+"metrics": {
+"bookmarks": 0,
+"rolling60DayInstalls": 1,
+"updatedAt": 1778491917527
+},
+"native": {
+"skill": {
+"isSuspicious": false,
+"stats": {
+"comments": 0,
+"downloads": 1809,
+"installs": 44,
+"stars": 0,
+"versions": 16
+}
+}
+},
+"official": false,
+"ownerHandle": "bytesagain1",
+"score": 3060,
+"slug": "portfolio",
+"source": "clawhub",
+"sourceIdentity": {
+"host": null,
+"id": "kd74kcwz2nh5awhc4ncssj4kyd82zn9y",
+"lifetimeInstalls": null,
+"owner": "bytesagain1",
+"repo": null
+},
+"summary": "Manage investment portfolios. Use when adding positions, analyzing allocation, calculating returns, or generating rebalance advice.",
+"trust": {
+"clawHubVerdict": null,
+"installability": "installable",
+"sourceFreshness": "native",
+"upstreamScanners": null,
+"visibility": "public"
+},
+"updatedAt": 1778491917527,
+"version": null,
+"owner": {
+"handle": "bytesagain1",
+"displayName": "bytesagain1",
+"image": "https://avatars.githubusercontent.com/u/261107384?v=4"
+}
+}
+]
+}

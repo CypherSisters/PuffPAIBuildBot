@@ -1,0 +1,201 @@
+{
+"ok": true,
+"data": [
+{
+"name": "3D-Printer",
+"full_name": "liam-clink/3D-Printer",
+"owner": {
+"login": "liam-clink"
+},
+"description": "Firmware for my FlashForge Creator Pro 3D printer",
+"html_url": "https://codeberg.org/liam-clink/3D-Printer",
+"website": "",
+"stars_count": 0,
+"updated_at": "2024-12-03T05:38:07+01:00",
+"language": "Makefile",
+"topics": [],
+"archived": false,
+"fork": false,
+"default_branch": "master",
+"licenses": null,
+"size": 6891
+},
+{
+"name": "3d-printing",
+"full_name": "stv0g/3d-printing",
+"owner": {
+"login": "stv0g"
+},
+"description": "Some 3D models I created for 3D printers",
+"html_url": "https://codeberg.org/stv0g/3d-printing",
+"website": "",
+"stars_count": 0,
+"updated_at": "2026-05-15T10:33:54+02:00",
+"language": "",
+"topics": [],
+"archived": false,
+"fork": false,
+"default_branch": "master",
+"licenses": null,
+"size": 6531
+},
+{
+"name": "3dp-build-logs",
+"full_name": "voidedgin/3dp-build-logs",
+"owner": {
+"login": "voidedgin"
+},
+"description": "Build log for various 3d printers",
+"html_url": "https://codeberg.org/voidedgin/3dp-build-logs",
+"website": "",
+"stars_count": 0,
+"updated_at": "2026-01-19T23:01:47+01:00",
+"language": "",
+"topics": [],
+"archived": false,
+"fork": false,
+"default_branch": "main",
+"licenses": null,
+"size": 14
+},
+{
+"name": "3DPrinter-Hot-Box",
+"full_name": "Decclo/3DPrinter-Hot-Box",
+"owner": {
+"login": "Decclo"
+},
+"description": "Controlled environment for 3D Printers. ",
+"html_url": "https://codeberg.org/Decclo/3DPrinter-Hot-Box",
+"website": "",
+"stars_count": 0,
+"updated_at": "2025-05-26T11:59:59+02:00",
+"language": "C++",
+"topics": [],
+"archived": false,
+"fork": false,
+"default_branch": "dev",
+"licenses": null,
+"size": 49
+},
+{
+"name": "9",
+"full_name": "sunqian021095/9",
+"owner": {
+"login": "sunqian021095"
+},
+"description": "Customized Small Size Metal 3D Printer\r\nhttp://www.mtxlaser.com/",
+"html_url": "https://codeberg.org/sunqian021095/9",
+"website": "",
+"stars_count": 0,
+"updated_at": "2023-05-11T09:07:47+02:00",
+"language": "",
+"topics": [],
+"archived": false,
+"fork": false,
+"default_branch": "main",
+"licenses": null,
+"size": 0
+},
+{
+"name": "anet_a8_marlin_config",
+"full_name": "n4r3n/anet_a8_marlin_config",
+"owner": {
+"login": "n4r3n"
+},
+"description": "Marlin configuration for a 3D printer using the Anet A8 controller board",
+"html_url": "https://codeberg.org/n4r3n/anet_a8_marlin_config",
+"website": "",
+"stars_count": 0,
+"updated_at": "2025-05-04T00:28:15+02:00",
+"language": "C",
+"topics": [],
+"archived": false,
+"fork": false,
+"default_branch": "main",
+"licenses": null,
+"size": 112
+},
+{
+"name": "carkhead",
+"full_name": "iamcark/carkhead",
+"owner": {
+"login": "iamcark"
+},
+"description": "Toolhead board for a Klipper-based 3D printer",
+"html_url": "https://codeberg.org/iamcark/carkhead",
+"website": "",
+"stars_count": 0,
+"updated_at": "2026-03-19T03:22:55+01:00",
+"language": "",
+"topics": [],
+"archived": false,
+"fork": false,
+"default_branch": "main",
+"licenses": null,
+"size": 9044
+},
+{
+"name": "cfw-docs",
+"full_name": "prusa-custom-firmware/cfw-docs",
+"owner": {
+"login": "prusa-custom-firmware"
+},
+"description": "Custom firmware (Klipper/Kalico) on Prusa's line of 3D printers ",
+"html_url": "https://codeberg.org/prusa-custom-firmware/cfw-docs",
+"website": "",
+"stars_count": 2,
+"updated_at": "2025-12-09T22:00:45+01:00",
+"language": "HTML",
+"topics": [],
+"archived": false,
+"fork": false,
+"default_branch": "main",
+"licenses": null,
+"size": 7154
+},
+{
+"name": "chocoprint",
+"full_name": "chocoprint/chocoprint",
+"owner": {
+"login": "chocoprint"
+},
+"description": "Chocolate 3D Printer",
+"html_url": "https://codeberg.org/chocoprint/chocoprint",
+"website": "",
+"stars_count": 3,
+"updated_at": "2024-12-03T05:45:56+01:00",
+"language": "",
+"topics": [
+"arduino",
+"3d",
+"3d-printing",
+"3d-printer",
+"chocolate"
+],
+"archived": false,
+"fork": false,
+"default_branch": "main",
+"licenses": null,
+"size": 6245
+},
+{
+"name": "code",
+"full_name": "manifest-2-meatspace/code",
+"owner": {
+"login": "manifest-2-meatspace"
+},
+"description": "Automagically create objects from just a text input, manifest anything into meatspace with this interactive art installation using 3D printers and simple image generation",
+"html_url": "https://codeberg.org/manifest-2-meatspace/code",
+"website": "",
+"stars_count": 0,
+"updated_at": "2026-09-17T17:30:46+02:00",
+"language": "G-code",
+"topics": [],
+"archived": false,
+"fork": false,
+"default_branch": "main",
+"licenses": null,
+"size": 18431
+}
+]
+}

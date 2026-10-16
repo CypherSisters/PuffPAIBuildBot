@@ -1,0 +1,537 @@
+{
+ "left_out": [
+  {
+   "item": "index",
+   "why": "A list item has no colours this bot can read."
+  },
+  {
+   "item": "style",
+   "why": "A list item has no colours this bot can read."
+  }
+ ],
+ "license": "MIT",
+ "list": "shadcn",
+ "looks": [
+  {
+   "adjusted": [
+    "On the day look I darkened the faint words, the second colour and the extra colours a little so everything is easy to read.",
+    "On the night look I lightened the extra colours a little so everything is easy to read."
+   ],
+   "checks": [
+    {
+     "check": "Words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 4.7 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the day look",
+     "result": "pass",
+     "why": "lowest 3.6 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the day look",
+     "result": "pass",
+     "why": "lowest 4.7 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 4.8 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 7.0 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the night look",
+     "result": "pass",
+     "why": "lowest 3.4 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the night look",
+     "result": "pass",
+     "why": "lowest 4.4 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 4.8 to 1, needs 4.5 to 1"
+    }
+   ],
+   "day": {
+    "accent": "#1c1917",
+    "accent2": "#00786b",
+    "bg": "#ffffff",
+    "bg2": "#fdfdfc",
+    "card": "#ffffff",
+    "chart": [
+     "#d11d00",
+     "#00786b",
+     "#104e64",
+     "#9c5c00"
+    ],
+    "danger": "#e7000b",
+    "line": "#e7e5e4",
+    "text": "#0c0a09",
+    "text2": "#79716b",
+    "text3": "#8a8581"
+   },
+   "font": "plain",
+   "from": {
+    "item": "stone",
+    "license": "MIT",
+    "list": "shadcn",
+    "list_date": "2026-09-24"
+   },
+   "id": "shadcn:stone",
+   "name": "Stone",
+   "night": {
+    "accent": "#e7e5e4",
+    "accent2": "#00bc7d",
+    "bg": "#0c0a09",
+    "bg2": "#131110",
+    "card": "#1c1917",
+    "chart": [
+     "#3d7bff",
+     "#00bc7d",
+     "#fe9a00",
+     "#ad46ff"
+    ],
+    "danger": "#ff6467",
+    "line": "#242322",
+    "text": "#fafaf9",
+    "text2": "#a6a09b",
+    "text3": "#706b68"
+   },
+   "photo": "keep",
+   "schema": "puffpai_theme/v1",
+   "shape": "soft",
+   "words": [
+    "minimal",
+    "neutral",
+    "plain",
+    "simple",
+    "stone",
+    "warm"
+   ]
+  },
+  {
+   "adjusted": [
+    "On the day look I darkened the faint words, the second colour and the extra colours a little so everything is easy to read.",
+    "On the night look I lightened the extra colours a little so everything is easy to read."
+   ],
+   "checks": [
+    {
+     "check": "Words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 4.7 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the day look",
+     "result": "pass",
+     "why": "lowest 3.6 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the day look",
+     "result": "pass",
+     "why": "lowest 4.6 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 4.8 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 6.9 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the night look",
+     "result": "pass",
+     "why": "lowest 3.4 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the night look",
+     "result": "pass",
+     "why": "lowest 4.4 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 4.8 to 1, needs 4.5 to 1"
+    }
+   ],
+   "day": {
+    "accent": "#18181b",
+    "accent2": "#00786b",
+    "bg": "#ffffff",
+    "bg2": "#fcfcfc",
+    "card": "#ffffff",
+    "chart": [
+     "#d11d00",
+     "#00786b",
+     "#104e64",
+     "#9c5c00"
+    ],
+    "danger": "#e7000b",
+    "line": "#e4e4e7",
+    "text": "#09090b",
+    "text2": "#71717b",
+    "text3": "#85858b"
+   },
+   "font": "plain",
+   "from": {
+    "item": "zinc",
+    "license": "MIT",
+    "list": "shadcn",
+    "list_date": "2026-09-24"
+   },
+   "id": "shadcn:zinc",
+   "name": "Zinc",
+   "night": {
+    "accent": "#e4e4e7",
+    "accent2": "#00bc7d",
+    "bg": "#09090b",
+    "bg2": "#111113",
+    "card": "#18181b",
+    "chart": [
+     "#3d7bff",
+     "#00bc7d",
+     "#fe9a00",
+     "#ad46ff"
+    ],
+    "danger": "#ff6467",
+    "line": "#222224",
+    "text": "#fafafa",
+    "text2": "#9f9fa9",
+    "text3": "#6a6a72"
+   },
+   "photo": "keep",
+   "schema": "puffpai_theme/v1",
+   "shape": "soft",
+   "words": [
+    "cool",
+    "metal",
+    "minimal",
+    "plain",
+    "simple",
+    "zinc"
+   ]
+  },
+  {
+   "adjusted": [
+    "On the day look I darkened the faint words, the second colour and the extra colours a little so everything is easy to read.",
+    "On the night look I lightened the extra colours a little so everything is easy to read."
+   ],
+   "checks": [
+    {
+     "check": "Words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 4.6 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the day look",
+     "result": "pass",
+     "why": "lowest 3.5 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the day look",
+     "result": "pass",
+     "why": "lowest 4.6 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 4.8 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 7.1 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the night look",
+     "result": "pass",
+     "why": "lowest 3.5 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the night look",
+     "result": "pass",
+     "why": "lowest 4.4 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 4.8 to 1, needs 4.5 to 1"
+    }
+   ],
+   "day": {
+    "accent": "#171717",
+    "accent2": "#00786b",
+    "bg": "#ffffff",
+    "bg2": "#fcfcfc",
+    "card": "#ffffff",
+    "chart": [
+     "#d11d00",
+     "#00786b",
+     "#104e64",
+     "#9c5c00"
+    ],
+    "danger": "#e7000b",
+    "line": "#e5e5e5",
+    "text": "#0a0a0a",
+    "text2": "#737373",
+    "text3": "#868686"
+   },
+   "font": "plain",
+   "from": {
+    "item": "neutral",
+    "license": "MIT",
+    "list": "shadcn",
+    "list_date": "2026-09-24"
+   },
+   "id": "shadcn:neutral",
+   "name": "Neutral",
+   "night": {
+    "accent": "#e5e5e5",
+    "accent2": "#00bc7d",
+    "bg": "#0a0a0a",
+    "bg2": "#111111",
+    "card": "#171717",
+    "chart": [
+     "#3d7bff",
+     "#00bc7d",
+     "#fe9a00",
+     "#ad46ff"
+    ],
+    "danger": "#ff6467",
+    "line": "#232323",
+    "text": "#fafafa",
+    "text2": "#a1a1a1",
+    "text3": "#6c6c6c"
+   },
+   "photo": "keep",
+   "schema": "puffpai_theme/v1",
+   "shape": "soft",
+   "words": [
+    "clean",
+    "minimal",
+    "neutral",
+    "plain",
+    "simple"
+   ]
+  },
+  {
+   "adjusted": [
+    "On the day look I darkened the faint words, the second colour and the extra colours a little so everything is easy to read.",
+    "On the night look I lightened the extra colours a little so everything is easy to read."
+   ],
+   "checks": [
+    {
+     "check": "Words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 4.7 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the day look",
+     "result": "pass",
+     "why": "lowest 3.6 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the day look",
+     "result": "pass",
+     "why": "lowest 4.7 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 4.8 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 7.0 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the night look",
+     "result": "pass",
+     "why": "lowest 3.4 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the night look",
+     "result": "pass",
+     "why": "lowest 4.4 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 4.9 to 1, needs 4.5 to 1"
+    }
+   ],
+   "day": {
+    "accent": "#101828",
+    "accent2": "#00786b",
+    "bg": "#ffffff",
+    "bg2": "#fcfcfd",
+    "card": "#ffffff",
+    "chart": [
+     "#d11d00",
+     "#00786b",
+     "#104e64",
+     "#9c5c00"
+    ],
+    "danger": "#e7000b",
+    "line": "#e5e7eb",
+    "text": "#030712",
+    "text2": "#6a7282",
+    "text3": "#80858f"
+   },
+   "font": "plain",
+   "from": {
+    "item": "gray",
+    "license": "MIT",
+    "list": "shadcn",
+    "list_date": "2026-09-24"
+   },
+   "id": "shadcn:gray",
+   "name": "Gray",
+   "night": {
+    "accent": "#e5e7eb",
+    "accent2": "#00bc7d",
+    "bg": "#030712",
+    "bg2": "#0a101c",
+    "card": "#101828",
+    "chart": [
+     "#3d7bff",
+     "#00bc7d",
+     "#fe9a00",
+     "#ad46ff"
+    ],
+    "danger": "#ff6467",
+    "line": "#1c202a",
+    "text": "#f9fafb",
+    "text2": "#99a1af",
+    "text3": "#646b78"
+   },
+   "photo": "keep",
+   "schema": "puffpai_theme/v1",
+   "shape": "soft",
+   "words": [
+    "cool",
+    "minimal",
+    "plain",
+    "simple"
+   ]
+  },
+  {
+   "adjusted": [
+    "On the day look I darkened the faint words, the second colour and the extra colours a little so everything is easy to read.",
+    "On the night look I lightened the extra colours a little so everything is easy to read."
+   ],
+   "checks": [
+    {
+     "check": "Words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 4.6 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the day look",
+     "result": "pass",
+     "why": "lowest 3.6 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the day look",
+     "result": "pass",
+     "why": "lowest 4.6 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 4.8 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 7.0 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the night look",
+     "result": "pass",
+     "why": "lowest 3.4 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the night look",
+     "result": "pass",
+     "why": "lowest 4.4 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 4.9 to 1, needs 4.5 to 1"
+    }
+   ],
+   "day": {
+    "accent": "#0f172b",
+    "accent2": "#00786b",
+    "bg": "#ffffff",
+    "bg2": "#fbfcfe",
+    "card": "#ffffff",
+    "chart": [
+     "#d11d00",
+     "#00786b",
+     "#104e64",
+     "#9c5c00"
+    ],
+    "danger": "#e7000b",
+    "line": "#e2e8f0",
+    "text": "#020618",
+    "text2": "#62748e",
+    "text3": "#7b8797"
+   },
+   "font": "plain",
+   "from": {
+    "item": "slate",
+    "license": "MIT",
+    "list": "shadcn",
+    "list_date": "2026-09-24"
+   },
+   "id": "shadcn:slate",
+   "name": "Slate",
+   "night": {
+    "accent": "#e2e8f0",
+    "accent2": "#00bc7d",
+    "bg": "#020618",
+    "bg2": "#090f21",
+    "card": "#0f172b",
+    "chart": [
+     "#3d7bff",
+     "#00bc7d",
+     "#fe9a00",
+     "#ad46ff"
+    ],
+    "danger": "#ff6467",
+    "line": "#1b1f2f",
+    "text": "#f8fafc",
+    "text2": "#90a1b9",
+    "text3": "#5e6b80"
+   },
+   "photo": "keep",
+   "schema": "puffpai_theme/v1",
+   "shape": "soft",
+   "words": [
+    "clean",
+    "minimal",
+    "plain",
+    "simple",
+    "slate"
+   ]
+  }
+ ],
+ "note": "Colours converted to numbers by BuildBot; describing words written by BuildBot.",
+ "project": "https://github.com/shadcn-ui/ui",
+ "schema": "looks_snapshot/v1",
+ "source": "https://ui.shadcn.com/r/styles/new-york-v4/registry.json",
+ "taken_at": "2026-09-24"
+}

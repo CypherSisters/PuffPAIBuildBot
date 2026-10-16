@@ -1,0 +1,5 @@
+{
+  "url": "http://homeassistant.local:8123",
+  "token": "PASTE_YOUR_LONG_LIVED_ACCESS_TOKEN",
+  "enabled": false
+}

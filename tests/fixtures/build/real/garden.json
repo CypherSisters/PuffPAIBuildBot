@@ -1,0 +1,790 @@
+{
+ "goal": "a bot that helps my garden",
+ "how": "brain",
+ "jobs": [
+  {
+   "id": "garden-helper",
+   "name": "Garden Helper",
+   "does": "remind to water plants",
+   "action": "remind",
+   "subject": [
+    "plants",
+    "garden",
+    "helper"
+   ],
+   "output": "text",
+   "needs": [
+    "time"
+   ],
+   "ask": "When should I water my plants?",
+   "route": "D",
+   "pick": {
+    "ref": "",
+    "class": "",
+    "score": 0.0,
+    "why": ""
+   },
+   "ingredients": [],
+   "view": "",
+   "page": "job-garden-helper",
+   "status": "planned",
+   "reason": ""
+  },
+  {
+   "id": "garden-watcher",
+   "name": "Garden Watcher",
+   "does": "show garden growth",
+   "action": "show",
+   "subject": [
+    "garden",
+    "watcher"
+   ],
+   "output": "pictures",
+   "needs": [
+    "place"
+   ],
+   "ask": "How is my garden growing?",
+   "route": "D",
+   "pick": {
+    "ref": "",
+    "class": "",
+    "score": 0.0,
+    "why": ""
+   },
+   "ingredients": [],
+   "view": "",
+   "page": "job-garden-watcher",
+   "status": "planned",
+   "reason": ""
+  }
+ ],
+ "cands": [
+  {
+   "ref": "clawhub:ivangdavila/plants",
+   "name": "Plants",
+   "type": "skill",
+   "what": "Build a personal plant care system with watering schedules, care logs, and seasonal reminders.",
+   "source": "clawhub",
+   "url": "https://clawhub.ai/ivangdavila/skills/plants",
+   "hosts": [],
+   "needs": [],
+   "caps": [],
+   "skill_md": "---\nname: Plants\ndescription: Build a personal plant care system with watering schedules, care logs, and seasonal reminders.\nmetadata: {\"clawdbot\":{\"emoji\":\"\ud83c\udf31\",\"os\":[\"linux\",\"darwin\",\"win32\"]}}\n---\n\n## Core Behavior\n- User mentions a plant \u2192 create entry with care requirements\n- Track watering and care \u2192 remind when due\n- Seasonal prompts \u2192 fertilizing, repotting, pruning timing\n- Create `~/plants/` as workspace\n\n## When User Adds a Plant\n- Name (common and scientific if known)\n- Location: room, windowsill, outdoor\n- Light conditions: direct sun, bright indirect, low light\n- Acquired date: helps track age and growth\n- Photo: visual reference for health comparison\n\n## Plant File Structure\nOne file per plant: `pothos-living-room.md`\n- Basic info: name, species, location\n- Care requirements: water, light, humidity, temperature\n- Care log: dated entries of watering, fertilizing, issues\n- Notes: quirks, observations, what works\n\n## Watering Tracking\n- Log date when watered\n- Note method: thorough soak, light water, bottom watering\n- Track frequency that works \u2014 adjust by season\n- \"Last watered 5 days ago\" surfacing when asked\n\n## Watering Reminders\n- Calculate based on plant type and last watering\n- Succulents: 10-14 days\n- Tropicals: 5-7 days\n- Adjust by season \u2014 less in winter, more in summer\n- Group plants by watering day to simplify routine\n\n## Seasonal Care Calendar\n- Spring: repotting season, increase watering, start fertilizing\n- Summer: peak growth, watch for pests, more frequent water\n- Fall: reduce fertilizing, prepare for dormancy\n- Winter: reduce watering, no fertilizing, watch for dry air\n\n## Problem Tracking\n- Yellow leaves, brown tips, pests \u2192 log with photo\n- What was tried, what worked\n- Build knowledge base per plant species\n- \"Last time pothos had yellow leaves, I reduced watering\"\n\n## Fertilizing Schedule\n- Track last fertilizing date\n- Most houseplants: monthly during growing season\n- Remind when due based on plant type\n- Note which fertilizer used\n\n## Repotting Log\n- When repotted: date, pot size, soil mix used\n- Next repotting estimate: usually 1-2 years\n- Signs to watch: roots circling, water runs straight through\n\n## Progressive Enhancement\n- Week 1: add plants as they come up\n- Week 2: start logging watering\n- Month 2: add care requirements, set reminders\n- Month 3: seasonal calendar integration\n- Ongoing: photo log for growth tracking\n\n## Folder Structure\n```\n~/plants/\n\u251c\u2500\u2500 indoor/\n\u2502   \u251c\u2500\u2500 pothos-living-room.md\n\u2502   \u2514\u2500\u2500 monstera-bedroom.md\n\u251c\u2500\u2500 outdoor/\n\u251c\u2500\u2500 wishlist.md\n\u2514\u2500\u2500 care-calendar.md\n```\n\n## Photo Tracking\n- Periodic photos show growth over time\n- Before/after for problem resolution\n- Reference for \"is this normal for this plant?\"\n- Store in plant folder or link from file\n\n## Propagation Tracking\n- Parent plant reference\n- Date started\n- Method: cutting, division, seeds\n- Progress log until established\n\n## Plant Death / Removal\n- Don't delete \u2014 move to archive\n- Note cause if known: overwatering, pests, neglect\n- Lessons learned for future\n- \"RIP monstera, root rot from overwatering winter 2024\"\n\n## What NOT To Suggest\n- Complex apps before files work\n- Automated watering systems \u2014 manual observation is valuable\n- Over-precise schedules \u2014 plants aren't machines\n- Guilt about plant deaths \u2014 it happens, learn and move on\n\n## Common Questions to Handle\n- \"When did I last water the fiddle leaf?\" \u2192 check log\n- \"Why is my pothos drooping?\" \u2192 suggest common causes\n- \"What plants are good for low light?\" \u2192 recommendations from knowledge\n- \"Time to repot anything?\" \u2192 check repotting dates\n\n## Integration Points\n- Habits: \"water plants\" as recurring habit\n- Calendar: seasonal care reminders\n- Shopping: fertilizer, pots, soil when needed\n",
+   "files": [
+    "SKILL.md"
+   ]
+  },
+  {
+   "ref": "clawhub:ivangdavila/garden",
+   "name": "Garden",
+   "type": "skill",
+   "what": "Track your entire garden with structured memory for plants, zones, tasks, harvests, and climate-aware planning that compounds over seasons.",
+   "source": "clawhub",
+   "url": "https://clawhub.ai/ivangdavila/skills/garden",
+   "hosts": [],
+   "needs": [],
+   "caps": [],
+   "skill_md": "---\nname: Garden\nslug: garden\nversion: 1.1.6\nhomepage: https://clawic.com/skills/garden\nchangelog: \"Natural setup flow, explicit consent, no technical jargon\"\ndescription: Track your entire garden with structured memory for plants, zones, tasks, harvests, and climate-aware planning that compounds over seasons.\nmetadata: {\"clawdbot\":{\"emoji\":\"\ud83c\udf31\",\"requires\":{\"bins\":[]},\"os\":[\"linux\",\"darwin\",\"win32\"]}}\n---\n\n## Setup\n\nIf `~/garden/` doesn't exist or is empty, read `setup.md` and follow it. The user engaging with the skill implies interest \u2014 start helping them naturally.\n\n## When to Use\n\nUser needs help managing their garden: tracking plants, logging activities, planning rotations, diagnosing problems, or reviewing harvests. Agent maintains structured memory across seasons.\n\n## Architecture\n\nMemory lives in `~/garden/`. See `memory-template.md` for templates.\n\n```\n~/garden/\n\u251c\u2500\u2500 memory.md      # REQUIRED: context and status\n\u251c\u2500\u2500 climate.md     # Optional: zone, frost dates\n\u251c\u2500\u2500 plants/        # Optional: detailed plant files\n\u251c\u2500\u2500 zones/         # Optional: zone tracking\n\u2514\u2500\u2500 harvests.md    # Optional: yield records\n```\n\nStart minimal (just memory.md). Add others only if user wants detailed tracking.\n\n## Quick Reference\n\n| Topic | File |\n|-------|------|\n| Setup process | `setup.md` |\n| Memory template | `memory-template.md` |\n| Plant & zone templates | `tracking.md` |\n| Climate configuration | `climate-setup.md` |\n| Problem diagnosis | `diagnostics.md` |\n| Rotation planning | `planning.md` |\n\n## Core Rules\n\n### 1. Plant Registry\nEach plant gets a file in `plants/` with: variety, planting date, zone, care schedule, health history. Load on request, not by default.\n\n### 2. Zone Management\nEach garden area gets a file in `zones/` with: conditions, current plants, rotation history. Enforce 3-year minimum before repeating same plant family.\n\n### 3. Activity Logging\nLog actions in `log/YYYY-MM.md` with icons: \ud83c\udf31 plant, \ud83d\udca7 water, \ud83d\udc1b pest, \ud83c\udf45 harvest, \u2702\ufe0f prune, \ud83c\udf21\ufe0f weather event.\n\n### 4. Climate Awareness\nUser configures climate file with USDA zone and frost dates. Use for planting window calculations and seasonal alerts.\n\n### 5. Harvest Tracking\nLog yields in harvests file with date, plant, zone, quantity. Enables season-over-season comparison and variety evaluation.\n\n### 6. Problem Diagnosis\nWhen user reports issue: check plant health history, zone conditions, recent weather. See `diagnostics.md` for symptom reference.\n\n### 7. Tiered Storage\n- Memory file = current focus, always loaded first\n- Plant/zone files = load on demand\n- Log archives = historical reference only\n\n## Common Queries\n\n- \"What needs water?\" - check care schedules vs last log\n- \"What can I plant now?\" - frost dates + rotation rules\n- \"Why yellow leaves?\" - diagnostic flow in `diagnostics.md`\n- \"Show tomato history\" - load plant file\n- \"Last year's harvest?\" - aggregate from harvests file\n\n## Garden Traps\n\n- Planting same family in same zone within 3 years - diseases compound\n- Ignoring microclimate differences between zones - timing varies\n- Not logging problems when they occur - diagnosis harder later\n- Overwatering based on schedule not soil - check before watering\n\n## Security & Privacy\n\n**Data that stays local:**\n- All garden data stored in `~/garden/`\n- No external APIs or network calls\n- No telemetry, analytics, or data collection\n\n**What this skill writes:**\n- Files in `~/garden/` (memory.md, plants/, etc.)\n- Optionally: one line in user's workspace MEMORY.md (e.g., ~/MEMORY.md or equivalent) \u2014 **only after asking and receiving explicit \"yes\"**\n\n**This skill does NOT:**\n- Infer or save preferences without user confirmation\n- Access weather APIs (climate is manually configured)\n- Control hardware or irrigation systems\n- Write outside `~/garden/` without asking first\n- Make any network requests\n\n## Related Skills\nInstall with `clawhub install <slug>` if user confirms:\n- `plants` \u2014 Plant care and identification\n- `habits` \u2014 Daily habit tracking\n- `journal` \u2014 General journaling\n- `remind` \u2014 Reminder scheduling\n- `daily-planner` \u2014 Day planning\n\n## Feedback\n\n- If useful: `clawhub star garden`\n- Stay updated: `clawhub sync`\n",
+   "files": [
+    "EXTRA_FILES.txt",
+    "SKILL.md",
+    "climate-setup.md",
+    "diagnostics.md",
+    "memory-template.md",
+    "planning.md",
+    "setup.md",
+    "tracking.md"
+   ]
+  },
+  {
+   "ref": "clawhub:slamw/plant-care-expert",
+   "name": "Plant Care Expert",
+   "type": "skill",
+   "what": "\u690d\u7269\u8bc6\u522b\u4e0e\u517b\u62a4\u4e13\u5bb6\u6280\u80fd\u3002\u5f53\u7528\u6237\u53d1\u9001\u690d\u7269\u56fe\u7247\u6216\u8be2\u95ee\u690d\u7269\u540d\u79f0\u65f6\u89e6\u53d1\u3002\u652f\u6301\uff1a1) \u8bc6\u522b\u690d\u7269\u79cd\u7c7b 2) \u8bc4\u4f30\u517b\u62a4\u96be\u5ea6 3) \u63d0\u4f9b\u8be6\u7ec6\u517b\u62a4\u6307\u5357 4) \u8bca\u65ad\u690d\u7269\u95ee\u9898 5) \u7ed9\u51fa\u6025\u6551\u5efa\u8bae\u3002\u9002\u7528\u4e8e\u5ba4\u5185\u5916\u7eff\u690d\u3001\u82b1\u5349\u3001\u591a\u8089\u690d\u7269\u7b49\u7684\u517b\u62a4\u54a8\u8be2\u3002",
+   "source": "clawhub",
+   "url": "https://clawhub.ai/slamw/skills/plant-care-expert",
+   "hosts": [],
+   "needs": [],
+   "caps": [],
+   "skill_md": "---\nAIGC:\n    ContentProducer: Minimax Agent AI\n    ContentPropagator: Minimax Agent AI\n    Label: AIGC\n    ProduceID: \"00000000000000000000000000000000\"\n    PropagateID: \"00000000000000000000000000000000\"\n    ReservedCode1: 3044022034cadbaf26f4d65c387fa907e8de83aeb60c5cf52175c0a4c92321938257016302202784e00a7ba61b818c1e466efbac648a37eb69e86a7248cae634a23c267e8835\n    ReservedCode2: 3045022100936396d2abe46c36df94a1f33fbc0c1717bb4f86225fbd038adab333b478906c022007f03738a36b53b9ff3f995e3d1c73bcf5bc33c45dbf52dd744d40d05adb7635\nauthor: MiniMax Agent AI\ndescription: \u690d\u7269\u8bc6\u522b\u4e0e\u517b\u62a4\u4e13\u5bb6\u6280\u80fd\u3002\u5f53\u7528\u6237\u53d1\u9001\u690d\u7269\u56fe\u7247\u6216\u8be2\u95ee\u690d\u7269\u540d\u79f0\u65f6\u89e6\u53d1\u3002\u652f\u6301\uff1a1) \u8bc6\u522b\u690d\u7269\u79cd\u7c7b 2) \u8bc4\u4f30\u517b\u62a4\u96be\u5ea6 3) \u63d0\u4f9b\u8be6\u7ec6\u517b\u62a4\u6307\u5357 4) \u8bca\u65ad\u690d\u7269\u95ee\u9898 5) \u7ed9\u51fa\u6025\u6551\u5efa\u8bae\u3002\u9002\u7528\u4e8e\u5ba4\u5185\u5916\u7eff\u690d\u3001\u82b1\u5349\u3001\u591a\u8089\u690d\u7269\u7b49\u7684\u517b\u62a4\u54a8\u8be2\u3002\nname: plant-care-expert\ntags:\n    - plant-care\n    - indoor-plants\n    - plant-identification\n    - gardening\n    - plant-diagnosis\ntriggers:\n    - \u8fd9\u662f\u4ec0\u4e48\u690d\u7269\n    - \u5e2e\u6211\u770b\u770b\u8fd9\u662f\u4ec0\u4e48\u690d\u7269\n    - \u690d\u7269\u53f6\u5b50\u53d1\u9ec4\n    - \u600e\u4e48\u517b\n    - \u597d\u517b\u5417\n    - \u690d\u7269\u7f3a\u6c34\n    - \u690d\u7269\u70c2\u6839\n    - \u517b\u82b1\n    - \u690d\u7269\u517b\u62a4\n    - \u690d\u7269\u8bc6\u522b\nversion: 1.0.0\n---\n\n# \u690d\u7269\u8bc6\u522b\u4e0e\u517b\u62a4\u4e13\u5bb6\n\n\u8fd9\u662f\u4e00\u4e2a\u4e13\u4e1a\u7684\u690d\u7269\u8bc6\u522b\u4e0e\u517b\u62a4\u6280\u80fd\uff0c\u80fd\u591f\u5e2e\u52a9\u7528\u6237\u8bc6\u522b\u690d\u7269\u79cd\u7c7b\u5e76\u63d0\u4f9b\u79d1\u5b66\u7684\u517b\u62a4\u65b9\u6848\u3002\n\n---\n\n## \u6838\u5fc3\u80fd\u529b\n\n### \u4e00\u3001\u690d\u7269\u8bc6\u522b\n\n\u5f53\u7528\u6237\u63d0\u4f9b\u690d\u7269\u56fe\u7247\u65f6\uff0c\u4f7f\u7528\u56fe\u50cf\u8bc6\u522b\u5de5\u5177\u5206\u6790\u690d\u7269\u7279\u5f81\uff0c\u8bc6\u522b\u690d\u7269\u79cd\u7c7b\u3002\u5982\u679c\u65e0\u6cd5\u786e\u5b9a\u5177\u4f53\u54c1\u79cd\uff0c\u5e94\u7ed9\u51fa\u6700\u53ef\u80fd\u7684\u51e0\u79cd\u9009\u9879\u53ca\u7279\u5f81\u5bf9\u6bd4\u3002\n\n### \u4e8c\u3001\u517b\u62a4\u96be\u5ea6\u8bc4\u4f30\n\n\u6839\u636e\u690d\u7269\u79cd\u7c7b\u8bc4\u4f30\u517b\u62a4\u96be\u5ea6\u7b49\u7ea7\uff1a\n\n| \u7b49\u7ea7 | \u6807\u8bc6 | \u542b\u4e49 | \u9002\u5408\u4eba\u7fa4 |\n|------|------|------|----------|\n| \u4e00\u7ea7 | \u6781\u6613\u517b\u62a4 | \u5bf9\u73af\u5883\u8981\u6c42\u4f4e\uff0c\u5076\u5c14\u6d47\u6c34\u5373\u53ef\u5b58\u6d3b | \u65b0\u624b\u3001\u65f6\u95f4\u7d27\u5f20\u8005 |\n| \u4e8c\u7ea7 | \u5bb9\u6613\u517b\u62a4 | \u9700\u8981\u5b9a\u671f\u6d47\u6c34\uff0c\u9002\u5e94\u80fd\u529b\u8f83\u5f3a | \u521d\u7ea7\u7231\u597d\u8005 |\n| \u4e09\u7ea7 | \u4e2d\u7b49\u517b\u62a4 | \u9700\u8981\u7279\u5b9a\u5149\u7167\u6216\u6d47\u6c34\u9891\u7387 | \u6709\u4e00\u5b9a\u7ecf\u9a8c\u8005 |\n| \u56db\u7ea7 | \u9700\u7ec6\u5fc3\u517b\u62a4 | \u5bf9\u73af\u5883\u654f\u611f\uff0c\u9700\u8981\u7279\u5b9a\u6761\u4ef6 | \u8fdb\u9636\u7231\u597d\u8005 |\n| \u4e94\u7ea7 | \u4e13\u4e1a\u7ea7\u517b\u62a4 | \u9700\u8981\u6052\u6e29\u6052\u6e7f\u7b49\u4e25\u683c\u6761\u4ef6 | \u4e13\u4e1a\u56ed\u827a\u8005 |\n\n### \u4e09\u3001\u517b\u62a4\u6761\u4ef6\u5224\u65ad\n\n\u8bc4\u4f30\u7528\u6237\u5f53\u524d\u73af\u5883\u662f\u5426\u9002\u5408\u517b\u62a4\u8be5\u690d\u7269\uff0c\u5305\u62ec\uff1a\n\n**\u5149\u7167\u6761\u4ef6\u8bc4\u4f30**\n- \u9633\u53f0\u671d\u5411\uff08\u5357\u5411\u3001\u5317\u5411\u3001\u4e1c\u5411\u3001\u897f\u5411\uff09\n- \u5ba4\u5185\u5149\u7ebf\u5f3a\u5ea6\uff08\u5145\u8db3\u6563\u5c04\u5149\u3001\u5f31\u5149\u3001\u660e\u4eae\u76f4\u5c04\uff09\n- \u6bcf\u65e5\u5149\u7167\u65f6\u957f\n\n**\u6e29\u5ea6\u6761\u4ef6\u8bc4\u4f30**\n- \u5ba4\u5185\u5e38\u9a7b\u6e29\u5ea6\u8303\u56f4\n- \u51ac\u5b63\u662f\u5426\u6709\u6696\u6c14\n- \u590f\u5b63\u662f\u5426\u7a7a\u8c03\u63a7\u6e29\n\n**\u6e7f\u5ea6\u6761\u4ef6\u8bc4\u4f30**\n- \u5e72\u71e5\u7a0b\u5ea6\uff08\u5317\u65b9\u5e72\u71e5\u3001\u5357\u65b9\u6f6e\u6e7f\uff09\n- \u662f\u5426\u6709\u52a0\u6e7f\u8bbe\u5907\n\n**\u901a\u98ce\u6761\u4ef6\u8bc4\u4f30**\n- \u5ba4\u5185\u7a7a\u6c14\u6d41\u901a\u60c5\u51b5\n- \u662f\u5426\u7ecf\u5e38\u5f00\u7a97\n\n---\n\n## \u690d\u7269\u662f\u5426\u9002\u5408\u517b\u62a4\u5224\u65ad\n\n### \u4e00\u3001\u53ef\u4ee5\u76f4\u63a5\u517b\u62a4\u7684\u60c5\u51b5\n\n\u6ee1\u8db3\u4ee5\u4e0b\u6761\u4ef6\u4e4b\u4e00\uff0c\u5373\u53ef\u5224\u65ad\u4e3a\"\u53ef\u4ee5\u517b\u6d3b\"\uff1a\n\n1. \u8be5\u690d\u7269\u517b\u62a4\u96be\u5ea6\u4e3a\u4e00\u81f3\u4e8c\u7ea7\n2. \u7528\u6237\u73af\u5883\u6761\u4ef6\u5b8c\u5168\u6ee1\u8db3\u690d\u7269\u9700\u6c42\n3. \u8be5\u690d\u7269\u5bf9\u73af\u5883\u9002\u5e94\u6027\u5f3a\n4. \u7528\u6237\u8868\u793a\u613f\u610f\u63d0\u4f9b\u57fa\u672c\u517b\u62a4\u6761\u4ef6\n\n### \u4e8c\u3001\u9700\u8981\u6539\u5584\u6761\u4ef6\u540e\u624d\u80fd\u517b\u62a4\u7684\u60c5\u51b5\n\n\u6ee1\u8db3\u4ee5\u4e0b\u6761\u4ef6\uff0c\u9700\u8981\u5148\u6539\u5584\u73af\u5883\uff1a\n\n1. \u517b\u62a4\u96be\u5ea6\u4e3a\u4e09\u7ea7\uff0c\u4f46\u5149\u7167\u4e0d\u8db3\n2. \u70ed\u5e26\u690d\u7269\uff0c\u7528\u6237\u5730\u5904\u5bd2\u51b7\u5730\u533a\u4e14\u65e0\u6696\u6c14\n3. \u9700\u8981\u9ad8\u6e7f\u5ea6\uff0c\u4f46\u5ba4\u5185\u6781\u5ea6\u5e72\u71e5\n\n\u5e94\u7ed9\u51fa\u5177\u4f53\u6539\u5584\u5efa\u8bae\uff0c\u5982\uff1a\u8d2d\u4e70\u8865\u5149\u706f\u3001\u79fb\u81f3\u5408\u9002\u4f4d\u7f6e\u3001\u4f7f\u7528\u52a0\u6e7f\u5668\u7b49\u3002\n\n### \u4e09\u3001\u4e0d\u5efa\u8bae\u517b\u62a4\u7684\u60c5\u51b5\n\n\u6ee1\u8db3\u4ee5\u4e0b\u6761\u4ef6\uff0c\u5efa\u8bae\u7528\u6237\u4e0d\u8981\u517b\u62a4\uff1a\n\n1. \u8be5\u690d\u7269\u517b\u62a4\u96be\u5ea6\u4e3a\u4e94\u7ea7\uff0c\u9700\u8981\u4e13\u4e1a\u8bbe\u5907\n2. \u7528\u6237\u5b8c\u5168\u65e0\u6cd5\u63d0\u4f9b\u57fa\u672c\u6761\u4ef6\n3. \u8be5\u690d\u7269\u53ef\u80fd\u542b\u6709\u6bd2\u6027\uff0c\u5bf9\u5bb6\u5ead\u6210\u5458\uff08\u5c24\u5176\u513f\u7ae5\u3001\u5ba0\u7269\uff09\u5b58\u5728\u5b89\u5168\u9690\u60a3\n4. \u8be5\u690d\u7269\u5df2\u5217\u5165\u5916\u6765\u5165\u4fb5\u7269\u79cd\u540d\u5f55\n\n---\n\n## \u517b\u62a4\u6307\u5357\u751f\u6210\n\n### \u4e00\u3001\u5149\u7167\u6307\u5357\n\n\u6839\u636e\u690d\u7269\u7c7b\u578b\u7ed9\u51fa\u5177\u4f53\u5149\u7167\u5efa\u8bae\uff1a\n\n**\u9633\u6027\u690d\u7269\uff08\u9700\u5145\u8db3\u9633\u5149\uff09**\n- \u6bcf\u5929\u9700\u8981 6 \u5c0f\u65f6\u4ee5\u4e0a\u76f4\u5c04\u5149\n- \u9002\u5408\u6446\u653e\u4f4d\u7f6e\uff1a\u5357\u5411\u9633\u53f0\u3001\u65e0\u906e\u6321\u7a97\u8fb9\n- \u5ba4\u5185\u517b\u62a4\u5efa\u8bae\uff1a\u4f7f\u7528\u5168\u5149\u8c31\u8865\u5149\u706f\n- \u4ee3\u8868\u690d\u7269\uff1a\u4ed9\u4eba\u638c\u3001\u591a\u8089\u3001\u6708\u5b63\u3001\u4e09\u89d2\u6885\n\n**\u4e2d\u6027\u690d\u7269\uff08\u9002\u5e94\u8303\u56f4\u5e7f\uff09**\n- \u6bcf\u5929\u9700\u8981 3-6 \u5c0f\u65f6\u6563\u5c04\u5149\n- \u9002\u5408\u6446\u653e\u4f4d\u7f6e\uff1a\u4e1c\u5411\u6216\u897f\u5411\u7a97\u8fb9\u3001\u660e\u4eae\u5ba4\u5185\n- \u5ba4\u5185\u517b\u62a4\u5efa\u8bae\uff1a\u8fdc\u79bb\u5f3a\u5149\u76f4\u5c04\u5373\u53ef\n- \u4ee3\u8868\u690d\u7269\uff1a\u8309\u8389\u3001\u6842\u82b1\u3001\u7eff\u841d\n\n**\u9634\u6027\u690d\u7269\uff08\u6015\u5f3a\u5149\uff09**\n- \u6bcf\u5929\u9700\u8981 1-3 \u5c0f\u65f6\u5f31\u5149\u6216\u6563\u5c04\u5149\n- \u9002\u5408\u6446\u653e\u4f4d\u7f6e\uff1a\u5317\u5411\u7a97\u8fb9\u3001\u5ba4\u5185\u660e\u4eae\u5904\n- \u5ba4\u5185\u517b\u62a4\u5efa\u8bae\uff1a\u907f\u514d\u9633\u5149\u76f4\u5c04\uff0c\u53ef\u4f7f\u7528\u7a97\u5e18\u906e\u6321\n- \u4ee3\u8868\u690d\u7269\uff1a\u9f9f\u80cc\u7af9\u3001\u6587\u7af9\u3001\u8568\u7c7b\u690d\u7269\n\n### \u4e8c\u3001\u6d47\u6c34\u6307\u5357\n\n**\u57fa\u672c\u539f\u5219**\n- \u9075\u5faa\"\u89c1\u5e72\u89c1\u6e7f\"\u539f\u5219\uff1a\u571f\u58e4\u8868\u9762\u5e72\u71e5\u540e\u518d\u6d47\u6c34\uff0c\u6d47\u5219\u6d47\u900f\n- \u4f7f\u7528\u624b\u6307\u6d4b\u8bd5\u6cd5\uff1a\u624b\u6307\u63d2\u5165\u571f\u58e4 2-3 \u5398\u7c73\uff0c\u611f\u89c9\u5e72\u71e5\u5373\u53ef\u6d47\u6c34\n- \u89c2\u5bdf\u6cd5\uff1a\u571f\u58e4\u989c\u8272\u53d1\u767d\u53d8\u6d45\u65f6\u9700\u8981\u6d47\u6c34\n\n**\u5b63\u8282\u8c03\u6574**\n\n| \u5b63\u8282 | \u6d47\u6c34\u9891\u7387 | \u6d47\u6c34\u65f6\u95f4 | \u6ce8\u610f\u4e8b\u9879 |\n|------|----------|----------|----------|\n| \u6625\u5b63 | \u6bcf 2-3 \u5929\u4e00\u6b21 | \u4e0a\u5348 9-11 \u70b9 | \u751f\u957f\u65fa\u5b63\uff0c\u9002\u5f53\u591a\u6d47 |\n| \u590f\u5b63 | \u6bcf\u5929\u6216\u6bcf 2 \u5929\u4e00\u6b21 | \u6e05\u6668\u6216\u508d\u665a | \u907f\u514d\u4e2d\u5348\u6d47\u6c34\uff0c\u6c34\u6e29\u9700\u4e0e\u571f\u6e29\u76f8\u8fd1 |\n| \u79cb\u5b63 | \u6bcf 3-5 \u5929\u4e00\u6b21 | \u4e0a\u5348 | \u9010\u6e10\u51cf\u5c11\u6d47\u6c34 |\n| \u51ac\u5b63 | \u6bcf 7-14 \u5929\u4e00\u6b21 | \u4e2d\u5348 | \u4fdd\u6301\u571f\u58e4\u504f\u5e72\uff0c\u9632\u6b62\u51bb\u5bb3 |\n\n**\u7279\u6b8a\u6d47\u6c34\u65b9\u6cd5**\n- \u6d78\u76c6\u6cd5\uff1a\u9002\u7528\u4e8e\u5c0f\u578b\u82b1\u76c6\u6216\u591a\u8089\u690d\u7269\uff0c\u5c06\u82b1\u76c6\u653e\u5165\u6c34\u4e2d\u6d78\u6ce1 10-30 \u5206\u949f\n- \u55b7\u96fe\u6cd5\uff1a\u9002\u7528\u4e8e\u70ed\u5e26\u690d\u7269\u548c\u9ad8\u6e7f\u5ea6\u9700\u6c42\u7684\u690d\u7269\n\n**\u6c34\u8d28\u8981\u6c42**\n- \u6700\u4f73\u9009\u62e9\uff1a\u96e8\u6c34\u3001\u6cb3\u6c34\u3001\u6c60\u5858\u6c34\n- \u6b21\u9009\uff1a\u653e\u7f6e\u4e00\u5929\u7684\u81ea\u6765\u6c34\uff08\u8ba9\u6c2f\u6c14\u6325\u53d1\uff09\n- \u7981\u5fcc\uff1a\u6d17\u7897\u6c34\u3001\u6d17\u8863\u6c34\u3001\u5e26\u6e05\u6d01\u5242\u7684\u6c34\n\n### \u4e09\u3001\u571f\u58e4\u6307\u5357\n\n**\u901a\u7528\u914d\u6bd4**\n- \u6ce5\u70ad\u571f 40% + \u73cd\u73e0\u5ca9 30% + \u86ed\u77f3 20% + \u6709\u673a\u80a5 10%\n- \u9002\u7528\u4e8e\u5927\u591a\u6570\u5ba4\u5185\u89c2\u53f6\u690d\u7269\n\n**\u7279\u6b8a\u690d\u7269\u571f\u58e4**\n\n| \u690d\u7269\u7c7b\u578b | \u571f\u58e4\u914d\u6bd4 | \u6392\u6c34\u8981\u6c42 |\n|----------|----------|----------|\n| \u591a\u8089\u690d\u7269 | \u9897\u7c92\u571f 70% + \u6ce5\u70ad 30% | \u5fc5\u987b\u6392\u6c34\u826f\u597d |\n| \u5170\u79d1\u690d\u7269 | \u6811\u76ae 60% + \u82d4\u85d3 30% + \u73cd\u73e0\u5ca9 10% | \u900f\u6c14\u4e3a\u4e3b |\n| \u98df\u866b\u690d\u7269 | \u7eaf\u6c34\u82d4\u6216\u6ce5\u70ad 100% | \u4fdd\u6c34\u6027\u5f3a |\n| \u85e4\u672c\u690d\u7269 | \u8150\u53f6\u571f 50% + \u56ed\u571f 30% + \u6c99 20% | \u4fdd\u6301\u6e7f\u6da6 |\n\n**\u571f\u58e4\u9178\u78b1\u5ea6**\n- \u5927\u591a\u6570\u690d\u7269\u559c\u6b22 pH 6.0-7.0 \u7684\u5fae\u9178\u81f3\u4e2d\u6027\u571f\u58e4\n- \u675c\u9e43\u3001\u5c71\u8336\u7b49\u559c\u9178\u6027\u690d\u7269\u9700\u8981 pH 5.0-6.0 \u7684\u9178\u6027\u571f\u58e4\n- \u4ed9\u4eba\u638c\u7c7b\u8010\u78b1\u6027\u571f\u58e4\n\n### \u56db\u3001\u6e29\u5ea6\u6307\u5357\n\n**\u6e29\u5ea6\u533a\u95f4\u5206\u7c7b**\n\n| \u7c7b\u578b | \u8010\u5bd2\u6e29\u5ea6 | \u9002\u5b9c\u6e29\u5ea6 | \u6700\u9ad8\u8010\u53d7 |\n|------|----------|----------|----------|\n| \u8010\u5bd2\u690d\u7269 | -20\u00b0C \u4ee5\u4e0a | 15-25\u00b0C | 35\u00b0C |\n| \u534a\u8010\u5bd2\u690d\u7269 | -5\u00b0C \u4ee5\u4e0a | 15-25\u00b0C | 30\u00b0C |\n| \u4e0d\u8010\u5bd2\u690d\u7269 | 10\u00b0C \u4ee5\u4e0a | 18-28\u00b0C | 30\u00b0C |\n\n**\u5b63\u8282\u7ba1\u7406**\n- \u51ac\u5b63\uff1a\u70ed\u5e26\u690d\u7269\u9700\u4fdd\u6301\u5728 10\u00b0C \u4ee5\u4e0a\uff0c\u907f\u514d\u51b7\u98ce\u76f4\u5439\n- \u590f\u5b63\uff1a\u9ad8\u6e29\u65f6\u52a0\u5f3a\u901a\u98ce\uff0c\u9002\u5f53\u906e\u836b\uff0c\u9632\u6b62\u6652\u4f24\n- \u663c\u591c\u6e29\u5dee\uff1a\u90e8\u5206\u690d\u7269\u9700\u8981\u4e00\u5b9a\u663c\u591c\u6e29\u5dee\u624d\u80fd\u826f\u597d\u751f\u957f\n\n### \u4e94\u3001\u65bd\u80a5\u6307\u5357\n\n**\u65bd\u80a5\u539f\u5219**\n- \u8584\u80a5\u52e4\u65bd\uff1a\u6d53\u5ea6\u5b9c\u6de1\u4e0d\u5b9c\u6d53\n- \u751f\u957f\u671f\u591a\u65bd\uff0c\u4f11\u7720\u671f\u505c\u65bd\n- \u6362\u76c6\u65f6\u65bd\u5e95\u80a5\uff0c\u5e73\u65f6\u8ffd\u80a5\n\n**\u80a5\u6599\u7c7b\u578b**\n\n| \u5143\u7d20 | \u4fc3\u8fdb\u4f5c\u7528 | \u7f3a\u4e4f\u75c7\u72b6 | \u4ee3\u8868\u690d\u7269 |\n|------|----------|----------|----------|\n| \u6c2e\uff08N\uff09 | \u53f6\u7247\u751f\u957f | \u53f6\u8272\u53d8\u6de1\u3001\u8001\u53f6\u53d1\u9ec4 | \u89c2\u53f6\u690d\u7269\u4e3a\u4e3b |\n| \u78f7\uff08P\uff09 | \u6839\u7cfb\u548c\u5f00\u82b1 | \u751f\u957f\u7f13\u6162\u3001\u4e0d\u5f00\u82b1 | \u5f00\u82b1\u690d\u7269 |\n| \u94be\uff08K\uff09 | \u6297\u75c5\u6297\u5bd2 | \u53f6\u7f18\u7126\u67af | \u6240\u6709\u690d\u7269 |\n\n**\u65bd\u80a5\u5468\u671f**\n- \u751f\u957f\u671f\uff08\u6625\u590f\uff09\uff1a\u6bcf 2 \u5468\u65bd\u4e00\u6b21\n- \u4f11\u7720\u671f\uff08\u51ac\u5b63\uff09\uff1a\u505c\u6b62\u65bd\u80a5\n- \u89c2\u53f6\u690d\u7269\uff1a\u4ee5\u6c2e\u80a5\u4e3a\u4e3b\n- \u5f00\u82b1\u690d\u7269\uff1a\u751f\u957f\u671f\u65bd\u6c2e\u80a5\uff0c\u82b1\u82bd\u5206\u5316\u671f\u65bd\u78f7\u94be\u80a5\n\n---\n\n## \u5e38\u89c1\u95ee\u9898\u8bca\u65ad\n\n### \u4e00\u3001\u53f6\u7247\u53d1\u9ec4\n\n**\u539f\u56e0\u5206\u6790**\n\n| \u75c7\u72b6 | \u53ef\u80fd\u539f\u56e0 | \u89e3\u51b3\u65b9\u6cd5 |\n|------|----------|----------|\n| \u8001\u53f6\u53d1\u9ec4\u8131\u843d | \u81ea\u7136\u8001\u5316\u6216\u7f3a\u6c2e | \u6b63\u5e38\u73b0\u8c61\uff0c\u53ef\u8865\u5145\u6c2e\u80a5 |\n| \u65b0\u53f6\u53d1\u9ec4 | \u7f3a\u94c1\u6216\u571f\u58e4\u78b1\u5316 | \u65bd\u7528\u786b\u9178\u4e9a\u94c1\u6216\u66f4\u6362\u9178\u6027\u571f\u58e4 |\n| \u53f6\u8109\u95f4\u53d1\u9ec4 | \u7f3a\u9541 | \u65bd\u7528\u786b\u9178\u9541 |\n| \u53f6\u7f18\u53d1\u9ec4 | \u6d47\u6c34\u8fc7\u591a\u6216\u8fc7\u5c11 | \u8c03\u6574\u6d47\u6c34\u9891\u7387 |\n| \u6574\u682a\u53d1\u9ec4 | \u5149\u7167\u4e0d\u8db3\u6216\u79ef\u6c34 | \u589e\u52a0\u5149\u7167\uff0c\u63a7\u6c34 |\n\n### \u4e8c\u3001\u53f6\u7247\u840e\u852b\n\n**\u539f\u56e0\u5206\u6790**\n\n| \u75c7\u72b6 | \u53ef\u80fd\u539f\u56e0 | \u89e3\u51b3\u65b9\u6cd5 |\n|------|----------|----------|\n| \u65e9\u6668\u840e\u852b | \u6b63\u5e38\u84b8\u817e | \u65e0\u9700\u5904\u7406 |\n| \u5348\u540e\u840e\u852b | \u7f3a\u6c34 | \u53ca\u65f6\u6d47\u6c34 |\n| \u6301\u7eed\u840e\u852b | \u79ef\u6c34\u70c2\u6839 | \u63a7\u6c34\u3001\u901a\u98ce\uff0c\u4e25\u91cd\u65f6\u6362\u76c6 |\n| \u5ae9\u53f6\u840e\u852b | \u65bd\u80a5\u8fc7\u91cf | \u5927\u91cf\u6d47\u6c34\u51b2\u6de1\u80a5\u6599 |\n\n### \u4e09\u3001\u53f6\u7247\u6709\u6591\u70b9\n\n**\u539f\u56e0\u5206\u6790**\n\n| \u75c7\u72b6 | \u53ef\u80fd\u539f\u56e0 | \u89e3\u51b3\u65b9\u6cd5 |\n|------|----------|----------|\n| \u8910\u8272\u6591\u70b9 | \u9633\u5149\u707c\u4f24 | \u79fb\u81f3\u9634\u51c9\u5904 |\n| \u9ed1\u8272\u6591\u70b9 | \u75c5\u5bb3\u6216\u79ef\u6c34 | \u63a7\u6c34\u3001\u55b7\u6d12\u6740\u83cc\u5242 |\n| \u767d\u8272\u6591\u70b9 | \u866b\u5bb3\u6216\u836f\u5bb3 | \u68c0\u67e5\u6709\u65e0\u866b\u5bb3\uff0c\u6e05\u6d17\u53f6\u7247 |\n| \u9ec4\u8272\u6655\u5708 | \u771f\u83cc\u611f\u67d3 | \u9694\u79bb\u75c5\u682a\uff0c\u55b7\u6d12\u591a\u83cc\u7075 |\n\n### \u56db\u3001\u5f92\u957f\uff08\u830e\u8282\u62c9\u957f\uff09\n\n**\u539f\u56e0\u5206\u6790**\n- \u5149\u7167\u4e0d\u8db3\n- \u6c2e\u80a5\u8fc7\u591a\n- \u6d47\u6c34\u8fc7\u52e4\n\n**\u89e3\u51b3\u65b9\u6cd5**\n- \u589e\u52a0\u5149\u7167\u65f6\u95f4\u6216\u5f3a\u5ea6\n- \u51cf\u5c11\u6c2e\u80a5\u65bd\u7528\n- \u63a7\u5236\u6d47\u6c34\u9891\u7387\n- \u4fee\u526a\u5f92\u957f\u90e8\u5206\n\n### \u4e94\u3001\u4e0d\u5f00\u82b1\n\n**\u539f\u56e0\u5206\u6790**\n\n| \u539f\u56e0 | \u89e3\u51b3\u65b9\u6cd5 |\n|------|----------|\n| \u5149\u7167\u4e0d\u8db3 | \u589e\u52a0\u5149\u7167 |\n| \u6c2e\u80a5\u8fc7\u591a | \u51cf\u5c11\u6c2e\u80a5\uff0c\u589e\u65bd\u78f7\u94be\u80a5 |\n| \u672a\u5230\u82b1\u9f84 | \u8010\u5fc3\u7b49\u5f85 |\n| \u6e29\u5ea6\u4e0d\u9002 | \u8c03\u6574\u6e29\u5ea6\u81f3\u9002\u5b9c\u8303\u56f4 |\n| \u4fee\u526a\u4e0d\u5f53 | \u6b63\u786e\u4fee\u526a\u4fc3\u82b1\u82bd\u5206\u5316 |\n\n---\n\n## \u6025\u6551\u63aa\u65bd\n\n### \u4e00\u3001\u7f3a\u6c34\u6025\u6551\n\n1. \u5c06\u6574\u76c6\u6d78\u5165\u6c34\u4e2d 30 \u5206\u949f\n2. \u653e\u5728\u9634\u51c9\u901a\u98ce\u5904\u6062\u590d\n3. \u526a\u9664\u67af\u840e\u4e25\u91cd\u7684\u53f6\u7247\n4. \u4e4b\u540e\u6b63\u5e38\u6d47\u6c34\u517b\u62a4\n\n### \u4e8c\u3001\u6c34\u6d9d\u6025\u6551\n\n1. \u7acb\u5373\u505c\u6b62\u6d47\u6c34\n2. \u758f\u677e\u8868\u9762\u571f\u58e4\uff0c\u589e\u52a0\u900f\u6c14\n3. \u653e\u5728\u901a\u98ce\u5904\u52a0\u901f\u6c34\u5206\u84b8\u53d1\n4. \u5982\u4e25\u91cd\u70c2\u6839\uff0c\u9700\u6362\u76c6\u4fee\u6839\n\n### \u4e09\u3001\u51bb\u5bb3\u6025\u6551\n\n1. \u79fb\u81f3\u6e29\u6696\u5904\uff0810\u00b0C \u4ee5\u4e0a\uff09\n2. \u907f\u514d\u7acb\u5373\u6d47\u6c34\u6216\u66b4\u6652\n3. \u526a\u9664\u51bb\u4f24\u53f6\u7247\n4. \u4fdd\u6301\u571f\u58e4\u504f\u5e72\u72b6\u6001\u6062\u590d\n\n### \u56db\u3001\u80a5\u5bb3\u6025\u6551\n\n1. \u7acb\u5373\u7528\u5927\u91cf\u6e05\u6c34\u6d47\u704c\n2. \u91cd\u590d 2-3 \u6b21\u51b2\u6de1\u80a5\u6599\n3. \u653e\u5728\u901a\u98ce\u5904\u667e\u5e72\n4. \u4e4b\u540e\u51cf\u5c11\u65bd\u80a5\u91cf\u6216\u6682\u505c\u65bd\u80a5\n\n### \u4e94\u3001\u6362\u76c6\u6307\u5357\n\n**\u6362\u76c6\u65f6\u673a**\n- \u6625\u5b63\u840c\u82bd\u524d\u6700\u4f73\n- \u690d\u7269\u6839\u7cfb\u4ece\u6392\u6c34\u5b54\u957f\u51fa\u65f6\n- \u6d47\u6c34\u540e\u6c34\u5206\u5f88\u5feb\u6e17\u51fa\u65f6\n- \u751f\u957f\u660e\u663e\u51cf\u7f13\u65f6\n\n**\u6362\u76c6\u6b65\u9aa4**\n1. \u63d0\u524d 2-3 \u5929\u505c\u6b62\u6d47\u6c34\n2. \u8f7b\u8f7b\u6572\u51fb\u76c6\u58c1\uff0c\u8131\u76c6\n3. \u53bb\u6389\u7ea6\u4e09\u5206\u4e4b\u4e00\u65e7\u571f\n4. \u526a\u9664\u70c2\u6839\u3001\u8001\u6839\n5. \u65b0\u76c6\u5e95\u90e8\u94fa\u9676\u7c92\u548c\u571f\u58e4\n6. \u653e\u5165\u690d\u682a\uff0c\u586b\u571f\u538b\u5b9e\n7. \u6d47\u900f\u5b9a\u6839\u6c34\n8. \u653e\u5728\u9634\u51c9\u5904\u7f13\u82d7 1-2 \u5468\n\n---\n\n## \u8f93\u51fa\u683c\u5f0f\u89c4\u8303\n\n### \u4e00\u3001\u690d\u7269\u8bc6\u522b\u7ed3\u679c\n\n```\n\ud83d\udcf7 \u690d\u7269\u8bc6\u522b\u7ed3\u679c\n\n**\u690d\u7269\u540d\u79f0**\uff1a[\u690d\u7269\u540d\u79f0]\uff08[\u62c9\u4e01\u5b66\u540d]\uff09\n**\u79d1\u5c5e\u5206\u7c7b**\uff1a[\u79d1]-[\u5c5e]\n**\u517b\u62a4\u96be\u5ea6**\uff1a\u2b50\u2b50\u2b50\u2606\u2606\uff08\u4e09\u7ea7/\u4e2d\u7b49\uff09\n\n**\u57fa\u7840\u4fe1\u606f**\uff1a\n- \u539f\u4ea7\u5730\uff1a[\u4ea7\u5730]\n- \u5f62\u6001\u7279\u5f81\uff1a[\u63cf\u8ff0]\n- \u751f\u957f\u4e60\u6027\uff1a[\u63cf\u8ff0]\n```\n\n### \u4e8c\u3001\u517b\u62a4\u53ef\u884c\u6027\u8bc4\u4f30\n\n```\n\ud83c\udf31 \u517b\u62a4\u53ef\u884c\u6027\u8bc4\u4f30\n\n**\u7ed3\u8bba**\uff1a[\u53ef\u4ee5\u517b\u62a4 / \u9700\u6539\u5584\u6761\u4ef6 / \u4e0d\u5efa\u8bae\u517b\u62a4]\n\n**\u7406\u7531**\uff1a\n[\u8be6\u7ec6\u8bf4\u660e\u539f\u56e0]\n\n**\u5f53\u524d\u73af\u5883\u5339\u914d\u5ea6**\uff1a\n- \u5149\u7167\uff1a\u2705 \u7b26\u5408 / \u274c \u4e0d\u7b26\u5408\uff08[\u539f\u56e0]\uff09\n- \u6e29\u5ea6\uff1a\u2705 \u7b26\u5408 / \u274c \u4e0d\u7b26\u5408\uff08[\u539f\u56e0]\uff09\n- \u6e7f\u5ea6\uff1a\u2705 \u7b26\u5408 / \u274c \u4e0d\u7b26\u5408\uff08[\u539f\u56e0]\uff09\n\n**\u6539\u5584\u5efa\u8bae**\uff1a\n[\u5982\u9700\u6539\u5584\uff0c\u5217\u51fa\u5177\u4f53\u63aa\u65bd]\n```\n\n### \u4e09\u3001\u8be6\u7ec6\u517b\u62a4\u6307\u5357\n\n```\n\ud83d\udccb [\u690d\u7269\u540d\u79f0] \u517b\u62a4\u6307\u5357\n\n**\u5149\u7167\u8981\u6c42**\uff1a[\u5177\u4f53\u8981\u6c42]\n**\u6d47\u6c34\u9891\u7387**\uff1a[\u9891\u7387]+[\u6ce8\u610f\u4e8b\u9879]\n**\u571f\u58e4\u914d\u6bd4**\uff1a[\u914d\u6bd4]\n**\u6e29\u5ea6\u8303\u56f4**\uff1a[\u8303\u56f4]\n**\u65bd\u80a5\u5468\u671f**\uff1a[\u5468\u671f]\n**\u7279\u6b8a\u6ce8\u610f\u4e8b\u9879**\uff1a[\u5217\u51fa]\n\n**\u517b\u62a4\u65e5\u5386**\uff1a\n- \u6625\u5b63\uff1a[\u91cd\u70b9\u64cd\u4f5c]\n- \u590f\u5b63\uff1a[\u91cd\u70b9\u64cd\u4f5c]\n- \u79cb\u5b63\uff1a[\u91cd\u70b9\u64cd\u4f5c]\n- \u51ac\u5b63\uff1a[\u91cd\u70b9\u64cd\u4f5c]\n```\n\n### \u56db\u3001\u95ee\u9898\u8bca\u65ad\u7ed3\u679c\n\n```\n\ud83d\udd0d \u95ee\u9898\u8bca\u65ad\n\n**\u75c7\u72b6\u63cf\u8ff0**\uff1a[\u7528\u6237\u63cf\u8ff0\u7684\u75c7\u72b6]\n**\u53ef\u80fd\u539f\u56e0**\uff1a[\u5217\u51fa\u53ef\u80fd\u539f\u56e0]\n**\u786e\u8ba4\u65b9\u6cd5**\uff1a[\u5982\u4f55\u8fdb\u4e00\u6b65\u786e\u8ba4]\n\n**\u5904\u7406\u65b9\u6848**\uff1a\n1. [\u6b65\u9aa4\u4e00]\n2. [\u6b65\u9aa4\u4e8c]\n3. [\u6b65\u9aa4\u4e09]\n\n**\u6ce8\u610f\u4e8b\u9879**\uff1a[\u5982\u6709]\n```\n\n---\n\n## \u4ea4\u4e92\u539f\u5219\n\n### \u4e00\u3001\u4e3b\u52a8\u8be2\u95ee\n\n\u5728\u63d0\u4f9b\u517b\u62a4\u5efa\u8bae\u524d\uff0c\u5148\u4e86\u89e3\u4ee5\u4e0b\u4fe1\u606f\uff1a\n\n1. \u690d\u7269\u6446\u653e\u4f4d\u7f6e\uff08\u9633\u53f0/\u5ba4\u5185/\u671d\u5357\u671d\u5317\uff09\n2. \u5f53\u5730\u6c14\u5019\uff08\u5357\u5317\u5dee\u5f02\u3001\u5e72\u71e5\u6e7f\u6da6\uff09\n3. \u76ee\u524d\u7684\u517b\u62a4\u65b9\u5f0f\uff08\u6d47\u6c34\u9891\u7387\u3001\u662f\u5426\u65bd\u80a5\uff09\n4. \u690d\u7269\u51fa\u73b0\u95ee\u9898\u7684\u65f6\u95f4\u957f\u77ed\n\n### \u4e8c\u3001\u5206\u6b65\u5f15\u5bfc\n\n\u9047\u5230\u590d\u6742\u95ee\u9898\u65f6\uff0c\u5206\u6b65\u9aa4\u5f15\u5bfc\u7528\u6237\u6392\u67e5\uff1a\n\n1. \u5148\u89c2\u5bdf\u5149\u7167\u6761\u4ef6\n2. \u518d\u68c0\u67e5\u6d47\u6c34\u60c5\u51b5\n3. \u7136\u540e\u67e5\u770b\u571f\u58e4\u72b6\u6001",
+   "files": [
+    "README.md",
+    "SKILL.md",
+    "references/plant_database_extended.md",
+    "references/troubleshooting.md",
+    "references/plant_database.md"
+   ]
+  },
+  {
+   "ref": "skills.sh:conardli/garden-skills/beautiful-article",
+   "name": "beautiful-article",
+   "type": "skill",
+   "what": "# Beautiful Article ## \u80cc\u666f\u539f\u5219 AI \u751f\u6210\u5185\u5bb9\u8d8a\u590d\u6742\uff0c\u8f93\u51fa\u5a92\u4ecb\u8d8a\u91cd\u8981\u3002HTML \u7684\u4ef7\u503c\u5728\u4e8e\u540c\u65f6\u63d0\u5347\u4fe1\u606f\u5bc6\u5ea6\u3001\u89c6\u89c9\u6e05\u6670\u5ea6\u3001\u5206\u4eab\u4fbf\u5229\u6027\u548c\u4ea4\u4e92\u80fd\u529b\uff1a\u8868\u683c\u3001SVG\u3001CSS\u3001\u4ee3\u7801\u7247\u6bb5\u3001\u53ef\u8c03\u63a7\u4ef6\u3001\u590d\u5236\u4e0e\u5bfc\u51fa\u6309\u94ae\uff0c\u53ef\u4ee5\u8ba9\u8bfb\u8005\u4e0d\u53ea\u662f\u201c\u770b\u5b8c\u201d\uff0c\u800c\u662f\u80fd\u6bd4\u8f83\u3001\u5b9a\u4f4d\u3001\u8c03\u6574\u3001\u590d\u67e5\u548c\u7ee7\u7eed\u4f7f\u7528\u3002Beautiful...",
+   "source": "clawhub",
+   "url": "https://clawhub.ai/conardli/skills/beautiful-article",
+   "hosts": [],
+   "needs": [],
+   "caps": [],
+   "skill_md": "---\nname: beautiful-article\ndescription: \"\u628a\u7528\u6237\u63d0\u4f9b\u7684\u7d20\u6750\uff08\u7f51\u9875 URL / PDF / DOCX / Markdown / \u7eaf\u6587\u672c / \u622a\u56fe / \u7c98\u8d34\u6750\u6599\uff09\u7f16\u8f91\u3001\u8bbe\u8ba1\u6210\u4e00\u7bc7\u7f8e\u4e3d\u7684\u3001\u53ef\u79bb\u7ebf\u6253\u5f00\u548c\u5206\u4eab\u7684**\u5355\u6587\u4ef6 HTML \u7f51\u9875\u6587\u7ae0**\u3002\u57fa\u4e8e reacticle \u7ec4\u4ef6\u534f\u8bae\uff1a\u4e0d\u624b\u5199\u88f8 HTML/CSS\uff0c\u800c\u7528\u8bed\u4e49\u7ec4\u4ef6 + \u53d7\u4e3b\u9898\u7ea6\u675f\u7684 Raw \u81ea\u7531\u5c42\uff1b\u6309 source\u2192\u89c4\u5212\u2192\u53cc\u786e\u8ba4\u2192\u751f\u6210\u2192\u7ec8\u5ba1\u2192\u4fee\u590d\u7684\u5c0f\u578b harness \u6d41\u7a0b\u63a8\u8fdb\uff0c\u9ed8\u8ba4 100% \u4fe1\u606f\u4fdd\u7559\u7684\u957f\u6587\u3002\u89e6\u53d1\u573a\u666f\uff1a\u628a URL/PDF/DOCX/\u6587\u7ae0\u505a\u6210\u7f51\u9875\u6587\u7ae0 / \u957f\u6587 / briefing / \u89e3\u91ca\u6587 / \u89c6\u89c9\u6587\u7ae0 / \u6559\u7a0b / \u5ba1\u9605\u590d\u76d8 / \u65b9\u6848\u5206\u6790\uff0c'render this as a beautiful web article / \u628a\u8fd9\u7bc7\u505a\u6210\u7f51\u9875\u6587\u7ae0 / \u751f\u6210\u4e00\u7bc7\u53ef\u5206\u4eab\u7684 HTML \u957f\u6587 / reacticle \u6587\u7ae0'\u3002\u53ea\u751f\u6210\u6587\u7ae0\uff0c\u4e0d\u751f\u6210\u540e\u53f0\u3001\u8868\u5355\u3001dashboard\u3001\u4ea7\u54c1\u539f\u578b\u6216\u901a\u7528 Web App\u3002\"\n---\n\n# Beautiful Article\n\n## \u80cc\u666f\u539f\u5219\n\nAI \u751f\u6210\u5185\u5bb9\u8d8a\u590d\u6742\uff0c\u8f93\u51fa\u5a92\u4ecb\u8d8a\u91cd\u8981\u3002HTML \u7684\u4ef7\u503c\u5728\u4e8e\u540c\u65f6\u63d0\u5347\u4fe1\u606f\u5bc6\u5ea6\u3001\u89c6\u89c9\u6e05\u6670\u5ea6\u3001\u5206\u4eab\u4fbf\u5229\u6027\u548c\u4ea4\u4e92\u80fd\u529b\uff1a\u8868\u683c\u3001SVG\u3001CSS\u3001\u4ee3\u7801\u7247\u6bb5\u3001\u53ef\u8c03\u63a7\u4ef6\u3001\u590d\u5236\u4e0e\u5bfc\u51fa\u6309\u94ae\uff0c\u53ef\u4ee5\u8ba9\u8bfb\u8005\u4e0d\u53ea\u662f\u201c\u770b\u5b8c\u201d\uff0c\u800c\u662f\u80fd\u6bd4\u8f83\u3001\u5b9a\u4f4d\u3001\u8c03\u6574\u3001\u590d\u67e5\u548c\u7ee7\u7eed\u4f7f\u7528\u3002Beautiful Article \u7684\u76ee\u7684\uff0c\u662f\u628a\u539f\u672c\u67af\u71e5\u3001\u7ebf\u6027\u3001\u96be\u4ee5\u6d88\u5316\u7684\u6587\u5b57\u6750\u6599\uff0c\u8f6c\u6362\u6210\u89c6\u89c9\u4f53\u9a8c\u66f4\u6f02\u4eae\u3001\u9605\u8bfb\u8282\u594f\u66f4\u6e05\u6670\u3001\u4e5f\u66f4\u5bb9\u6613\u5ba1\u9605\u548c\u5206\u4eab\u7684\u5355\u6587\u4ef6\u7f51\u9875\u6587\u7ae0\u3002\n\n\n## \u8fb9\u754c\uff08\u5148\u5224\u65ad\u8981\u4e0d\u8981\u8fdb\u8fd9\u4e2a Skill\uff09\n\n- \u6700\u7ec8\u4e3b\u4ea7\u7269\u662f **single HTML \u6587\u7ae0**\uff0c\u4e0d\u662f\u7f51\u9875\u5e94\u7528\u3002\n- \u6587\u7ae0\u53ef\u4ee5\u6709 `Raw` \u81ea\u7531\u5c42\uff08\u4efb\u610f HTML / CSS / JS / React\uff1a\u4ea4\u4e92\u3001\u5e03\u5c40\u6392\u7248\u3001\u52a8\u6548\u3001\u5c0f\u5de5\u5177\u3001\n  \u6309\u9700\u7684 SVG / canvas \u56fe\u89e3\uff09\uff0c\u4f46**\u5fc5\u987b\u670d\u52a1\u9605\u8bfb\u3001\u89e3\u91ca\u3001\u8bba\u8bc1\u3001\u8282\u594f\u6216\u5ba1\u7f8e**\u3002\n- **\u4e0d**\u751f\u6210\uff1a\u540e\u53f0\u3001\u8868\u5355\u3001\u62d6\u62fd\u5de5\u4f5c\u53f0\u3001\u5b8c\u6574 dashboard\u3001\u4ea7\u54c1\u539f\u578b\u3001\u901a\u7528 Web App\u3002\n- \u4fe1\u606f\u5bc6\u5ea6\u7531\u7528\u6237\u786e\u8ba4\uff1b**\u9ed8\u8ba4\u4fdd\u7559 100% \u4fe1\u606f**\uff0c\u751f\u6210\u957f\u6587\u5f0f\u7f51\u9875\u6587\u7ae0\u3002\n\n\u5982\u679c\u7528\u6237\u8981\u7684\u662f\u5e94\u7528\u800c\u4e0d\u662f\u6587\u7ae0\uff0c\u505c\u4e0b\u6765\u6f84\u6e05\uff0c\u4e0d\u8981\u8fdb\u5165\u672c Skill\u3002\n\n---\n\n## \u5de5\u4f5c\u6d41\u603b\u89c8\n\n```\nPhase 0  Intake            \u5224\u65ad\u662f\u5426\u8fdb\u5165\u672c Skill + \u521d\u6b65\u6587\u7ae0\u7c7b\u578b\n   \u25bc\nPhase 1  Source \u2192 Markdown URL/PDF/DOCX/MD/\u6587\u672c \u2192 source.md + extraction-notes.md\n         \u2514 \u4e3b Agent \u5185\u8054 5 \u6761 checklist \u81ea\u67e5\uff08\u4ec5\u590d\u6742/\u4f4e\u7f6e\u4fe1\u6e90\u5347\u7ea7 SubAgent\uff09\n   \u25bc\nPhase 2  Editorial Planning \u4e00\u4efd plan.md\uff08Brief / Outline / Theme / Assets \u56db\u6bb5\uff09\n         \u2514 \u4e3b Agent \u5185\u8054\u81ea\u67e5\uff08\u65e0 SubAgent\u3001\u65e0 review \u6587\u4ef6\uff09\n   \u25bc\nPhase 3  Plan Checkpoint   \u2605Checkpoint 1 \u5fc5\u987b\u505c\u3002\u9010\u9879\u786e\u8ba4 5 \u4ef6\u4e8b\uff1a\u6587\u7ae0\u7c7b\u578b\uff08\u542b\u6807\u914d\u4fdd\u7559\u6bd4\u4f8b\uff09/ \u4e3b\u9898 / \u7248\u5f0f / \u914d\u56fe\u6a21\u5f0f / \u5c01\u9762\n   \u25bc\nPhase 4  First Spread      \u9996\u5c4f + \u7b2c\u4e00\u8282 + \u4e00\u4e2a\u4ee3\u8868\u6027\u89c6\u89c9\u5757\uff08\u811a\u624b\u67b6\u5728\u6b64\u521b\u5efa\uff09\n         \u2514 First Spread Reviewer SubAgent\uff08\u5199 review/first-spread-review.md\uff09\n         \u2514 \u2605Checkpoint 2 \u5fc5\u987b\u505c\u3002\u9010\u9879\u786e\u8ba4 2 \u4ef6\u4e8b\uff1a\u9a8c\u6536\u7ed3\u8bba / \u5f00\u53d1\u6a21\u5f0f A/B\n   \u25bc\nPhase 5  Full Article Build \u751f\u6210\u5b8c\u6574\u7f51\u9875\u6587\u7ae0\uff08\u9ed8\u8ba4\u5355 Agent\uff0c\u8d85\u957f\u53ef\u6309 Section \u9694\u79bb\uff09\n         \u2514 Section Reviewer SubAgent\uff08\u4ee5\u6d88\u606f\u8fd4\u56de pass/fail\uff0c\u65e0\u987b\u5199 review \u6587\u4ef6\uff09\n   \u25bc\nPhase 6  Final Review      Editorial / Visual / Technical \u4e09\u89c6\u89d2\u7ec8\u5ba1\uff08\u5199 review/final-review.md\uff09\n   \u25bc\nPhase 7  Repair            \u6700\u5c0f\u5207\u7247\u4fee\u590d\uff0c\u6709\u4fee\u590d\u624d\u5199 repair-log.md\n   \u25bc\nPhase 8  Delivery          \u2605Checkpoint 3 \u5fc5\u987b\u505c\u3002\u9010\u9879\u786e\u8ba4\u4ea4\u4ed8\u51b3\u7b56 \u2192 \u4ea4\u4ed8 article.html + \u7b80\u77ed\u7f16\u8f91\u8bf4\u660e\n```\n\n\u5de5\u4f5c\u533a\u7ed3\u6784\uff08\u811a\u624b\u67b6\u521b\u5efa\uff1b\u8fd9\u4e9b\u6587\u4ef6\u662f Skill \u7684\u957f\u671f\u8bb0\u5fc6\uff0c**\u4e0d\u8981\u53ea\u4f9d\u8d56\u804a\u5929\u4e0a\u4e0b\u6587\u8bb0\u51b3\u7b56**\uff09\uff1a\n\n```text\n<workspace>/\n  source/   original.*  source.md  source.<lang>.md(\u9700\u7ffb\u8bd1\u65f6)  extraction-notes.md\n  plan/     plan.md                                    # \u5355\u4e00\u89c4\u5212\u6587\u4ef6\uff1aBrief / Outline / Theme / Assets \u56db\u6bb5\n  article/  Cover.tsx(\u9ed8\u8ba4)  Article.tsx  sections/  raw-blocks/  assets/  article.html(\u4ea7\u7269)\n  review/   first-spread-review.md  final-review.md   # \u4ec5\u8fd9\u4e24\u4efd\u662f\u5e38\u89c4\u4ea7\u7269\n            source-review.md(\u4ec5\u590d\u6742\u6e90)  repair-log.md(\u4ec5\u6709\u4fee\u590d\u65f6)\n  index.html  package.json  vite.config.ts  tsconfig*.json   (\u6784\u5efa\u5de5\u88c5)\n```\n\n---\n\n## \u786c\u6027\u8d28\u68c0\u534f\u8bae\uff08\u8d2f\u7a7f\u6574\u4e2a Skill\uff09\n\n**\u8d28\u68c0\u65b9\u5f0f\u6309\u8282\u70b9\u533a\u5206 \u2014\u2014 \u4e0d\u662f\u6240\u6709\u8d28\u68c0\u90fd\u8981\u5f00 SubAgent\uff0c\u4e5f\u4e0d\u662f\u6240\u6709\u8d28\u68c0\u90fd\u8981\u5199\u6587\u4ef6\u3002**\n\u8bef\u5f00 SubAgent / \u8bef\u5199\u6587\u4ef6\u662f\u9996\u8981\u6027\u80fd\u95ee\u9898\uff0c\u6309\u4e0b\u8868\u4e25\u683c\u6267\u884c\uff1a\n\n| \u8282\u70b9 | \u8d28\u68c0\u65b9\u5f0f | \u4ea7\u7269 | \u4e3a\u4ec0\u4e48 |\n|---|---|---|---|\n| **Phase 1 Source\uff08\u9ed8\u8ba4\uff09** | \u4e3b Agent \u5185\u8054 5 \u6761 checklist | \u65e0\u6587\u4ef6 | \u4e3b Agent \u53cd\u6b63\u8981\u901a\u8bfb source.md |\n| Phase 1 Source\uff08\u4ec5\u590d\u6742/\u4f4e\u7f6e\u4fe1\u6e90\uff09 | Source Reviewer SubAgent\uff08\u5bf9\u7167 `original.*` diff\uff09 | `review/source-review.md` | \u9759\u9ed8\u4e22\u5931\u53ea\u80fd diff \u6293\u5230 |\n| **Phase 2 Plan / Checkpoint 1 \u524d** | **\u4e3b Agent \u5185\u8054\u81ea\u67e5\uff08\u7981\u6b62\u5f00 SubAgent\uff09** | **\u65e0\u6587\u4ef6** | plan \u662f\u6587\u5b57\u51b3\u7b56\u4e14 200-400 \u884c\uff0c\u4e0a\u4e0b\u6587\u662f\u70ed\u7684\uff0cSubAgent \u51b7\u542f\u53cd\u800c\u66f4\u6162 |\n| **Phase 4 First Spread / Checkpoint 2 \u524d** | First Spread Reviewer SubAgent | `review/first-spread-review.md` | \u9996\u5c4f\u5b9a\u8c03\uff0c\u591a\u4e00\u9053\u72ec\u7acb\u773c\u775b\u66f4\u7a33 |\n| **Phase 5 \u6bcf\u4e2a Section** | Section Reviewer SubAgent | **\u4ee5\u6d88\u606f\u8fd4\u56de pass/fail + \u4fee\u590d\u70b9\uff08\u4e0d\u5199\u6587\u4ef6\uff09** | \u4e00\u7bc7\u53ef\u80fd 5-15 \u8282\uff0cN \u4efd review \u6587\u4ef6\u65e0\u4eba\u518d\u8bfb |\n| **Phase 6 \u7ec8\u5ba1 / Checkpoint 3 \u524d** | Editorial + Visual + Technical Reviewer SubAgent | `review/final-review.md` | \u4ea4\u4ed8\u7269\u7684\u4e00\u90e8\u5206\uff0c\u7559\u6863\u6709\u4ef7\u503c |\n\n**\u94c1\u5f8b\uff1a**\n\n1. **Plan Checkpoint\uff08Phase 2 \u2192 Checkpoint 1\uff09\u4e25\u7981\u5f00 SubAgent \u505a\u8d28\u68c0**\u3002\u4e3b Agent \u5199\u5b8c plan.md\n   \u540e**\u5c31\u5730**\u5bf9\u7167 5 \u6761\u6e05\u5355\uff08\u89c1 `references/review-checklist.md` \u7684 Plan \u81ea\u67e5\u6bb5\uff09\u6838\u67e5\u3001\u6309\u7ed3\u8bba\n   \u6539\u5b8c `plan/plan.md`\uff0c**\u4e0d\u8981\u5199\u4efb\u4f55 review \u6587\u4ef6**\uff0c\u7136\u540e\u8fdb\u5165 Checkpoint 1\u3002\n2. First Spread / Final \u5fc5\u987b\u7528 SubAgent\uff08\u8fd9\u4e24\u4e2a\u8282\u70b9 SubAgent \u4ef7\u503c > \u5f00\u9500\uff09\uff1b\u53ea\u6709\u63a2\u6d4b\u4e0d\u5230\n   SubAgent \u73af\u5883\u624d\u7531\u4e3b Agent \u515c\u5e95\uff0c\u5e76\u5728\u6587\u4ef6\u9996\u6ce8\u660e\"\u65e0 SubAgent \u73af\u5883\uff0c\u4e3b Agent \u515c\u5e95\"\u3002\n3. Section Reviewer \u7528 SubAgent\uff0c\u4f46**\u8fd4\u56de\u503c\u662f\u6d88\u606f**\uff08pass / fail + \u4fee\u590d\u70b9\uff09\uff1bfail \u9879\u4e3b Agent\n   \u6536\u5230\u540e\u76f4\u63a5\u4fee\uff0c**\u4e0d\u8981\u8ba9 SubAgent \u5199 `review/section-NN-review.md` \u6587\u4ef6**\u3002\n4. \u62ff\u5230\u4efb\u4f55\u8d28\u68c0\u7ed3\u8bba \u2014\u2014 **\u5148\u6309 fail \u9879\u628a\u4ea7\u51fa\u6539\u5b8c\uff0c\u518d\u6c47\u62a5\"\u505a\u5b8c\u4e86 + \u81ea\u68c0\u7ed3\u8bba + \u6539\u4e86\u4ec0\u4e48\"**\u3002\n   \u76f4\u63a5\u62ff\u539f\u59cb\u7ed3\u8bba\u6c47\u62a5\u4f46\u4e0d\u4fee\u590d = \u8fdd\u89c4\u3002\n5. **\u51b3\u7b56\u6536\u96c6\u94c1\u5f8b \u00b7 \u7981\u6b62\u9759\u9ed8\u66ff\u7528\u6237\u9009\u62e9**\uff1a\u5728\u6bcf\u4e2a Checkpoint\uff081 / 2 / 3\uff09\uff0c\u6240\u6709\u9700\u8981\u7528\u6237\u786e\u8ba4\u7684\n   \u51b3\u7b56\u9879**\u5fc5\u987b\u6bcf\u9879\u72ec\u7acb\u5217\u51fa + \u7b49\u7528\u6237\u7b54\u590d**\u3002Agent **\u53ef\u4ee5\u63a8\u8350**\uff08\"\u6211\u63a8\u8350 X\uff0c\u56e0\u4e3a \u2026\"\uff09\uff0c\u4f46\n   **\u4e0d\u80fd\"\u5df2\u7ecf\u66ff\u4f60\u5b9a\u4e86 X\uff0c\u5982\u679c\u4e0d\u5bf9\u518d\u8bf4\"** \u2014\u2014 \u8fd9\u7b49\u4e8e\u5265\u593a\u9009\u62e9\u673a\u4f1a\u3002\n   - **\u4f18\u5148**\uff1a\u5982\u679c\u73af\u5883\u6709 `AskQuestion` \u5de5\u5177\uff0c\u6bcf\u4e2a\u51b3\u7b56\u9879\u4f5c\u4e3a\u4e00\u4e2a\u72ec\u7acb question\uff08\u4e00\u6b21\u8c03\u7528\u53ef\n     \u4f20\u591a\u4e2a question\uff09\uff0c\u7528\u6237\u80fd\u7528\u9009\u62e9\u5361\u9010\u9879\u786e\u8ba4\u3002\n   - **\u5426\u5219**\uff1a\u505c\u4e0b\u6765\u5728\u6d88\u606f\u91cc\u628a\u6240\u6709\u95ee\u9898**\u7f16\u53f7\u5217\u51fa**\uff08\u6bcf\u4e2a\u95ee\u9898\u72ec\u5360\u4e00\u6bb5\u3001\u5199\u6e05\u63a8\u8350\u9879 + \u7406\u7531 +\n     \u5907\u9009\u9879\uff09\uff0c\u660e\u786e\u8bf4\"\u6211\u7b49\u4f60\u9010\u9879\u7b54\u590d\u540e\u518d\u7ee7\u7eed\"\uff0c**\u4e0d\u8981\u7ee7\u7eed\u505a\u4efb\u4f55\u540e\u7eed\u5de5\u4f5c**\u3002\n   - **\u7edd\u4e0d**\uff1a\u628a\u591a\u9879\u51b3\u7b56\u6253\u5305\u6210\u4e00\u4e2a\"\u5168\u9009\u6211\u63a8\u8350\u7684 / \u5168\u90e8 OK \u5417\uff1f\"yes/no \u95ee\u9898\uff1b\u4e5f\u4e0d\u8981\u5728\n     \"\u63a8\u8350\u4e00\u53e5\u8bdd\"\u540e\u9ed8\u8ba4\u76f4\u63a5\u8fdb\u4e0b\u4e00\u6b65\u3002\n\n\u5404\u8282\u70b9\u7684 checklist \u4e0e SubAgent prompt \u6a21\u677f\u89c1 `references/review-checklist.md`\u3002\n\n---\n\n## \u5404\u9636\u6bb5\u6587\u4ef6\u8bfb\u53d6\u6307\u5357\uff08\u6e10\u8fdb\u52a0\u8f7d\uff0c\u522b\u4e00\u6b21\u5168\u8bfb\uff09\n\n| \u9636\u6bb5 | \u5fc5\u8bfb | \u6309\u9700\u67e5 |\n|---|---|---|\n| Phase 0 Intake | `references/harness.md` | \u2014\u2014 |\n| Phase 1 Source\u2192MD | `references/source-to-markdown.md` | `scripts/source-to-markdown-markitdown.py` \u00b7 `scripts/source-to-markdown.py` |\n| Phase 2 Planning | `references/article-types.md` \u00b7 `references/information-density.md` \u00b7 `references/plan-template.md` \u00b7 `references/theme-selection.md` \u00b7 `references/layout.md` \u00b7 `references/asset-policy.md` \u00b7 `references/cover.md`\uff08\u5c01\u9762\u6784\u56fe\u60f3\u6cd5\uff09 | `references/article-types/<type>.md` \u00b7 `theme-profiles/*.md` |\n| Phase 4 First Spread / Phase 5 Build\uff08\u6bcf\u8282\u56de\u770b\uff09 | `references/section-build.md` \u00b7 `references/component-policy.md` \u00b7 `references/raw-policy.md` \u00b7 \u9009\u5b9a\u4e3b\u9898 `theme-profiles/<id>.md` \u00b7 **\u5c01\u9762\uff1a`references/cover.md`** | `references/scaffold.md`\uff08\u5efa\u9879\u76ee\u65f6\u4e00\u6b21\uff09\u00b7 `references/html-output.md` |\n| Phase 6/7 Review & Repair | `references/review-checklist.md` \u00b7 `references/repair-policy.md` | \u2014\u2014 |\n| Phase 8 Delivery | `references/html-output.md` | `references/pdf-output.md`\uff08\u4ec5\u5f53\u7528\u6237\u9009 PDF \u5bfc\u51fa\uff09 |\n\n> **\u957f\u4f1a\u8bdd\u91cc agent \u5bb9\u6613\u9057\u5fd8\u539f\u5219** \u2014\u2014 Phase 5 \u4f1a\u91cd\u590d\u5b9e\u73b0 N \u4e2a Section\uff0c**\u6bcf\u6b21\u5f00\u5de5\n> \u524d\u56de\u770b** `component-policy.md` + `raw-policy.md` + \u5f53\u524d\u4e3b\u9898 `theme-profiles/<id>.md`\u3002\n\n---\n\n## Phase 0 \u2014\u2014 Intake\n\n\u5224\u65ad\u662f\u5426\u8fdb\u5165\u672c Skill\uff0c\u7ed9\u51fa\u521d\u6b65\u6587\u7ae0\u7c7b\u578b\u4e0e\u8f93\u51fa\u6a21\u5f0f\uff08\u9ed8\u8ba4 single HTML\uff09\u3002\n\n| \u7528\u6237\u7ed9\u7684\u4e1c\u897f | \u8be5\u505a\u7684 |\n|---|---|\n| \u4e00\u4e2a\u6216\u591a\u4e2a\u7d20\u6750\uff08URL/PDF/DOCX/MD/\u6587\u672c/\u622a\u56fe\uff09 | \u8fdb\u5165 Phase 1 |\n| \u53ea\u8bf4\"\u5e2e\u6211\u505a\u7bc7 X \u6587\u7ae0\"\u4f46\u6ca1\u7d20\u6750 | **\u53cd\u95ee**\uff1a\u5148\u8981\u7d20\u6750\u6216\u5927\u7eb2\u3002Skill \u4e0d\u66ff\u7528\u6237\u51ed\u7a7a\u6784\u601d\u5185\u5bb9 |\n| \u660e\u663e\u8981\u7684\u662f\u5e94\u7528 / \u5de5\u5177 / dashboard | \u505c\u4e0b\u6765\u6f84\u6e05\uff0c\u4e0d\u8fdb\u5165\u672c Skill |\n\n**\u6355\u83b7\u76ee\u6807\u8bed\u8a00**\uff1a\u5f00\u573a\u5c31\u8bb0\u5f55\u7528\u6237**\u671f\u671b\u7684\u6700\u7ec8\u6587\u7ae0\u8bed\u8a00**\uff08\u5982\u7528\u6237\u63d0\u5230\"\u7528\u4e2d\u6587/\u505a\u6210\u82f1\u6587\u7248\"\u7b49\uff09\u3002\n\n- **\u7528\u6237\u6307\u5b9a\u4e86\u8bed\u8a00** \u2192 \u8bb0\u8fdb `plan/plan.md`",
+   "files": [
+    "README.md",
+    "README.zh-CN.md",
+    "SKILL.md",
+    "assets/scaffold-template/.npmrc",
+    "assets/scaffold-template/article/Article.tsx",
+    "assets/scaffold-template/article/Cover.tsx",
+    "assets/scaffold-template/article/main.tsx",
+    "assets/scaffold-template/article/sections/01-opening.tsx",
+    "assets/scaffold-template/index.html",
+    "assets/scaffold-template/package.json",
+    "assets/scaffold-template/tsconfig.json",
+    "assets/scaffold-template/tsconfig.node.json",
+    "assets/scaffold-template/vite.config.ts",
+    "manifest.json",
+    "references/article-types.md",
+    "references/article-types/briefing.md",
+    "references/article-types/dialogue.md",
+    "references/article-types/essay.md",
+    "references/article-types/explainer.md",
+    "references/article-types/full-report.md",
+    "references/article-types/interactive-explainer.md",
+    "references/article-types/longform.md",
+    "references/article-types/review.md",
+    "references/article-types/tutorial.md",
+    "references/article-types/visual-essay.md",
+    "references/asset-policy.md",
+    "references/component-policy.md",
+    "references/cover.md",
+    "references/harness.md",
+    "references/html-output.md",
+    "references/information-density.md",
+    "references/layout.md",
+    "references/pdf-output.md",
+    "references/plan-template.md",
+    "references/raw-policy.md",
+    "references/repair-policy.md",
+    "references/review-checklist.md",
+    "references/scaffold.md",
+    "references/section-build.md",
+    "references/source-to-markdown.md",
+    "references/theme-selection.md",
+    "scripts/html-to-pdf.sh",
+    "scripts/pdf-print-overrides.css",
+    "scripts/scaffold.sh",
+    "scripts/source-to-markdown-markitdown.py",
+    "scripts/source-to-markdown.py",
+    "theme-profiles/andy.md",
+    "theme-profiles/bayer.md",
+    "theme-profiles/bodoni.md",
+    "theme-profiles/freddie.md",
+    "theme-profiles/fuller.md",
+    "theme-profiles/index.json",
+    "theme-profiles/knuth.md",
+    "theme-profiles/press.md",
+    "theme-profiles/shannon.md",
+    "theme-profiles/sottsass.md",
+    "theme-profiles/tufte.md",
+    "theme-profiles/vignelli.md"
+   ]
+  },
+  {
+   "ref": "clawhub:arc-creator",
+   "name": "ARC Creator",
+   "type": "skill",
+   "what": "Create and populate Annotated Research Contexts (ARCs) following the nfdi4plants ARC specification. Use when creating a new ARC, adding...",
+   "source": "hermes",
+   "url": "https://clawhub.ai/skills/arc-creator",
+   "hosts": [],
+   "needs": [],
+   "caps": [],
+   "skill_md": "---\nname: arc-creator\ndescription: Create and populate Annotated Research Contexts (ARCs) following the nfdi4plants ARC specification. Use when creating a new ARC, adding studies/assays/workflows/runs, annotating ISA metadata, organizing research data into ARC structure, or pushing ARCs to a DataHUB. Guides the user interactively through all required and optional metadata fields.\n---\n\n# ARC Creator\n\nCreate FAIR Digital Objects following the nfdi4plants ARC specification v3.0.0.\n\n## Prerequisites\n\n- `git` and `git-lfs` installed\n- ARC Commander CLI at `~/bin/arc` (optional but recommended)\n- For DataHUB sync: Personal Access Token for git.nfdi4plants.org or datahub.hhu.de\n\n## Interactive ARC Creation Workflow\n\nGuide the user through these phases in order. Ask questions conversationally \u2014 don't dump all questions at once. Batch 2-4 related questions per message.\n\n### Phase 1: Investigation Setup\n\nAsk the user:\n1. **Investigation identifier** (short, lowercase-hyphenated, e.g. `cold-stress-arabidopsis`)\n2. **Title** (concise name for the investigation)\n3. **Description** (textual description of the research goals)\n4. **Where to store the ARC locally** (suggest `/home/uranus/arc-projects/<identifier>/`)\n\nThen run `scripts/create_arc.sh <path> <identifier>` and set investigation metadata via:\n```bash\narc investigation update -i \"<id>\" --title \"<title>\" --description \"<desc>\"\n```\n\n### Phase 2: Studies\n\nFor each study, ask:\n1. **Study identifier** (e.g. `plant-growth`)\n2. **Title and description**\n3. **Organism** (for Characteristic [Organism])\n4. **Growth conditions** (temperature, light, medium, etc.)\n5. **Source materials** (what goes in \u2014 seeds, cell lines, etc.)\n6. **Sample materials** (what comes out \u2014 leaves, roots, extracts, etc.)\n7. **Protocols** \u2014 does the user have protocol documents to include?\n8. **Factors** \u2014 what experimental variables are being tested? (e.g., temperature, genotype, treatment)\n\nCreate with:\n```bash\narc study init --studyidentifier \"<id>\"\narc study update --studyidentifier \"<id>\" --title \"<title>\" --description \"<desc>\"\n```\n\nCopy protocol files to `studies/<id>/protocols/`.\nCopy resource files to `studies/<id>/resources/`.\n\n### Phase 3: Assays\n\nFor each assay, ask:\n1. **Assay identifier** (e.g. `proteomics-ms`, `rnaseq`, `sugar-measurement`)\n2. **Measurement type** (e.g., protein expression profiling, transcription profiling, metabolite profiling)\n3. **Technology type** (e.g., mass spectrometry, nucleotide sequencing, plate reader)\n4. **Technology platform** (e.g., Illumina NovaSeq, Bruker timsTOF)\n5. **Data files** \u2014 where are the raw data files? (will go into `assays/<id>/dataset/`)\n6. **Processed data** \u2014 any processed output files?\n7. **Protocols** \u2014 assay-specific protocols?\n8. **Performers** \u2014 who performed this assay? (name, affiliation, role)\n\nCreate with:\n```bash\narc assay init -a \"<id>\" --measurementtype \"<type>\" --technologytype \"<tech>\"\n```\n\nCopy data to `assays/<id>/dataset/`, protocols to `assays/<id>/protocols/`.\n\n### Phase 4: Workflows (optional)\n\nAsk if there are computational analysis steps. For each:\n1. **Workflow identifier** (e.g. `deseq2-analysis`, `heatmap-generation`)\n2. **Description** of what it does\n3. **Code files** (scripts, notebooks)\n4. **Dependencies** (Python packages, R libraries, Docker image)\n\nPlace code in `workflows/<id>/`.\nNote: `workflow.cwl` is REQUIRED by spec but often created later. Inform user.\n\n### Phase 5: Runs (optional)\n\nAsk if there are computation outputs. For each:\n1. **Run identifier**\n2. **Which workflow produced it**\n3. **Output files** (figures, tables, processed data)\n\nPlace outputs in `runs/<id>/`.\n\n### Phase 6: Contacts & Publications\n\nAsk:\n1. **Investigation contacts** (name, email, affiliation, role \u2014 at minimum the PI)\n2. **Publications** (if any \u2014 DOI, PubMed ID, title, authors)\n\nAdd via:\n```bash\narc investigation person register --lastname \"<last>\" --firstname \"<first>\" --email \"<email>\" --affiliation \"<aff>\"\n```\n\n### Phase 7: Git Commit & DataHUB Sync\n\n1. Configure git user:\n```bash\ngit config user.name \"<name>\"\ngit config user.email \"<email>\"\n```\n\n2. Commit:\n```bash\ngit add -A\ngit commit -m \"Initial ARC: <investigation title>\"\n```\n\n3. Ask if the user wants to push to a DataHUB. If yes:\n   - Ask which host (git.nfdi4plants.org, datahub.hhu.de, etc.)\n   - Create remote repo (via browser or API)\n   - Set remote and push\n\n## ISA Metadata Reference\n\nFor detailed ISA-XLSX fields, annotation table columns, and ontology references, read `references/arc-spec.md`.\n\n## Key Reminders\n\n- **Assay data is immutable** \u2014 never modify files in `assays/<id>/dataset/` after initial placement\n- **Studies describe materials**, assays describe measurements\n- **Workflows are code**, runs are outputs\n- **Git LFS** for files > 100 MB: `git lfs track \"*.fastq.gz\" \"*.bam\" \"*.raw\"`\n- **Don't store ARCs on OneDrive/Dropbox** \u2014 Git + cloud sync causes conflicts\n- ARC Commander CLI reference: `arc <subcommand> --help`\n",
+   "files": [
+    "SKILL.md",
+    "references/arc-spec.md",
+    "scripts/create_arc.sh"
+   ]
+  },
+  {
+   "ref": "skills.sh:obra/superpowers-skills/gardening-skills-wiki",
+   "name": "gardening-skills-wiki",
+   "type": "skill",
+   "what": "A skill in the obra/superpowers-skills project on GitHub.",
+   "source": "hermes",
+   "url": "https://github.com/obra/superpowers-skills/tree/HEAD/gardening-skills-wiki",
+   "hosts": [],
+   "needs": [],
+   "caps": [],
+   "skill_md": "---\nname: Gardening Skills Wiki\ndescription: Maintain skills wiki health - check links, naming, cross-references, and coverage\nwhen_to_use: when adding, removing, or reorganizing skills, or periodically to maintain wiki health and validate links\nversion: 1.1.0\nlanguages: bash\n---\n\n# Gardening Skills Wiki\n\n## Overview\n\nThe skills wiki needs regular maintenance to stay healthy: links break, skills get orphaned, naming drifts, INDEX files fall out of sync.\n\n**Core principle:** Automate health checks to maintain wiki quality without burning tokens on manual inspection.\n\n## When to Use\n\n**Run gardening after:**\n- Adding new skills\n- Removing or renaming skills\n- Reorganizing categories\n- Updating cross-references\n- Suspicious that links are broken\n\n**Periodic maintenance:**\n- Weekly during active development\n- Monthly during stable periods\n\n## Quick Health Check\n\n```bash\n# Run all checks\n~/.claude/skills/meta/gardening-skills-wiki/garden.sh\n\n# Or run specific checks\n~/.claude/skills/meta/gardening-skills-wiki/check-links.sh\n~/.claude/skills/meta/gardening-skills-wiki/check-naming.sh\n~/.claude/skills/meta/gardening-skills-wiki/check-index-coverage.sh\n\n# Analyze search gaps (what skills are missing)\n~/.claude/skills/meta/gardening-skills-wiki/analyze-search-gaps.sh\n```\n\nThe master script runs all checks and provides a health report.\n\n## What Gets Checked\n\n### 1. Link Validation (`check-links.sh`)\n\n**Checks:**\n- Backtick-wrapped `@` links - backticks disable resolution\n- Relative paths like skills/ or skills/gardening-skills-wiki/~/ - should use skills/ absolute paths\n- All `skills/` references resolve to existing files\n- Skills referenced in INDEX files exist\n- Orphaned skills (not in any INDEX)\n\n**Fixes:**\n- Remove backticks from @ references\n- Convert skills/ and skills/gardening-skills-wiki/~/ relative paths to skills/ absolute paths\n- Update broken skills/ references to correct paths\n- Add orphaned skills to their category INDEX\n- Remove references to deleted skills\n\n### 2. Naming Consistency (`check-naming.sh`)\n\n**Checks:**\n- Directory names are kebab-case\n- No uppercase or underscores in directory names\n- Frontmatter fields present (name, description, when_to_use, version, type)\n- Skill names use active voice (not \"How to...\")\n- Empty directories\n\n**Fixes:**\n- Rename directories to kebab-case\n- Add missing frontmatter fields\n- Remove empty directories\n- Rephrase names to active voice\n\n### 3. INDEX Coverage (`check-index-coverage.sh`)\n\n**Checks:**\n- All skills listed in their category INDEX\n- All category INDEX files linked from main INDEX\n- Skills have descriptions in INDEX entries\n\n**Fixes:**\n- Add missing skills to INDEX files\n- Add category links to main INDEX\n- Add descriptions for INDEX entries\n\n## Common Issues and Fixes\n\n### Broken Links\n\n```\n\u274c BROKEN: skills/debugging/root-cause-tracing\n   Target: /path/to/skills/debugging/root-cause-tracing/SKILL.md\n```\n\n**Fix:** Update the reference path - skill might have moved or been renamed.\n\n### Orphaned Skills\n\n```\n\u26a0\ufe0f  ORPHANED: test-invariants/SKILL.md not in testing/INDEX.md\n```\n\n**Fix:** Add to the category INDEX:\n\n```markdown\n- skills/gardening-skills-wiki/test-invariants - Description of skill\n```\n\n### Backtick-Wrapped Links\n\n```\n\u274c BACKTICKED: skills/testing/condition-based-waiting on line 31\n   File: getting-started/SKILL.md\n   Fix: Remove backticks - use bare @ reference\n```\n\n**Fix:** Remove backticks:\n\n```markdown\n# \u274c Bad - backticks disable link resolution\n`skills/testing/condition-based-waiting`\n\n# \u2705 Good - bare @ reference\nskills/testing/condition-based-waiting\n```\n\n### Relative Path Links\n\n```\n\u274c RELATIVE: skills/testing in coding/SKILL.md\n   Fix: Use skills/ absolute path instead\n```\n\n**Fix:** Convert to absolute path:\n\n```markdown\n# \u274c Bad - relative paths are brittle\nskills/testing/condition-based-waiting\n\n# \u2705 Good - absolute skills/ path\nskills/testing/condition-based-waiting\n```\n\n### Naming Issues\n\n```\n\u26a0\ufe0f  Mixed case: TestingPatterns (should be kebab-case)\n```\n\n**Fix:** Rename directory:\n\n```bash\ncd ~/.claude/skills/testing\nmv TestingPatterns testing-patterns\n# Update all references to old name\n```\n\n### Missing from INDEX\n\n```\n\u274c NOT INDEXED: condition-based-waiting/SKILL.md\n```\n\n**Fix:** Add to `testing/INDEX.md`:\n\n```markdown\n## Available Skills\n\n- skills/gardening-skills-wiki/condition-based-waiting - Replace timeouts with condition polling\n```\n\n### Empty Directories\n\n```\n\u26a0\ufe0f  EMPTY: event-based-testing\n```\n\n**Fix:** Remove if no longer needed:\n\n```bash\nrm -rf ~/.claude/skills/event-based-testing\n```\n\n## Naming Conventions\n\n### Directory Names\n\n- **Format:** kebab-case (lowercase with hyphens)\n- **Process skills:** Use gerunds when appropriate (`creating-skills`, `testing-skills`)\n- **Pattern skills:** Use core concept (`flatten-with-flags`, `test-invariants`)\n- **Avoid:** Mixed case, underscores, passive voice starters (\"how-to-\")\n\n### Frontmatter Requirements\n\n**Required fields:**\n- `name`: Human-readable name\n- `description`: One-line summary\n- `when_to_use`: Symptoms and situations (CSO-critical)\n- `version`: Semantic version\n\n**Optional fields:**\n- `languages`: Applicable languages\n- `dependencies`: Required tools\n- `context`: Special context (e.g., \"AI-assisted development\")\n\n## Automation Workflow\n\n### After Adding New Skill\n\n```bash\n# 1. Create skill\nmkdir -p ~/.claude/skills/category/new-skill\nvim ~/.claude/skills/category/new-skill/SKILL.md\n\n# 2. Add to category INDEX\nvim ~/.claude/skills/category/INDEX.md\n\n# 3. Run health check\n~/.claude/skills/meta/gardening-skills-wiki/garden.sh\n\n# 4. Fix any issues reported\n```\n\n### After Reorganizing\n\n```bash\n# 1. Move/rename skills\nmv ~/.claude/skills/old-category/skill ~/.claude/skills/new-category/\n\n# 2. Update all references (grep for old paths)\ngrep -r \"skills/gardening-skills-wiki/old-category/skill\" ~/.claude/skills/\n\n# 3. Run health check\n~/.claude/skills/meta/gardening-skills-wiki/garden.sh\n\n# 4. Fix broken links\n```\n\n### Periodic Maintenance\n\n```bash\n# Monthly: Run ",
+   "files": [
+    "SKILL.md",
+    "analyze-search-gaps.sh",
+    "check-index-coverage.sh",
+    "check-links.sh",
+    "check-naming.sh",
+    "garden.sh"
+   ]
+  },
+  {
+   "ref": "mcp:ae.plantguide/dubai-gardening",
+   "name": "Plant Guide: Dubai gardening research",
+   "type": "mcp",
+   "what": "What to plant in Dubai, indoor plants, plant care in the heat, garden styles and Garden Care prices.",
+   "source": "mcp-registry",
+   "url": "https://plantguide.ae/agents",
+   "hosts": [
+    "plantguide.ae"
+   ],
+   "needs": [],
+   "mcp": {
+    "url": "https://plantguide.ae/mcp"
+   },
+   "caps": []
+  },
+  {
+   "ref": "mcp:app.gardeners-almanac/gardeners-almanac",
+   "name": "Gardener's Almanac",
+   "type": "mcp",
+   "what": "Your vegetable garden: what's growing, what you've done, what needs doing next and when to water.",
+   "source": "mcp-registry",
+   "url": "https://gardeners-almanac.app/articles/connect-an-assistant",
+   "hosts": [
+    "gardeners-almanac.app"
+   ],
+   "needs": [],
+   "mcp": {
+    "url": "https://gardeners-almanac.app/mcp"
+   },
+   "caps": []
+  },
+  {
+   "ref": "mcp:eu.gridgarden/studio",
+   "name": "studio",
+   "type": "mcp",
+   "what": "Design & price modular raised garden beds and walls: exact bill of materials, EUR price + checkout.",
+   "source": "mcp-registry",
+   "url": "https://studio.gridgarden.eu",
+   "hosts": [
+    "studio.gridgarden.eu"
+   ],
+   "needs": [],
+   "mcp": {
+    "url": "https://studio.gridgarden.eu/mcp"
+   },
+   "caps": []
+  },
+  {
+   "ref": "mcp:garden.stanislav.svelte-llm/svelte-llm-mcp",
+   "name": "svelte-llm-mcp",
+   "type": "mcp",
+   "what": "An MCP server that provides access to Svelte 5 and SvelteKit documentation",
+   "source": "mcp-registry",
+   "url": "https://github.com/khromov/svelte-llm-mcp",
+   "hosts": [
+    "svelte-llm.stanislav.garden"
+   ],
+   "needs": [],
+   "mcp": {
+    "url": "https://svelte-llm.stanislav.garden/mcp/mcp"
+   },
+   "caps": []
+  },
+  {
+   "ref": "github:AnaviTechnology/anavi-gardening",
+   "name": "anavi-gardening",
+   "type": "server_app",
+   "what": "ANAVI Gardening uHAT is an open source hardware add-on board for Raspberry Pi that helps you develop smart solutions for monitoring and growing plants.",
+   "source": "github",
+   "url": "https://github.com/AnaviTechnology/anavi-gardening",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "github:imosudi/LeafScan",
+   "name": "LeafScan",
+   "type": "browser_app",
+   "what": "LeafScan - Plant Disease Diagnostic System LeafScan is an AI-powered plant disease diagnostic tool that helps gardeners, farmers, and plant enthusiasts...",
+   "source": "github",
+   "url": "https://github.com/imosudi/LeafScan",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "github:jocull/ZenGardenFarmer",
+   "name": "ZenGardenFarmer",
+   "type": "server_app",
+   "what": "Plants vs. Zombies helper. Waters plants, wakes up the snail, plays music, and tries to grab coins. Written in C#.",
+   "source": "github",
+   "url": "https://github.com/jocull/ZenGardenFarmer",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "github:samthetechie/pyFolia",
+   "name": "pyFolia",
+   "type": "server_app",
+   "what": "a fun tool to help nerdy gardeners win at life",
+   "source": "github",
+   "url": "https://github.com/samthetechie/pyFolia",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "npm:threed-garden",
+   "name": "threed-garden",
+   "type": "library",
+   "what": "ThreeD Garden: WebGL 3D Environment Interface for Next.JS React TypeScript Three.JS React-Three Physics, 2D Paper.JS; APIs: Apollo GraphQL, WordPress; CSS...",
+   "source": "npm",
+   "url": "https://www.npmjs.com/package/threed-garden",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "npm:@zendeskgarden/svg-icons",
+   "name": "@zendeskgarden/svg-icons",
+   "type": "library",
+   "what": "Garden SVG icons",
+   "source": "npm",
+   "url": "https://www.npmjs.com/package/@zendeskgarden/svg-icons",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "npm:@zendeskgarden/tailwindcss",
+   "name": "@zendeskgarden/tailwindcss",
+   "type": "library",
+   "what": "Garden Design Tokens",
+   "source": "npm",
+   "url": "https://www.npmjs.com/package/@zendeskgarden/tailwindcss",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "book:gutenberg:43531",
+   "name": "The Vegetable Garden: What, When, and How to Plant",
+   "type": "book",
+   "what": "A free old book by Anonymous from Project Gutenberg. About: Vegetable gardening; How To ...; Nature/Gardening/Animals",
+   "source": "libraries",
+   "url": "https://www.gutenberg.org/ebooks/43531",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "book:gutenberg:7123",
+   "name": "Home Vegetable Gardening A Complete and Practical Guide to the Planting and Care",
+   "type": "book",
+   "what": "A free old book by Rockwell, F. F. (Frederick Frye), 1884-1 from Project Gutenberg. About: Vegetable gardening; Fruit-culture; Horticulture; How To ...",
+   "source": "libraries",
+   "url": "https://www.gutenberg.org/ebooks/7123",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "book:wikipedia:en:plant-garden",
+   "name": "Wikipedia articles about plant garden",
+   "type": "book",
+   "what": "Up to 300 Wikipedia articles about plant garden, picked by their titles and first paragraphs and saved on this computer as one book.",
+   "source": "libraries",
+   "url": "https://en.wikipedia.org/",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "clawhub:robin797860/stock-watcher",
+   "name": "Stock Watcher",
+   "type": "skill",
+   "what": "Manage and monitor a personal stock watchlist with support for adding, removing, listing stocks, and summarizing their recent performance using data from...",
+   "source": "clawhub",
+   "url": "https://clawhub.ai/robin797860/skills/stock-watcher",
+   "hosts": [],
+   "needs": [],
+   "caps": [],
+   "skill_md": "---\nname: stock-watcher\ndescription: Manage and monitor a personal stock watchlist with support for adding, removing, listing stocks, and summarizing their recent performance using data from 10jqka.com.cn. Use when the user wants to track specific stocks, get performance summaries, or manage their watchlist.\n---\n\n# Stock Watcher Skill\n\nThis skill provides comprehensive stock watchlist management capabilities, allowing users to track their favorite stocks and get performance summaries using real-time data from \u540c\u82b1\u987a (10jqka.com.cn).\n\n## \u81ea\u9009\u80a1\u884c\u60c5\u67e5\u770b\n\n\u5f53\u4f60\u8981\u6c42\u67e5\u770b\u81ea\u9009\u80a1\u884c\u60c5\u65f6\uff0c\u7cfb\u7edf\u4f1a\u76f4\u63a5\u663e\u793a\u4ee5\u4e0b\u4fe1\u606f\uff1a\n- \u6bcf\u53ea\u80a1\u7968\u7684\u4ee3\u7801\u548c\u540d\u79f0\n- \u8fd1\u671f\u8868\u73b0\u6307\u6807\uff08\u6da8\u8dcc\u5e45\u7b49\u5173\u952e\u6570\u636e\uff09\n- \u8be6\u7ec6\u4fe1\u606f\u94fe\u63a5\uff08\u53ef\u70b9\u51fb\u67e5\u770b\uff09\n\n\u65e0\u9700\u989d\u5916\u547d\u4ee4\uff0c\u76f4\u63a5\u4e3a\u4f60\u5448\u73b0\u7b80\u6d01\u660e\u4e86\u7684\u884c\u60c5\u6982\u89c8\u3002\n\n## \u7ba1\u7406\u81ea\u9009\u80a1\n\n### \u6dfb\u52a0\u80a1\u7968\n\u4f7f\u7528\u80a1\u7968\u4ee3\u7801\uff086\u4f4d\u6570\u5b57\uff09\u6dfb\u52a0\u5230\u81ea\u9009\u80a1\uff1a\n- \u4f8b\u5982\uff1a\u6dfb\u52a0 600053 \u4e5d\u9f0e\u6295\u8d44\n\n### \u5220\u9664\u80a1\u7968  \n\u901a\u8fc7\u80a1\u7968\u4ee3\u7801\u5220\u9664\u81ea\u9009\u80a1\uff1a\n- \u4f8b\u5982\uff1a\u5220\u9664 600053\n\n### \u67e5\u770b\u81ea\u9009\u80a1\u5217\u8868\n\u663e\u793a\u5f53\u524d\u6240\u6709\u81ea\u9009\u80a1\u7684\u5b8c\u6574\u5217\u8868\n\n### \u6e05\u7a7a\u81ea\u9009\u80a1\u5217\u8868\n\u5b8c\u5168\u6e05\u7a7a\u6240\u6709\u81ea\u9009\u80a1\n\n## \u6570\u636e\u6765\u6e90\n\n\u4e3b\u8981\u4f7f\u7528**\u540c\u82b1\u987a (10jqka.com.cn)** \u4f5c\u4e3a\u6570\u636e\u6e90\uff1a\n- **\u80a1\u7968\u9875\u9762**: `https://stockpage.10jqka.com.cn/{stock_code}/`\n- \u652f\u6301\u6caa\u6df1A\u80a1\u53ca\u79d1\u521b\u677f\u5e02\u573a\n- \u63d0\u4f9b\u5b9e\u65f6\u884c\u60c5\u3001\u6280\u672f\u5206\u6790\u548c\u8d44\u91d1\u6d41\u5411\u6570\u636e\n\n## \u81ea\u9009\u80a1\u7ba1\u7406\n\n### \u6587\u4ef6\u683c\u5f0f\n\u81ea\u9009\u80a1\u5b58\u50a8\u5728 `~/.clawdbot/stock_watcher/watchlist.txt`\uff1a\n```\n600053|\u4e5d\u9f0e\u6295\u8d44\n600018|\u4e0a\u6e2f\u96c6\u56e2\n688785|\u6052\u8fd0\u660c\n```\n\n### \u652f\u6301\u64cd\u4f5c\n1. **\u6dfb\u52a0\u80a1\u7968**: \u9a8c\u8bc1\u80a1\u7968\u4ee3\u7801\u683c\u5f0f\u5e76\u6dfb\u52a0\u5230\u81ea\u9009\u80a1\n2. **\u5220\u9664\u80a1\u7968**: \u6309\u80a1\u7968\u4ee3\u7801\u7cbe\u786e\u5339\u914d\u5220\u9664\n3. **\u67e5\u770b\u5217\u8868**: \u663e\u793a\u5f53\u524d\u81ea\u9009\u80a1\n4. **\u6e05\u7a7a\u5217\u8868**: \u5b8c\u5168\u6e05\u7a7a\u81ea\u9009\u80a1\n5. **\u884c\u60c5\u603b\u7ed3**: \u83b7\u53d6\u6240\u6709\u80a1\u7968\u7684\u6700\u65b0\u6570\u636e\u5e76\u63d0\u4f9b\u7b80\u6d01\u6458\u8981\n\n## \u884c\u60c5\u6458\u8981\u7279\u70b9\n\n- \u76f4\u63a5\u663e\u793a\u5173\u952e\u884c\u60c5\u6307\u6807\uff0c\u65e0\u5197\u4f59\u4fe1\u606f\n- \u63d0\u4f9b\u80a1\u7968\u8be6\u60c5\u94fe\u63a5\u4fbf\u4e8e\u6df1\u5165\u67e5\u770b\n- \u81ea\u52a8\u5904\u7406\u7f51\u7edc\u9519\u8bef\u548c\u6570\u636e\u5f02\u5e38\n- \u5408\u7406\u63a7\u5236\u8bf7\u6c42\u9891\u7387\uff08\u6bcf\u79d21\u6b21\uff09\n\n## \u6ce8\u610f\u4e8b\u9879\n\n- **\u80a1\u7968\u4ee3\u7801\u683c\u5f0f**: \u4f7f\u75286\u4f4d\u6570\u5b57\u4ee3\u7801\uff08\u5982 `600053`\uff09\n- **\u6570\u636e\u5ef6\u8fdf**: \u884c\u60c5\u53ef\u80fd\u67091-3\u5206\u949f\u5ef6\u8fdf\n- **\u7f51\u7edc\u4f9d\u8d56**: \u9700\u8981\u7f51\u7edc\u8fde\u63a5\u83b7\u53d6\u5b9e\u65f6\u6570\u636e\n- **\u5e02\u573a\u8303\u56f4**: \u4e3b\u8981\u652f\u6301A\u80a1\u5e02\u573a\uff08\u6caa\u5e02/\u6df1\u5e02/\u79d1\u521b\u677f\uff09\n\n## \u5b89\u88c5\u4e0e\u5378\u8f7d\n\n### \u5b89\u88c5\n\u8fd0\u884c `scripts/install.sh` \u811a\u672c\u81ea\u52a8\u521b\u5efa\u5fc5\u8981\u7684\u76ee\u5f55\u7ed3\u6784\u3002\n\n### \u5378\u8f7d  \n\u8fd0\u884c `scripts/uninstall.sh` \u811a\u672c\u5b8c\u5168\u79fb\u9664\u6240\u6709\u76f8\u5173\u6587\u4ef6\u3002\n\n## \u811a\u672c\u8bf4\u660e\n\n\u6240\u6709\u811a\u672c\u90fd\u4f7f\u7528\u7edf\u4e00\u7684\u914d\u7f6e\u6587\u4ef6 `config.py` \u6765\u7ba1\u7406\u5b58\u50a8\u8def\u5f84\uff0c\u786e\u4fdd\u8def\u5f84\u4e00\u81f4\u6027\uff1a\n- `add_stock.py` - \u6dfb\u52a0\u80a1\u7968\u5230\u81ea\u9009\u80a1\n- `remove_stock.py` - \u4ece\u81ea\u9009\u80a1\u5220\u9664\u80a1\u7968\n- `list_stocks.py` - \u5217\u51fa\u6240\u6709\u81ea\u9009\u80a1\n- `clear_watchlist.py` - \u6e05\u7a7a\u81ea\u9009\u80a1\u5217\u8868\n- `summarize_performance.py` - \u83b7\u53d6\u80a1\u7968\u884c\u60c5\u6458\u8981",
+   "files": [
+    "README.md",
+    "SKILL.md",
+    "scripts/add_stock.py",
+    "scripts/clear_watchlist.py",
+    "scripts/config.py",
+    "scripts/install.sh",
+    "scripts/list_stocks.py",
+    "scripts/remove_stock.py",
+    "scripts/summarize_performance.py",
+    "scripts/uninstall.sh"
+   ]
+  },
+  {
+   "ref": "clawhub:michaelgathara/youtube-watcher",
+   "name": "YouTube Watcher",
+   "type": "skill",
+   "what": "Fetch and read transcripts from YouTube videos. Use when you need to summarize a video, answer questions about its content, or extract information from it.",
+   "source": "clawhub",
+   "url": "https://clawhub.ai/michaelgathara/skills/youtube-watcher",
+   "hosts": [],
+   "needs": [],
+   "caps": [],
+   "skill_md": "---\nname: youtube-watcher\ndescription: Fetch and read transcripts from YouTube videos. Use when you need to summarize a video, answer questions about its content, or extract information from it.\nauthor: michael gathara\nversion: 1.0.0\ntriggers:\n  - \"watch youtube\"\n  - \"summarize video\"\n  - \"video transcript\"\n  - \"youtube summary\"\n  - \"analyze video\"\nmetadata: {\"clawdbot\":{\"emoji\":\"\ud83d\udcfa\",\"requires\":{\"bins\":[\"yt-dlp\"]},\"install\":[{\"id\":\"brew\",\"kind\":\"brew\",\"formula\":\"yt-dlp\",\"bins\":[\"yt-dlp\"],\"label\":\"Install yt-dlp (brew)\"},{\"id\":\"pip\",\"kind\":\"pip\",\"package\":\"yt-dlp\",\"bins\":[\"yt-dlp\"],\"label\":\"Install yt-dlp (pip)\"}]}}\n---\n\n# YouTube Watcher\n\nFetch transcripts from YouTube videos to enable summarization, QA, and content extraction.\n\n## Usage\n\n### Get Transcript\n\nRetrieve the text transcript of a video.\n\n```bash\npython3 {baseDir}/scripts/get_transcript.py \"https://www.youtube.com/watch?v=VIDEO_ID\"\n```\n\n## Examples\n\n**Summarize a video:**\n\n1. Get the transcript:\n   ```bash\n   python3 {baseDir}/scripts/get_transcript.py \"https://www.youtube.com/watch?v=dQw4w9WgXcQ\"\n   ```\n2. Read the output and summarize it for the user.\n\n**Find specific information:**\n\n1. Get the transcript.\n2. Search the text for keywords or answer the user's question based on the content.\n\n## Notes\n\n- Requires `yt-dlp` to be installed and available in the PATH.\n- Works with videos that have closed captions (CC) or auto-generated subtitles.\n- If a video has no subtitles, the script will fail with an error message.\n",
+   "files": [
+    "SKILL.md",
+    "scripts/get_transcript.py"
+   ]
+  },
+  {
+   "ref": "skills.sh:anthropics/claude-for-legal/reg-feed-watcher",
+   "name": "reg-feed-watcher",
+   "type": "skill",
+   "what": "A skill in the anthropics/claude-for-legal project on GitHub.",
+   "source": "skills.sh",
+   "url": "https://skills.sh/anthropics/claude-for-legal/reg-feed-watcher",
+   "hosts": [],
+   "needs": [],
+   "caps": [],
+   "skill_md": "---\nname: reg-feed-watcher\ndescription: Check regulatory feeds now and report what's new since the last check, filtered by your materiality threshold. Use when the user says \"check the feeds\", \"what's new\", \"regulatory update\", when running from the scheduled agent, or when manually pasting a regulatory development for classification and diff.\nargument-hint: \"[optional: --since DATE]\"\n---\n\n# /reg-feed-watcher\n\n1. Load `~/.claude/plugins/config/claude-for-legal/regulatory-legal/CLAUDE.md` \u2192 watchlist, materiality threshold, feed config.\n2. Use the workflow below.\n3. Pull each feed. Filter by materiality.\n4. Output: what's new, categorized by materiality tier.\n\n---\n\n## Purpose\n\nPull the feeds. Filter by materiality. Output what's left. The filter is the\nvalue \u2014 unfiltered feeds are noise.\n\n## Load context\n\n`~/.claude/plugins/config/claude-for-legal/regulatory-legal/CLAUDE.md` \u2192 watchlist, materiality threshold, feed configuration, digest output path (if set).\n\n`references/source-catalog.md` (in this skill's directory) \u2192 curated catalog of RSS/JSON/HTML sources across US federal, US state, EU/UK, international, and secondary/aggregator categories. Use when configuring new sources or when the user's watchlist has coverage gaps (see Step 0).\n\n## Workflow\n\n### Step 0: Coverage check (before pulling)\n\nBefore running the pull, compare the watchlist + feed configuration in CLAUDE.md against `references/source-catalog.md`:\n\n- Which categories (US federal / US state / EU-UK / international) does the user care about per their watchlist?\n- Which of those categories have zero or very few sources configured?\n\nIf there's an obvious gap \u2014 e.g., user watches \"EU regulators\" in the watchlist but has only `edpb.europa.eu` configured in feeds, missing ICO, CNIL, DPC Ireland \u2014 surface it once at the top of the digest:\n\n> **Coverage gap noticed:** Your watchlist includes [category], but only [N] feeds are configured. The source catalog lists [X] options in this category (e.g., [top 2-3 names]). Want me to suggest additions? Run `/regulatory-legal:cold-start-interview --redo` to update, or edit `~/.claude/plugins/config/claude-for-legal/regulatory-legal/CLAUDE.md` directly.\n\nDon't nag the same gap repeatedly \u2014 if the user has explicitly said \"skip state AGs for now,\" respect that. Note state in CLAUDE.md so it sticks.\n\n### Step 1: Pull\n\nPull from all configured feed tiers. Every installation has Tier 1. Tiers 2\nand 3 are additive \u2014 use them if configured, skip if not.\n\n**Tier 1 \u2014 Free feeds (always active)**\n\nFor each regulator in the watchlist:\n\n- **Federal Register API** (`https://www.federalregister.gov/api/v1/documents`)\n  \u2014 query by agency slug, date range (since last check), document type. Returns\n  structured data: document type, title, abstract, effective date, comment\n  deadline (for NPRMs), and citation. Covers all US federal agencies.\n- **Direct regulator RSS** \u2014 fetch and parse any RSS URLs in ~/.claude/plugins/config/claude-for-legal/regulatory-legal/CLAUDE.md feed\n  configuration (SEC, FTC, CFPB, state agencies, EU DPAs, etc.).\n\nAgency slug reference for common watchlist regulators:\n| Regulator | API slug |\n|---|---|\n| FTC | federal-trade-commission |\n| SEC | securities-and-exchange-commission |\n| CFPB | consumer-financial-protection-bureau |\n| CPPA (CA) | RSS only \u2014 cppa.ca.gov/feed |\n| DOL | labor-department |\n| HHS | health-and-human-services-department |\n| FCC | federal-communications-commission |\n\nFor any regulator not in this list: check federalregister.gov/agencies for the\ncorrect slug, or fall back to direct RSS.\n\n**Tier 2 \u2014 Paid feeds (if configured)**\n\n- **Paid regulatory feed MCP:** Query for updates since last check date,\n  filtered to watchlist regulators.\n- **CourtListener MCP:** Same.\n\nDe-duplicate across tiers \u2014 the same document may appear in multiple sources.\nPrefer the richest source for the enriched output.\n\n**No silent supplement.** If the feed pull returns few or no results for a regulator in the watchlist, report what was found and stop. Do NOT fill the gap from web search or model knowledge without asking. Say: \"The feed check returned [N] items from [regulators hit]. Coverage appears thin for [regulator / topic]. Options: (1) broaden the date window, (2) try a different feed or MCP, (3) search the web \u2014 results will be tagged `[web search \u2014 verify]` and should be checked against the issuing authority's website before relying, or (4) stop here. Which would you like?\" A lawyer decides whether to accept lower-confidence sources; Claude does not decide for them.\n\n**Source attribution.** Tag every citation and regulatory item with where it came from: `[Federal Register]`, `[<regulator> RSS]`, `[CourtListener]`, or the specific MCP tool name for items retrieved via connector; `[web search \u2014 verify]` for items from web search; `[model knowledge \u2014 verify]` for items surfaced from the model's training data; `[user provided]` for manually-pasted items. Items tagged `verify` carry higher fabrication risk than tool-retrieved items and should be checked first. Never strip or collapse the tags \u2014 they are the user's fastest signal about which citations to verify.\n\n**Secondary sources.** Some catalog entries (IAPP, FPF, Hogan Lovells, Covington, Lexology, JD Supra, Artificial Lawyer, LawSites, and similar commentators/aggregators) report on primary regulatory action but are not the primary source. Tag any item pulled from these feeds with `[secondary source]` in addition to the feed-name tag \u2014 e.g., `[IAPP Daily Dashboard] [secondary source]`. In the digest, when a secondary-source item describes a regulator action, add a note: \"\u2192 Trace to primary: [link to regulator site if known, otherwise 'find on <regulator>.gov before relying'].\" Do not classify a secondary-source item as \"Always material\" on its own strength \u2014 bump it down a tier until the primary source is located.\n\n**Tier 3 \u2014 Manual entry**\n\nIf the user has pasted regulatory text or a summary rather than invoking from\na scheduled ",
+   "files": [
+    "SKILL.md",
+    "references/source-catalog.md"
+   ]
+  },
+  {
+   "ref": "skills.sh:agentbay-ai/agentbay-skills/stock-watcher",
+   "name": "stock-watcher",
+   "type": "skill",
+   "what": "A skill in the agentbay-ai/agentbay-skills project on GitHub.",
+   "source": "skills.sh",
+   "url": "https://skills.sh/agentbay-ai/agentbay-skills/stock-watcher",
+   "hosts": [],
+   "needs": [],
+   "caps": [],
+   "skill_md": "---\nname: stock-watcher\ndescription: Manage and monitor a personal stock watchlist with support for adding, removing, listing stocks, and summarizing their recent performance using data from 10jqka.com.cn. Use when the user wants to track specific stocks, get performance summaries, or manage their watchlist.\n---\n\n# Stock Watcher Skill\n\nThis skill provides comprehensive stock watchlist management capabilities, allowing users to track their favorite stocks and get performance summaries using real-time data from \u540c\u82b1\u987a (10jqka.com.cn).\n\n## \u81ea\u9009\u80a1\u884c\u60c5\u67e5\u770b\n\n\u5f53\u4f60\u8981\u6c42\u67e5\u770b\u81ea\u9009\u80a1\u884c\u60c5\u65f6\uff0c\u7cfb\u7edf\u4f1a\u76f4\u63a5\u663e\u793a\u4ee5\u4e0b\u4fe1\u606f\uff1a\n- \u6bcf\u53ea\u80a1\u7968\u7684\u4ee3\u7801\u548c\u540d\u79f0\n- \u8fd1\u671f\u8868\u73b0\u6307\u6807\uff08\u6da8\u8dcc\u5e45\u7b49\u5173\u952e\u6570\u636e\uff09\n- \u8be6\u7ec6\u4fe1\u606f\u94fe\u63a5\uff08\u53ef\u70b9\u51fb\u67e5\u770b\uff09\n\n\u65e0\u9700\u989d\u5916\u547d\u4ee4\uff0c\u76f4\u63a5\u4e3a\u4f60\u5448\u73b0\u7b80\u6d01\u660e\u4e86\u7684\u884c\u60c5\u6982\u89c8\u3002\n\n## \u7ba1\u7406\u81ea\u9009\u80a1\n\n### \u6dfb\u52a0\u80a1\u7968\n\u4f7f\u7528\u80a1\u7968\u4ee3\u7801\uff086\u4f4d\u6570\u5b57\uff09\u6dfb\u52a0\u5230\u81ea\u9009\u80a1\uff1a\n- \u4f8b\u5982\uff1a\u6dfb\u52a0 600053 \u4e5d\u9f0e\u6295\u8d44\n\n### \u5220\u9664\u80a1\u7968  \n\u901a\u8fc7\u80a1\u7968\u4ee3\u7801\u5220\u9664\u81ea\u9009\u80a1\uff1a\n- \u4f8b\u5982\uff1a\u5220\u9664 600053\n\n### \u67e5\u770b\u81ea\u9009\u80a1\u5217\u8868\n\u663e\u793a\u5f53\u524d\u6240\u6709\u81ea\u9009\u80a1\u7684\u5b8c\u6574\u5217\u8868\n\n### \u6e05\u7a7a\u81ea\u9009\u80a1\u5217\u8868\n\u5b8c\u5168\u6e05\u7a7a\u6240\u6709\u81ea\u9009\u80a1\n\n## \u6570\u636e\u6765\u6e90\n\n\u4e3b\u8981\u4f7f\u7528**\u540c\u82b1\u987a (10jqka.com.cn)** \u4f5c\u4e3a\u6570\u636e\u6e90\uff1a\n- **\u80a1\u7968\u9875\u9762**: `https://stockpage.10jqka.com.cn/{stock_code}/`\n- \u652f\u6301\u6caa\u6df1A\u80a1\u53ca\u79d1\u521b\u677f\u5e02\u573a\n- \u63d0\u4f9b\u5b9e\u65f6\u884c\u60c5\u3001\u6280\u672f\u5206\u6790\u548c\u8d44\u91d1\u6d41\u5411\u6570\u636e\n\n## \u81ea\u9009\u80a1\u7ba1\u7406\n\n### \u6587\u4ef6\u683c\u5f0f\n\u81ea\u9009\u80a1\u5b58\u50a8\u5728 `~/.clawdbot/stock_watcher/watchlist.txt`\uff1a\n```\n600053|\u4e5d\u9f0e\u6295\u8d44\n600018|\u4e0a\u6e2f\u96c6\u56e2\n688785|\u6052\u8fd0\u660c\n```\n\n### \u652f\u6301\u64cd\u4f5c\n1. **\u6dfb\u52a0\u80a1\u7968**: \u9a8c\u8bc1\u80a1\u7968\u4ee3\u7801\u683c\u5f0f\u5e76\u6dfb\u52a0\u5230\u81ea\u9009\u80a1\n2. **\u5220\u9664\u80a1\u7968**: \u6309\u80a1\u7968\u4ee3\u7801\u7cbe\u786e\u5339\u914d\u5220\u9664\n3. **\u67e5\u770b\u5217\u8868**: \u663e\u793a\u5f53\u524d\u81ea\u9009\u80a1\n4. **\u6e05\u7a7a\u5217\u8868**: \u5b8c\u5168\u6e05\u7a7a\u81ea\u9009\u80a1\n5. **\u884c\u60c5\u603b\u7ed3**: \u83b7\u53d6\u6240\u6709\u80a1\u7968\u7684\u6700\u65b0\u6570\u636e\u5e76\u63d0\u4f9b\u7b80\u6d01\u6458\u8981\n\n## \u884c\u60c5\u6458\u8981\u7279\u70b9\n\n- \u76f4\u63a5\u663e\u793a\u5173\u952e\u884c\u60c5\u6307\u6807\uff0c\u65e0\u5197\u4f59\u4fe1\u606f\n- \u63d0\u4f9b\u80a1\u7968\u8be6\u60c5\u94fe\u63a5\u4fbf\u4e8e\u6df1\u5165\u67e5\u770b\n- \u81ea\u52a8\u5904\u7406\u7f51\u7edc\u9519\u8bef\u548c\u6570\u636e\u5f02\u5e38\n- \u5408\u7406\u63a7\u5236\u8bf7\u6c42\u9891\u7387\uff08\u6bcf\u79d21\u6b21\uff09\n\n## \u6ce8\u610f\u4e8b\u9879\n\n- **\u80a1\u7968\u4ee3\u7801\u683c\u5f0f**: \u4f7f\u75286\u4f4d\u6570\u5b57\u4ee3\u7801\uff08\u5982 `600053`\uff09\n- **\u6570\u636e\u5ef6\u8fdf**: \u884c\u60c5\u53ef\u80fd\u67091-3\u5206\u949f\u5ef6\u8fdf\n- **\u7f51\u7edc\u4f9d\u8d56**: \u9700\u8981\u7f51\u7edc\u8fde\u63a5\u83b7\u53d6\u5b9e\u65f6\u6570\u636e\n- **\u5e02\u573a\u8303\u56f4**: \u4e3b\u8981\u652f\u6301A\u80a1\u5e02\u573a\uff08\u6caa\u5e02/\u6df1\u5e02/\u79d1\u521b\u677f\uff09\n\n## \u5b89\u88c5\u4e0e\u5378\u8f7d\n\n### \u5b89\u88c5\n\u8fd0\u884c `scripts/install.sh` \u811a\u672c\u81ea\u52a8\u521b\u5efa\u5fc5\u8981\u7684\u76ee\u5f55\u7ed3\u6784\u3002\n\n### \u5378\u8f7d  \n\u8fd0\u884c `scripts/uninstall.sh` \u811a\u672c\u5b8c\u5168\u79fb\u9664\u6240\u6709\u76f8\u5173\u6587\u4ef6\u3002\n\n## \u811a\u672c\u8bf4\u660e\n\n\u6240\u6709\u811a\u672c\u90fd\u4f7f\u7528\u7edf\u4e00\u7684\u914d\u7f6e\u6587\u4ef6 `config.py` \u6765\u7ba1\u7406\u5b58\u50a8\u8def\u5f84\uff0c\u786e\u4fdd\u8def\u5f84\u4e00\u81f4\u6027\uff1a\n- `add_stock.py` - \u6dfb\u52a0\u80a1\u7968\u5230\u81ea\u9009\u80a1\n- `remove_stock.py` - \u4ece\u81ea\u9009\u80a1\u5220\u9664\u80a1\u7968\n- `list_stocks.py` - \u5217\u51fa\u6240\u6709\u81ea\u9009\u80a1\n- `clear_watchlist.py` - \u6e05\u7a7a\u81ea\u9009\u80a1\u5217\u8868\n- `summarize_performance.py` - \u83b7\u53d6\u80a1\u7968\u884c\u60c5\u6458\u8981",
+   "files": [
+    "README.md",
+    "SKILL.md",
+    "scripts/add_stock.py",
+    "scripts/clear_watchlist.py",
+    "scripts/config.py",
+    "scripts/install.sh",
+    "scripts/list_stocks.py",
+    "scripts/remove_stock.py",
+    "scripts/summarize_performance.py",
+    "scripts/uninstall.sh"
+   ]
+  },
+  {
+   "ref": "skills.sh:teneoprotocolai/teneo-skills/aave-v3-liquidation-watcher-teneo",
+   "name": "aave-v3-liquidation-watcher-teneo",
+   "type": "skill",
+   "what": "A skill in the teneoprotocolai/teneo-skills project on GitHub.",
+   "source": "skills.sh",
+   "url": "https://skills.sh/teneoprotocolai/teneo-skills/aave-v3-liquidation-watcher-teneo",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "hermes:official/devops/watchers",
+   "name": "watchers",
+   "type": "skill",
+   "what": "Poll RSS, JSON APIs, and GitHub with watermark dedup.",
+   "source": "hermes",
+   "url": "https://github.com/NousResearch/hermes-agent/tree/HEAD/optional-skills/devops/watchers",
+   "hosts": [],
+   "needs": [],
+   "caps": [],
+   "skill_md": "---\nname: watchers\ndescription: Poll RSS, JSON APIs, and GitHub with watermark dedup.\nversion: 1.0.0\nauthor: Hermes Agent\nlicense: MIT\nplatforms: [linux, macos]\nmetadata:\n  hermes:\n    tags: [cron, polling, rss, github, http, automation, monitoring]\n    category: devops\n    requires_toolsets: [terminal]\n    related_skills: []\n---\n\n# Watchers\n\nPoll external sources on an interval and react only to new items. Three ready-made scripts plus a shared watermark helper; wire them into a cron job (or run them ad-hoc from the terminal).\n\n## When to Use\n\n- User wants to watch an RSS/Atom feed and be notified of new entries\n- User wants to watch a GitHub repo's issues / pulls / releases / commits\n- User wants to poll an arbitrary JSON endpoint and get notified on new items\n- User asks for \"a watcher for X\" or \"notify me when X changes\"\n\n## Mental model\n\nA watcher is just a script that:\n\n1. Fetches data from the external source\n2. Compares against a watermark file of previously-seen IDs\n3. Writes the new watermark back\n4. Prints new items to stdout (or nothing on no-change)\n\nThe scripts below handle all three. The agent runs them via the terminal tool \u2014 from a cron job, a webhook, or an interactive chat \u2014 and reports what's new.\n\n## Ready-made scripts\n\nAll three live in `$HERMES_HOME/skills/devops/watchers/scripts/` once the skill is installed. Each reads `WATCHER_STATE_DIR` (defaults to `$HERMES_HOME/watcher-state/`) for its state file, keyed by the `--name` argument.\n\n| Script | What it watches | Dedup key |\n|---|---|---|\n| `watch_rss.py` | RSS 2.0 or Atom feed URL | `<guid>` / `<id>` |\n| `watch_http_json.py` | Any JSON endpoint returning a list of objects | Configurable id field |\n| `watch_github.py` | GitHub issues / pulls / releases / commits for a repo | `id` / `sha` |\n\nAll three:\n\n- First run records a baseline \u2014 never replays existing feed\n- Watermark is a bounded ID set (max 500) to cap memory\n- Output format: `## <title>\\n<url>\\n\\n<optional body>` per item\n- Empty stdout on no-new \u2014 the caller treats that as silent\n- Non-zero exit on fetch errors\n\n## Usage\n\nRun a watcher directly from the terminal tool:\n\n```bash\npython $HERMES_HOME/skills/devops/watchers/scripts/watch_rss.py \\\n  --name hn --url https://news.ycombinator.com/rss --max 5\n```\n\nWatch a GitHub repo (set `GITHUB_TOKEN` in `${HERMES_HOME:-~/.hermes}/.env` to avoid the 60 req/hr anonymous rate limit):\n\n```bash\npython $HERMES_HOME/skills/devops/watchers/scripts/watch_github.py \\\n  --name hermes-issues --repo NousResearch/hermes-agent --scope issues\n```\n\nPoll an arbitrary JSON API:\n\n```bash\npython $HERMES_HOME/skills/devops/watchers/scripts/watch_http_json.py \\\n  --name api --url https://api.example.com/events \\\n  --id-field event_id --items-path data.events\n```\n\n## Wiring into cron\n\nAsk the agent to schedule a cron job with a prompt like:\n\n> Every 15 minutes, run `watch_rss.py --name hn --url https://news.ycombinator.com/rss`. If it prints anything, summarize the headlines and deliver them. If it prints nothing, stay silent.\n\nThe agent invokes the script via the terminal tool inside the cron job's agent loop; no changes to cron's built-in `--script` flag are needed.\n\n## State files\n\nEvery watcher writes `$HERMES_HOME/watcher-state/<name>.json`. Inspect:\n\n```bash\ncat $HERMES_HOME/watcher-state/hn.json\n```\n\nForce a replay (next run treated as first poll):\n\n```bash\nrm $HERMES_HOME/watcher-state/hn.json\n```\n\n## Writing your own\n\nAll three scripts use the same template: load watermark, fetch, diff, save, emit. `scripts/_watermark.py` is the shared helper; import it to get atomic writes + bounded ID set + first-run baseline for free. See any of the three reference scripts for how little boilerplate it takes.\n\n## Common Pitfalls\n\n1. **Printing a \"no new items\" header every tick.** Callers rely on empty stdout = silent. If you print anything on an empty delta, you spam the channel. The shipped scripts handle this; custom scripts must too.\n2. **Expecting the first run to emit items.** It won't \u2014 first run records a baseline. If you need an initial digest, delete the state file after the first run or add a `--prime-with-latest N` flag in your own script.\n3. **Unbounded watermark growth.** The shared helper caps at 500 IDs. Raise it for high-churn feeds; lower it on constrained filesystems.\n4. **Putting the state dir where the agent's sandbox can't write.** `$HERMES_HOME/watcher-state/` is always writable. Docker/Modal backends may not see arbitrary host paths.\n\n",
+   "files": [
+    "SKILL.md",
+    "scripts/_watermark.py",
+    "scripts/watch_github.py",
+    "scripts/watch_http_json.py",
+    "scripts/watch_rss.py"
+   ]
+  },
+  {
+   "ref": "clawhub:a-stock-watcher",
+   "name": "A Stock Watcher",
+   "type": "skill",
+   "what": "\u63d0\u4f9b\u57fa\u4e8e\u591a\u6570\u636e\u6e90\u7684A\u80a1\u5b9e\u65f6\u884c\u60c5\u67e5\u8be2\u3001\u4ef7\u683c\u9884\u8b66\u3001\u6280\u672f\u5206\u6790\u53ca\u667a\u80fd\u6295\u987e\u670d\u52a1\uff0c\u542b\u81ea\u52a8\u5316\u62a5\u544a\u548c\u98ce\u9669\u8bc4\u4f30\u529f\u80fd\u3002",
+   "source": "hermes",
+   "url": "https://clawhub.ai/skills/a-stock-watcher",
+   "hosts": [],
+   "needs": [],
+   "caps": [],
+   "skill_md": "# A \u80a1\u76ef\u76d8\u6280\u80fd - \u591a\u6570\u636e\u6e90\u589e\u5f3a\u7248\n\n\u57fa\u4e8e\u4e1c\u65b9\u8d22\u5bcc/\u817e\u8baf\u8d22\u7ecf/\u65b0\u6d6a\u8d22\u7ecf\u7684 A \u80a1\u5b9e\u65f6\u76d1\u63a7\u6280\u80fd\u3002\n\n## \u529f\u80fd\n\n### \u57fa\u7840\u529f\u80fd\n- \ud83d\udcc8 **\u5b9e\u65f6\u67e5\u4ef7** - \u83b7\u53d6 A \u80a1\u5b9e\u65f6\u884c\u60c5\uff08\u5ef6\u8fdf 5-15 \u79d2\uff09\n- \ud83d\udd14 **\u4ef7\u683c\u9884\u8b66** - \u8bbe\u7f6e\u76ee\u6807\u4ef7\uff0c\u89e6\u53d1\u65f6\u63d0\u9192\n- \ud83d\udd04 **\u6301\u7eed\u76d1\u63a7** - \u540e\u53f0\u7ebf\u7a0b\uff0c\u53ef\u8bbe\u5237\u65b0\u9891\u7387\n- \u26a0\ufe0f **\u98ce\u9669\u63d0\u793a** - \u66b4\u6da8/\u66b4\u8dcc/\u9ad8\u6ce2\u52a8\u9884\u8b66\n- \ud83d\udca1 **\u64cd\u76d8\u5efa\u8bae** - \u57fa\u4e8e\u7b80\u5355\u89c4\u5219\u7684\u64cd\u76d8\u53c2\u8003\n\n### \u6280\u672f\u5206\u6790 (\u65b0\u589e) \u2728\n- \ud83d\udcca **20+ \u6280\u672f\u6307\u6807** - MA/EMA/RSI/MACD/KDJ/BOLL/DMI/CCI/WR/ROC/OBV\n- \ud83d\udcc8 **\u8d8b\u52bf\u5206\u6790** - \u591a\u5468\u671f\u5747\u7ebf\u7cfb\u7edf (5/10/20/60 \u65e5)\n- \ud83d\udcb9 **\u52a8\u91cf\u6307\u6807** - RSI \u8d85\u4e70\u8d85\u5356\u3001MACD \u91d1\u53c9\u6b7b\u53c9\n- \ud83d\udcc9 **\u6ce2\u52a8\u5206\u6790** - \u5e03\u6797\u5e26\u4f4d\u7f6e\u3001ATR \u6ce2\u52a8\u7387\n- \ud83d\udce6 **\u6210\u4ea4\u91cf\u5206\u6790** - \u653e\u91cf/\u7f29\u91cf\u5224\u65ad\n- \ud83d\udcdd **\u7efc\u5408\u62a5\u544a** - \u4e00\u952e\u751f\u6210\u6280\u672f\u5206\u6790\u62a5\u544a\n\n### \u81ea\u52a8\u5316\u62a5\u544a (\u65b0\u589e) \u2728\n- \ud83d\udcf0 **\u6bcf\u65e5\u6536\u76d8\u62a5\u544a** - \u5e02\u573a\u6982\u89c8 + \u4e2a\u80a1\u8be6\u60c5 + \u6700\u4f73/\u6700\u5dee\u8868\u73b0\n- \ud83d\udcbc **\u6301\u4ed3\u80a1\u7968\u65e5\u62a5** - \u6301\u4ed3\u76c8\u4e8f + \u6210\u672c\u5bf9\u6bd4 + \u6c47\u603b\u7edf\u8ba1\n- \u26a0\ufe0f **\u5f02\u52a8\u80a1\u7968\u76d1\u63a7** - \u6da8\u8dcc\u5e45\u5f02\u5e38 + \u6210\u4ea4\u91cf\u5f02\u5e38\u81ea\u52a8\u8bc6\u522b\n- \ud83d\udd14 **\u4ef7\u683c\u9884\u8b66\u63a8\u9001** - \u76ee\u6807\u4ef7\u89e6\u53d1\u81ea\u52a8\u901a\u77e5\uff08\u9489\u9489\uff09\n\n### \u667a\u80fd\u6295\u987e (\u65b0\u589e) \u2728\n- \ud83d\udcca **\u98ce\u9669\u8bc4\u4f30\u95ee\u5377** - 5 \u9898\u6d4b\u8bc4\uff0c\u751f\u6210\u98ce\u9669\u753b\u50cf\uff08\u4fdd\u5b88/\u7a33\u5065/\u5e73\u8861/\u79ef\u6781/\u6fc0\u8fdb\uff09\n- \ud83d\udca1 **\u8d44\u4ea7\u914d\u7f6e\u5efa\u8bae** - \u57fa\u4e8e\u98ce\u9669\u7b49\u7ea7\uff0c\u63a8\u8350\u80a1\u503a\u914d\u6bd4\n- \ud83d\uded1 **\u6b62\u635f\u6b62\u76c8\u8ba1\u7b97** - \u57fa\u4e8e\u6ce2\u52a8\u7387\u52a8\u6001\u8ba1\u7b97\uff0c\u98ce\u9669\u6536\u76ca\u6bd4\u4f18\u5316\n- \ud83d\udcc8 **\u4f30\u503c\u5206\u6790** - PE \u76f8\u5bf9\u4f30\u503c\u6cd5\uff0cPEG \u6210\u957f\u6027\u4f30\u503c\n- \ud83d\udcca **\u6295\u8d44\u7ec4\u5408\u4f18\u5316** - \u73b0\u4ee3\u6295\u8d44\u7ec4\u5408\u7406\u8bba\uff0c\u98ce\u9669\u5e73\u4ef7\u914d\u7f6e\n\n## \u6570\u636e\u6e90\u67b6\u6784\n\n| \u4f18\u5148\u7ea7 | \u6570\u636e\u6e90 | \u5ef6\u8fdf | \u652f\u6301\u5e02\u573a | \u72b6\u6001 |\n|--------|--------|------|----------|------|\n| \u4e3b | \u4e1c\u65b9\u8d22\u5bcc API | 1-3 \u79d2 | A \u80a1\u3001\u57fa\u91d1\u3001\u503a\u5238 | \u2705 \u4f18\u5148 |\n| \u5907 | \u817e\u8baf\u8d22\u7ecf API | 5-15 \u79d2 | A \u80a1\u3001\u6e2f\u80a1\u3001\u7f8e\u80a1\u3001\u671f\u8d27 | \u2705 \u5907\u7528 |\n| \u964d | \u65b0\u6d6a\u8d22\u7ecf API | 5-20 \u79d2 | A \u80a1 | \u2705 \u964d\u7ea7 |\n\n### \u6570\u636e\u6e90\u7279\u70b9\n\n| \u9879\u76ee | \u8bf4\u660e |\n|------|------|\n| \u514d\u8d39\u6027 | \u5b8c\u5168\u514d\u8d39\uff0c\u65e0\u9700\u6ce8\u518c/\u79ef\u5206/API Key |\n| \u5b9e\u65f6\u6027 | \u4e3b\u6570\u636e\u6e90\u5ef6\u8fdf 1-3 \u79d2 |\n| \u667a\u80fd\u5207\u6362 | \u81ea\u52a8\u6545\u969c\u8f6c\u79fb\uff0c\u4fdd\u8bc1\u9ad8\u53ef\u7528 |\n| \u652f\u6301\u5e02\u573a | A \u80a1\u4e3a\u4e3b\uff0c\u652f\u6301\u6e2f\u80a1/\u7f8e\u80a1\u6269\u5c55 |\n\n## \u4f7f\u7528\u65b9\u6cd5\n\n### \u57fa\u7840\u6307\u4ee4\n\n#### \u67e5\u8be2\u884c\u60c5\n```\n\u67e5\u8be2 600036 \u884c\u60c5\n```\n\n#### \u8bbe\u7f6e\u9884\u8b66\n```\n\u76ef\u76d8 600036 \u6da8\u81f3 35 \u5143\n\u76ef\u76d8 000858 \u8dcc\u81f3 180 \u5143\n```\n\n#### \u67e5\u770b\u4efb\u52a1\n```\n\u67e5\u770b\u76ef\u76d8\u4efb\u52a1\n```\n\n#### \u505c\u6b62\u76d1\u63a7\n```\n\u505c\u6b62\u76ef\u76d8 600036\n```\n\n#### \u98ce\u9669\u63d0\u793a\n```\n600036 \u98ce\u9669\u63d0\u793a\n```\n\n#### \u64cd\u76d8\u5efa\u8bae\n```\n600036 \u64cd\u76d8\u5efa\u8bae\n```\n\n### \u6280\u672f\u5206\u6790\u6307\u4ee4 (\u65b0\u589e) \u2728\n\n#### \u5b8c\u6574\u6280\u672f\u5206\u6790\u62a5\u544a\n```\n600036 \u6280\u672f\u5206\u6790\n```\n\n#### \u67e5\u770b\u6280\u672f\u6307\u6807\n```\n600036 \u6307\u6807\n```\n\n### \u81ea\u52a8\u5316\u62a5\u544a\u6307\u4ee4 (\u65b0\u589e) \u2728\n\n#### \u6bcf\u65e5\u6536\u76d8\u62a5\u544a\n```\n\u6536\u76d8\u62a5\u544a\n```\n\u6216\n```\n\u65e5\u62a5\n```\n\n#### \u6301\u4ed3\u80a1\u7968\u65e5\u62a5\n```\n\u6301\u4ed3\u62a5\u544a\n```\n\n#### \u7ba1\u7406\u81ea\u9009\u80a1\n```\n\u6dfb\u52a0\u5230\u81ea\u9009 600036 \u62db\u5546\u94f6\u884c\n```\n\n#### \u8bbe\u7f6e\u6301\u4ed3\n```\n\u8bbe\u7f6e\u6301\u4ed3 002892 \u6210\u672c 10.5 \u6570\u91cf 1000 \u79d1\u529b\u5c14\n```\n\n#### \u8bbe\u7f6e\u4ef7\u683c\u9884\u8b66\n```\n\u8bbe\u7f6e\u9884\u8b66 600036 \u6da8\u81f3 40 \u5143\n\u8bbe\u7f6e\u9884\u8b66 600036 \u8dcc\u81f3 35 \u5143\n```\n\n### \u667a\u80fd\u6295\u987e\u6307\u4ee4 (\u65b0\u589e) \u2728\n\n#### \u98ce\u9669\u8bc4\u4f30\n```\n\u98ce\u9669\u8bc4\u4f30\n```\n\u67e5\u770b\u95ee\u5377\u540e\u63d0\u4ea4\u7b54\u6848\uff1a\n```\n\u98ce\u9669\u8bc4\u4f30 3,3,3,4,3\n```\n\n#### \u6b62\u635f\u6b62\u76c8\u8ba1\u7b97\n```\n\u6b62\u635f\u6b62\u76c8 \u5165\u573a\u4ef7 10.5 \u5f53\u524d\u4ef7 11.2 \u4ed3\u4f4d 10000\n```\n\n#### \u4f30\u503c\u5206\u6790\n```\n\u4f30\u503c\u5206\u6790 600036 PE 15 \u884c\u4e1a PE 20 \u589e\u957f 15\n```\n\n#### \u6295\u8d44\u7ec4\u5408\u4f18\u5316\n```\n\u6295\u8d44\u7ec4\u5408\n```\n\u6216\n```\n\u8d44\u4ea7\u914d\u7f6e\n```\n\n## \u4f9d\u8d56\n\n- Python 3.x\n- requests\n\n## \u98ce\u9669\u63d0\u793a\n\n\u26a0\ufe0f **\u91cd\u8981\u58f0\u660e\uff1a**\n- \u672c\u6280\u80fd\u63d0\u4f9b\u7684\u4fe1\u606f\u4ec5\u4f9b\u53c2\u8003\uff0c\u4e0d\u6784\u6210\u6295\u8d44\u5efa\u8bae\n- \u80a1\u5e02\u6709\u98ce\u9669\uff0c\u6295\u8d44\u9700\u8c28\u614e\n- \u6570\u636e\u5b58\u5728\u5ef6\u8fdf\uff0c\u8bf7\u4ee5\u4ea4\u6613\u6240\u5b9e\u65f6\u6570\u636e\u4e3a\u51c6\n- \u8bf7\u52ff\u4ec5\u51ed\u672c\u6280\u80fd\u5efa\u8bae\u8fdb\u884c\u6295\u8d44\u51b3\u7b56\n\n## \u4f5c\u8005\n\nAI \u8d3e\u7ef4\u65af for Windy\n",
+   "files": [
+    "analyze_002892.py",
+    "auto_report.py",
+    "a_stock_watcher.py",
+    "cache/stock_cache.json",
+    "chart_visualization.py",
+    "close_report_002892.py",
+    "health_check.py",
+    "historical_data.py",
+    "investment_advisor.py",
+    "notification.py",
+    "README.md",
+    "SKILL.md",
+    "stock_analyzer.py",
+    "stock_cache.py",
+    "technical_analysis.py",
+    "test_stock.py",
+    "UNIFIED_ENTRY.md"
+   ]
+  },
+  {
+   "ref": "mcp:com.earnings-watcher/mcp",
+   "name": "EarningsWatcher",
+   "type": "mcp",
+   "what": "Options-implied earnings moves, 10y implied-vs-actual history, IV rush/crush, scanner, simulator.",
+   "source": "mcp-registry",
+   "url": "https://earnings-watcher.com/mcp",
+   "hosts": [
+    "earnings-watcher-mcp-611514391657.us-central1.run.app"
+   ],
+   "needs": [],
+   "mcp": {
+    "url": "https://earnings-watcher-mcp-611514391657.us-central1.run.app/mcp"
+   },
+   "caps": []
+  },
+  {
+   "ref": "mcp:io.github.pavel-tashev/website-change-watcher",
+   "name": "website-change-watcher",
+   "type": "mcp",
+   "what": "Detect what changed on a page, sitemap or feed since the last check, with a diff and email alert",
+   "source": "mcp-registry",
+   "url": "",
+   "hosts": [
+    "mcp.apify.com"
+   ],
+   "needs": [],
+   "mcp": {
+    "url": "https://mcp.apify.com?tools=pavel.tashev/website-change-watcher"
+   },
+   "caps": []
+  },
+  {
+   "ref": "github:lambdaisland/garden-watcher",
+   "name": "garden-watcher",
+   "type": "cli",
+   "what": "A component that watches-and-recompiles your Garden stylesheets.",
+   "source": "github",
+   "url": "https://github.com/lambdaisland/garden-watcher",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "github:bozp-pzob/digital-gardener",
+   "name": "digital-gardener",
+   "type": "browser_app",
+   "what": "Cultivate your organization's knowledge with our AI-powered information garden. Plant seeds from multiple sources, watch insights bloom in real-time, and...",
+   "source": "github",
+   "url": "https://github.com/bozp-pzob/digital-gardener",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "github:shenweiyan/Digital-Garden",
+   "name": "Digital-Garden",
+   "type": "server_app",
+   "what": "\u77e5\u8bc6\u7ba1\u7406\u5c31\u50cf\u4e00\u4e2a\u82b1\u56ed\uff0c\u9700\u8981\u7cbe\u5fc3\u57f9\u80b2\u548c\u6301\u7eed\u7ef4\u62a4\u624d\u80fd\u7e41\u8363\u3002\u8fd9\u662f\u4e00\u4e2a All in Discussions \u7684\u4e2a\u4eba\u6570\u5b57\u82b1\u56ed\uff0c\u6ca1\u4e8b\u5199\u5199\u6587\u7ae0\uff0c\u559c\u6b22\u7684\u8bdd\u8bf7\u70b9 Star\uff0c\u60f3\u8ba2\u9605\u70b9 Watch\u3002",
+   "source": "github",
+   "url": "https://github.com/shenweiyan/Digital-Garden",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "github:huruji/blog",
+   "name": "blog",
+   "type": "browser_app",
+   "what": "\u7ea2\u65e5\u521d\u5347\uff0c\u5176\u9053\u5927\u5149:sun_with_face::house_with_garden:\u8bf7star\u6216watch\uff0c\u4e0d\u8981fork",
+   "source": "github",
+   "url": "https://github.com/huruji/blog",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "npm:@parcel/watcher-linux-x64-glibc",
+   "name": "@parcel/watcher-linux-x64-glibc",
+   "type": "library",
+   "what": "A native C++ Node module for querying and subscribing to filesystem events. Used by Parcel 2.",
+   "source": "npm",
+   "url": "https://www.npmjs.com/package/@parcel/watcher-linux-x64-glibc",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "npm:@parcel/watcher-linux-x64-musl",
+   "name": "@parcel/watcher-linux-x64-musl",
+   "type": "library",
+   "what": "A native C++ Node module for querying and subscribing to filesystem events. Used by Parcel 2.",
+   "source": "npm",
+   "url": "https://www.npmjs.com/package/@parcel/watcher-linux-x64-musl",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "npm:@parcel/watcher-linux-arm64-glibc",
+   "name": "@parcel/watcher-linux-arm64-glibc",
+   "type": "library",
+   "what": "A native C++ Node module for querying and subscribing to filesystem events. Used by Parcel 2.",
+   "source": "npm",
+   "url": "https://www.npmjs.com/package/@parcel/watcher-linux-arm64-glibc",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "npm:@parcel/watcher-linux-arm64-musl",
+   "name": "@parcel/watcher-linux-arm64-musl",
+   "type": "library",
+   "what": "A native C++ Node module for querying and subscribing to filesystem events. Used by Parcel 2.",
+   "source": "npm",
+   "url": "https://www.npmjs.com/package/@parcel/watcher-linux-arm64-musl",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "pypi:watcher",
+   "name": "watcher",
+   "type": "cli",
+   "what": "A simple file watcher that runs commands when files change",
+   "source": "pypi",
+   "url": "https://pypi.org/project/watcher/",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "book:gutenberg:40842",
+   "name": "A Watcher in The Woods",
+   "type": "book",
+   "what": "A free old book by Sharp, Dallas Lore, 1870-1929 from Project Gutenberg. About: Natural history -- Outdoor books; Essays, Letters & Speeches...",
+   "source": "libraries",
+   "url": "https://www.gutenberg.org/ebooks/40842",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "seed:inaturalist",
+   "name": "iNaturalist",
+   "type": "live_data",
+   "what": "Plants and animals people have spotted, with photos and common names.",
+   "text": "iNaturalist. Plants and animals people have spotted, with photos and common names. animal plant bird insect nature wildlife species flower butterfly bug spider frog garden nature",
+   "source": "api_seeds",
+   "url": "https://api.inaturalist.org/v1/observations?q={topic}&lat={lat_round}&lng={lon_round}&radius=100&photos=true&per_page=5&order_by=observed_on",
+   "hosts": [
+    "api.inaturalist.org"
+   ],
+   "needs": [],
+   "auth": "none",
+   "service": "seed:inaturalist"
+  },
+  {
+   "ref": "seed:hardiness_zone",
+   "name": "Plant hardiness map (phzmapi.org)",
+   "type": "live_data",
+   "what": "Which cold-hardiness area of the US a ZIP code is in, so you know what will grow there.",
+   "text": "Plant hardiness map (phzmapi.org). Which cold-hardiness area of the US a ZIP code is in, so you know what will grow there. garden gardening plant hardiness zone frost vegetable flower grow seed planting gardening",
+   "source": "api_seeds",
+   "url": "https://phzmapi.org/43215.json",
+   "hosts": [
+    "phzmapi.org"
+   ],
+   "needs": [
+    "zip_code"
+   ],
+   "auth": "none",
+   "service": "seed:hardiness_zone"
+  },
+  {
+   "ref": "seed:gbif_species",
+   "name": "GBIF species",
+   "type": "live_data",
+   "what": "Names and details for plants, animals and fungi from around the world.",
+   "text": "GBIF species. Names and details for plants, animals and fungi from around the world. animal plant species nature wildlife bird insect tree flower fungi biology mushroom fish nature science",
+   "source": "api_seeds",
+   "url": "https://api.gbif.org/v1/species/search?q=oak&limit=1",
+   "hosts": [
+    "api.gbif.org"
+   ],
+   "needs": [],
+   "auth": "none",
+   "service": "seed:gbif_species"
+  },
+  {
+   "ref": "seed:open_meteo",
+   "name": "Open-Meteo weather",
+   "type": "live_data",
+   "what": "Weather forecast for your town: temperature, rain, wind and clouds.",
+   "text": "Open-Meteo weather. Weather forecast for your town: temperature, rain, wind and clouds. weather forecast rain temperature wind cloud snow frost sky climate garden weather gardening",
+   "source": "api_seeds",
+   "url": "https://api.open-meteo.com/v1/forecast?latitude={lat_round}&longitude={lon_round}&current=temperature_2m,precipitation,wind_speed_10m,cloud_cover",
+   "hosts": [
+    "api.open-meteo.com"
+   ],
+   "needs": [
+    "home_location"
+   ],
+   "auth": "none",
+   "service": "seed:open_meteo"
+  },
+  {
+   "ref": "seed:nws",
+   "name": "US National Weather Service",
+   "type": "live_data",
+   "what": "Official US forecasts and weather warnings.",
+   "text": "US National Weather Service. Official US forecasts and weather warnings. weather forecast storm alert warning rain snow tornado hurricane frost garden weather",
+   "source": "api_seeds",
+   "url": "https://api.weather.gov/points/40,-83",
+   "hosts": [
+    "api.weather.gov"
+   ],
+   "needs": [
+    "home_location"
+   ],
+   "auth": "none",
+   "service": "seed:nws"
+  },
+  {
+   "ref": "public_apis:quote_garden",
+   "name": "Quote Garden",
+   "type": "live_data",
+   "what": "REST API for more than 5000 famous quotes",
+   "text": "Quote Garden. REST API for more than 5000 famous quotes personality quote garden",
+   "source": "public_apis",
+   "url": "https://pprathameshmore.github.io/QuoteGarden/",
+   "hosts": [],
+   "needs": [],
+   "auth": "none",
+   "service": "public_apis:quote_garden"
+  },
+  {
+   "ref": "builtin:routine",
+   "name": "Your bot's reminders",
+   "type": "routine",
+   "what": "Reminds you at the time you pick, once or every day.",
+   "source": "builtin",
+   "hosts": [],
+   "needs": [],
+   "builtin": "routine"
+  }
+ ],
+ "recorded_at": "2026-10-10"
+}

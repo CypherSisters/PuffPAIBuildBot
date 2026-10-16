@@ -1,0 +1,91 @@
+{
+  "name": "PuffPAI - Meal Planner",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "meal-planner",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "wh-meal-1",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [250, 300],
+      "webhookId": "meal-planner"
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "=http://localhost:8000/apps/freshtable/data",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-API-Key",
+              "value": "={{ $json.body.api_key || '' }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "get-pantry-1",
+      "name": "Get Pantry Data",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [480, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "const body = $('Webhook').first().json.body || {};\nconst pantryData = $input.first().json;\nconst pantry = pantryData.pantry || [];\nconst family_size = body.family_size || 4;\nconst days = body.days || 7;\nconst dietary = body.dietary || 'none';\n\n// Categorize pantry items\nconst proteins = pantry.filter(i => ['chicken', 'beef', 'pork', 'fish', 'salmon', 'shrimp', 'tofu', 'eggs', 'beans'].some(p => i.name?.toLowerCase().includes(p)));\nconst grains = pantry.filter(i => ['rice', 'pasta', 'bread', 'flour', 'oats', 'tortilla', 'quinoa'].some(g => i.name?.toLowerCase().includes(g)));\nconst produce = pantry.filter(i => ['tomato', 'onion', 'pepper', 'lettuce', 'carrot', 'potato', 'garlic', 'avocado', 'lime', 'cilantro'].some(p => i.name?.toLowerCase().includes(p)));\n\n// Generate meal suggestions based on available ingredients\nconst mealTemplates = [\n  { name: 'Chicken Stir Fry', needs: ['chicken', 'rice'], category: 'dinner', time: 30 },\n  { name: 'Pasta Bolognese', needs: ['beef', 'pasta'], category: 'dinner', time: 45 },\n  { name: 'Fish Tacos', needs: ['fish', 'tortilla'], category: 'dinner', time: 25 },\n  { name: 'Scrambled Eggs & Toast', needs: ['eggs', 'bread'], category: 'breakfast', time: 10 },\n  { name: 'Bean & Rice Bowl', needs: ['beans', 'rice'], category: 'lunch', time: 20 },\n  { name: 'Grilled Chicken Salad', needs: ['chicken', 'lettuce'], category: 'lunch', time: 20 },\n  { name: 'Shrimp Fried Rice', needs: ['shrimp', 'rice'], category: 'dinner', time: 25 },\n  { name: 'Breakfast Tacos', needs: ['eggs', 'tortilla'], category: 'breakfast', time: 15 },\n  { name: 'Chicken Soup', needs: ['chicken', 'carrot'], category: 'dinner', time: 40 },\n  { name: 'Oatmeal with Fruit', needs: ['oats'], category: 'breakfast', time: 10 },\n  { name: 'Avocado Toast', needs: ['avocado', 'bread'], category: 'breakfast', time: 5 },\n  { name: 'Ground Beef Tacos', needs: ['beef', 'tortilla'], category: 'dinner', time: 25 },\n  { name: 'Quinoa Salad', needs: ['quinoa', 'tomato'], category: 'lunch', time: 30 },\n  { name: 'Baked Salmon', needs: ['salmon'], category: 'dinner', time: 35 }\n];\n\nconst pantryNames = pantry.map(i => i.name?.toLowerCase() || '');\nconst possible = mealTemplates.filter(m => \n  m.needs.every(need => pantryNames.some(p => p.includes(need)))\n);\n\n// Build weekly plan\nconst weekPlan = [];\nconst dayNames = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];\nfor (let d = 0; d < days; d++) {\n  const dayMeals = {\n    day: dayNames[d % 7],\n    breakfast: possible.filter(m => m.category === 'breakfast')[d % Math.max(1, possible.filter(m => m.category === 'breakfast').length)]?.name || 'Cereal & Milk',\n    lunch: possible.filter(m => m.category === 'lunch')[d % Math.max(1, possible.filter(m => m.category === 'lunch').length)]?.name || 'Sandwich',\n    dinner: possible.filter(m => m.category === 'dinner')[d % Math.max(1, possible.filter(m => m.category === 'dinner').length)]?.name || 'Leftovers'\n  };\n  weekPlan.push(dayMeals);\n}\n\n// Generate shopping needs\nconst allNeeded = new Set();\npossible.forEach(m => m.needs.forEach(n => allNeeded.add(n)));\nconst lowStock = pantry.filter(i => (i.quantity || 1) <= 1).map(i => i.name);\n\nreturn {\n  json: {\n    family_size: family_size,\n    days_planned: days,\n    dietary: dietary,\n    pantry_items: pantry.length,\n    available_meals: possible.length,\n    meal_plan: weekPlan,\n    low_stock_items: lowStock,\n    suggested_recipes: possible.slice(0, 10).map(m => ({\n      name: m.name,\n      category: m.category,\n      prep_time: m.time + ' min',\n      ingredients_available: m.needs\n    }))\n  }\n};"
+      },
+      "id": "generate-meals-1",
+      "name": "Generate Meal Plan",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [710, 300]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "respond-meal-1",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [940, 300]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          { "node": "Get Pantry Data", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Get Pantry Data": {
+      "main": [
+        [
+          { "node": "Generate Meal Plan", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Generate Meal Plan": {
+      "main": [
+        [
+          { "node": "Respond to Webhook", "type": "main", "index": 0 }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "tags": [
+    { "name": "puffpai" },
+    { "name": "meals" },
+    { "name": "automation" }
+  ]
+}

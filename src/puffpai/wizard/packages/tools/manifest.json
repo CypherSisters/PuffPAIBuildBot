@@ -1,0 +1,41 @@
+{
+  "schema": "puffpai_package/v1",
+  "id": "tools",
+  "kind": "skill",
+  "version": "1.0.0",
+  "author": "puffpai",
+  "license": "Apache-2.0",
+  "label": "What it can reach for",
+  "description": "What this bot can reach for, and what it cannot.",
+  "reads": [
+    "sources",
+    "persona",
+    "posture",
+    "brain"
+  ],
+  "writes": "tools",
+  "permissions": {
+    "network_hosts": [],
+    "files": [
+      "data"
+    ],
+    "ha_domains": [],
+    "secrets": []
+  },
+  "doors": [],
+  "secrets": [],
+  "egress": "none",
+  "estimate": {
+    "bytes": 0,
+    "seconds": 0,
+    "basis": "unknown"
+  },
+  "rerun": "idempotent",
+  "undo": "reversible",
+  "blocking": false,
+  "provides": [
+    "tools.available"
+  ],
+  "needs": [],
+  "builtin": true
+}

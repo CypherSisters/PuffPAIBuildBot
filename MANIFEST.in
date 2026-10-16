@@ -1,0 +1,11 @@
+include README.md
+include LICENSE
+include requirements.txt
+
+# Package data shipped inside the wheel/sdist.
+recursive-include src/puffpai/config *.json.template *.txt
+include src/puffpai/data/workout_library.json
+recursive-include src/puffpai/wizard/packages manifest.json skill.py card.json
+# Round 3: the locked box's files (lane L7) and the browser-app runner (lane L8).
+recursive-include src/puffpai/box/assets *
+recursive-include src/puffpai/webapps/runner *.mjs shim.js

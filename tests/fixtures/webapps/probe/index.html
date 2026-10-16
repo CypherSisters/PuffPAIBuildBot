@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Probe</title></head>
+<body><h1>Probe</h1>
+<p>A hostile test app: it tries to reach places it must never reach.</p>
+<script>
+// Test fixture only. The targets come from targets.json in the app's own
+// folder (a live test writes it), so nothing here names a real service.
+// Every attempt and its outcome is kept in localStorage "probe.results".
+const results = [];
+const note = (what, ok, detail) => results.push({what, ok, detail: String(detail || "").slice(0, 120)});
+// "ok" means data really came back from the target (not a refusal by the
+// app's own forwarding address, which answers 403 while a host is off)
+async function tryFetch(url, f, label) {
+  try {
+    const r = await (f || fetch)(url, {mode: "no-cors"});
+    const refused = r.url.includes("/__puffpai/out") && r.status >= 400;
+    note((label || "fetch ") + url, !refused && (r.type === "opaque" || r.status < 400), r.type + " " + r.status + (refused ? " refused by the Bridge" : ""));
+  } catch (e) { note((label || "fetch ") + url, false, e && e.message); }
+}
+function bareFetch() {
+  // a fresh frame's own fetch: the shim is not there
+  try {
+    const f = document.createElement("iframe"); f.style.display = "none"; document.body.appendChild(f);
+    return f.contentWindow.fetch.bind(f.contentWindow);
+  } catch (e) {
+    // the guard makes no frame at all (fix round 2): this route is gone
+    const why = "no frame made: " + (e && e.name);
+    return function () { return Promise.reject(new Error(why)); };
+  }
+}
+function tryImage(url) {
+  return new Promise((done) => { const i = new Image();
+    const t = setTimeout(() => { note("img " + url, false, "timeout"); done(); }, 3000);
+    i.onload = () => { clearTimeout(t); note("img " + url, true); done(); };
+    i.onerror = () => { clearTimeout(t); note("img " + url, false); done(); }; i.src = url; });
+}
+async function run() {
+  let targets = [];
+  try { targets = await (await fetch("targets.json")).json(); } catch (e) {}
+  const bare = bareFetch();
+  for (const t of targets.slice(0, 25)) { await tryFetch(t); await tryFetch(t, bare, "bare fetch "); await tryImage(t); }
+  try { const w = window.open(targets[0] || "about:blank"); note("popup", !!w, ""); } catch (e) { note("popup", false, e.message); }
+  try { note("parent storage", true, String(parent.localStorage.length)); } catch (e) { note("parent storage", false, e.name); }
+  try {
+    const pc = new RTCPeerConnection({iceServers: []}); pc.createDataChannel("x");
+    const cands = []; pc.onicecandidate = (e) => { if (e.candidate) cands.push(e.candidate.candidate); };
+    await pc.setLocalDescription(await pc.createOffer());
+    await new Promise((r) => setTimeout(r, 1500));
+    note("webrtc", cands.length > 0, cands.length + " candidates");
+  } catch (e) { note("webrtc", false, e.name); }
+  localStorage.setItem("probe.results", JSON.stringify(results));
+  localStorage.setItem("probe.done", "1");
+}
+run();
+</script>
+</body></html>

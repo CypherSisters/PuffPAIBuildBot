@@ -1,0 +1,91 @@
+{
+"query": "wedding planner",
+"searchType": "semantic",
+"searchVersion": "algolia",
+"skills": [
+{
+"id": "skills-il/localization/israeli-wedding-planner",
+"source": "skills-il/localization",
+"skillId": "israeli-wedding-planner",
+"name": "israeli-wedding-planner",
+"installs": 20
+},
+{
+"id": "aiunlocked1412/claude-skill-unlock/wedding-planner",
+"source": "aiunlocked1412/claude-skill-unlock",
+"skillId": "wedding-planner",
+"name": "wedding-planner",
+"installs": 5
+},
+{
+"id": "mattpocock/skills/grill-with-docs",
+"source": "mattpocock/skills",
+"skillId": "grill-with-docs",
+"name": "grill-with-docs",
+"installs": 1093642
+},
+{
+"id": "open.feishu.cn/lark-calendar",
+"source": "open.feishu.cn",
+"skillId": "lark-calendar",
+"name": "lark-calendar",
+"installs": 742635
+},
+{
+"id": "larksuite/cli/lark-calendar",
+"source": "larksuite/cli",
+"skillId": "lark-calendar",
+"name": "lark-calendar",
+"installs": 454734
+},
+{
+"id": "googleworkspace/cli/gws-calendar",
+"source": "googleworkspace/cli",
+"skillId": "gws-calendar",
+"name": "gws-calendar",
+"installs": 58590
+},
+{
+"id": "googleworkspace/cli/persona-event-coordinator",
+"source": "googleworkspace/cli",
+"skillId": "persona-event-coordinator",
+"name": "persona-event-coordinator",
+"installs": 28946
+},
+{
+"id": "coreyhaines31/marketingskills/marketing-plan",
+"source": "coreyhaines31/marketingskills",
+"skillId": "marketing-plan",
+"name": "marketing-plan",
+"installs": 57456
+},
+{
+"id": "othmanadi/planning-with-files/planning-with-files",
+"source": "othmanadi/planning-with-files",
+"skillId": "planning-with-files",
+"name": "planning-with-files",
+"installs": 45325
+},
+{
+"id": "caffeinelabs/skills/extension-email-calendar-events",
+"source": "caffeinelabs/skills",
+"skillId": "extension-email-calendar-events",
+"name": "extension-email-calendar-events",
+"installs": 24339
+}
+],
+"count": 10,
+"duration_ms": 260,
+"timings_ms": {
+"rate_limit": 8.428429999970831,
+"flags": 0.9687779999803752,
+"visibility": 12.143187000066973,
+"retrieval": 249.33214800001588,
+"algolia_processing": 184,
+"repositories": 7.77462599996943,
+"ranking": 1.2071089999517426,
+"search": 260,
+"total": 267.95310699997935
+},
+"provider_duration_ms": 249.33214800001588
+}

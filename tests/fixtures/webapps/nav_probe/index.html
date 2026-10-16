@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Nav probe</title></head>
+<body><h1>Nav probe</h1>
+<p>A hostile test app: it tries to move its own tab, or open a new one, to an address outside its own.</p>
+<form id="f" method="post"><input type="hidden" name="x" value="1"></form>
+<script>
+// Test fixture only. nav.json in the app's own folder (the live wall test
+// writes it) names the address and how to go there, so nothing here names a
+// real service. The page policy does not cover a tab moving itself, so for
+// "location", "anchor" and "popup" only the runner's per-tab rule stands in
+// the way. It tries once ("nav.done"); "nav.stayed" means it is still here.
+(async () => {
+  let conf = {};
+  try { conf = await (await fetch("nav.json")).json(); } catch (e) {}
+  if (!conf.url || localStorage.getItem("nav.done")) return;
+  localStorage.setItem("nav.done", "1");
+  await new Promise((r) => setTimeout(r, 1200));   // after the runner has opened the page
+  setTimeout(() => localStorage.setItem("nav.stayed", "1"), 1500);
+  if (conf.how === "form") { const f = document.getElementById("f"); f.action = conf.url; f.submit(); }
+  else if (conf.how === "popup") { window.open(conf.url, "_blank"); }
+  else if (conf.how === "anchor") { const a = document.createElement("a"); a.href = conf.url; document.body.appendChild(a); a.click(); }
+  else { location.href = conf.url; }
+})();
+</script>
+</body></html>

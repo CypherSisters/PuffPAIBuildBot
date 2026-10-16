@@ -1,0 +1,1720 @@
+{
+ "schema": "api_seeds/v1",
+ "_maintainer_note": "Hand-checked free websites that answer with live data, across many topics. DATA, not per-bot code: any goal can match any row through its match_terms and topics. Every row needs: a sample_endpoint on its own host that is a plain https GET with no key and no owner information (example values only), auth, license or plain terms, commercial_ok (false = not for business use; null = the terms do not say), a rate-limit note, and verified_at (the last time the sample answered 200 with JSON, checked with `puffpai catalogs refresh api_seeds`). needs: home_location = its questions carry the owner's town-level location; zip_code = they carry a ZIP code. user_agent_required = the service asks every caller to name its app. ua_header = the header the service documents for that name (only AIC-User-Agent today); it carries this product's own User-Agent. json_label = the odd label a service puts on its JSON reply (only text/html today, 7Timer); the reply must still read as JSON. License and terms lines were written from each service's documentation page (terms_url) as known to the maintainer on 2026-09-23 and were not each re-read that day; 'terms not stated' means none was found, and the wizard says so. Optional, for a better card than the sample shows: card_url = the address the finished card reads, on the same host, with only {topic} (the owner's goal word, else card_topic), {lat_round}/{lon_round} (the owner's town, filled only after the owner says yes) and {date}; card = the card's own fields (kind plus paths). The look before the plan uses the card address when a row has one: its {topic} is a word of the owner's goal only when the outbound privacy screen lets that word out (never a name, a health or other private word, a place or the time of the owner's plans), else card_topic; {lat_round}/{lon_round} follow the rule above. A row with no card_url is looked at through sample_endpoint, which carries nothing about the owner.",
+ "apis": [
+  {
+   "id": "nasa_images",
+   "name": "NASA Image and Video Library",
+   "what_it_is": "Search NASA's photos and videos of planets, rockets, astronauts and space.",
+   "topics": [
+    "space",
+    "science"
+   ],
+   "match_terms": [
+    "space",
+    "nasa",
+    "planet",
+    "rocket",
+    "astronomy",
+    "galaxy",
+    "moon",
+    "mars",
+    "saturn",
+    "jupiter",
+    "star",
+    "astronaut",
+    "photo",
+    "picture",
+    "universe",
+    "telescope",
+    "nebula"
+   ],
+   "host": "images-api.nasa.gov",
+   "sample_endpoint": "https://images-api.nasa.gov/search?q=saturn&media_type=image&page_size=1", "card_url": "https://images-api.nasa.gov/search?q={topic}&media_type=image&page_size=12", "card_topic": "saturn",
+   "url": "https://images.nasa.gov/",
+   "auth": "none",
+   "license": "NASA media guidelines: most NASA images are not copyrighted; NASA logos may not be used to suggest endorsement",
+   "commercial_ok": null,
+   "terms_url": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+   "rate_limit": "no stated limit",
+   "needs": [],
+   "user_agent_required": false,
+   "verified_at": "2026-09-23T23:51:51+00:00"
+  },
+  {
+   "id": "nasa_epic",
+   "name": "NASA EPIC Earth photos",
+   "what_it_is": "Daily full-disc photos of Earth taken from a million miles away.",
+   "topics": [
+    "space",
+    "earth"
+   ],
+   "match_terms": [
+    "earth",
+    "space",
+    "nasa",
+    "planet",
+    "photo",
+    "satellite",
+    "picture",
+    "climate"
+   ],
+   "host": "epic.gsfc.nasa.gov",
+   "sample_endpoint": "https://epic.gsfc.nasa.gov/api/natural", "image_template": "https://epic.gsfc.nasa.gov/archive/natural/{date:year}/{date:month}/{date:day}/jpg/{image}.jpg",
+   "url": "https://epic.gsfc.nasa.gov/about/api",
+   "auth": "none",
+   "license": "US government work, public domain",
+   "commercial_ok": true,
+   "terms_url": "https://epic.gsfc.nasa.gov/about/api",
+   "rate_limit": "no stated limit",
+   "needs": [],
+   "user_agent_required": false,
+   "verified_at": "2026-09-23T23:51:51+00:00"
+  },
+  {
+   "id": "iss_position",
+   "name": "Where the ISS at",
+   "what_it_is": "Where the International Space Station is right now.",
+   "topics": [
+    "space"
+   ],
+   "match_terms": [
+    "iss",
+    "space",
+    "station",
+    "astronaut",
+    "satellite",
+    "orbit",
+    "spacecraft"
+   ],
+   "host": "api.wheretheiss.at",
+   "sample_endpoint": "https://api.wheretheiss.at/v1/satellites/25544",
+   "url": "https://wheretheiss.at/w/developer",
+   "auth": "none",
+   "license": "terms not stated",
+   "commercial_ok": null,
+   "terms_url": "https://wheretheiss.at/w/developer",
+   "rate_limit": "about 1 request a second",
+   "needs": [],
+   "user_agent_required": false,
+   "verified_at": "2026-09-23T23:51:52+00:00"
+  },
+  {
+   "id": "launch_library",
+   "name": "Launch Library 2 (The Space Devs)",
+   "what_it_is": "Upcoming rocket launches from around the world, with who is flying and when.",
+   "topics": [
+    "space"
+   ],
+   "match_terms": [
+    "rocket",
+    "launch",
+    "space",
+    "spacex",
+    "nasa",
+    "astronaut",
+    "spaceflight",
+    "spacecraft",
+    "mission"
+   ],
+   "host": "ll.thespacedevs.com",
+   "sample_endpoint": "https://ll.thespacedevs.com/2.3.0/launches/upcoming/?limit=5&mode=list",
+   "url": "https://thespacedevs.com/llapi",
+   "auth": "none",
+   "license": "terms not stated; free tier allows 15 requests an hour",
+   "commercial_ok": null,
+   "terms_url": "https://thespacedevs.com/llapi",
+   "rate_limit": "15 requests an hour without an account",
+   "needs": [],
+   "user_agent_required": false,
+   "verified_at": "2026-09-24T06:40:00+00:00",
+   "card": {
+    "kind": "list",
+    "items": "results",
+    "item_title": "name",
+    "item_detail": "net",
+    "max_items": 5
+   }
+  },
+  {
+   "id": "swpc_kp",
+   "name": "NOAA Space Weather Prediction Center",
+   "what_it_is": "Space weather: solar storms and the chance of seeing the northern lights.",
+   "topics": [
+    "space",
+    "weather"
+   ],
+   "match_terms": [
+    "aurora",
+    "northern",
+    "lights",
+    "solar",
+    "sun",
+    "space",
+    "storm",
+    "geomagnetic",
+    "sunspot"
+   ],
+   "host": "services.swpc.noaa.gov",
+   "sample_endpoint": "https://services.swpc.noaa.gov/products/noaa-planetary-k-index-forecast.json", "card": {"kind": "value", "value": "[-1].kp", "label": "Northern lights Kp (0 calm, 9 storm)", "caption": "[-1].time_tag"},
+   "field_meanings": {"kp": "0 quiet to 9 extreme; 5 or more is a geomagnetic storm (northern lights likely)"},
+   "url": "https://www.swpc.noaa.gov/",
+   "auth": "none",
+   "license": "US government work, public domain",
+   "commercial_ok": true,
+   "terms_url": "https://www.swpc.noaa.gov/",
+   "rate_limit": "no stated limit",
+   "needs": [],
+   "user_agent_required": false,
+   "verified_at": "2026-09-23T23:51:52+00:00"
+  },
+  {
+   "id": "jpl_close_approach",
+   "name": "NASA JPL asteroid close approaches",
+   "what_it_is": "Asteroids and comets that pass close to Earth, with dates and distances.",
+   "topics": [
+    "space",
+    "science"
+   ],
+   "match_terms": [
+    "asteroid",
+    "comet",
+    "space",
+    "nasa",
+    "meteor",
+    "astronomy",
+    "planet",
+    "neo"
+   ],
+   "host": "ssd-api.jpl.nasa.gov",
+   "sample_endpoint": "https://ssd-api.jpl.nasa.gov/cad.api?date-min=now&date-max=%2B30&dist-max=0.02",
+   "url": "https://ssd-api.jpl.nasa.gov/doc/cad.html",
+   "auth": "none",
+   "license": "NASA/JPL public service; no license stated",
+   "commercial_ok": null,
+   "terms_url": "https://ssd-api.jpl.nasa.gov/doc/cad.html",
+   "rate_limit": "no stated limit; one request at a time",
+   "needs": [],
+   "user_agent_required": false,
+   "verified_at": "2026-09-23T23:51:53+00:00"
+  },
+  {
+   "id": "spaceflight_news",
+   "name": "Spaceflight News API",
+   "what_it_is": "Latest space news stories collected from many news websites.",
+   "topics": [
+    "space",
+    "news"
+   ],
+   "match_terms": [
+    "space",
+    "news",
+    "rocket",
+    "nasa",
+    "astronomy",
+    "launch",
+    "spaceflight"
+   ],
+   "host": "api.spaceflightnewsapi.net",
+   "sample_endpoint": "https://api.spaceflightnewsapi.net/v4/articles/?limit=1",
+   "url": "https://www.spaceflightnewsapi.net/",
+   "auth": "none",
+   "license": "terms not stated; stories belong to the news sites they link to",
+   "commercial_ok": null,
+   "terms_url": "https://www.spaceflightnewsapi.net/",
+   "rate_limit": "no stated limit",
+   "needs": [],
+   "user_agent_required": false,
+   "verified_at": "2026-09-23T23:51:53+00:00"
+  },
+  {
+   "id": "crossref",
+   "name": "Crossref",
+   "what_it_is": "Find published science papers and who wrote them.",
+   "topics": [
+    "science",
+    "education"
+   ],
+   "match_terms": [
+    "science",
+    "research",
+    "paper",
+    "article",
+    "study",
+    "journal",
+    "scientist"
+   ],
+   "host": "api.crossref.org",
+   "sample_endpoint": "https://api.crossref.org/works?query=dinosaur&rows=1&select=DOI,title",
+   "lookup_url": "https://api.crossref.org/works?query={topic}&rows=5&select=DOI,title",
+   "url": "https://www.crossref.org/documentation/retrieve-metadata/rest-api/",
+   "auth": "none",
+   "license": "CC0-1.0 (the paper details, not the papers)",
+   "commercial_ok": true,
+   "terms_url": "https://www.crossref.org/documentation/retrieve-metadata/rest-api/",
+   "rate_limit": "polite use; include a contact in requests",
+   "needs": [],
+   "user_agent_required": true,
+   "verified_at": "2026-09-23T23:51:53+00:00"
+  },
+  {
+   "id": "gbif_species",
+   "name": "GBIF species",
+   "what_it_is": "Names and details for plants, animals and fungi from around the world.",
+   "topics": [
+    "nature",
+    "science"
+   ],
+   "match_terms": [
+    "animal",
+    "plant",
+    "species",
+    "nature",
+    "wildlife",
+    "bird",
+    "insect",
+    "tree",
+    "flower",
+    "fungi",
+    "biology",
+    "mushroom",
+    "fish"
+   ],
+   "host": "api.gbif.org",
+   "sample_endpoint": "https://api.gbif.org/v1/species/search?q=oak&limit=1",
+   "lookup_url": "https://api.gbif.org/v1/species/search?q={topic}&limit=5",
+   "url": "https://www.gbif.org/developer/summary",
+   "auth": "none",
+   "license": "CC0-1.0 or CC-BY-4.0 or CC-BY-NC-4.0, set per dataset",
+   "commercial_ok": null,
+   "terms_url": "https://www.gbif.org/developer/summary",
+   "rate_limit": "no stated limit",
+   "needs": [],
+   "user_agent_required": false,
+   "verified_at": "2026-09-23T23:51:54+00:00"
+  },
+  {
+   "id": "inaturalist",
+   "name": "iNaturalist",
+   "what_it_is": "Plants and animals people have spotted, with photos and common names.",
+   "topics": [
+    "nature"
+   ],
+   "match_terms": [
+    "animal",
+    "plant",
+    "bird",
+    "insect",
+    "nature",
+    "wildlife",
+    "species",
+    "flower",
+    "butterfly",
+    "bug",
+    "spider",
+    "frog",
+    "garden"
+   ],
+   "host": "api.inaturalist.org",
+   "sample_endpoint": "https://api.inaturalist.org/v1/observations?q=monarch&photos=true&per_page=5&order_by=observed_on",
+   "url": "https://api.inaturalist.org/v1/docs/",
+   "auth": "none",
+   "license": "mixed per photo and record; many photos are CC BY-NC",
+   "commercial_ok": false,
+   "terms_url": "https://api.inaturalist.org/v1/docs/",
+   "rate_limit": "about 60 requests a minute",
+   "needs": [],
+   "user_agent_required": false,
+   "verified_at": "2026-09-24T06:40:00+00:00",
+   "card_url": "https://api.inaturalist.org/v1/observations?q={topic}&lat={lat_round}&lng={lon_round}&radius=100&photos=true&per_page=5&order_by=observed_on",
+   "card_topic": "monarch",
+   "card": {
+    "kind": "list",
+    "items": "results",
+    "item_title": "taxon.preferred_common_name",
+    "item_detail": "place_guess",
+    "item_image": "photos[0].url",
+    "max_items": 5
+   }
+  },
+  {
+   "id": "dog_ceo",
+   "name": "Dog CEO",
+   "what_it_is": "Random dog photos, by breed.",
+   "topics": [
+    "pets",
+    "animals"
+   ],
+   "match_terms": [
+    "dog",
+    "puppy",
+    "pet",
+    "breed",
+    "animal"
+   ],
+   "host": "dog.ceo",
+   "sample_endpoint": "https://dog.ceo/api/breeds/image/random",
+   "url": "https://dog.ceo/dog-api/",
+   "auth": "none",
+   "license": "terms not stated; photos come from the Stanford Dogs dataset",
+   "commercial_ok": null,
+   "terms_url": "https://dog.ceo/dog-api/",
+   "rate_limit": "no stated limit",
+   "needs": [],
+   "user_agent_required": false,
+   "verified_at": "2026-09-23T23:51:55+00:00"
+  },
+  {
+   "id": "catfact",
+   "name": "Cat Facts",
+   "what_it_is": "Short true facts about cats.",
+   "topics": [
+    "pets",
+    "animals"
+   ],
+   "match_terms": [
+    "cat",
+    "kitten",
+    "pet",
+    "animal"
+   ],
+   "host": "catfact.ninja",
+   "sample_endpoint": "https://catfact.ninja/fact",
+   "url": "https://catfact.ninja/",
+   "auth": "none",
+   "license": "terms not stated",
+   "commercial_ok": null,
+   "terms_url": "https://catfact.ninja/",
+   "rate_limit": "no stated limit",
+   "needs": [],
+   "user_agent_required": false,
+   "verified_at": "2026-09-23T23:51:55+00:00"
+  },
+  {
+   "id": "pbdb",
+   "name": "Paleobiology Database",
+   "what_it_is": "Fossil records for dinosaurs and other ancient life: what they were, when and where they lived.",
+   "topics": [
+    "fossils",
+    "science",
+    "dinosaurs"
+   ],
+   "match_terms": [
+    "dinosaur",
+    "fossil",
+    "paleontology",
+    "prehistoric",
+    "extinct",
+    "jurassic",
+    "cretaceous",
+    "triassic",
+    "ancient",
+    "trilobite",
+    "mammoth",
+    "reptile",
+    "pterosaur"
+   ],
+   "host": "paleobiodb.org",
+   "sample_endpoint": "https://paleobiodb.org/data1.2/taxa/list.json?base_name=Dinosauria&rank=genus&limit=5&vocab=pbdb&show=app",
+   "url": "https://paleobiodb.org/data1.2/",
+   "auth": "none",
+   "license": "CC-BY-4.0",
+   "commercial_ok": true,
+   "terms_url": "https://paleobiodb.org/data1.2/",
+   "rate_limit": "no stated limit",
+   "needs": [],
+   "user_agent_required": false,
+   "verified_at": "2026-09-24T06:40:00+00:00",
+   "card": {
+    "kind": "list",
+    "items": "records",
+    "item_title": "accepted_name",
+    "item_detail": "early_interval",
+    "max_items": 5
+   }
+  },
+  {
+   "id": "idigbio",
+   "name": "iDigBio museum specimens",
+   "what_it_is": "Museum specimen records, including fossils and bones, from collections across the US.",
+   "topics": [
+    "fossils",
+    "museums",
+    "nature"
+   ],
+   "match_terms": [
+    "fossil",
+    "dinosaur",
+    "museum",
+    "specimen",
+    "skeleton",
+    "bone",
+    "insect",
+    "prehistoric"
+   ],
+   "host": "search.idigbio.org",
+   "sample_endpoint": "https://search.idigbio.org/v2/search/records?rq=%7B%22scientificname%22%3A%22tyrannosaurus%22%7D&limit=1",
+   "url": "https://github.com/iDigBio/idigbio-search-api/wiki",
+   "auth": "none",
+   "license": "CC0-1.0 or CC-BY, set per record",
+   "commercial_ok": null,
+   "terms_url": "https://github.com/iDigBio/idigbio-search-api/wiki",
+   "rate_limit": "no stated limit",
+   "needs": [],
+   "user_agent_required": false,
+   "verified_at": "2026-09-23T23:51:55+00:00"
+  },
+  {
+   "id": "nhtsa_vpic",
+   "name": "NHTSA vehicle makes and models",
+   "what_it_is": "Car makes and models, and what the parts of a VIN number mean.",
+   "topics": [
+    "vehicles"
+   ],
+   "match_terms": [
+    "car",
+    "vehicle",
+    "truck",
+    "auto",
+    "automobile",
+    "vin",
+    "model",
+    "make",
+    "motorcycle",
+    "suv"
+   ],
+   "host": "vpic.nhtsa.dot.gov",
+   "sample_endpoint": "https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMake/honda?format=json",
+   "url": "https://vpic.nhtsa.dot.gov/api/",
+   "auth": "none",
+   "license": "US government work, public domain",
+   "commercial_ok": true,
+   "terms_url": "https://vpic.nhtsa.dot.gov/api/",
+   "rate_limit": "no stated limit",
+   "needs": [],
+   "user_agent_required": false,
+   "verified_at": "2026-09-23T23:51:56+00:00"
+  },
+  {
+   "id": "nhtsa_recalls",
+   "name": "NHTSA recalls",
+   "what_it_is": "Safety recalls for a car, by make, model and year.",
+   "topics": [
+    "vehicles",
+    "safety"
+   ],
+   "match_terms": [
+    "car",
+    "vehicle",
+    "recall",
+    "safety",
+    "truck",
+    "auto",
+    "maintenance",
+    "repair",
+    "motorcycle"
+   ],
+   "host": "api.nhtsa.gov",
+   "sample_endpoint": "https://api.nhtsa.gov/recalls/recallsByVehicle?make=honda&model=civic&modelYear=2014",
+   "url": "https://www.nhtsa.gov/nhtsa-datasets-and-apis",
+   "auth": "none",
+   "license": "US government work, public domain",
+   "commercial_ok": true,
+   "terms_url": "https://www.nhtsa.gov/nhtsa-datasets-and-apis",
+   "rate_limit": "no stated limit",
+   "needs": [],
+   "user_agent_required": false,
+   "verified_at": "2026-09-23T23:51:56+00:00"
+  },
+  {
+   "id": "openlibrary",
+   "name": "Open Library",
+   "what_it_is": "Books: titles, authors, covers, and which ones you can read free.",
+   "topics": [
+    "books"
+   ],
+   "match_terms": [
+    "book",
+    "author",
+    "novel",
+    "read",
+    "reading",
+    "library",
+    "story",
+    "literature"
+   ],
+   "host": "openlibrary.org",
+   "sample_endpoint": "https://openlibrary.org/search.json?q=dune&limit=1&fields=title,author_name,first_publish_year",
+   "lookup_url": "https://openlibrary.org/search.json?q={topic}&limit=5&fields=title,author_name,first_publish_year",
+   "url": "https://openlibrary.org/developers/api",
+   "auth": "none",
+   "license": "CC0-1.0 (book details)",
+   "commercial_ok": true,
+   "terms_url": "https://openlibrary.org/developers/api",
+   "rate_limit": "about 1 request a second; include a contact in requests",
+   "needs": [],
+   "user_agent_required": true,
+   "verified_at": "2026-09-23T23:51:56+00:00"
+  },
+  {
+   "id": "gutendex",
+   "name": "Gutendex (Project Gutenberg books)",
+   "what_it_is": "Free classic books that are out of copyright, with links to read them.",
+   "topics": [
+    "books"
+   ],
+   "match_terms": [
+    "book",
+    "classic",
+    "novel",
+    "read",
+    "literature",
+    "poem",
+    "story",
+    "author",
+    "ebook"
+   ],
+   "host": "gutendex.com",
+   "sample_endpoint": "https://gutendex.com/books/?ids=1342",
+   "url": "https://gutendex.com/",
+   "auth": "none",
+   "license": "books are public domain in the US; the index is open source",
+   "commercial_ok": null,
+   "terms_url": "https://gutendex.com/",
+   "rate_limit": "no stated limit; can be slow",
+   "needs": [],
+   "user_agent_required": false,
+   "verified_at": "2026-09-24T00:00:11+00:00"
+  },
+  {
+   "id": "poetrydb",
+   "name": "PoetryDB",
+   "what_it_is": "Classic poems, by title or poet.",
+   "topics": [
+    "books",
+    "language"
+   ],
+   "match_terms": [
+    "poem",
+    "poetry",
+    "poet",
+    "literature",
+    "verse",
+    "rhyme"
+   ],
+   "host": "poetrydb.org",
+   "sample_endpoint": "https://poetrydb.org/title/Ozymandias",
+   "url": "https://github.com/thundercomb/poetrydb",
+   "auth": "none",
+   "license": "poems are public domain; service terms not stated",
+   "commercial_ok": null,
+   "terms_url": "https://github.com/thundercomb/poetrydb",
+   "rate_limit": "no stated limit",
+   "needs": [],
+   "user_agent_required": false,
+   "verified_at": "2026-09-23T23:52:27+00:00"
+  },
+  {
+   "id": "musicbrainz",
+   "name": "MusicBrainz",
+   "what_it_is": "Facts about bands, singers, albums and songs.",
+   "topics": [
+    "music"
+   ],
+   "match_terms": [
+    "music",
+    "band",
+    "album",
+    "song",
+    "artist",
+    "singer",
+    "record",
+    "musician",
+    "discography",
+    "vinyl"
+   ],
+   "host": "musicbrainz.org",
+   "sample_endpoint": "https://musicbrainz.org/ws/2/release-group/?query=primarytype:album&fmt=json&limit=5",
+   "url": "https://musicbrainz.org/doc/MusicBrainz_API",
+   "auth": "none",
+   "license": "CC0-1.0 (core data)",
+   "commercial_ok": true,
+   "terms_url": "https://musicbrainz.org/doc/MusicBrainz_API",
+   "rate_limit": "1 request a second; must name the app asking",
+   "needs": [],
+   "user_agent_required": true,
+   "verified_at": "2026-09-24T06:40:00+00:00",
+   "card_url": "https://musicbrainz.org/ws/2/release-group/?query={topic}%20AND%20primarytype:album&fmt=json&limit=5",
+   "card_topic": "jazz",
+   "card": {
+    "kind": "list",
+    "items": "release-groups",
+    "item_title": "title",
+    "item_detail": "artist-credit[0].name",
+    "item_link": "https://musicbrainz.org/release-group/{id}",
+    "max_items": 5
+   }
+  },
+  {
+   "id": "itunes_search",
+   "name": "Apple iTunes Search",
+   "what_it_is": "Find albums, songs and podcasts, with cover art.",
+   "topics": [
+    "music",
+    "media"
+   ],
+   "match_terms": [
+    "music",
+    "album",
+    "song",
+    "podcast",
+    "artist",
+    "band",
+    "movie"
+   ],
+   "host": "itunes.apple.com",
+   "sample_endpoint": "https://itunes.apple.com/search?term=beatles&entity=album&limit=5",
+   "url": "https://performance-partners.apple.com/search-api",
+   "auth": "none",
+   "license": "Apple's search terms: results are for linking to Apple's store",
+   "commercial_ok": null,
+   "terms_url": "https://performance-partners.apple.com/search-api",
+   "rate_limit": "about 20 requests a minute",
+   "needs": [],
+   "user_agent_required": false,
+   "verified_at": "2026-09-24T06:40:00+00:00",
+   "card_url": "https://itunes.apple.com/search?term={topic}&entity=album&limit=5",
+   "card_topic": "beatles",
+   "card": {
+    "kind": "list",
+    "items": "results",
+    "item_title": "collectionName",
+    "item_detail": "artistName",
+    "item_image": "artworkUrl100",
+    "max_items": 5
+   }
+  },
+  {
+   "id": "deezer",
+   "name": "Deezer",
+   "what_it_is": "Artists, albums and short song previews.",
+   "topics": [
+    "music"
+   ],
+   "match_terms": [
+    "music",
+    "album",
+    "song",
+    "artist",
+    "band",
+    "playlist"
+   ],
+   "host": "api.deezer.com",
+   "sample_endpoint": "https://api.deezer.com/chart/0/artists?limit=5",
+   "url": "https://developers.deezer.com/api",
+   "auth": "none",
+   "license": "Deezer's terms: not for business use without an agreement",
+   "commercial_ok": false,
+   "terms_url": "https://developers.deezer.com/api",
+   "rate_limit": "50 requests every 5 seconds",
+   "needs": [],
+   "user_agent_required": false,
+   "verified_at": "2026-09-24T06:40:00+00:00",
+   "lookup_url": "https://api.deezer.com/search/artist?q={topic}&limit=5",
+   "card": {
+    "kind": "list",
+    "items": "data",
+    "item_title": "name",
+    "item_image": "picture_medium",
+    "item_link": "link",
+    "max_items": 5
+   }
+  },
+  {
+   "id": "openfoodfacts",
+   "name": "Open Food Facts",
+   "what_it_is": "Ingredients and nutrition for packaged foods, by barcode.",
+   "topics": [
+    "food",
+    "health"
+   ],
+   "match_terms": [
+    "food",
+    "nutrition",
+    "ingredient",
+    "barcode",
+    "grocery",
+    "diet",
+    "allergy",
+    "calorie",
+    "snack"
+   ],
+   "host": "world.openfoodfacts.org",
+   "sample_endpoint": "https://world.openfoodfacts.org/api/v2/product/737628064502.json?fields=product_name,brands,nutriscore_grade",
+   "url": "https://openfoodfacts.github.io/openfoodfacts-server/api/",
+   "auth": "none",
+   "license": "ODbL-1.0 (share-alike)",
+   "commercial_ok": true,
+   "terms_url": "https://openfoodfacts.github.io/openfoodfacts-server/api/",
+   "rate_limit": "about 100 product reads a minute; must name the app asking",
+   "needs": [],
+   "user_agent_required": true,
+   "verified_at": "2026-09-23T23:52:29+00:00"
+  },
+  {
+   "id": "fruityvice",
+   "name": "Fruityvice",
+   "what_it_is": "Nutrition facts for fruits.",
+   "topics": [
+    "food"
+   ],
+   "match_terms": [
+    "fruit",
+    "nutrition",
+    "food",
+    "vitamin",
+    "healthy"
+   ],
+   "host": "www.fruityvice.com",
+   "sample_endpoint": "https://www.fruityvice.com/api/fruit/banana",
+   "url": "https://www.fruityvice.com/",
+   "auth": "none",
+   "license": "terms not stated",
+   "commercial_ok": null,
+   "terms_url": "https://www.fruityvice.com/",
+   "rate_limit": "no stated limit",
+   "needs": [],
+   "user_agent_required": false,
+   "verified_at": "2026-09-23T23:52:29+00:00"
+  },
+  {
+   "id": "themealdb",
+   "name": "TheMealDB",
+   "what_it_is": "Recipes with ingredients, steps and photos.",
+   "topics": [
+    "food"
+   ],
+   "match_terms": [
+    "recipe",
+    "cook",
+    "cooking",
+    "meal",
+    "food",
+    "dinner",
+    "kitchen",
+    "baking",
+    "dish"
+   ],
+   "host": "www.themealdb.com",
+   "sample_endpoint": "https://www.themealdb.com/api/json/v1/1/search.php?s=Arrabiata",
+   "lookup_url": "https://www.themealdb.com/api/json/v1/1/search.php?s={topic}",
+   "url": "https://www.themealdb.com/api.php",
+   "auth": "none",
+   "license": "free test access for learning; paid for published apps",
+   "commercial_ok": false,
+   "terms_url": "https://www.themealdb.com/api.php",
+   "rate_limit": "test access only",
+   "needs": [],
+   "user_agent_required": false,
+   "verified_at": "2026-09-23T23:52:30+00:00"
+  },
+  {
+   "id": "open_meteo",
+   "name": "Open-Meteo weather",
+   "what_it_is": "Weather forecast for your town: temperature, rain, wind and clouds.",
+   "topics": [
+    "weather",
+    "gardening"
+   ],
+   "match_terms": [
+    "weather",
+    "forecast",
+    "rain",
+    "temperature",
+    "wind",
+    "cloud",
+    "snow",
+    "frost",
+    "sky",
+    "climate",
+    "garden"
+   ],
+   "host": "api.open-meteo.com",
+   "sample_endpoint": "https://api.open-meteo.com/v1/forecast?latitude=40.0&longitude=-83.0&current=temperature_2m,precipitation,wind_speed_10m,cloud_cover",
+   "url": "https://open-meteo.com/en/terms",
+   "auth": "none",
+   "license": "free for non-commercial use; data CC BY 4.0",
+   "commercial_ok": false,
+   "terms_url": "https://open-meteo.com/en/terms",
+   "rate_limit": "10,000 requests a day",
+   "needs": [
+    "home_location"
+   ],
+   "user_agent_required": false,
+   "verified_at": "2026-09-24T06:40:00+00:00",
+   "card_url": "https://api.open-meteo.com/v1/forecast?latitude={lat_round}&longitude={lon_round}&current=temperature_2m,precipitation,wind_speed_10m,cloud_cover",
+   "card": {
+    "kind": "value",
+    "value": "current.temperature_2m",
+    "label": "Temperature",
+    "unit": "C",
+    "caption": "current.time"
+   }
+  },
+  {
+   "id": "open_meteo_air",
+   "name": "Open-Meteo air quality",
+   "what_it_is": "Air quality and pollen for your town.",
+   "topics": [
+    "weather",
+    "health"
+   ],
+   "match_terms": [
+    "air",
+    "quality",
+    "pollution",
+    "pollen",
+    "allergy",
+    "smoke",
+    "ozone",
+    "asthma"
+   ],
+   "host": "air-quality-api.open-meteo.com",
+   "sample_endpoint": "https://air-quality-api.open-meteo.com/v1/air-quality?latitude=40.0&longitude=-83.0&current=pm2_5",
+   "url": "https://open-meteo.com/en/terms",
+   "auth": "none",
+   "license": "free for non-commercial use; data CC BY 4.0",
+   "commercial_ok": false,
+   "terms_url": "https://open-meteo.com/en/terms",
+   "rate_limit": "10,000 requests a day",
+   "needs": [
+    "home_location"
+   ],
+   "user_agent_required": false,
+   "verified_at": "2026-09-23T23:52:31+00:00"
+  },
+  {
+   "id": "nws",
+   "name": "US National Weather Service",
+   "what_it_is": "Official US forecasts and weather warnings.",
+   "topics": [
+    "weather"
+   ],
+   "match_terms": [
+    "weather",
+    "forecast",
+    "storm",
+    "alert",
+    "warning",
+    "rain",
+    "snow",
+    "tornado",
+    "hurricane",
+    "frost",
+    "garden"
+   ],
+   "host": "api.weather.gov",
+   "sample_endpoint": "https://api.weather.gov/points/40,-83",
+   "url": "https://www.weather.gov/documentation/services-web-api",
+   "auth": "none",
+   "license": "US government work, public domain",
+   "commercial_ok": true,
+   "terms_url": "https://www.weather.gov/documentation/services-web-api",
+   "rate_limit": "no stated limit; must name the app asking",
+   "needs": [
+    "home_location"
+   ],
+   "user_agent_required": true,
+   "verified_at": "2026-09-23T23:52:32+00:00"
+  },
+  {
+   "id": "sunrise_sunset",
+   "name": "Sunrise Sunset",
+   "what_it_is": "Sunrise, sunset and twilight times for your town.",
+   "topics": [
+    "weather",
+    "sky"
+   ],
+   "match_terms": [
+    "sunrise",
+    "sunset",
+    "daylight",
+    "twilight",
+    "sun",
+    "sky",
+    "dark",
+    "night"
+   ],
+   "host": "api.sunrise-sunset.org",
+   "sample_endpoint": "https://api.sunrise-sunset.org/json?lat=40.0&lng=-83.0&formatted=0",
+   "url": "https://sunrise-sunset.org/api",
+   "auth": "none",
+   "license": "free; must show a link to sunrise-sunset.org",
+   "commercial_ok": null,
+   "terms_url": "https://sunrise-sunset.org/api",
+   "rate_limit": "no stated limit",
+   "needs": [
+    "home_location"
+   ],
+   "user_agent_required": false,
+   "verified_at": "2026-09-23T23:52:32+00:00"
+  },
+  {
+   "id": "seventimer",
+   "name": "7Timer! stargazing forecast",
+   "what_it_is": "Stargazing forecast for your town: cloud cover, steadiness of the air, and how clear the sky is.",
+   "topics": [
+    "weather",
+    "space",
+    "sky"
+   ],
+   "match_terms": [
+    "stargazing",
+    "astronomy",
+    "telescope",
+    "cloud",
+    "sky",
+    "seeing",
+    "night",
+    "star"
+   ],
+   "host": "www.7timer.info",
+   "sample_endpoint": "https://www.7timer.info/bin/astro.php?lon=-83.0&lat=40.0&ac=0&unit=metric&output=json&tzshift=0",
+   "url": "https://www.7timer.info/doc.php",
+   "auth": "none",
+   "license": "free to use, not for commercial purposes",
+   "commercial_ok": false,
+   "terms_url": "https://www.7timer.info/doc.php",
+   "rate_limit": "no stated limit",
+   "needs": [
+    "home_location"
+   ],
+   "user_agent_required": false,
+   "verified_at": "2026-09-24T06:40:00+00:00",
+   "field_meanings": {"cloudcover": "1 clear (0 to 6%) to 9 overcast (94 to 100%); lower is clearer", "seeing": "1 best (under 0.5 arcsec) to 8 worst (over 2.5 arcsec); lower is steadier air", "transparency": "1 best (under 0.3) to 8 worst (over 1); lower is a clearer sky", "lifted_index": "-10 very unstable (storms likely) to 15 very stable", "rh2m": "-4 (0 to 5%) to 16 (100%), steps of relative humidity", "wind10m.speed": "1 calm (under 0.3 m/s) to 8 hurricane (over 32.6 m/s)", "temp2m": "degrees Celsius", "prec_type": "none, rain, snow, frzr (freezing rain) or icep (ice pellets)"},
+   "card_url": "https://www.7timer.info/bin/astro.php?lon={lon_round}&lat={lat_round}&ac=0&unit=metric&output=json&tzshift=0", "json_label": "text/html",
+   "card": {
+    "kind": "value",
+    "value": "dataseries[0].cloudcover",
+    "label": "Cloud cover (1 clear, 9 cloudy)",
+    "caption": "init"
+   }
+  },
+  {
+   "id": "hardiness_zone",
+   "name": "Plant hardiness map (phzmapi.org)",
+   "what_it_is": "Which cold-hardiness area of the US a ZIP code is in, so you know what will grow there.",
+   "topics": [
+    "gardening"
+   ],
+   "match_terms": [
+    "garden",
+    "gardening",
+    "plant",
+    "hardiness",
+    "zone",
+    "frost",
+    "vegetable",
+    "flower",
+    "grow",
+    "seed",
+    "planting"
+   ],
+   "host": "phzmapi.org",
+   "sample_endpoint": "https://phzmapi.org/43215.json",
+   "url": "https://phzmapi.org/",
+   "auth": "none",
+   "license": "built from the USDA hardiness map; service terms not stated",
+   "commercial_ok": null,
+   "terms_url": "https://phzmapi.org/",
+   "rate_limit": "no stated limit",
+   "needs": [
+    "zip_code"
+   ],
+   "user_agent_required": false,
+   "verified_at": "2026-09-23T23:52:32+00:00"
+  },
+  {
+   "id": "nominatim",
+   "name": "OpenStreetMap place search",
+   "what_it_is": "Find places on the map by name.",
+   "topics": [
+    "geography",
+    "maps"
+   ],
+   "match_terms": [
+    "map",
+    "place",
+    "location",
+    "geography",
+    "travel",
+    "city",
+    "town",
+    "address"
+   ],
+   "host": "nominatim.openstreetmap.org",
+   "sample_endpoint": "https://nominatim.openstreetmap.org/search?q=Columbus+Ohio&format=json&limit=1",
+   "url": "https://operations.osmfoundation.org/policies/nominatim/",
+   "auth": "none",
+   "license": "ODbL-1.0; light use only under the usage policy",
+   "commercial_ok": null,
+   "terms_url": "https://operations.osmfoundation.org/policies/nominatim/",
+   "rate_limit": "1 request a second at most; must name the app asking",
+   "needs": [],
+   "user_agent_required": true,
+   "verified_at": "2026-09-23T23:52:33+00:00"
+  },
+  {
+   "id": "usgs_quakes",
+   "name": "USGS earthquakes",
+   "what_it_is": "Recent earthquakes around the world, with size and place.",
+   "topics": [
+    "geography",
+    "science"
+   ],
+   "match_terms": [
+    "earthquake",
+    "geology",
+    "earth",
+    "volcano",
+    "tsunami",
+    "disaster",
+    "science"
+   ],
+   "host": "earthquake.usgs.gov",
+   "sample_endpoint": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_week.geojson",
+   "url": "https://earthquake.usgs.gov/earthquakes/feed/",
+   "auth": "none",
+   "license": "US government work, public domain",
+   "commercial_ok": true,
+   "terms_url": "https://earthquake.usgs.gov/earthquakes/feed/",
+   "rate_limit": "no stated limit",
+   "needs": [],
+   "user_agent_required": false,
+   "verified_at": "2026-09-23T23:52:33+00:00"
+  },
+  {
+   "id": "met_museum",
+   "name": "The Met Collection",
+   "what_it_is": "Art and objects from The Metropolitan Museum of Art, with photos.",
+   "topics": [
+    "museums",
+    "history",
+    "art"
+   ],
+   "match_terms": [
+    "art",
+    "museum",
+    "painting",
+    "history",
+    "ancient",
+    "egypt",
+    "sculpture",
+    "culture",
+    "armor",
+    "artifact"
+   ],
+   "host": "collectionapi.metmuseum.org",
+   "sample_endpoint": "https://collectionapi.metmuseum.org/public/collection/v1/objects/436535",
+   "url": "https://metmuseum.github.io/",
+   "auth": "none",
+   "license": "CC0-1.0 for open-access objects",
+   "commercial_ok": true,
+   "terms_url": "https://metmuseum.github.io/",
+   "rate_limit": "80 requests a second",
+   "needs": [],
+   "user_agent_required": false,
+   "verified_at": "2026-09-23T23:52:33+00:00"
+  },
+  {
+   "id": "artic",
+   "name": "Art Institute of Chicago",
+   "what_it_is": "Artworks with titles, artists and pictures.",
+   "topics": [
+    "museums",
+    "art"
+   ],
+   "match_terms": [
+    "art",
+    "museum",
+    "painting",
+    "artist",
+    "sculpture",
+    "culture",
+    "history"
+   ],
+   "host": "api.artic.edu",
+   "sample_endpoint": "https://api.artic.edu/api/v1/artworks/search?q=cats&limit=1&fields=id,title,artist_display", "card_url": "https://api.artic.edu/api/v1/artworks/search?q={topic}&limit=12&fields=id,title,artist_display,image_id", "card_topic": "cats", "image_template": "https://www.artic.edu/iiif/2/{image_id}/full/400,/0/default.jpg", "ua_header": "AIC-User-Agent",
+   "url": "https://api.artic.edu/docs/",
+   "auth": "none",
+   "license": "CC0-1.0 (artwork details; some pictures are copyrighted)",
+   "commercial_ok": true,
+   "terms_url": "https://api.artic.edu/docs/",
+   "rate_limit": "60 requests a minute",
+   "needs": [],
+   "user_agent_required": false,
+   "verified_at": "2026-09-23T23:52:33+00:00"
+  },
+  {
+   "id": "cleveland_art",
+   "name": "Cleveland Museum of Art",
+   "what_it_is": "Open-access artworks and objects, from ancient to modern.",
+   "topics": [
+    "museums",
+    "art",
+    "history"
+   ],
+   "match_terms": [
+    "art",
+    "museum",
+    "painting",
+    "history",
+    "culture",
+    "artist",
+    "ancient",
+    "artifact"
+   ],
+   "host": "openaccess-api.clevelandart.org",
+   "sample_endpoint": "https://openaccess-api.clevelandart.org/api/artworks/?q=dinosaur&limit=1",
+   "lookup_url": "https://openaccess-api.clevelandart.org/api/artworks/?q={topic}&limit=5",
+   "url": "https://openaccess-api.clevelandart.org/",
+   "auth": "none",
+   "license": "CC0-1.0",
+   "commercial_ok": true,
+   "terms_url": "https://openaccess-api.clevelandart.org/",
+   "rate_limit": "no stated limit",
+   "needs": [],
+   "user_agent_required": false,
+   "verified_at": "2026-09-23T23:52:33+00:00"
+  },
+  {
+   "id": "nobel",
+   "name": "Nobel Prize",
+   "what_it_is": "Nobel Prize winners and why they won.",
+   "topics": [
+    "history",
+    "science"
+   ],
+   "match_terms": [
+    "nobel",
+    "prize",
+    "scientist",
+    "science",
+    "history",
+    "physics",
+    "chemistry",
+    "peace",
+    "literature",
+    "award"
+   ],
+   "host": "api.nobelprize.org",
+   "sample_endpoint": "https://api.nobelprize.org/2.1/laureates?limit=1",
+   "url": "https://www.nobelprize.org/about/developer-zone-2/",
+   "auth": "none",
+   "license": "CC0-1.0",
+   "commercial_ok": true,
+   "terms_url": "https://www.nobelprize.org/about/developer-zone-2/",
+   "rate_limit": "no stated limit",
+   "needs": [],
+   "user_agent_required": false,
+   "verified_at": "2026-09-23T23:52:33+00:00"
+  },
+  {
+   "id": "nager_holidays",
+   "name": "Nager.Date public holidays",
+   "what_it_is": "Public holidays for any country and year.",
+   "topics": [
+    "calendar",
+    "culture"
+   ],
+   "match_terms": [
+    "holiday",
+    "calendar",
+    "country",
+    "date",
+    "vacation",
+    "festival"
+   ],
+   "host": "date.nager.at",
+   "sample_endpoint": "https://date.nager.at/api/v3/PublicHolidays/2026/US",
+   "url": "https://date.nager.at/Api",
+   "auth": "none",
+   "license": "MIT (the service)",
+   "commercial_ok": true,
+   "terms_url": "https://date.nager.at/Api",
+   "rate_limit": "no stated limit",
+   "needs": [],
+   "user_agent_required": false,
+   "verified_at": "2026-09-23T23:52:34+00:00"
+  },
+  {
+   "id": "mlb_stats",
+   "name": "MLB Stats",
+   "what_it_is": "Baseball teams, games, scores and players.",
+   "topics": [
+    "sports"
+   ],
+   "match_terms": [
+    "baseball",
+    "sport",
+    "mlb",
+    "team",
+    "game",
+    "score",
+    "player",
+    "league"
+   ],
+   "host": "statsapi.mlb.com",
+   "sample_endpoint": "https://statsapi.mlb.com/api/v1/teams?sportId=1",
+   "url": "https://www.mlb.com/",
+   "auth": "none",
+   "license": "MLB copyright: individual, non-commercial use only",
+   "commercial_ok": false,
+   "terms_url": "https://www.mlb.com/",
+   "rate_limit": "no stated limit",
+   "needs": [],
+   "user_agent_required": false,
+   "verified_at": "2026-09-23T23:52:34+00:00"
+  },
+  {
+   "id": "jolpica_f1",
+   "name": "Jolpica F1",
+   "what_it_is": "Formula 1 races, drivers and standings.",
+   "topics": [
+    "sports"
+   ],
+   "match_terms": [
+    "formula",
+    "racing",
+    "race",
+    "driver",
+    "motorsport",
+    "sport",
+    "grand",
+    "prix"
+   ],
+   "host": "api.jolpi.ca",
+   "sample_endpoint": "https://api.jolpi.ca/ergast/f1/current/driverStandings.json",
+   "url": "https://github.com/jolpica/jolpica-f1",
+   "auth": "none",
+   "license": "terms not stated",
+   "commercial_ok": null,
+   "terms_url": "https://github.com/jolpica/jolpica-f1",
+   "rate_limit": "4 requests a second, 500 an hour",
+   "needs": [],
+   "user_agent_required": false,
+   "verified_at": "2026-09-23T23:52:34+00:00"
+  },
+  {
+   "id": "lichess",
+   "name": "Lichess",
+   "what_it_is": "The daily chess puzzle and chess game data.",
+   "topics": [
+    "games"
+   ],
+   "match_terms": [
+    "chess",
+    "puzzle",
+    "game",
+    "board",
+    "strategy"
+   ],
+   "host": "lichess.org",
+   "sample_endpoint": "https://lichess.org/api/puzzle/daily",
+   "url": "https://lichess.org/api",
+   "auth": "none",
+   "license": "free and open; puzzles CC0-1.0",
+   "commercial_ok": true,
+   "terms_url": "https://lichess.org/api",
+   "rate_limit": "one request at a time",
+   "needs": [],
+   "user_agent_required": false,
+   "verified_at": "2026-09-23T23:52:34+00:00"
+  },
+  {
+   "id": "pokeapi",
+   "name": "PokeAPI",
+   "what_it_is": "Pokemon facts: types, moves, abilities and berries.",
+   "topics": [
+    "games"
+   ],
+   "match_terms": [
+    "pokemon",
+    "game",
+    "nintendo",
+    "card",
+    "monster"
+   ],
+   "host": "pokeapi.co",
+   "sample_endpoint": "https://pokeapi.co/api/v2/berry/1",
+   "url": "https://pokeapi.co/docs/v2",
+   "auth": "none",
+   "license": "free fair use; Pokemon names and art belong to Nintendo",
+   "commercial_ok": false,
+   "terms_url": "https://pokeapi.co/docs/v2",
+   "rate_limit": "fair use; cache answers",
+   "needs": [],
+   "user_agent_required": false,
+   "verified_at": "2026-09-23T23:52:34+00:00"
+  },
+  {
+   "id": "opentdb",
+   "name": "Open Trivia Database",
+   "what_it_is": "Trivia questions on many subjects.",
+   "topics": [
+    "games",
+    "education"
+   ],
+   "match_terms": [
+    "trivia",
+    "quiz",
+    "question",
+    "game",
+    "fact"
+   ],
+   "host": "opentdb.com",
+   "sample_endpoint": "https://opentdb.com/api.php?amount=1",
+   "url": "https://opentdb.com/api_config.php",
+   "auth": "none",
+   "license": "CC-BY-SA-4.0",
+   "commercial_ok": true,
+   "terms_url": "https://opentdb.com/api_config.php",
+   "rate_limit": "1 request every 5 seconds",
+   "needs": [],
+   "user_agent_required": false,
+   "verified_at": "2026-09-23T23:52:35+00:00"
+  },
+  {
+   "id": "dnd5e",
+   "name": "D&D 5e rules",
+   "what_it_is": "Dungeons and Dragons rules: spells, monsters and classes.",
+   "topics": [
+    "games"
+   ],
+   "match_terms": [
+    "dungeon",
+    "dragon",
+    "dnd",
+    "rpg",
+    "fantasy",
+    "game",
+    "spell",
+    "monster",
+    "tabletop"
+   ],
+   "host": "www.dnd5eapi.co",
+   "sample_endpoint": "https://www.dnd5eapi.co/api/2014/spells/acid-arrow",
+   "url": "https://5e-bits.github.io/docs/",
+   "auth": "none",
+   "license": "CC-BY-4.0 (the rules reference)",
+   "commercial_ok": true,
+   "terms_url": "https://5e-bits.github.io/docs/",
+   "rate_limit": "no stated limit",
+   "needs": [],
+   "user_agent_required": false,
+   "verified_at": "2026-09-23T23:52:35+00:00"
+  },
+  {
+   "id": "free_dictionary",
+   "name": "Free Dictionary",
+   "what_it_is": "Word meanings, how to say them, and examples.",
+   "topics": [
+    "language",
+    "education"
+   ],
+   "match_terms": [
+    "word",
+    "dictionary",
+    "definition",
+    "meaning",
+    "spelling",
+    "vocabulary",
+    "english",
+    "language"
+   ],
+   "host": "api.dictionaryapi.dev",
+   "sample_endpoint": "https://api.dictionaryapi.dev/api/v2/entries/en/hello",
+   "url": "https://dictionaryapi.dev/",
+   "auth": "none",
+   "license": "CC-BY-SA-3.0 (from Wiktionary)",
+   "commercial_ok": true,
+   "terms_url": "https://dictionaryapi.dev/",
+   "rate_limit": "no stated limit; can be slow",
+   "needs": [],
+   "user_agent_required": false,
+   "verified_at": "2026-09-23T23:52:35+00:00"
+  },
+  {
+   "id": "datamuse",
+   "name": "Datamuse",
+   "what_it_is": "Words that rhyme, sound alike, or mean the same thing.",
+   "topics": [
+    "language",
+    "education"
+   ],
+   "match_terms": [
+    "rhyme",
+    "word",
+    "synonym",
+    "poem",
+    "poetry",
+    "writing",
+    "vocabulary",
+    "language",
+    "lyric"
+   ],
+   "host": "api.datamuse.com",
+   "sample_endpoint": "https://api.datamuse.com/words?ml=happy&max=3",
+   "url": "https://www.datamuse.com/api/",
+   "auth": "none",
+   "license": "free, no key; terms on the site",
+   "commercial_ok": null,
+   "terms_url": "https://www.datamuse.com/api/",
+   "rate_limit": "100,000 requests a day",
+   "needs": [],
+   "user_agent_required": false,
+   "verified_at": "2026-09-23T23:52:55+00:00"
+  },
+  {
+   "id": "wikipedia_summary",
+   "name": "Wikipedia page summaries",
+   "what_it_is": "A short summary and picture for almost any topic.",
+   "topics": [
+    "general",
+    "education"
+   ],
+   "match_terms": [
+    "encyclopedia",
+    "wikipedia",
+    "fact",
+    "article",
+    "biography",
+    "history",
+    "definition"
+   ],
+   "host": "en.wikipedia.org",
+   "sample_endpoint": "https://en.wikipedia.org/api/rest_v1/page/summary/Tyrannosaurus",
+   "url": "https://en.wikipedia.org/api/rest_v1/",
+   "auth": "none",
+   "license": "CC-BY-SA-4.0",
+   "commercial_ok": true,
+   "terms_url": "https://en.wikipedia.org/api/rest_v1/",
+   "rate_limit": "200 requests a second; must name the app asking",
+   "needs": [],
+   "user_agent_required": true,
+   "verified_at": "2026-09-23T23:52:55+00:00"
+  },
+  {
+   "id": "internet_archive",
+   "name": "Internet Archive search",
+   "what_it_is": "Search old books, magazines, recordings and videos kept by the Internet Archive.",
+   "topics": [
+    "books",
+    "history"
+   ],
+   "match_terms": [
+    "archive",
+    "book",
+    "magazine",
+    "vintage",
+    "recording",
+    "video",
+    "pattern",
+    "manual"
+   ],
+   "host": "archive.org",
+   "sample_endpoint": "https://archive.org/advancedsearch.php?q=title%3Aknitting&fl%5B%5D=identifier&fl%5B%5D=title&fl%5B%5D=description&rows=5&sort%5B%5D=downloads+desc&output=json",
+   "url": "https://archive.org/developers/",
+   "auth": "none",
+   "license": "set per item; many are public domain or Creative Commons",
+   "commercial_ok": null,
+   "terms_url": "https://archive.org/developers/",
+   "rate_limit": "no stated limit",
+   "needs": [],
+   "user_agent_required": false,
+   "verified_at": "2026-09-24T06:40:00+00:00",
+   "card_url": "https://archive.org/advancedsearch.php?q=title%3A{topic}&fl%5B%5D=identifier&fl%5B%5D=title&fl%5B%5D=description&rows=5&sort%5B%5D=downloads+desc&output=json",
+   "card_topic": "knitting",
+   "card": {
+    "kind": "list",
+    "items": "response.docs",
+    "item_title": "title",
+    "item_detail": "description",
+    "max_items": 5
+   }
+  },
+  {
+   "id": "openfda_drugs",
+   "name": "openFDA drug labels",
+   "what_it_is": "Official US medicine label information.",
+   "topics": [
+    "health"
+   ],
+   "match_terms": [
+    "medicine",
+    "drug",
+    "health",
+    "pharmacy",
+    "medication",
+    "pill",
+    "prescription"
+   ],
+   "host": "api.fda.gov",
+   "sample_endpoint": "https://api.fda.gov/drug/label.json?limit=1",
+   "url": "https://open.fda.gov/apis/",
+   "auth": "none",
+   "license": "CC0-1.0",
+   "commercial_ok": true,
+   "terms_url": "https://open.fda.gov/apis/",
+   "rate_limit": "240 a minute, 1,000 a day without a key",
+   "needs": [],
+   "user_agent_required": false,
+   "verified_at": "2026-09-23T23:52:55+00:00"
+  },
+  {
+   "id": "disease_sh",
+   "name": "disease.sh",
+   "what_it_is": "Public disease numbers, such as COVID-19 case counts.",
+   "topics": [
+    "health"
+   ],
+   "match_terms": [
+    "health",
+    "disease",
+    "covid",
+    "virus",
+    "pandemic",
+    "flu",
+    "statistics"
+   ],
+   "host": "disease.sh",
+   "sample_endpoint": "https://disease.sh/v3/covid-19/all",
+   "url": "https://disease.sh/docs/",
+   "auth": "none",
+   "license": "GPL-3.0 (the service); numbers from public health sources",
+   "commercial_ok": null,
+   "terms_url": "https://disease.sh/docs/",
+   "rate_limit": "no stated limit",
+   "needs": [],
+   "user_agent_required": false,
+   "verified_at": "2026-09-23T23:52:56+00:00"
+  },
+  {
+   "id": "worldbank",
+   "name": "World Bank data",
+   "what_it_is": "Country numbers: population, income, health and schooling.",
+   "topics": [
+    "geography",
+    "education"
+   ],
+   "match_terms": [
+    "country",
+    "population",
+    "economy",
+    "statistics",
+    "world",
+    "development",
+    "income",
+    "school"
+   ],
+   "host": "api.worldbank.org",
+   "sample_endpoint": "https://api.worldbank.org/v2/country/US/indicator/SP.POP.TOTL?format=json&per_page=1",
+   "url": "https://datahelpdesk.worldbank.org/knowledgebase/topics/125589",
+   "auth": "none",
+   "license": "CC-BY-4.0",
+   "commercial_ok": true,
+   "terms_url": "https://datahelpdesk.worldbank.org/knowledgebase/topics/125589",
+   "rate_limit": "no stated limit",
+   "needs": [],
+   "user_agent_required": false,
+   "verified_at": "2026-09-23T23:52:56+00:00"
+  },
+  {
+   "id": "tvmaze",
+   "name": "TVmaze",
+   "what_it_is": "TV shows, episodes and when they are on.",
+   "topics": [
+    "tv",
+    "media"
+   ],
+   "match_terms": [
+    "tv",
+    "show",
+    "television",
+    "episode",
+    "series",
+    "schedule",
+    "cartoon"
+   ],
+   "host": "api.tvmaze.com",
+   "sample_endpoint": "https://api.tvmaze.com/search/shows?q=cosmos",
+   "lookup_url": "https://api.tvmaze.com/search/shows?q={topic}",
+   "url": "https://www.tvmaze.com/api",
+   "auth": "none",
+   "license": "CC-BY-SA-4.0",
+   "commercial_ok": true,
+   "terms_url": "https://www.tvmaze.com/api",
+   "rate_limit": "20 requests every 10 seconds",
+   "needs": [],
+   "user_agent_required": false,
+   "verified_at": "2026-09-23T23:52:56+00:00"
+  },
+  {
+   "id": "frankfurter",
+   "name": "Frankfurter exchange rates",
+   "what_it_is": "Money exchange rates from the European Central Bank.",
+   "topics": [
+    "money"
+   ],
+   "match_terms": [
+    "money",
+    "currency",
+    "exchange",
+    "euro",
+    "dollar",
+    "travel",
+    "finance"
+   ],
+   "host": "api.frankfurter.dev",
+   "sample_endpoint": "https://api.frankfurter.dev/v1/latest?from=USD&to=EUR",
+   "url": "https://frankfurter.dev/",
+   "auth": "none",
+   "license": "MIT (the service); rates published by the European Central Bank",
+   "commercial_ok": true,
+   "terms_url": "https://frankfurter.dev/",
+   "rate_limit": "no stated limit",
+   "needs": [],
+   "user_agent_required": false,
+   "verified_at": "2026-09-23T23:52:57+00:00"
+  },
+  {
+   "id": "uk_carbon",
+   "name": "UK Carbon Intensity",
+   "what_it_is": "How clean the UK's electricity is right now, and the forecast.",
+   "topics": [
+    "energy"
+   ],
+   "match_terms": [
+    "electricity",
+    "energy",
+    "carbon",
+    "climate",
+    "power",
+    "solar",
+    "green",
+    "wind"
+   ],
+   "host": "api.carbonintensity.org.uk",
+   "sample_endpoint": "https://api.carbonintensity.org.uk/intensity",
+   "url": "https://carbon-intensity.github.io/api-definitions/",
+   "auth": "none",
+   "license": "CC-BY-4.0",
+   "commercial_ok": true,
+   "terms_url": "https://carbon-intensity.github.io/api-definitions/",
+   "rate_limit": "no stated limit",
+   "needs": [],
+   "user_agent_required": false,
+   "verified_at": "2026-09-23T23:52:57+00:00"
+  }
+ ]
+}

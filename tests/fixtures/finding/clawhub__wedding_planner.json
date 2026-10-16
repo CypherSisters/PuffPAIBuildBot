@@ -1,0 +1,187 @@
+{
+"results": [
+{
+"canonicalUrl": "/ivangdavila/skills/wedding-planner",
+"displayName": "Wedding Planner",
+"downloads": 846,
+"featured": false,
+"icon": null,
+"id": "clawhub:kd7ddj50kfp9fcn8ae23szeexh831tcd",
+"install": {
+"kind": "clawhub",
+"reference": "ivangdavila/wedding-planner",
+"sourceUrl": null
+},
+"links": {
+"canonical": "/ivangdavila/skills/wedding-planner",
+"source": null
+},
+"metrics": {
+"bookmarks": 0,
+"rolling60DayInstalls": 0,
+"updatedAt": 1778491958089
+},
+"native": {
+"skill": {
+"isSuspicious": false,
+"stats": {
+"comments": 0,
+"downloads": 846,
+"installs": 20,
+"stars": 0,
+"versions": 1
+}
+}
+},
+"official": false,
+"ownerHandle": "ivangdavila",
+"score": 6110,
+"slug": "wedding-planner",
+"source": "clawhub",
+"sourceIdentity": {
+"host": null,
+"id": "kd7ddj50kfp9fcn8ae23szeexh831tcd",
+"lifetimeInstalls": null,
+"owner": "ivangdavila",
+"repo": null
+},
+"summary": "Plan weddings with budget guardrails, guest-list scenarios, vendor scorecards, payment tracking, and deadline-driven coordination.",
+"trust": {
+"clawHubVerdict": null,
+"installability": "installable",
+"sourceFreshness": "native",
+"upstreamScanners": null,
+"visibility": "public"
+},
+"updatedAt": 1778491958089,
+"version": null,
+"owner": {
+"handle": "ivangdavila",
+"displayName": "Iván",
+"image": "https://avatars.githubusercontent.com/u/81719670?v=4"
+}
+},
+{
+"canonicalUrl": "/katherine0325/skills/wedding-planner-cn",
+"displayName": "Wedding Skill",
+"downloads": 434,
+"featured": false,
+"icon": null,
+"id": "clawhub:kd71wp4yj1xm5qy1whe4pmxa29888p1g",
+"install": {
+"kind": "clawhub",
+"reference": "katherine0325/wedding-planner-cn",
+"sourceUrl": null
+},
+"links": {
+"canonical": "/katherine0325/skills/wedding-planner-cn",
+"source": null
+},
+"metrics": {
+"bookmarks": 0,
+"rolling60DayInstalls": 0,
+"updatedAt": 1780907026178
+},
+"native": {
+"skill": {
+"isSuspicious": false,
+"stats": {
+"comments": 0,
+"downloads": 434,
+"installs": 5,
+"stars": 0,
+"versions": 1
+}
+}
+},
+"official": false,
+"ownerHandle": "katherine0325",
+"score": 5095,
+"slug": "wedding-planner-cn",
+"source": "clawhub",
+"sourceIdentity": {
+"host": null,
+"id": "kd71wp4yj1xm5qy1whe4pmxa29888p1g",
+"lifetimeInstalls": null,
+"owner": "katherine0325",
+"repo": null
+},
+"summary": "婚庆策划运营助手。提供从婚礼预算规划、场地筛选、流程策划、供应商管理到婚礼当天执行的完整婚庆工作流。 当用户提到\"婚礼策划\"、\"婚庆运营\"、\"婚礼预算\"、\"结婚流程\"、\"婚礼场地\"、\"婚庆创业\"、\"婚庆获客\"、\"婚庆文案\"、\"备婚攻略\"等关键词时触发。 适用于婚庆策划师、婚庆创业者、备婚新人的全流程婚礼策划与运营场景。",
+"trust": {
+"clawHubVerdict": null,
+"installability": "installable",
+"sourceFreshness": "native",
+"upstreamScanners": null,
+"visibility": "public"
+},
+"updatedAt": 1780907026178,
+"version": null,
+"owner": {
+"handle": "katherine0325",
+"displayName": "katherine0325",
+"image": "https://avatars.githubusercontent.com/u/23134442?v=4"
+}
+},
+{
+"canonicalUrl": "/beatra-ai/skills/wedding-opening-film",
+"displayName": "wedding-opening-film",
+"downloads": 384,
+"featured": false,
+"icon": null,
+"id": "clawhub:kd7cyyjjtrh1q00m0psxpt39r58daxcc",
+"install": {
+"kind": "clawhub",
+"reference": "beatra-ai/wedding-opening-film",
+"sourceUrl": null
+},
+"links": {
+"canonical": "/beatra-ai/skills/wedding-opening-film",
+"source": null
+},
+"metrics": {
+"bookmarks": 0,
+"rolling60DayInstalls": 0,
+"updatedAt": 1790773674358
+},
+"native": {
+"skill": {
+"isSuspicious": false,
+"stats": {
+"comments": 0,
+"downloads": 384,
+"installs": 0,
+"stars": 0,
+"versions": 3
+}
+}
+},
+"official": false,
+"ownerHandle": "beatra-ai",
+"score": 2040,
+"slug": "wedding-opening-film",
+"source": "clawhub",
+"sourceIdentity": {
+"host": null,
+"id": "kd7cyyjjtrh1q00m0psxpt39r58daxcc",
+"lifetimeInstalls": null,
+"owner": "beatra-ai",
+"repo": null
+},
+"summary": "Turn couple-supplied ceremony facts into three wedding opening film storyboard keyframes, then one opening film. This wedding opening film studio lays out a couple storyboard and a ceremony opening clip from the facts you already have. Use it for photo-studio wedding openers, wedding-planner opening films, and couple storyboard keyframes.",
+"trust": {
+"clawHubVerdict": null,
+"installability": "installable",
+"sourceFreshness": "native",
+"upstreamScanners": null,
+"visibility": "public"
+},
+"updatedAt": 1790773674358,
+"version": null,
+"owner": {
+"handle": "beatra-ai",
+"displayName": "beatra-ai",
+"image": "https://avatars.githubusercontent.com/u/313206979?v=4"
+}
+}
+]
+}

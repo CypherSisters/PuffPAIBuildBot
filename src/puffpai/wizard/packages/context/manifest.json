@@ -1,0 +1,47 @@
+{
+  "schema": "puffpai_package/v1",
+  "id": "context",
+  "kind": "skill",
+  "version": "1.0.0",
+  "author": "puffpai",
+  "license": "Apache-2.0",
+  "label": "What it was told about itself",
+  "description": "The prompt this build assembles for itself, shown to the owner.",
+  "reads": [
+    "persona",
+    "brain",
+    "tools",
+    "knowledge",
+    "surfaces",
+    "sources",
+    "posture",
+    "crew"
+  ],
+  "writes": "context",
+  "permissions": {
+    "network_hosts": [],
+    "files": [
+      "data"
+    ],
+    "ha_domains": [],
+    "secrets": []
+  },
+  "doors": [],
+  "secrets": [],
+  "egress": "none",
+  "estimate": {
+    "bytes": 0,
+    "seconds": 0,
+    "basis": "unknown"
+  },
+  "rerun": "idempotent",
+  "undo": "reversible",
+  "blocking": false,
+  "provides": [
+    "context.prompt"
+  ],
+  "needs": [
+    "persona.goal"
+  ],
+  "builtin": true
+}

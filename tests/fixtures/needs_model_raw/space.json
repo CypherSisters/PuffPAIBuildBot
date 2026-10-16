@@ -1,0 +1,115 @@
+{
+ "goal_id": "space",
+ "model": "qwen2.5:7b-instruct",
+ "prompt_tag": "v5",
+ "at": "2026-09-27T00:31:28",
+ "timing": {
+  "wall_s": 6.11,
+  "first_token_s": 0.08,
+  "first_job_s": 2.26,
+  "load_s": 0.01,
+  "prompt_tokens": 708,
+  "prompt_s": 0.04,
+  "out_tokens": 276,
+  "gen_s": 6.03,
+  "tok_per_s": 45.8,
+  "done_reason": "stop"
+ },
+ "raw": "{\"kind\": \"space bot\", \"asked\": [\"show me cool pictures of planets and rockets\", \"tell me when the space station flies over Dayton\", \"quiz me about stars and black holes\"], \"also_needed\": [\"give me fun facts about space\", \"help me track space missions\"], \"jobs\": [{\"name\": \"show pictures\", \"does\": \"display images of planets and rockets\", \"parts\": [{\"kind\": \"pictures\", \"search\": [\"space pictures\", \"rocket images\"]}]}, {\"name\": \"track ISS\", \"does\": \"notify when the ISS flies over a location\", \"parts\": [{\"kind\": \"live-info\", \"search\": [\"iss flyover times\", \"iss overflight alerts\"]}]}, {\"name\": \"quiz user\", \"does\": \"ask questions about stars and black holes\", \"parts\": [{\"kind\": \"code-app\", \"search\": [\"space trivia quiz\", \"astronomy quiz app\"]}]}, {\"name\": \"fun facts\", \"does\": \"provide interesting space facts\", \"parts\": [{\"kind\": \"knowledge\", \"search\": [\"space trivia\", \"astronomy facts\"]}]}, {\"name\": \"track missions\", \"does\": \"update on current and upcoming space missions\", \"parts\": [{\"kind\": \"live-info\", \"search\": [\"space mission updates\", \"upcoming space launches\"]}]}]}",
+ "parsed": {
+  "kind": "space bot",
+  "asked": [
+   "show me cool pictures of planets and rockets",
+   "tell me when the space station flies over Dayton",
+   "quiz me about stars and black holes"
+  ],
+  "also_needed": [
+   "give me fun facts about space",
+   "help me track space missions"
+  ],
+  "jobs": [
+   {
+    "name": "show pictures",
+    "does": "display images of planets and rockets",
+    "parts": [
+     {
+      "kind": "pictures",
+      "search": [
+       "space pictures",
+       "rocket images"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "track ISS",
+    "does": "notify when the ISS flies over a location",
+    "parts": [
+     {
+      "kind": "live-info",
+      "search": [
+       "iss flyover times",
+       "iss overflight alerts"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "quiz user",
+    "does": "ask questions about stars and black holes",
+    "parts": [
+     {
+      "kind": "code-app",
+      "search": [
+       "space trivia quiz",
+       "astronomy quiz app"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "fun facts",
+    "does": "provide interesting space facts",
+    "parts": [
+     {
+      "kind": "knowledge",
+      "search": [
+       "space trivia",
+       "astronomy facts"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "track missions",
+    "does": "update on current and upcoming space missions",
+    "parts": [
+     {
+      "kind": "live-info",
+      "search": [
+       "space mission updates",
+       "upcoming space launches"
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "check": {
+  "valid": true,
+  "kind": "space bot",
+  "jobs": 5,
+  "jobs_in_range": true,
+  "phrases": 10,
+  "unique_phrases": 10,
+  "parts_with_bad_phrase_count": 0,
+  "kinds": {
+   "pictures": 1,
+   "live-info": 2,
+   "code-app": 1,
+   "knowledge": 1
+  },
+  "leaks": [],
+  "kind_leak": []
+ }
+}

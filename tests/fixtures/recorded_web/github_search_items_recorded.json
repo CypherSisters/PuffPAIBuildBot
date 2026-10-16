@@ -1,0 +1,65 @@
+{
+ "note": "Reshaped from t2/design/raw/search_results.json (recorded 2026-09-26 keyless search answers) into the API item shape.",
+ "total_count": 2,
+ "incomplete_results": false,
+ "items": [
+  {
+   "name": "wedding-planner",
+   "full_name": "SubchiBeats/wedding-planner",
+   "private": false,
+   "owner": {
+    "login": "SubchiBeats",
+    "type": "User"
+   },
+   "html_url": "https://github.com/SubchiBeats/wedding-planner",
+   "description": "Bunny's Big Day — an elegant, self-contained single-file wedding planning dashboard with a visual drag-to-arrange seating floor-plan builder, guest list, budget, timeline, vendors, checklist and export. No build, no dependencies.",
+   "fork": false,
+   "pushed_at": "2026-06-18T21:52:08Z",
+   "size": 547,
+   "stargazers_count": 2,
+   "language": "HTML",
+   "archived": false,
+   "license": {
+    "key": "mit",
+    "spdx_id": "MIT"
+   },
+   "topics": [
+    "budget-tracker",
+    "dashboard",
+    "event-planning",
+    "guest-list",
+    "html-css-js",
+    "localstorage",
+    "no-build",
+    "responsive",
+    "seating-chart",
+    "single-file",
+    "vanilla-js",
+    "web-app",
+    "wedding",
+    "wedding-planner"
+   ],
+   "default_branch": "main"
+  },
+  {
+   "name": "WeddingPlanner",
+   "full_name": "katie-bishop-7/WeddingPlanner",
+   "private": false,
+   "owner": {
+    "login": "katie-bishop-7",
+    "type": "User"
+   },
+   "html_url": "https://github.com/katie-bishop-7/WeddingPlanner",
+   "description": "Fully automated wedding planner, including guest list, seating chart, calendar, budget, to do list, and overview.",
+   "fork": false,
+   "pushed_at": "2025-05-31T00:36:30Z",
+   "size": 27,
+   "stargazers_count": 0,
+   "language": "TypeScript",
+   "archived": false,
+   "license": null,
+   "topics": [],
+   "default_branch": "master"
+  }
+ ]
+}

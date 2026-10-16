@@ -1,0 +1,286 @@
+{
+"servers": [
+{
+"server": {
+"$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+"name": "app.hadl/portfolio",
+"description": "Учёт инвестиций в HADL: портфель, доходность, сделки, импорт отчётов брокеров, скринеры Мосбиржи",
+"title": "HADL — портфельный трекер",
+"version": "1.0.0",
+"websiteUrl": "https://hadl.app",
+"remotes": [
+{
+"type": "streamable-http",
+"url": "https://back.hadl.app/mcp",
+"headers": [
+{
+"description": "Токен MCP-подключения. Выпускается на странице hadl.app/setup/ai-assistants и показывается один раз. Отдельный от основного API HADL: доступа к логину, настройкам и экспорту не даёт, отзывается перевыпуском.",
+"isRequired": true,
+"value": "Bearer {mcp_token}",
+"isSecret": true,
+"name": "Authorization"
+}
+],
+"variables": {
+"mcp_token": {
+"description": "Токен MCP-подключения из настроек HADL (hadl.app/setup/ai-assistants)",
+"isRequired": true,
+"isSecret": true
+}
+}
+}
+]
+},
+"_meta": {
+"io.modelcontextprotocol.registry/official": {
+"status": "active",
+"statusChangedAt": "2026-08-18T18:43:55.501066Z",
+"publishedAt": "2026-08-18T18:43:55.501066Z",
+"updatedAt": "2026-08-18T18:43:55.501066Z",
+"isLatest": true
+}
+}
+},
+{
+"server": {
+"$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+"name": "ar.com.sofiaferro/portfolio",
+"description": "Sofia Ferro's portfolio: projects, blog posts, JSON Resume and a contact tool (es/en).",
+"version": "1.0.0",
+"websiteUrl": "https://www.sofiaferro.com.ar",
+"remotes": [
+{
+"type": "streamable-http",
+"url": "https://www.sofiaferro.com.ar/api/mcp"
+}
+]
+},
+"_meta": {
+"io.modelcontextprotocol.registry/official": {
+"status": "active",
+"statusChangedAt": "2026-09-15T21:49:12.750452Z",
+"publishedAt": "2026-09-15T21:49:12.750452Z",
+"updatedAt": "2026-09-15T21:49:12.750452Z",
+"isLatest": true
+}
+}
+},
+{
+"server": {
+"$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+"name": "au.bricktrack/portfolio",
+"description": "Australian property portfolio: positions, performance, tax and transactions, scoped by OAuth login.",
+"title": "BrickTrack",
+"version": "0.1.0",
+"websiteUrl": "https://www.bricktrack.au/help/guides/ai-assistants",
+"remotes": [
+{
+"type": "streamable-http",
+"url": "https://www.bricktrack.au/api/mcp"
+}
+]
+},
+"_meta": {
+"io.modelcontextprotocol.registry/official": {
+"status": "active",
+"statusChangedAt": "2026-09-17T07:24:31.961146Z",
+"publishedAt": "2026-09-17T07:24:31.961146Z",
+"updatedAt": "2026-09-17T07:24:31.961146Z",
+"isLatest": true
+}
+}
+},
+{
+"server": {
+"$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+"name": "com.bokendell/portfolio",
+"description": "Bo Kendell's portfolio: projects, writing, work history, resume, and live activity.",
+"title": "Bo Kendell — Portfolio",
+"repository": {
+"url": "https://github.com/bokendell/bokendell",
+"source": "github"
+},
+"version": "1.0.0",
+"websiteUrl": "https://bokendell.com",
+"remotes": [
+{
+"type": "streamable-http",
+"url": "https://bokendell.com/mcp"
+}
+]
+},
+"_meta": {
+"io.modelcontextprotocol.registry/official": {
+"status": "active",
+"statusChangedAt": "2026-08-24T19:53:37.358429Z",
+"publishedAt": "2026-08-24T19:53:37.358429Z",
+"updatedAt": "2026-08-24T19:53:37.358429Z",
+"isLatest": true
+}
+}
+},
+{
+"server": {
+"$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+"name": "com.heybrahim/portfolio",
+"description": "Brahim Bousnguar's portfolio: profile, availability, case studies, notes, CV requests.",
+"title": "Brahim Bousnguar — portfolio",
+"version": "1.0.0",
+"websiteUrl": "https://heybrahim.com/ai.html#mcp",
+"remotes": [
+{
+"type": "streamable-http",
+"url": "https://api.heybrahim.com/mcp"
+}
+]
+},
+"_meta": {
+"io.modelcontextprotocol.registry/official": {
+"status": "active",
+"statusChangedAt": "2026-09-27T07:17:29.593612Z",
+"publishedAt": "2026-09-27T07:17:29.593612Z",
+"updatedAt": "2026-09-27T07:17:29.593612Z",
+"isLatest": true
+}
+}
+},
+{
+"server": {
+"$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+"name": "com.jeremytwogood/portfolio",
+"description": "MCP server for Jeremy Twogood, Toronto video producer & editor. Projects, reel, resume, booking.",
+"title": "Jeremy Twogood — Portfolio",
+"version": "1.0.0",
+"websiteUrl": "https://jeremytwogood.com",
+"remotes": [
+{
+"type": "streamable-http",
+"url": "https://jeremytwogood.com/api/mcp"
+}
+]
+},
+"_meta": {
+"io.modelcontextprotocol.registry/official": {
+"status": "active",
+"statusChangedAt": "2026-07-13T14:02:40.082894Z",
+"publishedAt": "2026-07-13T14:02:40.082894Z",
+"updatedAt": "2026-07-13T14:02:40.082894Z",
+"isLatest": true
+}
+}
+},
+{
+"server": {
+"$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+"name": "com.virohanalife/portfolio",
+"description": "Akshay Shetty's engineering portfolio and resume, queryable by AI. OAuth-secured.",
+"version": "1.0.0",
+"websiteUrl": "https://www.virohanalife.com/founder.html",
+"remotes": [
+{
+"type": "streamable-http",
+"url": "https://hire.virohanalife.com/mcp"
+}
+]
+},
+"_meta": {
+"io.modelcontextprotocol.registry/official": {
+"status": "active",
+"statusChangedAt": "2026-06-28T05:27:43.323309Z",
+"publishedAt": "2026-06-28T05:27:43.323309Z",
+"updatedAt": "2026-06-28T05:27:43.323309Z",
+"isLatest": true
+}
+}
+},
+{
+"server": {
+"$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+"name": "design.kwnva/portfolio",
+"description": "Catalog MCP for kwnva.design case studies, studio profile, and project inquiries.",
+"title": "kwnva.design portfolio",
+"version": "1.0.0",
+"websiteUrl": "https://kwnva.design/docs",
+"remotes": [
+{
+"type": "streamable-http",
+"url": "https://kwnva.design/api/mcp"
+}
+]
+},
+"_meta": {
+"io.modelcontextprotocol.registry/official": {
+"status": "active",
+"statusChangedAt": "2026-08-30T14:57:12.496748Z",
+"publishedAt": "2026-08-30T14:57:12.496748Z",
+"updatedAt": "2026-08-30T14:57:12.496748Z",
+"isLatest": false
+}
+}
+},
+{
+"server": {
+"$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+"name": "design.kwnva/portfolio",
+"description": "Catalog MCP for kwnva.design case studies, studio profile, and project inquiries.",
+"title": "kwnva.design portfolio",
+"repository": {
+"url": "https://github.com/kwnva/kwnva.design",
+"source": "github",
+"id": "1351490930"
+},
+"version": "1.0.1",
+"websiteUrl": "https://kwnva.design/docs",
+"remotes": [
+{
+"type": "streamable-http",
+"url": "https://kwnva.design/api/mcp"
+}
+]
+},
+"_meta": {
+"io.modelcontextprotocol.registry/official": {
+"status": "active",
+"statusChangedAt": "2026-08-30T15:02:43.449895Z",
+"publishedAt": "2026-08-30T15:02:43.449895Z",
+"updatedAt": "2026-08-30T15:02:43.449895Z",
+"isLatest": false
+}
+}
+},
+{
+"server": {
+"$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+"name": "design.kwnva/portfolio",
+"description": "Catalog MCP for kwnva.design case studies, studio profile, and project inquiries.",
+"title": "kwnva.design portfolio",
+"repository": {
+"url": "https://github.com/kwnva/kwnva.design",
+"source": "github",
+"id": "1351490930"
+},
+"version": "1.0.2",
+"websiteUrl": "https://kwnva.design/docs",
+"remotes": [
+{
+"type": "streamable-http",
+"url": "https://kwnva.design/mcp"
+}
+]
+},
+"_meta": {
+"io.modelcontextprotocol.registry/official": {
+"status": "active",
+"statusChangedAt": "2026-08-30T15:21:41.460102Z",
+"publishedAt": "2026-08-30T15:21:41.460102Z",
+"updatedAt": "2026-08-30T15:21:41.460102Z",
+"isLatest": true
+}
+}
+}
+],
+"metadata": {
+"nextCursor": "design.kwnva/portfolio:1.0.2",
+"count": 10
+}
+}

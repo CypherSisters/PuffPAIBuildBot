@@ -1,0 +1,4436 @@
+{
+ "qwen2.5_7b-instruct": {
+  "total": 334,
+  "blocked": 15,
+  "list": [
+   [
+    "garden",
+    "tucson weather",
+    [
+     "tucson=held:place?"
+    ]
+   ],
+   [
+    "garden",
+    "tucson climate",
+    [
+     "tucson=held:place?"
+    ]
+   ],
+   [
+    "garden",
+    "tucson gardening guide",
+    [
+     "tucson=held:place?"
+    ]
+   ],
+   [
+    "garden",
+    "tucson gardening schedule",
+    [
+     "tucson=held:place?"
+    ]
+   ],
+   [
+    "garden",
+    "tucson gardeners",
+    [
+     "tucson=held:place?"
+    ]
+   ],
+   [
+    "bakery",
+    "instagram automation",
+    [
+     "instagram=held:place?"
+    ]
+   ],
+   [
+    "pet",
+    "medication reminder",
+    [
+     "medication=held:health"
+    ]
+   ],
+   [
+    "pet",
+    "medication schedule",
+    [
+     "medication=held:health"
+    ]
+   ],
+   [
+    "pet",
+    "son reminder",
+    [
+     "son=hard:relative"
+    ]
+   ],
+   [
+    "pet",
+    "son reminder",
+    [
+     "son=hard:relative"
+    ]
+   ],
+   [
+    "budget",
+    "christmas expense tracker",
+    [
+     "christmas=held:name or place?"
+    ]
+   ],
+   [
+    "budget",
+    "christmas expense form",
+    [
+     "christmas=held:name or place?"
+    ]
+   ],
+   [
+    "space",
+    "dayton weather",
+    [
+     "dayton=held:place?"
+    ]
+   ],
+   [
+    "meals",
+    "allergy checker",
+    [
+     "allergy=held:health"
+    ]
+   ],
+   [
+    "meals",
+    "peanut allergy",
+    [
+     "allergy=held:health"
+    ]
+   ]
+  ],
+  "passed": [
+   [
+    "wedding",
+    "theme ideas"
+   ],
+   [
+    "wedding",
+    "wedding themes"
+   ],
+   [
+    "wedding",
+    "image gallery"
+   ],
+   [
+    "wedding",
+    "theme tracker"
+   ],
+   [
+    "wedding",
+    "wedding ideas"
+   ],
+   [
+    "wedding",
+    "creative wedding"
+   ],
+   [
+    "wedding",
+    "wedding inspiration"
+   ],
+   [
+    "wedding",
+    "theme ideas"
+   ],
+   [
+    "wedding",
+    "wedding vendors"
+   ],
+   [
+    "wedding",
+    "rental services"
+   ],
+   [
+    "wedding",
+    "vendor finder"
+   ],
+   [
+    "wedding",
+    "event planner"
+   ],
+   [
+    "wedding",
+    "budget template"
+   ],
+   [
+    "wedding",
+    "event budget"
+   ],
+   [
+    "wedding",
+    "budget planner"
+   ],
+   [
+    "wedding",
+    "finance app"
+   ],
+   [
+    "wedding",
+    "wedding checklist"
+   ],
+   [
+    "wedding",
+    "event planner"
+   ],
+   [
+    "wedding",
+    "event planner"
+   ],
+   [
+    "wedding",
+    "wedding planner"
+   ],
+   [
+    "wedding",
+    "contact list"
+   ],
+   [
+    "wedding",
+    "guest list"
+   ],
+   [
+    "wedding",
+    "contact manager"
+   ],
+   [
+    "wedding",
+    "address book"
+   ],
+   [
+    "wedding",
+    "reminder app"
+   ],
+   [
+    "wedding",
+    "task manager"
+   ],
+   [
+    "wedding",
+    "reminder list"
+   ],
+   [
+    "wedding",
+    "task list"
+   ],
+   [
+    "garden",
+    "garden watering reminders"
+   ],
+   [
+    "garden",
+    "smart garden reminders"
+   ],
+   [
+    "garden",
+    "garden planting calendar"
+   ],
+   [
+    "garden",
+    "monthly garden tasks"
+   ],
+   [
+    "garden",
+    "southwest garden plants"
+   ],
+   [
+    "garden",
+    "garden pest identification"
+   ],
+   [
+    "garden",
+    "plant pest recognition"
+   ],
+   [
+    "garden",
+    "common garden pests"
+   ],
+   [
+    "garden",
+    "pest damage on plants"
+   ],
+   [
+    "garden",
+    "garden task checklist"
+   ],
+   [
+    "garden",
+    "daily garden to-do list"
+   ],
+   [
+    "garden",
+    "garden maintenance"
+   ],
+   [
+    "garden",
+    "garden care tips"
+   ],
+   [
+    "garden",
+    "garden task scheduler"
+   ],
+   [
+    "garden",
+    "smart garden calendar"
+   ],
+   [
+    "garden",
+    "southwest garden calendar"
+   ],
+   [
+    "garden",
+    "local gardeners"
+   ],
+   [
+    "garden",
+    "gardeners directory"
+   ],
+   [
+    "garden",
+    "southwest gardening resources"
+   ],
+   [
+    "fitness",
+    "fitness log app"
+   ],
+   [
+    "fitness",
+    "running log"
+   ],
+   [
+    "fitness",
+    "running log template"
+   ],
+   [
+    "fitness",
+    "fitness log sheet"
+   ],
+   [
+    "fitness",
+    "training plan app"
+   ],
+   [
+    "fitness",
+    "fitness plan app"
+   ],
+   [
+    "fitness",
+    "training plan template"
+   ],
+   [
+    "fitness",
+    "fitness plan sheet"
+   ],
+   [
+    "fitness",
+    "weight tracker app"
+   ],
+   [
+    "fitness",
+    "fitness weight tracker"
+   ],
+   [
+    "fitness",
+    "weight log template"
+   ],
+   [
+    "fitness",
+    "fitness weight sheet"
+   ],
+   [
+    "fitness",
+    "sleep tracker app"
+   ],
+   [
+    "fitness",
+    "fitness sleep tracker"
+   ],
+   [
+    "fitness",
+    "sleep log template"
+   ],
+   [
+    "fitness",
+    "fitness sleep sheet"
+   ],
+   [
+    "fitness",
+    "reminder app"
+   ],
+   [
+    "fitness",
+    "fitness reminder app"
+   ],
+   [
+    "fitness",
+    "stretching exercises"
+   ],
+   [
+    "fitness",
+    "fitness stretching"
+   ],
+   [
+    "fitness",
+    "training plan app"
+   ],
+   [
+    "fitness",
+    "fitness plan app"
+   ],
+   [
+    "fitness",
+    "10k training plan"
+   ],
+   [
+    "fitness",
+    "running training plan"
+   ],
+   [
+    "fitness",
+    "nutrition app"
+   ],
+   [
+    "fitness",
+    "fitness nutrition app"
+   ],
+   [
+    "fitness",
+    "10k nutrition"
+   ],
+   [
+    "fitness",
+    "fitness nutrition"
+   ],
+   [
+    "fitness",
+    "motivation app"
+   ],
+   [
+    "fitness",
+    "fitness motivation app"
+   ],
+   [
+    "fitness",
+    "motivation quotes"
+   ],
+   [
+    "fitness",
+    "fitness motivation"
+   ],
+   [
+    "dnd",
+    "dnd initiative tracker"
+   ],
+   [
+    "dnd",
+    "initiative tracker app"
+   ],
+   [
+    "dnd",
+    "dnd initiative sheet"
+   ],
+   [
+    "dnd",
+    "initiative tracking template"
+   ],
+   [
+    "dnd",
+    "dnd dice roller"
+   ],
+   [
+    "dnd",
+    "dice roller app"
+   ],
+   [
+    "dnd",
+    "dnd dice rolls"
+   ],
+   [
+    "dnd",
+    "dice roll generator"
+   ],
+   [
+    "dnd",
+    "dnd npc generator"
+   ],
+   [
+    "dnd",
+    "character generator app"
+   ],
+   [
+    "dnd",
+    "dnd character creation"
+   ],
+   [
+    "dnd",
+    "creating npcs"
+   ],
+   [
+    "dnd",
+    "dnd loot generator"
+   ],
+   [
+    "dnd",
+    "random loot generator"
+   ],
+   [
+    "dnd",
+    "dnd treasure"
+   ],
+   [
+    "dnd",
+    "dnd loot"
+   ],
+   [
+    "dnd",
+    "dnd session notes"
+   ],
+   [
+    "dnd",
+    "campaign tracker"
+   ],
+   [
+    "dnd",
+    "dnd session notes template"
+   ],
+   [
+    "dnd",
+    "campaign notes"
+   ],
+   [
+    "dnd",
+    "dnd spell reference"
+   ],
+   [
+    "dnd",
+    "spellbook app"
+   ],
+   [
+    "dnd",
+    "dnd spells"
+   ],
+   [
+    "dnd",
+    "dnd spellbook"
+   ],
+   [
+    "dnd",
+    "dnd monster stats"
+   ],
+   [
+    "dnd",
+    "monster database"
+   ],
+   [
+    "dnd",
+    "dnd monsters"
+   ],
+   [
+    "dnd",
+    "monster stats"
+   ],
+   [
+    "dnd",
+    "dnd character sheets"
+   ],
+   [
+    "dnd",
+    "character sheet app"
+   ],
+   [
+    "dnd",
+    "dnd character sheet template"
+   ],
+   [
+    "dnd",
+    "character sheets"
+   ],
+   [
+    "dnd",
+    "campaign calendar"
+   ],
+   [
+    "dnd",
+    "event tracker"
+   ],
+   [
+    "dnd",
+    "campaign schedule"
+   ],
+   [
+    "dnd",
+    "event planner"
+   ],
+   [
+    "dnd",
+    "dnd rules reference"
+   ],
+   [
+    "dnd",
+    "rules app"
+   ],
+   [
+    "dnd",
+    "dnd rules"
+   ],
+   [
+    "dnd",
+    "dnd rules guide"
+   ],
+   [
+    "bakery",
+    "recipe manager"
+   ],
+   [
+    "bakery",
+    "open source"
+   ],
+   [
+    "bakery",
+    "recipe spreadsheet"
+   ],
+   [
+    "bakery",
+    "cost template"
+   ],
+   [
+    "bakery",
+    "order form"
+   ],
+   [
+    "bakery",
+    "bakery app"
+   ],
+   [
+    "bakery",
+    "cake order process"
+   ],
+   [
+    "bakery",
+    "baking business"
+   ],
+   [
+    "bakery",
+    "bake schedule"
+   ],
+   [
+    "bakery",
+    "bakery management"
+   ],
+   [
+    "bakery",
+    "baking times"
+   ],
+   [
+    "bakery",
+    "oven temperature"
+   ],
+   [
+    "bakery",
+    "inventory tracker"
+   ],
+   [
+    "bakery",
+    "ingredient log"
+   ],
+   [
+    "bakery",
+    "ingredient list"
+   ],
+   [
+    "bakery",
+    "supplier contacts"
+   ],
+   [
+    "bakery",
+    "social media bot"
+   ],
+   [
+    "bakery",
+    "bakery photos"
+   ],
+   [
+    "bakery",
+    "cake images"
+   ],
+   [
+    "bakery",
+    "review system"
+   ],
+   [
+    "bakery",
+    "customer feedback"
+   ],
+   [
+    "bakery",
+    "customer service"
+   ],
+   [
+    "bakery",
+    "review management"
+   ],
+   [
+    "bakery",
+    "sales tracker"
+   ],
+   [
+    "bakery",
+    "bakery accounting"
+   ],
+   [
+    "bakery",
+    "sales report"
+   ],
+   [
+    "bakery",
+    "revenue log"
+   ],
+   [
+    "car",
+    "oil change tracker"
+   ],
+   [
+    "car",
+    "vehicle maintenance app"
+   ],
+   [
+    "car",
+    "oil change log template"
+   ],
+   [
+    "car",
+    "vehicle maintenance spreadsheet"
+   ],
+   [
+    "car",
+    "tire rotation tracker"
+   ],
+   [
+    "car",
+    "vehicle maintenance app"
+   ],
+   [
+    "car",
+    "tire rotation log template"
+   ],
+   [
+    "car",
+    "vehicle maintenance spreadsheet"
+   ],
+   [
+    "car",
+    "vehicle registration reminder"
+   ],
+   [
+    "car",
+    "car maintenance app"
+   ],
+   [
+    "car",
+    "vehicle registration deadlines"
+   ],
+   [
+    "car",
+    "car registration dates"
+   ],
+   [
+    "car",
+    "vehicle recall checker"
+   ],
+   [
+    "car",
+    "car safety app"
+   ],
+   [
+    "car",
+    "vehicle recall database"
+   ],
+   [
+    "car",
+    "car safety information"
+   ],
+   [
+    "car",
+    "car warning lights"
+   ],
+   [
+    "car",
+    "vehicle dashboard"
+   ],
+   [
+    "car",
+    "car diagnostic app"
+   ],
+   [
+    "car",
+    "vehicle troubleshooting app"
+   ],
+   [
+    "car",
+    "vehicle maintenance log"
+   ],
+   [
+    "car",
+    "car service record"
+   ],
+   [
+    "car",
+    "vehicle maintenance tracker"
+   ],
+   [
+    "car",
+    "car log app"
+   ],
+   [
+    "car",
+    "vehicle service reminder"
+   ],
+   [
+    "car",
+    "car maintenance app"
+   ],
+   [
+    "car",
+    "vehicle service intervals"
+   ],
+   [
+    "car",
+    "car maintenance schedules"
+   ],
+   [
+    "car",
+    "vehicle history tracker"
+   ],
+   [
+    "car",
+    "car history app"
+   ],
+   [
+    "car",
+    "vehicle history log"
+   ],
+   [
+    "car",
+    "car history record"
+   ],
+   [
+    "car",
+    "vehicle history database"
+   ],
+   [
+    "car",
+    "car history information"
+   ],
+   [
+    "spanish",
+    "spanish conversation practice code"
+   ],
+   [
+    "spanish",
+    "spanish conversation phrases"
+   ],
+   [
+    "spanish",
+    "spanish vocabulary flashcards app"
+   ],
+   [
+    "spanish",
+    "spanish vocabulary flashcards template"
+   ],
+   [
+    "spanish",
+    "spanish grammar correction code"
+   ],
+   [
+    "spanish",
+    "spanish grammar rules"
+   ],
+   [
+    "spanish",
+    "spanish phrases for restaurants code"
+   ],
+   [
+    "spanish",
+    "common phrases for taxis andrestaurants"
+   ],
+   [
+    "spanish",
+    "lesson scheduling app"
+   ],
+   [
+    "spanish",
+    "lesson schedule template"
+   ],
+   [
+    "spanish",
+    "progress tracking app"
+   ],
+   [
+    "spanish",
+    "progress tracking template"
+   ],
+   [
+    "pet",
+    "vet tracker"
+   ],
+   [
+    "pet",
+    "pet health"
+   ],
+   [
+    "pet",
+    "vet visit log"
+   ],
+   [
+    "pet",
+    "pet health"
+   ],
+   [
+    "pet",
+    "pet health"
+   ],
+   [
+    "pet",
+    "pet health"
+   ],
+   [
+    "pet",
+    "feeding schedule"
+   ],
+   [
+    "pet",
+    "pet health"
+   ],
+   [
+    "pet",
+    "feeding log"
+   ],
+   [
+    "pet",
+    "pet health"
+   ],
+   [
+    "pet",
+    "pet health"
+   ],
+   [
+    "pet",
+    "pet health"
+   ],
+   [
+    "pet",
+    "toxic food list"
+   ],
+   [
+    "pet",
+    "pet health"
+   ],
+   [
+    "pet",
+    "toxic food database"
+   ],
+   [
+    "pet",
+    "pet health"
+   ],
+   [
+    "pet",
+    "calendar reminder"
+   ],
+   [
+    "pet",
+    "pet health"
+   ],
+   [
+    "pet",
+    "calendar service"
+   ],
+   [
+    "pet",
+    "pet health"
+   ],
+   [
+    "pet",
+    "pet food database"
+   ],
+   [
+    "pet",
+    "pet health"
+   ],
+   [
+    "pet",
+    "toxic food list"
+   ],
+   [
+    "pet",
+    "pet health"
+   ],
+   [
+    "budget",
+    "bank export parser"
+   ],
+   [
+    "budget",
+    "transaction categorizer"
+   ],
+   [
+    "budget",
+    "expense tracking template"
+   ],
+   [
+    "budget",
+    "budget spreadsheet"
+   ],
+   [
+    "budget",
+    "budget setter"
+   ],
+   [
+    "budget",
+    "monthly budget manager"
+   ],
+   [
+    "budget",
+    "monthly budget template"
+   ],
+   [
+    "budget",
+    "budget planning form"
+   ],
+   [
+    "budget",
+    "holiday budget planner"
+   ],
+   [
+    "budget",
+    "holiday budget template"
+   ],
+   [
+    "budget",
+    "summer camp budget planner"
+   ],
+   [
+    "budget",
+    "camp expense tracker"
+   ],
+   [
+    "budget",
+    "summer camp budget template"
+   ],
+   [
+    "budget",
+    "camp expense form"
+   ],
+   [
+    "budget",
+    "credit card debt tracker"
+   ],
+   [
+    "budget",
+    "debt repayment planner"
+   ],
+   [
+    "budget",
+    "credit card debt template"
+   ],
+   [
+    "budget",
+    "debt repayment form"
+   ],
+   [
+    "budget",
+    "chart generator"
+   ],
+   [
+    "budget",
+    "data visualization tool"
+   ],
+   [
+    "budget",
+    "chart template"
+   ],
+   [
+    "budget",
+    "data visualization form"
+   ],
+   [
+    "budget",
+    "expense log"
+   ],
+   [
+    "budget",
+    "transaction journal"
+   ],
+   [
+    "budget",
+    "expense log template"
+   ],
+   [
+    "budget",
+    "transaction journal form"
+   ],
+   [
+    "budget",
+    "reminder app"
+   ],
+   [
+    "budget",
+    "notification system"
+   ],
+   [
+    "budget",
+    "calendar with reminders"
+   ],
+   [
+    "budget",
+    "reminder service"
+   ],
+   [
+    "budget",
+    "category list"
+   ],
+   [
+    "budget",
+    "spending categories"
+   ],
+   [
+    "budget",
+    "category list template"
+   ],
+   [
+    "budget",
+    "spending categories form"
+   ],
+   [
+    "band",
+    "setlist manager"
+   ],
+   [
+    "band",
+    "musician app"
+   ],
+   [
+    "band",
+    "setlist template"
+   ],
+   [
+    "band",
+    "song chart"
+   ],
+   [
+    "band",
+    "song knowledge"
+   ],
+   [
+    "band",
+    "musician app"
+   ],
+   [
+    "band",
+    "music theory"
+   ],
+   [
+    "band",
+    "songwriting guide"
+   ],
+   [
+    "band",
+    "metronome app"
+   ],
+   [
+    "band",
+    "smart metronome"
+   ],
+   [
+    "band",
+    "metronome app"
+   ],
+   [
+    "band",
+    "music practice app"
+   ],
+   [
+    "band",
+    "tuner app"
+   ],
+   [
+    "band",
+    "smart tuner"
+   ],
+   [
+    "band",
+    "tuner app"
+   ],
+   [
+    "band",
+    "music practice app"
+   ],
+   [
+    "band",
+    "gig scheduler"
+   ],
+   [
+    "band",
+    "musician app"
+   ],
+   [
+    "band",
+    "concert schedules"
+   ],
+   [
+    "band",
+    "gig listings"
+   ],
+   [
+    "band",
+    "expense tracker"
+   ],
+   [
+    "band",
+    "finance app"
+   ],
+   [
+    "band",
+    "expense report"
+   ],
+   [
+    "band",
+    "budget template"
+   ],
+   [
+    "band",
+    "practice schedule"
+   ],
+   [
+    "band",
+    "musician app"
+   ],
+   [
+    "band",
+    "practice log"
+   ],
+   [
+    "band",
+    "musician schedule"
+   ],
+   [
+    "band",
+    "contact list"
+   ],
+   [
+    "band",
+    "musician app"
+   ],
+   [
+    "band",
+    "contact form"
+   ],
+   [
+    "band",
+    "band roster"
+   ],
+   [
+    "space",
+    "space pictures"
+   ],
+   [
+    "space",
+    "rocket images"
+   ],
+   [
+    "space",
+    "iss flyover"
+   ],
+   [
+    "space",
+    "iss tracker"
+   ],
+   [
+    "space",
+    "space quiz app"
+   ],
+   [
+    "space",
+    "astronomy quiz"
+   ],
+   [
+    "space",
+    "weather check"
+   ],
+   [
+    "space",
+    "iss tracking"
+   ],
+   [
+    "space",
+    "iss position"
+   ],
+   [
+    "space",
+    "space education"
+   ],
+   [
+    "space",
+    "astronomy guide"
+   ],
+   [
+    "meals",
+    "meal plan generator"
+   ],
+   [
+    "meals",
+    "weekly meal planner"
+   ],
+   [
+    "meals",
+    "meal plan template"
+   ],
+   [
+    "meals",
+    "weekly dinner plan"
+   ],
+   [
+    "meals",
+    "recipe scraper"
+   ],
+   [
+    "meals",
+    "web recipe collector"
+   ],
+   [
+    "meals",
+    "cooking blogs"
+   ],
+   [
+    "meals",
+    "food websites"
+   ],
+   [
+    "meals",
+    "grocery list generator"
+   ],
+   [
+    "meals",
+    "meal to grocery list"
+   ],
+   [
+    "meals",
+    "grocery list template"
+   ],
+   [
+    "meals",
+    "shopping list"
+   ],
+   [
+    "meals",
+    "grocery list sorter"
+   ],
+   [
+    "meals",
+    "aisle organization"
+   ],
+   [
+    "meals",
+    "grocery store layout"
+   ],
+   [
+    "meals",
+    "aisle map"
+   ],
+   [
+    "meals",
+    "inventory tracker"
+   ],
+   [
+    "meals",
+    "fridge inventory"
+   ],
+   [
+    "meals",
+    "fridge contents"
+   ],
+   [
+    "meals",
+    "available ingredients"
+   ],
+   [
+    "meals",
+    "nutrition calculator"
+   ],
+   [
+    "meals",
+    "food nutrition"
+   ],
+   [
+    "meals",
+    "nutrition guides"
+   ],
+   [
+    "meals",
+    "food labels"
+   ],
+   [
+    "meals",
+    "dietary restrictions checker"
+   ],
+   [
+    "meals",
+    "gluten free recipes"
+   ]
+  ]
+ },
+ "gemma3_4b": {
+  "total": 250,
+  "blocked": 9,
+  "list": [
+   [
+    "garden",
+    "tucson rainfall data",
+    [
+     "tucson=held:place?"
+    ]
+   ],
+   [
+    "garden",
+    "tucson gardening calendar",
+    [
+     "tucson=held:place?"
+    ]
+   ],
+   [
+    "garden",
+    "tucson weather alerts",
+    [
+     "tucson=held:place?"
+    ]
+   ],
+   [
+    "bakery",
+    "instagram scheduling tool food",
+    [
+     "instagram=held:place?"
+    ]
+   ],
+   [
+    "bakery",
+    "instagram content calendar",
+    [
+     "instagram=held:place?"
+    ]
+   ],
+   [
+    "pet",
+    "medication reminder app",
+    [
+     "medication=held:health"
+    ]
+   ],
+   [
+    "pet",
+    "pet medication log",
+    [
+     "medication=held:health"
+    ]
+   ],
+   [
+    "budget",
+    "christmas budget spreadsheet",
+    [
+     "christmas=held:name or place?"
+    ]
+   ],
+   [
+    "meals",
+    "allergy recipe filter",
+    [
+     "allergy=held:health"
+    ]
+   ]
+  ],
+  "passed": [
+   [
+    "wedding",
+    "image recognition wedding themes"
+   ],
+   [
+    "wedding",
+    "wedding theme identification api"
+   ],
+   [
+    "wedding",
+    "color palette analysis wedding"
+   ],
+   [
+    "wedding",
+    "wedding inspiration websites"
+   ],
+   [
+    "wedding",
+    "wedding trend articles"
+   ],
+   [
+    "wedding",
+    "wedding idea databases"
+   ],
+   [
+    "wedding",
+    "wedding vendor directory api"
+   ],
+   [
+    "wedding",
+    "local wedding vendor listings"
+   ],
+   [
+    "wedding",
+    "wedding vendor search engine"
+   ],
+   [
+    "wedding",
+    "wedding rental marketplace"
+   ],
+   [
+    "wedding",
+    "event rental listings"
+   ],
+   [
+    "wedding",
+    "party supply vendor search"
+   ],
+   [
+    "wedding",
+    "wedding budget spreadsheet"
+   ],
+   [
+    "wedding",
+    "event budget template"
+   ],
+   [
+    "wedding",
+    "wedding expense tracker"
+   ],
+   [
+    "wedding",
+    "wedding timeline template"
+   ],
+   [
+    "wedding",
+    "event schedule template"
+   ],
+   [
+    "wedding",
+    "wedding planning checklist"
+   ],
+   [
+    "wedding",
+    "vendor contact database"
+   ],
+   [
+    "wedding",
+    "wedding vendor contact list"
+   ],
+   [
+    "wedding",
+    "wedding shopping list template"
+   ],
+   [
+    "wedding",
+    "event supply checklist"
+   ],
+   [
+    "garden",
+    "plant watering schedule"
+   ],
+   [
+    "garden",
+    "garden reminder app"
+   ],
+   [
+    "garden",
+    "local weather forecast"
+   ],
+   [
+    "garden",
+    "vegetable planting guide"
+   ],
+   [
+    "garden",
+    "monthly garden planting chart"
+   ],
+   [
+    "garden",
+    "kale pest identification guide"
+   ],
+   [
+    "garden",
+    "vegetable pest control"
+   ],
+   [
+    "garden",
+    "kale pest images"
+   ],
+   [
+    "garden",
+    "common vegetable pests"
+   ],
+   [
+    "garden",
+    "raised bed dimensions template"
+   ],
+   [
+    "garden",
+    "garden bed sizes"
+   ],
+   [
+    "garden",
+    "raised bed design ideas"
+   ],
+   [
+    "garden",
+    "plant tracking spreadsheet"
+   ],
+   [
+    "garden",
+    "garden journal template"
+   ],
+   [
+    "garden",
+    "severe weather warnings"
+   ],
+   [
+    "garden",
+    "optimal soil moisture levels"
+   ],
+   [
+    "garden",
+    "vegetable watering requirements"
+   ],
+   [
+    "garden",
+    "plant health checklist"
+   ],
+   [
+    "garden",
+    "vegetable disease symptoms"
+   ],
+   [
+    "fitness",
+    "running log app"
+   ],
+   [
+    "fitness",
+    "gps run tracker"
+   ],
+   [
+    "fitness",
+    "workout logging software"
+   ],
+   [
+    "fitness",
+    "weightlifting tracker app"
+   ],
+   [
+    "fitness",
+    "exercise logging software"
+   ],
+   [
+    "fitness",
+    "strength training log"
+   ],
+   [
+    "fitness",
+    "10k training plan template"
+   ],
+   [
+    "fitness",
+    "marathon training schedule"
+   ],
+   [
+    "fitness",
+    "running training plan"
+   ],
+   [
+    "fitness",
+    "weight tracking spreadsheet"
+   ],
+   [
+    "fitness",
+    "daily weight log"
+   ],
+   [
+    "fitness",
+    "weight loss tracker"
+   ],
+   [
+    "fitness",
+    "sleep tracking app"
+   ],
+   [
+    "fitness",
+    "sleep data analysis"
+   ],
+   [
+    "fitness",
+    "sleep cycle monitoring"
+   ],
+   [
+    "fitness",
+    "reminder app"
+   ],
+   [
+    "fitness",
+    "stretch schedule app"
+   ],
+   [
+    "fitness",
+    "habit tracker notification"
+   ],
+   [
+    "dnd",
+    "dnd initiative tracker"
+   ],
+   [
+    "dnd",
+    "dnd initiative app"
+   ],
+   [
+    "dnd",
+    "dnd initiative bot"
+   ],
+   [
+    "dnd",
+    "dnd dice roller app"
+   ],
+   [
+    "dnd",
+    "dnd dice bot"
+   ],
+   [
+    "dnd",
+    "virtual dice roller"
+   ],
+   [
+    "dnd",
+    "dnd npc template"
+   ],
+   [
+    "dnd",
+    "dnd character sheet"
+   ],
+   [
+    "dnd",
+    "npc creation form"
+   ],
+   [
+    "dnd",
+    "dnd loot table"
+   ],
+   [
+    "dnd",
+    "dnd treasure generator"
+   ],
+   [
+    "dnd",
+    "loot distribution template"
+   ],
+   [
+    "dnd",
+    "dnd session notes app"
+   ],
+   [
+    "dnd",
+    "dnd campaign log"
+   ],
+   [
+    "dnd",
+    "dnd session tracker"
+   ],
+   [
+    "dnd",
+    "dnd spell database"
+   ],
+   [
+    "dnd",
+    "dnd spell api"
+   ],
+   [
+    "dnd",
+    "dnd spell lookup"
+   ],
+   [
+    "dnd",
+    "dnd monster stats api"
+   ],
+   [
+    "dnd",
+    "dnd monster database"
+   ],
+   [
+    "dnd",
+    "dnd monster reference"
+   ],
+   [
+    "bakery",
+    "recipe management app bakery"
+   ],
+   [
+    "bakery",
+    "food recipe database app"
+   ],
+   [
+    "bakery",
+    "ingredient tracking software"
+   ],
+   [
+    "bakery",
+    "costing spreadsheet bakery"
+   ],
+   [
+    "bakery",
+    "recipe cost calculator template"
+   ],
+   [
+    "bakery",
+    "food cost analysis spreadsheet"
+   ],
+   [
+    "bakery",
+    "order management system bakery"
+   ],
+   [
+    "bakery",
+    "cake order tracking app"
+   ],
+   [
+    "bakery",
+    "custom order processing software"
+   ],
+   [
+    "bakery",
+    "bake schedule app bakery"
+   ],
+   [
+    "bakery",
+    "production scheduling software food"
+   ],
+   [
+    "bakery",
+    "kitchen workflow automation"
+   ],
+   [
+    "bakery",
+    "inventory management system bakery"
+   ],
+   [
+    "bakery",
+    "ingredient tracking spreadsheet"
+   ],
+   [
+    "bakery",
+    "supplier database template"
+   ],
+   [
+    "bakery",
+    "social media post automation bakery"
+   ],
+   [
+    "car",
+    "vehicle maintenance tracker"
+   ],
+   [
+    "car",
+    "car oil change log"
+   ],
+   [
+    "car",
+    "auto maintenance app"
+   ],
+   [
+    "car",
+    "vehicle service schedule"
+   ],
+   [
+    "car",
+    "tire rotation schedule"
+   ],
+   [
+    "car",
+    "car tire maintenance app"
+   ],
+   [
+    "car",
+    "vehicle tire tracking"
+   ],
+   [
+    "car",
+    "registration renewal checklist"
+   ],
+   [
+    "car",
+    "vehicle registration tracker"
+   ],
+   [
+    "car",
+    "car registration reminder"
+   ],
+   [
+    "car",
+    "vehicle recall database"
+   ],
+   [
+    "car",
+    "car recall search"
+   ],
+   [
+    "car",
+    "recall alerts by vehicle"
+   ],
+   [
+    "car",
+    "car warning light guide"
+   ],
+   [
+    "car",
+    "vehicle diagnostic codes"
+   ],
+   [
+    "car",
+    "auto repair manual"
+   ],
+   [
+    "car",
+    "vehicle maintenance log template"
+   ],
+   [
+    "car",
+    "car service record"
+   ],
+   [
+    "car",
+    "auto maintenance log"
+   ],
+   [
+    "car",
+    "vehicle repair contact list"
+   ],
+   [
+    "car",
+    "auto dealership contact template"
+   ],
+   [
+    "car",
+    "car service contact list"
+   ],
+   [
+    "spanish",
+    "spanish conversation practice app"
+   ],
+   [
+    "spanish",
+    "language learning chatbot"
+   ],
+   [
+    "spanish",
+    "interactive spanish tutor"
+   ],
+   [
+    "spanish",
+    "spanish vocabulary flashcard template"
+   ],
+   [
+    "spanish",
+    "digital flashcard app"
+   ],
+   [
+    "spanish",
+    "spanish learning flashcards"
+   ],
+   [
+    "spanish",
+    "spanish grammar checker app"
+   ],
+   [
+    "spanish",
+    "language learning grammar tool"
+   ],
+   [
+    "spanish",
+    "spanish language correction"
+   ],
+   [
+    "spanish",
+    "spanish restaurant phrases"
+   ],
+   [
+    "spanish",
+    "spanish dining vocabulary"
+   ],
+   [
+    "spanish",
+    "spanish restaurant menu phrases"
+   ],
+   [
+    "spanish",
+    "spanish taxi phrases"
+   ],
+   [
+    "spanish",
+    "spanish transportation vocabulary"
+   ],
+   [
+    "spanish",
+    "spanish taxi etiquette"
+   ],
+   [
+    "spanish",
+    "calendar reminder app"
+   ],
+   [
+    "spanish",
+    "scheduling app"
+   ],
+   [
+    "spanish",
+    "language learning calendar"
+   ],
+   [
+    "spanish",
+    "shopping list app"
+   ],
+   [
+    "spanish",
+    "checklist app"
+   ],
+   [
+    "spanish",
+    "digital shopping list"
+   ],
+   [
+    "pet",
+    "pet veterinary database"
+   ],
+   [
+    "pet",
+    "animal health tracker"
+   ],
+   [
+    "pet",
+    "veterinary record app"
+   ],
+   [
+    "pet",
+    "pet health log"
+   ],
+   [
+    "pet",
+    "drug schedule tracker"
+   ],
+   [
+    "pet",
+    "pet feeding schedule template"
+   ],
+   [
+    "pet",
+    "animal feeding log"
+   ],
+   [
+    "pet",
+    "dog cat feeding chart"
+   ],
+   [
+    "pet",
+    "dog walking reminder app"
+   ],
+   [
+    "pet",
+    "pet walking schedule"
+   ],
+   [
+    "pet",
+    "dog walking timer"
+   ],
+   [
+    "pet",
+    "toxic foods for dogs"
+   ],
+   [
+    "pet",
+    "poisonous foods cats"
+   ],
+   [
+    "pet",
+    "pet food toxicity guide"
+   ],
+   [
+    "pet",
+    "pet service contact list"
+   ],
+   [
+    "pet",
+    "veterinary contact template"
+   ],
+   [
+    "pet",
+    "calendar reminder app"
+   ],
+   [
+    "pet",
+    "event scheduling app"
+   ],
+   [
+    "budget",
+    "bank transaction import"
+   ],
+   [
+    "budget",
+    "csv import finance"
+   ],
+   [
+    "budget",
+    "financial data connector"
+   ],
+   [
+    "budget",
+    "monthly budget spreadsheet"
+   ],
+   [
+    "budget",
+    "budgeting categories template"
+   ],
+   [
+    "budget",
+    "expense tracking template"
+   ],
+   [
+    "budget",
+    "holiday spending tracker"
+   ],
+   [
+    "budget",
+    "gift list template"
+   ],
+   [
+    "budget",
+    "summer camp budget template"
+   ],
+   [
+    "budget",
+    "camp expenses tracker"
+   ],
+   [
+    "budget",
+    "family vacation planner"
+   ],
+   [
+    "budget",
+    "credit card balance tracker"
+   ],
+   [
+    "budget",
+    "payment schedule app"
+   ],
+   [
+    "budget",
+    "debt repayment planner"
+   ],
+   [
+    "budget",
+    "financial chart generator"
+   ],
+   [
+    "budget",
+    "spending analytics dashboard"
+   ],
+   [
+    "budget",
+    "expense visualization tool"
+   ],
+   [
+    "budget",
+    "expense categories spreadsheet"
+   ],
+   [
+    "budget",
+    "budgeting categories list"
+   ],
+   [
+    "budget",
+    "spending categorization template"
+   ],
+   [
+    "budget",
+    "financial data consolidation"
+   ],
+   [
+    "budget",
+    "data aggregation finance"
+   ],
+   [
+    "budget",
+    "financial data management"
+   ],
+   [
+    "band",
+    "music setlist app"
+   ],
+   [
+    "band",
+    "band setlist software"
+   ],
+   [
+    "band",
+    "song knowledge checklist"
+   ],
+   [
+    "band",
+    "band song proficiency"
+   ],
+   [
+    "band",
+    "online metronome app"
+   ],
+   [
+    "band",
+    "metronome software"
+   ],
+   [
+    "band",
+    "online instrument tuner"
+   ],
+   [
+    "band",
+    "guitar tuner online"
+   ],
+   [
+    "band",
+    "event scheduling app"
+   ],
+   [
+    "band",
+    "gig management software"
+   ],
+   [
+    "band",
+    "gig expense tracker"
+   ],
+   [
+    "band",
+    "band income spreadsheet"
+   ],
+   [
+    "band",
+    "band contact list template"
+   ],
+   [
+    "band",
+    "music contact spreadsheet"
+   ],
+   [
+    "band",
+    "calendar reminder app"
+   ],
+   [
+    "band",
+    "event reminder software"
+   ],
+   [
+    "space",
+    "space images collection"
+   ],
+   [
+    "space",
+    "planet photo gallery"
+   ],
+   [
+    "space",
+    "astronomy image database"
+   ],
+   [
+    "space",
+    "space art collection"
+   ],
+   [
+    "space",
+    "space station tracker"
+   ],
+   [
+    "space",
+    "satellite tracking app"
+   ],
+   [
+    "space",
+    "orbital data service"
+   ],
+   [
+    "space",
+    "space event calendar"
+   ],
+   [
+    "space",
+    "astronomy quiz questions"
+   ],
+   [
+    "space",
+    "space facts database"
+   ],
+   [
+    "space",
+    "black hole test questions"
+   ],
+   [
+    "space",
+    "star identification guide"
+   ],
+   [
+    "space",
+    "rocket photo gallery"
+   ],
+   [
+    "space",
+    "spacecraft images database"
+   ],
+   [
+    "space",
+    "historical rocket images"
+   ],
+   [
+    "space",
+    "space launch photography"
+   ],
+   [
+    "space",
+    "calendar reminder app"
+   ],
+   [
+    "space",
+    "event scheduling app"
+   ],
+   [
+    "space",
+    "time based reminder"
+   ],
+   [
+    "space",
+    "notification scheduler"
+   ],
+   [
+    "space",
+    "planet data spreadsheet"
+   ],
+   [
+    "space",
+    "celestial body database"
+   ],
+   [
+    "space",
+    "astronomy data log"
+   ],
+   [
+    "space",
+    "space object tracker"
+   ],
+   [
+    "meals",
+    "gluten free meal planner"
+   ],
+   [
+    "meals",
+    "family meal plan app"
+   ],
+   [
+    "meals",
+    "dietary restriction planner"
+   ],
+   [
+    "meals",
+    "weekly dinner scheduler"
+   ],
+   [
+    "meals",
+    "recipe import app"
+   ],
+   [
+    "meals",
+    "website recipe scraper"
+   ],
+   [
+    "meals",
+    "recipe database app"
+   ],
+   [
+    "meals",
+    "grocery list template"
+   ],
+   [
+    "meals",
+    "aisle grocery list"
+   ],
+   [
+    "meals",
+    "shopping list app"
+   ],
+   [
+    "meals",
+    "smart fridge inventory"
+   ],
+   [
+    "meals",
+    "fridge scanner app"
+   ],
+   [
+    "meals",
+    "inventory management device"
+   ],
+   [
+    "meals",
+    "gluten free recipe app"
+   ],
+   [
+    "meals",
+    "dietary restriction filter"
+   ],
+   [
+    "meals",
+    "meal planning calendar"
+   ],
+   [
+    "meals",
+    "reminder app"
+   ],
+   [
+    "meals",
+    "grocery shopping calendar"
+   ],
+   [
+    "meals",
+    "online recipe database"
+   ],
+   [
+    "meals",
+    "recipe collection"
+   ],
+   [
+    "meals",
+    "food recipe resource"
+   ]
+  ]
+ },
+ "llama3.2_1b": {
+  "total": 480,
+  "blocked": 24,
+  "list": [
+   [
+    "bakery",
+    "sweet rise",
+    [
+     "sweet=hard:name",
+     "rise=hard:name"
+    ]
+   ],
+   [
+    "bakery",
+    "portland bakeries",
+    [
+     "portland=held:place?"
+    ]
+   ],
+   [
+    "bakery",
+    "sweet rise",
+    [
+     "sweet=hard:name",
+     "rise=hard:name"
+    ]
+   ],
+   [
+    "bakery",
+    "portland bakeries",
+    [
+     "portland=held:place?"
+    ]
+   ],
+   [
+    "bakery",
+    "sweet rise",
+    [
+     "sweet=hard:name",
+     "rise=hard:name"
+    ]
+   ],
+   [
+    "bakery",
+    "portland bakeries",
+    [
+     "portland=held:place?"
+    ]
+   ],
+   [
+    "bakery",
+    "sweet rise",
+    [
+     "sweet=hard:name",
+     "rise=hard:name"
+    ]
+   ],
+   [
+    "bakery",
+    "portland bakeries",
+    [
+     "portland=held:place?"
+    ]
+   ],
+   [
+    "bakery",
+    "instagram post",
+    [
+     "instagram=held:place?"
+    ]
+   ],
+   [
+    "bakery",
+    "sweet rise",
+    [
+     "sweet=hard:name",
+     "rise=hard:name"
+    ]
+   ],
+   [
+    "bakery",
+    "portland bakeries",
+    [
+     "portland=held:place?"
+    ]
+   ],
+   [
+    "bakery",
+    "sweet rise",
+    [
+     "sweet=hard:name",
+     "rise=hard:name"
+    ]
+   ],
+   [
+    "bakery",
+    "portland bakeries",
+    [
+     "portland=held:place?"
+    ]
+   ],
+   [
+    "bakery",
+    "sweet rise",
+    [
+     "sweet=hard:name",
+     "rise=hard:name"
+    ]
+   ],
+   [
+    "bakery",
+    "portland bakeries",
+    [
+     "portland=held:place?"
+    ]
+   ],
+   [
+    "bakery",
+    "sweet rise",
+    [
+     "sweet=hard:name",
+     "rise=hard:name"
+    ]
+   ],
+   [
+    "bakery",
+    "portland bakeries",
+    [
+     "portland=held:place?"
+    ]
+   ],
+   [
+    "bakery",
+    "sweet rise",
+    [
+     "sweet=hard:name",
+     "rise=hard:name"
+    ]
+   ],
+   [
+    "bakery",
+    "portland bakeries",
+    [
+     "portland=held:place?"
+    ]
+   ],
+   [
+    "bakery",
+    "sweet rise",
+    [
+     "sweet=hard:name",
+     "rise=hard:name"
+    ]
+   ],
+   [
+    "bakery",
+    "portland bakeries",
+    [
+     "portland=held:place?"
+    ]
+   ],
+   [
+    "pet",
+    "medication visit",
+    [
+     "medication=held:health"
+    ]
+   ],
+   [
+    "pet",
+    "medication name",
+    [
+     "medication=held:health"
+    ]
+   ],
+   [
+    "meals",
+    "peanut allergy",
+    [
+     "allergy=held:health"
+    ]
+   ]
+  ],
+  "passed": [
+   [
+    "wedding",
+    "image recognition"
+   ],
+   [
+    "wedding",
+    "picture recognition"
+   ],
+   [
+    "wedding",
+    "image classification"
+   ],
+   [
+    "wedding",
+    "idea generation"
+   ],
+   [
+    "wedding",
+    "wedding planning"
+   ],
+   [
+    "wedding",
+    "wedding inspiration"
+   ],
+   [
+    "wedding",
+    "wedding vendor search"
+   ],
+   [
+    "wedding",
+    "wedding vendor directory"
+   ],
+   [
+    "wedding",
+    "wedding planning resources"
+   ],
+   [
+    "wedding",
+    "wedding material search"
+   ],
+   [
+    "wedding",
+    "wedding supply search"
+   ],
+   [
+    "wedding",
+    "wedding planning resources"
+   ],
+   [
+    "wedding",
+    "wedding budget template"
+   ],
+   [
+    "wedding",
+    "wedding planning resources"
+   ],
+   [
+    "wedding",
+    "financial planning"
+   ],
+   [
+    "wedding",
+    "wedding plan template"
+   ],
+   [
+    "wedding",
+    "wedding planning resources"
+   ],
+   [
+    "wedding",
+    "wedding planning software"
+   ],
+   [
+    "wedding",
+    "checklist template"
+   ],
+   [
+    "wedding",
+    "wedding planning resources"
+   ],
+   [
+    "wedding",
+    "task management"
+   ],
+   [
+    "wedding",
+    "wedding budget template"
+   ],
+   [
+    "wedding",
+    "wedding planning resources"
+   ],
+   [
+    "wedding",
+    "financial planning"
+   ],
+   [
+    "wedding",
+    "contact list template"
+   ],
+   [
+    "wedding",
+    "wedding planning resources"
+   ],
+   [
+    "wedding",
+    "contact management"
+   ],
+   [
+    "wedding",
+    "wedding schedule template"
+   ],
+   [
+    "wedding",
+    "wedding planning resources"
+   ],
+   [
+    "wedding",
+    "time management"
+   ],
+   [
+    "garden",
+    "watering schedule"
+   ],
+   [
+    "garden",
+    "gardening tips"
+   ],
+   [
+    "garden",
+    "gardening calendar"
+   ],
+   [
+    "garden",
+    "gardening schedule"
+   ],
+   [
+    "garden",
+    "gardening tips"
+   ],
+   [
+    "garden",
+    "gardening advice"
+   ],
+   [
+    "garden",
+    "gardening calendar"
+   ],
+   [
+    "garden",
+    "gardening schedule"
+   ],
+   [
+    "garden",
+    "pest control"
+   ],
+   [
+    "garden",
+    "kale gardening tips"
+   ],
+   [
+    "garden",
+    "garden maintenance checklist"
+   ],
+   [
+    "garden",
+    "gardening tips"
+   ],
+   [
+    "garden",
+    "gardening checklist"
+   ],
+   [
+    "garden",
+    "gardening tasks"
+   ],
+   [
+    "garden",
+    "gardening calendar"
+   ],
+   [
+    "garden",
+    "gardening schedule"
+   ],
+   [
+    "garden",
+    "gardening knowledge base"
+   ],
+   [
+    "garden",
+    "gardening guides"
+   ],
+   [
+    "garden",
+    "gardening log"
+   ],
+   [
+    "garden",
+    "gardening journal"
+   ],
+   [
+    "garden",
+    "gardening budget"
+   ],
+   [
+    "garden",
+    "gardening expenses"
+   ],
+   [
+    "garden",
+    "garden layout"
+   ],
+   [
+    "garden",
+    "gardening design"
+   ],
+   [
+    "fitness",
+    "workout schedule"
+   ],
+   [
+    "fitness",
+    "exercise routine"
+   ],
+   [
+    "fitness",
+    "training plan"
+   ],
+   [
+    "fitness",
+    "workout routine"
+   ],
+   [
+    "fitness",
+    "exercise plan"
+   ],
+   [
+    "fitness",
+    "training schedule"
+   ],
+   [
+    "fitness",
+    "workout schedule"
+   ],
+   [
+    "fitness",
+    "fitness tracker"
+   ],
+   [
+    "fitness",
+    "exercise monitor"
+   ],
+   [
+    "fitness",
+    "training plan"
+   ],
+   [
+    "fitness",
+    "workout routine"
+   ],
+   [
+    "fitness",
+    "fitness goals"
+   ],
+   [
+    "fitness",
+    "training plan"
+   ],
+   [
+    "fitness",
+    "workout routine"
+   ],
+   [
+    "fitness",
+    "fitness goals"
+   ],
+   [
+    "fitness",
+    "training plan"
+   ],
+   [
+    "fitness",
+    "fitness tracker"
+   ],
+   [
+    "fitness",
+    "exercise monitor"
+   ],
+   [
+    "fitness",
+    "exercise routine"
+   ],
+   [
+    "fitness",
+    "workout plan"
+   ],
+   [
+    "fitness",
+    "daily exercise routine"
+   ],
+   [
+    "fitness",
+    "exercise routine"
+   ],
+   [
+    "fitness",
+    "workout plan"
+   ],
+   [
+    "fitness",
+    "daily exercise routine"
+   ],
+   [
+    "fitness",
+    "exercise routine"
+   ],
+   [
+    "fitness",
+    "fitness tracker"
+   ],
+   [
+    "fitness",
+    "exercise monitor"
+   ],
+   [
+    "fitness",
+    "calorie burn"
+   ],
+   [
+    "fitness",
+    "fitness tracker"
+   ],
+   [
+    "fitness",
+    "exercise monitor"
+   ],
+   [
+    "fitness",
+    "calorie burn"
+   ],
+   [
+    "fitness",
+    "fitness goals"
+   ],
+   [
+    "fitness",
+    "exercise routine"
+   ],
+   [
+    "fitness",
+    "calorie burn"
+   ],
+   [
+    "fitness",
+    "fitness tracker"
+   ],
+   [
+    "fitness",
+    "exercise monitor"
+   ],
+   [
+    "fitness",
+    "progress tracking"
+   ],
+   [
+    "fitness",
+    "fitness goals"
+   ],
+   [
+    "fitness",
+    "exercise routine"
+   ],
+   [
+    "fitness",
+    "progress tracking"
+   ],
+   [
+    "fitness",
+    "fitness goals"
+   ],
+   [
+    "fitness",
+    "exercise routine"
+   ],
+   [
+    "fitness",
+    "progress tracking"
+   ],
+   [
+    "fitness",
+    "fitness tracker"
+   ],
+   [
+    "fitness",
+    "exercise monitor"
+   ],
+   [
+    "fitness",
+    "workout schedule"
+   ],
+   [
+    "fitness",
+    "exercise routine"
+   ],
+   [
+    "fitness",
+    "training plan"
+   ],
+   [
+    "fitness",
+    "workout routine"
+   ],
+   [
+    "fitness",
+    "exercise plan"
+   ],
+   [
+    "fitness",
+    "training schedule"
+   ],
+   [
+    "fitness",
+    "workout schedule"
+   ],
+   [
+    "fitness",
+    "fitness tracker"
+   ],
+   [
+    "fitness",
+    "exercise monitor"
+   ],
+   [
+    "fitness",
+    "training plan"
+   ],
+   [
+    "fitness",
+    "workout routine"
+   ],
+   [
+    "fitness",
+    "fitness goals"
+   ],
+   [
+    "fitness",
+    "training plan"
+   ],
+   [
+    "fitness",
+    "workout routine"
+   ],
+   [
+    "fitness",
+    "fitness goals"
+   ],
+   [
+    "fitness",
+    "training plan"
+   ],
+   [
+    "fitness",
+    "fitness tracker"
+   ],
+   [
+    "fitness",
+    "exercise monitor"
+   ],
+   [
+    "fitness",
+    "exercise routine"
+   ],
+   [
+    "fitness",
+    "workout plan"
+   ],
+   [
+    "fitness",
+    "daily exercise routine"
+   ],
+   [
+    "fitness",
+    "exercise routine"
+   ],
+   [
+    "fitness",
+    "workout plan"
+   ],
+   [
+    "fitness",
+    "daily exercise routine"
+   ],
+   [
+    "fitness",
+    "exercise routine"
+   ],
+   [
+    "fitness",
+    "fitness tracker"
+   ],
+   [
+    "fitness",
+    "exercise monitor"
+   ],
+   [
+    "fitness",
+    "calorie burn"
+   ],
+   [
+    "fitness",
+    "fitness tracker"
+   ],
+   [
+    "fitness",
+    "exercise monitor"
+   ],
+   [
+    "fitness",
+    "calorie burn"
+   ],
+   [
+    "fitness",
+    "fitness goals"
+   ],
+   [
+    "fitness",
+    "exercise routine"
+   ],
+   [
+    "fitness",
+    "calorie burn"
+   ],
+   [
+    "fitness",
+    "fitness tracker"
+   ],
+   [
+    "fitness",
+    "exercise monitor"
+   ],
+   [
+    "fitness",
+    "progress tracking"
+   ],
+   [
+    "fitness",
+    "fitness goals"
+   ],
+   [
+    "fitness",
+    "exercise routine"
+   ],
+   [
+    "fitness",
+    "progress tracking"
+   ],
+   [
+    "fitness",
+    "fitness goals"
+   ],
+   [
+    "fitness",
+    "exercise routine"
+   ],
+   [
+    "fitness",
+    "progress tracking"
+   ],
+   [
+    "fitness",
+    "fitness tracker"
+   ],
+   [
+    "fitness",
+    "exercise monitor"
+   ],
+   [
+    "dnd",
+    "initiative tracker"
+   ],
+   [
+    "dnd",
+    "dnd initiative"
+   ],
+   [
+    "dnd",
+    "dnd stats"
+   ],
+   [
+    "dnd",
+    "dnd initiative tracker"
+   ],
+   [
+    "dnd",
+    "dnd hit points"
+   ],
+   [
+    "dnd",
+    "dnd initiative tracker"
+   ],
+   [
+    "dnd",
+    "dnd hit points"
+   ],
+   [
+    "dnd",
+    "dnd stats"
+   ],
+   [
+    "dnd",
+    "dice roller"
+   ],
+   [
+    "dnd",
+    "dnd dice"
+   ],
+   [
+    "dnd",
+    "dnd stats"
+   ],
+   [
+    "dnd",
+    "dnd dice roller"
+   ],
+   [
+    "dnd",
+    "dnd stats"
+   ],
+   [
+    "dnd",
+    "dnd dice roller"
+   ],
+   [
+    "dnd",
+    "dnd stats"
+   ],
+   [
+    "dnd",
+    "npc generator"
+   ],
+   [
+    "dnd",
+    "dnd npc"
+   ],
+   [
+    "dnd",
+    "dnd stats"
+   ],
+   [
+    "dnd",
+    "dnd npc generator"
+   ],
+   [
+    "dnd",
+    "dnd stats"
+   ],
+   [
+    "dnd",
+    "dnd npc generator"
+   ],
+   [
+    "dnd",
+    "dnd stats"
+   ],
+   [
+    "dnd",
+    "session notes"
+   ],
+   [
+    "dnd",
+    "dnd session notes"
+   ],
+   [
+    "dnd",
+    "dnd stats"
+   ],
+   [
+    "dnd",
+    "dnd session notes"
+   ],
+   [
+    "dnd",
+    "dnd stats"
+   ],
+   [
+    "dnd",
+    "dnd session notes"
+   ],
+   [
+    "dnd",
+    "dnd stats"
+   ],
+   [
+    "dnd",
+    "spell lookup"
+   ],
+   [
+    "dnd",
+    "dnd spell lookup"
+   ],
+   [
+    "dnd",
+    "dnd stats"
+   ],
+   [
+    "dnd",
+    "dnd spell lookup"
+   ],
+   [
+    "dnd",
+    "dnd stats"
+   ],
+   [
+    "dnd",
+    "dnd spell lookup"
+   ],
+   [
+    "dnd",
+    "dnd stats"
+   ],
+   [
+    "dnd",
+    "calendar with reminders"
+   ],
+   [
+    "dnd",
+    "dnd calendar"
+   ],
+   [
+    "dnd",
+    "dnd stats"
+   ],
+   [
+    "dnd",
+    "dnd calendar"
+   ],
+   [
+    "dnd",
+    "dnd stats"
+   ],
+   [
+    "dnd",
+    "dnd calendar"
+   ],
+   [
+    "dnd",
+    "dnd stats"
+   ],
+   [
+    "dnd",
+    "contact list"
+   ],
+   [
+    "dnd",
+    "dnd contact list"
+   ],
+   [
+    "dnd",
+    "dnd stats"
+   ],
+   [
+    "dnd",
+    "dnd contact list"
+   ],
+   [
+    "dnd",
+    "dnd stats"
+   ],
+   [
+    "dnd",
+    "dnd contact list"
+   ],
+   [
+    "dnd",
+    "dnd stats"
+   ],
+   [
+    "dnd",
+    "log with reminders"
+   ],
+   [
+    "dnd",
+    "dnd log"
+   ],
+   [
+    "dnd",
+    "dnd stats"
+   ],
+   [
+    "dnd",
+    "dnd log"
+   ],
+   [
+    "dnd",
+    "dnd stats"
+   ],
+   [
+    "dnd",
+    "dnd log"
+   ],
+   [
+    "dnd",
+    "dnd stats"
+   ],
+   [
+    "dnd",
+    "budget with reminders"
+   ],
+   [
+    "dnd",
+    "dnd budget"
+   ],
+   [
+    "dnd",
+    "dnd stats"
+   ],
+   [
+    "dnd",
+    "dnd budget"
+   ],
+   [
+    "dnd",
+    "dnd stats"
+   ],
+   [
+    "dnd",
+    "dnd budget"
+   ],
+   [
+    "dnd",
+    "dnd stats"
+   ],
+   [
+    "dnd",
+    "shopping list with reminders"
+   ],
+   [
+    "dnd",
+    "dnd shopping list"
+   ],
+   [
+    "dnd",
+    "dnd stats"
+   ],
+   [
+    "dnd",
+    "dnd shopping list"
+   ],
+   [
+    "dnd",
+    "dnd stats"
+   ],
+   [
+    "dnd",
+    "dnd shopping list"
+   ],
+   [
+    "dnd",
+    "dnd stats"
+   ],
+   [
+    "bakery",
+    "recipe database"
+   ],
+   [
+    "bakery",
+    "costing calculator"
+   ],
+   [
+    "bakery",
+    "cake order scheduling"
+   ],
+   [
+    "bakery",
+    "ingredient tracker"
+   ],
+   [
+    "bakery",
+    "shopping list"
+   ],
+   [
+    "bakery",
+    "budget tracker"
+   ],
+   [
+    "bakery",
+    "calendar with reminders"
+   ],
+   [
+    "bakery",
+    "contact list"
+   ],
+   [
+    "bakery",
+    "log of past orders"
+   ],
+   [
+    "car",
+    "oil change"
+   ],
+   [
+    "car",
+    "oil change records"
+   ],
+   [
+    "car",
+    "oil change history"
+   ],
+   [
+    "car",
+    "oil change log"
+   ],
+   [
+    "car",
+    "oil change history table"
+   ],
+   [
+    "car",
+    "oil change prices"
+   ],
+   [
+    "car",
+    "oil change recommendations"
+   ],
+   [
+    "car",
+    "tire rotation"
+   ],
+   [
+    "car",
+    "tire rotation records"
+   ],
+   [
+    "car",
+    "tire rotation history"
+   ],
+   [
+    "car",
+    "tire rotation log"
+   ],
+   [
+    "car",
+    "tire rotation history table"
+   ],
+   [
+    "car",
+    "registration status"
+   ],
+   [
+    "car",
+    "registration reminders"
+   ],
+   [
+    "car",
+    "recall database"
+   ],
+   [
+    "car",
+    "recall notifications"
+   ],
+   [
+    "car",
+    "sensor data"
+   ],
+   [
+    "car",
+    "warning light detection"
+   ],
+   [
+    "car",
+    "car maintenance checklist"
+   ],
+   [
+    "car",
+    "car maintenance calendar"
+   ],
+   [
+    "car",
+    "car maintenance contacts"
+   ],
+   [
+    "car",
+    "maintenance history log"
+   ],
+   [
+    "car",
+    "car maintenance budget"
+   ],
+   [
+    "spanish",
+    "language learning"
+   ],
+   [
+    "spanish",
+    "tutor bot"
+   ],
+   [
+    "spanish",
+    "spanish lessons"
+   ],
+   [
+    "spanish",
+    "tutor bot"
+   ],
+   [
+    "spanish",
+    "language lessons"
+   ],
+   [
+    "spanish",
+    "spanish vocabulary"
+   ],
+   [
+    "spanish",
+    "tutor bot"
+   ],
+   [
+    "spanish",
+    "language learning"
+   ],
+   [
+    "spanish",
+    "spanish phrases"
+   ],
+   [
+    "spanish",
+    "conversation bot"
+   ],
+   [
+    "spanish",
+    "practice conversation"
+   ],
+   [
+    "spanish",
+    "tutor bot"
+   ],
+   [
+    "spanish",
+    "practice conversation"
+   ],
+   [
+    "spanish",
+    "tutor bot"
+   ],
+   [
+    "spanish",
+    "conversation exercises"
+   ],
+   [
+    "spanish",
+    "flashcard bot"
+   ],
+   [
+    "spanish",
+    "vocabulary practice"
+   ],
+   [
+    "spanish",
+    "tutor bot"
+   ],
+   [
+    "spanish",
+    "flashcard bot"
+   ],
+   [
+    "spanish",
+    "vocabulary practice"
+   ],
+   [
+    "spanish",
+    "spanish vocabulary"
+   ],
+   [
+    "spanish",
+    "grammar bot"
+   ],
+   [
+    "spanish",
+    "tutor bot"
+   ],
+   [
+    "spanish",
+    "language learning"
+   ],
+   [
+    "spanish",
+    "grammar bot"
+   ],
+   [
+    "spanish",
+    "tutor bot"
+   ],
+   [
+    "spanish",
+    "spanish grammar"
+   ],
+   [
+    "spanish",
+    "restaurant bot"
+   ],
+   [
+    "spanish",
+    "tutor bot"
+   ],
+   [
+    "spanish",
+    "spanish phrases"
+   ],
+   [
+    "spanish",
+    "restaurant bot"
+   ],
+   [
+    "spanish",
+    "tutor bot"
+   ],
+   [
+    "spanish",
+    "restaurant information"
+   ],
+   [
+    "spanish",
+    "tutor bot"
+   ],
+   [
+    "spanish",
+    "restaurant bot"
+   ],
+   [
+    "spanish",
+    "taxis and transportation"
+   ],
+   [
+    "spanish",
+    "checklist bot"
+   ],
+   [
+    "spanish",
+    "tutor bot"
+   ],
+   [
+    "spanish",
+    "language learning"
+   ],
+   [
+    "spanish",
+    "checklist bot"
+   ],
+   [
+    "spanish",
+    "tutor bot"
+   ],
+   [
+    "spanish",
+    "checklist templates"
+   ],
+   [
+    "spanish",
+    "calendar bot"
+   ],
+   [
+    "spanish",
+    "tutor bot"
+   ],
+   [
+    "spanish",
+    "language learning"
+   ],
+   [
+    "spanish",
+    "calendar bot"
+   ],
+   [
+    "spanish",
+    "tutor bot"
+   ],
+   [
+    "spanish",
+    "calendar templates"
+   ],
+   [
+    "spanish",
+    "contact bot"
+   ],
+   [
+    "spanish",
+    "tutor bot"
+   ],
+   [
+    "spanish",
+    "language learning"
+   ],
+   [
+    "spanish",
+    "contact bot"
+   ],
+   [
+    "spanish",
+    "tutor bot"
+   ],
+   [
+    "spanish",
+    "contact lists"
+   ],
+   [
+    "spanish",
+    "log bot"
+   ],
+   [
+    "spanish",
+    "tutor bot"
+   ],
+   [
+    "spanish",
+    "language learning"
+   ],
+   [
+    "spanish",
+    "log bot"
+   ],
+   [
+    "spanish",
+    "tutor bot"
+   ],
+   [
+    "spanish",
+    "log templates"
+   ],
+   [
+    "spanish",
+    "budget bot"
+   ],
+   [
+    "spanish",
+    "tutor bot"
+   ],
+   [
+    "spanish",
+    "language learning"
+   ],
+   [
+    "spanish",
+    "budget bot"
+   ],
+   [
+    "spanish",
+    "tutor bot"
+   ],
+   [
+    "spanish",
+    "budget templates"
+   ],
+   [
+    "pet",
+    "vet visit"
+   ],
+   [
+    "pet",
+    "vaccine visit"
+   ],
+   [
+    "pet",
+    "vaccine name"
+   ],
+   [
+    "pet",
+    "vaccine type"
+   ],
+   [
+    "pet",
+    "dosage instructions"
+   ],
+   [
+    "pet",
+    "feeding schedule date"
+   ],
+   [
+    "pet",
+    "feeding schedule time"
+   ],
+   [
+    "pet",
+    "dog name"
+   ],
+   [
+    "pet",
+    "walking reminder"
+   ],
+   [
+    "pet",
+    "toxic food list"
+   ],
+   [
+    "pet",
+    "pet safety"
+   ],
+   [
+    "pet",
+    "reminder date"
+   ],
+   [
+    "pet",
+    "reminder time"
+   ],
+   [
+    "pet",
+    "contact name"
+   ],
+   [
+    "pet",
+    "contact email"
+   ],
+   [
+    "pet",
+    "event date"
+   ],
+   [
+    "pet",
+    "event time"
+   ],
+   [
+    "pet",
+    "pet budget calculator"
+   ],
+   [
+    "budget",
+    "bank export"
+   ],
+   [
+    "budget",
+    "financial data"
+   ],
+   [
+    "budget",
+    "bank export"
+   ],
+   [
+    "budget",
+    "budget tracking"
+   ],
+   [
+    "budget",
+    "budget template"
+   ],
+   [
+    "budget",
+    "monthly budget"
+   ],
+   [
+    "budget",
+    "budget template"
+   ],
+   [
+    "budget",
+    "category budget"
+   ],
+   [
+    "budget",
+    "holiday budget"
+   ],
+   [
+    "budget",
+    "summer camp expenses"
+   ],
+   [
+    "budget",
+    "holiday budget"
+   ],
+   [
+    "budget",
+    "summer camp expenses"
+   ],
+   [
+    "budget",
+    "credit card balance"
+   ],
+   [
+    "budget",
+    "payment plan"
+   ],
+   [
+    "budget",
+    "credit card balance"
+   ],
+   [
+    "budget",
+    "payment plan"
+   ],
+   [
+    "budget",
+    "budget dashboard"
+   ],
+   [
+    "budget",
+    "money tracking"
+   ],
+   [
+    "budget",
+    "budget dashboard"
+   ],
+   [
+    "budget",
+    "money tracking"
+   ],
+   [
+    "budget",
+    "budget checklist"
+   ],
+   [
+    "budget",
+    "task management"
+   ],
+   [
+    "budget",
+    "budget checklist"
+   ],
+   [
+    "budget",
+    "task management"
+   ],
+   [
+    "budget",
+    "calendar with reminders"
+   ],
+   [
+    "budget",
+    "budget reminders"
+   ],
+   [
+    "budget",
+    "calendar with reminders"
+   ],
+   [
+    "budget",
+    "budget reminders"
+   ],
+   [
+    "budget",
+    "contact list"
+   ],
+   [
+    "budget",
+    "family members"
+   ],
+   [
+    "budget",
+    "contact list"
+   ],
+   [
+    "budget",
+    "family members"
+   ],
+   [
+    "budget",
+    "expense tracking"
+   ],
+   [
+    "budget",
+    "budgeting tools"
+   ],
+   [
+    "budget",
+    "expense tracking"
+   ],
+   [
+    "budget",
+    "budgeting tools"
+   ],
+   [
+    "budget",
+    "budget template with charts"
+   ],
+   [
+    "budget",
+    "money tracking"
+   ],
+   [
+    "budget",
+    "budget template with charts"
+   ],
+   [
+    "budget",
+    "money tracking"
+   ],
+   [
+    "band",
+    "setlist template"
+   ],
+   [
+    "band",
+    "song chart template"
+   ],
+   [
+    "band",
+    "setlist manager script"
+   ],
+   [
+    "band",
+    "gig schedule template"
+   ],
+   [
+    "band",
+    "venue info template"
+   ],
+   [
+    "band",
+    "gig scheduler app"
+   ],
+   [
+    "band",
+    "money split template"
+   ],
+   [
+    "band",
+    "venue info template"
+   ],
+   [
+    "band",
+    "money splitter script"
+   ],
+   [
+    "band",
+    "tuner settings template"
+   ],
+   [
+    "band",
+    "song chart template"
+   ],
+   [
+    "band",
+    "tuner app"
+   ],
+   [
+    "band",
+    "metronome settings template"
+   ],
+   [
+    "band",
+    "song chart template"
+   ],
+   [
+    "band",
+    "metronome app"
+   ],
+   [
+    "band",
+    "gig calendar template"
+   ],
+   [
+    "band",
+    "venue info template"
+   ],
+   [
+    "band",
+    "gig calendar app"
+   ],
+   [
+    "band",
+    "money log template"
+   ],
+   [
+    "band",
+    "venue info template"
+   ],
+   [
+    "band",
+    "money log app"
+   ],
+   [
+    "band",
+    "budget template"
+   ],
+   [
+    "band",
+    "venue info template"
+   ],
+   [
+    "band",
+    "budget app"
+   ],
+   [
+    "band",
+    "contact list template"
+   ],
+   [
+    "band",
+    "venue info template"
+   ],
+   [
+    "band",
+    "contact list app"
+   ],
+   [
+    "band",
+    "log template"
+   ],
+   [
+    "band",
+    "venue info template"
+   ],
+   [
+    "band",
+    "log app"
+   ],
+   [
+    "space",
+    "show pictures of planets and"
+   ],
+   [
+    "space",
+    "display images of rockets and"
+   ],
+   [
+    "space",
+    "show pictures of planets and"
+   ],
+   [
+    "space",
+    "display images of rockets and"
+   ],
+   [
+    "space",
+    "show pictures of stars and"
+   ],
+   [
+    "space",
+    "show pictures of planets and"
+   ],
+   [
+    "space",
+    "display images of rockets and"
+   ],
+   [
+    "space",
+    "show pictures of stars and"
+   ],
+   [
+    "space",
+    "show pictures of black holes"
+   ],
+   [
+    "space",
+    "when space station flies over"
+   ],
+   [
+    "space",
+    "when space station flies over"
+   ],
+   [
+    "space",
+    "when space station flies over"
+   ],
+   [
+    "space",
+    "when space station flies over"
+   ],
+   [
+    "space",
+    "about stars and black holes"
+   ],
+   [
+    "space",
+    "questions about stars and black"
+   ],
+   [
+    "space",
+    "questions about stars and black"
+   ],
+   [
+    "space",
+    "questions about stars and black"
+   ],
+   [
+    "space",
+    "checklist for space bot"
+   ],
+   [
+    "space",
+    "calendar with reminders for space"
+   ],
+   [
+    "space",
+    "calendar with reminders for space"
+   ],
+   [
+    "space",
+    "calendar with reminders for space"
+   ],
+   [
+    "space",
+    "calendar with reminders for space"
+   ],
+   [
+    "space",
+    "contact list for space"
+   ],
+   [
+    "space",
+    "contact list for space"
+   ],
+   [
+    "space",
+    "contact list for space"
+   ],
+   [
+    "space",
+    "contact list for space"
+   ],
+   [
+    "space",
+    "log for space bot"
+   ],
+   [
+    "space",
+    "budget for space bot"
+   ],
+   [
+    "space",
+    "questions about budget for space"
+   ],
+   [
+    "space",
+    "questions about budget for space"
+   ],
+   [
+    "space",
+    "questions about budget for space"
+   ],
+   [
+    "meals",
+    "gluten free"
+   ],
+   [
+    "meals",
+    "meal planning"
+   ],
+   [
+    "meals",
+    "recipe saving"
+   ],
+   [
+    "meals",
+    "grocery list"
+   ],
+   [
+    "meals",
+    "grocery list"
+   ],
+   [
+    "meals",
+    "meal planning"
+   ],
+   [
+    "meals",
+    "websites with recipes"
+   ],
+   [
+    "meals",
+    "recipe saving"
+   ],
+   [
+    "meals",
+    "grocery list"
+   ],
+   [
+    "meals",
+    "grocery shopping"
+   ],
+   [
+    "meals",
+    "grocery shopping"
+   ],
+   [
+    "meals",
+    "fridge usage"
+   ],
+   [
+    "meals",
+    "budgeting for meals"
+   ],
+   [
+    "meals",
+    "grocery budget"
+   ],
+   [
+    "meals",
+    "calendar with reminders"
+   ],
+   [
+    "meals",
+    "grocery list"
+   ],
+   [
+    "meals",
+    "contact list"
+   ],
+   [
+    "meals",
+    "recipe saving"
+   ],
+   [
+    "meals",
+    "log of recipes"
+   ],
+   [
+    "meals",
+    "recipe saving"
+   ],
+   [
+    "meals",
+    "grocery list"
+   ],
+   [
+    "meals",
+    "grocery shopping"
+   ],
+   [
+    "meals",
+    "grocery shopping"
+   ],
+   [
+    "meals",
+    "fridge usage"
+   ]
+  ]
+ }
+}

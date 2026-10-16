@@ -1,0 +1,56 @@
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# local env files (and any suffixed backups of them — they hold secrets)
+.env.local
+.env.local.*
+# ...except the template. It is the file you COPY to .env.local and holds no
+# value, only the key names and what each one is for. The rule above is kept
+# broad on purpose (.env.local.bak and friends do hold secrets), so the template
+# has to be named out of it explicitly rather than by narrowing the rule.
+!.env.local.example
+.env.development.local
+.env.test.local
+.env.production.local
+
+# vercel
+.vercel
+
+# camera stream config (contains credentials)
+go2rtc.yaml
+
+# camera stream binary (19 MB, download separately)
+go2rtc.exe
+
+# typescript incremental build cache
+tsconfig.tsbuildinfo
+
+# runtime state written by the app (device-pairing secret + code — never commit)
+/data/
+
+# next.js writes this on every build (Next recommends not tracking it)
+next-env.d.ts
+
+# tsc output for the gate proofs (npm run test:gates)
+.proofout/

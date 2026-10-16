@@ -1,0 +1,15 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Practice Timer</title></head>
+<body>
+<h1>Practice Timer</h1>
+<p id="left">25:00</p>
+<button id="start">Start</button> <button id="stop">Stop</button>
+<script>
+  // a synthetic stateless tool: it keeps nothing of its own
+  let left = 1500, t = null;
+  const show = () => { document.getElementById("left").textContent =
+    String(Math.floor(left / 60)).padStart(2, "0") + ":" + String(left % 60).padStart(2, "0"); };
+  document.getElementById("start").onclick = () => { if (!t) t = setInterval(() => { left--; show(); }, 1000); };
+  document.getElementById("stop").onclick = () => { clearInterval(t); t = null; };
+</script>
+</body></html>

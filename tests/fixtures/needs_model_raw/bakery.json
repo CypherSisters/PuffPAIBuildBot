@@ -1,0 +1,215 @@
+{
+ "goal_id": "bakery",
+ "model": "qwen2.5:7b-instruct",
+ "prompt_tag": "v5",
+ "at": "2026-09-27T00:29:59",
+ "timing": {
+  "wall_s": 29.4,
+  "first_token_s": 12.86,
+  "first_job_s": 15.86,
+  "load_s": 0.02,
+  "prompt_tokens": 712,
+  "prompt_s": 0.04,
+  "out_tokens": 759,
+  "gen_s": 16.54,
+  "tok_per_s": 45.9,
+  "done_reason": "stop"
+ },
+ "raw": "{\n  \"kind\": \"bakery assistant\",\n  \"asked\": [\n    \"help with recipes\",\n    \"costing\",\n    \"taking custom cake orders\",\n    \"scheduling the morning bake\",\n    \"tracking ingredients\",\n    \"suppliers\",\n    \"posting to Instagram\"\n  ],\n  \"also_needed\": [\n    \"customer management\",\n    \"inventory management\"\n  ],\n  \"jobs\": [\n    {\n      \"name\": \"recipe database\",\n      \"does\": \"stores and organizes recipes for cakes and other bakery items\",\n      \"parts\": [\n        {\n          \"kind\": \"code-app\",\n          \"search\": [\"recipe database\", \"ingredient tracker\"]\n        },\n        {\n          \"kind\": \"data-template\",\n          \"search\": [\"bakery recipe template\", \"cake recipe spreadsheet\"]\n        }\n      ]\n    },\n    {\n      \"name\": \"costing calculator\",\n      \"does\": \"calculates the cost of ingredients and labor for each recipe\",\n      \"parts\": [\n        {\n          \"kind\": \"code-app\",\n          \"search\": [\"cost calculator\", \"ingredient cost calculator\"]\n        },\n        {\n          \"kind\": \"knowledge\",\n          \"search\": [\"costing bakery items\", \"ingredient pricing\"]\n        }\n      ]\n    },\n    {\n      \"name\": \"order management\",\n      \"does\": \"manages custom cake orders from customers\",\n      \"parts\": [\n        {\n          \"kind\": \"code-app\",\n          \"search\": [\"order management system\", \"online bakery ordering\"]\n        },\n        {\n          \"kind\": \"data-template\",\n          \"search\": [\"order form template\", \"bakery order log\"]\n        }\n      ]\n    },\n    {\n      \"name\": \"scheduling tool\",\n      \"does\": \"schedules the morning bake and other tasks\",\n      \"parts\": [\n        {\n          \"kind\": \"code-app\",\n          \"search\": [\"scheduling app\", \"task scheduler\"]\n        },\n        {\n          \"kind\": \"live-info\",\n          \"search\": [\"baking schedule\", \"daily bakery tasks\"]\n        }\n      ]\n    },\n    {\n      \"name\": \"inventory tracker\",\n      \"does\": \"tracks the quantity and expiration of ingredients and supplies\",\n      \"parts\": [\n        {\n          \"kind\": \"code-app\",\n          \"search\": [\"inventory management\", \"stock tracker\"]\n        },\n        {\n          \"kind\": \"data-template\",\n          \"search\": [\"inventory log\", \"stock levels\"]\n        }\n      ]\n    },\n    {\n      \"name\": \"supplier management\",\n      \"does\": \"keeps track of suppliers and their contacts\",\n      \"parts\": [\n        {\n          \"kind\": \"code-app\",\n          \"search\": [\"supplier management\", \"vendor tracker\"]\n        },\n        {\n          \"kind\": \"data-template\",\n          \"search\": [\"supplier list\", \"vendor contacts\"]\n        }\n      ]\n    },\n    {\n      \"name\": \"social media posting\",\n      \"does\": \"automates the posting of bakery updates and photos to Instagram\",\n      \"parts\": [\n        {\n          \"kind\": \"code-app\",\n          \"search\": [\"social media scheduler\", \"instagram automation\"]\n        },\n        {\n          \"kind\": \"pictures\",\n          \"search\": [\"bakery photos\", \"cake images\"]\n        }\n      ]\n    },\n    {\n      \"name\": \"customer management\",\n      \"does\": \"manages customer information and preferences\",\n      \"parts\": [\n        {\n          \"kind\": \"code-app\",\n          \"search\": [\"customer management\", \"customer database\"]\n        },\n        {\n          \"kind\": \"data-template\",\n          \"search\": [\"customer list\", \"contact management\"]\n        }\n      ]\n    }\n  ]\n}",
+ "parsed": {
+  "kind": "bakery assistant",
+  "asked": [
+   "help with recipes",
+   "costing",
+   "taking custom cake orders",
+   "scheduling the morning bake",
+   "tracking ingredients",
+   "suppliers",
+   "posting to Instagram"
+  ],
+  "also_needed": [
+   "customer management",
+   "inventory management"
+  ],
+  "jobs": [
+   {
+    "name": "recipe database",
+    "does": "stores and organizes recipes for cakes and other bakery items",
+    "parts": [
+     {
+      "kind": "code-app",
+      "search": [
+       "recipe database",
+       "ingredient tracker"
+      ]
+     },
+     {
+      "kind": "data-template",
+      "search": [
+       "bakery recipe template",
+       "cake recipe spreadsheet"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "costing calculator",
+    "does": "calculates the cost of ingredients and labor for each recipe",
+    "parts": [
+     {
+      "kind": "code-app",
+      "search": [
+       "cost calculator",
+       "ingredient cost calculator"
+      ]
+     },
+     {
+      "kind": "knowledge",
+      "search": [
+       "costing bakery items",
+       "ingredient pricing"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "order management",
+    "does": "manages custom cake orders from customers",
+    "parts": [
+     {
+      "kind": "code-app",
+      "search": [
+       "order management system",
+       "online bakery ordering"
+      ]
+     },
+     {
+      "kind": "data-template",
+      "search": [
+       "order form template",
+       "bakery order log"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "scheduling tool",
+    "does": "schedules the morning bake and other tasks",
+    "parts": [
+     {
+      "kind": "code-app",
+      "search": [
+       "scheduling app",
+       "task scheduler"
+      ]
+     },
+     {
+      "kind": "live-info",
+      "search": [
+       "baking schedule",
+       "daily bakery tasks"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "inventory tracker",
+    "does": "tracks the quantity and expiration of ingredients and supplies",
+    "parts": [
+     {
+      "kind": "code-app",
+      "search": [
+       "inventory management",
+       "stock tracker"
+      ]
+     },
+     {
+      "kind": "data-template",
+      "search": [
+       "inventory log",
+       "stock levels"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "supplier management",
+    "does": "keeps track of suppliers and their contacts",
+    "parts": [
+     {
+      "kind": "code-app",
+      "search": [
+       "supplier management",
+       "vendor tracker"
+      ]
+     },
+     {
+      "kind": "data-template",
+      "search": [
+       "supplier list",
+       "vendor contacts"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "social media posting",
+    "does": "automates the posting of bakery updates and photos to Instagram",
+    "parts": [
+     {
+      "kind": "code-app",
+      "search": [
+       "social media scheduler",
+       "instagram automation"
+      ]
+     },
+     {
+      "kind": "pictures",
+      "search": [
+       "bakery photos",
+       "cake images"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "customer management",
+    "does": "manages customer information and preferences",
+    "parts": [
+     {
+      "kind": "code-app",
+      "search": [
+       "customer management",
+       "customer database"
+      ]
+     },
+     {
+      "kind": "data-template",
+      "search": [
+       "customer list",
+       "contact management"
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "check": {
+  "valid": true,
+  "kind": "bakery assistant",
+  "jobs": 8,
+  "jobs_in_range": true,
+  "phrases": 32,
+  "unique_phrases": 32,
+  "parts_with_bad_phrase_count": 0,
+  "kinds": {
+   "code-app": 8,
+   "data-template": 5,
+   "knowledge": 1,
+   "live-info": 1,
+   "pictures": 1
+  },
+  "leaks": [],
+  "kind_leak": []
+ }
+}

@@ -1,0 +1,3814 @@
+{
+ "left_out": [
+  {
+   "item": "t3-chat",
+   "why": "named after a company or product"
+  },
+  {
+   "item": "twitter",
+   "why": "named after a company or product"
+  },
+  {
+   "item": "doom-64",
+   "why": "named after a company or product"
+  },
+  {
+   "item": "supabase",
+   "why": "named after a company or product"
+  },
+  {
+   "item": "claude",
+   "why": "named after a company or product"
+  },
+  {
+   "item": "vercel",
+   "why": "named after a company or product"
+  }
+ ],
+ "license": "Apache-2.0",
+ "list": "tweakcn",
+ "looks": [
+  {
+   "adjusted": [
+    "On the day look I darkened the faint words, the main colour, the warning red and the extra colours a little so everything is easy to read.",
+    "On the night look I lightened the second colour and the extra colours a little so everything is easy to read."
+   ],
+   "checks": [
+    {
+     "check": "Words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 4.7 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the day look",
+     "result": "pass",
+     "why": "lowest 3.6 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the day look",
+     "result": "pass",
+     "why": "lowest 4.4 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 4.5 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 6.3 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the night look",
+     "result": "pass",
+     "why": "lowest 3.3 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the night look",
+     "result": "pass",
+     "why": "lowest 4.2 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 4.8 to 1, needs 4.5 to 1"
+    }
+   ],
+   "day": {
+    "accent": "#2b72e5",
+    "accent2": "#2563eb",
+    "bg": "#ffffff",
+    "bg2": "#fcfcfd",
+    "card": "#ffffff",
+    "chart": [
+     "#2b72e5",
+     "#2563eb",
+     "#1d4ed8",
+     "#1e40af"
+    ],
+    "danger": "#dd3035",
+    "line": "#e5e7eb",
+    "text": "#333333",
+    "text2": "#6b7280",
+    "text3": "#81858e"
+   },
+   "font": "plain",
+   "from": {
+    "item": "modern-minimal",
+    "license": "Apache-2.0",
+    "list": "tweakcn",
+    "list_date": "2026-09-24"
+   },
+   "id": "tweakcn:modern-minimal",
+   "name": "Modern Minimal",
+   "night": {
+    "accent": "#3b82f6",
+    "accent2": "#6085dc",
+    "bg": "#171717",
+    "bg2": "#1b1b1b",
+    "card": "#262626",
+    "chart": [
+     "#60a5fa",
+     "#3b82f6",
+     "#4383ff",
+     "#467fff"
+    ],
+    "danger": "#ef4444",
+    "line": "#404040",
+    "text": "#e5e5e5",
+    "text2": "#a3a3a3",
+    "text3": "#727272"
+   },
+   "photo": "keep",
+   "schema": "puffpai_theme/v1",
+   "shape": "soft",
+   "words": [
+    "calm",
+    "clean",
+    "minimal",
+    "modern",
+    "office",
+    "simple",
+    "work"
+   ]
+  },
+  {
+   "adjusted": [
+    "On the day look I darkened the warning red and the extra colours a little so everything is easy to read.",
+    "On the night look I lightened the main colour, the second colour and the extra colours a little so everything is easy to read."
+   ],
+   "checks": [
+    {
+     "check": "Words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 7.5 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the day look",
+     "result": "pass",
+     "why": "lowest 3.1 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the day look",
+     "result": "pass",
+     "why": "lowest 4.5 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 4.7 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 6.1 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the night look",
+     "result": "pass",
+     "why": "lowest 3.3 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the night look",
+     "result": "pass",
+     "why": "lowest 4.6 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 4.9 to 1, needs 4.5 to 1"
+    }
+   ],
+   "day": {
+    "accent": "#7033ff",
+    "accent2": "#7033ff",
+    "bg": "#fdfdfd",
+    "bg2": "#f9fafb",
+    "card": "#fdfdfd",
+    "chart": [
+     "#007a3c",
+     "#7033ff",
+     "#b84200",
+     "#2266d3"
+    ],
+    "danger": "#d33940",
+    "line": "#e7e7ee",
+    "text": "#000000",
+    "text2": "#525252",
+    "text3": "#8e8e8e"
+   },
+   "font": "plain",
+   "from": {
+    "item": "violet-bloom",
+    "license": "Apache-2.0",
+    "list": "tweakcn",
+    "list_date": "2026-09-24"
+   },
+   "id": "tweakcn:violet-bloom",
+   "name": "Violet Bloom",
+   "night": {
+    "accent": "#9a6dff",
+    "accent2": "#9a6dff",
+    "bg": "#1a1b1e",
+    "bg2": "#1e1f23",
+    "card": "#222327",
+    "chart": [
+     "#4ade80",
+     "#9a6dff",
+     "#fca5a5",
+     "#5993f4"
+    ],
+    "danger": "#f87171",
+    "line": "#33353a",
+    "text": "#f0f0f0",
+    "text2": "#a0a0a0",
+    "text3": "#717173"
+   },
+   "photo": "keep",
+   "schema": "puffpai_theme/v1",
+   "shape": "round",
+   "words": [
+    "bloom",
+    "bold",
+    "flower",
+    "spring",
+    "violet"
+   ]
+  },
+  {
+   "adjusted": [
+    "On the day look I darkened the grey words, the faint words, the main colour and the extra colours a little so everything is easy to read.",
+    "On the night look I lightened the faint words and the extra colours a little so everything is easy to read."
+   ],
+   "checks": [
+    {
+     "check": "Words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 4.8 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the day look",
+     "result": "pass",
+     "why": "lowest 3.1 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the day look",
+     "result": "pass",
+     "why": "lowest 3.6 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 4.8 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 5.3 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the night look",
+     "result": "pass",
+     "why": "lowest 3.6 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the night look",
+     "result": "pass",
+     "why": "lowest 3.7 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 4.7 to 1, needs 4.5 to 1"
+    }
+   ],
+   "day": {
+    "accent": "#936856",
+    "accent2": "#8a655a",
+    "bg": "#f1f0e5",
+    "bg2": "#e3dfd0",
+    "card": "#f1f0e5",
+    "chart": [
+     "#936856",
+     "#8a655a",
+     "#84634e",
+     "#7d6f57"
+    ],
+    "danger": "#1f1a17",
+    "line": "#baab92",
+    "text": "#56453f",
+    "text2": "#7b574c",
+    "text3": "#8f786d"
+   },
+   "font": "plain",
+   "from": {
+    "item": "mocha-mousse",
+    "license": "Apache-2.0",
+    "list": "tweakcn",
+    "list_date": "2026-09-24"
+   },
+   "id": "tweakcn:mocha-mousse",
+   "name": "Mocha Mousse",
+   "night": {
+    "accent": "#c39e88",
+    "accent2": "#baab92",
+    "bg": "#2d2521",
+    "bg2": "#44352f",
+    "card": "#3c332e",
+    "chart": [
+     "#c39e88",
+     "#baab92",
+     "#b38673",
+     "#b99186"
+    ],
+    "danger": "#e57373",
+    "line": "#56453f",
+    "text": "#f1f0e5",
+    "text2": "#c5aa9b",
+    "text3": "#9f8a7f"
+   },
+   "photo": "keep",
+   "schema": "puffpai_theme/v1",
+   "shape": "soft",
+   "words": [
+    "autumn",
+    "baking",
+    "cafe",
+    "chocolate",
+    "coffee",
+    "cozy",
+    "earthy",
+    "warm"
+   ]
+  },
+  {
+   "adjusted": [
+    "On the day look I darkened the grey words, the faint words, the main colour, the second colour, the warning red and the extra colours a little so everything is easy to read.",
+    "On the night look I lightened the faint words, the warning red and the extra colours a little so everything is easy to read."
+   ],
+   "checks": [
+    {
+     "check": "Words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 5.0 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the day look",
+     "result": "pass",
+     "why": "lowest 3.5 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the day look",
+     "result": "pass",
+     "why": "lowest 3.7 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 4.9 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 4.6 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the night look",
+     "result": "pass",
+     "why": "lowest 3.6 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the night look",
+     "result": "pass",
+     "why": "lowest 3.0 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 5.1 to 1, needs 4.5 to 1"
+    }
+   ],
+   "day": {
+    "accent": "#bf3f8a",
+    "accent2": "#7d662d",
+    "bg": "#f6e6ee",
+    "bg2": "#dbe0e7",
+    "card": "#fdedc9",
+    "chart": [
+     "#b3407d",
+     "#207584",
+     "#7d662d",
+     "#a0547d"
+    ],
+    "danger": "#c33f45",
+    "line": "#d04f99",
+    "text": "#5b5b5b",
+    "text2": "#5d5d5d",
+    "text3": "#787376"
+   },
+   "font": "plain",
+   "from": {
+    "item": "bubblegum",
+    "license": "Apache-2.0",
+    "list": "tweakcn",
+    "list_date": "2026-09-24"
+   },
+   "id": "tweakcn:bubblegum",
+   "name": "Bubblegum",
+   "night": {
+    "accent": "#fbe2a7",
+    "accent2": "#c67b96",
+    "bg": "#12242e",
+    "bg2": "#46444f",
+    "card": "#1c2e38",
+    "chart": [
+     "#50afb6",
+     "#e4a2b1",
+     "#c67b96",
+     "#66a7b9"
+    ],
+    "danger": "#f56eb4",
+    "line": "#324859",
+    "text": "#f3e3ea",
+    "text2": "#e4a2b1",
+    "text3": "#ba94a1"
+   },
+   "photo": "keep",
+   "schema": "puffpai_theme/v1",
+   "shape": "soft",
+   "words": [
+    "bubblegum",
+    "candy",
+    "fun",
+    "party",
+    "playful",
+    "sweet"
+   ]
+  },
+  {
+   "adjusted": [
+    "On the day look I darkened the faint words, the main colour, the second colour, the warning red and the extra colours a little so everything is easy to read.",
+    "On the night look I lightened the faint words a little so everything is easy to read."
+   ],
+   "checks": [
+    {
+     "check": "Words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 4.7 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the day look",
+     "result": "pass",
+     "why": "lowest 3.6 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the day look",
+     "result": "pass",
+     "why": "lowest 4.0 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 4.6 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 5.4 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the night look",
+     "result": "pass",
+     "why": "lowest 3.6 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the night look",
+     "result": "pass",
+     "why": "lowest 4.9 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 5.9 to 1, needs 4.5 to 1"
+    }
+   ],
+   "day": {
+    "accent": "#7b6a9b",
+    "accent2": "#945a6c",
+    "bg": "#f8f7fa",
+    "bg2": "#f2eff6",
+    "card": "#ffffff",
+    "chart": [
+     "#7b6a9b",
+     "#945a6c",
+     "#3b7a66",
+     "#906b32"
+    ],
+    "danger": "#c84c4e",
+    "line": "#cec9d9",
+    "text": "#3d3c4f",
+    "text2": "#6b6880",
+    "text3": "#7e7c8d"
+   },
+   "font": "plain",
+   "from": {
+    "item": "amethyst-haze",
+    "license": "Apache-2.0",
+    "list": "tweakcn",
+    "list_date": "2026-09-24"
+   },
+   "id": "tweakcn:amethyst-haze",
+   "name": "Amethyst Haze",
+   "night": {
+    "accent": "#a995c9",
+    "accent2": "#f2b8c6",
+    "bg": "#1a1823",
+    "bg2": "#2a2736",
+    "card": "#232030",
+    "chart": [
+     "#a995c9",
+     "#f2b8c6",
+     "#77b8a1",
+     "#f0c88d"
+    ],
+    "danger": "#e57373",
+    "line": "#302c40",
+    "text": "#e0ddef",
+    "text2": "#a09aad",
+    "text3": "#807b8c"
+   },
+   "photo": "keep",
+   "schema": "puffpai_theme/v1",
+   "shape": "soft",
+   "words": [
+    "calm",
+    "crystal",
+    "dreamy",
+    "gem",
+    "lavender",
+    "soft"
+   ]
+  },
+  {
+   "adjusted": [
+    "On the day look I darkened the warning red and the extra colours a little so everything is easy to read.",
+    "On the night look I lightened the faint words and the extra colours a little so everything is easy to read."
+   ],
+   "checks": [
+    {
+     "check": "Words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 7.2 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the day look",
+     "result": "pass",
+     "why": "lowest 3.0 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the day look",
+     "result": "pass",
+     "why": "lowest 4.3 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 4.8 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 4.6 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the night look",
+     "result": "pass",
+     "why": "lowest 3.3 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the night look",
+     "result": "pass",
+     "why": "lowest 4.5 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 5.3 to 1, needs 4.5 to 1"
+    }
+   ],
+   "day": {
+    "accent": "#606060",
+    "accent2": "#555555",
+    "bg": "#f9f9f9",
+    "bg2": "#f2f2f2",
+    "card": "#ffffff",
+    "chart": [
+     "#333333",
+     "#555555",
+     "#696969",
+     "#6c6c6c"
+    ],
+    "danger": "#a75c5d",
+    "line": "#747272",
+    "text": "#3a3a3a",
+    "text2": "#505050",
+    "text3": "#8b8b8b"
+   },
+   "font": "plain",
+   "from": {
+    "item": "notebook",
+    "license": "Apache-2.0",
+    "list": "tweakcn",
+    "list_date": "2026-09-24"
+   },
+   "id": "tweakcn:notebook",
+   "name": "Notebook",
+   "night": {
+    "accent": "#b0b0b0",
+    "accent2": "#d0d0d0",
+    "bg": "#2b2b2b",
+    "bg2": "#373737",
+    "card": "#333333",
+    "chart": [
+     "#efefef",
+     "#d0d0d0",
+     "#b0b0b0",
+     "#9f9f9f"
+    ],
+    "danger": "#d9afaf",
+    "line": "#4f4f4f",
+    "text": "#dcdcdc",
+    "text2": "#a0a0a0",
+    "text3": "#868686"
+   },
+   "photo": "keep",
+   "schema": "puffpai_theme/v1",
+   "shape": "soft",
+   "words": [
+    "homework",
+    "notebook",
+    "paper",
+    "pencil",
+    "school",
+    "sketch",
+    "study",
+    "writing"
+   ]
+  },
+  {
+   "adjusted": [
+    "On the day look I darkened the grey words, the faint words, the second colour and the extra colours a little so everything is easy to read."
+   ],
+   "checks": [
+    {
+     "check": "Words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 5.0 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the day look",
+     "result": "pass",
+     "why": "lowest 3.3 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the day look",
+     "result": "pass",
+     "why": "lowest 4.1 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 5.0 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 6.4 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the night look",
+     "result": "pass",
+     "why": "lowest 3.3 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the night look",
+     "result": "pass",
+     "why": "lowest 6.2 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 7.6 to 1, needs 4.5 to 1"
+    }
+   ],
+   "day": {
+    "accent": "#8839ef",
+    "accent2": "#0076b3",
+    "bg": "#eff1f5",
+    "bg2": "#e6e9ee",
+    "card": "#ffffff",
+    "chart": [
+     "#8839ef",
+     "#0076b3",
+     "#198100",
+     "#c82e00"
+    ],
+    "danger": "#d20f39",
+    "line": "#bcc0cc",
+    "text": "#4c4f69",
+    "text2": "#5e6176",
+    "text3": "#7c7f8d"
+   },
+   "font": "plain",
+   "from": {
+    "item": "catppuccin",
+    "license": "Apache-2.0",
+    "list": "tweakcn",
+    "list_date": "2026-09-24"
+   },
+   "id": "tweakcn:catppuccin",
+   "name": "Catppuccin",
+   "night": {
+    "accent": "#cba6f7",
+    "accent2": "#89dceb",
+    "bg": "#181825",
+    "bg2": "#282938",
+    "card": "#1e1e2e",
+    "chart": [
+     "#cba6f7",
+     "#89dceb",
+     "#a6e3a1",
+     "#fab387"
+    ],
+    "danger": "#f38ba8",
+    "line": "#313244",
+    "text": "#cdd6f4",
+    "text2": "#a6adc8",
+    "text3": "#74798f"
+   },
+   "photo": "keep",
+   "schema": "puffpai_theme/v1",
+   "shape": "soft",
+   "words": [
+    "cat",
+    "cozy",
+    "pastel",
+    "soft"
+   ]
+  },
+  {
+   "adjusted": [
+    "On the day look I darkened the faint words and the extra colours a little so everything is easy to read.",
+    "On the night look I lightened the grey words, the faint words and the extra colours a little so everything is easy to read."
+   ],
+   "checks": [
+    {
+     "check": "Words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 4.9 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the day look",
+     "result": "pass",
+     "why": "lowest 3.0 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the day look",
+     "result": "pass",
+     "why": "lowest 4.1 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 4.8 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 5.0 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the night look",
+     "result": "pass",
+     "why": "lowest 3.0 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the night look",
+     "result": "pass",
+     "why": "lowest 4.3 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 4.6 to 1, needs 4.5 to 1"
+    }
+   ],
+   "day": {
+    "accent": "#606060",
+    "accent2": "#476666",
+    "bg": "#f0f0f0",
+    "bg2": "#ececec",
+    "card": "#f5f5f5",
+    "chart": [
+     "#606060",
+     "#476666",
+     "#727272",
+     "#6c6c6c"
+    ],
+    "danger": "#cc3333",
+    "line": "#d0d0d0",
+    "text": "#333333",
+    "text2": "#666666",
+    "text3": "#878787"
+   },
+   "font": "plain",
+   "from": {
+    "item": "graphite",
+    "license": "Apache-2.0",
+    "list": "tweakcn",
+    "list_date": "2026-09-24"
+   },
+   "id": "tweakcn:graphite",
+   "name": "Graphite",
+   "night": {
+    "accent": "#a0a0a0",
+    "accent2": "#7e9ca0",
+    "bg": "#1a1a1a",
+    "bg2": "#202020",
+    "card": "#202020",
+    "chart": [
+     "#a0a0a0",
+     "#7e9ca0",
+     "#8e8e8e",
+     "#838383"
+    ],
+    "danger": "#e06666",
+    "line": "#353535",
+    "text": "#d9d9d9",
+    "text2": "#8f8f8f",
+    "text3": "#6a6a6a"
+   },
+   "photo": "keep",
+   "schema": "puffpai_theme/v1",
+   "shape": "soft",
+   "words": [
+    "charcoal",
+    "clean",
+    "dark",
+    "minimal",
+    "serious",
+    "simple"
+   ]
+  },
+  {
+   "adjusted": [
+    "On the day look I darkened the grey words, the faint words, the main colour, the second colour and the extra colours a little so everything is easy to read.",
+    "On the night look I lightened the faint words, the warning red and the extra colours a little so everything is easy to read."
+   ],
+   "checks": [
+    {
+     "check": "Words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 5.1 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the day look",
+     "result": "pass",
+     "why": "lowest 3.4 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the day look",
+     "result": "pass",
+     "why": "lowest 4.0 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 4.7 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 5.3 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the night look",
+     "result": "pass",
+     "why": "lowest 3.6 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the night look",
+     "result": "pass",
+     "why": "lowest 4.6 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 5.2 to 1, needs 4.5 to 1"
+    }
+   ],
+   "day": {
+    "accent": "#00767f",
+    "accent2": "#008088",
+    "bg": "#e8f0f0",
+    "bg2": "#e4eeee",
+    "card": "#f2f7f7",
+    "chart": [
+     "#00767f",
+     "#008088",
+     "#007880",
+     "#007980"
+    ],
+    "danger": "#d13838",
+    "line": "#cde0e2",
+    "text": "#0a4a55",
+    "text2": "#336b6f",
+    "text3": "#5e8588"
+   },
+   "font": "plain",
+   "from": {
+    "item": "perpetuity",
+    "license": "Apache-2.0",
+    "list": "tweakcn",
+    "list_date": "2026-09-24"
+   },
+   "id": "tweakcn:perpetuity",
+   "name": "Perpetuity",
+   "night": {
+    "accent": "#4de8e8",
+    "accent2": "#36a5a5",
+    "bg": "#0a1a20",
+    "bg2": "#0d262d",
+    "card": "#0c2025",
+    "chart": [
+     "#4de8e8",
+     "#36a5a5",
+     "#3f9999",
+     "#579499"
+    ],
+    "danger": "#fa4f4b",
+    "line": "#164955",
+    "text": "#4de8e8",
+    "text2": "#36a5a5",
+    "text3": "#388385"
+   },
+   "photo": "keep",
+   "schema": "puffpai_theme/v1",
+   "shape": "square",
+   "words": [
+    "boat",
+    "calm",
+    "cool",
+    "ocean",
+    "sailing",
+    "sea",
+    "water"
+   ]
+  },
+  {
+   "adjusted": [
+    "On the day look I darkened the grey words, the faint words, the main colour, the second colour, the warning red and the extra colours a little so everything is easy to read.",
+    "On the night look I lightened the grey words, the faint words, the main colour, the second colour, the warning red and the extra colours a little so everything is easy to read."
+   ],
+   "checks": [
+    {
+     "check": "Words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 4.5 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the day look",
+     "result": "pass",
+     "why": "lowest 3.5 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the day look",
+     "result": "pass",
+     "why": "lowest 3.3 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 4.8 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 5.1 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the night look",
+     "result": "pass",
+     "why": "lowest 3.2 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the night look",
+     "result": "pass",
+     "why": "lowest 4.0 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 4.5 to 1, needs 4.5 to 1"
+    }
+   ],
+   "day": {
+    "accent": "#61701f",
+    "accent2": "#7e6b3b",
+    "bg": "#e4d7b0",
+    "bg2": "#e2d5ac",
+    "card": "#e7dbbf",
+    "chart": [
+     "#627452",
+     "#5e7250",
+     "#606d5b",
+     "#63765c"
+    ],
+    "danger": "#a75e52",
+    "line": "#b19681",
+    "text": "#5c4b3e",
+    "text2": "#685a4e",
+    "text3": "#796b58"
+   },
+   "font": "plain",
+   "from": {
+    "item": "kodama-grove",
+    "license": "Apache-2.0",
+    "list": "tweakcn",
+    "list_date": "2026-09-24"
+   },
+   "id": "tweakcn:kodama-grove",
+   "name": "Kodama Grove",
+   "night": {
+    "accent": "#99af8a",
+    "accent2": "#b19e6b",
+    "bg": "#3a3529",
+    "bg2": "#423c30",
+    "card": "#413c33",
+    "chart": [
+     "#99af8a",
+     "#9db18c",
+     "#8fa388",
+     "#b19e6b"
+    ],
+    "danger": "#d69488",
+    "line": "#5a5345",
+    "text": "#ede4d4",
+    "text2": "#b8b0a5",
+    "text3": "#908a7f"
+   },
+   "photo": "keep",
+   "schema": "puffpai_theme/v1",
+   "shape": "soft",
+   "words": [
+    "earthy",
+    "forest",
+    "garden",
+    "hiking",
+    "jungle",
+    "leaves",
+    "moss",
+    "nature",
+    "trees",
+    "woods"
+   ]
+  },
+  {
+   "adjusted": [
+    "On the day look I darkened the grey words, the faint words, the second colour, the warning red and the extra colours a little so everything is easy to read.",
+    "On the night look I lightened the second colour a little so everything is easy to read."
+   ],
+   "checks": [
+    {
+     "check": "Words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 5.5 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the day look",
+     "result": "pass",
+     "why": "lowest 3.5 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the day look",
+     "result": "pass",
+     "why": "lowest 4.1 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 4.6 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 6.8 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the night look",
+     "result": "pass",
+     "why": "lowest 3.5 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the night look",
+     "result": "pass",
+     "why": "lowest 5.0 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 5.5 to 1, needs 4.5 to 1"
+    }
+   ],
+   "day": {
+    "accent": "#6e56cf",
+    "accent2": "#725ec9",
+    "bg": "#f5f5ff",
+    "bg2": "#f1efff",
+    "card": "#ffffff",
+    "chart": [
+     "#6e56cf",
+     "#725ec9",
+     "#5d5fef",
+     "#6155d8"
+    ],
+    "danger": "#db2e53",
+    "line": "#e0e0f0",
+    "text": "#2a2a4a",
+    "text2": "#5e5e7b",
+    "text3": "#7e7e94"
+   },
+   "font": "plain",
+   "from": {
+    "item": "cosmic-night",
+    "license": "Apache-2.0",
+    "list": "tweakcn",
+    "list_date": "2026-09-24"
+   },
+   "id": "tweakcn:cosmic-night",
+   "name": "Cosmic Night",
+   "night": {
+    "accent": "#a48fff",
+    "accent2": "#8185bd",
+    "bg": "#0f0f1a",
+    "bg2": "#161629",
+    "card": "#1a1a2e",
+    "chart": [
+     "#a48fff",
+     "#7986cb",
+     "#64b5f6",
+     "#4db6ac"
+    ],
+    "danger": "#ff5470",
+    "line": "#303052",
+    "text": "#e2e2f5",
+    "text2": "#a0a0c0",
+    "text3": "#6d6d86"
+   },
+   "photo": "keep",
+   "schema": "puffpai_theme/v1",
+   "shape": "soft",
+   "words": [
+    "alien",
+    "astronomy",
+    "cosmic",
+    "galaxy",
+    "night",
+    "planet",
+    "rocket",
+    "space",
+    "stars",
+    "universe"
+   ]
+  },
+  {
+   "adjusted": [
+    "On the day look I darkened the grey words, the faint words, the main colour, the second colour, the warning red and the extra colours a little so everything is easy to read.",
+    "On the night look I lightened the main colour, the warning red and the extra colours a little so everything is easy to read."
+   ],
+   "checks": [
+    {
+     "check": "Words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 5.0 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the day look",
+     "result": "pass",
+     "why": "lowest 3.4 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the day look",
+     "result": "pass",
+     "why": "lowest 3.9 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 4.6 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 5.5 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the night look",
+     "result": "pass",
+     "why": "lowest 3.1 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the night look",
+     "result": "pass",
+     "why": "lowest 4.3 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 4.9 to 1, needs 4.5 to 1"
+    }
+   ],
+   "day": {
+    "accent": "#bd3c13",
+    "accent2": "#9c5948",
+    "bg": "#e8ebed",
+    "bg2": "#ebedef",
+    "card": "#ffffff",
+    "chart": [
+     "#4c6b89",
+     "#9c5948",
+     "#4c6d96",
+     "#466494"
+    ],
+    "danger": "#dd3035",
+    "line": "#dcdfe2",
+    "text": "#333333",
+    "text2": "#5d6471",
+    "text3": "#797e88"
+   },
+   "font": "plain",
+   "from": {
+    "item": "tangerine",
+    "license": "Apache-2.0",
+    "list": "tweakcn",
+    "list_date": "2026-09-24"
+   },
+   "id": "tweakcn:tangerine",
+   "name": "Tangerine",
+   "night": {
+    "accent": "#f26d48",
+    "accent2": "#e6a08f",
+    "bg": "#1c2433",
+    "bg2": "#202736",
+    "card": "#2a3040",
+    "chart": [
+     "#86a7c8",
+     "#e6a08f",
+     "#779ac6",
+     "#7191c4"
+    ],
+    "danger": "#ff5653",
+    "line": "#3d4354",
+    "text": "#e5e5e5",
+    "text2": "#a3a3a3",
+    "text3": "#74777c"
+   },
+   "photo": "keep",
+   "schema": "puffpai_theme/v1",
+   "shape": "soft",
+   "words": [
+    "citrus",
+    "fruit",
+    "summer",
+    "sunny",
+    "tangerine",
+    "warm"
+   ]
+  },
+  {
+   "adjusted": [
+    "On the day look I darkened the grey words, the faint words, the main colour, the second colour and the extra colours a little so everything is easy to read.",
+    "On the night look I lightened the second colour a little so everything is easy to read."
+   ],
+   "checks": [
+    {
+     "check": "Words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 5.2 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the day look",
+     "result": "pass",
+     "why": "lowest 3.7 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the day look",
+     "result": "pass",
+     "why": "lowest 4.0 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 4.6 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 6.2 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the night look",
+     "result": "pass",
+     "why": "lowest 3.2 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the night look",
+     "result": "pass",
+     "why": "lowest 4.2 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 4.6 to 1, needs 4.5 to 1"
+    }
+   ],
+   "day": {
+    "accent": "#d4006b",
+    "accent2": "#9c6585",
+    "bg": "#fff0f8",
+    "bg2": "#ffeafa",
+    "card": "#fff7fc",
+    "chart": [
+     "#d4006b",
+     "#b33b88",
+     "#8a5aa6",
+     "#6562af"
+    ],
+    "danger": "#d13869",
+    "line": "#ffc7e6",
+    "text": "#91185c",
+    "text2": "#af3174",
+    "text3": "#b4618d"
+   },
+   "font": "plain",
+   "from": {
+    "item": "quantum-rose",
+    "license": "Apache-2.0",
+    "list": "tweakcn",
+    "list_date": "2026-09-24"
+   },
+   "id": "tweakcn:quantum-rose",
+   "name": "Quantum Rose",
+   "night": {
+    "accent": "#ff6bef",
+    "accent2": "#a766a9",
+    "bg": "#1a0922",
+    "bg2": "#250f2d",
+    "card": "#2a1435",
+    "chart": [
+     "#ff6bef",
+     "#c359e3",
+     "#9161ff",
+     "#6f73e2"
+    ],
+    "danger": "#ff2876",
+    "line": "#4a1b5f",
+    "text": "#ffb3ff",
+    "text2": "#d67ad6",
+    "text3": "#945297"
+   },
+   "photo": "keep",
+   "schema": "puffpai_theme/v1",
+   "shape": "soft",
+   "words": [
+    "bold",
+    "flower",
+    "neon",
+    "rose"
+   ]
+  },
+  {
+   "adjusted": [
+    "On the day look I darkened the second colour and the extra colours a little so everything is easy to read.",
+    "On the night look I lightened the second colour and the warning red a little so everything is easy to read."
+   ],
+   "checks": [
+    {
+     "check": "Words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 6.9 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the day look",
+     "result": "pass",
+     "why": "lowest 3.1 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the day look",
+     "result": "pass",
+     "why": "lowest 4.6 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 5.0 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 8.1 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the night look",
+     "result": "pass",
+     "why": "lowest 4.2 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the night look",
+     "result": "pass",
+     "why": "lowest 3.8 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 4.5 to 1, needs 4.5 to 1"
+    }
+   ],
+   "day": {
+    "accent": "#2e7d32",
+    "accent2": "#277f2d",
+    "bg": "#f8f5f0",
+    "bg2": "#f4f5ee",
+    "card": "#f8f5f0",
+    "chart": [
+     "#0f801f",
+     "#277f2d",
+     "#2e7d32",
+     "#1b5e20"
+    ],
+    "danger": "#c62828",
+    "line": "#e0d6c9",
+    "text": "#3e2723",
+    "text2": "#6d4c41",
+    "text3": "#9e877e"
+   },
+   "font": "plain",
+   "from": {
+    "item": "nature",
+    "license": "Apache-2.0",
+    "list": "tweakcn",
+    "list_date": "2026-09-24"
+   },
+   "id": "tweakcn:nature",
+   "name": "Nature",
+   "night": {
+    "accent": "#4caf50",
+    "accent2": "#58ae5a",
+    "bg": "#1c2a1f",
+    "bg2": "#243226",
+    "card": "#2d3a2e",
+    "chart": [
+     "#81c784",
+     "#66bb6a",
+     "#4caf50",
+     "#43a047"
+    ],
+    "danger": "#fc5f55",
+    "line": "#3e4a3d",
+    "text": "#f0ebe5",
+    "text2": "#d7cfc4",
+    "text3": "#96958a"
+   },
+   "photo": "keep",
+   "schema": "puffpai_theme/v1",
+   "shape": "soft",
+   "words": [
+    "earthy",
+    "farm",
+    "forest",
+    "garden",
+    "jungle",
+    "leaves",
+    "nature",
+    "outdoors",
+    "plants",
+    "vegetable"
+   ]
+  },
+  {
+   "adjusted": [
+    "On the day look I darkened the faint words, the main colour, the warning red and the extra colours a little so everything is easy to read.",
+    "On the night look I lightened the main colour, the second colour and the extra colours a little so everything is easy to read."
+   ],
+   "checks": [
+    {
+     "check": "Words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 5.5 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the day look",
+     "result": "pass",
+     "why": "lowest 3.5 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the day look",
+     "result": "pass",
+     "why": "lowest 4.5 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 4.6 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 9.0 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the night look",
+     "result": "pass",
+     "why": "lowest 4.4 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the night look",
+     "result": "pass",
+     "why": "lowest 4.3 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 4.6 to 1, needs 4.5 to 1"
+    }
+   ],
+   "day": {
+    "accent": "#7d4be5",
+    "accent2": "#7c3aed",
+    "bg": "#ffffff",
+    "bg2": "#fcfbff",
+    "card": "#ffffff",
+    "chart": [
+     "#7d4be5",
+     "#7c3aed",
+     "#6d28d9",
+     "#5b21b6"
+    ],
+    "danger": "#dd3035",
+    "line": "#e0e7ff",
+    "text": "#312e81",
+    "text2": "#7c3aed",
+    "text3": "#9b6fe2"
+   },
+   "font": "plain",
+   "from": {
+    "item": "bold-tech",
+    "license": "Apache-2.0",
+    "list": "tweakcn",
+    "list_date": "2026-09-24"
+   },
+   "id": "tweakcn:bold-tech",
+   "name": "Bold Tech",
+   "night": {
+    "accent": "#9a6cff",
+    "accent2": "#757aff",
+    "bg": "#0f172a",
+    "bg2": "#131832",
+    "card": "#1e1b4b",
+    "chart": [
+     "#a78bfa",
+     "#9a6cff",
+     "#985fff",
+     "#9661ff"
+    ],
+    "danger": "#ef4444",
+    "line": "#2e1065",
+    "text": "#e0e7ff",
+    "text2": "#c4b5fd",
+    "text3": "#857eb3"
+   },
+   "photo": "keep",
+   "schema": "puffpai_theme/v1",
+   "shape": "soft",
+   "words": [
+    "bold",
+    "coding",
+    "computer",
+    "futuristic",
+    "robot",
+    "science",
+    "tech"
+   ]
+  },
+  {
+   "adjusted": [
+    "On the night look I lightened the main colour, the second colour and the extra colours a little so everything is easy to read."
+   ],
+   "checks": [
+    {
+     "check": "Words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 7.1 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the day look",
+     "result": "pass",
+     "why": "lowest 3.1 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the day look",
+     "result": "pass",
+     "why": "lowest 4.7 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 5.0 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 9.9 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the night look",
+     "result": "pass",
+     "why": "lowest 4.8 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the night look",
+     "result": "pass",
+     "why": "lowest 3.9 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 4.6 to 1, needs 4.5 to 1"
+    }
+   ],
+   "day": {
+    "accent": "#9b2c2c",
+    "accent2": "#9b2c2c",
+    "bg": "#faf7f5",
+    "bg2": "#fbf6ed",
+    "card": "#faf7f5",
+    "chart": [
+     "#b91c1c",
+     "#9b2c2c",
+     "#7f1d1d",
+     "#b45309"
+    ],
+    "danger": "#991b1b",
+    "line": "#f5e8d2",
+    "text": "#1a1a1a",
+    "text2": "#57534e",
+    "text3": "#908c88"
+   },
+   "font": "plain",
+   "from": {
+    "item": "elegant-luxury",
+    "license": "Apache-2.0",
+    "list": "tweakcn",
+    "list_date": "2026-09-24"
+   },
+   "id": "tweakcn:elegant-luxury",
+   "name": "Elegant Luxury",
+   "night": {
+    "accent": "#ef554a",
+    "accent2": "#d67134",
+    "bg": "#1c1917",
+    "bg2": "#392315",
+    "card": "#292524",
+    "chart": [
+     "#f87171",
+     "#ef4444",
+     "#ff4f47",
+     "#fbbf24"
+    ],
+    "danger": "#ef4444",
+    "line": "#44403c",
+    "text": "#f5f5f4",
+    "text2": "#d6d3d1",
+    "text3": "#959290"
+   },
+   "photo": "keep",
+   "schema": "puffpai_theme/v1",
+   "shape": "soft",
+   "words": [
+    "classic",
+    "elegant",
+    "fancy",
+    "luxury",
+    "royal",
+    "wine"
+   ]
+  },
+  {
+   "adjusted": [
+    "On the day look I darkened the faint words, the main colour, the second colour, the warning red and the extra colours a little so everything is easy to read.",
+    "On the night look I lightened the second colour and the extra colours a little so everything is easy to read."
+   ],
+   "checks": [
+    {
+     "check": "Words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 4.7 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the day look",
+     "result": "pass",
+     "why": "lowest 3.6 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the day look",
+     "result": "pass",
+     "why": "lowest 4.5 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 4.6 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 6.3 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the night look",
+     "result": "pass",
+     "why": "lowest 3.3 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the night look",
+     "result": "pass",
+     "why": "lowest 4.2 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 4.8 to 1, needs 4.5 to 1"
+    }
+   ],
+   "day": {
+    "accent": "#b16000",
+    "accent2": "#b75800",
+    "bg": "#ffffff",
+    "bg2": "#fcfcfd",
+    "card": "#ffffff",
+    "chart": [
+     "#b16000",
+     "#b75800",
+     "#b45309",
+     "#92400e"
+    ],
+    "danger": "#dd3035",
+    "line": "#e5e7eb",
+    "text": "#262626",
+    "text2": "#6b7280",
+    "text3": "#81858e"
+   },
+   "font": "plain",
+   "from": {
+    "item": "amber-minimal",
+    "license": "Apache-2.0",
+    "list": "tweakcn",
+    "list_date": "2026-09-24"
+   },
+   "id": "tweakcn:amber-minimal",
+   "name": "Amber Minimal",
+   "night": {
+    "accent": "#f59e0b",
+    "accent2": "#c36d40",
+    "bg": "#171717",
+    "bg2": "#1b1b1b",
+    "card": "#262626",
+    "chart": [
+     "#fbbf24",
+     "#d97706",
+     "#c36d40",
+     "#d67134"
+    ],
+    "danger": "#ef4444",
+    "line": "#404040",
+    "text": "#e5e5e5",
+    "text2": "#a3a3a3",
+    "text3": "#727272"
+   },
+   "photo": "keep",
+   "schema": "puffpai_theme/v1",
+   "shape": "soft",
+   "words": [
+    "amber",
+    "bee",
+    "honey",
+    "minimal",
+    "simple",
+    "warm"
+   ]
+  },
+  {
+   "adjusted": [
+    "On the day look I darkened the main colour and the extra colours a little so everything is easy to read.",
+    "On the night look I lightened the faint words a little so everything is easy to read."
+   ],
+   "checks": [
+    {
+     "check": "Words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 12.2 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the day look",
+     "result": "pass",
+     "why": "lowest 4.2 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the day look",
+     "result": "pass",
+     "why": "lowest 4.7 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 4.8 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 6.7 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the night look",
+     "result": "pass",
+     "why": "lowest 3.5 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the night look",
+     "result": "pass",
+     "why": "lowest 3.6 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 7.1 to 1, needs 4.5 to 1"
+    }
+   ],
+   "day": {
+    "accent": "#d90008",
+    "accent2": "#0066ff",
+    "bg": "#ffffff",
+    "bg2": "#ffffbf",
+    "card": "#ffffff",
+    "chart": [
+     "#d90008",
+     "#6b6c3a",
+     "#0066ff",
+     "#007c00"
+    ],
+    "danger": "#000000",
+    "line": "#000000",
+    "text": "#000000",
+    "text2": "#333333",
+    "text3": "#7a7a7a"
+   },
+   "font": "plain",
+   "from": {
+    "item": "neo-brutalism",
+    "license": "Apache-2.0",
+    "list": "tweakcn",
+    "list_date": "2026-09-24"
+   },
+   "id": "tweakcn:neo-brutalism",
+   "name": "Neo Brutalism",
+   "night": {
+    "accent": "#ff6666",
+    "accent2": "#3399ff",
+    "bg": "#000000",
+    "bg2": "#40400d",
+    "card": "#333333",
+    "chart": [
+     "#ff6666",
+     "#ffff33",
+     "#3399ff",
+     "#33cc33"
+    ],
+    "danger": "#ffffff",
+    "line": "#ffffff",
+    "text": "#ffffff",
+    "text2": "#cccccc",
+    "text3": "#949494"
+   },
+   "photo": "keep",
+   "schema": "puffpai_theme/v1",
+   "shape": "square",
+   "words": [
+    "blocky",
+    "bold",
+    "comic",
+    "loud",
+    "poster",
+    "superhero"
+   ]
+  },
+  {
+   "adjusted": [
+    "On the day look I darkened the grey words, the faint words and the second colour a little so everything is easy to read.",
+    "On the night look I lightened the warning red a little so everything is easy to read."
+   ],
+   "checks": [
+    {
+     "check": "Words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 5.1 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the day look",
+     "result": "pass",
+     "why": "lowest 3.2 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the day look",
+     "result": "pass",
+     "why": "lowest 4.1 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 4.8 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 5.9 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the night look",
+     "result": "pass",
+     "why": "lowest 3.1 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the night look",
+     "result": "pass",
+     "why": "lowest 4.6 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 5.4 to 1, needs 4.5 to 1"
+    }
+   ],
+   "day": {
+    "accent": "#b45309",
+    "accent2": "#866437",
+    "bg": "#fdfbf7",
+    "bg2": "#f7ecdd",
+    "card": "#f8f4ee",
+    "chart": [
+     "#b45309",
+     "#78716c",
+     "#a16207",
+     "#78716c"
+    ],
+    "danger": "#991b1b",
+    "line": "#e4d9bc",
+    "text": "#4a3b33",
+    "text2": "#6a635e",
+    "text3": "#89837f"
+   },
+   "font": "plain",
+   "from": {
+    "item": "solar-dusk",
+    "license": "Apache-2.0",
+    "list": "tweakcn",
+    "list_date": "2026-09-24"
+   },
+   "id": "tweakcn:solar-dusk",
+   "name": "Solar Dusk",
+   "night": {
+    "accent": "#f97316",
+    "accent2": "#0ea5e9",
+    "bg": "#1c1917",
+    "bg2": "#2b2725",
+    "card": "#292524",
+    "chart": [
+     "#f97316",
+     "#0ea5e9",
+     "#eab308",
+     "#a8a29e"
+    ],
+    "danger": "#ff4f47",
+    "line": "#44403c",
+    "text": "#f5f5f4",
+    "text2": "#a8a29e",
+    "text3": "#77726f"
+   },
+   "photo": "keep",
+   "schema": "puffpai_theme/v1",
+   "shape": "square",
+   "words": [
+    "autumn",
+    "canyon",
+    "cowboy",
+    "desert",
+    "dusk",
+    "sun",
+    "sunset",
+    "warm"
+   ]
+  },
+  {
+   "adjusted": [
+    "On the day look I darkened the grey words, the faint words, the main colour, the warning red and the extra colours a little so everything is easy to read.",
+    "On the night look I lightened the second colour and the extra colours a little so everything is easy to read."
+   ],
+   "checks": [
+    {
+     "check": "Words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 4.6 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the day look",
+     "result": "pass",
+     "why": "lowest 3.2 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the day look",
+     "result": "pass",
+     "why": "lowest 3.5 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 4.6 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 5.9 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the night look",
+     "result": "pass",
+     "why": "lowest 3.2 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the night look",
+     "result": "pass",
+     "why": "lowest 4.0 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 4.6 to 1, needs 4.5 to 1"
+    }
+   ],
+   "day": {
+    "accent": "#5656e0",
+    "accent2": "#4f46e5",
+    "bg": "#e7e5e4",
+    "bg2": "#e3e1df",
+    "card": "#f5f5f4",
+    "chart": [
+     "#5656e0",
+     "#4f46e5",
+     "#4338ca",
+     "#3730a3"
+    ],
+    "danger": "#dd3035",
+    "line": "#d6d3d1",
+    "text": "#1e293b",
+    "text2": "#5d6471",
+    "text3": "#787c85"
+   },
+   "font": "plain",
+   "from": {
+    "item": "claymorphism",
+    "license": "Apache-2.0",
+    "list": "tweakcn",
+    "list_date": "2026-09-24"
+   },
+   "id": "tweakcn:claymorphism",
+   "name": "Claymorphism",
+   "night": {
+    "accent": "#818cf8",
+    "accent2": "#7076ff",
+    "bg": "#1e1b18",
+    "bg2": "#25221f",
+    "card": "#2c2825",
+    "chart": [
+     "#818cf8",
+     "#7076ff",
+     "#7578ff",
+     "#757aff"
+    ],
+    "danger": "#ef4444",
+    "line": "#3a3633",
+    "text": "#e2e8f0",
+    "text2": "#9ca3af",
+    "text3": "#70737a"
+   },
+   "photo": "keep",
+   "schema": "puffpai_theme/v1",
+   "shape": "round",
+   "words": [
+    "clay",
+    "crafts",
+    "pastel",
+    "playful",
+    "soft",
+    "toy"
+   ]
+  },
+  {
+   "adjusted": [
+    "On the day look I darkened the main colour, the second colour, the warning red and the extra colours a little so everything is easy to read.",
+    "On the night look I lightened the faint words and the extra colours a little so everything is easy to read."
+   ],
+   "checks": [
+    {
+     "check": "Words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 18.1 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the day look",
+     "result": "pass",
+     "why": "lowest 5.9 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the day look",
+     "result": "pass",
+     "why": "lowest 4.3 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 4.6 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 4.7 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the night look",
+     "result": "pass",
+     "why": "lowest 3.2 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the night look",
+     "result": "pass",
+     "why": "lowest 4.1 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 4.7 to 1, needs 4.5 to 1"
+    }
+   ],
+   "day": {
+    "accent": "#da00a8",
+    "accent2": "#008665",
+    "bg": "#f8f9fa",
+    "bg2": "#f6f7fb",
+    "card": "#ffffff",
+    "chart": [
+     "#da00a8",
+     "#9000ff",
+     "#00768e",
+     "#008665"
+    ],
+    "danger": "#da0000",
+    "line": "#dfe6e9",
+    "text": "#0c0c1d",
+    "text2": "#0c0c1d",
+    "text3": "#5f5f6a"
+   },
+   "font": "plain",
+   "from": {
+    "item": "cyberpunk",
+    "license": "Apache-2.0",
+    "list": "tweakcn",
+    "list_date": "2026-09-24"
+   },
+   "id": "tweakcn:cyberpunk",
+   "name": "Cyberpunk",
+   "night": {
+    "accent": "#ff00c8",
+    "accent2": "#00ffcc",
+    "bg": "#0c0c1d",
+    "bg2": "#111125",
+    "card": "#1e1e3f",
+    "chart": [
+     "#ff00c8",
+     "#ae44ff",
+     "#00e5ff",
+     "#00ffcc"
+    ],
+    "danger": "#ff3d00",
+    "line": "#2e2e5e",
+    "text": "#eceff4",
+    "text2": "#8085a6",
+    "text3": "#656985"
+   },
+   "photo": "keep",
+   "schema": "puffpai_theme/v1",
+   "shape": "soft",
+   "words": [
+    "arcade",
+    "cyberpunk",
+    "electric",
+    "futuristic",
+    "gaming",
+    "neon",
+    "synthwave"
+   ]
+  },
+  {
+   "adjusted": [
+    "On the day look I darkened the grey words, the faint words, the main colour, the second colour, the warning red and the extra colours a little so everything is easy to read.",
+    "On the night look I lightened the extra colours a little so everything is easy to read."
+   ],
+   "checks": [
+    {
+     "check": "Words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 5.2 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the day look",
+     "result": "pass",
+     "why": "lowest 3.4 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the day look",
+     "result": "pass",
+     "why": "lowest 4.3 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 4.9 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 6.0 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the night look",
+     "result": "pass",
+     "why": "lowest 3.2 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the night look",
+     "result": "pass",
+     "why": "lowest 3.9 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 4.5 to 1, needs 4.5 to 1"
+    }
+   ],
+   "day": {
+    "accent": "#7b5dc7",
+    "accent2": "#7d4be5",
+    "bg": "#f7f3f9",
+    "bg2": "#f3ecfa",
+    "card": "#ffffff",
+    "chart": [
+     "#7b5dc7",
+     "#7d4be5",
+     "#7c3aed",
+     "#6d28d9"
+    ],
+    "danger": "#a8595b",
+    "line": "#e9d8fd",
+    "text": "#374151",
+    "text2": "#5d6471",
+    "text3": "#7e818c"
+   },
+   "font": "plain",
+   "from": {
+    "item": "pastel-dreams",
+    "license": "Apache-2.0",
+    "list": "tweakcn",
+    "list_date": "2026-09-24"
+   },
+   "id": "tweakcn:pastel-dreams",
+   "name": "Pastel Dreams",
+   "night": {
+    "accent": "#c0aafd",
+    "accent2": "#a78bfa",
+    "bg": "#1c1917",
+    "bg2": "#251f24",
+    "card": "#2d2535",
+    "chart": [
+     "#c0aafd",
+     "#a78bfa",
+     "#9a6cff",
+     "#985fff"
+    ],
+    "danger": "#fca5a5",
+    "line": "#3f324a",
+    "text": "#e0e7ff",
+    "text2": "#9ca3af",
+    "text3": "#6f737a"
+   },
+   "photo": "keep",
+   "schema": "puffpai_theme/v1",
+   "shape": "round",
+   "words": [
+    "baby",
+    "dreamy",
+    "gentle",
+    "lavender",
+    "pastel",
+    "soft",
+    "unicorn"
+   ]
+  },
+  {
+   "adjusted": [
+    "On the day look I darkened the grey words, the faint words, the main colour, the warning red and the extra colours a little so everything is easy to read.",
+    "On the night look I lightened the second colour and the extra colours a little so everything is easy to read."
+   ],
+   "checks": [
+    {
+     "check": "Words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 5.5 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the day look",
+     "result": "pass",
+     "why": "lowest 3.5 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the day look",
+     "result": "pass",
+     "why": "lowest 4.2 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 4.6 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 6.0 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the night look",
+     "result": "pass",
+     "why": "lowest 3.2 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the night look",
+     "result": "pass",
+     "why": "lowest 4.1 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 4.7 to 1, needs 4.5 to 1"
+    }
+   ],
+   "day": {
+    "accent": "#5656e0",
+    "accent2": "#4f46e5",
+    "bg": "#f8fafc",
+    "bg2": "#f3f5f8",
+    "card": "#ffffff",
+    "chart": [
+     "#5656e0",
+     "#4f46e5",
+     "#4338ca",
+     "#3730a3"
+    ],
+    "danger": "#dd3035",
+    "line": "#d1d5db",
+    "text": "#1e293b",
+    "text2": "#5d6471",
+    "text3": "#7e848d"
+   },
+   "font": "plain",
+   "from": {
+    "item": "clean-slate",
+    "license": "Apache-2.0",
+    "list": "tweakcn",
+    "list_date": "2026-09-24"
+   },
+   "id": "tweakcn:clean-slate",
+   "name": "Clean Slate",
+   "night": {
+    "accent": "#818cf8",
+    "accent2": "#7076ff",
+    "bg": "#0f172a",
+    "bg2": "#171f31",
+    "card": "#1e293b",
+    "chart": [
+     "#818cf8",
+     "#7076ff",
+     "#7578ff",
+     "#757aff"
+    ],
+    "danger": "#ef4444",
+    "line": "#4b5563",
+    "text": "#e2e8f0",
+    "text2": "#9ca3af",
+    "text3": "#6b7280"
+   },
+   "photo": "keep",
+   "schema": "puffpai_theme/v1",
+   "shape": "soft",
+   "words": [
+    "calm",
+    "clean",
+    "plain",
+    "simple",
+    "slate",
+    "tidy"
+   ]
+  },
+  {
+   "adjusted": [
+    "On the day look I darkened the faint words, the second colour, the warning red and the extra colours a little so everything is easy to read.",
+    "On the night look I lightened the second colour and the extra colours a little so everything is easy to read."
+   ],
+   "checks": [
+    {
+     "check": "Words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 5.3 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the day look",
+     "result": "pass",
+     "why": "lowest 3.2 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the day look",
+     "result": "pass",
+     "why": "lowest 4.1 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 4.5 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 8.5 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the night look",
+     "result": "pass",
+     "why": "lowest 4.1 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the night look",
+     "result": "pass",
+     "why": "lowest 4.2 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 4.5 to 1, needs 4.5 to 1"
+    }
+   ],
+   "day": {
+    "accent": "#644a40",
+    "accent2": "#8e724b",
+    "bg": "#f9f9f9",
+    "bg2": "#faf2e8",
+    "card": "#fcfcfc",
+    "chart": [
+     "#644a40",
+     "#8e724b",
+     "#6c6c6c",
+     "#7f6a4b"
+    ],
+    "danger": "#d33b1b",
+    "line": "#d8d8d8",
+    "text": "#202020",
+    "text2": "#646464",
+    "text3": "#898989"
+   },
+   "font": "plain",
+   "from": {
+    "item": "caffeine",
+    "license": "Apache-2.0",
+    "list": "tweakcn",
+    "list_date": "2026-09-24"
+   },
+   "id": "tweakcn:caffeine",
+   "name": "Caffeine",
+   "night": {
+    "accent": "#ffe0c2",
+    "accent2": "#8e837a",
+    "bg": "#111111",
+    "bg2": "#1b1917",
+    "card": "#191919",
+    "chart": [
+     "#ffe0c2",
+     "#8e837a",
+     "#7c7c7c",
+     "#897e72"
+    ],
+    "danger": "#e54d2e",
+    "line": "#201e18",
+    "text": "#eeeeee",
+    "text2": "#b4b4b4",
+    "text3": "#7b7b7b"
+   },
+   "photo": "keep",
+   "schema": "puffpai_theme/v1",
+   "shape": "soft",
+   "words": [
+    "bakery",
+    "cafe",
+    "coffee",
+    "cozy",
+    "espresso",
+    "warm"
+   ]
+  },
+  {
+   "adjusted": [
+    "On the day look I darkened the grey words, the faint words, the main colour, the second colour, the warning red and the extra colours a little so everything is easy to read.",
+    "On the night look I lightened the grey words and the faint words a little so everything is easy to read."
+   ],
+   "checks": [
+    {
+     "check": "Words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 5.4 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the day look",
+     "result": "pass",
+     "why": "lowest 3.5 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the day look",
+     "result": "pass",
+     "why": "lowest 4.2 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 4.5 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 4.8 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the night look",
+     "result": "pass",
+     "why": "lowest 3.0 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the night look",
+     "result": "pass",
+     "why": "lowest 4.1 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 4.7 to 1, needs 4.5 to 1"
+    }
+   ],
+   "day": {
+    "accent": "#00851a",
+    "accent2": "#007b47",
+    "bg": "#f0f8ff",
+    "bg2": "#ecf6ff",
+    "card": "#ffffff",
+    "chart": [
+     "#00851a",
+     "#007b47",
+     "#00875b",
+     "#047857"
+    ],
+    "danger": "#dd3035",
+    "line": "#e5e7eb",
+    "text": "#374151",
+    "text2": "#5d6471",
+    "text3": "#7c838d"
+   },
+   "font": "plain",
+   "from": {
+    "item": "ocean-breeze",
+    "license": "Apache-2.0",
+    "list": "tweakcn",
+    "list_date": "2026-09-24"
+   },
+   "id": "tweakcn:ocean-breeze",
+   "name": "Ocean Breeze",
+   "night": {
+    "accent": "#34d399",
+    "accent2": "#2dd4bf",
+    "bg": "#0f172a",
+    "bg2": "#171f31",
+    "card": "#1e293b",
+    "chart": [
+     "#34d399",
+     "#2dd4bf",
+     "#22c55e",
+     "#10b981"
+    ],
+    "danger": "#ef4444",
+    "line": "#4b5563",
+    "text": "#d1d5db",
+    "text2": "#89909e",
+    "text3": "#676e7f"
+   },
+   "photo": "keep",
+   "schema": "puffpai_theme/v1",
+   "shape": "soft",
+   "words": [
+    "beach",
+    "breeze",
+    "fish",
+    "fresh",
+    "ocean",
+    "sea",
+    "summer",
+    "water"
+   ]
+  },
+  {
+   "adjusted": [
+    "On the day look I darkened the extra colours a little so everything is easy to read.",
+    "On the night look I lightened the main words, the grey words, the faint words, the main colour, the second colour, the warning red and the extra colours a little so everything is easy to read."
+   ],
+   "checks": [
+    {
+     "check": "Words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 9.4 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the day look",
+     "result": "pass",
+     "why": "lowest 3.4 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the day look",
+     "result": "pass",
+     "why": "lowest 3.2 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 4.5 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 4.6 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the night look",
+     "result": "pass",
+     "why": "lowest 3.3 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the night look",
+     "result": "pass",
+     "why": "lowest 3.2 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 4.8 to 1, needs 4.5 to 1"
+    }
+   ],
+   "day": {
+    "accent": "#d33682",
+    "accent2": "#cb4b16",
+    "bg": "#fdf6e3",
+    "bg2": "#c8e1d0",
+    "card": "#eee8d5",
+    "chart": [
+     "#097cc1",
+     "#00827a",
+     "#d33682",
+     "#cb4b16"
+    ],
+    "danger": "#dc322f",
+    "line": "#839496",
+    "text": "#073642",
+    "text2": "#073642",
+    "text3": "#5d797a"
+   },
+   "font": "plain",
+   "from": {
+    "item": "retro-arcade",
+    "license": "Apache-2.0",
+    "list": "tweakcn",
+    "list_date": "2026-09-24"
+   },
+   "id": "tweakcn:retro-arcade",
+   "name": "Retro Arcade",
+   "night": {
+    "accent": "#f759a0",
+    "accent2": "#ef6b3c",
+    "bg": "#002b36",
+    "bg2": "#0b484e",
+    "card": "#073642",
+    "chart": [
+     "#3a9be3",
+     "#2aa198",
+     "#f759a0",
+     "#ef6b3c"
+    ],
+    "danger": "#ff584e",
+    "line": "#586e75",
+    "text": "#a2b1b1",
+    "text2": "#a2b1b1",
+    "text3": "#7d969a"
+   },
+   "photo": "keep",
+   "schema": "puffpai_theme/v1",
+   "shape": "square",
+   "words": [
+    "arcade",
+    "eighties",
+    "game",
+    "games",
+    "gaming",
+    "retro",
+    "video"
+   ]
+  },
+  {
+   "adjusted": [
+    "On the day look I darkened the grey words, the faint words, the second colour, the warning red and the extra colours a little so everything is easy to read.",
+    "On the night look I lightened the main colour, the warning red and the extra colours a little so everything is easy to read."
+   ],
+   "checks": [
+    {
+     "check": "Words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 5.3 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the day look",
+     "result": "pass",
+     "why": "lowest 3.3 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the day look",
+     "result": "pass",
+     "why": "lowest 3.9 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 4.6 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 5.6 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the night look",
+     "result": "pass",
+     "why": "lowest 3.0 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the night look",
+     "result": "pass",
+     "why": "lowest 3.9 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 4.6 to 1, needs 4.5 to 1"
+    }
+   ],
+   "day": {
+    "accent": "#6c5ce7",
+    "accent2": "#6d764b",
+    "bg": "#f9f9f9",
+    "bg2": "#e3edf7",
+    "card": "#ffffff",
+    "chart": [
+     "#6c5ce7",
+     "#8e44ad",
+     "#4b0082",
+     "#3967ba"
+    ],
+    "danger": "#dd3035",
+    "line": "#d4d4d4",
+    "text": "#333333",
+    "text2": "#606060",
+    "text3": "#818181"
+   },
+   "font": "plain",
+   "from": {
+    "item": "midnight-bloom",
+    "license": "Apache-2.0",
+    "list": "tweakcn",
+    "list_date": "2026-09-24"
+   },
+   "id": "tweakcn:midnight-bloom",
+   "name": "Midnight Bloom",
+   "night": {
+    "accent": "#887cff",
+    "accent2": "#6495ed",
+    "bg": "#1a1d23",
+    "bg2": "#26163b",
+    "card": "#2f3436",
+    "chart": [
+     "#887cff",
+     "#be71de",
+     "#a06ce5",
+     "#6495ed"
+    ],
+    "danger": "#ff5653",
+    "line": "#444444",
+    "text": "#e5e5e5",
+    "text2": "#a3a3a3",
+    "text3": "#737476"
+   },
+   "photo": "keep",
+   "schema": "puffpai_theme/v1",
+   "shape": "soft",
+   "words": [
+    "dark",
+    "flower",
+    "midnight",
+    "mystery",
+    "night"
+   ]
+  },
+  {
+   "adjusted": [
+    "On the day look I darkened the grey words, the faint words, the main colour, the second colour, the warning red and the extra colours a little so everything is easy to read.",
+    "On the night look I lightened the grey words, the faint words and the warning red a little so everything is easy to read."
+   ],
+   "checks": [
+    {
+     "check": "Words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 5.3 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the day look",
+     "result": "pass",
+     "why": "lowest 3.3 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the day look",
+     "result": "pass",
+     "why": "lowest 3.9 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 4.6 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 4.9 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the night look",
+     "result": "pass",
+     "why": "lowest 3.3 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the night look",
+     "result": "pass",
+     "why": "lowest 3.3 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 5.4 to 1, needs 4.5 to 1"
+    }
+   ],
+   "day": {
+    "accent": "#9c646f",
+    "accent2": "#6b6c3a",
+    "bg": "#f7f9fa",
+    "bg2": "#dbeef6",
+    "card": "#ffffff",
+    "chart": [
+     "#9c646f",
+     "#26718b",
+     "#6b6c3a",
+     "#aa4d7e"
+    ],
+    "danger": "#dd3035",
+    "line": "#d4d4d4",
+    "text": "#333333",
+    "text2": "#606060",
+    "text3": "#808181"
+   },
+   "font": "plain",
+   "from": {
+    "item": "candyland",
+    "license": "Apache-2.0",
+    "list": "tweakcn",
+    "list_date": "2026-09-24"
+   },
+   "id": "tweakcn:candyland",
+   "name": "Candyland",
+   "night": {
+    "accent": "#ff99cc",
+    "accent2": "#87ceeb",
+    "bg": "#1a1d23",
+    "bg2": "#204927",
+    "card": "#2f3436",
+    "chart": [
+     "#ff99cc",
+     "#33cc33",
+     "#87ceeb",
+     "#ffff00"
+    ],
+    "danger": "#ff5653",
+    "line": "#444444",
+    "text": "#e5e5e5",
+    "text2": "#b3b3b3",
+    "text3": "#919294"
+   },
+   "photo": "keep",
+   "schema": "puffpai_theme/v1",
+   "shape": "soft",
+   "words": [
+    "candy",
+    "dessert",
+    "fun",
+    "pastel",
+    "playful",
+    "rainbow",
+    "sugar",
+    "sweet"
+   ]
+  },
+  {
+   "adjusted": [
+    "On the day look I darkened the grey words, the faint words, the main colour, the second colour, the warning red and the extra colours a little so everything is easy to read.",
+    "On the night look I lightened the faint words, the warning red and the extra colours a little so everything is easy to read."
+   ],
+   "checks": [
+    {
+     "check": "Words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 4.7 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the day look",
+     "result": "pass",
+     "why": "lowest 3.6 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the day look",
+     "result": "pass",
+     "why": "lowest 3.4 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 4.6 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 4.9 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the night look",
+     "result": "pass",
+     "why": "lowest 3.3 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the night look",
+     "result": "pass",
+     "why": "lowest 3.7 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 5.0 to 1, needs 4.5 to 1"
+    }
+   ],
+   "day": {
+    "accent": "#00883c",
+    "accent2": "#007b8f",
+    "bg": "#f9f9fa",
+    "bg2": "#d4e0f7",
+    "card": "#ffffff",
+    "chart": [
+     "#00883c",
+     "#3967ba",
+     "#007b8f",
+     "#3773a4"
+    ],
+    "danger": "#dd3035",
+    "line": "#d4d4d4",
+    "text": "#333333",
+    "text2": "#606060",
+    "text3": "#727272"
+   },
+   "font": "plain",
+   "from": {
+    "item": "northern-lights",
+    "license": "Apache-2.0",
+    "list": "tweakcn",
+    "list_date": "2026-09-24"
+   },
+   "id": "tweakcn:northern-lights",
+   "name": "Northern Lights",
+   "night": {
+    "accent": "#34a85a",
+    "accent2": "#6495ed",
+    "bg": "#1a1d23",
+    "bg2": "#253647",
+    "card": "#2f3436",
+    "chart": [
+     "#34a85a",
+     "#5591c4",
+     "#6495ed",
+     "#66d9ef"
+    ],
+    "danger": "#ff5653",
+    "line": "#444444",
+    "text": "#e5e5e5",
+    "text2": "#a3a3a3",
+    "text3": "#828385"
+   },
+   "photo": "keep",
+   "schema": "puffpai_theme/v1",
+   "shape": "soft",
+   "words": [
+    "arctic",
+    "aurora",
+    "lights",
+    "northern",
+    "polar",
+    "sky",
+    "snow",
+    "winter"
+   ]
+  },
+  {
+   "adjusted": [
+    "On the day look I darkened the grey words, the faint words, the main colour and the extra colours a little so everything is easy to read.",
+    "On the night look I lightened the warning red and the extra colours a little so everything is easy to read."
+   ],
+   "checks": [
+    {
+     "check": "Words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 5.3 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the day look",
+     "result": "pass",
+     "why": "lowest 3.4 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the day look",
+     "result": "pass",
+     "why": "lowest 3.9 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 4.6 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 6.9 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the night look",
+     "result": "pass",
+     "why": "lowest 3.7 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the night look",
+     "result": "pass",
+     "why": "lowest 4.1 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 4.8 to 1, needs 4.5 to 1"
+    }
+   ],
+   "day": {
+    "accent": "#966d44",
+    "accent2": "#8d6e4c",
+    "bg": "#f5f1e6",
+    "bg2": "#f0ebdd",
+    "card": "#fffcf5",
+    "chart": [
+     "#966d44",
+     "#8d6e4c",
+     "#735a3a",
+     "#856444"
+    ],
+    "danger": "#b54a35",
+    "line": "#dbd0ba",
+    "text": "#4a3f35",
+    "text2": "#6e5d48",
+    "text3": "#897c6a"
+   },
+   "font": "plain",
+   "from": {
+    "item": "vintage-paper",
+    "license": "Apache-2.0",
+    "list": "tweakcn",
+    "list_date": "2026-09-24"
+   },
+   "id": "tweakcn:vintage-paper",
+   "name": "Vintage Paper",
+   "night": {
+    "accent": "#c0a080",
+    "accent2": "#b3906f",
+    "bg": "#2d2621",
+    "bg2": "#342c27",
+    "card": "#3a322c",
+    "chart": [
+     "#c0a080",
+     "#b3906f",
+     "#b68b61",
+     "#ac8c69"
+    ],
+    "danger": "#e87862",
+    "line": "#4a4039",
+    "text": "#ece5d8",
+    "text2": "#c5bcac",
+    "text3": "#90877b"
+   },
+   "photo": "keep",
+   "schema": "puffpai_theme/v1",
+   "shape": "square",
+   "words": [
+    "antique",
+    "books",
+    "cozy",
+    "history",
+    "library",
+    "old",
+    "paper",
+    "parchment",
+    "reading",
+    "vintage"
+   ]
+  },
+  {
+   "adjusted": [
+    "On the day look I darkened the faint words, the main colour, the second colour, the warning red and the extra colours a little so everything is easy to read.",
+    "On the night look I lightened the warning red a little so everything is easy to read."
+   ],
+   "checks": [
+    {
+     "check": "Words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 4.5 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the day look",
+     "result": "pass",
+     "why": "lowest 3.5 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the day look",
+     "result": "pass",
+     "why": "lowest 4.2 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 4.5 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 8.2 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the night look",
+     "result": "pass",
+     "why": "lowest 4.2 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the night look",
+     "result": "pass",
+     "why": "lowest 4.0 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 4.6 to 1, needs 4.5 to 1"
+    }
+   ],
+   "day": {
+    "accent": "#ca4e31",
+    "accent2": "#9b581a",
+    "bg": "#fff9f5",
+    "bg2": "#fff6f2",
+    "card": "#ffffff",
+    "chart": [
+     "#ca4e31",
+     "#9b581a",
+     "#8d5f3f",
+     "#ab6045"
+    ],
+    "danger": "#d42337",
+    "line": "#ffe0d6",
+    "text": "#3d3436",
+    "text2": "#78716c",
+    "text3": "#89837e"
+   },
+   "font": "plain",
+   "from": {
+    "item": "sunset-horizon",
+    "license": "Apache-2.0",
+    "list": "tweakcn",
+    "list_date": "2026-09-24"
+   },
+   "id": "tweakcn:sunset-horizon",
+   "name": "Sunset Horizon",
+   "night": {
+    "accent": "#ff7e5f",
+    "accent2": "#feb47b",
+    "bg": "#2a2024",
+    "bg2": "#31262b",
+    "card": "#392f35",
+    "chart": [
+     "#ff7e5f",
+     "#feb47b",
+     "#ffcaa7",
+     "#ffad8f"
+    ],
+    "danger": "#f84c55",
+    "line": "#463a41",
+    "text": "#f2e9e4",
+    "text2": "#d7c6bc",
+    "text3": "#9a8c87"
+   },
+   "photo": "keep",
+   "schema": "puffpai_theme/v1",
+   "shape": "soft",
+   "words": [
+    "beach",
+    "evening",
+    "horizon",
+    "summer",
+    "sunset",
+    "tropical",
+    "warm"
+   ]
+  },
+  {
+   "adjusted": [
+    "On the day look I darkened the faint words, the second colour and the extra colours a little so everything is easy to read.",
+    "On the night look I lightened the grey words, the faint words, the main colour, the warning red and the extra colours a little so everything is easy to read."
+   ],
+   "checks": [
+    {
+     "check": "Words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 5.5 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the day look",
+     "result": "pass",
+     "why": "lowest 3.2 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the day look",
+     "result": "pass",
+     "why": "lowest 4.0 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 4.8 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 5.0 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the night look",
+     "result": "pass",
+     "why": "lowest 3.2 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the night look",
+     "result": "pass",
+     "why": "lowest 3.2 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 6.3 to 1, needs 4.5 to 1"
+    }
+   ],
+   "day": {
+    "accent": "#3a5ba0",
+    "accent2": "#417692",
+    "bg": "#f5f7fa",
+    "bg2": "#f6ebd8",
+    "card": "#e3eaf2",
+    "chart": [
+     "#3a5ba0",
+     "#956b00",
+     "#417692",
+     "#656c74"
+    ],
+    "danger": "#2d1e2f",
+    "line": "#b0b8c1",
+    "text": "#1a2238",
+    "text2": "#3a5ba0",
+    "text3": "#6c83af"
+   },
+   "font": "plain",
+   "from": {
+    "item": "starry-night",
+    "license": "Apache-2.0",
+    "list": "tweakcn",
+    "list_date": "2026-09-24"
+   },
+   "id": "tweakcn:starry-night",
+   "name": "Starry Night",
+   "night": {
+    "accent": "#82a7f2",
+    "accent2": "#ffe066",
+    "bg": "#181a24",
+    "bg2": "#524b34",
+    "card": "#23243a",
+    "chart": [
+     "#82a7f2",
+     "#ffe066",
+     "#6ea3c1",
+     "#98a6c1"
+    ],
+    "danger": "#e386a8",
+    "line": "#2d2e3e",
+    "text": "#e6eaf3",
+    "text2": "#b7c6e1",
+    "text3": "#929cb2"
+   },
+   "photo": "keep",
+   "schema": "puffpai_theme/v1",
+   "shape": "soft",
+   "words": [
+    "art",
+    "dreamy",
+    "moon",
+    "night",
+    "painting",
+    "sky",
+    "starry",
+    "stars"
+   ]
+  },
+  {
+   "adjusted": [
+    "On the day look I darkened the grey words, the faint words, the main colour, the second colour, the warning red and the extra colours a little so everything is easy to read.",
+    "On the night look I lightened the grey words and the faint words a little so everything is easy to read."
+   ],
+   "checks": [
+    {
+     "check": "Words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 5.3 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the day look",
+     "result": "pass",
+     "why": "lowest 3.3 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the day look",
+     "result": "pass",
+     "why": "lowest 3.3 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 4.5 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 4.7 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the night look",
+     "result": "pass",
+     "why": "lowest 3.3 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the night look",
+     "result": "pass",
+     "why": "lowest 3.5 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 4.8 to 1, needs 4.5 to 1"
+    }
+   ],
+   "day": {
+    "accent": "#b65b21",
+    "accent2": "#b45c21",
+    "bg": "#ffffff",
+    "bg2": "#d4dddd",
+    "card": "#ffffff",
+    "chart": [
+     "#517878",
+     "#b45c21",
+     "#996e3c",
+     "#6b6b6b"
+    ],
+    "danger": "#dd3035",
+    "line": "#e5e7eb",
+    "text": "#111827",
+    "text2": "#4f5663",
+    "text3": "#72767f"
+   },
+   "font": "typewriter",
+   "from": {
+    "item": "darkmatter",
+    "license": "Apache-2.0",
+    "list": "tweakcn",
+    "list_date": "2026-09-24"
+   },
+   "id": "tweakcn:darkmatter",
+   "name": "Darkmatter",
+   "night": {
+    "accent": "#e78a53",
+    "accent2": "#e78a53",
+    "bg": "#121113",
+    "bg2": "#252f30",
+    "card": "#121212",
+    "chart": [
+     "#5f8787",
+     "#e78a53",
+     "#fbcb97",
+     "#888888"
+    ],
+    "danger": "#5f8787",
+    "line": "#222222",
+    "text": "#c1c1c1",
+    "text2": "#979797",
+    "text3": "#7c7b7c"
+   },
+   "photo": "keep",
+   "schema": "puffpai_theme/v1",
+   "shape": "soft",
+   "words": [
+    "dark",
+    "matter",
+    "minimal",
+    "night",
+    "serious",
+    "space"
+   ]
+  },
+  {
+   "adjusted": [
+    "On the day look I darkened the faint words a little so everything is easy to read.",
+    "On the night look I lightened the main colour, the second colour and the extra colours a little so everything is easy to read."
+   ],
+   "checks": [
+    {
+     "check": "Words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 4.8 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the day look",
+     "result": "pass",
+     "why": "lowest 3.6 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the day look",
+     "result": "pass",
+     "why": "lowest 4.7 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 4.7 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 7.0 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the night look",
+     "result": "pass",
+     "why": "lowest 3.4 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the night look",
+     "result": "pass",
+     "why": "lowest 4.7 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 5.2 to 1, needs 4.5 to 1"
+    }
+   ],
+   "day": {
+    "accent": "#737373",
+    "accent2": "#737373",
+    "bg": "#ffffff",
+    "bg2": "#fdfdfd",
+    "card": "#ffffff",
+    "chart": [
+     "#737373",
+     "#737373",
+     "#737373",
+     "#737373"
+    ],
+    "danger": "#e7000b",
+    "line": "#e5e5e5",
+    "text": "#0a0a0a",
+    "text2": "#717171",
+    "text3": "#858585"
+   },
+   "font": "typewriter",
+   "from": {
+    "item": "mono",
+    "license": "Apache-2.0",
+    "list": "tweakcn",
+    "list_date": "2026-09-24"
+   },
+   "id": "tweakcn:mono",
+   "name": "Mono",
+   "night": {
+    "accent": "#828282",
+    "accent2": "#828282",
+    "bg": "#0a0a0a",
+    "bg2": "#111111",
+    "card": "#191919",
+    "chart": [
+     "#828282",
+     "#828282",
+     "#828282",
+     "#828282"
+    ],
+    "danger": "#ff6467",
+    "line": "#383838",
+    "text": "#fafafa",
+    "text2": "#a1a1a1",
+    "text3": "#6c6c6c"
+   },
+   "photo": "keep",
+   "schema": "puffpai_theme/v1",
+   "shape": "square",
+   "words": [
+    "code",
+    "minimal",
+    "mono",
+    "newspaper",
+    "plain",
+    "simple",
+    "typewriter"
+   ]
+  },
+  {
+   "adjusted": [
+    "On the day look I darkened the second colour, the warning red and the extra colours a little so everything is easy to read."
+   ],
+   "checks": [
+    {
+     "check": "Words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 9.6 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the day look",
+     "result": "pass",
+     "why": "lowest 3.4 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the day look",
+     "result": "pass",
+     "why": "lowest 3.5 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 4.6 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 8.3 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the night look",
+     "result": "pass",
+     "why": "lowest 3.6 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the night look",
+     "result": "pass",
+     "why": "lowest 4.5 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 7.0 to 1, needs 4.5 to 1"
+    }
+   ],
+   "day": {
+    "accent": "#4f46e5",
+    "accent2": "#b16000",
+    "bg": "#f7f9f3",
+    "bg2": "#bee9e0",
+    "card": "#ffffff",
+    "chart": [
+     "#4f46e5",
+     "#007a6b",
+     "#b16000",
+     "#c81f7b"
+    ],
+    "danger": "#dd3035",
+    "line": "#000000",
+    "text": "#000000",
+    "text2": "#333333",
+    "text3": "#787876"
+   },
+   "font": "plain",
+   "from": {
+    "item": "soft-pop",
+    "license": "Apache-2.0",
+    "list": "tweakcn",
+    "list_date": "2026-09-24"
+   },
+   "id": "tweakcn:soft-pop",
+   "name": "Soft Pop",
+   "night": {
+    "accent": "#818cf8",
+    "accent2": "#fcd34d",
+    "bg": "#000000",
+    "bg2": "#0b3530",
+    "card": "#1a212b",
+    "chart": [
+     "#818cf8",
+     "#2dd4bf",
+     "#fcd34d",
+     "#f472b6"
+    ],
+    "danger": "#f87171",
+    "line": "#545454",
+    "text": "#ffffff",
+    "text2": "#cccccc",
+    "text3": "#858585"
+   },
+   "photo": "keep",
+   "schema": "puffpai_theme/v1",
+   "shape": "round",
+   "words": [
+    "bright",
+    "colorful",
+    "colourful",
+    "fun",
+    "music",
+    "playful",
+    "pop",
+    "soft"
+   ]
+  },
+  {
+   "adjusted": [
+    "On the day look I darkened the grey words, the faint words, the main colour, the second colour and the extra colours a little so everything is easy to read.",
+    "On the night look I lightened the extra colours a little so everything is easy to read."
+   ],
+   "checks": [
+    {
+     "check": "Words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 5.1 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the day look",
+     "result": "pass",
+     "why": "lowest 3.3 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the day look",
+     "result": "pass",
+     "why": "lowest 4.1 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the day look",
+     "result": "pass",
+     "why": "lowest 4.8 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 7.3 to 1, needs 4.5 to 1"
+    },
+    {
+     "check": "Faint words are readable on the night look",
+     "result": "pass",
+     "why": "lowest 3.6 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Coloured words stand out on the night look",
+     "result": "pass",
+     "why": "lowest 4.8 to 1, needs 3.0 to 1"
+    },
+    {
+     "check": "Button words are easy to read on the night look",
+     "result": "pass",
+     "why": "lowest 5.1 to 1, needs 4.5 to 1"
+    }
+   ],
+   "day": {
+    "accent": "#5f7265",
+    "accent2": "#656e4e",
+    "bg": "#f8f7f4",
+    "bg2": "#eeeee7",
+    "card": "#ffffff",
+    "chart": [
+     "#5f7265",
+     "#656e4e",
+     "#5f7058",
+     "#6b7280"
+    ],
+    "danger": "#c73e3a",
+    "line": "#e8e6e1",
+    "text": "#1a1f2e",
+    "text2": "#5d6471",
+    "text3": "#7e838b"
+   },
+   "font": "plain",
+   "from": {
+    "item": "sage-garden",
+    "license": "Apache-2.0",
+    "list": "tweakcn",
+    "list_date": "2026-09-24"
+   },
+   "id": "tweakcn:sage-garden",
+   "name": "Sage Garden",
+   "night": {
+    "accent": "#7c9082",
+    "accent2": "#a0aa88",
+    "bg": "#0a0a0a",
+    "bg2": "#0e0e0e",
+    "card": "#121212",
+    "chart": [
+     "#7c9082",
+     "#a0aa88",
+     "#8b9d83",
+     "#7a818f"
+    ],
+    "danger": "#ef4444",
+    "line": "#2a2a2a",
+    "text": "#f5f5f5",
+    "text2": "#a0a0a0",
+    "text3": "#6c6c6c"
+   },
+   "photo": "keep",
+   "schema": "puffpai_theme/v1",
+   "shape": "soft",
+   "words": [
+    "calm",
+    "earthy",
+    "garden",
+    "herbs",
+    "plants",
+    "sage",
+    "soft",
+    "tea"
+   ]
+  }
+ ],
+ "note": "Colours converted to numbers by BuildBot; describing words written by BuildBot.",
+ "project": "https://github.com/jnsahaj/tweakcn",
+ "schema": "looks_snapshot/v1",
+ "source": "https://tweakcn.com/r/themes/registry.json",
+ "taken_at": "2026-09-24"
+}

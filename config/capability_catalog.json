@@ -1,0 +1,462 @@
+{
+  "schema": "capability_catalog/v2",
+  "_maintainer_note": "The bundled, OFFLINE starter catalog the build interview searches by goal. It works with the WAN unplugged; nothing here does a live lookup. First-party only in v1: real knowledge packs (downloaded on demand from library.kiwix.org, with size shown before any download), the apps that ship with BuildBot, and the integrations the wizard can wire. Community and store items are NOT offered here yet, because untrusted contributions need the review model that is still being designed. Extend by adding domain-tagged rows; keep tags lowercase keywords a person would actually type. Two tag rules the matcher depends on: (a) never use a filler word as a tag - the goal side strips stopwords such as everything, help, and thing, so such a tag is dead vocabulary that can never match; (b) never tag an item with its own broad domain word, such as tagging the calendar app with home, because that makes every goal about that domain drag the item along with a reason nobody believes. Tag what the item DOES, not where it lives. This is a starter set, not the whole library in docs/KNOWLEDGE_PACKS.md.",
+  "_surfaces_note": "Every item also carries a 'surfaces' list: the surfaces a build must LOAD for that item to work. The goal match proposes a surface allowlist from these; surfaces outside the allowlist are not loaded at all, not merely hidden. The taxonomy is deliberately small and is a closed set - add a surface to _surface_taxonomy first, then tag items with it, so the allowlist can never contain a surface nothing knows how to load. Naming is 'family.thing', six families: house (the physical home), media (playback and libraries), knowledge (offline reference corpora), instruments (read-only feeds from measuring gear), comms (scheduling and notification), and daily (the everyday personal apps). Surfaces marked sensitive:true are proposed like any other but the wizard calls them out by name so nobody acquires a camera feed by accident.",
+  "_surface_taxonomy": {
+    "house.lights": {
+      "label": "Lights and switches",
+      "sensitive": false
+    },
+    "house.climate": {
+      "label": "Thermostat and climate",
+      "sensitive": false
+    },
+    "house.sensors": {
+      "label": "Household sensors",
+      "sensitive": false
+    },
+    "house.cameras": {
+      "label": "Security cameras",
+      "sensitive": true
+    },
+    "media.video": {
+      "label": "Video library and playback",
+      "sensitive": false
+    },
+    "media.audio": {
+      "label": "Music and radio",
+      "sensitive": false
+    },
+    "media.books": {
+      "label": "Book and reading library",
+      "sensitive": false
+    },
+    "knowledge.library": {
+      "label": "Offline reference library",
+      "sensitive": false
+    },
+    "knowledge.medical": {
+      "label": "Medical reference",
+      "sensitive": true
+    },
+    "knowledge.maps": {
+      "label": "Maps and places",
+      "sensitive": false
+    },
+    "instruments.telescope": {
+      "label": "Telescope and sky feeds",
+      "sensitive": false
+    },
+    "comms.calendar": {
+      "label": "Calendar and events",
+      "sensitive": false
+    },
+    "comms.timers": {
+      "label": "Timers and alarms",
+      "sensitive": false
+    },
+    "daily.kitchen": {
+      "label": "Pantry and meals",
+      "sensitive": false
+    },
+    "daily.fitness": {
+      "label": "Fitness tracking",
+      "sensitive": true
+    },
+    "daily.games": {
+      "label": "Games and trivia",
+      "sensitive": false
+    },
+    "daily.notes": {
+      "label": "Notes and lists",
+      "sensitive": false
+    },
+    "daily.weather": {
+      "label": "Weather and forecast",
+      "sensitive": false
+    }
+  },
+  "items": [
+    {
+      "id": "pack:wikipedia",
+      "kind": "knowledge_pack",
+      "label": "Wikipedia, offline",
+      "domain": "reference",
+      "source": "library.kiwix.org",
+      "tags": [
+        "general knowledge",
+        "reference",
+        "encyclopedia",
+        "knowledge",
+        "facts",
+        "history",
+        "look up",
+        "gardening",
+        "garden",
+        "farming",
+        "farm",
+        "homestead"
+      ],
+      "surfaces": [
+        "knowledge.library"
+      ],
+      "note": "The whole encyclopedia offline. Large; the wizard shows the size before downloading."
+    },
+    {
+      "id": "pack:wikivoyage",
+      "kind": "knowledge_pack",
+      "label": "Wikivoyage travel guide",
+      "domain": "travel",
+      "source": "library.kiwix.org",
+      "tags": [
+        "travel",
+        "trip",
+        "geography",
+        "places",
+        "cities",
+        "maps"
+      ],
+      "surfaces": [
+        "knowledge.library",
+        "knowledge.maps"
+      ]
+    },
+    {
+      "id": "pack:wikispecies",
+      "kind": "knowledge_pack",
+      "label": "Wikispecies",
+      "domain": "science",
+      "source": "library.kiwix.org",
+      "tags": [
+        "species",
+        "biology",
+        "nature",
+        "animals",
+        "plants",
+        "taxonomy",
+        "science",
+        "pests",
+        "weeds",
+        "trees",
+        "crops",
+        "insects",
+        "seedlings",
+        "soil"
+      ],
+      "surfaces": [
+        "knowledge.library"
+      ]
+    },
+    {
+      "id": "pack:stackexchange_science",
+      "kind": "knowledge_pack",
+      "label": "Science and astronomy Q&A (Stack Exchange)",
+      "domain": "science",
+      "source": "library.kiwix.org",
+      "tags": [
+        "science",
+        "astronomy",
+        "space",
+        "physics",
+        "math",
+        "chemistry",
+        "stars",
+        "telescope",
+        "observatory",
+        "observing",
+        "sky",
+        "night sky",
+        "planets",
+        "moon",
+        "galaxy",
+        "cosmology",
+        "orbit"
+      ],
+      "surfaces": [
+        "knowledge.library",
+        "instruments.telescope"
+      ]
+    },
+    {
+      "id": "pack:wikem",
+      "kind": "knowledge_pack",
+      "label": "WikEM emergency medicine",
+      "domain": "medical",
+      "source": "library.kiwix.org",
+      "tags": [
+        "medical",
+        "medicine",
+        "health",
+        "emergency",
+        "clinical",
+        "first aid",
+        "doctor",
+        "nurse"
+      ],
+      "surfaces": [
+        "knowledge.medical"
+      ]
+    },
+    {
+      "id": "pack:medicine_libretexts",
+      "kind": "knowledge_pack",
+      "label": "Medicine LibreTexts",
+      "domain": "medical",
+      "source": "library.kiwix.org",
+      "tags": [
+        "medical",
+        "medicine",
+        "health",
+        "anatomy",
+        "physiology",
+        "study"
+      ],
+      "surfaces": [
+        "knowledge.medical"
+      ]
+    },
+    {
+      "id": "pack:water_treatment",
+      "kind": "knowledge_pack",
+      "label": "Water treatment and purification",
+      "domain": "survival",
+      "source": "library.kiwix.org",
+      "tags": [
+        "water",
+        "survival",
+        "prepping",
+        "off grid",
+        "purification",
+        "homestead"
+      ],
+      "surfaces": [
+        "knowledge.library"
+      ]
+    },
+    {
+      "id": "pack:knots",
+      "kind": "knowledge_pack",
+      "label": "Knots library",
+      "domain": "survival",
+      "source": "library.kiwix.org",
+      "tags": [
+        "knots",
+        "survival",
+        "outdoors",
+        "camping",
+        "sailing",
+        "climbing"
+      ],
+      "surfaces": [
+        "knowledge.library"
+      ]
+    },
+    {
+      "id": "pack:ready_gov",
+      "kind": "knowledge_pack",
+      "label": "Ready.gov emergency prep",
+      "domain": "survival",
+      "source": "library.kiwix.org",
+      "tags": [
+        "emergency",
+        "prepping",
+        "disaster",
+        "survival",
+        "safety",
+        "readiness"
+      ],
+      "surfaces": [
+        "knowledge.library"
+      ]
+    },
+    {
+      "id": "pack:openstreetmap_wiki",
+      "kind": "knowledge_pack",
+      "label": "OpenStreetMap wiki",
+      "domain": "maps",
+      "source": "library.kiwix.org",
+      "tags": [
+        "maps",
+        "geography",
+        "navigation",
+        "location",
+        "osm"
+      ],
+      "surfaces": [
+        "knowledge.maps"
+      ]
+    },
+    {
+      "id": "app:freshtable",
+      "kind": "app",
+      "label": "FreshTable, pantry and meals",
+      "domain": "home",
+      "tags": [
+        "food",
+        "meals",
+        "recipes",
+        "cooking",
+        "pantry",
+        "groceries",
+        "kitchen",
+        "shopping",
+        "harvest",
+        "produce",
+        "preserving"
+      ],
+      "surfaces": [
+        "daily.kitchen"
+      ]
+    },
+    {
+      "id": "app:calendar",
+      "kind": "app",
+      "label": "Calendar, events and tasks",
+      "domain": "home",
+      "tags": [
+        "calendar",
+        "schedule",
+        "events",
+        "reminders",
+        "tasks",
+        "bills",
+        "meds",
+        "appointments",
+        "reminder",
+        "chores"
+      ],
+      "surfaces": [
+        "comms.calendar"
+      ]
+    },
+    {
+      "id": "app:fitfam",
+      "kind": "app",
+      "label": "FitFam, fitness tracking",
+      "domain": "health",
+      "tags": [
+        "fitness",
+        "exercise",
+        "workout",
+        "health",
+        "gym",
+        "training",
+        "steps"
+      ],
+      "surfaces": [
+        "daily.fitness"
+      ]
+    },
+    {
+      "id": "app:alarmflow",
+      "kind": "app",
+      "label": "AlarmFlow, timers and alarms",
+      "domain": "home",
+      "tags": [
+        "timer",
+        "alarm",
+        "clock",
+        "reminder",
+        "countdown",
+        "wake up",
+        "remind",
+        "reminders",
+        "alarms",
+        "timers",
+        "watering"
+      ],
+      "surfaces": [
+        "comms.timers"
+      ]
+    },
+    {
+      "id": "app:trivia",
+      "kind": "app",
+      "label": "Trivia",
+      "domain": "fun",
+      "tags": [
+        "trivia",
+        "quiz",
+        "games",
+        "fun",
+        "learning"
+      ],
+      "surfaces": [
+        "daily.games"
+      ]
+    },
+    {
+      "id": "integration:weather",
+      "kind": "integration",
+      "label": "Weather card, daily hi/lo and the air view",
+      "domain": "outdoors",
+      "tags": [
+        "weather",
+        "forecast",
+        "rain",
+        "frost",
+        "freeze",
+        "pollen",
+        "air quality",
+        "garden",
+        "greenhouse",
+        "farm",
+        "outdoors"
+      ],
+      "surfaces": [
+        "daily.weather"
+      ],
+      "note": "The dashboard's weather card: daily hi/lo plus pollen, mold and dust. It reads a public forecast service through the named 'weather' egress door, so a sealed build keeps it dark and says so."
+    },
+    {
+      "id": "integration:home_assistant",
+      "kind": "integration",
+      "label": "Home Assistant, smart home",
+      "domain": "home",
+      "tags": [
+        "smart home",
+        "home automation",
+        "lights",
+        "thermostat",
+        "devices",
+        "home assistant",
+        "iot",
+        "sensors",
+        "cameras",
+        "greenhouse",
+        "humidity",
+        "soil moisture",
+        "moisture",
+        "irrigation"
+      ],
+      "surfaces": [
+        "house.lights",
+        "house.climate",
+        "house.sensors",
+        "house.cameras"
+      ]
+    },
+    {
+      "id": "integration:media",
+      "kind": "integration",
+      "label": "Media server (Jellyfin / Calibre)",
+      "domain": "media",
+      "tags": [
+        "media",
+        "movies",
+        "tv",
+        "music",
+        "books",
+        "library",
+        "jellyfin",
+        "calibre",
+        "reading"
+      ],
+      "surfaces": [
+        "media.video",
+        "media.audio",
+        "media.books"
+      ]
+    }
+  ]
+}

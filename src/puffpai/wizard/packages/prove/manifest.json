@@ -1,0 +1,48 @@
+{
+  "schema": "puffpai_package/v1",
+  "id": "prove",
+  "kind": "skill",
+  "version": "1.0.0",
+  "author": "puffpai",
+  "license": "Apache-2.0",
+  "label": "Proof it works",
+  "description": "Real questions asked of the built bot, with the answers recorded verbatim.",
+  "reads": [
+    "run",
+    "machine",
+    "persona",
+    "brain",
+    "sources",
+    "tools",
+    "knowledge",
+    "context",
+    "crew",
+    "surfaces",
+    "posture"
+  ],
+  "writes": "prove",
+  "permissions": {
+    "network_hosts": [],
+    "files": [
+      "data"
+    ],
+    "ha_domains": [],
+    "secrets": []
+  },
+  "doors": [],
+  "secrets": [],
+  "egress": "none",
+  "estimate": {
+    "bytes": 0,
+    "seconds": 0,
+    "basis": "unknown"
+  },
+  "rerun": "idempotent",
+  "undo": "reversible",
+  "blocking": false,
+  "provides": [
+    "prove.transcript"
+  ],
+  "needs": [],
+  "builtin": true
+}

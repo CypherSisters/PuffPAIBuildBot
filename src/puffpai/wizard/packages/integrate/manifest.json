@@ -1,0 +1,45 @@
+{
+  "schema": "puffpai_package/v1",
+  "id": "integrate",
+  "kind": "skill",
+  "version": "1.0.0",
+  "author": "puffpai",
+  "license": "Apache-2.0",
+  "label": "Getting it in",
+  "description": "Download and learn what was chosen, and record what is really on disk. Books come from the Kiwix library; a download may follow a redirect only to a mirror that the book's own .meta4 file names, and is checked against the SHA-256 in it.",
+  "reads": [
+    "sources",
+    "machine",
+    "posture"
+  ],
+  "writes": "knowledge",
+  "permissions": {
+    "network_hosts": [
+      "lb.download.kiwix.org",
+      "opds.library.kiwix.org"
+    ],
+    "files": [
+      "data"
+    ],
+    "ha_domains": [],
+    "secrets": []
+  },
+  "doors": [],
+  "secrets": [],
+  "egress": "build_only",
+  "estimate": {
+    "bytes": 0,
+    "seconds": 0,
+    "basis": "unknown"
+  },
+  "rerun": "additive",
+  "undo": "reversible_with_residue",
+  "blocking": false,
+  "provides": [
+    "knowledge.status"
+  ],
+  "needs": [
+    "sources.plan"
+  ],
+  "builtin": true
+}

@@ -1,0 +1,1 @@
+{"name":"n","scripts":{"dev":"next dev","build":"next build"},"dependencies":{"next":"14.0.0","react":"18"}}

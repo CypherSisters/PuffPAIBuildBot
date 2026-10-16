@@ -1,0 +1,91 @@
+{
+"query": "stock portfolio",
+"searchType": "semantic",
+"searchVersion": "algolia",
+"skills": [
+{
+"id": "code.deepline.com/portfolio-prospecting",
+"source": "code.deepline.com",
+"skillId": "portfolio-prospecting",
+"name": "portfolio-prospecting",
+"installs": 30616
+},
+{
+"id": "gracefullight/stock-checker/stock-analysis",
+"source": "gracefullight/stock-checker",
+"skillId": "stock-analysis",
+"name": "stock-analysis",
+"installs": 11853
+},
+{
+"id": "anthropics/knowledge-work-plugins/financial-statements",
+"source": "anthropics/knowledge-work-plugins",
+"skillId": "financial-statements",
+"name": "financial-statements",
+"installs": 4255
+},
+{
+"id": "claude-office-skills/skills/stock-analysis",
+"source": "claude-office-skills/skills",
+"skillId": "stock-analysis",
+"name": "stock-analysis",
+"installs": 6432
+},
+{
+"id": "sugarforever/01coder-agent-skills/china-stock-analysis",
+"source": "sugarforever/01coder-agent-skills",
+"skillId": "china-stock-analysis",
+"name": "china-stock-analysis",
+"installs": 12620
+},
+{
+"id": "wshobson/agents/risk-metrics-calculation",
+"source": "wshobson/agents",
+"skillId": "risk-metrics-calculation",
+"name": "risk-metrics-calculation",
+"installs": 10447
+},
+{
+"id": "okx/agent-skills/okx-cex-market",
+"source": "okx/agent-skills",
+"skillId": "okx-cex-market",
+"name": "okx-cex-market",
+"installs": 10041
+},
+{
+"id": "okx/agent-skills/okx-cex-portfolio",
+"source": "okx/agent-skills",
+"skillId": "okx-cex-portfolio",
+"name": "okx-cex-portfolio",
+"installs": 9746
+},
+{
+"id": "affaan-m/ecc/investor-materials",
+"source": "affaan-m/ecc",
+"skillId": "investor-materials",
+"name": "investor-materials",
+"installs": 9315
+},
+{
+"id": "okx/onchainos-skills/okx-wallet-portfolio",
+"source": "okx/onchainos-skills",
+"skillId": "okx-wallet-portfolio",
+"name": "okx-wallet-portfolio",
+"installs": 9204
+}
+],
+"count": 10,
+"duration_ms": 229,
+"timings_ms": {
+"rate_limit": 16.55452000000514,
+"flags": 1.1549970000050962,
+"visibility": 43.791793999960646,
+"retrieval": 220.36366200004704,
+"algolia_processing": 156,
+"repositories": 6.34173699998064,
+"ranking": 1.1430970000219531,
+"search": 229,
+"total": 245.8269910000381
+},
+"provider_duration_ms": 220.36366200004704
+}

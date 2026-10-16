@@ -1,0 +1,93 @@
+{
+"schema": "clawhub.skill.verify.v1",
+"ok": true,
+"decision": "pass",
+"reasons": [],
+"slug": "wedding-planner",
+"displayName": "Wedding Planner",
+"pageUrl": "https://clawhub.ai/ivangdavila/skills/wedding-planner",
+"publisherHandle": "ivangdavila",
+"publisherDisplayName": "Iván",
+"publisherProfileUrl": "https://clawhub.ai/ivangdavila",
+"version": "1.0.0",
+"resolvedFrom": "latest",
+"tag": null,
+"createdAt": 1773703378842,
+"card": {
+"available": true,
+"path": "skill-card.md",
+"url": "https://wry-manatee-359.convex.site/api/v1/skills/wedding-planner/card?ownerHandle=ivangdavila&version=1.0.0",
+"sha256": "2d8eebcfbd673121f328e146412fc43ebad4f2d801e8323ffd288040d0bca666",
+"size": 2241,
+"contentType": "text/markdown; charset=utf-8"
+},
+"artifact": {
+"sourceFingerprint": "643b479b010ef826b6f0ae52d72ed914b69f420115af99d490ef513549888b97",
+"bundleFingerprints": [
+"a154ac5df5b2f563ce7785118501451bbced6e5d6e5a862914b2da652075ba2d",
+"dbed7ee4d1ba798bf0ced7b6cef87eb429035ca4b346340268cc0d672101f0db"
+],
+"files": [
+{
+"path": "SKILL.md",
+"size": 10046,
+"sha256": "618412abf63f8ae59196d792addedb7e4d82e2c2cfe895ae9420124bb2d3609e",
+"contentType": "text/markdown"
+},
+{
+"path": "budget-and-payments.md",
+"size": 1487,
+"sha256": "dae892f3f88747a8e56871e972feb2dfe16da495951b3db71b57a0554059c621",
+"contentType": "text/markdown"
+},
+{
+"path": "guest-list-and-seating.md",
+"size": 1408,
+"sha256": "15860be4f630be265b85b352d14ca7370af656fa2324e6866f6ca59965083f36",
+"contentType": "text/markdown"
+},
+{
+"path": "memory-template.md",
+"size": 2004,
+"sha256": "c05d0690a3d5d50c8eeabdbb53e0c8375a091feec7e8c9b03525e42ea821a721",
+"contentType": "text/markdown"
+},
+{
+"path": "setup.md",
+"size": 2634,
+"sha256": "f89d18cb64acb70dda98d7badbacae35ac15985586013156eaecc7a5d5874915",
+"contentType": "text/markdown"
+},
+{
+"path": "timeline-and-run-of-show.md",
+"size": 1675,
+"sha256": "03d02ebd703c8ba39bfd42994e590b3c2dcc20ba689d27df417f6fa74fc85826",
+"contentType": "text/markdown"
+},
+{
+"path": "vendor-scorecards.md",
+"size": 1525,
+"sha256": "5415f64ed4b80c71484b66f27e45d07ae3f64f40c8dc69c3db406a2dcb49c702",
+"contentType": "text/markdown"
+}
+]
+},
+"provenance": {
+"source": "unavailable",
+"reason": "No server-resolved GitHub import provenance is stored for this version."
+},
+"security": {
+"status": "clean",
+"passed": true,
+"rawStatus": "clean",
+"verdict": "benign",
+"confidence": "high",
+"summary": "This wedding-planning skill is a local note-taking and planning helper with disclosed, opt-in persistence and no evidence of hidden execution, network use, or credential handling.",
+"model": null,
+"checkedAt": 1789183595545,
+"scannerReports": null
+},
+"signature": {
+"status": "unsigned"
+}
+}

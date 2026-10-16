@@ -1,0 +1,122 @@
+{
+  "name": "PuffPAI - Daily Weather",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "daily-weather",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "wh-weather-1",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [250, 300],
+      "webhookId": "daily-weather"
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "=https://api.weather.gov/points/{{ $json.body.lat }},{{ $json.body.lon }}",
+        "options": {}
+      },
+      "id": "nws-points-1",
+      "name": "NWS Points Lookup",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [480, 300]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "={{ $json.properties.forecast }}",
+        "options": {}
+      },
+      "id": "nws-forecast-1",
+      "name": "Get Forecast",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [710, 200]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "=https://api.weather.gov/alerts/active?point={{ $node[\"Webhook\"].json.body.lat }},{{ $node[\"Webhook\"].json.body.lon }}",
+        "options": {}
+      },
+      "id": "nws-alerts-1",
+      "name": "Get Active Alerts",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [710, 420]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "const forecast = $('Get Forecast').first().json.properties?.periods || [];\nconst alerts = $('Get Active Alerts').first().json.features || [];\n\nconst today = forecast[0] || {};\nconst tonight = forecast[1] || {};\n\nconst activeAlerts = alerts.map(a => ({\n  event: a.properties.event,\n  severity: a.properties.severity,\n  headline: a.properties.headline\n}));\n\nreturn {\n  json: {\n    summary: today.detailedForecast || 'No forecast available',\n    temperature: today.temperature,\n    unit: today.temperatureUnit,\n    wind: today.windSpeed,\n    shortForecast: today.shortForecast,\n    tonight: {\n      temperature: tonight.temperature,\n      shortForecast: tonight.shortForecast\n    },\n    alerts: activeAlerts,\n    alertCount: activeAlerts.length,\n    periods: forecast.slice(0, 6).map(p => ({\n      name: p.name,\n      temp: p.temperature,\n      forecast: p.shortForecast\n    }))\n  }\n};"
+      },
+      "id": "format-weather-1",
+      "name": "Format Weather Data",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [940, 300]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "respond-weather-1",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [1170, 300]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          { "node": "NWS Points Lookup", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "NWS Points Lookup": {
+      "main": [
+        [
+          { "node": "Get Forecast", "type": "main", "index": 0 },
+          { "node": "Get Active Alerts", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Get Forecast": {
+      "main": [
+        [
+          { "node": "Format Weather Data", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Get Active Alerts": {
+      "main": [
+        [
+          { "node": "Format Weather Data", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Format Weather Data": {
+      "main": [
+        [
+          { "node": "Respond to Webhook", "type": "main", "index": 0 }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "tags": [
+    { "name": "puffpai" },
+    { "name": "weather" },
+    { "name": "automation" }
+  ]
+}

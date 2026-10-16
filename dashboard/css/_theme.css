@@ -1,0 +1,839 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   PuffPAI Theme: "Cotton-Candy Day / Near-Black Plum Night"
+
+   Canonical design tokens (from design/PuffPAI-Dashboard.dc.html) live on
+   html[data-puff-theme="day"|"night"]; the legacy --puff-* names are kept as
+   aliases so untouched pages keep working. The <html data-puff-theme>
+   attribute is set automatically by the inline script in app/layout.tsx
+   (day 07:00–19:00, night otherwise; ?puffTheme=day|night|auto override).
+
+   Night = the design file's true dark palette: near-black plum sky,
+   ultra-thin glass cards, neon-pastel accents. Stars + moon stay.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ── Canonical palettes (exact tokens from the design file) ── */
+html[data-puff-theme="day"] {
+  --bg: #CFE9F9;
+  --bg2: #FBDDEE;
+  --glow1: rgba(255, 150, 215, 0.55);
+  --glow2: rgba(140, 205, 245, 0.55);
+  --card: rgba(255, 255, 255, 0.72);
+  --card2: rgba(255, 255, 255, 0.48);
+  --line: rgba(90, 60, 110, 0.12);
+  --text: #2E2140;
+  --text2: rgba(46, 33, 64, 0.64);
+  --text3: rgba(46, 33, 64, 0.40);
+  --pink: #C93FA8;
+  --magenta: #8E2AA8;
+  --sky: #1B8FBE;
+  --mint: #149375;
+  --lemon: #A9761F;
+  --lav: #6E4FC4;
+  --railBg: rgba(255, 255, 255, 0.66);
+  --chip: rgba(90, 60, 110, 0.07);
+  --shadow: 0 18px 46px rgba(120, 90, 160, 0.16);
+  --img1: 0.62;
+  --img2: 0.42;
+  --img3: 0.46;
+  --img4: 0.58;
+  --imgTile: 0.34;
+  --imgPage: 0.55;
+  /* Legacy helpers with no canonical equivalent (per-theme values) */
+  --puff-text-strong: #2E2140;
+  --puff-card-hover: rgba(255, 255, 255, 0.86);
+  --puff-surface-deep: rgba(255, 255, 255, 0.66);
+  --puff-red: #d94f4f;
+  --puff-glow: rgba(120, 90, 160, 0.18);
+  /* Words on a filled accent button (a look sets its own, contrast-checked) */
+  --puff-on-accent: #ffffff;
+}
+
+/* Night (design "dark") — also the pre-hydration fallback so first paint
+   mirrors night instead of flashing unstyled. */
+html[data-puff-theme="night"],
+html:not([data-puff-theme]) {
+  --bg: #0B0714;
+  --bg2: #150C24;
+  --glow1: rgba(240, 111, 208, 0.20);
+  --glow2: rgba(98, 216, 240, 0.14);
+  --card: rgba(255, 255, 255, 0.055);
+  --card2: rgba(255, 255, 255, 0.035);
+  --line: rgba(255, 255, 255, 0.10);
+  --text: #F7EEF8;
+  --text2: rgba(247, 238, 248, 0.68);
+  --text3: rgba(247, 238, 248, 0.42);
+  --pink: #F06FD0;
+  --magenta: #C64BD8;
+  --sky: #62D8F0;
+  --mint: #6EE7B7;
+  --lemon: #FCD97A;
+  --lav: #A88BE8;
+  --railBg: rgba(255, 255, 255, 0.03);
+  --chip: rgba(255, 255, 255, 0.07);
+  --shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+  --img1: 0.16;
+  --img2: 0.20;
+  --img3: 0.22;
+  --img4: 0.26;
+  --imgTile: 0.26;
+  --imgPage: 0.42;
+  /* Legacy helpers with no canonical equivalent (per-theme values) */
+  --puff-text-strong: #ffffff;
+  --puff-card-hover: rgba(255, 255, 255, 0.09);
+  --puff-surface-deep: rgba(21, 12, 36, 0.92);
+  --puff-red: #f08585;
+  --puff-glow: rgba(240, 111, 208, 0.20);
+  /* Night accents are light pastels: dark words read on them */
+  --puff-on-accent: #0B0714;
+}
+
+/* ── Legacy --puff-* aliases (resolve against the active palette) ── */
+html {
+  --puff-text: var(--text);
+  --puff-text-dim: var(--text2);
+  --puff-card: var(--card);
+  --puff-surface: var(--card2);
+  --puff-primary: var(--pink);
+  --puff-primary-strong: var(--magenta);
+  --puff-pink: var(--pink);
+  --puff-gold: var(--lemon);
+  --puff-green: var(--mint);
+  --puff-violet: var(--lav);
+  --puff-border: var(--line);
+  --puff-img-tile: var(--imgTile);
+  /* Exact page background from the design: glow1 blob top-left, glow2 blob
+     bottom-right, 160deg bg->bg2 wash. A look's background choice
+     (src/puffpai/looks/package.py background_vars) can clear the two blobs
+     (--puff-scene-glow1/2) and flatten the wash (--puff-scene-end); unset,
+     the design's own values show. */
+  --puff-scene:
+    radial-gradient(900px 620px at 12% -8%, var(--puff-scene-glow1, var(--glow1)), transparent 62%),
+    radial-gradient(1000px 700px at 88% 108%, var(--puff-scene-glow2, var(--glow2)), transparent 60%),
+    linear-gradient(160deg, var(--bg) 0%, var(--puff-scene-end, var(--bg2)) 100%);
+}
+
+/* ── Every layer behind the page, and the look value that controls it ──
+   body                 --puff-scene (above)       colours + glow blobs
+   .puff-cloud-banner   --imgPage                  the full-page cloud picture
+   body::before         --puff-stars, --puff-star  the starfield (night, or "Stars")
+   body::after          --puff-stars-more          the fuller sky ("Stars" only)
+   .cyber-card::before  --imgTile                  a cloud picture in each card
+   DesignTile / device  --imgTile, --img3          the same, as <img> in tiles
+   .bokeh-container     --img2, --puff-hero-glow   app banner picture + glow
+   talk page            --img4, --puff-vignette    the talk scene picture + fade
+   The bot's own look sets none of them (clouds, and stars at night). */
+
+/* ── Scene backgrounds ── */
+body {
+  background: var(--puff-scene) fixed !important;
+  color: var(--text);
+  /* --puff-font-body / --puff-font-heading / --puff-radius-*: set only by a
+     look (app/_lib/looks.ts), from fixed lists; unset = the design's own. */
+  font-family: var(--puff-font-body, var(--font-nunito)), system-ui, sans-serif;
+}
+
+/* Full-bleed cloudscape behind everything (the
+   design-file version was a 420px top banner fading to nothing, which left
+   flat blank space behind the lower tiles). Now the photo covers the whole
+   viewport at --imgPage, strongest up top and easing off toward the bottom —
+   never to zero — so glass tiles always have cloud texture behind them.
+   Injected as <div class="puff-cloud-banner" aria-hidden /> in app/layout.tsx
+   so the night starfield keeps body::before to itself. */
+.puff-cloud-banner {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: url(/design-cloud-3.jpg) center top / cover no-repeat;
+  opacity: var(--imgPage, var(--img1));
+  filter: blur(1px);
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, 0.85) 40%, rgba(0, 0, 0, 0.5) 75%, rgba(0, 0, 0, 0.38) 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, 0.85) 40%, rgba(0, 0, 0, 0.5) 75%, rgba(0, 0, 0, 0.38) 100%);
+  pointer-events: none;
+}
+
+/* ── Material Symbols Rounded (self-hosted variable font, ligature icons) ── */
+@font-face {
+  font-family: 'Material Symbols Rounded';
+  font-style: normal;
+  font-weight: 100 700;
+  font-display: block;
+  src: url(/fonts/material-symbols-rounded.woff2) format('woff2');
+}
+.msr {
+  font-family: 'Material Symbols Rounded';
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* ── Keyframes (design file lines 520-524) ── */
+@keyframes puffFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+@keyframes puffPulse {
+  0%, 100% { transform: scale(1); opacity: 0.55; }
+  50% { transform: scale(1.09); opacity: 0.15; }
+}
+@keyframes puffWave {
+  0%, 100% { transform: scaleY(0.25); }
+  50% { transform: scaleY(1); }
+}
+@keyframes puffTalk {
+  0%, 100% { transform: scale(1, 1); }
+  30% { transform: scale(1.04, 0.94); }
+  60% { transform: scale(0.98, 1.05); }
+}
+@keyframes puffBlink {
+  0%, 92%, 100% { opacity: 1; }
+  96% { opacity: 0.25; }
+}
+/* Legacy animation names kept as aliases (existing code animates with them) */
+@keyframes puffEq {
+  0%, 100% { transform: scaleY(0.45); }
+  50% { transform: scaleY(1); }
+}
+@keyframes puffRingSpin {
+  to { transform: rotate(360deg); }
+}
+@keyframes puffRingPulse {
+  0%, 100% { opacity: 0.45; transform: scale(1); }
+  50% { opacity: 0.9; transform: scale(1.06); }
+}
+
+/* ── Motion governor ─────────────────────────────────────────────────────
+   The dashboard's always-on loops (Puff float, pulse rings, blink dots,
+   bokeh, cloud bob) keep the compositor ticking at 60fps forever — on the
+   Jetson appliance display that pinned the GPU at 99% (~28W) and throttled
+   LLM inference. Two variables gate every animation carrier in the app:
+
+     --puff-ambient-play  decorative loops that run regardless of activity
+     --puff-live-play     live feedback: talk squish, waveforms, mic ping,
+                          streaming caret, ringing-alarm pulses
+
+   Triggers, strictest first:
+     html.puff-no-motion          Settings "Ambient cloud motion" off — all
+     prefers-reduced-motion       OS accessibility setting        — all
+     html.puff-kiosk              ?puffMode=kiosk / Settings      — ambient
+     html.puff-idle               IdleMotionGuard, no input       — ambient
+
+   Kiosk and idle keep --puff-live-play running so Puff still visibly talks,
+   the waveforms react mid-conversation (voice needs no pointer —
+   IdleMotionGuard also holds off idle while speaking/listening) and a
+   ringing alarm never renders as a frozen banner. The SVG lipsync mouth is
+   JS-driven and unaffected by any of this. Loading skeletons and status
+   dots stay in the ambient bucket on purpose: frozen while idle, they
+   unmount the moment their content lands.
+
+   The design applies animations via inline style, so attribute selectors
+   catch them; .puff-motion stays the hook class for CSS-applied ambient
+   animations, .puff-live the hook class for conditional live feedback
+   (elements that only carry their animation while something is actually
+   happening — those cost nothing at rest anyway). */
+html {
+  --puff-ambient-play: running;
+  --puff-live-play: running;
+}
+html.puff-no-motion {
+  --puff-ambient-play: paused;
+  --puff-live-play: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    --puff-ambient-play: paused;
+    --puff-live-play: paused;
+  }
+}
+html.puff-kiosk,
+html.puff-idle {
+  --puff-ambient-play: paused;
+}
+
+/* Ambient carriers — decor and passive status; frozen frames are fine. */
+[style*="puffFloat"],
+[style*="puffPulse"],
+[style*="puffEq"],
+[style*="puffRing"],
+[style*="puffBlink"],
+.puff-cloud-bob,
+.bokeh-bubble,
+.aero-shimmer,
+.neon-border-pulse,
+.neon-underline::after,
+.animate-pulse,
+.animate-bounce,
+.puff-motion,
+.puff-motion::before,
+.puff-motion::after {
+  animation-play-state: var(--puff-ambient-play, running) !important;
+}
+
+/* Live carriers — feedback that must not freeze mid-event. Every
+   puffWave/puffTalk/animate-ping in the app is gated by a live turn
+   (speaking, listening, streaming); .puff-live opts specific conditional
+   indicators out of the ambient rule above (same specificity, later in
+   source, so it wins for elements carrying both). */
+[style*="puffTalk"],
+[style*="puffWave"],
+.animate-ping,
+.puff-live,
+.puff-live::before,
+.puff-live::after {
+  animation-play-state: var(--puff-live-play, running) !important;
+}
+/* html.puff-big-touch: ~12% bigger touch targets via root font-size
+   (rem-based Tailwind sizing scales with it). */
+html.puff-big-touch {
+  font-size: 112%;
+}
+
+/* Design-system type: Fredoka displays, JetBrains Mono stats */
+h1, h2, h3 {
+  font-family: var(--puff-font-heading, var(--font-fredoka)), var(--font-nunito), sans-serif;
+}
+.font-mono, code, kbd, samp {
+  font-family: var(--font-jbmono), ui-monospace, monospace;
+}
+
+/* ── Design geometry: pills and glass topbar ── */
+/* Buttons and chips go full pill (the design's 99px radius) */
+.bokeh-container a, .bokeh-container button,
+.cyber-card button, .cyber-card a.rounded-lg,
+nav input[placeholder*="PuffPAI"] {
+  border-radius: var(--puff-radius-button, 9999px) !important;
+}
+/* The search-or-ask pill */
+nav input[placeholder*="PuffPAI"] {
+  background: var(--card) !important;
+  border: 1px solid var(--line) !important;
+  color: var(--text) !important;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+  min-width: 220px;
+  backdrop-filter: blur(10px);
+}
+nav input[placeholder*="PuffPAI"]::placeholder { color: var(--text2); }
+
+/* Colorful stat text, like the design: neutral mono values inside tiles
+   pick up the accent color. Explicit color utilities (status greens/golds,
+   clocks with their own class) still win — their mappings are !important. */
+.cyber-card .font-mono {
+  color: var(--pink);
+}
+
+/* Pin-point star field above the scene wash: on at night in the bot's own
+   look, and wherever a look picks "Stars" (--puff-stars 0..1, dot colour
+   --puff-star). Drawn from dots here, no picture. The old nebula glow and
+   moon disc are gone — every position in the top band sits behind the
+   translucent topbar or hero glass, where a bright disc reads as a smudge on
+   the design's clean dark render (Sam's reference has neither). */
+body::before {
+  content: "";
+  position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  --s: var(--puff-star, #ffffff);
+  --star-k: 1;
+  opacity: var(--puff-stars, 0);
+  background-image:
+    radial-gradient(calc(1.6px * var(--star-k)) calc(1.6px * var(--star-k)) at 12% 22%, color-mix(in srgb, var(--s) 90%, transparent) 50%, transparent 51%),
+    radial-gradient(calc(1.2px * var(--star-k)) calc(1.2px * var(--star-k)) at 32% 8%, color-mix(in srgb, var(--s) 70%, transparent) 50%, transparent 51%),
+    radial-gradient(calc(1.8px * var(--star-k)) calc(1.8px * var(--star-k)) at 55% 30%, color-mix(in srgb, var(--s) 80%, transparent) 50%, transparent 51%),
+    radial-gradient(calc(1.1px * var(--star-k)) calc(1.1px * var(--star-k)) at 71% 45%, color-mix(in srgb, var(--s) 60%, transparent) 50%, transparent 51%),
+    radial-gradient(calc(1.5px * var(--star-k)) calc(1.5px * var(--star-k)) at 25% 55%, color-mix(in srgb, var(--s) 75%, transparent) 50%, transparent 51%),
+    radial-gradient(calc(1.2px * var(--star-k)) calc(1.2px * var(--star-k)) at 44% 72%, color-mix(in srgb, var(--s) 60%, transparent) 50%, transparent 51%),
+    radial-gradient(calc(1.7px * var(--star-k)) calc(1.7px * var(--star-k)) at 88% 62%, color-mix(in srgb, var(--s) 80%, transparent) 50%, transparent 51%),
+    radial-gradient(calc(1.1px * var(--star-k)) calc(1.1px * var(--star-k)) at 64% 86%, color-mix(in srgb, var(--s) 55%, transparent) 50%, transparent 51%),
+    radial-gradient(calc(1.4px * var(--star-k)) calc(1.4px * var(--star-k)) at 8% 80%, color-mix(in srgb, var(--s) 70%, transparent) 50%, transparent 51%),
+    radial-gradient(calc(1.3px * var(--star-k)) calc(1.3px * var(--star-k)) at 93% 33%, color-mix(in srgb, var(--s) 65%, transparent) 50%, transparent 51%),
+    radial-gradient(calc(1.2px * var(--star-k)) calc(1.2px * var(--star-k)) at 38% 40%, color-mix(in srgb, var(--s) 60%, transparent) 50%, transparent 51%),
+    radial-gradient(calc(1.5px * var(--star-k)) calc(1.5px * var(--star-k)) at 79% 14%, color-mix(in srgb, var(--s) 75%, transparent) 50%, transparent 51%),
+    radial-gradient(calc(1.1px * var(--star-k)) calc(1.1px * var(--star-k)) at 52% 94%, color-mix(in srgb, var(--s) 55%, transparent) 50%, transparent 51%),
+    radial-gradient(calc(1.3px * var(--star-k)) calc(1.3px * var(--star-k)) at 17% 64%, color-mix(in srgb, var(--s) 65%, transparent) 50%, transparent 51%);
+}
+html[data-puff-theme="night"] body::before {
+  opacity: var(--puff-stars, 1);
+}
+/* Day: no stars at all. Dots on a light page sat in the gaps between
+   letters and read like commas ("card ,to", "Privac.y-first"), even faint
+   ones. A look's "Stars" background is a night sky; in day mode it paints
+   the soft wash instead (src/puffpai/looks/package.py shown_background). */
+html[data-puff-theme="day"] body::before,
+html[data-puff-theme="day"] body::after {
+  opacity: 0;
+}
+/* The fuller sky a look's "Stars" background adds (--puff-stars-more): the
+   same kind of dots, tiled, so the whole page has some. Off in the bot's own
+   look, whose night sky stays the sparse one above. */
+body::after {
+  content: "";
+  position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  --s: var(--puff-star, #ffffff);
+  --star-k: 1;
+  opacity: var(--puff-stars-more, 0);
+  background-image:
+    radial-gradient(calc(1.2px * var(--star-k)) calc(1.2px * var(--star-k)) at 20px 30px, color-mix(in srgb, var(--s) 70%, transparent) 50%, transparent 51%),
+    radial-gradient(calc(1px * var(--star-k)) calc(1px * var(--star-k)) at 140px 90px, color-mix(in srgb, var(--s) 55%, transparent) 50%, transparent 51%),
+    radial-gradient(calc(1.5px * var(--star-k)) calc(1.5px * var(--star-k)) at 230px 170px, color-mix(in srgb, var(--s) 80%, transparent) 50%, transparent 51%),
+    radial-gradient(calc(1px * var(--star-k)) calc(1px * var(--star-k)) at 70px 210px, color-mix(in srgb, var(--s) 50%, transparent) 50%, transparent 51%),
+    radial-gradient(calc(1.3px * var(--star-k)) calc(1.3px * var(--star-k)) at 290px 40px, color-mix(in srgb, var(--s) 65%, transparent) 50%, transparent 51%),
+    radial-gradient(calc(1px * var(--star-k)) calc(1px * var(--star-k)) at 180px 260px, color-mix(in srgb, var(--s) 45%, transparent) 50%, transparent 51%);
+  background-size: 320px 290px;
+}
+
+/* Themed backgrounds a look can wear (src/puffpai/looks/package.py
+   background_vars): "Petals" (--puff-petals, for weddings and romance) and
+   "Confetti" (--puff-confetti, for parties). Each is a gentle wash in two
+   corners and a few big, soft shapes peeking in at the right and bottom
+   edges, in the look's own colours. Never a tiled pattern over the page
+   (small petals in a grid read as grey specks behind the
+   text and tiles). Drawn from gradients behind everything, no picture. */
+html::before {
+  content: "";
+  position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  opacity: var(--puff-petals, 0);
+  --p1: color-mix(in srgb, color-mix(in srgb, var(--pink, #f29bb8) 60%, #ff9ab8) 30%, transparent);
+  --p2: color-mix(in srgb, color-mix(in srgb, var(--magenta, #d46aa8) 55%, #f7a8c8) 26%, transparent);
+  --pw: color-mix(in srgb, var(--pink, #f29bb8) 16%, transparent);
+  background-image:
+    radial-gradient(ellipse 120px 50px at 100% 16%, var(--p1), transparent 70%),
+    radial-gradient(ellipse 50px 110px at 99% 48%, var(--p2), transparent 70%),
+    radial-gradient(ellipse 110px 46px at 98% 86%, var(--p1), transparent 70%),
+    radial-gradient(ellipse 100px 42px at 42% 100%, var(--p2), transparent 70%),
+    radial-gradient(ellipse 44px 96px at 70% 100%, var(--p1), transparent 70%),
+    radial-gradient(680px 480px at 100% 0%, var(--pw), transparent 70%),
+    radial-gradient(620px 440px at 100% 100%, var(--pw), transparent 70%);
+  background-repeat: no-repeat;
+}
+html::after {
+  content: "";
+  position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  opacity: var(--puff-confetti, 0);
+  --c1: color-mix(in srgb, var(--pink, #f29bb8) 34%, transparent);
+  --c2: color-mix(in srgb, var(--sky, #6fb6f0) 34%, transparent);
+  --c3: color-mix(in srgb, var(--mint, #7fd6b0) 34%, transparent);
+  --c4: color-mix(in srgb, var(--lemon, #f2d36b) 40%, transparent);
+  --cw: color-mix(in srgb, var(--sky, #6fb6f0) 12%, transparent);
+  background-image:
+    radial-gradient(circle 30px at 100% 14%, var(--c1), transparent 70%),
+    radial-gradient(circle 22px at 99% 38%, var(--c4), transparent 70%),
+    radial-gradient(circle 34px at 100% 64%, var(--c2), transparent 70%),
+    radial-gradient(circle 24px at 98% 90%, var(--c3), transparent 70%),
+    radial-gradient(circle 28px at 38% 100%, var(--c3), transparent 70%),
+    radial-gradient(circle 22px at 60% 100%, var(--c1), transparent 70%),
+    radial-gradient(circle 30px at 82% 100%, var(--c4), transparent 70%),
+    radial-gradient(680px 480px at 100% 0%, var(--cw), transparent 70%),
+    radial-gradient(620px 440px at 100% 100%, color-mix(in srgb, var(--pink, #f29bb8) 12%, transparent), transparent 70%);
+  background-repeat: no-repeat;
+}
+
+/* (moon removed — see starfield note above) */
+
+/* ── Legacy glass surfaces (css/_glassmorphism.css hard-codes near-black
+   cyberpunk glass; remap to the theme palette so legacy pages stay legible
+   in BOTH palettes. WP-B/WP-C replace the aside/navbar markup; these rules
+   simply stop matching then.) ── */
+.glass-card, .dark .glass-card {
+  background: var(--card) !important;
+  border: 1px solid var(--line) !important;
+  box-shadow: var(--shadow) !important;
+}
+.glass-aside, .dark .glass-aside {
+  background: var(--railBg) !important;
+  border-right: 1px solid var(--line) !important;
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+}
+.glass-navbar, .dark .glass-navbar {
+  background: var(--railBg) !important;
+  border-bottom: 1px solid var(--line) !important;
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+}
+/* Their light-grey nav text needs dark ink on the day rail */
+html[data-puff-theme="day"] .glass-aside .text-slate-300,
+html[data-puff-theme="day"] .glass-navbar .text-slate-300 {
+  color: var(--text2) !important;
+}
+html[data-puff-theme="day"] .glass-aside .dark\:hover\:text-white:hover,
+html[data-puff-theme="day"] .glass-navbar .dark\:hover\:text-white:hover {
+  color: var(--text) !important;
+}
+
+/* ── Cards ── */
+.cyber-card {
+  border: 1px solid var(--line) !important;
+  box-shadow: 0 6px 26px var(--puff-glow), inset 0 0 22px rgba(255,255,255,0.03) !important;
+  backdrop-filter: blur(14px);
+  position: relative;
+  isolation: isolate;
+}
+
+/* ── Tile cloud imagery (from the design: every tile carries a cloud photo
+   at var(--imgTile)) behind the glass. z-index:-1 inside the card's own
+   stacking context paints ABOVE the card background but BELOW all content;
+   border-radius:inherit clips it without needing overflow:hidden. Four
+   images rotate so neighboring tiles differ, like the mockup. */
+.cyber-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: url(/design-cloud-4.jpg) center / cover no-repeat;
+  opacity: var(--imgTile, 0.34);
+  pointer-events: none;
+}
+.cyber-card:nth-of-type(4n+2)::before { background-image: url(/design-cloud-1.jpg); }
+.cyber-card:nth-of-type(4n+3)::before { background-image: url(/design-cloud-5.jpg); }
+.cyber-card:nth-of-type(4n)::before   { background-image: url(/design-cloud-2.jpg); }
+
+/* Hero: the big cloudscape, like the design's header */
+.bokeh-container { position: relative; isolation: isolate; }
+.bokeh-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: url(/design-cloud-3.jpg) center / cover no-repeat;
+  opacity: var(--img2, 0.42);
+  pointer-events: none;
+}
+.cyber-card:hover {
+  border-color: color-mix(in srgb, var(--pink) 55%, transparent) !important;
+  box-shadow: 0 8px 34px color-mix(in srgb, var(--puff-glow) 140%, transparent) !important;
+}
+
+/* ── Tile glow (kiosk wall display) ──────────────────────────────────────
+   Each dashboard tile gets a soft accent halo on top of the existing depth
+   shadow. The glow lives on the grid item WRAPPER, not the card: the card
+   sets overflow:hidden to clip its cloud photo, which would swallow an
+   inner shadow. Wrappers must stay overflow-visible for the same reason.
+   The accent cycles pink → sky → lavender → mint so neighbouring tiles
+   never wear the same colour. */
+.puff-tile-shell {
+  border-radius: var(--puff-radius-card, 28px);
+  --tileGlow: transparent;
+  /* Colour first so the halo paints ABOVE the dark depth shadow — the other
+     order lets 0 18px 50px of black swallow it on the night palette. */
+  box-shadow:
+    0 0 30px 0 var(--tileGlow),
+    0 0 0 1px var(--tileGlow),
+    var(--shadow);
+  transition: box-shadow 0.22s ease;
+}
+/* Tiles are size containers so their contents can drop optional rows when
+   the kiosk fit makes them short (see .puff-quick-actions below). RGL sets
+   an explicit width/height on every item, so size containment is safe. */
+.puff-tile-shell {
+  container-type: size;
+  container-name: tile;
+}
+@container tile (max-height: 170px) {
+  .puff-quick-actions {
+    display: none;
+  }
+}
+/* Now Playing at the kiosk's 2-column width: the album thumb would leave
+   the track title ~40px to live in, so it steps aside. */
+@container tile (max-width: 330px) {
+  .puff-np-art {
+    display: none;
+  }
+}
+.puff-tile-shell:hover {
+  box-shadow:
+    0 0 46px 2px var(--tileGlow),
+    0 0 0 2px var(--tileGlow),
+    var(--shadow);
+}
+
+/* Night: a visible neon halo against the dark scene. */
+html[data-puff-theme="night"] .puff-tile-shell:nth-of-type(4n + 1) {
+  --tileGlow: color-mix(in srgb, var(--pink) 55%, transparent);
+}
+html[data-puff-theme="night"] .puff-tile-shell:nth-of-type(4n + 2) {
+  --tileGlow: color-mix(in srgb, var(--sky) 55%, transparent);
+}
+html[data-puff-theme="night"] .puff-tile-shell:nth-of-type(4n + 3) {
+  --tileGlow: color-mix(in srgb, var(--lav) 55%, transparent);
+}
+html[data-puff-theme="night"] .puff-tile-shell:nth-of-type(4n) {
+  --tileGlow: color-mix(in srgb, var(--mint) 55%, transparent);
+}
+
+/* Day: the same cycle, dialled down to a pastel wash on the light wash. */
+html[data-puff-theme="day"] .puff-tile-shell:nth-of-type(4n + 1) {
+  --tileGlow: color-mix(in srgb, var(--pink) 26%, transparent);
+}
+html[data-puff-theme="day"] .puff-tile-shell:nth-of-type(4n + 2) {
+  --tileGlow: color-mix(in srgb, var(--sky) 26%, transparent);
+}
+html[data-puff-theme="day"] .puff-tile-shell:nth-of-type(4n + 3) {
+  --tileGlow: color-mix(in srgb, var(--lav) 26%, transparent);
+}
+html[data-puff-theme="day"] .puff-tile-shell:nth-of-type(4n) {
+  --tileGlow: color-mix(in srgb, var(--mint) 26%, transparent);
+}
+
+/* ── Arrange-mode resize grips ───────────────────────────────────────────
+   react-resizable ships a 20px faint grey triangle that is invisible on this
+   glass-on-dark design, and the arrange overlay (z 30) sits on top of it. So:
+   lift the grips above the overlay, and give the SE corner a real glass
+   handle with two diagonal strokes. The e/s edges stay invisible hit-areas.
+   Only inside .puff-grid-editing — outside arrange mode RGL disables resize
+   and nothing should hint otherwise. */
+.puff-grid-editing .react-resizable-handle {
+  z-index: 45;
+  background-image: none;
+  padding: 0;
+}
+.puff-grid-editing .react-resizable-handle-se {
+  width: 26px;
+  height: 26px;
+  right: 6px;
+  bottom: 6px;
+  border-radius: 9px;
+  /* --card (5% white on night) disappears over a cloud photo; the grip has to
+     read at kiosk distance, so it borrows the page background at near-full
+     opacity and outlines itself in text3. */
+  border: 1px solid var(--text3);
+  background: color-mix(in srgb, var(--bg2) 88%, transparent);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 2px 10px rgb(0 0 0 / 0.28);
+  transition:
+    border-color 0.16s ease,
+    transform 0.16s ease;
+}
+/* Two rounded diagonal strokes — the universal "drag me bigger" corner. */
+.puff-grid-editing .react-resizable-handle-se::before,
+.puff-grid-editing .react-resizable-handle-se::after {
+  content: "";
+  position: absolute;
+  right: 5px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--text);
+  transform: rotate(-45deg);
+  transform-origin: right center;
+}
+.puff-grid-editing .react-resizable-handle-se::before {
+  bottom: 7px;
+  width: 13px;
+}
+.puff-grid-editing .react-resizable-handle-se::after {
+  bottom: 12px;
+  width: 7px;
+}
+.puff-grid-editing .react-resizable-handle-se:hover {
+  border-color: var(--pink);
+  transform: scale(1.08);
+}
+.puff-grid-editing .react-resizable-handle-se:hover::before,
+.puff-grid-editing .react-resizable-handle-se:hover::after {
+  background: var(--pink);
+}
+/* Edge grips: generous invisible hit-areas, no visual noise. */
+.puff-grid-editing .react-resizable-handle-e,
+.puff-grid-editing .react-resizable-handle-s {
+  background: transparent;
+  border: 0;
+  /* The library rotates these 45°/315° to aim its triangle glyph; with no
+     glyph that only skews the hit-area. */
+  transform: none;
+  margin: 0;
+}
+.puff-grid-editing .react-resizable-handle-e {
+  width: 14px;
+  height: 46%;
+  top: 27%;
+  right: 0;
+}
+.puff-grid-editing .react-resizable-handle-s {
+  height: 14px;
+  width: 46%;
+  left: 27%;
+  bottom: 0;
+}
+
+/* ═══ Hard-coded class overrides ═══
+   Dark surfaces → theme surfaces */
+.bg-\[\#0a0a18\]\/80, .bg-\[\#0B1120\]\/80 { background-color: var(--puff-card) !important; }
+.bg-\[\#0B1120\], .bg-\[\#12121f\] { background-color: var(--puff-surface-deep) !important; }
+.bg-\[\#0c0c20\] { background-color: var(--puff-card-hover) !important; }
+.bg-\[\#06060e\], .bg-\[\#0c0c1a\], .bg-\[\#080814\] { background-color: var(--puff-surface-deep) !important; }
+.hover\:bg-\[\#0c0c20\]:hover { background-color: var(--puff-card-hover) !important; }
+.bg-slate-900, .bg-slate-800, .dark .dark\:bg-slate-900, .dark .dark\:bg-slate-800 { background-color: var(--puff-surface-deep) !important; }
+.bg-gray-50, .bg-white { background-color: var(--puff-surface) !important; }
+.from-\[\#0c0620\], .from-\[\#0c0620\]\/95 { --tw-gradient-from: var(--puff-surface-deep) !important; }
+.to-\[\#0a1628\], .to-\[\#0a1628\]\/95 { --tw-gradient-to: var(--puff-surface-deep) !important; }
+.via-\[\#0a0a18\]\/90, .via-\[\#150a30\] { --tw-gradient-via: var(--puff-surface-deep) !important; }
+
+/* Text */
+.text-white { color: var(--puff-text-strong) !important; }
+.text-\[\#0C2F44\], .text-\[\#c9d4e0\], .text-\[\#c0c8d4\], .text-\[\#CAF0F8\] { color: var(--puff-text) !important; }
+.text-\[\#8899aa\] { color: var(--puff-text-dim) !important; }
+.text-\[\#8899aa\]\/70, .text-\[\#8899aa\]\/60 { color: color-mix(in srgb, var(--puff-text-dim) 78%, transparent) !important; }
+.text-\[\#8899aa\]\/50, .text-\[\#8899aa\]\/40, .text-\[\#8899aa\]\/30 { color: color-mix(in srgb, var(--puff-text-dim) 55%, transparent) !important; }
+.text-\[\#005F8A\] { color: var(--puff-text-dim) !important; }
+
+/* Primary (cyan/teal/blue families → pink primary) */
+.text-\[\#00f0ff\], .text-\[\#00B4D8\] { color: var(--puff-primary) !important; }
+.text-\[\#00f0ff\]\/80 { color: color-mix(in srgb, var(--puff-primary) 80%, transparent) !important; }
+.text-\[\#00f0ff\]\/50 { color: color-mix(in srgb, var(--puff-primary) 50%, transparent) !important; }
+.bg-\[\#00B4D8\], .bg-\[\#0096C7\] { background-color: var(--puff-primary) !important; }
+.bg-\[\#00f0ff\]\/5, .bg-\[\#00B4D8\]\/10, .bg-\[\#00f0ff\]\/10 { background-color: color-mix(in srgb, var(--puff-primary) 12%, transparent) !important; }
+.bg-\[\#00f0ff\]\/15, .bg-\[\#00B4D8\]\/15, .bg-\[\#00f0ff\]\/20, .bg-\[\#00B4D8\]\/20, .bg-\[\#005F8A\]\/15 { background-color: color-mix(in srgb, var(--puff-primary) 20%, transparent) !important; }
+.border-\[\#00B4D8\] { border-color: var(--puff-primary) !important; }
+.border-\[\#00f0ff\]\/20, .border-\[\#00f0ff\]\/25, .border-\[\#00f0ff\]\/30 { border-color: color-mix(in srgb, var(--puff-primary) 30%, transparent) !important; }
+.ring-\[\#00B4D8\] { --tw-ring-color: var(--puff-primary) !important; }
+.ring-\[\#00B4D8\]\/20, .ring-\[\#00B4D8\]\/30 { --tw-ring-color: color-mix(in srgb, var(--puff-primary) 28%, transparent) !important; }
+.from-\[\#005F8A\], .from-\[\#00B4D8\], .from-\[\#00B4D8\]\/30, .from-\[\#0096C7\]\/5, .from-\[\#0096C7\]\/10, .from-\[\#0096C7\]\/20 { --tw-gradient-from: color-mix(in srgb, var(--puff-primary) 40%, transparent) !important; }
+.to-\[\#005F8A\], .to-\[\#005F8A\]\/30, .to-\[\#00B4D8\], .to-\[\#00B4D8\]\/5, .to-\[\#00B4D8\]\/10 { --tw-gradient-to: color-mix(in srgb, var(--puff-primary) 35%, transparent) !important; }
+.via-\[\#0096C7\], .via-\[\#00f0ff\] { --tw-gradient-via: var(--puff-primary) !important; }
+
+/* Pink family */
+.text-\[\#ff2d6f\] { color: var(--puff-pink) !important; }
+.text-\[\#ff2d6f\]\/60 { color: color-mix(in srgb, var(--puff-pink) 60%, transparent) !important; }
+.bg-\[\#ff2d6f\] { background-color: var(--puff-pink) !important; }
+.bg-\[\#ff2d6f\]\/5, .bg-\[\#ff2d6f\]\/10 { background-color: color-mix(in srgb, var(--puff-pink) 12%, transparent) !important; }
+.border-\[\#ff2d6f\]\/10, .border-\[\#ff2d6f\]\/25, .border-\[\#ff2d6f\]\/30 { border-color: color-mix(in srgb, var(--puff-pink) 28%, transparent) !important; }
+.from-\[\#C0507A\] { --tw-gradient-from: var(--puff-pink) !important; }
+.via-\[\#E07098\] { --tw-gradient-via: color-mix(in srgb, var(--puff-pink) 80%, transparent) !important; }
+.to-\[\#F0A0C0\] { --tw-gradient-to: color-mix(in srgb, var(--puff-pink) 55%, transparent) !important; }
+
+/* Green family */
+.text-\[\#3EAF85\], .text-\[\#4ADE80\], .text-\[\#39ff14\], .text-\[\#16A34A\] { color: var(--puff-green) !important; }
+.text-\[\#39ff14\]\/70 { color: color-mix(in srgb, var(--puff-green) 70%, transparent) !important; }
+.bg-\[\#3EAF85\], .bg-\[\#4ade80\], .bg-\[\#4ADE80\], .bg-\[\#39ff14\] { background-color: var(--puff-green) !important; }
+.bg-\[\#3EAF85\]\/10, .bg-\[\#4ade80\]\/10, .bg-\[\#4ADE80\]\/10, .bg-\[\#39ff14\]\/5 { background-color: color-mix(in srgb, var(--puff-green) 12%, transparent) !important; }
+.bg-\[\#3EAF85\]\/20, .bg-\[\#4ade80\]\/20, .bg-\[\#4ade80\]\/30, .bg-\[\#4ade80\]\/40 { background-color: color-mix(in srgb, var(--puff-green) 24%, transparent) !important; }
+.border-\[\#3EAF85\], .border-\[\#4ade80\] { border-color: var(--puff-green) !important; }
+.border-\[\#39ff14\]\/10 { border-color: color-mix(in srgb, var(--puff-green) 15%, transparent) !important; }
+.ring-\[\#3EAF85\]\/30, .ring-\[\#4ade80\]\/30 { --tw-ring-color: color-mix(in srgb, var(--puff-green) 30%, transparent) !important; }
+.from-\[\#2D8B5E\] { --tw-gradient-from: var(--puff-green) !important; }
+.to-\[\#5CD4A8\] { --tw-gradient-to: color-mix(in srgb, var(--puff-green) 60%, transparent) !important; }
+
+/* Gold / amber */
+.text-\[\#FBBF24\], .text-\[\#D97706\] { color: var(--puff-gold) !important; }
+.bg-\[\#FBBF24\], .bg-\[\#D97706\] { background-color: var(--puff-gold) !important; }
+.bg-\[\#FBBF24\]\/15, .bg-\[\#FBBF24\]\/20, .bg-\[\#ff9500\]\/10 { background-color: color-mix(in srgb, var(--puff-gold) 16%, transparent) !important; }
+.border-\[\#ff9500\]\/25 { border-color: color-mix(in srgb, var(--puff-gold) 28%, transparent) !important; }
+
+/* Red */
+.text-\[\#EF4444\] { color: var(--puff-red) !important; }
+.bg-\[\#EF4444\]\/10, .bg-\[\#EF4444\]\/15 { background-color: color-mix(in srgb, var(--puff-red) 14%, transparent) !important; }
+.border-\[\#EF4444\]\/30 { border-color: color-mix(in srgb, var(--puff-red) 32%, transparent) !important; }
+
+/* Violet family */
+.text-\[\#6C63B0\], .text-\[\#A78BCC\] { color: var(--puff-violet) !important; }
+.bg-\[\#6C63B0\], .bg-\[\#5b4ade\], .bg-\[\#4a3aca\] { background-color: var(--puff-violet) !important; }
+.bg-\[\#A78BCC\]\/15, .bg-\[\#A78BCC\]\/25, .bg-\[\#b44dff\]\/10 { background-color: color-mix(in srgb, var(--puff-violet) 16%, transparent) !important; }
+.border-\[\#6C63B0\], .border-\[\#b44dff\]\/25 { border-color: color-mix(in srgb, var(--puff-violet) 30%, transparent) !important; }
+.from-\[\#5A52A0\], .from-\[\#5b4ade\], .from-\[\#A78BCC\] { --tw-gradient-from: var(--puff-violet) !important; }
+.to-\[\#9B8ED8\], .to-\[\#9b6dff\] { --tw-gradient-to: color-mix(in srgb, var(--puff-violet) 70%, transparent) !important; }
+.via-\[\#6C63B0\], .via-\[\#7e57c2\] { --tw-gradient-via: var(--puff-violet) !important; }
+
+/* Borders that assumed a dark bg */
+.border-white\/5, .border-white\/10 { border-color: var(--puff-border) !important; }
+.border-\[\#8899aa\]\/20 { border-color: color-mix(in srgb, var(--puff-text-dim) 25%, transparent) !important; }
+
+/* ── Day-mode remap of hardwired Tailwind `dark:` utilities ──
+   The app ships with the .dark class permanently on the root, so dark:
+   variants are always active. On the light day theme those read light-on-
+   light; remap the whole vocabulary to day variables. Night is untouched
+   (the true dark palette reads fine under dark: utilities). */
+html[data-puff-theme="day"] .dark\:text-slate-100,
+html[data-puff-theme="day"] .dark\:text-slate-200,
+html[data-puff-theme="day"] .dark\:text-slate-300,
+html[data-puff-theme="day"] .dark\:text-green-300,
+html[data-puff-theme="day"] .dark\:text-yellow-300 { color: var(--puff-text) !important; }
+html[data-puff-theme="day"] .dark\:text-slate-400,
+html[data-puff-theme="day"] .dark\:text-slate-500 { color: var(--puff-text-dim) !important; }
+html[data-puff-theme="day"] .dark\:text-white { color: var(--puff-text-strong) !important; }
+html[data-puff-theme="day"] .dark\:hover\:text-white:hover { color: var(--puff-text-strong) !important; }
+html[data-puff-theme="day"] .dark\:text-emerald-500 { color: var(--puff-green) !important; }
+html[data-puff-theme="day"] .dark\:text-red-500 { color: var(--puff-red) !important; }
+html[data-puff-theme="day"] .dark\:text-yellow-500,
+html[data-puff-theme="day"] .dark\:text-amber-400 { color: var(--puff-gold) !important; }
+html[data-puff-theme="day"] .dark\:text-blue-500 { color: var(--puff-violet) !important; }
+
+html[data-puff-theme="day"] .dark\:bg-slate-900\/70,
+html[data-puff-theme="day"] .dark\:bg-slate-900\/90,
+html[data-puff-theme="day"] .dark\:bg-slate-800\/80,
+html[data-puff-theme="day"] .dark\:bg-slate-700,
+html[data-puff-theme="day"] .dark\:bg-gray-700 { background-color: var(--puff-card) !important; }
+html[data-puff-theme="day"] .dark\:hover\:bg-slate-800:hover,
+html[data-puff-theme="day"] .dark\:hover\:bg-slate-700:hover { background-color: var(--puff-card-hover) !important; }
+html[data-puff-theme="day"] .dark\:bg-green-900\/60 { background-color: color-mix(in srgb, var(--puff-green) 14%, transparent) !important; }
+html[data-puff-theme="day"] .dark\:bg-yellow-900\/60 { background-color: color-mix(in srgb, var(--puff-gold) 14%, transparent) !important; }
+html[data-puff-theme="day"] .dark\:hover\:bg-red-900\/30:hover { background-color: color-mix(in srgb, var(--puff-red) 12%, transparent) !important; }
+
+html[data-puff-theme="day"] .dark\:border-slate-600,
+html[data-puff-theme="day"] .dark\:border-slate-700,
+html[data-puff-theme="day"] .dark\:border-slate-700\/50,
+html[data-puff-theme="day"] .dark\:border-slate-800,
+html[data-puff-theme="day"] .dark\:border-slate-900 { border-color: var(--puff-border) !important; }
+
+/* Colored status buttons keep white labels in day mode */
+html[data-puff-theme="day"] .dark\:bg-emerald-500.dark\:text-white,
+html[data-puff-theme="day"] .dark\:bg-emerald-600.dark\:text-white,
+html[data-puff-theme="day"] .dark\:bg-red-500.dark\:text-white,
+html[data-puff-theme="day"] .dark\:bg-red-600.dark\:text-white,
+html[data-puff-theme="day"] .dark\:bg-yellow-500.dark\:text-white,
+html[data-puff-theme="day"] .dark\:bg-yellow-600.dark\:text-white,
+html[data-puff-theme="day"] .dark\:bg-blue-500.dark\:text-white,
+html[data-puff-theme="day"] .dark\:bg-blue-600.dark\:text-white { color: #ffffff !important; }
+
+/* ── On-accent text guard ──
+   .text-white maps to --puff-text-strong, which day mode makes DARK. Labels
+   sitting on a filled accent (pink/blue/green/violet buttons, badges) must
+   stay white in both themes. Placed last so it wins the earlier mapping. */
+.bg-\[\#00B4D8\] .text-white, .bg-\[\#00B4D8\].text-white,
+.bg-\[\#0096C7\] .text-white, .bg-\[\#0096C7\].text-white,
+.bg-\[\#ff2d6f\] .text-white, .bg-\[\#ff2d6f\].text-white,
+.bg-\[\#3EAF85\] .text-white, .bg-\[\#3EAF85\].text-white,
+.bg-\[\#4ade80\] .text-white, .bg-\[\#4ADE80\] .text-white,
+.bg-\[\#FBBF24\] .text-white, .bg-\[\#D97706\] .text-white,
+.bg-\[\#6C63B0\] .text-white, .bg-\[\#6C63B0\].text-white,
+.bg-\[\#5b4ade\] .text-white, .bg-\[\#5b4ade\].text-white,
+.bg-\[\#4a3aca\] .text-white, .bg-\[\#4a3aca\].text-white {
+  color: #ffffff !important;
+}
+
+/* ── Topbar search pill: the input is part of the glass, not a box in it ── */
+.puff-search-input { background: transparent !important; border: none !important;
+  outline: none !important; box-shadow: none !important; color: var(--text); }
+.puff-search-input::placeholder { color: var(--text3); }
+
+/* ── Knowledge search fields ──
+   `.kb-viewer-search` (css/_bookshelf.css) is a fixed dark-cyberpunk field; on
+   the day palette it reads as a navy box on a light card. Remap to glass in
+   both palettes. The book-spine library cards stay dark on purpose. */
+/* Specificity note: main.css's `.dark input[type="text"]` navy-box rule is
+   (0,2,1) !important and lands later in the cascade, so the html.dark variant
+   below (0,2,2) is what actually outranks it. */
+.kb-viewer-search,
+html.dark input.kb-viewer-search {
+  background: var(--card2) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 14px !important;
+  color: var(--text) !important;
+  width: 100%;
+  padding: 10px 14px;
+}
+.kb-viewer-search::placeholder,
+html.dark input.kb-viewer-search::placeholder { color: var(--text3) !important; }
+.kb-viewer-search:focus,
+html.dark input.kb-viewer-search:focus {
+  border-color: var(--pink) !important;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--pink) 18%, transparent) !important;
+}

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Idea Box</title></head>
+<body><h1>Idea Box</h1>
+<section id="add">
+  <h2>New idea</h2>
+  <label for="f_name">Idea</label><input id="f_name" maxlength="80">
+  <label for="f_kind">Kind</label><select id="f_kind"><option value="">Choose one</option><option>Small</option><option>Big</option></select>
+  <button id="save">Save idea</button>
+</section>
+<ul id="list"></ul>
+<script>
+// keeps its data only in IndexedDB (no other storage)
+function db() {
+  return new Promise((ok, no) => { const r = indexedDB.open("ideas", 1);
+    r.onupgradeneeded = () => r.result.createObjectStore("ideas", {keyPath: "id"});
+    r.onsuccess = () => ok(r.result); r.onerror = () => no(r.error); });
+}
+async function all() { const d = await db(); return new Promise((ok) => { const q = d.transaction("ideas").objectStore("ideas").getAll(); q.onsuccess = () => ok(q.result); }); }
+async function render() { const ul = document.getElementById("list"); ul.innerHTML = "";
+  for (const it of await all()) { const li = document.createElement("li"); li.textContent = it.name + " (" + it.kind + ")"; ul.appendChild(li); } }
+document.getElementById("save").onclick = async () => {
+  const name = document.getElementById("f_name").value.trim(); if (!name) return;
+  const kind = document.getElementById("f_kind").value;
+  const d = await db();
+  await new Promise((ok) => { const t = d.transaction("ideas", "readwrite"); t.objectStore("ideas").put({id: String(Date.now()), name, kind}); t.oncomplete = ok; });
+  document.getElementById("f_name").value = ""; render();
+};
+render();
+</script>
+</body></html>

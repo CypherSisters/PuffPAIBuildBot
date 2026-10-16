@@ -1,0 +1,61 @@
+{
+ "goal_id": "bakery",
+ "timing": {
+  "wall_s": 4.38,
+  "first_token_s": 0.06,
+  "first_job_s": 0,
+  "load_s": 0.01,
+  "prompt_tokens": 210,
+  "prompt_s": 0.04,
+  "out_tokens": 202,
+  "gen_s": 4.32,
+  "tok_per_s": 46.8,
+  "done_reason": "stop"
+ },
+ "parsed": {
+  "kind": "recipe assistant",
+  "asked": [
+   "recipes and costing",
+   "custom cake orders",
+   "scheduling bake",
+   "tracking ingredients",
+   "suppliers",
+   "posting to Instagram"
+  ],
+  "jobs": [
+   {
+    "name": "Recipe Suggestor",
+    "does": "suggests recipes based on ingredients available"
+   },
+   {
+    "name": "Cost Estimator",
+    "does": "calculates cost of ingredients for recipes"
+   },
+   {
+    "name": "Order Taker",
+    "does": "takes custom cake orders from customers"
+   },
+   {
+    "name": "Bake Scheduler",
+    "does": "schedules morning bake times and tasks"
+   },
+   {
+    "name": "Supplier Tracker",
+    "does": "tracks ingredient and supplier inventory and orders"
+   },
+   {
+    "name": "Social Media Poster",
+    "does": "posts updates and photos to Instagram"
+   },
+   {
+    "name": "Inventory Manager",
+    "does": "monitors and updates ingredient inventory levels"
+   },
+   {
+    "name": "Reminders",
+    "does": "sends reminders for supplier orders and bake tasks"
+   }
+  ]
+ },
+ "recall": 0.875
+}

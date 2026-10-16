@@ -1,0 +1,23 @@
+{
+  "spec": {
+    "schema": "assembled_app/v1", "id": "earth-pictures", "title": "Pictures of Earth", "caps": ["cap-pictures"],
+    "settings": [],
+    "sources": [{"id": "pics", "kind": "http_json", "service": "pictures_api", "url": "https://example.org/api/natural",
+      "items": "$[*]", "fields": {"title": "caption", "image": "tmpl:https://example.org/archive/{image}.png", "when": "date"}}],
+    "views": [{"type": "gallery", "source": "pics", "search": true, "lightbox": true}],
+    "actions": [{"id": "latest_pictures", "source": "pics", "input": {}},
+                {"id": "search_pictures", "source": "pics", "input": {"q": "string"}}],
+    "checks": [{"cap": "cap-pictures", "ask": "Show me pictures of Earth", "action": "search_pictures", "input": {"q": "earth"},
+      "expect": {"min_items": 1, "fields": ["image"]}}]
+  },
+  "rows": {
+    "latest_pictures": [
+      {"title": "This image was taken by a camera far out in space", "image": "https://example.org/archive/a1.png", "when": "2026-10-07 00:13:03", "link": "https://example.org/about/a1"},
+      {"title": "Another view of the whole planet", "image": "https://example.org/archive/a2.png", "when": "2026-10-07 01:52:31"},
+      {"title": "A third view, later that day", "image": "https://example.org/archive/a3.png", "when": "2026-10-07 03:31:59"}
+    ],
+    "search_pictures": [
+      {"title": "Search hit: Earth at noon", "image": "https://example.org/archive/s1.png", "when": "2026-10-01"}
+    ]
+  }
+}

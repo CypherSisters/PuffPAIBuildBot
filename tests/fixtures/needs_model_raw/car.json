@@ -1,0 +1,206 @@
+{
+ "goal_id": "car",
+ "model": "qwen2.5:7b-instruct",
+ "prompt_tag": "v5",
+ "at": "2026-09-27T00:30:26",
+ "timing": {
+  "wall_s": 26.93,
+  "first_token_s": 12.96,
+  "first_job_s": 15.71,
+  "load_s": 0.01,
+  "prompt_tokens": 717,
+  "prompt_s": 0.04,
+  "out_tokens": 641,
+  "gen_s": 13.97,
+  "tok_per_s": 45.9,
+  "done_reason": "stop"
+ },
+ "raw": "{\n  \"kind\": \"car maintenance helper\",\n  \"asked\": [\n    \"track oil changes\",\n    \"track tire rotations\",\n    \"remind about registration\",\n    \"look up recalls\",\n    \"figure out warning lights\"\n  ],\n  \"also_needed\": [\n    \"find service centers\",\n    \"schedule appointments\"\n  ],\n  \"jobs\": [\n    {\n      \"name\": \"track oil changes\",\n      \"does\": \"Monitor the oil change history of the vehicles.\",\n      \"parts\": [\n        { \"kind\": \"code-app\", \"search\": [\"vehicle maintenance tracker\", \"oil change reminder\"] },\n        { \"kind\": \"data-template\", \"search\": [\"oil change log template\", \"vehicle service log\"] }\n      ]\n    },\n    {\n      \"name\": \"track tire rotations\",\n      \"does\": \"Keep a record of when tires were last rotated.\",\n      \"parts\": [\n        { \"kind\": \"code-app\", \"search\": [\"tire rotation tracker\", \"vehicle service log\"] },\n        { \"kind\": \"data-template\", \"search\": [\"tire rotation log template\", \"vehicle service log\"] }\n      ]\n    },\n    {\n      \"name\": \"remind about registration\",\n      \"does\": \"Send notifications when vehicle registration is due.\",\n      \"parts\": [\n        { \"kind\": \"code-app\", \"search\": [\"vehicle registration reminder\", \"reminder app\"] },\n        { \"kind\": \"live-info\", \"search\": [\"vehicle registration expiration\", \"registration renewal\"] }\n      ]\n    },\n    {\n      \"name\": \"look up recalls\",\n      \"does\": \"Check for any vehicle recalls and provide information.\",\n      \"parts\": [\n        { \"kind\": \"code-app\", \"search\": [\"vehicle recall checker\", \"recall database\"] },\n        { \"kind\": \"data-template\", \"search\": [\"vehicle recall log\", \"recall notifications\"] }\n      ]\n    },\n    {\n      \"name\": \"figure out warning lights\",\n      \"does\": \"Explain the meaning of dashboard warning lights.\",\n      \"parts\": [\n        { \"kind\": \"knowledge\", \"search\": [\"car dashboard warning lights\", \"vehicle warning light guide\"] },\n        { \"kind\": \"pictures\", \"search\": [\"car dashboard warning lights\", \"vehicle warning light icons\"] }\n      ]\n    },\n    {\n      \"name\": \"find service centers\",\n      \"does\": \"Locate nearby service centers for car maintenance.\",\n      \"parts\": [\n        { \"kind\": \"code-app\", \"search\": [\"car service center finder\", \"service center locator\"] },\n        { \"kind\": \"live-info\", \"search\": [\"service centers near me\", \"mechanic near me\"] }\n      ]\n    },\n    {\n      \"name\": \"schedule appointments\",\n      \"does\": \"Help schedule appointments with service centers.\",\n      \"parts\": [\n        { \"kind\": \"code-app\", \"search\": [\"appointment scheduler\", \"service center booking\"] },\n        { \"kind\": \"live-info\", \"search\": [\"service center booking\", \"appointment booking\"] }\n      ]\n    }\n  ]\n}",
+ "parsed": {
+  "kind": "car maintenance helper",
+  "asked": [
+   "track oil changes",
+   "track tire rotations",
+   "remind about registration",
+   "look up recalls",
+   "figure out warning lights"
+  ],
+  "also_needed": [
+   "find service centers",
+   "schedule appointments"
+  ],
+  "jobs": [
+   {
+    "name": "track oil changes",
+    "does": "Monitor the oil change history of the vehicles.",
+    "parts": [
+     {
+      "kind": "code-app",
+      "search": [
+       "vehicle maintenance tracker",
+       "oil change reminder"
+      ]
+     },
+     {
+      "kind": "data-template",
+      "search": [
+       "oil change log template",
+       "vehicle service log"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "track tire rotations",
+    "does": "Keep a record of when tires were last rotated.",
+    "parts": [
+     {
+      "kind": "code-app",
+      "search": [
+       "tire rotation tracker",
+       "vehicle service log"
+      ]
+     },
+     {
+      "kind": "data-template",
+      "search": [
+       "tire rotation log template",
+       "vehicle service log"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "remind about registration",
+    "does": "Send notifications when vehicle registration is due.",
+    "parts": [
+     {
+      "kind": "code-app",
+      "search": [
+       "vehicle registration reminder",
+       "reminder app"
+      ]
+     },
+     {
+      "kind": "live-info",
+      "search": [
+       "vehicle registration expiration",
+       "registration renewal"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "look up recalls",
+    "does": "Check for any vehicle recalls and provide information.",
+    "parts": [
+     {
+      "kind": "code-app",
+      "search": [
+       "vehicle recall checker",
+       "recall database"
+      ]
+     },
+     {
+      "kind": "data-template",
+      "search": [
+       "vehicle recall log",
+       "recall notifications"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "figure out warning lights",
+    "does": "Explain the meaning of dashboard warning lights.",
+    "parts": [
+     {
+      "kind": "knowledge",
+      "search": [
+       "car dashboard warning lights",
+       "vehicle warning light guide"
+      ]
+     },
+     {
+      "kind": "pictures",
+      "search": [
+       "car dashboard warning lights",
+       "vehicle warning light icons"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "find service centers",
+    "does": "Locate nearby service centers for car maintenance.",
+    "parts": [
+     {
+      "kind": "code-app",
+      "search": [
+       "car service center finder",
+       "service center locator"
+      ]
+     },
+     {
+      "kind": "live-info",
+      "search": [
+       "service centers near me",
+       "mechanic near me"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "schedule appointments",
+    "does": "Help schedule appointments with service centers.",
+    "parts": [
+     {
+      "kind": "code-app",
+      "search": [
+       "appointment scheduler",
+       "service center booking"
+      ]
+     },
+     {
+      "kind": "live-info",
+      "search": [
+       "service center booking",
+       "appointment booking"
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "check": {
+  "valid": true,
+  "kind": "car maintenance helper",
+  "jobs": 7,
+  "jobs_in_range": true,
+  "phrases": 28,
+  "unique_phrases": 24,
+  "parts_with_bad_phrase_count": 0,
+  "kinds": {
+   "code-app": 6,
+   "data-template": 3,
+   "live-info": 3,
+   "knowledge": 1,
+   "pictures": 1
+  },
+  "leaks": [
+   {
+    "phrase": "service centers near me",
+    "why": [
+     "pronoun:me"
+    ]
+   },
+   {
+    "phrase": "mechanic near me",
+    "why": [
+     "pronoun:me"
+    ]
+   }
+  ],
+  "kind_leak": []
+ }
+}

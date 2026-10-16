@@ -1,0 +1,18 @@
+{
+  "schema": "puffpai_pack/v1",
+  "id": "homebot",
+  "display_name": "HomeBot app pack",
+  "blurb": "The five apps a household build ships with: alarms, calendar, kitchen, fitness and trivia.",
+  "version": "1.0.0",
+  "author": "Cypher Sisters",
+  "license": "Apache-2.0",
+  "posture_min": "offline",
+
+  "apps": [
+    { "id": "alarmflow",  "version": "1.0.0" },
+    { "id": "calendar",   "version": "1.0.0" },
+    { "id": "freshtable", "version": "1.0.0" },
+    { "id": "fitfam",     "version": "1.0.0" },
+    { "id": "trivia",     "version": "1.0.0" }
+  ]
+}

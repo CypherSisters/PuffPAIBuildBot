@@ -1,0 +1,131 @@
+{
+  "name": "PuffPAI - Health Check",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "health-check",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "wh-health-1",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [250, 300],
+      "webhookId": "health-check"
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "http://localhost:8000/health",
+        "options": { "timeout": 5000 }
+      },
+      "id": "check-puffpai-1",
+      "name": "Check PuffPAI API",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [480, 150]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "http://localhost:11434/api/tags",
+        "options": { "timeout": 5000 }
+      },
+      "id": "check-ollama-1",
+      "name": "Check Ollama",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [480, 300]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "=http://{{ $node['Webhook'].json.body.ha_url || 'homeassistant.local:8123' }}/api/",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $node['Webhook'].json.body.ha_token || '' }}"
+            }
+          ]
+        },
+        "options": { "timeout": 5000 }
+      },
+      "id": "check-ha-1",
+      "name": "Check Home Assistant",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [480, 450]
+    },
+    {
+      "parameters": {
+        "jsCode": "const puffpai = $('Check PuffPAI API').first().json;\nconst ollama = $('Check Ollama').first().json;\nconst ha = $('Check Home Assistant').first().json;\n\nconst services = [\n  { name: 'PuffPAI API', status: puffpai?.status === 'healthy' ? 'up' : 'down', details: puffpai },\n  { name: 'Ollama LLM', status: ollama?.models ? 'up' : 'down', models: ollama?.models?.map(m => m.name) || [] },\n  { name: 'Home Assistant', status: ha?.message ? 'up' : 'down', details: ha }\n];\n\nconst allUp = services.every(s => s.status === 'up');\nconst downServices = services.filter(s => s.status === 'down');\n\nreturn {\n  json: {\n    overall: allUp ? 'healthy' : 'degraded',\n    services: services,\n    down_count: downServices.length,\n    down_services: downServices.map(s => s.name),\n    checked_at: new Date().toISOString(),\n    summary: allUp\n      ? 'All systems operational.'\n      : `${downServices.length} service(s) down: ${downServices.map(s => s.name).join(', ')}`\n  }\n};"
+      },
+      "id": "compile-health-1",
+      "name": "Compile Health Report",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [750, 300]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "respond-health-1",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [980, 300]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          { "node": "Check PuffPAI API", "type": "main", "index": 0 },
+          { "node": "Check Ollama", "type": "main", "index": 0 },
+          { "node": "Check Home Assistant", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Check PuffPAI API": {
+      "main": [
+        [
+          { "node": "Compile Health Report", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Check Ollama": {
+      "main": [
+        [
+          { "node": "Compile Health Report", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Check Home Assistant": {
+      "main": [
+        [
+          { "node": "Compile Health Report", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Compile Health Report": {
+      "main": [
+        [
+          { "node": "Respond to Webhook", "type": "main", "index": 0 }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "tags": [
+    { "name": "puffpai" },
+    { "name": "health" },
+    { "name": "monitoring" }
+  ]
+}

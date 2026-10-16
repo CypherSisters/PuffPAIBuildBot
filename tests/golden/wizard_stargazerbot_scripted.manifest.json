@@ -1,0 +1,185 @@
+{
+  "brain": {
+    "brain_status": "model_missing",
+    "chosen_by": "recommendation",
+    "disk_gb": null,
+    "model": "qwen2.5:7b-instruct",
+    "profile_basis": "conservative-default",
+    "ready": false,
+    "recommended": "qwen3.5:9b",
+    "routing_tier": "guided",
+    "supports_planning": true
+  },
+  "bridge": {
+    "allows": {
+      "actions": "The same checks as always: each outside service has its own switch.",
+      "consent": "For BuildBot's own tools: your press of Start looking and your yes to the plan. For every other outside service: asked once, when you switch it on.",
+      "egress": "Outside services are listed one by one on \"What leaves your computer\". BuildBot's own tools for finding and adding things are on while your bot is made, and only the ones your plan named stay on after it; everything else starts off. Any of them can be switched off at any time.",
+      "lan_devices": "Things on your home network are allowed."
+    },
+    "chosen_by": "owner",
+    "costs": "You will be asked to confirm now and then. That is the trade for a bot that is useful in the house without being loose about the world outside it.",
+    "enforced_by": "Drawbridge",
+    "environment": {
+      "external_firewall": false,
+      "home_assistant": false,
+      "managed_lan": false
+    },
+    "label": "Ask when it reaches further",
+    "note": "\"Ask when it reaches further\" fits the rest of your answers, so nothing was changed.",
+    "posture": "fenced",
+    "reconciled": false,
+    "requested_posture": "fenced",
+    "run_egress": "island",
+    "strictness": 1,
+    "summary": "Your bot can talk to things in your house. BuildBot's own tools for finding and adding things are on while your bot is made; after that, only the ones your plan named stay on. Every other outside service asks you once before it is switched on, and you can switch any of them off at any time."
+  },
+  "build": {
+    "based_on": "buildbot",
+    "identity": "custom",
+    "name": "NebulaBot"
+  },
+  "contracts": {
+    "_note": "These are contracts, not configuration. No manifest field disables them; the wizard and the loader never read this block as switches.",
+    "action_gates": "On at the action boundary. Reach-into-the-world actions are gated.",
+    "consent_gate": "Human-only. No agent can grant consent on a person's behalf.",
+    "telemetry": "None. No phone-home; every egress is owner-invoked and enumerated.",
+    "vault": "Encrypted, PIN/MFA-gated. Even the AI must ask to read it."
+  },
+  "crew": {
+    "master_core": 7,
+    "max_specialists": 5,
+    "selected_specialists": []
+  },
+  "egress": {
+    "enabled": [],
+    "posture": "all-offline"
+  },
+  "hardware": {
+    "accelerator": {
+      "kind": "none",
+      "name": "",
+      "source": "detected",
+      "unified_memory": false,
+      "vram_gb": 0.0
+    },
+    "cpu": {
+      "arch": "x86_64",
+      "logical_cores": 8,
+      "model": "Golden Reference CPU",
+      "source": "detected"
+    },
+    "disk": {
+      "free_gb": 200.0,
+      "path": "/golden",
+      "source": "detected",
+      "total_gb": 500.0
+    },
+    "hardware_class": "workstation",
+    "memory": {
+      "available_gb": 24.0,
+      "source": "detected",
+      "total_gb": 32.0
+    },
+    "model_budget_gb": 28.0,
+    "notes": [],
+    "os": {
+      "machine": "x86_64",
+      "python": "3.11.9",
+      "release": "6.8.0",
+      "source": "detected",
+      "system": "Linux"
+    },
+    "schema": "hardware_census/v1",
+    "soc": {
+      "is_jetson": false,
+      "model": null,
+      "source": "detected"
+    }
+  },
+  "integrations": {
+    "devices": [],
+    "home_assistant": false,
+    "media_server": false
+  },
+  "knowledge": {
+    "auto_index": true,
+    "packs": [],
+    "sources": {
+      "fetched": [],
+      "not_fetched": [],
+      "offered": [],
+      "skipped": "skipped"
+    },
+    "zim_dir": ""
+  },
+  "persona": {
+    "app": "nebulabot",
+    "app_manifest": "<state>\\apps\\nebulabot\\app.json",
+    "goal": "a stargazer bot for my telescopes and space",
+    "lists": [],
+    "name": "NebulaBot",
+    "note": "Written by the wizard from the owner's goal; declarative only, and editable by hand.",
+    "pack": "nebulabot",
+    "pack_manifest": "<state>\\packs\\nebulabot\\pack.json",
+    "scaffolded": true,
+    "surfaces": [
+      "persona.nebulabot"
+    ]
+  },
+  "posture": {
+    "build_network": "offline",
+    "build_network_source": "stated",
+    "combination": "No internet during the build, but your home network is fair game afterwards - Home Assistant, a media server, local devices.",
+    "egress_switches": {
+      "model_pull": false,
+      "music": false,
+      "pack_pull": false,
+      "radio": false,
+      "weather": false,
+      "web_fetch": false,
+      "web_search": false
+    },
+    "enabled_switches": [],
+    "run_egress": "island",
+    "run_egress_source": "stated"
+  },
+  "provenance": {
+    "bundle": null,
+    "source": "local"
+  },
+  "schema": "build_manifest/v2",
+  "storage": {
+    "knowledge_dir": null,
+    "media_dir": null,
+    "vault_dir": null
+  },
+  "surfaces": {
+    "allowlist": [
+      "instruments.telescope",
+      "knowledge.library",
+      "persona.nebulabot"
+    ],
+    "derived_from_goal": true,
+    "note": "Surfaces outside this list are not loaded at all - not hidden, not loaded. This is a proposal: add or remove anything before you accept it.",
+    "owner_edited": false,
+    "reasons": {
+      "instruments.telescope": "Telescope and sky feeds, because you asked about 'space' and that comes with Science and astronomy Q&A (Stack Exchange).",
+      "knowledge.library": "Offline reference library, because you asked about 'space' and that comes with Science and astronomy Q&A (Stack Exchange).",
+      "persona.nebulabot": "NebulaBot, a persona you made, because NebulaBot is your own app and that is where it keeps its lists."
+    },
+    "sensitive": []
+  },
+  "vault": {
+    "cipher": "fernet-aes128-cbc-hmac-sha256",
+    "configured": false,
+    "key_derivation": "pbkdf2-hmac-sha256",
+    "method": "pin",
+    "ready": true,
+    "recovery_confirmed": false,
+    "recovery_escrow": "wrapped-key",
+    "recovery_issued": false,
+    "rejected": false,
+    "sealed": false
+  }
+}

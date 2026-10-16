@@ -1,0 +1,50 @@
+{
+  "schema": "routine_kinds/v1",
+  "_note": "Kinds of routine any build can run. Each kind is composed by code in src/puffpai/routines.py from what the build already has (its live info cards, its own library, the date). No kind is about one topic. Owner-visible text lives in 'label', 'what_it_does' and 'offer_detail' and must stay plain words.",
+  "kinds": [
+    {
+      "id": "daily_update",
+      "label": "Daily update",
+      "what_it_does": "Once a day, a short note with the date, the latest from your live info cards, and one thing from your bot's own library.",
+      "schedule": "daily",
+      "default_time": "08:00",
+      "late_ok_minutes": 360,
+      "announce_missed": false,
+      "offer": true,
+      "offer_detail": "A short note once a day, made on this computer: the date, the latest from your live info cards, and one thing from your bot's library. Making it sends nothing new off your computer.",
+      "needs_any": ["live_info", "library"]
+    },
+    {
+      "id": "watch",
+      "label": "Watch",
+      "what_it_does": "Tells you when a number on one of your live info cards goes above or below a line you pick, or when a list on a card gets something new.",
+      "schedule": "every",
+      "default_every_minutes": 60,
+      "min_every_minutes": 15,
+      "announce_missed": false,
+      "offer": false,
+      "needs_any": ["live_info"]
+    },
+    {
+      "id": "reminder",
+      "label": "Reminder",
+      "what_it_does": "Says a message you wrote, at the time you pick.",
+      "schedule": "daily_or_once",
+      "late_ok_minutes": 30,
+      "announce_missed": true,
+      "offer": false,
+      "needs_any": []
+    },
+    {
+      "id": "daily_prompt",
+      "label": "Daily task",
+      "what_it_does": "Once a day, your bot does a job you asked for (a lesson, a plan, a summary) with its usual tools, and keeps a short note so each day builds on the last. A command still waits for your yes.",
+      "schedule": "daily",
+      "default_time": "08:00",
+      "late_ok_minutes": 360,
+      "announce_missed": false,
+      "offer": false,
+      "needs_any": []
+    }
+  ]
+}

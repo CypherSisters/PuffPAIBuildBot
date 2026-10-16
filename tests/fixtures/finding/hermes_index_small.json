@@ -1,0 +1,1674 @@
+{
+"version": 1,
+"skills": [
+{
+"name": "stocks",
+"description": "Stock quotes, history, search, compare, crypto via Yahoo.",
+"source": "official",
+"identifier": "official/finance/stocks",
+"trust_level": "builtin",
+"repo": "NousResearch/hermes-agent",
+"path": "optional-skills/finance/stocks",
+"tags": [
+"Stocks",
+"Finance",
+"Market",
+"Crypto",
+"Investing"
+],
+"extra": {}
+},
+{
+"name": "digital-health-clinical-asr-finetune",
+"description": "Stage 4 of the Clinical ASR Flywheel. Use when priority KER is above 0.3 to run stock NeMo SFT on Parakeet TDT v2 and offline cycle N+1 re-eval. NOT for generic word boosting (use /finetune-asr).",
+"source": "github",
+"identifier": "NVIDIA/skills/skills/digital-health-clinical-asr-finetune",
+"trust_level": "trusted",
+"repo": "NVIDIA/skills",
+"path": "skills/digital-health-clinical-asr-finetune",
+"tags": [
+"clinical-asr",
+"finetune",
+"sft",
+"nemo",
+"parakeet",
+"flywheel"
+],
+"extra": {
+"provider": "NVIDIA",
+"category": "Conversational AI"
+}
+},
+{
+"name": "fictiv",
+"description": "Operates Fictiv (app.fictiv.com), the on-demand manufacturing platform, end to end in the user's browser. Covers uploading CAD parts, configuring process, material, finish, threads, tolerances and inspections, getting instant or manual quotes, reading and fixing DFM feedback, choosing lead time and region, checking out and paying (card or PO), tracking orders, reordering, and troubleshooting. Applies when the user mentions Fictiv, wants a part CNC machined, 3D printed, sheet-metal fabricated, urethane cast, injection or compression molded, or die cast through an online service, asks to \"get a quote\" or \"order parts\" for a STEP/SLDPRT/STL file, wants to check a Fictiv quote or order status, or has a problem with a Fictiv upload, DFM warning, price or checkout. Also applies when the user wants custom parts manufactured and has a Fictiv account, even if Fictiv is not named.",
+"source": "github",
+"identifier": "K-Dense-AI/scientific-agent-skills/skills/fictiv",
+"trust_level": "community",
+"repo": "K-Dense-AI/scientific-agent-skills",
+"path": "skills/fictiv",
+"tags": [],
+"extra": {
+"category": "science"
+}
+},
+{
+"name": "portfolio-optimization",
+"description": "Use when a user asks to build, optimize, backtest, rebalance, or analyze a stock portfolio with Mean-CVaR, Mean-Variance/SOCP variance caps, efficient frontiers, scenario generation, or NVIDIA cuOpt.",
+"source": "github",
+"identifier": "NVIDIA/skills/skills/portfolio-optimization",
+"trust_level": "trusted",
+"repo": "NVIDIA/skills",
+"path": "skills/portfolio-optimization",
+"tags": [],
+"extra": {
+"provider": "NVIDIA",
+"category": "Decision Optimization"
+}
+},
+{
+"name": "rtvi-cv-scaffold-vss-service",
+"description": "Scaffold a standalone RTVI CV microservice that plugs into VSS Search and Alerts profiles via Kafka mdx-raw. The shipped scaffold script is a YOLO26 reference implementation (ONNX, labels, custom parser required). Use when building a new perception microservice repo, validating the VSS integration contract, extending that scaffold for segmentation frame-mask payloads, or scaffolding with placeholders before customer YOLO26 assets exist. For swapping the detector in the stock vss-rt-cv container, use rtvi-cv-customize-model instead. Live DeepStream integration cannot run until the customer-supplied ONNX, labels file, and parser library exist.\n",
+"source": "github",
+"identifier": "NVIDIA/skills/skills/rtvi-cv-scaffold-vss-service",
+"trust_level": "trusted",
+"repo": "NVIDIA/skills",
+"path": "skills/rtvi-cv-scaffold-vss-service",
+"tags": [],
+"extra": {
+"provider": "NVIDIA",
+"category": "Vision AI"
+}
+},
+{
+"name": "a-stock-daily-report",
+"description": "Indexed by skills.sh from zsxink/skills-hub",
+"source": "skills.sh",
+"identifier": "skills-sh/zsxink/skills-hub/a-stock-daily-report",
+"trust_level": "community",
+"repo": "zsxink/skills-hub",
+"path": "a-stock-daily-report",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/zsxink/skills-hub/a-stock-daily-report",
+"repo_url": "https://github.com/zsxink/skills-hub"
+}
+},
+{
+"name": "a-stock-data",
+"description": "Indexed by skills.sh from simonlin1212/a-stock-data",
+"source": "skills.sh",
+"identifier": "skills-sh/simonlin1212/a-stock-data/a-stock-data",
+"trust_level": "community",
+"repo": "simonlin1212/a-stock-data",
+"path": "a-stock-data",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/simonlin1212/a-stock-data/a-stock-data",
+"repo_url": "https://github.com/simonlin1212/a-stock-data"
+}
+},
+{
+"name": "adobe-stock-downloader",
+"description": "Indexed by skills.sh from serpdownloaders/skills",
+"source": "skills.sh",
+"identifier": "skills-sh/serpdownloaders/skills/adobe-stock-downloader",
+"trust_level": "community",
+"repo": "serpdownloaders/skills",
+"path": "adobe-stock-downloader",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/serpdownloaders/skills/adobe-stock-downloader",
+"repo_url": "https://github.com/serpdownloaders/skills"
+}
+},
+{
+"name": "akshare-stock",
+"description": "Indexed by skills.sh from molezzz/openclaw-stock-skill",
+"source": "skills.sh",
+"identifier": "skills-sh/molezzz/openclaw-stock-skill/akshare-stock",
+"trust_level": "community",
+"repo": "molezzz/openclaw-stock-skill",
+"path": "akshare-stock",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/molezzz/openclaw-stock-skill/akshare-stock",
+"repo_url": "https://github.com/molezzz/openclaw-stock-skill"
+}
+},
+{
+"name": "alphaear-stock",
+"description": "Indexed by skills.sh from rkiding/awesome-finance-skills",
+"source": "skills.sh",
+"identifier": "skills-sh/rkiding/awesome-finance-skills/alphaear-stock",
+"trust_level": "community",
+"repo": "rkiding/awesome-finance-skills",
+"path": "alphaear-stock",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/rkiding/awesome-finance-skills/alphaear-stock",
+"repo_url": "https://github.com/rkiding/awesome-finance-skills"
+}
+},
+{
+"name": "amee-joshi-data-engineering-portfolio",
+"description": "Indexed by skills.sh from reason-machines/data-skills",
+"source": "skills.sh",
+"identifier": "skills-sh/reason-machines/data-skills/amee-joshi-data-engineering-portfolio",
+"trust_level": "community",
+"repo": "reason-machines/data-skills",
+"path": "amee-joshi-data-engineering-portfolio",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/reason-machines/data-skills/amee-joshi-data-engineering-portfolio",
+"repo_url": "https://github.com/reason-machines/data-skills"
+}
+},
+{
+"name": "backtesting-trading-strategies",
+"description": "Indexed by skills.sh from gracefullight/stock-checker",
+"source": "skills.sh",
+"identifier": "skills-sh/gracefullight/stock-checker/backtesting-trading-strategies",
+"trust_level": "community",
+"repo": "gracefullight/stock-checker",
+"path": "backtesting-trading-strategies",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/gracefullight/stock-checker/backtesting-trading-strategies",
+"repo_url": "https://github.com/gracefullight/stock-checker"
+}
+},
+{
+"name": "bambu-labs",
+"description": "Indexed by skills.sh from earthtojake/text-to-cad",
+"source": "skills.sh",
+"identifier": "skills-sh/earthtojake/text-to-cad/bambu-labs",
+"trust_level": "community",
+"repo": "earthtojake/text-to-cad",
+"path": "bambu-labs",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/earthtojake/text-to-cad/bambu-labs",
+"repo_url": "https://github.com/earthtojake/text-to-cad"
+}
+},
+{
+"name": "channel-portfolio-planner",
+"description": "Indexed by skills.sh from aaron-he-zhu/aaron-marketing-skills",
+"source": "skills.sh",
+"identifier": "skills-sh/aaron-he-zhu/aaron-marketing-skills/channel-portfolio-planner",
+"trust_level": "community",
+"repo": "aaron-he-zhu/aaron-marketing-skills",
+"path": "channel-portfolio-planner",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/aaron-he-zhu/aaron-marketing-skills/channel-portfolio-planner",
+"repo_url": "https://github.com/aaron-he-zhu/aaron-marketing-skills"
+}
+},
+{
+"name": "china-stock-analysis",
+"description": "Indexed by skills.sh from sugarforever/01coder-agent-skills",
+"source": "skills.sh",
+"identifier": "skills-sh/sugarforever/01coder-agent-skills/china-stock-analysis",
+"trust_level": "community",
+"repo": "sugarforever/01coder-agent-skills",
+"path": "china-stock-analysis",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/sugarforever/01coder-agent-skills/china-stock-analysis",
+"repo_url": "https://github.com/sugarforever/01coder-agent-skills"
+}
+},
+{
+"name": "creative-portfolio-resume",
+"description": "Indexed by skills.sh from paramchoudhary/resumeskills",
+"source": "skills.sh",
+"identifier": "skills-sh/paramchoudhary/resumeskills/creative-portfolio-resume",
+"trust_level": "community",
+"repo": "paramchoudhary/resumeskills",
+"path": "creative-portfolio-resume",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/paramchoudhary/resumeskills/creative-portfolio-resume",
+"repo_url": "https://github.com/paramchoudhary/resumeskills"
+}
+},
+{
+"name": "daily-stock-analysis",
+"description": "Indexed by skills.sh from reason-machines/trending-skills",
+"source": "skills.sh",
+"identifier": "skills-sh/reason-machines/trending-skills/daily-stock-analysis",
+"trust_level": "community",
+"repo": "reason-machines/trending-skills",
+"path": "daily-stock-analysis",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/reason-machines/trending-skills/daily-stock-analysis",
+"repo_url": "https://github.com/reason-machines/trending-skills"
+}
+},
+{
+"name": "derivatives-trading-portfolio-margin",
+"description": "Indexed by skills.sh from binance/binance-skills-hub",
+"source": "skills.sh",
+"identifier": "skills-sh/binance/binance-skills-hub/derivatives-trading-portfolio-margin",
+"trust_level": "community",
+"repo": "binance/binance-skills-hub",
+"path": "derivatives-trading-portfolio-margin",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/binance/binance-skills-hub/derivatives-trading-portfolio-margin",
+"repo_url": "https://github.com/binance/binance-skills-hub"
+}
+},
+{
+"name": "derivatives-trading-portfolio-margin-pro",
+"description": "Indexed by skills.sh from binance/binance-skills-hub",
+"source": "skills.sh",
+"identifier": "skills-sh/binance/binance-skills-hub/derivatives-trading-portfolio-margin-pro",
+"trust_level": "community",
+"repo": "binance/binance-skills-hub",
+"path": "derivatives-trading-portfolio-margin-pro",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/binance/binance-skills-hub/derivatives-trading-portfolio-margin-pro",
+"repo_url": "https://github.com/binance/binance-skills-hub"
+}
+},
+{
+"name": "eastmoney_select_stock",
+"description": "Indexed by skills.sh from meission/eastmoney",
+"source": "skills.sh",
+"identifier": "skills-sh/meission/eastmoney/eastmoney_select_stock",
+"trust_level": "community",
+"repo": "meission/eastmoney",
+"path": "eastmoney_select_stock",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/meission/eastmoney/eastmoney_select_stock",
+"repo_url": "https://github.com/meission/eastmoney"
+}
+},
+{
+"name": "editorial-portfolio-chapters",
+"description": "Indexed by skills.sh from mengto/skills",
+"source": "skills.sh",
+"identifier": "skills-sh/mengto/skills/editorial-portfolio-chapters",
+"trust_level": "community",
+"repo": "mengto/skills",
+"path": "editorial-portfolio-chapters",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/mengto/skills/editorial-portfolio-chapters",
+"repo_url": "https://github.com/mengto/skills"
+}
+},
+{
+"name": "emblem-portfolio-tracker",
+"description": "Indexed by skills.sh from emblemcompany/agent-skills",
+"source": "skills.sh",
+"identifier": "skills-sh/emblemcompany/agent-skills/emblem-portfolio-tracker",
+"trust_level": "community",
+"repo": "emblemcompany/agent-skills",
+"path": "emblem-portfolio-tracker",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/emblemcompany/agent-skills/emblem-portfolio-tracker",
+"repo_url": "https://github.com/emblemcompany/agent-skills"
+}
+},
+{
+"name": "event-portfolio-strategy",
+"description": "Indexed by skills.sh from samber/dev-event-organizer-skills",
+"source": "skills.sh",
+"identifier": "skills-sh/samber/dev-event-organizer-skills/event-portfolio-strategy",
+"trust_level": "community",
+"repo": "samber/dev-event-organizer-skills",
+"path": "event-portfolio-strategy",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/samber/dev-event-organizer-skills/event-portfolio-strategy",
+"repo_url": "https://github.com/samber/dev-event-organizer-skills"
+}
+},
+{
+"name": "experience-content-media-stock-image-search",
+"description": "Indexed by skills.sh from forcedotcom/sf-skills",
+"source": "skills.sh",
+"identifier": "skills-sh/forcedotcom/sf-skills/experience-content-media-stock-image-search",
+"trust_level": "community",
+"repo": "forcedotcom/sf-skills",
+"path": "experience-content-media-stock-image-search",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/forcedotcom/sf-skills/experience-content-media-stock-image-search",
+"repo_url": "https://github.com/forcedotcom/sf-skills"
+}
+},
+{
+"name": "financial-data-fetcher",
+"description": "Indexed by skills.sh from gracefullight/stock-checker",
+"source": "skills.sh",
+"identifier": "skills-sh/gracefullight/stock-checker/financial-data-fetcher",
+"trust_level": "community",
+"repo": "gracefullight/stock-checker",
+"path": "financial-data-fetcher",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/gracefullight/stock-checker/financial-data-fetcher",
+"repo_url": "https://github.com/gracefullight/stock-checker"
+}
+},
+{
+"name": "fixed-income-portfolio",
+"description": "Indexed by skills.sh from anthropics/financial-services",
+"source": "skills.sh",
+"identifier": "skills-sh/anthropics/financial-services/fixed-income-portfolio",
+"trust_level": "community",
+"repo": "anthropics/financial-services",
+"path": "fixed-income-portfolio",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/anthropics/financial-services/fixed-income-portfolio",
+"repo_url": "https://github.com/anthropics/financial-services"
+}
+},
+{
+"name": "gmgn-portfolio",
+"description": "Indexed by skills.sh from gmgnai/gmgn-skills",
+"source": "skills.sh",
+"identifier": "skills-sh/gmgnai/gmgn-skills/gmgn-portfolio",
+"trust_level": "community",
+"repo": "gmgnai/gmgn-skills",
+"path": "gmgn-portfolio",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/gmgnai/gmgn-skills/gmgn-portfolio",
+"repo_url": "https://github.com/gmgnai/gmgn-skills"
+}
+},
+{
+"name": "interactive-portfolio",
+"description": "Indexed by skills.sh from sickn33/agentic-awesome-skills",
+"source": "skills.sh",
+"identifier": "skills-sh/sickn33/agentic-awesome-skills/interactive-portfolio",
+"trust_level": "community",
+"repo": "sickn33/agentic-awesome-skills",
+"path": "interactive-portfolio",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/sickn33/agentic-awesome-skills/interactive-portfolio",
+"repo_url": "https://github.com/sickn33/agentic-awesome-skills"
+}
+},
+{
+"name": "istock-downloader",
+"description": "Indexed by skills.sh from serpdownloaders/skills",
+"source": "skills.sh",
+"identifier": "skills-sh/serpdownloaders/skills/istock-downloader",
+"trust_level": "community",
+"repo": "serpdownloaders/skills",
+"path": "istock-downloader",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/serpdownloaders/skills/istock-downloader",
+"repo_url": "https://github.com/serpdownloaders/skills"
+}
+},
+{
+"name": "korean-stock-search",
+"description": "Indexed by skills.sh from nomadamas/k-skill",
+"source": "skills.sh",
+"identifier": "skills-sh/nomadamas/k-skill/korean-stock-search",
+"trust_level": "community",
+"repo": "nomadamas/k-skill",
+"path": "korean-stock-search",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/nomadamas/k-skill/korean-stock-search",
+"repo_url": "https://github.com/nomadamas/k-skill"
+}
+},
+{
+"name": "llmquant-portfolio",
+"description": "Indexed by skills.sh from llmquant/skills",
+"source": "skills.sh",
+"identifier": "skills-sh/llmquant/skills/llmquant-portfolio",
+"trust_level": "community",
+"repo": "llmquant/skills",
+"path": "llmquant-portfolio",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/llmquant/skills/llmquant-portfolio",
+"repo_url": "https://github.com/llmquant/skills"
+}
+},
+{
+"name": "llmquant-portfolio-lab",
+"description": "Indexed by skills.sh from llmquant/skills",
+"source": "skills.sh",
+"identifier": "skills-sh/llmquant/skills/llmquant-portfolio-lab",
+"trust_level": "community",
+"repo": "llmquant/skills",
+"path": "llmquant-portfolio-lab",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/llmquant/skills/llmquant-portfolio-lab",
+"repo_url": "https://github.com/llmquant/skills"
+}
+},
+{
+"name": "longbridge-buffett-moat-stock-screener",
+"description": "Indexed by skills.sh from longbridge/skills",
+"source": "skills.sh",
+"identifier": "skills-sh/longbridge/skills/longbridge-buffett-moat-stock-screener",
+"trust_level": "community",
+"repo": "longbridge/skills",
+"path": "longbridge-buffett-moat-stock-screener",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/longbridge/skills/longbridge-buffett-moat-stock-screener",
+"repo_url": "https://github.com/longbridge/skills"
+}
+},
+{
+"name": "longbridge-graham-stock-analysis",
+"description": "Indexed by skills.sh from longbridge/skills",
+"source": "skills.sh",
+"identifier": "skills-sh/longbridge/skills/longbridge-graham-stock-analysis",
+"trust_level": "community",
+"repo": "longbridge/skills",
+"path": "longbridge-graham-stock-analysis",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/longbridge/skills/longbridge-graham-stock-analysis",
+"repo_url": "https://github.com/longbridge/skills"
+}
+},
+{
+"name": "longbridge-portfolio",
+"description": "Indexed by skills.sh from longbridge/skills",
+"source": "skills.sh",
+"identifier": "skills-sh/longbridge/skills/longbridge-portfolio",
+"trust_level": "community",
+"repo": "longbridge/skills",
+"path": "longbridge-portfolio",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/longbridge/skills/longbridge-portfolio",
+"repo_url": "https://github.com/longbridge/skills"
+}
+},
+{
+"name": "longbridge-portfolio-diagnosis",
+"description": "Indexed by skills.sh from longbridge/skills",
+"source": "skills.sh",
+"identifier": "skills-sh/longbridge/skills/longbridge-portfolio-diagnosis",
+"trust_level": "community",
+"repo": "longbridge/skills",
+"path": "longbridge-portfolio-diagnosis",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/longbridge/skills/longbridge-portfolio-diagnosis",
+"repo_url": "https://github.com/longbridge/skills"
+}
+},
+{
+"name": "longbridge-portfolio-rebalance",
+"description": "Indexed by skills.sh from longbridge/skills",
+"source": "skills.sh",
+"identifier": "skills-sh/longbridge/skills/longbridge-portfolio-rebalance",
+"trust_level": "community",
+"repo": "longbridge/skills",
+"path": "longbridge-portfolio-rebalance",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/longbridge/skills/longbridge-portfolio-rebalance",
+"repo_url": "https://github.com/longbridge/skills"
+}
+},
+{
+"name": "longbridge-stock-research",
+"description": "Indexed by skills.sh from longbridge/skills",
+"source": "skills.sh",
+"identifier": "skills-sh/longbridge/skills/longbridge-stock-research",
+"trust_level": "community",
+"repo": "longbridge/skills",
+"path": "longbridge-stock-research",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/longbridge/skills/longbridge-stock-research",
+"repo_url": "https://github.com/longbridge/skills"
+}
+},
+{
+"name": "nansen-portfolio-tracker",
+"description": "Indexed by skills.sh from nansen-ai/nansen-cli",
+"source": "skills.sh",
+"identifier": "skills-sh/nansen-ai/nansen-cli/nansen-portfolio-tracker",
+"trust_level": "community",
+"repo": "nansen-ai/nansen-cli",
+"path": "nansen-portfolio-tracker",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/nansen-ai/nansen-cli/nansen-portfolio-tracker",
+"repo_url": "https://github.com/nansen-ai/nansen-cli"
+}
+},
+{
+"name": "okx-cex-portfolio",
+"description": "Indexed by skills.sh from okx/agent-skills",
+"source": "skills.sh",
+"identifier": "skills-sh/okx/agent-skills/okx-cex-portfolio",
+"trust_level": "community",
+"repo": "okx/agent-skills",
+"path": "okx-cex-portfolio",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/okx/agent-skills/okx-cex-portfolio",
+"repo_url": "https://github.com/okx/agent-skills"
+}
+},
+{
+"name": "okx-defi-portfolio",
+"description": "Indexed by skills.sh from okx/onchainos-skills",
+"source": "skills.sh",
+"identifier": "skills-sh/okx/onchainos-skills/okx-defi-portfolio",
+"trust_level": "community",
+"repo": "okx/onchainos-skills",
+"path": "okx-defi-portfolio",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/okx/onchainos-skills/okx-defi-portfolio",
+"repo_url": "https://github.com/okx/onchainos-skills"
+}
+},
+{
+"name": "okx-wallet-portfolio",
+"description": "Indexed by skills.sh from okx/onchainos-skills",
+"source": "skills.sh",
+"identifier": "skills-sh/okx/onchainos-skills/okx-wallet-portfolio",
+"trust_level": "community",
+"repo": "okx/onchainos-skills",
+"path": "okx-wallet-portfolio",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/okx/onchainos-skills/okx-wallet-portfolio",
+"repo_url": "https://github.com/okx/onchainos-skills"
+}
+},
+{
+"name": "openclaw-stock-skill",
+"description": "Indexed by skills.sh from 1018466411/openclaw-stock-data-skill",
+"source": "skills.sh",
+"identifier": "skills-sh/1018466411/openclaw-stock-data-skill/openclaw-stock-skill",
+"trust_level": "community",
+"repo": "1018466411/openclaw-stock-data-skill",
+"path": "openclaw-stock-skill",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/1018466411/openclaw-stock-data-skill/openclaw-stock-skill",
+"repo_url": "https://github.com/1018466411/openclaw-stock-data-skill"
+}
+},
+{
+"name": "portfolio",
+"description": "Indexed by skills.sh from anthropics/claude-for-legal",
+"source": "skills.sh",
+"identifier": "skills-sh/anthropics/claude-for-legal/portfolio",
+"trust_level": "community",
+"repo": "anthropics/claude-for-legal",
+"path": "portfolio",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/anthropics/claude-for-legal/portfolio",
+"repo_url": "https://github.com/anthropics/claude-for-legal"
+}
+},
+{
+"name": "portfolio-analytics",
+"description": "Indexed by skills.sh from agiprolabs/claude-trading-skills",
+"source": "skills.sh",
+"identifier": "skills-sh/agiprolabs/claude-trading-skills/portfolio-analytics",
+"trust_level": "community",
+"repo": "agiprolabs/claude-trading-skills",
+"path": "portfolio-analytics",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/agiprolabs/claude-trading-skills/portfolio-analytics",
+"repo_url": "https://github.com/agiprolabs/claude-trading-skills"
+}
+},
+{
+"name": "portfolio-analyzer",
+"description": "Indexed by skills.sh from onewave-ai/claude-skills",
+"source": "skills.sh",
+"identifier": "skills-sh/onewave-ai/claude-skills/portfolio-analyzer",
+"trust_level": "community",
+"repo": "onewave-ai/claude-skills",
+"path": "portfolio-analyzer",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/onewave-ai/claude-skills/portfolio-analyzer",
+"repo_url": "https://github.com/onewave-ai/claude-skills"
+}
+},
+{
+"name": "portfolio-case-study-writer",
+"description": "Indexed by skills.sh from paramchoudhary/resumeskills",
+"source": "skills.sh",
+"identifier": "skills-sh/paramchoudhary/resumeskills/portfolio-case-study-writer",
+"trust_level": "community",
+"repo": "paramchoudhary/resumeskills",
+"path": "portfolio-case-study-writer",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/paramchoudhary/resumeskills/portfolio-case-study-writer",
+"repo_url": "https://github.com/paramchoudhary/resumeskills"
+}
+},
+{
+"name": "portfolio-management-systems",
+"description": "Indexed by skills.sh from joellewis/finance_skills",
+"source": "skills.sh",
+"identifier": "skills-sh/joellewis/finance_skills/portfolio-management-systems",
+"trust_level": "community",
+"repo": "joellewis/finance_skills",
+"path": "portfolio-management-systems",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/joellewis/finance_skills/portfolio-management-systems",
+"repo_url": "https://github.com/joellewis/finance_skills"
+}
+},
+{
+"name": "portfolio-manager",
+"description": "Indexed by skills.sh from tradermonty/claude-trading-skills",
+"source": "skills.sh",
+"identifier": "skills-sh/tradermonty/claude-trading-skills/portfolio-manager",
+"trust_level": "community",
+"repo": "tradermonty/claude-trading-skills",
+"path": "portfolio-manager",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/tradermonty/claude-trading-skills/portfolio-manager",
+"repo_url": "https://github.com/tradermonty/claude-trading-skills"
+}
+},
+{
+"name": "portfolio-monitoring",
+"description": "Indexed by skills.sh from anthropics/financial-services",
+"source": "skills.sh",
+"identifier": "skills-sh/anthropics/financial-services/portfolio-monitoring",
+"trust_level": "community",
+"repo": "anthropics/financial-services",
+"path": "portfolio-monitoring",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/anthropics/financial-services/portfolio-monitoring",
+"repo_url": "https://github.com/anthropics/financial-services"
+}
+},
+{
+"name": "portfolio-rebalance",
+"description": "Indexed by skills.sh from anthropics/financial-services",
+"source": "skills.sh",
+"identifier": "skills-sh/anthropics/financial-services/portfolio-rebalance",
+"trust_level": "community",
+"repo": "anthropics/financial-services",
+"path": "portfolio-rebalance",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/anthropics/financial-services/portfolio-rebalance",
+"repo_url": "https://github.com/anthropics/financial-services"
+}
+},
+{
+"name": "portfolio-status",
+"description": "Indexed by skills.sh from anthropics/claude-for-legal",
+"source": "skills.sh",
+"identifier": "skills-sh/anthropics/claude-for-legal/portfolio-status",
+"trust_level": "community",
+"repo": "anthropics/claude-for-legal",
+"path": "portfolio-status",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/anthropics/claude-for-legal/portfolio-status",
+"repo_url": "https://github.com/anthropics/claude-for-legal"
+}
+},
+{
+"name": "sdk-portfolio-strategy",
+"description": "Indexed by skills.sh from samber/developer-platform-skills",
+"source": "skills.sh",
+"identifier": "skills-sh/samber/developer-platform-skills/sdk-portfolio-strategy",
+"trust_level": "community",
+"repo": "samber/developer-platform-skills",
+"path": "sdk-portfolio-strategy",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/samber/developer-platform-skills/sdk-portfolio-strategy",
+"repo_url": "https://github.com/samber/developer-platform-skills"
+}
+},
+{
+"name": "shutterstock-downloader",
+"description": "Indexed by skills.sh from serpdownloaders/skills",
+"source": "skills.sh",
+"identifier": "skills-sh/serpdownloaders/skills/shutterstock-downloader",
+"trust_level": "community",
+"repo": "serpdownloaders/skills",
+"path": "shutterstock-downloader",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/serpdownloaders/skills/shutterstock-downloader",
+"repo_url": "https://github.com/serpdownloaders/skills"
+}
+},
+{
+"name": "skill-stocktake",
+"description": "Indexed by skills.sh from affaan-m/ecc",
+"source": "skills.sh",
+"identifier": "skills-sh/affaan-m/ecc/skill-stocktake",
+"trust_level": "community",
+"repo": "affaan-m/ecc",
+"path": "skill-stocktake",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/affaan-m/ecc/skill-stocktake",
+"repo_url": "https://github.com/affaan-m/ecc"
+}
+},
+{
+"name": "stock-analysis",
+"description": "Indexed by skills.sh from gracefullight/stock-checker",
+"source": "skills.sh",
+"identifier": "skills-sh/gracefullight/stock-checker/stock-analysis",
+"trust_level": "community",
+"repo": "gracefullight/stock-checker",
+"path": "stock-analysis",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/gracefullight/stock-checker/stock-analysis",
+"repo_url": "https://github.com/gracefullight/stock-checker"
+}
+},
+{
+"name": "stock-analysis",
+"description": "Indexed by skills.sh from claude-office-skills/skills",
+"source": "skills.sh",
+"identifier": "skills-sh/claude-office-skills/skills/stock-analysis",
+"trust_level": "community",
+"repo": "claude-office-skills/skills",
+"path": "stock-analysis",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/claude-office-skills/skills/stock-analysis",
+"repo_url": "https://github.com/claude-office-skills/skills"
+}
+},
+{
+"name": "stock-analysis",
+"description": "Indexed by skills.sh from alphamoemoe/foci",
+"source": "skills.sh",
+"identifier": "skills-sh/alphamoemoe/foci/stock-analysis",
+"trust_level": "community",
+"repo": "alphamoemoe/foci",
+"path": "stock-analysis",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/alphamoemoe/foci/stock-analysis",
+"repo_url": "https://github.com/alphamoemoe/foci"
+}
+},
+{
+"name": "stock-analyst",
+"description": "Indexed by skills.sh from chengzuopeng/stock-sdk-mcp",
+"source": "skills.sh",
+"identifier": "skills-sh/chengzuopeng/stock-sdk-mcp/stock-analyst",
+"trust_level": "community",
+"repo": "chengzuopeng/stock-sdk-mcp",
+"path": "stock-analyst",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/chengzuopeng/stock-sdk-mcp/stock-analyst",
+"repo_url": "https://github.com/chengzuopeng/stock-sdk-mcp"
+}
+},
+{
+"name": "stock-analyzer",
+"description": "Indexed by skills.sh from feiyuggg/openclaw-stock-analyzer",
+"source": "skills.sh",
+"identifier": "skills-sh/feiyuggg/openclaw-stock-analyzer/stock-analyzer",
+"trust_level": "community",
+"repo": "feiyuggg/openclaw-stock-analyzer",
+"path": "stock-analyzer",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/feiyuggg/openclaw-stock-analyzer/stock-analyzer",
+"repo_url": "https://github.com/feiyuggg/openclaw-stock-analyzer"
+}
+},
+{
+"name": "stock-correlation",
+"description": "Indexed by skills.sh from himself65/finance-skills",
+"source": "skills.sh",
+"identifier": "skills-sh/himself65/finance-skills/stock-correlation",
+"trust_level": "community",
+"repo": "himself65/finance-skills",
+"path": "stock-correlation",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/himself65/finance-skills/stock-correlation",
+"repo_url": "https://github.com/himself65/finance-skills"
+}
+},
+{
+"name": "stock-daily-analysis",
+"description": "Indexed by skills.sh from chjm-ai/stock-daily-analysis-skill",
+"source": "skills.sh",
+"identifier": "skills-sh/chjm-ai/stock-daily-analysis-skill/stock-daily-analysis",
+"trust_level": "community",
+"repo": "chjm-ai/stock-daily-analysis-skill",
+"path": "stock-daily-analysis",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/chjm-ai/stock-daily-analysis-skill/stock-daily-analysis",
+"repo_url": "https://github.com/chjm-ai/stock-daily-analysis-skill"
+}
+},
+{
+"name": "stock-info-explorer",
+"description": "Indexed by skills.sh from sundial-org/awesome-openclaw-skills",
+"source": "skills.sh",
+"identifier": "skills-sh/sundial-org/awesome-openclaw-skills/stock-info-explorer",
+"trust_level": "community",
+"repo": "sundial-org/awesome-openclaw-skills",
+"path": "stock-info-explorer",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/sundial-org/awesome-openclaw-skills/stock-info-explorer",
+"repo_url": "https://github.com/sundial-org/awesome-openclaw-skills"
+}
+},
+{
+"name": "stock-liquidity",
+"description": "Indexed by skills.sh from himself65/finance-skills",
+"source": "skills.sh",
+"identifier": "skills-sh/himself65/finance-skills/stock-liquidity",
+"trust_level": "community",
+"repo": "himself65/finance-skills",
+"path": "stock-liquidity",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/himself65/finance-skills/stock-liquidity",
+"repo_url": "https://github.com/himself65/finance-skills"
+}
+},
+{
+"name": "stock-market-pro",
+"description": "Indexed by skills.sh from sundial-org/awesome-openclaw-skills",
+"source": "skills.sh",
+"identifier": "skills-sh/sundial-org/awesome-openclaw-skills/stock-market-pro",
+"trust_level": "community",
+"repo": "sundial-org/awesome-openclaw-skills",
+"path": "stock-market-pro",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/sundial-org/awesome-openclaw-skills/stock-market-pro",
+"repo_url": "https://github.com/sundial-org/awesome-openclaw-skills"
+}
+},
+{
+"name": "stock-monitor",
+"description": "Indexed by skills.sh from chjm-ai/stock-monitor-skill",
+"source": "skills.sh",
+"identifier": "skills-sh/chjm-ai/stock-monitor-skill/stock-monitor",
+"trust_level": "community",
+"repo": "chjm-ai/stock-monitor-skill",
+"path": "stock-monitor",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/chjm-ai/stock-monitor-skill/stock-monitor",
+"repo_url": "https://github.com/chjm-ai/stock-monitor-skill"
+}
+},
+{
+"name": "stock-photo-finder",
+"description": "Indexed by skills.sh from onewave-ai/claude-skills",
+"source": "skills.sh",
+"identifier": "skills-sh/onewave-ai/claude-skills/stock-photo-finder",
+"trust_level": "community",
+"repo": "onewave-ai/claude-skills",
+"path": "stock-photo-finder",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/onewave-ai/claude-skills/stock-photo-finder",
+"repo_url": "https://github.com/onewave-ai/claude-skills"
+}
+},
+{
+"name": "stock-quote",
+"description": "Indexed by skills.sh from octagonai/skills",
+"source": "skills.sh",
+"identifier": "skills-sh/octagonai/skills/stock-quote",
+"trust_level": "community",
+"repo": "octagonai/skills",
+"path": "stock-quote",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/octagonai/skills/stock-quote",
+"repo_url": "https://github.com/octagonai/skills"
+}
+},
+{
+"name": "stock-research-executor",
+"description": "Indexed by skills.sh from liangdabiao/claude-code-stock-deep-research-agent",
+"source": "skills.sh",
+"identifier": "skills-sh/liangdabiao/claude-code-stock-deep-research-agent/stock-research-executor",
+"trust_level": "community",
+"repo": "liangdabiao/claude-code-stock-deep-research-agent",
+"path": "stock-research-executor",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/liangdabiao/claude-code-stock-deep-research-agent/stock-research-executor",
+"repo_url": "https://github.com/liangdabiao/claude-code-stock-deep-research-agent"
+}
+},
+{
+"name": "stock-sector-monitoring",
+"description": "Indexed by skills.sh from zuoa/aj-skills",
+"source": "skills.sh",
+"identifier": "skills-sh/zuoa/aj-skills/stock-sector-monitoring",
+"trust_level": "community",
+"repo": "zuoa/aj-skills",
+"path": "stock-sector-monitoring",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/zuoa/aj-skills/stock-sector-monitoring",
+"repo_url": "https://github.com/zuoa/aj-skills"
+}
+},
+{
+"name": "stock-trade-journal",
+"description": "Indexed by skills.sh from kirkluokun/awesome-a-stock-openclawskills",
+"source": "skills.sh",
+"identifier": "skills-sh/kirkluokun/awesome-a-stock-openclawskills/stock-trade-journal",
+"trust_level": "community",
+"repo": "kirkluokun/awesome-a-stock-openclawskills",
+"path": "stock-trade-journal",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/kirkluokun/awesome-a-stock-openclawskills/stock-trade-journal",
+"repo_url": "https://github.com/kirkluokun/awesome-a-stock-openclawskills"
+}
+},
+{
+"name": "stock-trading",
+"description": "Indexed by skills.sh from meo9rhsan3492-cell/cn-stock-sim",
+"source": "skills.sh",
+"identifier": "skills-sh/meo9rhsan3492-cell/cn-stock-sim/stock-trading",
+"trust_level": "community",
+"repo": "meo9rhsan3492-cell/cn-stock-sim",
+"path": "stock-trading",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/meo9rhsan3492-cell/cn-stock-sim/stock-trading",
+"repo_url": "https://github.com/meo9rhsan3492-cell/cn-stock-sim"
+}
+},
+{
+"name": "stock-watcher",
+"description": "Indexed by skills.sh from agentbay-ai/agentbay-skills",
+"source": "skills.sh",
+"identifier": "skills-sh/agentbay-ai/agentbay-skills/stock-watcher",
+"trust_level": "community",
+"repo": "agentbay-ai/agentbay-skills",
+"path": "stock-watcher",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/agentbay-ai/agentbay-skills/stock-watcher",
+"repo_url": "https://github.com/agentbay-ai/agentbay-skills"
+}
+},
+{
+"name": "stockbee-20pct-study",
+"description": "Indexed by skills.sh from tradermonty/claude-trading-skills",
+"source": "skills.sh",
+"identifier": "skills-sh/tradermonty/claude-trading-skills/stockbee-20pct-study",
+"trust_level": "community",
+"repo": "tradermonty/claude-trading-skills",
+"path": "stockbee-20pct-study",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/tradermonty/claude-trading-skills/stockbee-20pct-study",
+"repo_url": "https://github.com/tradermonty/claude-trading-skills"
+}
+},
+{
+"name": "stockbee-episodic-pivot-analyzer",
+"description": "Indexed by skills.sh from tradermonty/claude-trading-skills",
+"source": "skills.sh",
+"identifier": "skills-sh/tradermonty/claude-trading-skills/stockbee-episodic-pivot-analyzer",
+"trust_level": "community",
+"repo": "tradermonty/claude-trading-skills",
+"path": "stockbee-episodic-pivot-analyzer",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/tradermonty/claude-trading-skills/stockbee-episodic-pivot-analyzer",
+"repo_url": "https://github.com/tradermonty/claude-trading-skills"
+}
+},
+{
+"name": "stockbee-exhaustion-hammer-screener",
+"description": "Indexed by skills.sh from tradermonty/claude-trading-skills",
+"source": "skills.sh",
+"identifier": "skills-sh/tradermonty/claude-trading-skills/stockbee-exhaustion-hammer-screener",
+"trust_level": "community",
+"repo": "tradermonty/claude-trading-skills",
+"path": "stockbee-exhaustion-hammer-screener",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/tradermonty/claude-trading-skills/stockbee-exhaustion-hammer-screener",
+"repo_url": "https://github.com/tradermonty/claude-trading-skills"
+}
+},
+{
+"name": "stockbee-momentum-burst-screener",
+"description": "Indexed by skills.sh from tradermonty/claude-trading-skills",
+"source": "skills.sh",
+"identifier": "skills-sh/tradermonty/claude-trading-skills/stockbee-momentum-burst-screener",
+"trust_level": "community",
+"repo": "tradermonty/claude-trading-skills",
+"path": "stockbee-momentum-burst-screener",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/tradermonty/claude-trading-skills/stockbee-momentum-burst-screener",
+"repo_url": "https://github.com/tradermonty/claude-trading-skills"
+}
+},
+{
+"name": "stockbee-setup-fluency-trainer",
+"description": "Indexed by skills.sh from tradermonty/claude-trading-skills",
+"source": "skills.sh",
+"identifier": "skills-sh/tradermonty/claude-trading-skills/stockbee-setup-fluency-trainer",
+"trust_level": "community",
+"repo": "tradermonty/claude-trading-skills",
+"path": "stockbee-setup-fluency-trainer",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/tradermonty/claude-trading-skills/stockbee-setup-fluency-trainer",
+"repo_url": "https://github.com/tradermonty/claude-trading-skills"
+}
+},
+{
+"name": "stocksy-downloader",
+"description": "Indexed by skills.sh from serpdownloaders/skills",
+"source": "skills.sh",
+"identifier": "skills-sh/serpdownloaders/skills/stocksy-downloader",
+"trust_level": "community",
+"repo": "serpdownloaders/skills",
+"path": "stocksy-downloader",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/serpdownloaders/skills/stocksy-downloader",
+"repo_url": "https://github.com/serpdownloaders/skills"
+}
+},
+{
+"name": "stockvault-downloader",
+"description": "Indexed by skills.sh from serpdownloaders/skills",
+"source": "skills.sh",
+"identifier": "skills-sh/serpdownloaders/skills/stockvault-downloader",
+"trust_level": "community",
+"repo": "serpdownloaders/skills",
+"path": "stockvault-downloader",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/serpdownloaders/skills/stockvault-downloader",
+"repo_url": "https://github.com/serpdownloaders/skills"
+}
+},
+{
+"name": "syncfusion-react-stock-chart",
+"description": "Indexed by skills.sh from syncfusion/react-ui-components-skills",
+"source": "skills.sh",
+"identifier": "skills-sh/syncfusion/react-ui-components-skills/syncfusion-react-stock-chart",
+"trust_level": "community",
+"repo": "syncfusion/react-ui-components-skills",
+"path": "syncfusion-react-stock-chart",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/syncfusion/react-ui-components-skills/syncfusion-react-stock-chart",
+"repo_url": "https://github.com/syncfusion/react-ui-components-skills"
+}
+},
+{
+"name": "trader-portfolio",
+"description": "Indexed by skills.sh from ruvnet/ruflo",
+"source": "skills.sh",
+"identifier": "skills-sh/ruvnet/ruflo/trader-portfolio",
+"trust_level": "community",
+"repo": "ruvnet/ruflo",
+"path": "trader-portfolio",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/ruvnet/ruflo/trader-portfolio",
+"repo_url": "https://github.com/ruvnet/ruflo"
+}
+},
+{
+"name": "trader-portfolio-cg",
+"description": "Indexed by skills.sh from ruvnet/ruflo",
+"source": "skills.sh",
+"identifier": "skills-sh/ruvnet/ruflo/trader-portfolio-cg",
+"trust_level": "community",
+"repo": "ruvnet/ruflo",
+"path": "trader-portfolio-cg",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/ruvnet/ruflo/trader-portfolio-cg",
+"repo_url": "https://github.com/ruvnet/ruflo"
+}
+},
+{
+"name": "trading-analysis",
+"description": "Indexed by skills.sh from gracefullight/stock-checker",
+"source": "skills.sh",
+"identifier": "skills-sh/gracefullight/stock-checker/trading-analysis",
+"trust_level": "community",
+"repo": "gracefullight/stock-checker",
+"path": "trading-analysis",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/gracefullight/stock-checker/trading-analysis",
+"repo_url": "https://github.com/gracefullight/stock-checker"
+}
+},
+{
+"name": "us-stock-analysis",
+"description": "Indexed by skills.sh from tradermonty/claude-trading-skills",
+"source": "skills.sh",
+"identifier": "skills-sh/tradermonty/claude-trading-skills/us-stock-analysis",
+"trust_level": "community",
+"repo": "tradermonty/claude-trading-skills",
+"path": "us-stock-analysis",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/tradermonty/claude-trading-skills/us-stock-analysis",
+"repo_url": "https://github.com/tradermonty/claude-trading-skills"
+}
+},
+{
+"name": "uzi-skill-stock-analyzer",
+"description": "Indexed by skills.sh from reason-machines/trending-skills",
+"source": "skills.sh",
+"identifier": "skills-sh/reason-machines/trending-skills/uzi-skill-stock-analyzer",
+"trust_level": "community",
+"repo": "reason-machines/trending-skills",
+"path": "uzi-skill-stock-analyzer",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/reason-machines/trending-skills/uzi-skill-stock-analyzer",
+"repo_url": "https://github.com/reason-machines/trending-skills"
+}
+},
+{
+"name": "vectorstock-downloader",
+"description": "Indexed by skills.sh from serpdownloaders/skills",
+"source": "skills.sh",
+"identifier": "skills-sh/serpdownloaders/skills/vectorstock-downloader",
+"trust_level": "community",
+"repo": "serpdownloaders/skills",
+"path": "vectorstock-downloader",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/serpdownloaders/skills/vectorstock-downloader",
+"repo_url": "https://github.com/serpdownloaders/skills"
+}
+},
+{
+"name": "yahoo-finance",
+"description": "Indexed by skills.sh from gracefullight/stock-checker",
+"source": "skills.sh",
+"identifier": "skills-sh/gracefullight/stock-checker/yahoo-finance",
+"trust_level": "community",
+"repo": "gracefullight/stock-checker",
+"path": "yahoo-finance",
+"tags": [],
+"extra": {
+"detail_url": "https://skills.sh/gracefullight/stock-checker/yahoo-finance",
+"repo_url": "https://github.com/gracefullight/stock-checker"
+}
+},
+{
+"name": "0-sentisense-onboarding",
+"description": "Read first when using any SentiSense stock market skill: API key setup and which skill owns each task. Patterns to adapt, not scripts. The user's task always wins.",
+"source": "clawhub",
+"identifier": "0-sentisense-onboarding",
+"trust_level": "community",
+"repo": "",
+"path": "",
+"tags": [],
+"extra": {}
+},
+{
+"name": "0528-tosr2-csig",
+"description": "Analyze stocks and cryptocurrencies using Yahoo Finance data. Supports portfolio management, watchlists with alerts, dividend analysis, 8-dimension stock sco...",
+"source": "clawhub",
+"identifier": "0528-tosr2-csig",
+"trust_level": "community",
+"repo": "",
+"path": "",
+"tags": [],
+"extra": {}
+},
+{
+"name": "0602-tosr2-01",
+"description": "Analyze stocks and cryptocurrencies using Yahoo Finance data. Supports portfolio management, watchlists with alerts, dividend analysis, 8-dimension stock sco...",
+"source": "clawhub",
+"identifier": "0602-tosr2-01",
+"trust_level": "community",
+"repo": "",
+"path": "",
+"tags": [],
+"extra": {}
+},
+{
+"name": "0602-tosr2-02",
+"description": "Analyze stocks and cryptocurrencies using Yahoo Finance data. Supports portfolio management, watchlists with alerts, dividend analysis, 8-dimension stock sco...",
+"source": "clawhub",
+"identifier": "0602-tosr2-02",
+"trust_level": "community",
+"repo": "",
+"path": "",
+"tags": [],
+"extra": {}
+},
+{
+"name": "0602-tosr2-06",
+"description": "Analyze stocks and cryptocurrencies using Yahoo Finance data. Supports portfolio management, watchlists with alerts, dividend analysis, 8-dimension stock sco...",
+"source": "clawhub",
+"identifier": "0602-tosr2-06",
+"trust_level": "community",
+"repo": "",
+"path": "",
+"tags": [],
+"extra": {}
+},
+{
+"name": "0602-tosr2-07",
+"description": "Analyze stocks and cryptocurrencies using Yahoo Finance data. Supports portfolio management, watchlists with alerts, dividend analysis, 8-dimension stock sco...",
+"source": "clawhub",
+"identifier": "0602-tosr2-07",
+"trust_level": "community",
+"repo": "",
+"path": "",
+"tags": [],
+"extra": {}
+},
+{
+"name": "0605-cisg-tosr2",
+"description": "Analyze stocks and cryptocurrencies using Yahoo Finance data. Supports portfolio management, watchlists with alerts, dividend analysis, 8-dimension stock sco...",
+"source": "clawhub",
+"identifier": "0605-cisg-tosr2",
+"trust_level": "community",
+"repo": "",
+"path": "",
+"tags": [],
+"extra": {}
+},
+{
+"name": "0605-tosr2-cisg-02",
+"description": "Analyze stocks and cryptocurrencies using Yahoo Finance data. Supports portfolio management, watchlists with alerts, dividend analysis, 8-dimension stock sco...",
+"source": "clawhub",
+"identifier": "0605-tosr2-cisg-02",
+"trust_level": "community",
+"repo": "",
+"path": "",
+"tags": [],
+"extra": {}
+},
+{
+"name": "0605-tosr2-csig",
+"description": "Analyze stocks and cryptocurrencies using Yahoo Finance data. Supports portfolio management, watchlists with alerts, dividend analysis, 8-dimension stock sco...",
+"source": "clawhub",
+"identifier": "0605-tosr2-csig",
+"trust_level": "community",
+"repo": "",
+"path": "",
+"tags": [],
+"extra": {}
+},
+{
+"name": "0605-tosr2-csig-04",
+"description": "Analyze stocks and cryptocurrencies using Yahoo Finance data. Supports portfolio management, watchlists with alerts, dividend analysis, 8-dimension stock sco...",
+"source": "clawhub",
+"identifier": "0605-tosr2-csig-03",
+"trust_level": "community",
+"repo": "",
+"path": "",
+"tags": [],
+"extra": {}
+},
+{
+"name": "0608-tosr2-01",
+"description": "Analyze stocks and cryptocurrencies using Yahoo Finance data. Supports portfolio management, watchlists with alerts, dividend analysis, 8-dimension stock sco...",
+"source": "clawhub",
+"identifier": "0608-tosr2-01",
+"trust_level": "community",
+"repo": "",
+"path": "",
+"tags": [],
+"extra": {}
+},
+{
+"name": "0608-tosr2-02",
+"description": "Analyze stocks and cryptocurrencies using Yahoo Finance data. Supports portfolio management, watchlists with alerts, dividend analysis, 8-dimension stock sco...",
+"source": "clawhub",
+"identifier": "0608-tosr2-02",
+"trust_level": "community",
+"repo": "",
+"path": "",
+"tags": [],
+"extra": {}
+},
+{
+"name": "100 Percent Bars",
+"description": "Compare composition across segments using 100% stacked bars. Use for competitive analysis, cost structure comparison, and portfolio composition.",
+"source": "clawhub",
+"identifier": "100-percent-bars",
+"trust_level": "community",
+"repo": "",
+"path": "",
+"tags": [],
+"extra": {}
+},
+{
+"name": "31Third Safe Rebalancer",
+"description": "Policy-aware Safe portfolio rebalancing assistant for 31Third ExecutorModule.",
+"source": "clawhub",
+"identifier": "31third-safe-rebalancer",
+"trust_level": "community",
+"repo": "",
+"path": "",
+"tags": [
+"alpha"
+],
+"extra": {}
+},
+{
+"name": "3D Maker Companion",
+"description": "Professional assistant for 3D printing, laser engraving, and 3D modeling workflows. Supports generating visual references for sculpting (Forger/ZBrush), crea...",
+"source": "clawhub",
+"identifier": "3d-maker-companion",
+"trust_level": "community",
+"repo": "",
+"path": "",
+"tags": [
+"3d-modeling",
+"Meshy",
+"bambulab",
+"d-printing",
+"laser-engraving",
+"maker",
+"meshy",
+"reference-generation",
+"workflow"
+],
+"extra": {}
+},
+{
+"name": "3D Model Generation",
+"description": "AI 3D model generation powered by CellCog. Text-to-3D, image-to-3D — production-ready GLB files for games, AR/VR, e-commerce, and 3D printing. Game assets, product visualization, characters, props, environments, and batch generation.",
+"source": "clawhub",
+"identifier": "3d-model-generation-cellcog",
+"trust_level": "community",
+"repo": "",
+"path": "",
+"tags": [],
+"extra": {}
+},
+{
+"name": "3d Print Model Splitting",
+"description": "Use when splitting a single complex STL / figurine / statue model into multiple 3D-printable and physically assemblable parts, especially with Blender face/m...",
+"source": "clawhub",
+"identifier": "3d-print-model-splitting",
+"trust_level": "community",
+"repo": "",
+"path": "",
+"tags": [
+"3d-printing",
+"bambu",
+"blender",
+"stl"
+],
+"extra": {}
+},
+{
+"name": "3d-printing-generator",
+"description": "AI 3D Printing Toy Generator Toy Multi View Sheets and 3D Models Generator using SOTA 3D APIs such as Tripo/Meshy/etc served on OneKey Agent Gateway by Craftsman Agent, useful for AI Figurine, Stuffed Toy, 3D Printing, Game Asset and Architecture Toy Generation",
+"source": "clawhub",
+"identifier": "3d-printing-generator",
+"trust_level": "community",
+"repo": "",
+"path": "",
+"tags": [],
+"extra": {}
+},
+{
+"name": "3mf Print Editor",
+"description": "Guideline for directly editing 3D-printing project files (.3mf), verified against BambuStudio specifically: cutting or otherwise modifying mesh geometry, wir...",
+"source": "clawhub",
+"identifier": "3mf-print-editor",
+"trust_level": "community",
+"repo": "",
+"path": "",
+"tags": [
+"3d-printing",
+"3mf",
+"bambustudio"
+],
+"extra": {}
+},
+{
+"name": "7d Stock Analyzer",
+"description": "七维分析框架 - 深度股票分析 Agent，整合多数据源进行全方位股票分析",
+"source": "clawhub",
+"identifier": "7d-stock-analyzer",
+"trust_level": "community",
+"repo": "",
+"path": "",
+"tags": [],
+"extra": {}
+},
+{
+"name": "A Clawdbot skill that gives your agent native access to DWLF — a market analysis platform for crypto and stocks.",
+"description": "Interact with DWLF (dwlf.co.uk), a market analysis platform for crypto and stocks. Use for: market data, price charts, technical indicators (EMA, RSI, DSS, S/R, trendlines, candlestick patterns, SMC), strategies (visual signal builder), backtesting, custom events, trade signals, portfolio tracking, watchlists, trade journaling, chart annotations, trade plans, position sizing, and academy content. Trigger on: market analysis, trading signals, backtests, portfolio, DWLF, chart indicators, support/resistance, strategy builder, trade journal, watchlist, chart annotations, trade plans, position sizing, how's BTC, how's the market.",
+"source": "clawhub",
+"identifier": "dwlf",
+"trust_level": "community",
+"repo": "",
+"path": "",
+"tags": [],
+"extra": {}
+},
+{
+"name": "A Share Multifactor Model",
+"description": "A股多因子模型/Barra风格因子分析。当用户说\"多因子\"、\"multifactor\"、\"Barra\"、\"因子模型\"、\"风格因子\"、\"XX的因子暴露\"、\"因子收益率\"、\"风险模型\"时触发。基于 cn-stock-data 获取行情和财务数据，构建多因子风险模型，分析因子暴露、因子收益、协方差矩阵。支持研报风格（f...",
+"source": "clawhub",
+"identifier": "a-share-multifactor-model",
+"trust_level": "community",
+"repo": "",
+"path": "",
+"tags": [],
+"extra": {}
+},
+{
+"name": "A Share Portfolio",
+"description": "A股投资组合管理/持仓分析。当用户说\"组合分析\"、\"持仓分析\"、\"portfolio\"、\"我的持仓怎么样\"、\"帮我看看组合\"、\"仓位管理\"、\"组合优化\"、\"风险分析\"、\"再平衡\"、\"行业暴露\"时触发。对用户提供的持仓组合进行全面分析，包括持仓集中度、行业/风格暴露、风险指标、收益归因、再平衡建议。通过 cn-st...",
+"source": "clawhub",
+"identifier": "a-share-portfolio",
+"trust_level": "community",
+"repo": "",
+"path": "",
+"tags": [],
+"extra": {}
+},
+{
+"name": "A Share Portfolio Optimize",
+"description": "A股量化组合优化。当用户说\"组合优化\"、\"portfolio optimization\"、\"均值方差\"、\"风险平价\"、\"最优权重\"、\"Black-Litterman\"、\"最小方差\"、\"最大夏普\"、\"怎么分配权重\"、\"等风险贡献\"时触发。基于现代投资组合理论，对给定标的池进行量化权重优化，支持均值方差/最小方差/风...",
+"source": "clawhub",
+"identifier": "a-share-portfolio-optimize",
+"trust_level": "community",
+"repo": "",
+"path": "",
+"tags": [],
+"extra": {}
+},
+{
+"name": "A Share Risk Alert",
+"description": "A股风险预警/ST预警/退市风险排查。当用户说\"风险预警\"、\"有没有风险\"、\"会不会ST\"、\"退市风险\"、\"爆雷\"、\"暴雷\"、\"风险排查\"、\"XX安全吗\"、\"财务造假\"、\"审计意见\"时触发。基于 cn-stock-data 财务数据，从盈利、现金流、负债、审计等维度排查个股风险信号。支持研报风格（formal）和...",
+"source": "clawhub",
+"identifier": "a-share-risk-alert",
+"trust_level": "community",
+"repo": "",
+"path": "",
+"tags": [],
+"extra": {}
+},
+{
+"name": "A Share Short Decision.Bak",
+"description": "A-share short-term trading decision skill for 1-5 day horizon. Use when you need real-data market sentiment, sector rotation, strong stock scanning, capital...",
+"source": "clawhub",
+"identifier": "a-share-short-decision-bak",
+"trust_level": "community",
+"repo": "",
+"path": "",
+"tags": [],
+"extra": {}
+},
+{
+"name": "A Share Stock Dossier",
+"description": "Analyze A-share stocks and portfolios with analyst-grade, evidence-first reports. Use when the user asks for 个股分析、持仓复盘、逻辑是否还在、行业龙头、盘前/盘后策略、情绪+技术综合判断, especia...",
+"source": "clawhub",
+"identifier": "a-share-stock-dossier",
+"trust_level": "community",
+"repo": "",
+"path": "",
+"tags": [],
+"extra": {}
+},
+{
+"name": "A Stock",
+"description": "A股金融数据查询与分析助手。当用户询问任何与A股相关的问题时，使用此技能——包括：查询个股信息、实时行情、分时走势、龙虎榜、行业板块、盘口异动、市场总貌等。触发词包括但不限于：股票、A股、沪市、深市、行情、涨停、跌停、板块、龙虎榜、盘口异动、个股、股价、总市值、证券，或任何带有6位股票代码的查询（如 600519...",
+"source": "clawhub",
+"identifier": "stock-skill-2",
+"trust_level": "community",
+"repo": "",
+"path": "",
+"tags": [],
+"extra": {}
+},
+{
+"name": "A Stock Analysis 1.0.0",
+"description": "提供沪深北交所A股实时行情、分时成交量分析、主力资金动向判断和持仓盈亏管理功能。",
+"source": "clawhub",
+"identifier": "a-stock-analysis-1-0-0",
+"trust_level": "community",
+"repo": "",
+"path": "",
+"tags": [],
+"extra": {}
+},
+{
+"name": "A Stock Analysis Conflict",
+"description": "提供A股实时行情、分时量能分布、主力资金动向分析及持仓盈亏管理，支持沪深北交所股票。",
+"source": "clawhub",
+"identifier": "a-stock-analysis-conflict",
+"trust_level": "community",
+"repo": "",
+"path": "",
+"tags": [],
+"extra": {}
+},
+{
+"name": "A Stock Analysis Lite",
+"description": "生成中文A股深度策略研报（HTML/PDF格式）。 当用户提到任何A股代码（6位数字）、股票名称、想分析某只股票、或要求生成研报/策略报告时，立即使用此技能。 适用场景：个股深度分析、ST股风险研判、热点题材追踪、戴帽摘帽分析、行业龙头估值分析、困境反转研判。 输出：专业排版研报，包含封面、核心观点、价格结构、数...",
+"source": "clawhub",
+"identifier": "a-stock-analysis-lite",
+"trust_level": "community",
+"repo": "",
+"path": "",
+"tags": [],
+"extra": {}
+},
+{
+"name": "A Stock Analysis Litiao",
+"description": "提供A股实时价格、涨跌幅、成交量及分时量能分析，支持主力资金动向判断和持仓盈亏管理。",
+"source": "clawhub",
+"identifier": "a-stock-analysis-litiao",
+"trust_level": "community",
+"repo": "",
+"path": "",
+"tags": [],
+"extra": {}
+},
+{
+"name": "A Stock Analysis.Bak",
+"description": "提供沪深北交所A股实时行情查询、分时成交量分析、主力资金动态判断及持仓盈亏管理功能。",
+"source": "clawhub",
+"identifier": "a-stock-analysis-bak",
+"trust_level": "community",
+"repo": "",
+"path": "",
+"tags": [],
+"extra": {}
+},
+{
+"name": "A Stock Analyst.Bak",
+"description": "A股智投大师 | A股智能投研助手 | 行情分析 | 基本面分析 | 智能选股 | 自选股管理 | 监控预警",
+"source": "clawhub",
+"identifier": "a-stock-analyst-bak",
+"trust_level": "community",
+"repo": "",
+"path": "",
+"tags": [],
+"extra": {}
+},
+{
+"name": "A Stock Analyzer",
+"description": "A股智能分析交易助手（专业版）。基于马克·米勒维尼趋势模板和7大严格财务条件筛选优质个股，适用于追求高基本面标准的价值趋势投资者。",
+"source": "clawhub",
+"identifier": "a-stock-analyzer",
+"trust_level": "community",
+"repo": "",
+"path": "",
+"tags": [],
+"extra": {}
+},
+{
+"name": "A Stock Analyzer.Bak",
+"description": "A股智能分析交易助手（专业版）。基于马克·米勒维尼趋势模板和7大严格财务条件筛选优质个股，适用于追求高基本面标准的价值趋势投资者。",
+"source": "clawhub",
+"identifier": "a-stock-analyzer-bak",
+"trust_level": "community",
+"repo": "",
+"path": "",
+"tags": [],
+"extra": {}
+},
+{
+"name": "A Stock Daily Express",
+"description": "📈 A股每日快报自动生成 - 自动获取今日大盘行情、涨跌排名、热点板块，一键生成小红书/公众号文章，直接就能发。炒股懒人必备，每天省你半小时整理时间。",
+"source": "clawhub",
+"identifier": "a-stock-daily-express",
+"trust_level": "community",
+"repo": "",
+"path": "",
+"tags": [],
+"extra": {}
+}
+]
+}

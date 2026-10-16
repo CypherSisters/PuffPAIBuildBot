@@ -1,0 +1,81 @@
+{
+"ok": true,
+"data": [
+{
+"name": "Automated-Stock-Trading-App",
+"full_name": "temppet/Automated-Stock-Trading-App",
+"owner": {
+"login": "temppet"
+},
+"description": "Automated Stock Trading application which utilizes the Alpaca API and Opening range breakout/breakdown strategy to manage a stock portfolio 📈",
+"html_url": "https://codeberg.org/temppet/Automated-Stock-Trading-App",
+"website": "",
+"stars_count": 2,
+"updated_at": "2024-08-07T09:37:40+02:00",
+"language": "Python",
+"topics": [],
+"archived": false,
+"fork": false,
+"default_branch": "main",
+"licenses": null,
+"size": 1012
+},
+{
+"name": "cmc-stock-rebalance-guesser",
+"full_name": "DuncanRobertson/cmc-stock-rebalance-guesser",
+"owner": {
+"login": "DuncanRobertson"
+},
+"description": "Simple script for rebalancing a CMC Markets Australia stock portfolio. Uses crude monte carlo random sim. Generates buy suggestions to keep a share portfolio to a certain balance.",
+"html_url": "https://codeberg.org/DuncanRobertson/cmc-stock-rebalance-guesser",
+"website": "",
+"stars_count": 0,
+"updated_at": "2026-03-29T16:38:29+02:00",
+"language": "Python",
+"topics": [],
+"archived": false,
+"fork": false,
+"default_branch": "master",
+"licenses": null,
+"size": 44
+},
+{
+"name": "stock_info",
+"full_name": "webbografico/stock_info",
+"owner": {
+"login": "webbografico"
+},
+"description": "My personal project for dealing with a stock portfolio ",
+"html_url": "https://codeberg.org/webbografico/stock_info",
+"website": "",
+"stars_count": 0,
+"updated_at": "2026-07-16T12:05:07+02:00",
+"language": "Python",
+"topics": [],
+"archived": false,
+"fork": false,
+"default_branch": "main",
+"licenses": null,
+"size": 977
+},
+{
+"name": "Stonks",
+"full_name": "alceawisteria/Stonks",
+"owner": {
+"login": "alceawisteria"
+},
+"description": "A stupid Stock Portfolio manager written in PHP n JS",
+"html_url": "https://codeberg.org/alceawisteria/Stonks",
+"website": "",
+"stars_count": 0,
+"updated_at": "2026-07-24T23:12:51+02:00",
+"language": "PHP",
+"topics": [],
+"archived": false,
+"fork": false,
+"default_branch": "main",
+"licenses": null,
+"size": 3213
+}
+]
+}

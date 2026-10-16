@@ -1,0 +1,338 @@
+{
+ "version": "1",
+ "pip_version": "26.2.1",
+ "note": "Recorded in the locked box (csvkit 2.2.0, pip install --only-binary=:all: --report); trimmed to the fields BuildBot reads.",
+ "install": [
+  {
+   "metadata": {
+    "name": "csvkit",
+    "version": "2.2.0",
+    "license": "MIT",
+    "classifier": [
+     "License :: OSI Approved :: MIT License"
+    ]
+   },
+   "download_info": {
+    "url": "https://files.pythonhosted.org/packages/41/76/7ffa26fcd79eb0a51daf73d18481d4d5214685545d27aadc5e76e01d522d/csvkit-2.2.0-py3-none-any.whl",
+    "archive_info": {
+     "hashes": {
+      "sha256": "c16660ba1582e26a635577e0a060fb4c95842d07913b46bd642f1a5597ae0176"
+     }
+    }
+   }
+  },
+  {
+   "metadata": {
+    "name": "agate",
+    "version": "1.14.2",
+    "license": "MIT",
+    "classifier": [
+     "License :: OSI Approved :: MIT License"
+    ]
+   },
+   "download_info": {
+    "url": "https://files.pythonhosted.org/packages/e5/70/9977183cff3420eb1a49a31bb709e90b76ea86b6e7a090de1ea41fac14c5/agate-1.14.2-py3-none-any.whl",
+    "archive_info": {
+     "hashes": {
+      "sha256": "e11018371d344dda5aca16a68830b6f8e86c84c531a7bb8f81456bf5014937d4"
+     }
+    }
+   }
+  },
+  {
+   "metadata": {
+    "name": "agate-dbf",
+    "version": "0.2.4",
+    "license": "MIT",
+    "classifier": [
+     "License :: OSI Approved :: MIT License"
+    ]
+   },
+   "download_info": {
+    "url": "https://files.pythonhosted.org/packages/1e/2b/f9661a20b2812e7b3572c082b1cdf190a3c12e5cbfb2ef588c04ac47cbce/agate_dbf-0.2.4-py3-none-any.whl",
+    "archive_info": {
+     "hashes": {
+      "sha256": "65ef9df31cf25dcf829123fde63044ee7242bca6c47cbd90cedf318e1be0ad3e"
+     }
+    }
+   }
+  },
+  {
+   "metadata": {
+    "name": "agate-excel",
+    "version": "0.4.2",
+    "license": "MIT",
+    "classifier": [
+     "License :: OSI Approved :: MIT License"
+    ]
+   },
+   "download_info": {
+    "url": "https://files.pythonhosted.org/packages/f9/cf/d34f66780f47c6eed299ee522eaee7fbe56014f3adfdb40b5e64fbec548b/agate_excel-0.4.2-py3-none-any.whl",
+    "archive_info": {
+     "hashes": {
+      "sha256": "f93f09b3ac02489ed2ed8669c7b3ce74eab30ebf9a03038c0283211dbc3b9c1a"
+     }
+    }
+   }
+  },
+  {
+   "metadata": {
+    "name": "agate-sql",
+    "version": "0.7.3",
+    "license": "MIT",
+    "classifier": [
+     "License :: OSI Approved :: MIT License"
+    ]
+   },
+   "download_info": {
+    "url": "https://files.pythonhosted.org/packages/a7/be/8f425d3e5846fb10a627a572e671a1ba2c2a51df4d398221f40f7b666310/agate_sql-0.7.3-py3-none-any.whl",
+    "archive_info": {
+     "hashes": {
+      "sha256": "57046f628dbffb125c36c94675716b441b40193bc18461f04e32a3153a8a0971"
+     }
+    }
+   }
+  },
+  {
+   "metadata": {
+    "name": "babel",
+    "version": "2.18.0",
+    "license": "BSD-3-Clause",
+    "classifier": [
+     "License :: OSI Approved :: BSD License"
+    ]
+   },
+   "download_info": {
+    "url": "https://files.pythonhosted.org/packages/77/f5/21d2de20e8b8b0408f0681956ca2c69f1320a3848ac50e6e7f39c6159675/babel-2.18.0-py3-none-any.whl",
+    "archive_info": {
+     "hashes": {
+      "sha256": "e2b422b277c2b9a9630c1d7903c2a00d0830c409c59ac8cae9081c92f1aeba35"
+     }
+    }
+   }
+  },
+  {
+   "metadata": {
+    "name": "dbfread",
+    "version": "2.0.7",
+    "license": "MIT"
+   },
+   "download_info": {
+    "url": "https://files.pythonhosted.org/packages/4c/94/51349e43503e30ed7b4ecfe68a8809cdb58f722c0feb79d18b1f1e36fe74/dbfread-2.0.7-py2.py3-none-any.whl",
+    "archive_info": {
+     "hashes": {
+      "sha256": "f604def58c59694fa0160d7be5d0b8d594467278d2bb6a47d46daf7162c84cec"
+     }
+    }
+   }
+  },
+  {
+   "metadata": {
+    "name": "isodate",
+    "version": "0.7.2",
+    "classifier": [
+     "License :: OSI Approved :: BSD License"
+    ]
+   },
+   "download_info": {
+    "url": "https://files.pythonhosted.org/packages/15/aa/0aca39a37d3c7eb941ba736ede56d689e7be91cab5d9ca846bde3999eba6/isodate-0.7.2-py3-none-any.whl",
+    "archive_info": {
+     "hashes": {
+      "sha256": "28009937d8031054830160fce6d409ed342816b543597cece116d966c6d99e15"
+     }
+    }
+   }
+  },
+  {
+   "metadata": {
+    "name": "leather",
+    "version": "0.4.1",
+    "license": "MIT",
+    "classifier": [
+     "License :: OSI Approved :: MIT License"
+    ]
+   },
+   "download_info": {
+    "url": "https://files.pythonhosted.org/packages/1a/d4/c4dcb02ed11f8884e169b3350fc40aa4c08edf8bed77a8f0f267542e6452/leather-0.4.1-py3-none-any.whl",
+    "archive_info": {
+     "hashes": {
+      "sha256": "ec61cba1ca3ccb96ed90e38b116fc58757d97d352171006b3288c47ce3fbd183"
+     }
+    }
+   }
+  },
+  {
+   "metadata": {
+    "name": "openpyxl",
+    "version": "3.1.5",
+    "license": "MIT",
+    "classifier": [
+     "License :: OSI Approved :: MIT License"
+    ]
+   },
+   "download_info": {
+    "url": "https://files.pythonhosted.org/packages/c0/da/977ded879c29cbd04de313843e76868e6e13408a94ed6b987245dc7c8506/openpyxl-3.1.5-py2.py3-none-any.whl",
+    "archive_info": {
+     "hashes": {
+      "sha256": "5282c12b107bffeef825f4617dc029afaf41d0ea60823bbb665ef3079dc79de2"
+     }
+    }
+   }
+  },
+  {
+   "metadata": {
+    "name": "parsedatetime",
+    "version": "2.6",
+    "license": "Apache License 2.0",
+    "classifier": [
+     "License :: OSI Approved :: Apache Software License"
+    ]
+   },
+   "download_info": {
+    "url": "https://files.pythonhosted.org/packages/9d/a4/3dd804926a42537bf69fb3ebb9fd72a50ba84f807d95df5ae016606c976c/parsedatetime-2.6-py3-none-any.whl",
+    "archive_info": {
+     "hashes": {
+      "sha256": "cb96edd7016872f58479e35879294258c71437195760746faffedb692aef000b"
+     }
+    }
+   }
+  },
+  {
+   "metadata": {
+    "name": "python-slugify",
+    "version": "9.1.1",
+    "license_expression": "MIT"
+   },
+   "download_info": {
+    "url": "https://files.pythonhosted.org/packages/b1/86/9a0b95c7e0db6f8ed85c7d726da4bf4853b25f0de244f075e29b91fd167b/python_slugify-9.1.1-py3-none-any.whl",
+    "archive_info": {
+     "hashes": {
+      "sha256": "6db0d9480b22a8867e2dbd725e0eea28e7893ee1dc00bdae467b345ad0eafafb"
+     }
+    }
+   }
+  },
+  {
+   "metadata": {
+    "name": "pytimeparse",
+    "version": "1.1.8",
+    "license": "License :: OSI Approved :: MIT License",
+    "classifier": [
+     "License :: OSI Approved :: MIT License"
+    ]
+   },
+   "download_info": {
+    "url": "https://files.pythonhosted.org/packages/1b/b4/afd75551a3b910abd1d922dbd45e49e5deeb4d47dc50209ce489ba9844dd/pytimeparse-1.1.8-py2.py3-none-any.whl",
+    "archive_info": {
+     "hashes": {
+      "sha256": "04b7be6cc8bd9f5647a6325444926c3ac34ee6bc7e69da4367ba282f076036bd"
+     }
+    }
+   }
+  },
+  {
+   "metadata": {
+    "name": "SQLAlchemy",
+    "version": "2.1.1",
+    "license_expression": "MIT"
+   },
+   "download_info": {
+    "url": "https://files.pythonhosted.org/packages/dd/65/877c7f19fe976dffbffc579148d842bb99665e520af83d28b287a162f843/sqlalchemy-2.1.1-cp314-cp314-musllinux_1_2_x86_64.whl",
+    "archive_info": {
+     "hashes": {
+      "sha256": "1477f2f1f531697753a729dd8f3e4e98f7019086f001fdc4d50350c929871c8c"
+     }
+    }
+   }
+  },
+  {
+   "metadata": {
+    "name": "text-unidecode",
+    "version": "1.3",
+    "license": "Artistic License",
+    "classifier": [
+     "License :: OSI Approved :: Artistic License",
+     "License :: OSI Approved :: GNU General Public License (GPL)",
+     "License :: OSI Approved :: GNU General Public License v2 or later (GPLv2+)"
+    ]
+   },
+   "download_info": {
+    "url": "https://files.pythonhosted.org/packages/a6/a5/c0b6468d3824fe3fde30dbb5e1f687b291608f9473681bbf7dabbf5a87d7/text_unidecode-1.3-py2.py3-none-any.whl",
+    "archive_info": {
+     "hashes": {
+      "sha256": "1311f10e8b895935241623731c2ba64f4c455287888b18189350b67134a822e8"
+     }
+    }
+   }
+  },
+  {
+   "metadata": {
+    "name": "typing_extensions",
+    "version": "4.16.0",
+    "license_expression": "PSF-2.0"
+   },
+   "download_info": {
+    "url": "https://files.pythonhosted.org/packages/49/d3/b8441a820a491ddfc024b0b0cf0393375b75ea13866d9c66727e54c2fc80/typing_extensions-4.16.0-py3-none-any.whl",
+    "archive_info": {
+     "hashes": {
+      "sha256": "481caa481374e813c1b176ada14e97f1f67a4539ce9cfeb3f350d78d6370c2e8"
+     }
+    }
+   }
+  },
+  {
+   "metadata": {
+    "name": "xlrd",
+    "version": "2.0.2",
+    "license": "BSD",
+    "classifier": [
+     "License :: OSI Approved :: BSD License"
+    ]
+   },
+   "download_info": {
+    "url": "https://files.pythonhosted.org/packages/1a/62/c8d562e7766786ba6587d09c5a8ba9f718ed3fa8af7f4553e8f91c36f302/xlrd-2.0.2-py2.py3-none-any.whl",
+    "archive_info": {
+     "hashes": {
+      "sha256": "ea762c3d29f4cca48d82df517b6d89fbce4db3107f9d78713e48cd321d5c9aa9"
+     }
+    }
+   }
+  },
+  {
+   "metadata": {
+    "name": "et_xmlfile",
+    "version": "2.0.0",
+    "license": "MIT",
+    "classifier": [
+     "License :: OSI Approved :: MIT License"
+    ]
+   },
+   "download_info": {
+    "url": "https://files.pythonhosted.org/packages/c1/8b/5fe2cc11fee489817272089c4203e679c63b570a5aaeb18d852ae3cbba6a/et_xmlfile-2.0.0-py3-none-any.whl",
+    "archive_info": {
+     "hashes": {
+      "sha256": "7a91720bc756843502c3b7504c77b8fe44217c85c537d85037f0f536151b2caa"
+     }
+    }
+   }
+  },
+  {
+   "metadata": {
+    "name": "olefile",
+    "version": "0.47",
+    "license": "BSD",
+    "classifier": [
+     "License :: OSI Approved :: BSD License"
+    ]
+   },
+   "download_info": {
+    "url": "https://files.pythonhosted.org/packages/17/d3/b64c356a907242d719fc668b71befd73324e47ab46c8ebbbede252c154b2/olefile-0.47-py2.py3-none-any.whl",
+    "archive_info": {
+     "hashes": {
+      "sha256": "543c7da2a7adadf21214938bb79c83ea12b473a4b6ee4ad4bf854e7715e13d1f"
+     }
+    }
+   }
+  }
+ ]
+}

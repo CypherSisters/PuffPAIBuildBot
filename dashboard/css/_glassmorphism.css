@@ -1,0 +1,311 @@
+/* ═══════════════════════════════════════════════════════════════
+   GRITTY CYBERPUNK — Glass & Neon Effects
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Glass card — dark translucent with neon edge */
+.glass-card {
+  background: rgba(10, 10, 18, 0.75);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(0, 240, 255, 0.08);
+  box-shadow: inset 0 1px 0 rgba(0, 240, 255, 0.05);
+}
+
+.dark .glass-card {
+  background: rgba(8, 8, 16, 0.8);
+  border: 1px solid rgba(0, 240, 255, 0.06);
+}
+
+/* Glass sidebar — deep dark with neon trim */
+.glass-aside {
+  background: linear-gradient(180deg, rgba(8, 6, 20, 0.97) 0%, rgba(4, 2, 12, 0.99) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-right: 1px solid rgba(0, 240, 255, 0.08);
+}
+
+.dark .glass-aside {
+  background: linear-gradient(180deg, rgba(6, 4, 16, 0.98) 0%, rgba(2, 1, 8, 0.99) 100%);
+}
+
+/* Glass navbar — dark with scan-line feel */
+.glass-navbar {
+  background: rgba(8, 8, 16, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 240, 255, 0.1);
+}
+
+.dark .glass-navbar {
+  background: rgba(6, 6, 14, 0.92);
+  border-bottom: 1px solid rgba(0, 240, 255, 0.08);
+}
+
+/* Gloss highlight — subtle neon top edge */
+.gloss-highlight {
+  position: relative;
+  overflow: hidden;
+}
+
+.gloss-highlight::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 240, 255, 0.3) 30%,
+    rgba(255, 45, 111, 0.3) 70%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.dark .gloss-highlight::before {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 240, 255, 0.2) 30%,
+    rgba(255, 45, 111, 0.2) 70%,
+    transparent 100%
+  );
+}
+
+/* Hero container — cyberpunk neon gradient */
+.bokeh-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.bokeh-container::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.03) 2px,
+      rgba(0, 0, 0, 0.03) 4px
+    );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.bokeh-container::after {
+  content: '';
+  position: absolute;
+  top: -40%;
+  right: -20%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 45, 111, 0.12) 0%,
+    rgba(0, 240, 255, 0.06) 40%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  pointer-events: none;
+  /* A look's background choice can switch this glow off (css/_theme.css). */
+  opacity: var(--puff-hero-glow, 1);
+}
+
+.dark .bokeh-container::after {
+  background: radial-gradient(
+    circle,
+    rgba(255, 45, 111, 0.08) 0%,
+    rgba(0, 240, 255, 0.04) 40%,
+    transparent 70%
+  );
+}
+
+/* Cyberpunk background — dark with grid */
+.aero-bg {
+  background: #080810;
+  background-image:
+    linear-gradient(rgba(0, 240, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 240, 255, 0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.dark .aero-bg {
+  background: #060610;
+  background-image:
+    linear-gradient(rgba(0, 240, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 240, 255, 0.015) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Neon glow effect */
+.aqua-glow {
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.12), 0 0 60px rgba(0, 240, 255, 0.04);
+}
+
+.dark .aqua-glow {
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.08), 0 0 60px rgba(0, 240, 255, 0.03);
+}
+
+/* Neon shimmer */
+@keyframes cyber-shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.aero-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 240, 255, 0.15) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: cyber-shimmer 4s ease-in-out infinite;
+}
+
+/* Floating neon orbs */
+@keyframes float-bubble {
+  0%, 100% { transform: translateY(0) scale(1); opacity: 0.6; }
+  50% { transform: translateY(-20px) scale(1.1); opacity: 1; }
+}
+
+.bokeh-bubble {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(1px);
+}
+
+.dark .bokeh-bubble {
+  opacity: 0.5;
+}
+
+.bokeh-bubble-1 {
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, rgba(0, 240, 255, 0.15), transparent 70%);
+  top: 10%;
+  right: 8%;
+  animation: float-bubble 8s ease-in-out infinite;
+}
+
+.bokeh-bubble-2 {
+  width: 70px;
+  height: 70px;
+  background: radial-gradient(circle, rgba(255, 45, 111, 0.2), transparent 70%);
+  bottom: 10%;
+  left: 12%;
+  animation: float-bubble 6s ease-in-out infinite 1s;
+}
+
+.bokeh-bubble-3 {
+  width: 50px;
+  height: 50px;
+  background: radial-gradient(circle, rgba(57, 255, 20, 0.15), transparent 70%);
+  top: 35%;
+  left: 55%;
+  animation: float-bubble 10s ease-in-out infinite 2s;
+}
+
+/* ── Cyberpunk-specific utilities ── */
+
+/* Scan lines overlay */
+.cyber-scanlines {
+  position: relative;
+}
+
+.cyber-scanlines::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.04) 2px,
+    rgba(0, 0, 0, 0.04) 4px
+  );
+  pointer-events: none;
+  z-index: 2;
+  border-radius: inherit;
+}
+
+/* Neon border pulse */
+@keyframes neon-pulse {
+  0%, 100% { border-color: rgba(0, 240, 255, 0.15); }
+  50% { border-color: rgba(0, 240, 255, 0.35); }
+}
+
+.neon-border-pulse {
+  animation: neon-pulse 3s ease-in-out infinite;
+}
+
+/* Neon text glow */
+.neon-text-cyan {
+  color: #00f0ff;
+  text-shadow: 0 0 7px rgba(0, 240, 255, 0.5), 0 0 20px rgba(0, 240, 255, 0.2);
+}
+
+.neon-text-pink {
+  color: #ff2d6f;
+  text-shadow: 0 0 7px rgba(255, 45, 111, 0.5), 0 0 20px rgba(255, 45, 111, 0.2);
+}
+
+.neon-text-green {
+  color: #39ff14;
+  text-shadow: 0 0 7px rgba(57, 255, 20, 0.5), 0 0 20px rgba(57, 255, 20, 0.2);
+}
+
+/* Cyber card — neon edge always on, brighter on hover */
+.cyber-card {
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  box-shadow:
+    0 0 22px rgba(0, 240, 255, 0.12),
+    inset 0 0 22px rgba(0, 240, 255, 0.035);
+}
+
+.cyber-card:hover {
+  border-color: rgba(0, 240, 255, 0.55);
+  box-shadow:
+    0 0 36px rgba(0, 240, 255, 0.22),
+    inset 0 0 28px rgba(0, 240, 255, 0.06);
+}
+
+/* Glitch text animation */
+@keyframes glitch-skew {
+  0% { transform: skew(0deg); }
+  20% { transform: skew(-1deg); }
+  40% { transform: skew(0.5deg); }
+  60% { transform: skew(-0.3deg); }
+  80% { transform: skew(0.8deg); }
+  100% { transform: skew(0deg); }
+}
+
+.cyber-glitch:hover {
+  animation: glitch-skew 0.4s ease-in-out;
+}
+
+/* Animated neon underline */
+@keyframes neon-line-scan {
+  0% { transform: scaleX(0); transform-origin: left; }
+  50% { transform: scaleX(1); transform-origin: left; }
+  50.01% { transform-origin: right; }
+  100% { transform: scaleX(0); transform-origin: right; }
+}
+
+.neon-underline::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #00f0ff, #ff2d6f);
+  animation: neon-line-scan 4s ease-in-out infinite;
+}

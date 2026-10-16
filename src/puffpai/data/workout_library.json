@@ -1,0 +1,197 @@
+{
+  "_comment": "Generic, fictional default workout library shipped with the public build. Contains no personal data. A deployment may override it by placing its own data/workout_library.json at the repo root.",
+  "programs": {
+    "beginner_general": {
+      "title": "Foundations: Full-Body Basics",
+      "audience": "Adults new to structured training",
+      "days_per_week": 3,
+      "guidance": "Move through each exercise at a controlled pace. Rest 60-90 seconds between sets. Stop any movement that causes sharp pain and scale the range of motion to what feels comfortable.",
+      "sources": [],
+      "sessions": [
+        {
+          "name": "Full Body A",
+          "duration_min": 30,
+          "focus": "Squat and push",
+          "exercises": [
+            { "name": "Bodyweight Squat", "sets": 3, "reps": "10-12" },
+            { "name": "Incline Push-Up", "sets": 3, "reps": "8-12" },
+            { "name": "Glute Bridge", "sets": 3, "reps": "12-15" },
+            { "name": "Standing Band Row", "sets": 3, "reps": "10-12" },
+            { "name": "Dead Bug", "sets": 2, "reps": "8 each side" }
+          ]
+        },
+        {
+          "name": "Full Body B",
+          "duration_min": 30,
+          "focus": "Hinge and pull",
+          "exercises": [
+            { "name": "Hip Hinge to Box", "sets": 3, "reps": "10" },
+            { "name": "Wall Sit", "sets": 3, "reps": "20-30 sec" },
+            { "name": "Bent-Over Band Pull-Apart", "sets": 3, "reps": "12-15" },
+            { "name": "Step-Up", "sets": 3, "reps": "8 each leg" },
+            { "name": "Front Plank", "sets": 2, "reps": "20-30 sec" }
+          ]
+        },
+        {
+          "name": "Full Body C",
+          "duration_min": 30,
+          "focus": "Balance and carry",
+          "exercises": [
+            { "name": "Split Squat", "sets": 3, "reps": "8 each leg" },
+            { "name": "Knee Push-Up", "sets": 3, "reps": "8-12" },
+            { "name": "Single-Leg Balance Reach", "sets": 2, "reps": "6 each side" },
+            { "name": "Suitcase Carry", "sets": 3, "reps": "20 steps" },
+            { "name": "Side Plank", "sets": 2, "reps": "15-20 sec each" }
+          ]
+        }
+      ]
+    },
+    "intermediate_strength": {
+      "title": "Progressive Strength",
+      "audience": "Adults with a training base",
+      "days_per_week": 4,
+      "guidance": "Add a small amount of load or one rep per set week over week when the last set still feels controlled. Rest 2-3 minutes between heavy compound sets and 60-90 seconds on accessory work.",
+      "sources": [],
+      "sessions": [
+        {
+          "name": "Lower Strength",
+          "duration_min": 45,
+          "focus": "Squat pattern",
+          "exercises": [
+            { "name": "Goblet Squat", "sets": 4, "reps": "6-8" },
+            { "name": "Romanian Deadlift", "sets": 3, "reps": "8-10" },
+            { "name": "Walking Lunge", "sets": 3, "reps": "10 each leg" },
+            { "name": "Calf Raise", "sets": 3, "reps": "12-15" },
+            { "name": "Hanging Knee Raise", "sets": 3, "reps": "8-12" }
+          ]
+        },
+        {
+          "name": "Upper Push",
+          "duration_min": 45,
+          "focus": "Press pattern",
+          "exercises": [
+            { "name": "Dumbbell Bench Press", "sets": 4, "reps": "6-8" },
+            { "name": "Standing Overhead Press", "sets": 3, "reps": "8-10" },
+            { "name": "Incline Dumbbell Press", "sets": 3, "reps": "10-12" },
+            { "name": "Lateral Raise", "sets": 3, "reps": "12-15" },
+            { "name": "Triceps Overhead Extension", "sets": 3, "reps": "10-12" }
+          ]
+        },
+        {
+          "name": "Upper Pull",
+          "duration_min": 45,
+          "focus": "Pull pattern",
+          "exercises": [
+            { "name": "Assisted Pull-Up", "sets": 4, "reps": "5-8" },
+            { "name": "One-Arm Dumbbell Row", "sets": 3, "reps": "8-10 each" },
+            { "name": "Seated Cable Row", "sets": 3, "reps": "10-12" },
+            { "name": "Face Pull", "sets": 3, "reps": "12-15" },
+            { "name": "Biceps Curl", "sets": 3, "reps": "10-12" }
+          ]
+        },
+        {
+          "name": "Posterior and Core",
+          "duration_min": 40,
+          "focus": "Hinge and trunk",
+          "exercises": [
+            { "name": "Trap-Bar Deadlift", "sets": 4, "reps": "5-6" },
+            { "name": "Hip Thrust", "sets": 3, "reps": "8-10" },
+            { "name": "Back Extension", "sets": 3, "reps": "10-12" },
+            { "name": "Farmer Carry", "sets": 3, "reps": "30 steps" },
+            { "name": "Pallof Press", "sets": 3, "reps": "10 each side" }
+          ]
+        }
+      ]
+    },
+    "youth_developmental": {
+      "title": "Youth Athletic Development",
+      "audience": "Teens building general athleticism",
+      "days_per_week": 3,
+      "guidance": "Prioritize clean technique over load. Keep sessions playful and stop well before failure. A qualified coach should supervise any loaded lifting.",
+      "sources": [],
+      "sessions": [
+        {
+          "name": "Move and Jump",
+          "duration_min": 35,
+          "focus": "Coordination and power",
+          "exercises": [
+            { "name": "Skipping Warm-Up", "sets": 2, "reps": "20 sec" },
+            { "name": "Bodyweight Squat", "sets": 3, "reps": "10" },
+            { "name": "Box Jump (low)", "sets": 3, "reps": "5" },
+            { "name": "Bear Crawl", "sets": 3, "reps": "10 steps" },
+            { "name": "Plank Hold", "sets": 2, "reps": "20 sec" }
+          ]
+        },
+        {
+          "name": "Push and Pull",
+          "duration_min": 35,
+          "focus": "Upper body control",
+          "exercises": [
+            { "name": "Incline Push-Up", "sets": 3, "reps": "8" },
+            { "name": "Band Row", "sets": 3, "reps": "12" },
+            { "name": "Hollow Body Hold", "sets": 3, "reps": "15 sec" },
+            { "name": "Lateral Bound", "sets": 3, "reps": "6 each side" },
+            { "name": "Dead Bug", "sets": 2, "reps": "8 each side" }
+          ]
+        },
+        {
+          "name": "Speed and Agility",
+          "duration_min": 35,
+          "focus": "Footwork",
+          "exercises": [
+            { "name": "Ladder Quick Steps", "sets": 3, "reps": "20 sec" },
+            { "name": "Shuttle Run (short)", "sets": 4, "reps": "1 length" },
+            { "name": "Broad Jump", "sets": 3, "reps": "4" },
+            { "name": "Single-Leg Balance", "sets": 2, "reps": "20 sec each" },
+            { "name": "Side Plank", "sets": 2, "reps": "15 sec each" }
+          ]
+        }
+      ]
+    },
+    "active_play": {
+      "title": "Active Play Movement",
+      "audience": "Children building fundamental movement",
+      "days_per_week": 3,
+      "guidance": "Keep it fun and game-based. These are movement skills, not workouts. Let energy and interest set the pace, and always supervise.",
+      "sources": [],
+      "sessions": [
+        {
+          "name": "Animal Movements",
+          "duration_min": 20,
+          "focus": "Whole-body coordination",
+          "exercises": [
+            { "name": "Bear Crawl", "sets": 3, "reps": "10 steps" },
+            { "name": "Frog Jump", "sets": 3, "reps": "8" },
+            { "name": "Crab Walk", "sets": 3, "reps": "10 steps" },
+            { "name": "Bunny Hop", "sets": 3, "reps": "10" },
+            { "name": "Flamingo Balance", "sets": 2, "reps": "10 sec each" }
+          ]
+        },
+        {
+          "name": "Jump and Land",
+          "duration_min": 20,
+          "focus": "Jumping and landing",
+          "exercises": [
+            { "name": "Two-Foot Hop", "sets": 3, "reps": "8" },
+            { "name": "Hopscotch Pattern", "sets": 3, "reps": "1 lap" },
+            { "name": "Jump to a Soft Landing", "sets": 3, "reps": "6" },
+            { "name": "Balloon Tap Reach", "sets": 3, "reps": "10" },
+            { "name": "Log Roll", "sets": 2, "reps": "4 each way" }
+          ]
+        },
+        {
+          "name": "Throw and Catch",
+          "duration_min": 20,
+          "focus": "Hand-eye skills",
+          "exercises": [
+            { "name": "Underhand Toss", "sets": 3, "reps": "10" },
+            { "name": "Two-Hand Catch", "sets": 3, "reps": "10" },
+            { "name": "Roll and Chase", "sets": 3, "reps": "6" },
+            { "name": "Balloon Keep-Up", "sets": 2, "reps": "20 sec" },
+            { "name": "Target Toss", "sets": 3, "reps": "8" }
+          ]
+        }
+      ]
+    }
+  }
+}

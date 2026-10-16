@@ -1,0 +1,61 @@
+Parse and display Cooklang recipe files with support for multiple output formats and scaling
+
+Usage: cook recipe [OPTIONS] [RECIPE]
+       cook recipe <COMMAND>
+
+Commands:
+  read  Parse and print a Cooklang recipe file
+  help  Print this message or the help of the given subcommand(s)
+
+Arguments:
+  [RECIPE]
+          Recipe file to read (stdin if not specified)
+          
+          Can be specified as: - Full path: /path/to/recipe.cook - Relative path: recipes/pasta.cook - Recipe name: "Pasta Carbonara" (searches in recipe directory) - With scaling: recipe.cook:2 or "Pasta:3" (scales by factor) - Stdin: omit to read from standard input
+          
+          The .cook extension is optional and will be added automatically. When using recipe names (not paths), the tool searches in the current directory and configured recipe directories.
+
+Options:
+  -v, --verbose...
+          Increase verbosity (-v for info, -vv for debug, -vvv for trace)
+
+  -s, --scale <SCALE>
+          Scaling factor for ingredient quantities
+          
+          Multiplies all ingredient quantities by this factor. Can also be specified inline with : syntax (e.g., recipe:2). The inline syntax takes precedence over this flag.
+          
+          [default: 1]
+
+  -o, --output <OUTPUT>
+          File to write output (stdout if not specified)
+          
+          The output format can be automatically inferred from the file extension (.json, .yaml, .md, .cook, .tex, .typ, .txt)
+
+  -f, --format <FORMAT>
+          Output format for the recipe
+          
+          Available formats: human    - Human-readable text with formatting (default) json     - JSON representation of the recipe data yaml     - YAML representation of the recipe data cooklang - Regenerated Cooklang format markdown - Markdown formatted recipe latex    - LaTeX formatted recipe for creating cookbooks typst    - Typst formatted recipe for creating cookbooks schema   - Schema.org Recipe JSON-LD format
+          
+          If not specified, format is inferred from output file extension.
+          
+          [possible values: human, json, yaml, cooklang, markdown, latex, typst, schema]
+
+      --pretty
+          Enable pretty formatting for structured output
+          
+          Adds indentation and formatting to JSON and YAML output. Has no effect on human, cooklang, or markdown formats.
+
+  -p, --paper-size <PAPER_SIZE>
+          Paper size for LaTeX and Typst output (default: a4)
+          
+          Has no effect on other formats.
+          
+          [possible values: a4, letter, a5, legal]
+
+  -m, --margin <MARGIN>
+          Page margin in centimeters for LaTeX and Typst output (default: 2.5)
+          
+          Applied equally to all four sides. Has no effect on other formats.
+
+  -h, --help
+          Print help (see a summary with '-h')

@@ -1,0 +1,33 @@
+{
+  "schema": "rulepack/v1",
+  "surface": "security",
+  "category": "security",
+  "route": "agent",
+  "min_tier": "light",
+  "order": 30,
+  "match": "substring",
+  "blurb": "Approvals, consent, and what the bot is allowed to do. Say yes or no in plain words.",
+  "title": "Permission and approvals",
+  "examples": [
+    "what is my security status",
+    "is there anything that needs approval",
+    "who is on my network",
+    "show me what has permission to run",
+    "go ahead and do it",
+    "i do not consent to that"
+  ],
+  "keywords": [
+    "security status",
+    "needs approval",
+    "approval",
+    "who is on my network",
+    "devices on my network",
+    "approve",
+    "consent",
+    "permission",
+    "authorize",
+    "go ahead",
+    "allow it",
+    "deny it"
+  ]
+}

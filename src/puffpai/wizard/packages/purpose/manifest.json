@@ -1,0 +1,39 @@
+{
+  "schema": "puffpai_package/v1",
+  "id": "purpose",
+  "kind": "skill",
+  "version": "1.0.0",
+  "author": "puffpai",
+  "license": "Apache-2.0",
+  "label": "What it is for",
+  "description": "What this bot is called, what it is for, and the id it lives under.",
+  "reads": [
+    "machine"
+  ],
+  "writes": "persona",
+  "permissions": {
+    "network_hosts": [],
+    "files": [
+      "data"
+    ],
+    "ha_domains": [],
+    "secrets": []
+  },
+  "doors": [],
+  "secrets": [],
+  "egress": "none",
+  "estimate": {
+    "bytes": 0,
+    "seconds": 0,
+    "basis": "unknown"
+  },
+  "rerun": "idempotent",
+  "undo": "reversible",
+  "blocking": false,
+  "provides": [
+    "persona.goal",
+    "persona.id"
+  ],
+  "needs": [],
+  "builtin": true
+}

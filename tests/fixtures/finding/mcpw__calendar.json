@@ -1,0 +1,387 @@
+{
+"servers": [
+{
+"server": {
+"$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+"name": "ai.calendarmcp/server",
+"description": "Hosted Google Calendar MCP server for AI agents. No self-hosting or Google Cloud setup.",
+"title": "CalendarMCP",
+"repository": {
+"url": "https://github.com/Full-Vibe/calendarmcp-public",
+"source": "github"
+},
+"version": "1.0.0",
+"websiteUrl": "https://calendarmcp.ai",
+"remotes": [
+{
+"type": "streamable-http",
+"url": "https://calendarmcp.ai/api/mcp",
+"headers": [
+{
+"description": "Bearer token. Get yours at https://calendarmcp.ai/dashboard",
+"isRequired": true,
+"isSecret": true,
+"name": "Authorization"
+}
+]
+}
+]
+},
+"_meta": {
+"io.modelcontextprotocol.registry/official": {
+"status": "active",
+"statusChangedAt": "2026-05-20T07:09:04.298867Z",
+"publishedAt": "2026-05-20T07:09:04.298867Z",
+"updatedAt": "2026-05-20T07:09:04.298867Z",
+"isLatest": true
+}
+}
+},
+{
+"server": {
+"$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+"name": "ai.smithery/mayla-debug-mcp-google-calendar2",
+"description": "Schedule and manage Google Calendar events directly from your workspace. Check availability, view…",
+"repository": {
+"url": "https://github.com/mayla-debug/mcp-google-calendar2",
+"source": "github"
+},
+"version": "1.0.0",
+"remotes": [
+{
+"type": "streamable-http",
+"url": "https://server.smithery.ai/@mayla-debug/mcp-google-calendar2/mcp",
+"headers": [
+{
+"description": "Bearer token for Smithery authentication",
+"value": "Bearer {smithery_api_key}",
+"name": "Authorization"
+}
+]
+}
+]
+},
+"_meta": {
+"io.modelcontextprotocol.registry/official": {
+"status": "active",
+"statusChangedAt": "2025-10-07T11:08:53.670394Z",
+"publishedAt": "2025-10-07T11:08:53.670394Z",
+"updatedAt": "2025-10-07T11:08:53.670394Z",
+"isLatest": true
+}
+}
+},
+{
+"server": {
+"$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+"name": "ai.timothe/growth-calendar",
+"description": "Plan, schedule and generate SEO articles on a content calendar, from your agent.",
+"title": "Timothe's Growth Calendar",
+"repository": {
+"url": "https://github.com/u17g/timothe-ai-plugins",
+"source": "github"
+},
+"version": "0.1.0",
+"websiteUrl": "https://timothe.ai/growth-calendar",
+"icons": [
+{
+"src": "https://raw.githubusercontent.com/u17g/timothe-ai-plugins/main/growth-calendar/assets/logo-512.png",
+"mimeType": "image/png",
+"sizes": [
+"512x512"
+]
+}
+],
+"remotes": [
+{
+"type": "streamable-http",
+"url": "https://timothe.ai/mcp/growth-calendar"
+}
+]
+},
+"_meta": {
+"io.modelcontextprotocol.registry/official": {
+"status": "active",
+"statusChangedAt": "2026-08-01T20:21:38.994918Z",
+"publishedAt": "2026-08-01T20:21:38.994918Z",
+"updatedAt": "2026-08-01T20:21:38.994918Z",
+"isLatest": true
+}
+}
+},
+{
+"server": {
+"$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+"name": "app.hinducalendar/hinducalendar",
+"description": "Daily panchang, festivals, muhurta and birth details, identical to the HinduCalendar Android app.",
+"title": "HinduCalendar — panchang, festivals & muhurta",
+"version": "1.0.0",
+"websiteUrl": "https://hinducalendar.app/mcp-server",
+"remotes": [
+{
+"type": "streamable-http",
+"url": "https://hinducalendar.app/mcp"
+}
+]
+},
+"_meta": {
+"io.modelcontextprotocol.registry/official": {
+"status": "active",
+"statusChangedAt": "2026-08-02T03:19:13.074477Z",
+"publishedAt": "2026-08-02T03:19:13.074477Z",
+"updatedAt": "2026-08-02T03:19:13.074477Z",
+"isLatest": false
+}
+}
+},
+{
+"server": {
+"$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+"name": "app.hinducalendar/hinducalendar",
+"description": "Daily panchang, festivals, muhurta and birth details, identical to the HinduCalendar Android app.",
+"title": "HinduCalendar — panchang, festivals & muhurta",
+"version": "1.1.0",
+"websiteUrl": "https://hinducalendar.app/mcp-server",
+"remotes": [
+{
+"type": "streamable-http",
+"url": "https://hinducalendar.app/mcp"
+}
+]
+},
+"_meta": {
+"io.modelcontextprotocol.registry/official": {
+"status": "active",
+"statusChangedAt": "2026-08-12T07:39:18.116337Z",
+"publishedAt": "2026-08-12T07:39:18.116337Z",
+"updatedAt": "2026-08-12T07:39:18.116337Z",
+"isLatest": true
+}
+}
+},
+{
+"server": {
+"$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+"name": "app.racecalendar/f1",
+"description": "Anonymous read-only Formula 1 season schedule, standings, and race-weekend tools from Race Calendar.",
+"title": "Race Calendar F1",
+"version": "1.0.0",
+"websiteUrl": "https://racecalendar.app/f1",
+"icons": [
+{
+"src": "https://racecalendar.app/images/app-icon-96.png",
+"mimeType": "image/png",
+"sizes": [
+"96x96"
+]
+}
+],
+"remotes": [
+{
+"type": "streamable-http",
+"url": "https://racecalendar.app/mcp"
+}
+],
+"_meta": {
+"io.modelcontextprotocol.registry/publisher-provided": {
+"access": "anonymous-read-only",
+"authentication": "none",
+"non_affiliation": "Independent Formula 1 companion; not affiliated with Formula 1.",
+"privacy_policy_url": "https://racecalendar.app/privacy",
+"server_card_url": "https://racecalendar.app/.well-known/mcp/server-card.json",
+"support_url": "https://racecalendar.app/support"
+}
+}
+},
+"_meta": {
+"io.modelcontextprotocol.registry/official": {
+"status": "active",
+"statusChangedAt": "2026-07-22T18:08:08.138218Z",
+"publishedAt": "2026-07-22T18:08:08.138218Z",
+"updatedAt": "2026-07-22T18:08:08.138218Z",
+"isLatest": false
+}
+}
+},
+{
+"server": {
+"$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+"name": "app.racecalendar/f1",
+"description": "Anonymous read-only Formula 1 season schedule, standings, and race-weekend tools from Race Calendar.",
+"title": "Race Calendar F1",
+"version": "1.1.0",
+"websiteUrl": "https://racecalendar.app/f1",
+"icons": [
+{
+"src": "https://racecalendar.app/images/app-icon-96.png",
+"mimeType": "image/png",
+"sizes": [
+"96x96"
+]
+}
+],
+"remotes": [
+{
+"type": "streamable-http",
+"url": "https://racecalendar.app/mcp"
+}
+],
+"_meta": {
+"io.modelcontextprotocol.registry/publisher-provided": {
+"access": "anonymous-read-only",
+"authentication": "none",
+"non_affiliation": "Independent Formula 1 companion; not affiliated with Formula 1.",
+"privacy_policy_url": "https://racecalendar.app/privacy",
+"server_card_url": "https://racecalendar.app/.well-known/mcp/server-card.json",
+"support_url": "https://racecalendar.app/support"
+}
+}
+},
+"_meta": {
+"io.modelcontextprotocol.registry/official": {
+"status": "active",
+"statusChangedAt": "2026-07-22T22:41:25.93146Z",
+"publishedAt": "2026-07-22T22:41:25.93146Z",
+"updatedAt": "2026-07-22T22:41:25.93146Z",
+"isLatest": false
+}
+}
+},
+{
+"server": {
+"$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+"name": "app.racecalendar/f1",
+"description": "Anonymous read-only Formula 1 tools, resources, prompts, completion, and interactive dashboard.",
+"title": "Race Calendar F1",
+"version": "2.0.0",
+"websiteUrl": "https://racecalendar.app/f1",
+"icons": [
+{
+"src": "https://racecalendar.app/images/app-icon-96.png",
+"mimeType": "image/png",
+"sizes": [
+"96x96"
+]
+}
+],
+"remotes": [
+{
+"type": "streamable-http",
+"url": "https://racecalendar.app/mcp"
+}
+],
+"_meta": {
+"io.modelcontextprotocol.registry/publisher-provided": {
+"access": "anonymous-read-only",
+"authentication": "none",
+"non_affiliation": "Independent Formula 1 companion; not affiliated with Formula 1.",
+"privacy_policy_url": "https://racecalendar.app/privacy",
+"server_card_url": "https://racecalendar.app/.well-known/mcp/server-card.json",
+"support_url": "https://racecalendar.app/support"
+}
+}
+},
+"_meta": {
+"io.modelcontextprotocol.registry/official": {
+"status": "active",
+"statusChangedAt": "2026-07-23T05:52:58.496113Z",
+"publishedAt": "2026-07-23T05:52:58.496113Z",
+"updatedAt": "2026-07-23T05:52:58.496113Z",
+"isLatest": false
+}
+}
+},
+{
+"server": {
+"$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+"name": "app.racecalendar/f1",
+"description": "Anonymous read-only Formula 1 tools, resources, prompts, completion, and interactive dashboard.",
+"title": "Race Calendar F1",
+"version": "2.0.1",
+"websiteUrl": "https://racecalendar.app/f1",
+"icons": [
+{
+"src": "https://racecalendar.app/images/app-icon-96.png",
+"mimeType": "image/png",
+"sizes": [
+"96x96"
+]
+}
+],
+"remotes": [
+{
+"type": "streamable-http",
+"url": "https://racecalendar.app/mcp"
+}
+],
+"_meta": {
+"io.modelcontextprotocol.registry/publisher-provided": {
+"access": "anonymous-read-only",
+"authentication": "none",
+"non_affiliation": "Independent Formula 1 companion; not affiliated with Formula 1.",
+"privacy_policy_url": "https://racecalendar.app/privacy",
+"server_card_url": "https://racecalendar.app/.well-known/mcp/server-card.json",
+"support_url": "https://racecalendar.app/support"
+}
+}
+},
+"_meta": {
+"io.modelcontextprotocol.registry/official": {
+"status": "active",
+"statusChangedAt": "2026-07-23T07:00:29.600807Z",
+"publishedAt": "2026-07-23T07:00:29.600807Z",
+"updatedAt": "2026-07-23T07:00:29.600807Z",
+"isLatest": false
+}
+}
+},
+{
+"server": {
+"$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+"name": "app.racecalendar/f1",
+"description": "Anonymous read-only Formula 1 tools, resources, prompts, completion, and interactive dashboard.",
+"title": "Race Calendar F1",
+"version": "2.1.0",
+"websiteUrl": "https://racecalendar.app/f1",
+"icons": [
+{
+"src": "https://racecalendar.app/images/app-icon-96.png",
+"mimeType": "image/png",
+"sizes": [
+"96x96"
+]
+}
+],
+"remotes": [
+{
+"type": "streamable-http",
+"url": "https://racecalendar.app/mcp"
+}
+],
+"_meta": {
+"io.modelcontextprotocol.registry/publisher-provided": {
+"access": "anonymous-read-only",
+"authentication": "none",
+"non_affiliation": "Independent Formula 1 companion; not affiliated with Formula 1.",
+"privacy_policy_url": "https://racecalendar.app/privacy",
+"server_card_url": "https://racecalendar.app/.well-known/mcp/server-card.json",
+"support_url": "https://racecalendar.app/support"
+}
+}
+},
+"_meta": {
+"io.modelcontextprotocol.registry/official": {
+"status": "active",
+"statusChangedAt": "2026-07-23T22:48:46.432128Z",
+"publishedAt": "2026-07-23T22:48:46.432128Z",
+"updatedAt": "2026-07-23T22:48:46.432128Z",
+"isLatest": false
+}
+}
+}
+],
+"metadata": {
+"nextCursor": "app.racecalendar/f1:2.1.0",
+"count": 10
+}
+}

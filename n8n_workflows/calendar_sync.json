@@ -1,0 +1,91 @@
+{
+  "name": "PuffPAI - Calendar Sync",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "calendar-sync",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "wh-cal-1",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [250, 300],
+      "webhookId": "calendar-sync"
+    },
+    {
+      "parameters": {
+        "method": "={{ $json.body.method || 'GET' }}",
+        "url": "=http://localhost:8000/apps/calendar/data",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-API-Key",
+              "value": "={{ $json.body.api_key || '' }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "get-calendar-1",
+      "name": "Get PuffPAI Calendar",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [480, 200]
+    },
+    {
+      "parameters": {
+        "jsCode": "const calData = $input.first().json;\nconst body = $('Webhook').first().json.body || {};\nconst action = body.action || 'list';\n\nconst now = new Date();\nconst events = calData.events || [];\nconst tasks = calData.tasks || [];\nconst meds = calData.meds || [];\nconst bills = calData.bills || [];\n\n// Filter upcoming events (next 7 days)\nconst weekFromNow = new Date(now.getTime() + 7 * 24 * 60 * 60 * 1000);\nconst upcoming = events.filter(e => {\n  const d = new Date(e.date || e.start);\n  return d >= now && d <= weekFromNow;\n}).sort((a, b) => new Date(a.date || a.start) - new Date(b.date || b.start));\n\n// Overdue tasks\nconst overdue = tasks.filter(t => {\n  if (t.status === 'done') return false;\n  const due = new Date(t.due);\n  return due < now;\n});\n\n// Meds due today\nconst medsToday = meds.filter(m => {\n  if (!m.nextDose) return true;\n  const next = new Date(m.nextDose);\n  return next.toDateString() === now.toDateString();\n});\n\n// Bills due within 7 days\nconst billsDue = bills.filter(b => {\n  if (b.status === 'paid') return false;\n  const due = new Date(b.due);\n  return due >= now && due <= weekFromNow;\n});\n\nreturn {\n  json: {\n    action: action,\n    date: now.toISOString(),\n    upcoming_events: upcoming,\n    overdue_tasks: overdue,\n    meds_today: medsToday,\n    bills_due: billsDue,\n    summary: {\n      events_this_week: upcoming.length,\n      overdue_tasks: overdue.length,\n      meds_due: medsToday.length,\n      bills_due: billsDue.length\n    },\n    family: calData.family || []\n  }\n};"
+      },
+      "id": "process-cal-1",
+      "name": "Process Calendar Data",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [710, 300]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "respond-cal-1",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [940, 300]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          { "node": "Get PuffPAI Calendar", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Get PuffPAI Calendar": {
+      "main": [
+        [
+          { "node": "Process Calendar Data", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Process Calendar Data": {
+      "main": [
+        [
+          { "node": "Respond to Webhook", "type": "main", "index": 0 }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "tags": [
+    { "name": "puffpai" },
+    { "name": "calendar" },
+    { "name": "automation" }
+  ]
+}

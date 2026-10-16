@@ -1,0 +1,1 @@
+{"name":"s","packageManager":"pnpm@9.1.0+sha512.abc","scripts":{"start":"vite --port 5544","build":"vite build"},"devDependencies":{"vite":"5"}}

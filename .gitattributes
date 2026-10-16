@@ -1,0 +1,18 @@
+# Shell scripts must keep LF even when checked out on Windows: bash refuses a
+# script whose shebang line ends in CR, and install.sh is also run from WSL.
+*.sh text eol=lf
+
+# Vendored binary assets — never line-ending-convert these.
+*.glb binary
+*.woff2 binary
+*.woff binary
+*.ttf binary
+*.otf binary
+dashboard/public/vendor/js/*.js -text
+
+# Windows batch files keep CRLF: cmd.exe misreads some lines of an LF-only one.
+*.cmd text eol=crlf
+
+# Test fixtures are byte-exact inputs (licence texts split on blank lines,
+# recorded answers): never line-ending-convert them on a Windows checkout.
+tests/fixtures/** -text

@@ -1,0 +1,46 @@
+{
+ "goal_id": "garden",
+ "timing": {
+  "wall_s": 3.12,
+  "first_token_s": 0.06,
+  "first_job_s": 0,
+  "load_s": 0.0,
+  "prompt_tokens": 217,
+  "prompt_s": 0.04,
+  "out_tokens": 144,
+  "gen_s": 3.06,
+  "tok_per_s": 47.1,
+  "done_reason": "stop"
+ },
+ "parsed": {
+  "kind": "garden helper",
+  "asked": [
+   "remind me when to water",
+   "tell me what to plant each month",
+   "help me figure out what is eating my kale"
+  ],
+  "jobs": [
+   {
+    "name": "Watering schedule",
+    "does": "Suggest optimal watering times for plants"
+   },
+   {
+    "name": "Monthly planting guide",
+    "does": "Provide planting suggestions for each month"
+   },
+   {
+    "name": "Pest identification",
+    "does": "Identify and suggest solutions for garden pests"
+   },
+   {
+    "name": "Soil health monitor",
+    "does": "Check soil moisture and nutrient levels"
+   },
+   {
+    "name": "Weather updates",
+    "does": "Notify about weather changes affecting plant growth"
+   }
+  ]
+ },
+ "recall": 0.5714285714285714
+}

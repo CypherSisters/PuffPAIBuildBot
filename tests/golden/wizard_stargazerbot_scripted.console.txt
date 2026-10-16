@@ -1,0 +1,208 @@
+BuildBot, from PuffPAI version <version>
+
+Welcome to BuildBot. Let's make your bot together.
+First I will show you what this computer has and which thinking model fits it.
+Then three short questions, and one plan to say yes to.
+
+Checking this computer...
+
+
+Let's see what we're working with here
+--------------------------------------
+Before any questions, here is what BuildBot found on this computer. Nothing has
+been downloaded or changed.
+
+  Memory: 32 GB
+  Processor: Golden Reference CPU, 8 cores
+  Graphics card: none, so the processor does the thinking
+  Free disk space: 200 GB free of 500 GB
+  The internet: not reachable, so nothing is downloaded while we build
+  Ollama: not answering at http://localhost:11434 yet. It is the free program
+    that runs the thinking model, and your bot needs it running to think.
+
+The thinking model I recommend for this computer: Qwen2.5 7B
+(qwen2.5:7b-instruct), 5 GB download.
+  The internet is not reachable, so it cannot be downloaded now. This computer
+  has 32 GB of memory and this model runs well from 16 GB, so it fits with room
+  to spare. It still uses tools, more simply than a bigger model.
+  Good for: a good everyday helper, best with one request at a time.
+
+  Press Enter to go on.
+  >
+
+Your bot
+--------
+
+What kind of bot do you want? Say it in your own words.
+  For example: a garden helper for my vegetable beds, or a bot that knows every
+  dinosaur.
+  Press Enter to skip.
+  > a stargazer bot for my telescopes and space
+
+Its name
+--------
+
+What should we call it?
+  Press Enter to use StargazerBot, or type a name you like.
+  > NebulaBot
+
+How old are you? Only needed if you are under 13, so I can use simpler words.
+Everyone else can leave it empty.
+  Only a rough age group is kept, never the number.
+  > 10
+
+Finding out what a stargazer bot needs
+Reading what you wrote ... done
+From your words: 0 things
+Your bot's brain did not answer in time. So this list comes from your own
+words. You can add more below.
+
+Finding out what a stargazer bot needs
+--------------------------------------
+Here is what a stargazer bot needs. Untick anything you do not want. Or add
+your own.
+
+[+] Add something in your own words
+
+This build does not use the internet. So BuildBot looks only on this computer.
+  Type numbers to tick or untick them, like 2 7. Type "add" to add your own.
+  Press Enter to start looking.
+  >
+
+Looking for things your bot can use
+No jobs to check against, so these come from BuildBot's own lists: 3 found
+
+Your computer has 32 GB of memory.
+The internet does not work here. So we will not download anything.
+
+
+Here is the plan for NebulaBot
+------------------------------
+Nothing has happened yet. Read the plan. Then say if it looks good.
+
+How it thinks
+  1. Not included (you can add it): The brain: qwen2.5:7b-instruct - the
+     internet is not working now
+     Not on this computer, and this build is not downloading anything. This
+     brain does one job at a time. Ask for one thing per message and it will do
+     it well; a chain of tasks in one breath will lose a step.
+     Without a brain, NebulaBot cannot talk yet.
+  7 helpers work inside NebulaBot. You can meet them later on the Agent Team
+    page.
+
+Updates it can send you
+  Nothing here yet.
+
+What it will know
+  2. Not included (you can add it): Astronomy Stack Exchange - about 187 MB,
+     the internet is not working now
+  3. Not included (you can add it): Space Exploration Stack Exchange - about
+     379 MB, the internet is not working now
+  4. Not included (you can add it): Wikipedia articles about stargazer - up to
+     25 MB, the internet is not working now
+
+Websites and services it may use
+  5. Not included (you can add it): Weather forecast - the internet is not
+     working now
+  6. Not included (you can add it): Web search - the internet is not working
+     now
+
+Your private stuff
+  Kept in a locked vault on this computer. Only your PIN opens it, and the PIN
+    never leaves this computer. You choose it right after you say yes.
+  Keep personal details out of saved chats. Phone numbers, home addresses,
+    birthdays, ID and card numbers are taken out before a chat is saved and put
+    in the vault, even while it is locked. Saved chats are not encrypted.
+  The AI model runs on this computer. What you type stays on this computer.
+
+Your gadgets
+  Nothing here yet.
+
+How it looks
+  7. Not included (you can add it): Cosmic Night: bright purple on white by
+     day, on dark purple at night - off until you switch it on
+
+8. Internet: Only the services listed above
+
+Nothing will be downloaded.
+Only what you say yes to leaves your computer.
+When you press Looks good, it looks for each job on clawhub.ai, skills.sh,
+GitHub, nousresearch.github.io, registry.modelcontextprotocol.io, Codeberg,
+npm, pypi.org, Hugging Face, and they stay on so your bot can find more later.
+After NebulaBot is made, everything outside is off until you switch it on.
+
+  1) Looks good
+  2) Change something
+  Press Enter for "Looks good".
+  Or type 2 to change something.
+  >
+
+Great! Building NebulaBot now.
+
+Your secret lock
+----------------
+What this is: NebulaBot keeps your private things locked up. You pick where it
+  lives. You pick the PIN.
+
+Where should your vault live?
+  Press Enter to keep it on this computer.
+  1) On this computer (recommended)
+  2) On a drive or folder I choose
+  3) I already have a BuildBot vault
+  Type a number. Press Enter for 1) On this computer (recommended).
+  >
+
+Which folder?
+  Only if you picked your own folder. Type the whole path, like E:\PuffPAI
+  Vault.
+  Press Enter to skip.
+  >
+
+Pick a PIN
+  Use at least 10 numbers. Do not use easy ones like 1234567890. If you already
+  have a vault, type its PIN.
+  What you type stays hidden. Press Enter to skip.
+
+Type it again
+  Both have to match.
+  What you type stays hidden. Press Enter to skip.
+
+Who should do Toolsmith's installs?
+  1. This computer (private, slower)
+  2. Anthropic (faster, your choice)
+Pick 1 or 2 [1]:
+Toolsmith uses the model on this computer. You can change it in Settings.
+
+Now building NebulaBot. This can take a while.
+
+How to start it
+---------------
+Start it with puffpai start; 3 things are still missing.
+Where this build got to: Setup finished, but it is not ready yet: the brain is
+  missing. This build is set to use 'qwen2.5:7b-instruct', which is not on
+  Ollama at http://localhost:11434 yet. Do this first, because nothing else can
+  answer until it is done: ollama pull qwen2.5:7b-instruct
+Open your bot: puffpai start
+It opens: http://127.0.0.1:3003/ in your web browser
+Let your first device in: the first time, the page asks for a pairing code;
+  puffpai start shows a fresh one each time it starts.
+What it can do: a stargazer bot for my telescopes and space: Puts together a
+  list (NASA Image and Video Library)
+Not connected yet: Work with telescope and sky feeds - nothing in this build
+  does that yet. It can be added later.
+Your bot says: Hi! I'm NebulaBot. Ask me anything about stargazer, or ask "what
+  can you do?" to see everything I have for you.
+Proof it works: Of 5 checks: 3 passed, 1 found something missing, 1 did not
+  apply to this build. Once it is running, ask it to prove itself: puffpai
+  prove
+Still to do: The brain this build needs is not downloaded.
+  'qwen2.5:7b-instruct' is not on Ollama at http://localhost:11434 yet.
+  To fix it, run: ollama pull qwen2.5:7b-instruct
+Still to do: Knowledge setup was skipped. No source was offered and none was
+  chosen, so this build has only its base model and whatever is already in its
+  knowledge folder.
+  To fix it, run: puffpai setup
+
+
+Your pairing code for the first device: <code>. It works until <clock>;
+after that, puffpai start shows a fresh one.

@@ -1,0 +1,415 @@
+{
+  "schema": "catalog_index/v1",
+  "_maintainer_note": "One row per outside library BuildBot can look through for knowledge. A row is a promise about code, so it must say whether the code exists: 'adapter_built': true means puffpai.catalogs has a reader for it that the tests exercise; false means the row is here so the product can say 'not searched yet' instead of pretending. Results from any library are CANDIDATES only. Nothing is downloaded until the owner has seen the size, the license and what it is, and said yes. A library with no per-item license gets a 'license_rules' table keyed on its own category and author fields; an item that matches no rule is shown with 'license not known' and is never downloaded (evidence or silence). Every license rule records the page it was read on and the date. A rule that could not be confirmed is left out (PhET changed its terms in 2026, so its books show 'license not known'). Hosts: 'search_hosts' are asked only when the owner types a search (never by the wizard on its own, which reads the dated snapshot instead); 'download_hosts' are the first hop of a download; mirror hosts are never listed here because they rotate - a download may only be redirected to a mirror that the file's own .meta4 names, and the bytes are then checked against the SHA-256 in that same .meta4. Rows for live-data and integration lists (api_seeds, apis_guru, public_apis, ha_integrations, mcp_registry): results are candidates only; the wizard and the discovery route read the newest dated snapshot on disk and never go online; a refresh happens only when the owner runs `puffpai catalogs refresh` and says yes, and may reach only that row's search_hosts.",
+  "catalogs": [
+    {
+      "id": "kiwix",
+      "label": "Kiwix library (offline Wikipedia, Q&A sites, and more)",
+      "adapter": "puffpai.catalogs.kiwix_opds",
+      "adapter_built": true,
+      "status": "live",
+      "search_url": "https://opds.library.kiwix.org/catalog/v2/entries",
+      "search_hosts": [
+        "opds.library.kiwix.org"
+      ],
+      "download_hosts": [
+        "lb.download.kiwix.org"
+      ],
+      "mirror_rule": "Follow a redirect only to a mirror named in that file's .meta4, then check the SHA-256 from the same .meta4.",
+      "robots": "opds.library.kiwix.org and download.kiwix.org publish 'Disallow: /' for crawlers. BuildBot does not crawl them. The wizard reads the shipped dated snapshot and never asks the live listing. The live listing is asked only on a person's behalf: when the owner types a search (at most 4 requests, one per search word, each answer kept for live_lookup.cache_seconds) or says yes to one download (one request to find the newest issue of that book). That is a client lookup like the Kiwix apps make, not a crawl, so robots.txt is not applied to those requests. Requests to one host are at least rate_limit_seconds apart and carry user_agent. The .meta4 file and the download go through lb.download.kiwix.org (no robots rules published) and the mirrors the .meta4 names, and the fetcher checks robots there. OWNER DECISION PENDING (flagged 2026-09-23): set live_lookup.allowed to false to stop every live listing request; searches then use the saved list and downloads use the saved list's .meta4 address.",
+      "live_lookup": {
+        "allowed": true,
+        "cache_seconds": 600
+      },
+      "rate_limit_seconds": 1.0,
+      "user_agent": "PuffPAI-BuildBot/0.1.0-alpha (+https://github.com/CypherSisters/PuffPAIBuildBot)",
+      "snapshot": "config/catalog_snapshots/kiwix_opds_eng_2026-09-23.json",
+      "license_rules": [
+        {
+          "category": "wikipedia",
+          "authors": [
+            "Wikipedia"
+          ],
+          "license": "CC-BY-SA-4.0",
+          "license_url": "https://en.wikipedia.org/wiki/Wikipedia:Copyrights",
+          "license_checked": "2026-08-29",
+          "commercial_use": true
+        },
+        {
+          "category": "stack_exchange",
+          "authors": [
+            "Stack Exchange"
+          ],
+          "license": "CC-BY-SA-4.0",
+          "license_url": "https://stackoverflow.com/help/licensing",
+          "license_checked": "2026-08-29",
+          "commercial_use": true
+        },
+        {
+          "category": "wikibooks",
+          "authors": [
+            "Wikibooks"
+          ],
+          "license": "CC-BY-SA-4.0",
+          "license_url": "https://foundation.wikimedia.org/wiki/Policy:Terms_of_Use",
+          "license_checked": "2026-09-23",
+          "commercial_use": true
+        },
+        {
+          "category": "wikiversity",
+          "authors": [
+            "Wikiversity"
+          ],
+          "license": "CC-BY-SA-4.0",
+          "license_url": "https://foundation.wikimedia.org/wiki/Policy:Terms_of_Use",
+          "license_checked": "2026-09-23",
+          "commercial_use": true
+        },
+        {
+          "category": "wikivoyage",
+          "authors": [
+            "Wikivoyage"
+          ],
+          "license": "CC-BY-SA-4.0",
+          "license_url": "https://foundation.wikimedia.org/wiki/Policy:Terms_of_Use",
+          "license_checked": "2026-09-23",
+          "commercial_use": true
+        },
+        {
+          "category": "wiktionary",
+          "authors": [
+            "Wiktionary"
+          ],
+          "license": "CC-BY-SA-4.0",
+          "license_url": "https://foundation.wikimedia.org/wiki/Policy:Terms_of_Use",
+          "license_checked": "2026-09-23",
+          "commercial_use": true
+        },
+        {
+          "category": "wikiquote",
+          "authors": [
+            "Wikiquote"
+          ],
+          "license": "CC-BY-SA-4.0",
+          "license_url": "https://foundation.wikimedia.org/wiki/Policy:Terms_of_Use",
+          "license_checked": "2026-09-23",
+          "commercial_use": true
+        },
+        {
+          "category": "wikisource",
+          "authors": [
+            "Wikisource"
+          ],
+          "license": "CC-BY-SA-4.0",
+          "license_url": "https://foundation.wikimedia.org/wiki/Policy:Terms_of_Use",
+          "license_checked": "2026-09-23",
+          "commercial_use": true
+        },
+        {
+          "category": "vikidia",
+          "authors": [
+            "Vikidia"
+          ],
+          "license": "CC-BY-SA-3.0",
+          "license_url": "https://en.vikidia.org/w/api.php?action=query&meta=siteinfo&siprop=rightsinfo",
+          "license_checked": "2026-09-23",
+          "commercial_use": true,
+          "note": "Read from the site itself: Creative Commons Attribution-Share Alike 3.0."
+        },
+        {
+          "category": "gutenberg",
+          "authors": [
+            "gutenberg.org"
+          ],
+          "license": "PublicDomain-US",
+          "license_url": "https://www.gutenberg.org/policy/license.html",
+          "license_checked": "2026-09-23",
+          "commercial_use": null,
+          "note": "Public domain in the USA; the Project Gutenberg name is a trademark with its own terms, so selling needs a check first."
+        },
+        {
+          "category": "ted",
+          "authors": [
+            "TED"
+          ],
+          "license": "CC-BY-NC-ND-4.0",
+          "license_url": "https://www.ted.com/about/our-organization/our-policies-terms/ted-talks-usage-policy",
+          "license_checked": "2026-09-23",
+          "commercial_use": false,
+          "note": "No derivatives and no commercial use."
+        },
+        {
+          "category": "iFixit",
+          "authors": [
+            "iFixit"
+          ],
+          "license": "CC-BY-NC-SA-3.0",
+          "license_url": "https://www.ifixit.com/Info/Licensing",
+          "license_checked": "2026-08-29",
+          "commercial_use": false
+        }
+      ],
+      "general_reference": [
+        {
+          "book": "vikidia_en_all",
+          "audience": "kids",
+          "why": "An encyclopedia written for children: it covers this subject among many others."
+        },
+        {
+          "book": "wikipedia_en_all",
+          "audience": "general",
+          "why": "A general encyclopedia, all of English Wikipedia: it covers this subject among everything else."
+        }
+      ],
+      "audience": {
+        "kids_categories": [
+          "vikidia"
+        ],
+        "kids_words": [
+          "wikijunior",
+          "for children",
+          "for kids"
+        ],
+        "technical_categories": [
+          "stack_exchange"
+        ],
+        "technical_name_prefixes": [
+          "devdocs_"
+        ],
+        "note": "Audience only changes the ORDER results are shown in (a young builder sees books written for children first). Nothing is ever hidden because of it."
+      },
+      "interview_packs": {
+        "_note": "Interview pack picks mapped onto downloads with a confirmed license: ids on BuildBot's own list, or kiwix: book ids. A pack not listed here has no download BuildBot can offer (its book's license is not confirmed) and the owner is told so.",
+        "pack:wikipedia": [
+          "kiwix_wikipedia_en_nopic"
+        ],
+        "pack:stackexchange_science": [
+          "kiwix_astronomy_stackexchange",
+          "kiwix_space_stackexchange"
+        ],
+        "pack:wikivoyage": [
+          "kiwix:wikivoyage_en_all:nopic"
+        ],
+        "pack:knots": [
+          "kiwix:wikipedia_en_knots:maxi"
+        ]
+      }
+    },
+    {
+      "id": "wikipedia_rest",
+      "label": "Wikipedia articles, one at a time",
+      "adapter": null,
+      "adapter_built": false,
+      "status": "not_built",
+      "search_url": "https://en.wikipedia.org/api/rest_v1/",
+      "search_hosts": [],
+      "download_hosts": [],
+      "why_not_yet": "No reader for this library ships in this build yet, so it is never searched."
+    },
+    {
+      "id": "openstax",
+      "label": "OpenStax free textbooks",
+      "kind": "knowledge",
+      "adapter": "puffpai.catalogs.openstax",
+      "adapter_built": true,
+      "status": "live",
+      "search_url": "https://openstax.org/apps/cms/api/v2/pages/?type=books.Book",
+      "search_hosts": [
+        "openstax.org"
+      ],
+      "download_hosts": [
+        "openstax.org"
+      ],
+      "robots": "openstax.org's robots.txt allows the content API and the book pages; each textbook's page list is read from the sitemap OpenStax publishes for it. The PDF editions (about 160 MB) are never fetched.",
+      "license_rule": "Per book: the content API's license_name and license_version, mapped by code to an SPDX id (CC-BY-4.0, CC-BY-NC-SA-4.0). A non-commercial book is offered and labelled 'free for personal use only', fetched by the owner's computer, never ticked by default and never included when a build is shared. A book with no license stated is not offered.",
+      "rate_limit_seconds": 1.0,
+      "user_agent": "PuffPAI-BuildBot/0.1.0-alpha (+https://github.com/CypherSisters/PuffPAIBuildBot)",
+      "snapshot": "config/catalog_snapshots/openstax_books_2026-09-24.json",
+      "limits": {
+        "max_pages": 600,
+        "max_book_mb": 25
+      }
+    },
+    {
+      "id": "gutenberg",
+      "label": "Project Gutenberg books",
+      "kind": "knowledge",
+      "adapter": "puffpai.catalogs.gutendex",
+      "adapter_built": true,
+      "status": "live",
+      "search_url": "https://gutendex.com/books/",
+      "search_hosts": [
+        "gutendex.com"
+      ],
+      "download_hosts": [
+        "www.gutenberg.org"
+      ],
+      "robots": "gutendex.com asks crawlers to stay out of /books/. BuildBot does not crawl it: the search API is asked only when the owner searches (at most 2 requests, one per word, kept 10 minutes), like any Gutendex client. Books come from www.gutenberg.org/cache/epub/, which its robots.txt allows.",
+      "license_rule": "Only books Gutendex marks copyright=false are offered from the live search; a book whose Gutenberg header says it is copyrighted is refused at fetch time. Recorded as LicenseRef-Public-Domain-US (public domain in the USA). Gutenberg's header and licence footer are removed before learning; the book keeps a credit note naming Project Gutenberg and the ebook number.",
+      "rate_limit_seconds": 1.0,
+      "user_agent": "PuffPAI-BuildBot/0.1.0-alpha (+https://github.com/CypherSisters/PuffPAIBuildBot)",
+      "snapshot": "config/catalog_snapshots/gutenberg_catalog_en_2026-09-24.json.gz",
+      "snapshot_note": "Made from https://www.gutenberg.org/cache/epub/feeds/pg_catalog.csv on 2026-09-24: English books, literature (Library of Congress class P) left out.",
+      "limits": {
+        "max_proposed": 3,
+        "max_book_mb": 25
+      }
+    },
+    {
+      "id": "wikibooks",
+      "label": "Wikibooks how-to books",
+      "kind": "knowledge",
+      "adapter": "puffpai.catalogs.wikibooks",
+      "adapter_built": true,
+      "status": "live",
+      "search_url": "https://en.wikibooks.org/w/api.php",
+      "search_hosts": [
+        "en.wikibooks.org"
+      ],
+      "download_hosts": [
+        "en.wikibooks.org"
+      ],
+      "robots": "Asked only through the site's own API (w/api.php) with a named User-Agent and maxlag, one request at a time: a search when the owner looks for books, then one request per page of a book she said yes to. Probed 2026-10-05.",
+      "license_rule": "The whole site is CC BY-SA 4.0 (read from the site's own siteinfo rightsinfo on 2026-10-05): free to use, even in something you sell, with credit. A book is listed only when its own title holds the search words.",
+      "rate_limit_seconds": 1.0,
+      "user_agent": "PuffPAI-BuildBot/0.1.0-alpha (+https://github.com/CypherSisters/PuffPAIBuildBot)",
+      "limits": {
+        "max_proposed": 3,
+        "max_pages": 300,
+        "max_book_mb": 25
+      }
+    },
+    {
+      "id": "internet_archive",
+      "label": "Internet Archive public-domain books",
+      "kind": "knowledge",
+      "adapter": "puffpai.catalogs.internet_archive",
+      "adapter_built": true,
+      "status": "live",
+      "search_url": "https://archive.org/advancedsearch.php",
+      "search_hosts": [
+        "archive.org"
+      ],
+      "download_hosts": [
+        "archive.org"
+      ],
+      "robots": "archive.org's robots.txt disallows only /control/ and /report/ (read 2026-10-05). The search API is asked only when the owner looks for books; a book's text is read once from archive.org/stream/<id>/<id>_djvu.txt (served by archive.org itself, no hop to another host).",
+      "license_rule": "Texts only, marked possible-copyright-status NOT_IN_COPYRIGHT by the Archive's scanning centres, published in or before the current year minus 96 (public domain in the USA), in English. A licence an uploader typed is never trusted (anyone can mark an upload public domain). Recorded as LicenseRef-Public-Domain-US.",
+      "rate_limit_seconds": 1.0,
+      "user_agent": "PuffPAI-BuildBot/0.1.0-alpha (+https://github.com/CypherSisters/PuffPAIBuildBot)",
+      "limits": {
+        "max_proposed": 3,
+        "max_book_mb": 25
+      }
+    },
+    {
+      "id": "api_seeds",
+      "label": "Our checked list of free live-info websites",
+      "kind": "live_data",
+      "adapter": "puffpai.catalogs.api_seeds",
+      "adapter_built": true,
+      "status": "live",
+      "source": "config/catalog_seeds/apis.json",
+      "search_hosts": [],
+      "check_rule": "Each row's sample address is checked on that row's own host only (one small GET, 512 KB cap).",
+      "license_rule": "Per row: license or plain terms, and commercial_ok.",
+      "rate_limit_seconds": 1.0,
+      "user_agent": "PuffPAI-BuildBot/0.1.0-alpha (+https://github.com/CypherSisters/PuffPAIBuildBot)",
+      "snapshot_prefix": "api_seeds_check"
+    },
+    {
+      "id": "apis_guru",
+      "label": "APIs.guru directory",
+      "kind": "live_data",
+      "adapter": "puffpai.catalogs.apis_guru",
+      "adapter_built": true,
+      "status": "live",
+      "search_url": "https://api.apis.guru/v2/list.json",
+      "search_hosts": [
+        "api.apis.guru"
+      ],
+      "license_rule": "The directory is CC0-1.0. Each listed service states its own license in info.license, or none (shown as 'not stated').",
+      "rate_limit_seconds": 1.0,
+      "user_agent": "PuffPAI-BuildBot/0.1.0-alpha (+https://github.com/CypherSisters/PuffPAIBuildBot)",
+      "snapshot_prefix": "apis_guru"
+    },
+    {
+      "id": "public_apis",
+      "label": "public-apis list",
+      "kind": "live_data",
+      "adapter": "puffpai.catalogs.public_apis",
+      "adapter_built": true,
+      "status": "live",
+      "search_url": "https://raw.githubusercontent.com/public-apis/public-apis/master/README.md",
+      "search_hosts": [
+        "raw.githubusercontent.com"
+      ],
+      "license_rule": "The list is MIT. It gives no license for each listed service, so every row shows 'not stated'.",
+      "rate_limit_seconds": 1.0,
+      "user_agent": "PuffPAI-BuildBot/0.1.0-alpha (+https://github.com/CypherSisters/PuffPAIBuildBot)",
+      "snapshot_prefix": "public_apis"
+    },
+    {
+      "id": "ha_integrations",
+      "label": "Home Assistant connections list",
+      "kind": "integration",
+      "adapter": "puffpai.catalogs.ha_integrations",
+      "adapter_built": true,
+      "status": "live",
+      "search_url": "https://raw.githubusercontent.com/home-assistant/core/master/homeassistant/generated/integrations.json",
+      "search_hosts": [
+        "raw.githubusercontent.com"
+      ],
+      "license_rule": "Home Assistant core is Apache-2.0. The list's iot_class says whether a connection stays on the home network (local_*) or goes through the maker's online service (cloud_*).",
+      "rate_limit_seconds": 1.0,
+      "user_agent": "PuffPAI-BuildBot/0.1.0-alpha (+https://github.com/CypherSisters/PuffPAIBuildBot)",
+      "snapshot_prefix": "ha_integrations"
+    },
+    {
+      "id": "mcp_registry",
+      "label": "MCP Registry (outside tools)",
+      "kind": "integration",
+      "adapter": "puffpai.catalogs.mcp_registry",
+      "adapter_built": true,
+      "status": "live",
+      "search_url": "https://registry.modelcontextprotocol.io/v0/servers?version=latest&limit=100",
+      "search_hosts": [
+        "registry.modelcontextprotocol.io"
+      ],
+      "license_rule": "The registry lists servers but not their licenses; every row shows 'not stated'. The registry says it is a preview and does not review code. Nothing listed is installed or run by this build: a server that runs as code needs a code sandbox; a remote server sends your data to its maker.",
+      "rate_limit_seconds": 1.0,
+      "user_agent": "PuffPAI-BuildBot/0.1.0-alpha (+https://github.com/CypherSisters/PuffPAIBuildBot)",
+      "snapshot_prefix": "mcp_registry"
+    },
+    {
+      "id": "wikipedia_topics",
+      "label": "Wikipedia topic books",
+      "kind": "knowledge",
+      "adapter": "puffpai.catalogs.wikipedia_topics",
+      "adapter_built": true,
+      "status": "live",
+      "search_url": "https://en.wikipedia.org/w/api.php",
+      "search_hosts": [
+        "en.wikipedia.org",
+        "simple.wikipedia.org"
+      ],
+      "download_hosts": [
+        "en.wikipedia.org",
+        "simple.wikipedia.org"
+      ],
+      "robots": "Wikipedia's robots.txt disallows /w/ for crawlers. BuildBot does not crawl: it uses the documented API for one topic book the owner picked, following Wikimedia's API etiquette (named User-Agent, maxlag=5 with wait-and-retry, at least 1 second between requests, one request at a time).",
+      "license_rule": "Article text is CC-BY-SA-4.0 (commercial use allowed with credit and share-alike). Every page of a topic book records its article title, address and revision id.",
+      "rate_limit_seconds": 1.0,
+      "user_agent": "PuffPAI-BuildBot/0.1.0-alpha (+https://github.com/CypherSisters/PuffPAIBuildBot)",
+      "limits": {
+        "max_articles": 300,
+        "max_pool": 600,
+        "max_book_mb": 25,
+        "default_tick_mb": 50
+      },
+      "audience": {
+        "note": "Simple English Wikipedia is listed first for a builder under 13. Order only; nothing is hidden."
+      }
+    }
+  ]
+}

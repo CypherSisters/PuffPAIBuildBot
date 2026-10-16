@@ -1,0 +1,202 @@
+{
+"servers": [
+{
+"server": {
+"$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+"name": "com.venuesabroad/wedding-venues-portugal",
+"description": "Wedding venues and planners in Portugal: capacity, rooms, catering, each fact with its source.",
+"title": "Venues Abroad",
+"version": "1.0.0",
+"websiteUrl": "https://venuesabroad.com",
+"remotes": [
+{
+"type": "streamable-http",
+"url": "https://venuesabroad.com/mcp"
+}
+]
+},
+"_meta": {
+"io.modelcontextprotocol.registry/official": {
+"status": "active",
+"statusChangedAt": "2026-09-30T18:54:04.333941Z",
+"publishedAt": "2026-09-30T18:54:04.333941Z",
+"updatedAt": "2026-09-30T18:54:04.333941Z",
+"isLatest": true
+}
+}
+},
+{
+"server": {
+"$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+"name": "com.wedding-seat/wedding-planner",
+"description": "Anonymous, no-login wedding planning: create a project, add guests, auto-generate a seating plan.",
+"title": "Wedding Seat",
+"repository": {
+"url": "https://github.com/naturalnet/wedding-seat-app",
+"source": "github",
+"subfolder": "mcp-server"
+},
+"version": "1.0.0",
+"websiteUrl": "https://wedding-seat.com",
+"remotes": [
+{
+"type": "streamable-http",
+"url": "https://mcp.wedding-seat.com/mcp"
+}
+]
+},
+"_meta": {
+"io.modelcontextprotocol.registry/official": {
+"status": "active",
+"statusChangedAt": "2026-07-16T07:43:22.832746Z",
+"publishedAt": "2026-07-16T07:43:22.832746Z",
+"updatedAt": "2026-07-16T07:43:22.832746Z",
+"isLatest": true
+}
+}
+},
+{
+"server": {
+"$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+"name": "com.weddingcostchecker/site",
+"description": "Wedding Cost Checker: the site's own MCP server — dataset, enquiry (enquiry = a human handoff,...",
+"repository": {
+"url": "https://github.com/joeetdev/venture-estate",
+"source": "github"
+},
+"version": "1.0.0",
+"websiteUrl": "https://weddingcostchecker.com",
+"remotes": [
+{
+"type": "streamable-http",
+"url": "https://weddingcostchecker.com/mcp"
+}
+]
+},
+"_meta": {
+"io.modelcontextprotocol.registry/official": {
+"status": "active",
+"statusChangedAt": "2026-09-12T14:22:50.496808Z",
+"publishedAt": "2026-09-12T14:22:50.496808Z",
+"updatedAt": "2026-09-12T14:22:50.496808Z",
+"isLatest": true
+}
+}
+},
+{
+"server": {
+"$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+"name": "io.github.Sebastianrtj/nc-wedding-guide",
+"description": "Find NC wedding venues and vendors, plan costs, and prepare vendor inquiries.",
+"title": "NC Wedding Guide",
+"repository": {
+"url": "https://github.com/Sebastianrtj/nc-wedding-dreamscape",
+"source": "github"
+},
+"version": "1.1.0",
+"remotes": [
+{
+"type": "streamable-http",
+"url": "https://www.ncweddingguide.com/mcp"
+}
+]
+},
+"_meta": {
+"io.modelcontextprotocol.registry/official": {
+"status": "active",
+"statusChangedAt": "2026-09-02T01:42:42.233268Z",
+"publishedAt": "2026-09-02T01:42:42.233268Z",
+"updatedAt": "2026-09-02T01:42:42.233268Z",
+"isLatest": true
+}
+}
+},
+{
+"server": {
+"$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+"name": "wedding.aisle/aisle",
+"description": "Find wedding venues and vendors, estimate costs, and manage guests, events and wedding details.",
+"title": "Aisle",
+"version": "1.0.0",
+"websiteUrl": "https://aisle.wedding/mcp",
+"icons": [
+{
+"src": "https://aisle.wedding/icon-512.png",
+"mimeType": "image/png",
+"sizes": [
+"512x512"
+]
+}
+],
+"remotes": [
+{
+"type": "streamable-http",
+"url": "https://aisle.wedding/api/claude/mcp"
+}
+]
+},
+"_meta": {
+"io.modelcontextprotocol.registry/official": {
+"status": "active",
+"statusChangedAt": "2026-10-02T09:23:11.549207Z",
+"publishedAt": "2026-10-02T09:23:11.549207Z",
+"updatedAt": "2026-10-02T09:23:11.549207Z",
+"isLatest": true
+}
+}
+},
+{
+"server": {
+"$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+"name": "wedding.latido/latido",
+"description": "Search Hungarian wedding vendors and venues, check a date, estimate a budget, get the checklist.",
+"title": "Latido — wedding vendors & planning (Hungary)",
+"version": "0.1.0",
+"websiteUrl": "https://latido.wedding/en/ai",
+"remotes": [
+{
+"type": "streamable-http",
+"url": "https://latido.wedding/mcp"
+}
+]
+},
+"_meta": {
+"io.modelcontextprotocol.registry/official": {
+"status": "active",
+"statusChangedAt": "2026-08-20T07:14:37.533608Z",
+"publishedAt": "2026-08-20T07:14:37.533608Z",
+"updatedAt": "2026-08-20T07:14:37.533608Z",
+"isLatest": false
+}
+}
+},
+{
+"server": {
+"$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+"name": "wedding.latido/latido",
+"description": "Search Hungarian wedding vendors and venues, check a date, estimate a budget, get the checklist.",
+"title": "Latido — wedding vendors & planning (Hungary)",
+"version": "0.4.0",
+"websiteUrl": "https://latido.wedding/en/ai",
+"remotes": [
+{
+"type": "streamable-http",
+"url": "https://latido.wedding/mcp"
+}
+]
+},
+"_meta": {
+"io.modelcontextprotocol.registry/official": {
+"status": "active",
+"statusChangedAt": "2026-08-20T07:14:52.828208Z",
+"publishedAt": "2026-08-20T07:14:52.828208Z",
+"updatedAt": "2026-08-20T07:14:52.828208Z",
+"isLatest": true
+}
+}
+}
+],
+"metadata": {
+"count": 7
+}
+}

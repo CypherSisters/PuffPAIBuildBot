@@ -1,0 +1,111 @@
+{
+  "_note": "Fixture live-data Candidates (shared shape) for seven unrelated keyless public APIs. Each sample_endpoint was fetched once, live, on 2026-09-23 (HTTP 200, application/json); the reply is saved beside this file under samples/. License lines are the catalog notes from the research lanes, not re-verified here. Test data only: nothing in src/ reads this file.",
+  "goals": {
+    "G1": "I want a space bot that knows everything about space, shows me cool space stuff, and works with my smart telescope",
+    "G2": "I love dinosaurs, I want a bot that knows every dinosaur",
+    "G3": "Help me keep my 2014 Honda Civic running - maintenance, recalls, how-tos",
+    "G4": "A garden helper for my vegetable beds in Ohio",
+    "G5": "A knitting and crochet buddy with patterns and tips",
+    "G6": "A music bot that knows bands and albums"
+  },
+  "candidates": [
+    {
+      "id": "nasa_image_library", "kind": "live_data", "goal": "G1", "sample": "nasa.json",
+      "name": "NASA Image and Video Library",
+      "what_it_is": "Search NASA's public photos by subject.",
+      "source_catalog": "seed_live_apis",
+      "url": "https://images.nasa.gov/docs/images.nasa.gov_api_docs.pdf",
+      "host": "images-api.nasa.gov",
+      "sample_endpoint": "https://images-api.nasa.gov/search?q=saturn&media_type=image&page_size=5",
+      "auth": "none",
+      "license": "NASA media guidelines (most items not copyrighted)",
+      "commercial_ok": null, "size_bytes": null, "local_or_cloud": "cloud",
+      "needs": [], "match_terms": ["space", "nasa", "planets", "pictures"],
+      "verified_at": "2026-09-23"
+    },
+    {
+      "id": "noaa_swpc_kp", "kind": "live_data", "goal": "G1", "sample": "swpc.json",
+      "name": "NOAA Space Weather Kp Index",
+      "what_it_is": "How stirred up Earth's magnetic field is right now (higher means more chance of northern lights).",
+      "source_catalog": "seed_live_apis",
+      "url": "https://www.swpc.noaa.gov/products/planetary-k-index",
+      "host": "services.swpc.noaa.gov",
+      "sample_endpoint": "https://services.swpc.noaa.gov/products/noaa-planetary-k-index.json",
+      "auth": "none",
+      "license": "US Government work, public domain",
+      "commercial_ok": true, "size_bytes": null, "local_or_cloud": "cloud",
+      "needs": [], "match_terms": ["space", "aurora", "northern lights", "sky"],
+      "verified_at": "2026-09-23"
+    },
+    {
+      "id": "pbdb_taxa", "kind": "live_data", "goal": "G2", "sample": "pbdb.json",
+      "name": "Paleobiology Database",
+      "what_it_is": "Scientific records of fossil animals, including every named dinosaur group.",
+      "source_catalog": "seed_live_apis",
+      "url": "https://paleobiodb.org/data1.2/",
+      "host": "paleobiodb.org",
+      "sample_endpoint": "https://paleobiodb.org/data1.2/taxa/list.json?base_name=Tyrannosauridae&rank=genus&show=attr&limit=10",
+      "auth": "none",
+      "license": "CC-BY-4.0",
+      "commercial_ok": true, "size_bytes": null, "local_or_cloud": "cloud",
+      "needs": [], "match_terms": ["dinosaur", "dinosaurs", "fossil", "paleontology"],
+      "verified_at": "2026-09-23"
+    },
+    {
+      "id": "nhtsa_recalls", "kind": "live_data", "goal": "G3", "sample": "nhtsa.json",
+      "name": "NHTSA Vehicle Recalls",
+      "what_it_is": "Official US safety recalls for a car make, model and year.",
+      "source_catalog": "seed_live_apis",
+      "url": "https://www.nhtsa.gov/nhtsa-datasets-and-apis",
+      "host": "api.nhtsa.gov",
+      "sample_endpoint": "https://api.nhtsa.gov/recalls/recallsByVehicle?make=honda&model=civic&modelYear=2014",
+      "auth": "none",
+      "license": "US Government work, public domain",
+      "commercial_ok": true, "size_bytes": null, "local_or_cloud": "cloud",
+      "needs": [], "match_terms": ["car", "recalls", "honda", "maintenance"],
+      "verified_at": "2026-09-23"
+    },
+    {
+      "id": "inaturalist_taxa", "kind": "live_data", "goal": "G4", "sample": "inat.json",
+      "name": "iNaturalist",
+      "what_it_is": "Plants and animals with photos from nature watchers.",
+      "source_catalog": "seed_live_apis",
+      "url": "https://api.inaturalist.org/v1/docs/",
+      "host": "api.inaturalist.org",
+      "sample_endpoint": "https://api.inaturalist.org/v1/taxa/autocomplete?q=tomato&per_page=5",
+      "auth": "none",
+      "license": "Per photo, Creative Commons (many non-commercial)",
+      "commercial_ok": false, "size_bytes": null, "local_or_cloud": "cloud",
+      "needs": [], "match_terms": ["garden", "vegetable", "plants", "tomato"],
+      "verified_at": "2026-09-23"
+    },
+    {
+      "id": "openlibrary_search", "kind": "live_data", "goal": "G5", "sample": "openlib.json",
+      "name": "Open Library",
+      "what_it_is": "Find books on a subject, with authors and years.",
+      "source_catalog": "seed_live_apis",
+      "url": "https://openlibrary.org/developers/api",
+      "host": "openlibrary.org",
+      "sample_endpoint": "https://openlibrary.org/search.json?q=knitting&fields=title,author_name,first_publish_year&limit=8",
+      "auth": "none",
+      "license": "Open book records (Internet Archive terms)",
+      "commercial_ok": null, "size_bytes": null, "local_or_cloud": "cloud",
+      "needs": [], "match_terms": ["knitting", "crochet", "books", "patterns"],
+      "verified_at": "2026-09-23"
+    },
+    {
+      "id": "musicbrainz_artists", "kind": "live_data", "goal": "G6", "sample": "mb.json",
+      "name": "MusicBrainz",
+      "what_it_is": "An open encyclopedia of bands, artists and albums.",
+      "source_catalog": "seed_live_apis",
+      "url": "https://musicbrainz.org/doc/MusicBrainz_API",
+      "host": "musicbrainz.org",
+      "sample_endpoint": "https://musicbrainz.org/ws/2/artist/?query=artist:beatles&fmt=json&limit=5",
+      "auth": "none",
+      "license": "CC0-1.0 (core data)",
+      "commercial_ok": true, "size_bytes": null, "local_or_cloud": "cloud",
+      "needs": [], "match_terms": ["music", "bands", "albums", "artists"],
+      "verified_at": "2026-09-23"
+    }
+  ]
+}

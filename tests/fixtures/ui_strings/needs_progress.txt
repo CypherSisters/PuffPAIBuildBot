@@ -1,0 +1,117 @@
+Finding out what your bot needs
+Finding out what a {kind} bot needs
+Reading what you wrote ...
+Reading what you wrote ... done
+From your words: {count} things
+Asking your bot's brain what {kind} bots usually need ...
+Asking your bot's brain what {kind} bots usually need ... {count} more
+Kept private, never searched: {words}
+Your bot's brain is slow on this computer, so BuildBot used your words and a short list.
+Your bot's brain is slow on this computer.
+So BuildBot used your words and a short list.
+Your bot's brain did not answer in time, so this list comes from your own words. You can add more below.
+Your bot's brain did not answer in time.
+So this list comes from your own words.
+You can add more below.
+Not searched unless you tick it:
+Here is what a {kind} bot needs. Untick anything you do not want, or add your own.
+Here is what a {kind} bot needs.
+Untick anything you do not want.
+Or add your own.
+Here is what your bot needs. Untick anything you do not want, or add your own.
+Here is what your bot needs.
+Say what kind of bot you want first.
+Finding out what your bot needs is not in this build yet.
+BuildBot has already started looking, so the list cannot change now. You can add more from the Add page later.
+BuildBot has already started looking.
+You can add more from the Add page later.
+you asked
+most {kind} bots have this
+you added
+Add something in your own words
+What else should it do? Say it in your own words.
+What else should it do?
+Which word may BuildBot search with? Type its number.
+Searching with: {subject}
+(a health word; choose "Only look on this computer" to keep it here)
+(a brand name)
+and these words for your jobs: {phrases}
+Searching with these words for your jobs: {phrases}
+BuildBot looks on this computer first, then asks {sources}.
+BuildBot looks only on this computer.
+Nothing else about you leaves this computer.
+Start looking
+Only look on this computer
+This build does not use the internet, so BuildBot looks only on this computer.
+This build does not use the internet.
+So BuildBot looks only on this computer.
+Type numbers to tick or untick (like 2 7), "add" to add your own, "words" to allow a held word, or press Enter to start looking. Type "here" to look only on this computer.
+Type numbers to tick or untick them, like 2 7.
+Type "add" to add your own.
+Type "words" to allow a held word.
+Press Enter to start looking.
+Type "here" to look only on this computer.
+Type numbers to tick or untick (like 2 7), "add" to add your own, or press Enter to start looking.
+Still finding out what your bot needs. Try again in a moment.
+Still finding out what your bot needs.
+Try again in a moment.
+Something went wrong while finding out what your bot needs, so the plan uses what BuildBot already knows.
+Something went wrong.
+So the plan uses what BuildBot already knows.
+Looking for things your bot can use
+Checking what fits your jobs ... {kept} kept, {left_out} left out
+Stopped looking to keep this quick.
+Something went wrong while looking. The plan shows what BuildBot could find on this computer.
+Something went wrong while looking.
+The plan shows what BuildBot found on this computer.
+What it will do
+Also found, look at it yourself:
+Did not get to look for "{job}" this time. You can look from the Add page.
+Did not get to look for "{job}" this time.
+You can look from the Add page.
+Needs the locked box, so it is off too.
+Apps and code
+Pictures
+The locked box
+That is not one of the jobs on the list.
+Only a word on the list can be allowed.
+That change could not be used. Nothing was changed.
+What your bot needs
+This page moves on by itself when it is done.
+This step could not be drawn.
+Add
+No answer from this computer.
+That was not accepted. Nothing was changed.
+To tick or untick several at once, type their numbers, like 2 7.
+You can type more than one number, like 2 7.
+Similar projects also have (tick to add):
+{name}    seen in {n} similar projects
+That is not one of the similar projects on the plan.
+Adding that is not in this build yet. Nothing was changed.
+BuildBot's reading helper is not on this computer. It lets BuildBot tell which finds really fit your jobs. Get it now? (83 MB, from the same place as when BuildBot was installed)
+Get it
+Not now
+Type yes to get it now, or press Enter for not now.
+Type yes to get it now.
+Press Enter for not now.
+Get BuildBot's reading helper (83 MB).
+Getting the reading helper is not in this build yet, so nothing was downloaded.
+Getting the reading helper is not in this build yet.
+So nothing was downloaded.
+The reading helper could not be got right now. Nothing else changed.
+The reading helper could not be got right now.
+Nothing else changed.
+Add it anyway
+Leave it out
+Add {name} anyway? Type yes or no.
+Windows needs its Linux feature turned on for {n} {things} you picked.
+Turn it on
+(Windows will ask for permission.) After that, restart the computer and open BuildBot. It will finish them then.
+Turn it on now? Type yes or no.
+Turn on Windows' Linux feature (WSL) for the locked box.
+Turning it on from here is not in this build yet. Nothing was changed.
+Go on without them for now
+Go on
+That did not work. Nothing was changed.
+(not included)
+What BuildBot found for this is now under "{job}".

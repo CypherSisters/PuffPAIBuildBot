@@ -1,0 +1,178 @@
+{
+ "source": "t2/design/corpus.json (recorded 2026-09-26, GitHub API via gh, read-only); tree facts only",
+ "rows": [
+  {
+   "full_name": "SubchiBeats/wedding-planner",
+   "recorded_mode": "static-web-app-prebuilt",
+   "expect": "static_web",
+   "license_reported": "MIT",
+   "license_actual": "MIT",
+   "root_files": [
+    ".gitignore",
+    "404.html",
+    "LICENSE",
+    "README.md",
+    "SUPABASE_SETUP.md",
+    "favicon.svg",
+    "index.html"
+   ],
+   "root_dirs": [
+    "assets"
+   ],
+   "n_code_files": 0,
+   "n_data_files": 3,
+   "package_json_build_script": false,
+   "index_html_probe": {
+    "path": "index.html",
+    "bytes": 130936,
+    "localStorage": true,
+    "script_src": 0
+   }
+  },
+  {
+   "full_name": "katie-bishop-7/WeddingPlanner",
+   "recorded_mode": "web-app-needs-build",
+   "expect": "web_build",
+   "license_reported": null,
+   "license_actual": null,
+   "root_files": [
+    ".gitignore",
+    "README.md",
+    "next.config.ts",
+    "package-lock.json",
+    "package.json",
+    "postcss.config.mjs",
+    "tsconfig.json"
+   ],
+   "root_dirs": [
+    "public",
+    "src"
+   ],
+   "n_code_files": 4,
+   "n_data_files": 9,
+   "package_json_build_script": true,
+   "index_html_probe": null
+  },
+  {
+   "full_name": "bripatch/plant-variety-database",
+   "recorded_mode": "data-or-template",
+   "expect": "data_template",
+   "license_reported": "NOASSERTION",
+   "license_actual": "CC-BY-4.0 (from LICENSE file)",
+   "root_files": [
+    ".gitignore",
+    "LICENSE",
+    "README.md"
+   ],
+   "root_dirs": [
+    "data",
+    "examples",
+    "submissions"
+   ],
+   "n_code_files": 1,
+   "n_data_files": 11,
+   "package_json_build_script": false,
+   "index_html_probe": null
+  },
+  {
+   "full_name": "pcboy/bread-baking-calculator",
+   "recorded_mode": "web-app-needs-build",
+   "expect": "web_build",
+   "license_reported": "WTFPL",
+   "license_actual": "WTFPL",
+   "root_files": [
+    ".babelrc",
+    ".gitignore",
+    "App.tsx",
+    "LICENSE",
+    "Makefile",
+    "README.md",
+    "entrypoint.tsx",
+    "enzyme.setup.ts",
+    "index.html",
+    "package.json",
+    "tsconfig.json",
+    "yarn.lock"
+   ],
+   "root_dirs": [
+    ".github",
+    "__tests__",
+    "assets",
+    "components",
+    "stores"
+   ],
+   "n_code_files": 12,
+   "n_data_files": 5,
+   "package_json_build_script": true,
+   "index_html_probe": {
+    "path": "index.html",
+    "bytes": 587,
+    "localStorage": false,
+    "script_src": 1
+   }
+  },
+  {
+   "full_name": "Tanq16/ExpenseOwl",
+   "recorded_mode": "server-app",
+   "expect": "other",
+   "license_reported": "MIT",
+   "license_actual": "MIT",
+   "root_files": [
+    ".gitignore",
+    "Dockerfile",
+    "LICENSE",
+    "README.md",
+    "go.mod",
+    "go.sum"
+   ],
+   "root_dirs": [
+    ".github",
+    "assets",
+    "cmd",
+    "internal",
+    "kubernetes",
+    "scripts"
+   ],
+   "n_code_files": 10,
+   "n_data_files": 11,
+   "package_json_build_script": false,
+   "index_html_probe": null
+  },
+  {
+   "full_name": "budgetzero/budgetzero",
+   "recorded_mode": "web-app-needs-build",
+   "expect": "web_build",
+   "license_reported": "AGPL-3.0",
+   "license_actual": "AGPL-3.0",
+   "root_files": [
+    ".babelrc",
+    ".editorconfig",
+    ".eslintrc.js",
+    ".gitignore",
+    ".prettierrc",
+    "Dockerfile",
+    "LICENSE",
+    "README.md",
+    "babel.config.js",
+    "cypress.config.js",
+    "jest.config.js",
+    "package-lock.json",
+    "package.json",
+    "renovate.json",
+    "vue.config.js"
+   ],
+   "root_dirs": [
+    ".github",
+    "build",
+    "nginx_conf",
+    "public",
+    "src",
+    "tests"
+   ],
+   "n_code_files": 51,
+   "n_data_files": 26,
+   "package_json_build_script": true,
+   "index_html_probe": null
+  }
+ ]
+}

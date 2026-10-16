@@ -1,0 +1,97 @@
+Asking your bot's brain what {kinds} usually need ... {n} more
+Asking your bot's brain what {kinds} usually need ...
+Your bot's brain did not answer in time, so this list comes from your own words. You can add more below.
+From your words: {n} {things}
+Your bot's brain is not set up yet, so this list comes from your own words. You can add more below.
+Kept private, never searched: {words}
+Reading what you wrote ...
+Reading what you wrote ... done
+Your bot's brain is slow on this computer, so BuildBot used your words and a short list.
+Your bot's brain is too small to help with this, so this list comes from your own words. You can add more below.
+Few people use it yet ({stars} {word}). Last changed {when}.
+About {size}.
+{stars} stars, last changed {when}.
+Checking what fits your jobs ... {kept} kept, {left} left out
+On this computer: {n} found
+Stopped looking to keep this quick.
+BuildBot builds it in the locked box first (about a minute).
+Runs in the locked box. Your bot can use it on files in a folder you choose.
+As a list your bot can read.
+Opens inside your bot. Its web requests to the internet are stopped unless you say yes.
+{name} ({where}, {reason})
+BuildBot found nothing ready-made it can add for this. Your bot's brain can still help with it in chat.
+Looking for apps and code is not in this build yet.
+helps with: {job}
+a code library, not an app
+no licence, so BuildBot cannot use it
+BuildBot cannot add this kind of thing yet
+BuildBot ran out of time to check it
+BuildBot could not check its licence: it has used the GitHub checks it may make for now
+needs its own server, not something BuildBot can set up yet
+BuildBot's reading helper is not on this computer, so it matched by words. Check the list.
+not in this build yet
+Use your own pictures for "{job}"
+You choose a folder after the build. BuildBot only reads it.
+Colours and themes from your pictures (BuildBot made this for you)
+Reads the pictures in the folder you choose and pulls out colour sets and themes.
+Free to use with credit; the credits are kept with each picture.
+{name} ({reason})
+BuildBot's reading helper is ready.
+Getting the reading helper is not in this build yet.
+BuildBot did not get the reading helper: that yes did not come from this device.
+BuildBot could not get the reading helper, so it will match by words.
+Getting BuildBot's reading helper (83 MB, once) ...
+Apps and code
+Pictures
+Also found, look at it yourself: {line}
+lists of apps and code on this computer
+lists of apps and code on this computer and GitHub
+No jobs to check against, so these come from BuildBot's own lists: {n} found
+Best match for this job.
+{place}: {n} found
+Checking what fits your jobs ...
+BuildBot has used the GitHub searches it may make for now, so it keeps looking on the other sites.
+{names} ({reason})
+made for something else
+Your bot is built
+Open your bot next time
+no licence, so BuildBot cannot use them
+each needs its own server, not something BuildBot can set up yet
+code libraries, not apps
+BuildBot cannot add these kinds of things yet
+BuildBot ran out of time to check them
+BuildBot could not check their licences: it has used the GitHub checks it may make for now
+BuildBot's list of live info
+Codeberg
+GitHub
+GitLab
+Hugging Face
+Kiwix
+OpenStax
+Openverse
+Project Gutenberg
+PyPI
+Wikibooks
+Wikimedia Commons
+Wikipedia
+npm
+the Home Assistant community list
+the list of apps people run at home
+the list of free websites
+the list of tools for AI apps
+Other places
+its licence has terms of its own, so BuildBot cannot use it
+their licences have terms of their own, so BuildBot cannot use them
+{title} (a picture on {site})
+A picture on {site}
+Putting your plan together...
+GitHub, where the apps come from
+Codeberg, where the apps come from
+npm, where the code comes from
+where the pictures come from
+sites where people share 
+free apps and code
+free pictures
+free data
+free articles
+No book is added: none of your jobs is about learning something.

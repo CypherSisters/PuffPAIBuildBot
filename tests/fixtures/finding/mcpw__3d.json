@@ -1,0 +1,454 @@
+{
+"servers": [
+{
+"server": {
+"$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+"name": "ai.simplio3d/platform",
+"description": "Inspect, validate and safely edit 3D product configurators: options, pricing, materials and rules.",
+"title": "Simplio3D - 3D CPQ and Product Configuration",
+"version": "1.14.0",
+"websiteUrl": "https://app.simplio3d.ai/docs/mcp",
+"icons": [
+{
+"src": "https://app.simplio3d.ai/icon-192.png",
+"mimeType": "image/png",
+"sizes": [
+"192x192"
+]
+}
+],
+"remotes": [
+{
+"type": "streamable-http",
+"url": "https://app.simplio3d.ai/mcp"
+}
+],
+"_meta": {
+"io.modelcontextprotocol.registry/publisher-provided": {
+"agentReference": "https://app.simplio3d.ai/llms-full.txt",
+"authentication": {
+"bearerToken": "Scoped smcp_ connection token created at Dashboard > Integrations > AI Connections",
+"oauth": "OAuth 2.1 authorization code + PKCE with dynamic client registration; discovery via https://app.simplio3d.ai/.well-known/oauth-protected-resource"
+},
+"changelog": "https://app.simplio3d.ai/docs/mcp/mcp-changelog",
+"documentation": "https://app.simplio3d.ai/docs/mcp",
+"plans": "Starter, Pro, Enterprise and the 30-day Pro trial",
+"writePolicy": "High-risk changes (pricing, SKUs, deletions, bulk edits) are proposed and must be approved by the workspace user in the app"
+}
+}
+},
+"_meta": {
+"io.modelcontextprotocol.registry/official": {
+"status": "active",
+"statusChangedAt": "2026-10-02T14:31:10.845884Z",
+"publishedAt": "2026-10-02T14:31:10.845884Z",
+"updatedAt": "2026-10-02T14:31:10.845884Z",
+"isLatest": false
+}
+}
+},
+{
+"server": {
+"$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+"name": "ai.simplio3d/platform",
+"description": "Inspect, validate and safely edit 3D product configurators: options, pricing, materials and rules.",
+"title": "Simplio3D - 3D CPQ and Product Configuration",
+"version": "1.14.1",
+"websiteUrl": "https://app.simplio3d.ai/docs/mcp",
+"icons": [
+{
+"src": "https://app.simplio3d.ai/icon-192.png",
+"mimeType": "image/png",
+"sizes": [
+"192x192"
+]
+}
+],
+"remotes": [
+{
+"type": "streamable-http",
+"url": "https://app.simplio3d.ai/mcp"
+}
+],
+"_meta": {
+"io.modelcontextprotocol.registry/publisher-provided": {
+"agentReference": "https://app.simplio3d.ai/llms-full.txt",
+"authentication": {
+"bearerToken": "Scoped smcp_ connection token created at Dashboard > Integrations > AI Connections",
+"oauth": "OAuth 2.1 authorization code + PKCE with dynamic client registration; discovery via https://app.simplio3d.ai/.well-known/oauth-protected-resource"
+},
+"changelog": "https://app.simplio3d.ai/docs/mcp/mcp-changelog",
+"documentation": "https://app.simplio3d.ai/docs/mcp",
+"plans": "Starter, Pro, Enterprise and the 30-day Pro trial",
+"writePolicy": "High-risk changes (pricing, SKUs, deletions, bulk edits) are proposed and must be approved by the workspace user in the app"
+}
+}
+},
+"_meta": {
+"io.modelcontextprotocol.registry/official": {
+"status": "active",
+"statusChangedAt": "2026-10-02T15:18:10.901883Z",
+"publishedAt": "2026-10-02T15:18:10.901883Z",
+"updatedAt": "2026-10-02T15:18:10.901883Z",
+"isLatest": true
+}
+}
+},
+{
+"server": {
+"$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+"name": "ai.simplio3d/platform",
+"description": "Inspect, validate and safely edit 3D product configurators: options, pricing, materials and rules.",
+"title": "Simplio3D - 3D CPQ and Product Configuration",
+"version": "1.8.3",
+"websiteUrl": "https://app.simplio3d.ai/docs/mcp",
+"icons": [
+{
+"src": "https://app.simplio3d.ai/icon-192.png",
+"mimeType": "image/png",
+"sizes": [
+"192x192"
+]
+}
+],
+"remotes": [
+{
+"type": "streamable-http",
+"url": "https://app.simplio3d.ai/mcp"
+}
+],
+"_meta": {
+"io.modelcontextprotocol.registry/publisher-provided": {
+"agentReference": "https://app.simplio3d.ai/llms-full.txt",
+"authentication": {
+"bearerToken": "Scoped smcp_ connection token created at Dashboard > Integrations > AI Connections",
+"oauth": "OAuth 2.1 authorization code + PKCE with dynamic client registration; discovery via https://app.simplio3d.ai/.well-known/oauth-protected-resource"
+},
+"changelog": "https://app.simplio3d.ai/docs/mcp/mcp-changelog",
+"documentation": "https://app.simplio3d.ai/docs/mcp",
+"plans": "Pro, Enterprise and the 30-day Pro trial",
+"writePolicy": "High-risk changes (pricing, SKUs, deletions, bulk edits) are proposed and must be approved by the workspace user in the app"
+}
+}
+},
+"_meta": {
+"io.modelcontextprotocol.registry/official": {
+"status": "active",
+"statusChangedAt": "2026-09-28T06:16:19.635158Z",
+"publishedAt": "2026-09-28T06:16:19.635158Z",
+"updatedAt": "2026-09-28T06:16:19.635158Z",
+"isLatest": false
+}
+}
+},
+{
+"server": {
+"$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+"name": "ai.simplio3d/platform",
+"description": "Inspect, validate and safely edit 3D product configurators: options, pricing, materials and rules.",
+"title": "Simplio3D - 3D CPQ and Product Configuration",
+"version": "1.9.0",
+"websiteUrl": "https://app.simplio3d.ai/docs/mcp",
+"icons": [
+{
+"src": "https://app.simplio3d.ai/icon-192.png",
+"mimeType": "image/png",
+"sizes": [
+"192x192"
+]
+}
+],
+"remotes": [
+{
+"type": "streamable-http",
+"url": "https://app.simplio3d.ai/mcp"
+}
+],
+"_meta": {
+"io.modelcontextprotocol.registry/publisher-provided": {
+"agentReference": "https://app.simplio3d.ai/llms-full.txt",
+"authentication": {
+"bearerToken": "Scoped smcp_ connection token created at Dashboard > Integrations > AI Connections",
+"oauth": "OAuth 2.1 authorization code + PKCE with dynamic client registration; discovery via https://app.simplio3d.ai/.well-known/oauth-protected-resource"
+},
+"changelog": "https://app.simplio3d.ai/docs/mcp/mcp-changelog",
+"documentation": "https://app.simplio3d.ai/docs/mcp",
+"plans": "Pro, Enterprise and the 30-day Pro trial",
+"writePolicy": "High-risk changes (pricing, SKUs, deletions, bulk edits) are proposed and must be approved by the workspace user in the app"
+}
+}
+},
+"_meta": {
+"io.modelcontextprotocol.registry/official": {
+"status": "active",
+"statusChangedAt": "2026-09-28T08:14:39.619286Z",
+"publishedAt": "2026-09-28T08:14:39.619286Z",
+"updatedAt": "2026-09-28T08:14:39.619286Z",
+"isLatest": false
+}
+}
+},
+{
+"server": {
+"$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+"name": "app.3dstreet/3dstreet",
+"description": "Drive an open 3DStreet scene tab from Claude Desktop or Claude Code via MCP tool calls.",
+"repository": {
+"url": "https://github.com/3DStreet/3dstreet-mcp",
+"source": "github"
+},
+"version": "0.2.1",
+"packages": [
+{
+"registryType": "npm",
+"identifier": "3dstreet-mcp",
+"version": "0.2.1",
+"transport": {
+"type": "stdio"
+}
+}
+]
+},
+"_meta": {
+"io.modelcontextprotocol.registry/official": {
+"status": "active",
+"statusChangedAt": "2026-05-07T16:15:42.004688Z",
+"publishedAt": "2026-05-07T16:15:42.004688Z",
+"updatedAt": "2026-05-07T16:15:42.004688Z",
+"isLatest": false
+}
+}
+},
+{
+"server": {
+"$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+"name": "app.3dstreet/3dstreet",
+"description": "Drive an open 3DStreet scene tab from Claude Desktop or Claude Code via MCP tool calls.",
+"repository": {
+"url": "https://github.com/3DStreet/3dstreet-mcp",
+"source": "github"
+},
+"version": "0.2.2",
+"packages": [
+{
+"registryType": "npm",
+"identifier": "3dstreet-mcp",
+"version": "0.2.2",
+"transport": {
+"type": "stdio"
+}
+}
+]
+},
+"_meta": {
+"io.modelcontextprotocol.registry/official": {
+"status": "active",
+"statusChangedAt": "2026-05-07T16:17:40.226341Z",
+"publishedAt": "2026-05-07T16:17:40.226341Z",
+"updatedAt": "2026-05-07T16:17:40.226341Z",
+"isLatest": true
+}
+}
+},
+{
+"server": {
+"$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+"name": "com.3dneweraai/newera",
+"description": "Design homes with your AI: floor plans, furniture, joinery, lighting and photos, live.",
+"title": "3D New Era AI",
+"repository": {
+"url": "https://github.com/leandrodaf/3d-new-era-ai",
+"source": "github"
+},
+"version": "1.10.0",
+"websiteUrl": "https://3dneweraai.com",
+"icons": [
+{
+"src": "https://3dneweraai.com/icon-256.png",
+"mimeType": "image/png",
+"sizes": [
+"256x256"
+]
+}
+],
+"packages": [
+{
+"registryType": "mcpb",
+"identifier": "https://github.com/leandrodaf/3d-new-era-ai/releases/download/v1.10.0/newera-mcp.mcpb",
+"version": "1.10.0",
+"fileSha256": "28a8da2a1cacbb6cf235fb6741966c09bd3bc653478b8d0c6ec97afabb6366ab",
+"transport": {
+"type": "stdio"
+}
+}
+],
+"remotes": [
+{
+"type": "streamable-http",
+"url": "https://mcp.3dneweraai.com/mcp"
+}
+]
+},
+"_meta": {
+"io.modelcontextprotocol.registry/official": {
+"status": "active",
+"statusChangedAt": "2026-09-26T20:31:22.351575Z",
+"publishedAt": "2026-09-26T20:31:22.351575Z",
+"updatedAt": "2026-09-26T20:31:22.351575Z",
+"isLatest": false
+}
+}
+},
+{
+"server": {
+"$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+"name": "com.3dneweraai/newera",
+"description": "Design homes with your AI: floor plans, furniture, joinery, lighting and photos, live.",
+"title": "3D New Era AI",
+"repository": {
+"url": "https://github.com/leandrodaf/3d-new-era-ai",
+"source": "github"
+},
+"version": "1.8.0",
+"websiteUrl": "https://3dneweraai.com",
+"icons": [
+{
+"src": "https://3dneweraai.com/icon-256.png",
+"mimeType": "image/png",
+"sizes": [
+"256x256"
+]
+}
+],
+"packages": [
+{
+"registryType": "mcpb",
+"identifier": "https://github.com/leandrodaf/3d-new-era-ai/releases/download/v1.8.0/newera-mcp.mcpb",
+"version": "1.8.0",
+"fileSha256": "708c2b6ca7472627a412d79440a204eee4e23618bd31a3ed2e3f05d9b7b86117",
+"transport": {
+"type": "stdio"
+}
+}
+],
+"remotes": [
+{
+"type": "streamable-http",
+"url": "https://mcp.3dneweraai.com/mcp"
+}
+]
+},
+"_meta": {
+"io.modelcontextprotocol.registry/official": {
+"status": "active",
+"statusChangedAt": "2026-09-24T18:40:40.801293Z",
+"publishedAt": "2026-09-24T18:40:40.801293Z",
+"updatedAt": "2026-09-24T18:40:40.801293Z",
+"isLatest": false
+}
+}
+},
+{
+"server": {
+"$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+"name": "com.3dneweraai/newera",
+"description": "Design homes with your AI: floor plans, furniture, joinery, lighting and photos, live.",
+"title": "3D New Era AI",
+"repository": {
+"url": "https://github.com/leandrodaf/3d-new-era-ai",
+"source": "github"
+},
+"version": "1.9.0",
+"websiteUrl": "https://3dneweraai.com",
+"icons": [
+{
+"src": "https://3dneweraai.com/icon-256.png",
+"mimeType": "image/png",
+"sizes": [
+"256x256"
+]
+}
+],
+"packages": [
+{
+"registryType": "mcpb",
+"identifier": "https://github.com/leandrodaf/3d-new-era-ai/releases/download/v1.9.0/newera-mcp.mcpb",
+"version": "1.9.0",
+"fileSha256": "cc0ad5397a22e34b12a9e4a1c6b0b90843e23faa88a26a82a5bfe2c9cd606f86",
+"transport": {
+"type": "stdio"
+}
+}
+],
+"remotes": [
+{
+"type": "streamable-http",
+"url": "https://mcp.3dneweraai.com/mcp"
+}
+]
+},
+"_meta": {
+"io.modelcontextprotocol.registry/official": {
+"status": "active",
+"statusChangedAt": "2026-09-24T22:28:08.445659Z",
+"publishedAt": "2026-09-24T22:28:08.445659Z",
+"updatedAt": "2026-09-24T22:28:08.445659Z",
+"isLatest": false
+}
+}
+},
+{
+"server": {
+"$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+"name": "com.3dneweraai/newera",
+"description": "Design homes with your AI: floor plans, furniture, joinery, lighting and photos, live.",
+"title": "3D New Era AI",
+"repository": {
+"url": "https://github.com/leandrodaf/3d-new-era-ai",
+"source": "github"
+},
+"version": "1.9.1",
+"websiteUrl": "https://3dneweraai.com",
+"icons": [
+{
+"src": "https://3dneweraai.com/icon-256.png",
+"mimeType": "image/png",
+"sizes": [
+"256x256"
+]
+}
+],
+"packages": [
+{
+"registryType": "mcpb",
+"identifier": "https://github.com/leandrodaf/3d-new-era-ai/releases/download/v1.9.1/newera-mcp.mcpb",
+"version": "1.9.1",
+"fileSha256": "82672cd523da6264fff69fc86482f5aa22420081bfcb1252316ac265ef85c2bf",
+"transport": {
+"type": "stdio"
+}
+}
+],
+"remotes": [
+{
+"type": "streamable-http",
+"url": "https://mcp.3dneweraai.com/mcp"
+}
+]
+},
+"_meta": {
+"io.modelcontextprotocol.registry/official": {
+"status": "active",
+"statusChangedAt": "2026-09-25T00:16:03.543463Z",
+"publishedAt": "2026-09-25T00:16:03.543463Z",
+"updatedAt": "2026-09-25T00:16:03.543463Z",
+"isLatest": false
+}
+}
+}
+],
+"metadata": {
+"nextCursor": "com.3dneweraai/newera:1.9.1",
+"count": 10
+}
+}

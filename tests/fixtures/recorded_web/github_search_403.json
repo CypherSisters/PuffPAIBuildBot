@@ -1,0 +1,16 @@
+{
+ "note": "Shaped from the recorded rate headers: github2_run.log recorded four 403 answers on 2026-09-26 but kept no headers. reset_in_s is applied to the test clock.",
+ "status": 403,
+ "headers": {
+  "x-ratelimit-limit": "10",
+  "x-ratelimit-remaining": "0",
+  "x-ratelimit-used": "10",
+  "x-ratelimit-resource": "search"
+ },
+ "reset_in_s_near": 40,
+ "reset_in_s_far": 1800,
+ "body": {
+  "message": "API rate limit exceeded for (address removed). (But here's the good news: Authenticated requests get a higher rate limit.)",
+  "documentation_url": "https://docs.github.com/rest/overview/resources-in-the-rest-api#rate-limiting"
+ }
+}

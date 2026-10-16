@@ -1,0 +1,73 @@
+{
+"info": {
+"name": "OctoPrint",
+"summary": "The snappy web interface for your 3D printer",
+"version": "1.11.8",
+"author": "Gina H\u00e4u\u00dfge",
+"license": "GNU Affero General Public License v3",
+"license_expression": null,
+"keywords": "3dprinting 3dprinter 3d-printing 3d-printer octoprint",
+"classifiers": [
+"Development Status :: 5 - Production/Stable",
+"Environment :: Web Environment",
+"Framework :: Flask",
+"Intended Audience :: Developers",
+"Intended Audience :: Education",
+"Intended Audience :: End Users/Desktop",
+"Intended Audience :: Manufacturing",
+"Intended Audience :: Other Audience",
+"Intended Audience :: Science/Research",
+"License :: OSI Approved :: GNU Affero General Public License v3",
+"Natural Language :: English",
+"Natural Language :: German",
+"Operating System :: OS Independent",
+"Programming Language :: JavaScript",
+"Programming Language :: Python",
+"Programming Language :: Python :: 3",
+"Programming Language :: Python :: 3 :: Only",
+"Programming Language :: Python :: 3.10",
+"Programming Language :: Python :: 3.11",
+"Programming Language :: Python :: 3.12",
+"Programming Language :: Python :: 3.13",
+"Programming Language :: Python :: 3.7",
+"Programming Language :: Python :: 3.8",
+"Programming Language :: Python :: 3.9",
+"Programming Language :: Python :: Implementation :: CPython",
+"Topic :: Printing"
+],
+"home_page": "https://octoprint.org",
+"project_urls": {
+"Bug Reports": "https://github.com/OctoPrint/OctoPrint/issues",
+"Community Forum": "https://community.octoprint.org",
+"Funding": "https://support.octoprint.org",
+"Homepage": "https://octoprint.org",
+"Source": "https://github.com/OctoPrint/OctoPrint"
+}
+},
+"urls": [
+{
+"comment_text": null,
+"core-metadata": {
+"sha256": "38c998b65ded630b01c49725ffbf91634450bd8e0128cf6ec5542b4649e34c38"
+},
+"digests": {
+"blake2b_256": "d3c9716c682873e49d7e9681e032dae89c85f801b5df62d87954bcc109810c26",
+"md5": "81c3995ffa3035d3e79e1776fa5602d6",
+"sha256": "21fef2f84f9b730dab905c3d22c0476f4877cadf6c129c8a75be8e5b5546241e"
+},
+"downloads": -1,
+"filename": "octoprint-1.11.8-py3-none-any.whl",
+"has_sig": false,
+"md5_digest": "81c3995ffa3035d3e79e1776fa5602d6",
+"packagetype": "bdist_wheel",
+"python_version": "py3",
+"requires_python": "<3.14,>=3.7",
+"size": 3486609,
+"upload_time": "2026-06-23T09:48:18",
+"upload_time_iso_8601": "2026-06-23T09:48:18.680199Z",
+"url": "https://files.pythonhosted.org/packages/d3/c9/716c682873e49d7e9681e032dae89c85f801b5df62d87954bcc109810c26/octoprint-1.11.8-py3-none-any.whl",
+"yanked": false,
+"yanked_reason": null
+}
+]
+}

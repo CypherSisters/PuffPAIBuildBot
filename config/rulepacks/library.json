@@ -1,0 +1,54 @@
+{
+  "schema": "rulepack/v1",
+  "surface": "library",
+  "category": "library",
+  "route": "library",
+  "min_tier": "light",
+  "order": 70,
+  "match": "substring",
+  "blurb": "What is in the indexed collections: knowledge packs, wikipedia, and anything you have loaded yourself.",
+  "title": "The knowledge library",
+  "examples": [
+    "what do you have in your library about beekeeping",
+    "how many wikipedia articles are indexed",
+    "what collections can i search",
+    "tell me what is in the knowledge base",
+    "list everything in the offline library",
+    "do you have a database of medical guides"
+  ],
+  "keywords": [
+    "librar",
+    "database",
+    "indexed",
+    "collection",
+    "wikipedia",
+    "knowledge base"
+  ],
+  "query_words": [
+    "list",
+    "how many",
+    "what",
+    "which",
+    "show",
+    "tell",
+    "about",
+    "describe",
+    "do you have",
+    "do you know",
+    "available",
+    "access",
+    "can you search"
+  ],
+  "exclude_phrases": [
+    "source",
+    "sources",
+    "cite",
+    "citation",
+    "citations",
+    "reference",
+    "references",
+    "where did you",
+    "come from",
+    "came from"
+  ]
+}

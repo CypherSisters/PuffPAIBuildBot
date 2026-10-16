@@ -1,0 +1,33 @@
+{
+  "schema": "rulepack/v1",
+  "surface": "briefing",
+  "category": "briefing",
+  "route": "briefing",
+  "min_tier": "light",
+  "order": 10,
+  "match": "substring",
+  "blurb": "Ask for the day in one go and it gathers the pieces for you.",
+  "title": "The daily briefing",
+  "examples": [
+    "give me my daily briefing",
+    "catch me up on what i missed",
+    "what did i miss while i was out",
+    "read me today's briefing",
+    "give me the morning report",
+    "start my daily digest"
+  ],
+  "keywords": [
+    "daily update",
+    "daily briefing",
+    "daily report",
+    "morning briefing",
+    "morning update",
+    "morning report",
+    "what did i miss",
+    "catch me up",
+    "brief me",
+    "daily digest",
+    "today's briefing",
+    "today's update"
+  ]
+}

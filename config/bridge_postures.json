@@ -1,0 +1,54 @@
+{
+  "schema": "bridge_postures/v1",
+  "default": "fenced",
+  "_note": "Copy only. The strictness ordering that the reconciliation math uses lives in code (puffpai.zone_bridge), not here, so editing this file can never loosen a posture.",
+  "postures": [
+    {
+      "id": "open_yard",
+      "label": "Keep what you said yes to",
+      "strictness": 0,
+      "recommendable": false,
+      "summary": "Today this works the same as \"Ask when it reaches further\". Nothing extra is switched off, and nothing is loosened either.",
+      "allows": {
+        "lan_devices": "Things on your home network are allowed.",
+        "actions": "The same checks as \"Ask when it reaches further\".",
+        "egress": "The outside services you switched on stay on. Each new one still asks you once.",
+        "consent": "Asked once for each outside service, when you switch it on."
+      },
+      "costs": "No extra protection over \"Ask when it reaches further\". Worth choosing on purpose, never by accident.",
+      "matches_run_egress": "enumerated"
+    },
+    {
+      "id": "fenced",
+      "label": "Ask when it reaches further",
+      "strictness": 1,
+      "recommendable": true,
+      "summary": "Your bot can talk to things in your house. BuildBot's own tools for finding and adding things are on while your bot is made; after that, only the ones your plan named stay on. Every other outside service asks you once before it is switched on, and you can switch any of them off at any time.",
+      "allows": {
+        "lan_devices": "Things on your home network are allowed.",
+        "actions": "The same checks as always: each outside service has its own switch.",
+        "egress": "Outside services are listed one by one on \"What leaves your computer\". BuildBot's own tools for finding and adding things are on while your bot is made, and only the ones your plan named stay on after it; everything else starts off. Any of them can be switched off at any time.",
+        "consent": "For BuildBot's own tools: your press of Start looking and your yes to the plan. For every other outside service: asked once, when you switch it on."
+      },
+      "costs": "You will be asked to confirm now and then. That is the trade for a bot that is useful in the house without being loose about the world outside it.",
+      "matches_run_egress": "island"
+    },
+    {
+      "id": "drawbridge_up",
+      "label": "Only what you switched on",
+      "strictness": 2,
+      "recommendable": true,
+      "summary": "Your bot connects to nothing on your home network or the internet, except the services you switched on yourself. Home Assistant counts only if you switched it on. Looking up a website's address still asks your network; the Bridge does not stop that.",
+      "allows": {
+        "lan_devices": "Only the home services you switched on, like Home Assistant. The brain and the books must be on this computer.",
+        "actions": "Anything that would reach past what you switched on is stopped, and the bot says so.",
+        "egress": "Only the outside services you switched on. Even BuildBot's own tools for finding and adding things stay off until you switch them on.",
+        "consent": "Asked once for each service, when you switch it on."
+      },
+      "costs": "Anything that needs a service you have not switched on is off the table, and the bot will tell you which things those are.",
+      "matches_run_egress": "sealed"
+    }
+  ],
+  "_retired": "moat (2026-09-24): it promised a per-visit ask that was never built. Records that still say moat are read as fenced (puffpai.zone_bridge.RETIRED_POSTURES).",
+  "_enforced": "What each choice does is enforced in code (puffpai.zone_bridge.reach_level, security.outside_switches.is_off, security.lan_posture, security.bridge_guard). The words here must never promise more than that code does."
+}

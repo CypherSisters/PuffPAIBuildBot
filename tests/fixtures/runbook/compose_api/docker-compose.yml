@@ -1,0 +1,16 @@
+services:
+  app:
+    image: example/app:latest
+    env_file: .env
+    environment:
+      - APP_DB_URL=postgres://db/app
+      - APP_HTTP_PUBLIC_URL=${APP_HTTP_PUBLIC_URL:-http://localhost:8080}
+    volumes:
+      - ${PWD}/data:/data
+      - ./config/app.yml:/app/config.yml
+    ports:
+      - "8080:8080"
+  db:
+    image: postgres:16
+    ports:
+      - "${DB_PORT:-5433}:5432"

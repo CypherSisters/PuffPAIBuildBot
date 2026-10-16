@@ -1,0 +1,20 @@
+Something went wrong adding this. Nothing else changed.
+relative
+pronoun
+date
+number
+age
+private
+name
+brand
+place
+region
+health
+private detail
+too long
+not a plain search phrase
+could not check
+That look does not read well with {background}, so it keeps its own background.
+Every look you try on or keep wears the {background} background.
+ (a private subject; choose "Only look on this computer" to keep it here)
+It keeps the {background} background you asked for, and new looks will use it too.

@@ -1,0 +1,48 @@
+{
+  "schema": "puffpai_package/v1",
+  "id": "secure",
+  "kind": "skill",
+  "version": "1.0.0",
+  "author": "puffpai",
+  "license": "Apache-2.0",
+  "label": "What is locked and what can get out",
+  "description": "The three zones: the vault, what may leave this box while it builds, and the bridge.",
+  "reads": [
+    "run",
+    "machine",
+    "persona",
+    "brain",
+    "sources",
+    "tools",
+    "knowledge",
+    "context",
+    "crew",
+    "surfaces"
+  ],
+  "writes": "posture",
+  "permissions": {
+    "network_hosts": [],
+    "files": [
+      "data"
+    ],
+    "ha_domains": [],
+    "secrets": []
+  },
+  "doors": [],
+  "secrets": [],
+  "egress": "none",
+  "estimate": {
+    "bytes": 0,
+    "seconds": 0,
+    "basis": "unknown"
+  },
+  "rerun": "additive",
+  "undo": "not_reversible",
+  "blocking": true,
+  "provides": [
+    "posture.run_egress",
+    "posture.doors"
+  ],
+  "needs": [],
+  "builtin": true
+}

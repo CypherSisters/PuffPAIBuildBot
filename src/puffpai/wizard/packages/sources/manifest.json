@@ -1,0 +1,45 @@
+{
+  "schema": "puffpai_package/v1",
+  "id": "sources",
+  "kind": "skill",
+  "version": "1.0.0",
+  "author": "puffpai",
+  "license": "Apache-2.0",
+  "label": "What it learns from",
+  "description": "The plan for what this bot learns from. Nothing is downloaded here.",
+  "reads": [
+    "persona",
+    "machine",
+    "posture",
+    "run"
+  ],
+  "writes": "sources",
+  "permissions": {
+    "network_hosts": [],
+    "files": [
+      "data"
+    ],
+    "ha_domains": [],
+    "secrets": []
+  },
+  "doors": [],
+  "secrets": [],
+  "egress": "none",
+  "estimate": {
+    "bytes": 0,
+    "seconds": 0,
+    "basis": "unknown"
+  },
+  "rerun": "idempotent",
+  "undo": "reversible",
+  "blocking": false,
+  "provides": [
+    "sources.plan",
+    "sources.selected",
+    "sources.tool_needs"
+  ],
+  "needs": [
+    "persona.goal"
+  ],
+  "builtin": true
+}

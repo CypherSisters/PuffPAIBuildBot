@@ -1,0 +1,91 @@
+{
+  "name": "PuffPAI - Grocery List",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "grocery-list",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "wh-grocery-1",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [250, 300],
+      "webhookId": "grocery-list"
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "=http://localhost:8000/apps/freshtable/data",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-API-Key",
+              "value": "={{ $json.body.api_key || '' }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "get-pantry-g1",
+      "name": "Get Pantry & Shopping List",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [480, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "const body = $('Webhook').first().json.body || {};\nconst data = $input.first().json;\nconst pantry = data.pantry || [];\nconst shoppingList = data.shopping || [];\nconst action = body.action || 'generate';\nconst family_size = body.family_size || 4;\nconst budget = body.budget || 'moderate';\n\n// Store department mapping\nconst STORE_DEPARTMENTS = {\n  produce: ['apple', 'banana', 'orange', 'lettuce', 'tomato', 'onion', 'potato', 'carrot', 'avocado', 'lime', 'cilantro', 'pepper', 'garlic', 'broccoli', 'spinach', 'cucumber'],\n  meat: ['chicken', 'beef', 'pork', 'salmon', 'shrimp', 'turkey', 'sausage', 'bacon', 'fish'],\n  dairy: ['milk', 'cheese', 'yogurt', 'butter', 'cream', 'eggs', 'sour cream'],\n  bakery: ['bread', 'tortilla', 'buns', 'rolls', 'cake'],\n  pantry: ['rice', 'pasta', 'beans', 'flour', 'sugar', 'oil', 'sauce', 'cereal', 'oats', 'quinoa'],\n  frozen: ['ice cream', 'frozen', 'pizza'],\n  beverages: ['water', 'juice', 'soda', 'coffee', 'tea'],\n  snacks: ['chips', 'crackers', 'cookies', 'nuts', 'granola'],\n  household: ['soap', 'detergent', 'paper', 'bags', 'wrap', 'foil']\n};\n\nfunction categorizeItem(name) {\n  const lower = name.toLowerCase();\n  for (const [dept, keywords] of Object.entries(STORE_DEPARTMENTS)) {\n    if (keywords.some(k => lower.includes(k))) return dept;\n  }\n  return 'other';\n}\n\n// Identify low-stock and out-of-stock items\nconst lowStock = pantry.filter(i => (i.quantity || 0) <= 1);\nconst essentials = ['milk', 'eggs', 'bread', 'butter', 'rice', 'chicken', 'onion', 'garlic', 'oil', 'salt'];\nconst pantryNames = pantry.map(i => i.name?.toLowerCase() || '');\nconst missingEssentials = essentials.filter(e => !pantryNames.some(p => p.includes(e)));\n\n// Combine all items to buy\nconst toBuy = new Map();\n\n// Add existing shopping list items\nshoppingList.forEach(item => {\n  const name = item.name || item;\n  toBuy.set(name.toLowerCase(), {\n    name: name,\n    quantity: item.quantity || 1,\n    department: categorizeItem(name),\n    source: 'shopping_list',\n    priority: 'normal'\n  });\n});\n\n// Add low-stock restocks\nlowStock.forEach(item => {\n  const key = (item.name || '').toLowerCase();\n  if (!toBuy.has(key)) {\n    toBuy.set(key, {\n      name: item.name,\n      quantity: 1,\n      department: categorizeItem(item.name || ''),\n      source: 'low_stock',\n      priority: 'high'\n    });\n  }\n});\n\n// Add missing essentials\nmissingEssentials.forEach(name => {\n  if (!toBuy.has(name)) {\n    toBuy.set(name, {\n      name: name.charAt(0).toUpperCase() + name.slice(1),\n      quantity: 1,\n      department: categorizeItem(name),\n      source: 'essential',\n      priority: 'high'\n    });\n  }\n});\n\n// Add any items from the request body\nif (body.add_items && Array.isArray(body.add_items)) {\n  body.add_items.forEach(item => {\n    const name = typeof item === 'string' ? item : item.name;\n    toBuy.set(name.toLowerCase(), {\n      name: name,\n      quantity: item.quantity || 1,\n      department: categorizeItem(name),\n      source: 'manual',\n      priority: item.priority || 'normal'\n    });\n  });\n}\n\nconst items = Array.from(toBuy.values());\n\n// Group by store department for efficient shopping\nconst byDepartment = {};\nitems.forEach(item => {\n  if (!byDepartment[item.department]) byDepartment[item.department] = [];\n  byDepartment[item.department].push(item);\n});\n\n// Estimate cost (rough pricing)\nconst priceEstimates = {\n  produce: 2.50, meat: 7.00, dairy: 3.50, bakery: 3.00,\n  pantry: 3.00, frozen: 5.00, beverages: 3.00, snacks: 4.00,\n  household: 5.00, other: 4.00\n};\nconst estimatedTotal = items.reduce((sum, i) => sum + (priceEstimates[i.department] || 4.00) * (i.quantity || 1), 0);\n\nreturn {\n  json: {\n    store: 'your store',\n    total_items: items.length,\n    estimated_cost: '$' + estimatedTotal.toFixed(2),\n    family_size: family_size,\n    by_department: byDepartment,\n    all_items: items.sort((a, b) => a.department.localeCompare(b.department)),\n    high_priority: items.filter(i => i.priority === 'high'),\n    shopping_route: Object.keys(byDepartment).sort(),\n    notes: [\n      'Organized by store department for efficient shopping',\n      `${items.filter(i => i.priority === 'high').length} high-priority items`,\n      `Estimated total: $${estimatedTotal.toFixed(2)}`\n    ]\n  }\n};"
+      },
+      "id": "build-list-1",
+      "name": "Build Grocery List",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [710, 300]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "respond-grocery-1",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [940, 300]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          { "node": "Get Pantry & Shopping List", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Get Pantry & Shopping List": {
+      "main": [
+        [
+          { "node": "Build Grocery List", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Build Grocery List": {
+      "main": [
+        [
+          { "node": "Respond to Webhook", "type": "main", "index": 0 }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "tags": [
+    { "name": "puffpai" },
+    { "name": "grocery" },
+    { "name": "automation" }
+  ]
+}

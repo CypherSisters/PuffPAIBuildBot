@@ -1,0 +1,1280 @@
+{
+ "goal": "a bot that plays music I like, teaches me guitar chords and reminds me to practice every day",
+ "how": "brain",
+ "jobs": [
+  {
+   "id": "music-player",
+   "name": "Music Player",
+   "does": "plays music",
+   "action": "listen",
+   "subject": [
+    "music",
+    "player"
+   ],
+   "output": "sound",
+   "needs": [
+    "none"
+   ],
+   "ask": "What songs should I listen to?",
+   "route": "D",
+   "pick": {
+    "ref": "",
+    "class": "",
+    "score": 0.0,
+    "why": ""
+   },
+   "ingredients": [],
+   "view": "",
+   "page": "job-music-player",
+   "status": "planned",
+   "reason": ""
+  },
+  {
+   "id": "guitar-tutor",
+   "name": "Guitar Tutor",
+   "does": "teaches guitar chords",
+   "action": "ask",
+   "subject": [
+    "guitar",
+    "tutor"
+   ],
+   "output": "text",
+   "needs": [
+    "none"
+   ],
+   "ask": "What are the next guitar chords to learn?",
+   "route": "D",
+   "pick": {
+    "ref": "",
+    "class": "",
+    "score": 0.0,
+    "why": ""
+   },
+   "ingredients": [],
+   "view": "",
+   "page": "job-guitar-tutor",
+   "status": "planned",
+   "reason": ""
+  },
+  {
+   "id": "practice-reminder",
+   "name": "Practice Reminder",
+   "does": "reminds to practice",
+   "action": "remind",
+   "subject": [
+    "practice",
+    "reminder"
+   ],
+   "output": "text",
+   "needs": [
+    "none"
+   ],
+   "ask": "When should I practice today?",
+   "route": "D",
+   "pick": {
+    "ref": "",
+    "class": "",
+    "score": 0.0,
+    "why": ""
+   },
+   "ingredients": [],
+   "view": "",
+   "page": "job-practice-reminder",
+   "status": "planned",
+   "reason": ""
+  }
+ ],
+ "cands": [
+  {
+   "ref": "clawhub:freebook8/music-player",
+   "name": "Music Player for Windows",
+   "type": "skill",
+   "what": "Provides music search, high-quality download, ID3 metadata embedding, and local playback on Windows using multiple music API sources.",
+   "source": "clawhub",
+   "url": "https://clawhub.ai/freebook8/skills/music-player",
+   "hosts": [],
+   "needs": [],
+   "caps": [],
+   "skill_md": "# Music Player Skill - Windows \u97f3\u4e50\u64ad\u653e\u6280\u80fd\n\n\u652f\u6301 Windows \u7cfb\u7edf\u7684\u97f3\u4e50\u641c\u7d22\u3001\u4e0b\u8f7d\u548c\u64ad\u653e\u6280\u80fd\u3002\u57fa\u4e8e go-music-api \u548c\u591a\u4e2a\u97f3\u4e50\u6e90\u3002\n\n## \u529f\u80fd\u7279\u6027\n\n- \ud83d\udd0d **\u591a\u6e90\u641c\u7d22** - \u652f\u6301\u7f51\u6613\u4e91\u97f3\u4e50\u7b49\u591a\u4e2a API \u6e90\n- \ud83d\udce5 **\u9ad8\u6e05\u4e0b\u8f7d** - \u81ea\u52a8\u83b7\u53d6\u6700\u4f73\u97f3\u8d28\u7248\u672c\n- \ud83c\udfa7 **\u672c\u5730\u64ad\u653e** - \u8c03\u7528 Windows \u9ed8\u8ba4\u64ad\u653e\u5668\n- \ud83d\udcdd **\u5143\u6570\u636e\u5d4c\u5165** - \u652f\u6301 ID3 \u6807\u7b7e\uff08\u6b4c\u540d\u3001\u6b4c\u624b\u3001\u4e13\u8f91\u3001\u5c01\u9762\uff09\n- \ud83c\udfb5 **\u6279\u91cf\u4e0b\u8f7d** - \u652f\u6301\u4e0b\u8f7d\u591a\u4e2a\u7248\u672c\n\n## \u5feb\u901f\u5f00\u59cb\n\n### 1. \u5b89\u88c5\u4f9d\u8d56\n\n```bash\npip install requests mutagen python-pptx\n```\n\n### 2. \u641c\u7d22\u5e76\u4e0b\u8f7d\u97f3\u4e50\n\n```bash\n# \u57fa\u7840\u4e0b\u8f7d\npython download.py \"\u6b4c\u66f2\u540d\" \"\u4fdd\u5b58\u8def\u5f84.mp3\"\n\n# \u4f7f\u7528 go-music-api \u6e90\uff08\u63a8\u8350\uff0c\u97f3\u8d28\u66f4\u597d\uff09\npython download_go_api.py\n\n# \u4e0b\u8f7d\u591a\u4e2a\u7248\u672c\npython download_versions.py\n```\n\n### 3. \u64ad\u653e\u97f3\u4e50\n\n```bash\npython play_music.py \"\u6b4c\u66f2\u8def\u5f84.mp3\"\n```\n\n### 4. \u5d4c\u5165\u5143\u6570\u636e\n\n```bash\npython embed_metadata.py \"\u6b4c\u66f2.mp3\" \"\u6b4c\u540d\" \"\u6b4c\u624b\" \"\u4e13\u8f91\" \"\u5c01\u9762.jpg\"\n```\n\n## \u6587\u4ef6\u8bf4\u660e\n\n| \u6587\u4ef6 | \u8bf4\u660e |\n|------|------|\n| `download.py` | \u57fa\u7840\u4e0b\u8f7d\u811a\u672c\uff08\u7f51\u6613\u4e91 API\uff09 |\n| `download_go_api.py` | \u4f7f\u7528 go-music-api \u6e90\uff08\u63a8\u8350\uff09 |\n| `download_versions.py` | \u4e0b\u8f7d\u591a\u4e2a\u7248\u672c |\n| `search_and_download.py` | \u641c\u7d22\u5e76\u4e0b\u8f7d\uff08\u65e7\u7248\uff09 |\n| `play_music.py` | \u64ad\u653e\u672c\u5730\u97f3\u4e50 |\n| `embed_metadata.py` | \u5d4c\u5165 ID3 \u5143\u6570\u636e |\n| `SKILL.md` | \u6280\u80fd\u8bf4\u660e\u6587\u6863 |\n\n## \u4f7f\u7528\u793a\u4f8b\n\n### \u793a\u4f8b 1\uff1a\u4e0b\u8f7d\u5218\u5fb7\u534e\u7684\u300a\u4e2d\u56fd\u4eba\u300b\n\n```bash\npython download_go_api.py \"\u5218\u5fb7\u534e \u4e2d\u56fd\u4eba\" \"C:\\\\music\\\\\u5218\u5fb7\u534e - \u4e2d\u56fd\u4eba.mp3\"\n```\n\n### \u793a\u4f8b 2\uff1a\u4e0b\u8f7d Enya \u7684\u300aOne by One\u300b\n\n```bash\npython download.py \"One by One Enya\" \"C:\\\\music\\\\Enya_One_by_One.mp3\"\n```\n\n### \u793a\u4f8b 3\uff1a\u64ad\u653e\u4e0b\u8f7d\u7684\u97f3\u4e50\n\n```bash\npython play_music.py \"C:\\\\music\\\\Enya_One_by_One.mp3\"\n```\n\n## API \u6e90\n\n\u6280\u80fd\u652f\u6301\u4ee5\u4e0b\u97f3\u4e50 API \u6e90\uff1a\n\n1. **\u7f51\u6613\u4e91\u97f3\u4e50** - \u57fa\u7840\u6e90\uff0c\u7a33\u5b9a\u53ef\u9760\n2. **go-music-api** - \u5f00\u6e90\u9879\u76ee\uff0c\u97f3\u8d28\u66f4\u597d\n3. **UOMG API** - \u5907\u7528\u6e90\n\n## \u8f93\u51fa\u76ee\u5f55\n\n\u9ed8\u8ba4\u4e0b\u8f7d\u5230\uff1a`C:\\Users\\Administrator\\.openclaw\\workspace\\music\\`\n\n## \u6ce8\u610f\u4e8b\u9879\n\n- \u26a0\ufe0f \u9700\u8981 Python 3.7+\n- \u26a0\ufe0f \u9700\u8981\u7f51\u7edc\u8fde\u63a5\u6765\u641c\u7d22\u548c\u4e0b\u8f7d\u97f3\u4e50\n- \u26a0\ufe0f \u4e0b\u8f7d\u7684\u97f3\u4e50\u4ec5\u4f9b\u4e2a\u4eba\u5b66\u4e60\u4f7f\u7528\n- \u26a0\ufe0f \u90e8\u5206 API \u53ef\u80fd\u9700\u8981\u4ee3\u7406\u8bbf\u95ee\n\n## \u6545\u969c\u6392\u9664\n\n### \u4e0b\u8f7d\u5931\u8d25\n\n1. \u68c0\u67e5\u7f51\u7edc\u8fde\u63a5\n2. \u5c1d\u8bd5\u5207\u6362 API \u6e90\uff08\u4f7f\u7528 `download_go_api.py`\uff09\n3. \u68c0\u67e5\u6b4c\u66f2\u540d\u79f0\u662f\u5426\u6b63\u786e\n\n### \u65e0\u6cd5\u64ad\u653e\n\n1. \u68c0\u67e5\u6587\u4ef6\u662f\u5426\u5b8c\u6574\uff08\u6587\u4ef6\u5927\u5c0f > 1MB\uff09\n2. \u5c1d\u8bd5\u4f7f\u7528\u5176\u4ed6\u64ad\u653e\u5668\u6253\u5f00\n3. \u91cd\u65b0\u4e0b\u8f7d\u5176\u4ed6\u7248\u672c\n\n### \u5143\u6570\u636e\u5d4c\u5165\u5931\u8d25\n\n1. \u786e\u4fdd\u5b89\u88c5\u4e86 mutagen\uff1a`pip install mutagen`\n2. \u68c0\u67e5\u6587\u4ef6\u8def\u5f84\u662f\u5426\u6b63\u786e\n3. \u786e\u4fdd MP3 \u6587\u4ef6\u672a\u88ab\u5360\u7528\n\n## \u66f4\u65b0\u65e5\u5fd7\n\n### v1.1.0 (2026-03-24)\n- \u2705 \u6dfb\u52a0 go-music-api \u652f\u6301\n- \u2705 \u4f18\u5316\u97f3\u8d28\u9009\u62e9\n- \u2705 \u6dfb\u52a0\u591a\u7248\u672c\u4e0b\u8f7d\n- \u2705 \u6539\u8fdb\u9519\u8bef\u5904\u7406\n\n### v1.0.0 (2026-03-24)\n- \u2705 \u521d\u59cb\u7248\u672c\u53d1\u5e03\n- \u2705 \u652f\u6301\u7f51\u6613\u4e91\u97f3\u4e50 API\n- \u2705 \u57fa\u7840\u641c\u7d22\u548c\u4e0b\u8f7d\u529f\u80fd\n- \u2705 \u672c\u5730\u64ad\u653e\u652f\u6301\n\n## \u8bb8\u53ef\u8bc1\n\n\u672c\u6280\u80fd\u4ec5\u4f9b\u5b66\u4e60\u4ea4\u6d41\u4f7f\u7528\uff0c\u8bf7\u52ff\u7528\u4e8e\u5546\u4e1a\u7528\u9014\u3002\n\n## \u652f\u6301\n\n\u5982\u6709\u95ee\u9898\uff0c\u8bf7\u63d0\u4ea4 Issue \u6216\u8054\u7cfb\u4f5c\u8005\u3002\n",
+   "files": [
+    "download.py",
+    "download_go_api.py",
+    "download_versions.py",
+    "embed_metadata.py",
+    "package.json",
+    "play_music.py",
+    "PUBLISH_GUIDE.md",
+    "README.md",
+    "search_and_download.py",
+    "SKILL.md"
+   ]
+  },
+  {
+   "ref": "clawhub:heygen-com/music-to-video",
+   "name": "music-to-video",
+   "type": "skill",
+   "what": "Turn a music track (an audio file, a video to pull audio from, or a track generated from a mood brief) into a beat-synced video, lyric video, slideshow, or...",
+   "source": "clawhub",
+   "url": "https://clawhub.ai/heygen-com/skills/music-to-video",
+   "hosts": [],
+   "needs": [],
+   "caps": [],
+   "skill_md": "---\nname: music-to-video\ndescription: \"Turn a music track (an audio file, a video to pull audio from, or a track generated from a mood brief) into a beat-synced video \u2014 lyric video, slideshow, or kinetic promo. The music drives all pacing; any user-supplied images/videos are cut onto the same beat grid, and a complete video needs zero assets. Narrated pieces \u2192 the input-matched workflow (see /hyperframes). Unclear \u2192 /hyperframes.\"\n---\n\n**Plugin installs:** Before setup or freshness commands, follow [plugin execution rules](../hyperframes/references/plugin-installation.md) when this skill is inside a HyperFrames plugin. Standalone installs keep the update instructions below.\n\n> **First, keep this skill fresh \u2014 confirm with the user before running:** `npx hyperframes skills update music-to-video`. A fast no-op when everything is current; otherwise it refreshes this skill plus the core domain skills it depends on before you rely on them.\n\n# music-to-video \u2014 one music-grounded, beat-synced video workflow\n\nUse this skill to turn a **music track** into a beat-synced HyperFrames video. You analyze the track once, lay out the frames, fill in a per-frame plan, and build each frame as a composition. The input is a music track plus optional user images or videos \u2014 there is **no narration and no website capture**. Typography and templates are the floor (a complete video needs zero assets); any media the user supplies is cut in on the same beat grid.\n\nYou are the **orchestrator**. Work in `videos/<project>/`. Run the steps in order and pass each **Gate** before moving on. Two steps need the user: **Step 3** (plan approval) and **Step 6** (render approval) \u2014 both are checkpoint gates per `../hyperframes/references/brief-contract.md` (read it before Step 0): in autonomous mode, post the Step 3 summary as a heads-up and proceed; Step 6 render approval is still asked, as the one kept question. Do every step yourself except **Step 4**, where you dispatch **one sub-agent per frame**. Keep design and motion rules out of this file \u2014 they live in `references/` and the `frame-worker` sub-agent.\n\n`SKILL_DIR` = this skill directory. `PROJECT_DIR` = `videos/<project-name>/`.\n\nWorkflow: Step 0 setup \u2192 `hyperframes.json` + `assets/bgm.mp3`; Step 1 analyze \u2192 `audiomap.json`; Step 2 skeleton \u2192 `STORYBOARD.md` (frames, groups `TBD`); Step 3 plan \u2192 complete `STORYBOARD.md` + `frame.md`; Step 4 build \u2192 `compositions/frames/NN-*.html`; Step 5 assemble \u2192 `index.html`; Step 6 render \u2192 `renders/video.mp4`.\n\n## Two ideas that shape everything\n\n- **One analyzer, and you trust it.** `analyze-beatgrid.py` is the only beat analyzer \u2014 never re-measure beats with another tool or by ear. Its energy / density / rolls / onsets / silences are always reliable. Its `bpm` and `beats_sec` are reliable **only when the music is genuinely rhythmic**; on calm music the grid is a metronome the tracker imposed, so pace by phrases and energy instead and never hard-cut to it. Deciding which case you're in is each frame's `pacing` (Step 2).\n- **One frame = one file; groups live inside.** Step 2 cuts the track into **frames**, and each frame becomes one composition file `compositions/frames/NN-<frame_id>.html`, built by one frame-worker. A frame can subdivide into **groups** (each a template or a motion-primitives combo). Extra density goes _inside_ a group, so **frame count tracks distinct treatments, not beats** \u2014 a fast track does not blow up the number of sub-agents.\n\n---\n\n## Step 0: Setup, BGM, and inputs\n\nGoal: Establish the music source, create the HyperFrames project, and note any user-supplied media.\n\n**The brief starts at the intent layer.** Opening rule, in order: **(1)** `BRIEF.md` exists \u2192 read it and ask nothing it answers \u2014 its `flow`/`storyboard` derive the mode (brief contract \u00a7 1). **(2)** No `BRIEF.md` but the project exists \u2192 resume from what's on disk; never re-interrogate. **(3)** A fresh creation request that arrived here directly \u2192 read `/hyperframes` and run its intent layer (`references/intent-interview.md`): it confirms this route's must-haves (the music source, destination \u2192 aspect \u2014 `../hyperframes/references/routes/music-to-video.md`) and announces what stays deferred \u2014 brand and genre are chosen at Step 3 by design. Write `BRIEF.md` immediately after init (never before \u2014 `init` refuses a non-empty directory) and record the preference-backed answers (`brief-format.md`). Edit requests skip all of this.\n\nThe **music is the spine** \u2014 establish one track before anything else. This skill is tuned for **fast, high-energy BGM**: a strong beat grid drives the cuts (calm tracks work, but pace by phrase rather than beat). If the user supplied audio \u2014 a music file, or a video to pull audio from \u2014 use it. Otherwise choose the mood from the request and generate a track through `/media-use` (`audio/references/bgm.md`); when the host app provides its own music tool, use that. Before the first authenticated provider action, run `npx hyperframes auth status` and relay its output verbatim. If signed out, apply one branch:\n\n- **Collaborative:** wait for sign-in or an explicit choice to continue offline with the local provider.\n- **Autonomous:** state the status and continue through the available local provider.\n\nIf no offline provider can satisfy the required music capability, surface the blocker. Never write keys into a per-repo `.env`. Auth ownership and offline fallbacks live in `/media-use` `references/setup-providers.md` \u00a7 Providers. The resulting track lands at `assets/bgm.mp3`. Stage supplied images or videos so frames can use them on the beat grid; otherwise typography carries the video.\n\n**Lyric videos:** for lyrics synced to the vocals, get word/line timing by transcribing the track via `/media-use`, or ask the user for the lyrics text and place lines on the beat grid.\n\nInitialize only if `hyperframes.json` is missing. Name `<project>` from the brief in kebab-case, such as `midnight-drive-loop` \u2014 never a timestamp. `init` check",
+   "files": [
+    "SKILL.md",
+    "references/frame-skeleton.md",
+    "references/montage.md",
+    "references/motion-primitive-catalog.md",
+    "references/motion-primitives/3d-card-flip/index.html",
+    "references/motion-primitives/3d-card-flip/scene.html",
+    "references/motion-primitives/assets/gsap.min.js",
+    "references/motion-primitives/bg-flow-field/index.html",
+    "references/motion-primitives/bg-flow-field/scene.html",
+    "references/motion-primitives/binary-decrypt/index.html",
+    "references/motion-primitives/binary-decrypt/scene.html",
+    "references/motion-primitives/blur-resolve/index.html",
+    "references/motion-primitives/blur-resolve/scene.html",
+    "references/motion-primitives/braam-punch/index.html",
+    "references/motion-primitives/braam-punch/scene.html",
+    "references/motion-primitives/chromatic-split/index.html",
+    "references/motion-primitives/chromatic-split/scene.html",
+    "references/motion-primitives/chrome-sweep/index.html",
+    "references/motion-primitives/chrome-sweep/scene.html",
+    "references/motion-primitives/counting-punch/index.html",
+    "references/motion-primitives/counting-punch/scene.html",
+    "references/motion-primitives/crash-zoom-in/index.html",
+    "references/motion-primitives/crash-zoom-in/scene.html",
+    "references/motion-primitives/datamosh-smear/index.html",
+    "references/motion-primitives/datamosh-smear/scene.html",
+    "references/motion-primitives/directional-fill/index.html",
+    "references/motion-primitives/directional-fill/scene.html",
+    "references/motion-primitives/dolly-zoom/index.html",
+    "references/motion-primitives/dolly-zoom/scene.html",
+    "references/motion-primitives/electric-arc/index.html",
+    "references/motion-primitives/electric-arc/scene.html",
+    "references/motion-primitives/flash-cut/index.html",
+    "references/motion-primitives/flash-cut/scene.html",
+    "references/motion-primitives/gooey-metaball/index.html",
+    "references/motion-primitives/gooey-metaball/scene.html",
+    "references/motion-primitives/hard-cut/index.html",
+    "references/motion-primitives/hard-cut/scene.html",
+    "references/motion-primitives/hypercut-whip/index.html",
+    "references/motion-primitives/hypercut-whip/scene.html",
+    "references/motion-primitives/iris-open/index.html",
+    "references/motion-primitives/iris-open/scene.html",
+    "references/motion-primitives/kinetic-letter-in/index.html",
+    "references/motion-primitives/kinetic-letter-in/scene.html",
+    "references/motion-primitives/liquid-morph/index.html",
+    "references/motion-primitives/liquid-morph/scene.html",
+    "references/motion-primitives/mask-reveal/index.html",
+    "references/motion-primitives/mask-reveal/scene.html",
+    "references/motion-primitives/mosaic-pack/index.html",
+    "references/motion-primitives/mosaic-pack/scene.html",
+    "references/motion-primitives/neon-flicker/index.html",
+    "references/motion-primitives/neon-flicker/scene.html",
+    "references/motion-primitives/outline-to-fill/index.html",
+    "references/motion-primitives/outline-to-fill/scene.html",
+    "references/motion-primitives/palette-flip/index.html",
+    "references/motion-primitives/palette-flip/scene.html",
+    "references/motion-primitives/particle-burst/index.html",
+    "references/motion-primitives/particle-burst/scene.html",
+    "references/motion-primitives/pixel-dissolve/index.html",
+    "references/motion-primitives/pixel-dissolve/scene.html",
+    "references/motion-primitives/radial-burst-lines/index.html",
+    "references/motion-primitives/radial-burst-lines/scene.html",
+    "references/motion-primitives/screen-shake/index.html",
+    "references/motion-primitives/screen-shake/scene.html",
+    "references/motion-primitives/slot-machine-reveal/index.html",
+    "references/motion-primitives/slot-machine-reveal/scene.html",
+    "references/motion-primitives/spotlight-sweep/index.html",
+    "references/motion-primitives/spotlight-sweep/scene.html",
+    "references/motion-primitives/staggered-exit/index.html",
+    "references/motion-primitives/staggered-exit/scene.html",
+    "references/motion-primitives/text-spectral-rays/USAGE.md",
+    "references/motion-primitives/text-spectral-rays/index.html",
+    "references/motion-primitives/text-spectral-rays/scene.html",
+    "references/motion-primitives/text-wave-distort/index.html",
+    "references/motion-primitives/text-wave-distort/scene.html",
+    "references/motion-primitives/tile-mosaic/index.html",
+    "references/motion-primitives/tile-mosaic/scene.html",
+    "references/motion-primitives/typewriter-reveal/index.html",
+    "references/motion-primitives/typewriter-reveal/scene.html",
+    "references/motion-primitives/word-grid-burst/index.html",
+    "references/motion-primitives/word-grid-burst/scene.html",
+    "references/planning.md",
+    "references/storyboard-format.md",
+    "references/template-catalog.md",
+    "references/templates/card-flyby/index.html",
+    "references/templates/card-flyby/program.json",
+    "references/templates/held-message-living-field/index.html",
+    "references/templates/held-text-strobe-burst/index.html",
+    "references/templates/intro-kinetic-cascade/index.html",
+    "references/templates/intro-kinetic-cascade/program.json",
+    "references/templates/logo-split-lockup-pulse/index.html",
+    "references/templates/poster-tile-mosaic/index.html",
+    "references/templates/poster-tile-mosaic/program.json",
+    "references/templates/roll-flipbook-word-cycle/index.html",
+    "references/templates/split-anchor-word-slot/index.html",
+    "references/templates/split-anchor-word-slot/program.json",
+    "references/templates/typewriter-phrase-keyword-shuffle/index.html",
+    "scripts/analyze-beatgrid.py",
+    "scripts/assemble-index.mjs",
+    "scripts/lib/storyboard.mjs",
+    "scripts/stage-assets.mjs",
+    "scripts/validate-plan.mjs",
+    "sub-agents/frame-worker.md"
+   ]
+  },
+  {
+   "ref": "clawhub:steipete/spotify-player",
+   "name": "Spotify Player",
+   "type": "skill",
+   "what": "Terminal Spotify playback/search via spogo (preferred) or spotify_player.",
+   "source": "clawhub",
+   "url": "https://clawhub.ai/steipete/skills/spotify-player",
+   "hosts": [],
+   "needs": [],
+   "caps": [],
+   "skill_md": "---\nname: spotify-player\ndescription: Terminal Spotify playback/search via spogo (preferred) or spotify_player.\nhomepage: https://www.spotify.com\nmetadata: {\"clawdbot\":{\"emoji\":\"\ud83c\udfb5\",\"requires\":{\"anyBins\":[\"spogo\",\"spotify_player\"]},\"install\":[{\"id\":\"brew\",\"kind\":\"brew\",\"formula\":\"spogo\",\"tap\":\"steipete/tap\",\"bins\":[\"spogo\"],\"label\":\"Install spogo (brew)\"},{\"id\":\"brew\",\"kind\":\"brew\",\"formula\":\"spotify_player\",\"bins\":[\"spotify_player\"],\"label\":\"Install spotify_player (brew)\"}]}}\n---\n\n# spogo / spotify_player\n\nUse `spogo` **(preferred)** for Spotify playback/search. Fall back to `spotify_player` if needed.\n\nRequirements\n- Spotify Premium account.\n- Either `spogo` or `spotify_player` installed.\n\nspogo setup\n- Import cookies: `spogo auth import --browser chrome`\n\nCommon CLI commands\n- Search: `spogo search track \"query\"`\n- Playback: `spogo play|pause|next|prev`\n- Devices: `spogo device list`, `spogo device set \"<name|id>\"`\n- Status: `spogo status`\n\nspotify_player commands (fallback)\n- Search: `spotify_player search \"query\"`\n- Playback: `spotify_player playback play|pause|next|previous`\n- Connect device: `spotify_player connect`\n- Like track: `spotify_player like`\n\nNotes\n- Config folder: `~/.config/spotify-player` (e.g., `app.toml`).\n- For Spotify Connect integration, set a user `client_id` in config.\n- TUI shortcuts are available via `?` in the app.\n",
+   "files": [
+    "SKILL.md"
+   ]
+  },
+  {
+   "ref": "clawhub:krasen007/music",
+   "name": "AIMP-player",
+   "type": "skill",
+   "what": "Control AIMP music player via native command-line switches (play, pause, stop, next, prev).",
+   "source": "clawhub",
+   "url": "https://clawhub.ai/krasen007/skills/music",
+   "hosts": [],
+   "needs": [],
+   "caps": [],
+   "skill_md": "---\nname: aimp-controller\ndescription: \"Control AIMP music player via native command-line switches (play, pause, stop, next, prev).\"\nversion: 1.0.0\nauthor: community\nlicense: MIT\nplatforms: [windows]\nmetadata:\n  hermes:\n    tags: [Music, AIMP, Audio, Player, Playback, Control]\n    homepage: https://aimp.ru\nprerequisites:\n  commands: [terminal]  \n---\n\n# aimp-controller\n\nDirect AIMP music player control using standard Windows command-line switches.\nNo Python or external dependencies required \u2014 just AIMP installed and running.\n\n## Prerequisites\n\n1. **AIMP must be installed** on Windows.\n2. **AIMP must be running** before you send commands.\n\n### Check if AIMP is running:\n```bash\ntasklist /FI \"IMAGENAME eq aimp.exe\"\n```\n\n## Quick Start\n\n```bash\n# Play/Pause toggle\naimp-player playpause\n\n# Start playback\naimp-player play\n\n# Pause playback\naimp-player pause\n\n# Skip next song\naimp-player next\n\n# Skip previous song\naimp-player prev\n\n# Stop music\naimp-player stop\n```\n\n## Usage Patterns\n\n### Toggle Play/Pause\n```bash\n\"C:\\Program Files (x86)\\AIMP\\AIMP.exe\" /PLAYPAUSE\n```\n\n### Start Playback Explicitly\n```bash\n\"C:\\Program Files (x86)\\AIMP\\AIMP.exe\" /PLAY\n```\n\n### Pause Playback Explicitly\n```bash\n\"C:\\Program Files (x86)\\AIMP\\AIMP.exe\" /PAUSE\n```\n\n### Skip to Next Song\n```bash\n\"C:\\Program Files (x86)\\AIMP\\AIMP.exe\" /NEXT\n```\n\n### Skip Previous Song\n```bash\n\"C:\\Program Files (x86)\\AIMP\\AIMP.exe\" /PREV\n```\n\n### Stop Music\n```bash\n\"C:\\Program Files (x86)\\AIMP\\AIMP.exe\" /STOP\n```\n\n## AIMP Command Switches Reference\n\n| Switch | Description |\n|--------|-------------|\n| `/PLAY` | Start playback |\n| `/PAUSE` | Pause playback |\n| `/PLAYPAUSE` | Toggle between play and pause |\n| `/NEXT` | Skip to next track |\n| `/PREV` | Skip to previous track |\n| `/STOP` | Stop all playback immediately |\n\n## Examples with Hermes\n\n### Simple command in a conversation:\n```bash\n# Ask me to skip the next song\n\"C:\\Program Files (x86)\\AIMP\\AIMP.exe\" /NEXT\n```\n\n### Stop current song, then close the player entirely:\n```bash\n# Stop playback and exit the application\n\"C:\\Program Files (x86)\\AIMP\\AIMP.exe\" /STOP\n```\n\n## Notes\n\n- Commands execute immediately and silently.\n- AIMP responds to switches in real-time while playing.\n- Windows Explorer path with spaces must be quoted: `\"C:\\Program Files (x86)\\AIMP\\AIMP.exe\"`.\n\n## Troubleshooting\n\n**AIMP not responding:**\n```bash\n# Make sure AIMP is running first\ntasklist /FI \"IMAGENAME eq aimp.exe\"\n\n# If not running, start it manually:\n\"C:\\Program Files (x86)\\AIMP\\AIMP.exe\"\n```\n\n**Command fails with exit code 1:**\n- AIMP might be closed or unavailable.\n- Try launching AIMP and retrying the switch.\n",
+   "files": [
+    "SKILL.md"
+   ]
+  },
+  {
+   "ref": "skills.sh:joeseesun/qiaomu-music-player-spotify/qiaomu-music-player-spotify",
+   "name": "qiaomu-music-player-spotify",
+   "type": "skill",
+   "what": "A skill in the joeseesun/qiaomu-music-player-spotify project on GitHub.",
+   "source": "skills.sh",
+   "url": "https://skills.sh/joeseesun/qiaomu-music-player-spotify/qiaomu-music-player-spotify",
+   "hosts": [],
+   "needs": [],
+   "caps": [],
+   "skill_md": "---\nname: qiaomu-music-player-spotify\ndescription: |\n  Spotify \u97f3\u4e50\u64ad\u653e\u63a7\u5236 + 5947 \u98ce\u683c\u6570\u636e\u5e93\u3002\u641c\u7d22\u3001\u64ad\u653e\u3001\u6682\u505c\u3001\u961f\u5217\u7ba1\u7406\u3001\u573a\u666f\u97f3\u4e50\u63a8\u8350\u3001\u98ce\u683c\u67e5\u8be2\u4e0e\u63a2\u7d22\u3002\n\n  USE THIS SKILL when user mentions:\n  - Playback: \"\u64ad\u653e\u97f3\u4e50\", \"\u6765\u9996\u6b4c\", \"\u653e\u70b9\u97f3\u4e50\", \"\u64ad\u653e\", \"\u60f3\u542cXX\", \"\u6765\u70b9XX\u97f3\u4e50\"\n  - Controls: \"\u6682\u505c\", \"\u7ee7\u7eed\", \"\u4e0b\u4e00\u9996\", \"\u4e0a\u4e00\u9996\", \"\u97f3\u91cf\", \"\u6b63\u5728\u64ad\u653e\u4ec0\u4e48\"\n  - Genre lookup: /genre, \"\u67e5\u8be2\u97f3\u4e50\u98ce\u683c\", \"\u63a8\u8350\u97f3\u4e50\u7c7b\u578b\", \"XX\u98ce\u683c\u6709\u54ea\u4e9b\u5b50\u5206\u7c7b\"\n  - Scene/mood: \"\u9002\u5408\u6df1\u591c\u7684\u97f3\u4e50\", \"\u6709\u6d3b\u529b\u7684\", \"\u7a7a\u7075\u7684\", \"\u63a8\u8350\u4e00\u4e9bXX\u7279\u70b9\u7684\u97f3\u4e50\u98ce\u683c\"\n  - Suno integration: \u7528 Suno \u751f\u6210\u97f3\u4e50\u4f46\u672a\u6307\u5b9a\u98ce\u683c\u65f6\n  - /spotify\ntriggers:\n  - \"\u64ad\u653e\u97f3\u4e50\"\n  - \"\u6765\u9996\u6b4c\"\n  - \"\u653e\u70b9\u97f3\u4e50\"\n  - \"\u64ad\u653e\"\n  - \"\u60f3\u542c\"\n  - \"\u6682\u505c\"\n  - \"\u4e0b\u4e00\u9996\"\n  - \"\u4e0a\u4e00\u9996\"\n  - \"\u73b0\u5728\u64ad\u653e\u4ec0\u4e48\"\n  - \"\u97f3\u91cf\"\n  - \"\u6700\u8fd1\u542c\u4e86\u4ec0\u4e48\"\n  - \"\u67e5\u8be2\u97f3\u4e50\u98ce\u683c\"\n  - \"\u63a8\u8350\u97f3\u4e50\u7c7b\u578b\"\n  - \"\u9002\u5408XX\u7684\u97f3\u4e50\"\n  - \"/spotify\"\n  - \"/genre\"\n---\n\n# Qiaomu Music Player (Spotify)\n\n\u7edf\u4e00\u7684\u97f3\u4e50\u64ad\u653e + \u98ce\u683c\u67e5\u8be2 Skill\u3002\u901a\u8fc7\u81ea\u5305\u542b\u7684 Python \u811a\u672c\u76f4\u63a5\u8c03\u7528 Spotify Web API\uff0c\u96c6\u6210 RateYourMusic 5947 \u4e2a\u97f3\u4e50\u98ce\u683c\u6570\u636e\u5e93\u3002\n\n---\n\n## Part 1: Spotify \u64ad\u653e\u5668\n\n### \u811a\u672c\u4f4d\u7f6e\n`~/.claude/skills/qiaomu-music-player-spotify/spotify.py`\n\n### \u8fd0\u884c\u65b9\u5f0f\n```bash\n~/.claude/skills/qiaomu-music-player-spotify/spotify.py <command> [args...]\n```\n\n### \u547d\u4ee4\u5217\u8868\n\n| \u547d\u4ee4 | \u53c2\u6570 | \u8bf4\u660e |\n|------|------|------|\n| `search` | `<query> [type] [limit]` | \u641c\u7d22 (type: track/artist/album/playlist\uff0c\u9ed8\u8ba4 track) |\n| `play` | `<uri\u6216track_id>` | \u64ad\u653e\u6307\u5b9a\u66f2\u76ee/\u4e13\u8f91/\u64ad\u653e\u5217\u8868 |\n| `pause` | | \u6682\u505c |\n| `resume` | | \u7ee7\u7eed\u64ad\u653e |\n| `next` | | \u4e0b\u4e00\u9996 |\n| `prev` | | \u4e0a\u4e00\u9996 |\n| `queue` | `<uri\u6216track_id>` | \u52a0\u5165\u961f\u5217 |\n| `now` | | \u5f53\u524d\u64ad\u653e\u4fe1\u606f |\n| `show-queue` | `[limit]` | \u663e\u793a\u961f\u5217 |\n| `volume` | `<0-100>` | \u8bbe\u7f6e\u97f3\u91cf |\n| `devices` | | \u5217\u51fa\u53ef\u7528\u8bbe\u5907 |\n| `recent` | `[limit]` | \u6700\u8fd1\u64ad\u653e |\n| `playlists` | `[limit]` | \u6211\u7684\u64ad\u653e\u5217\u8868 |\n| `batch-play` | `<id1> <id2> ...` | \u6279\u91cf\u64ad\u653e\uff08\u64ad\u7b2c\u4e00\u9996 + \u5176\u4f59\u52a0\u961f\u5217\uff09 |\n| `shuffle` | `<on\\|off>` | \u968f\u673a\u64ad\u653e |\n| `repeat` | `<track\\|context\\|off>` | \u5faa\u73af\u6a21\u5f0f |\n\n### \u914d\u7f6e\n- **\u9ed8\u8ba4\u8bbe\u5907 ID**: `b21721f49276638d9fddb0946f9d5936fa7a91fb`\uff08MacBook Pro\uff09\n- **Token \u6587\u4ef6**: `~/.claude/skills/qiaomu-music-player-spotify/.spotify_tokens.json`\uff08\u81ea\u52a8\u5237\u65b0\uff09\n- **OAuth \u91cd\u65b0\u6388\u6743**: \u8fd0\u884c `auth_setup.py`\n- \u6240\u6709\u8f93\u51fa\u4e3a JSON \u683c\u5f0f\uff0c\u65b9\u4fbf AI \u89e3\u6790\n- \u5982\u679c\u9047\u5230 401 \u9519\u8bef\uff0c\u811a\u672c\u4f1a\u81ea\u52a8\u5c1d\u8bd5\u5237\u65b0 token \u4e00\u6b21\n\n---\n\n## Part 2: \u98ce\u683c\u6570\u636e\u5e93\uff085947 \u4e2a\u98ce\u683c\uff09\n\n### \u6570\u636e\u7ed3\u6784\n\n`~/.claude/skills/qiaomu-music-player-spotify/references/` \u76ee\u5f55\u4e0b\u7684\u5206\u5c42\u6570\u636e\uff1a\n\n```\nreferences/\n\u251c\u2500\u2500 _index.json          # 49\u4e2a\u4e3b\u5206\u7c7b\u6982\u89c8\uff08\u5fc5\u8bfb\uff0c13KB\uff09\n\u251c\u2500\u2500 _meta.json           # \u5143\u6570\u636e\u548c\u4f7f\u7528\u8bf4\u660e\n\u251c\u2500\u2500 main/                # 49\u4e2a\u6587\u4ef6\uff0c\u6bcf\u4e2a\u4e3b\u5206\u7c7b\u7684\u76f4\u63a5\u5b50\u5206\u7c7b\n\u2502   \u251c\u2500\u2500 ambient.json\n\u2502   \u251c\u2500\u2500 rock.json\n\u2502   \u2514\u2500\u2500 ...\n\u2514\u2500\u2500 detailed/            # 578\u4e2a\u6587\u4ef6\uff0c\u6709\u5b59\u5206\u7c7b\u7684\u5b50\u5206\u7c7b\u8be6\u60c5\n    \u251c\u2500\u2500 dark-ambient.json\n    \u251c\u2500\u2500 shoegaze.json\n    \u2514\u2500\u2500 ...\n```\n\n**\u6570\u636e\u7edf\u8ba1**\uff1a\n- \u603b\u98ce\u683c\u6570\uff1a5947\n- \u4e3b\u5206\u7c7b\uff1a49\uff08Rock, Jazz, Ambient, Electronic \u7b49\uff09\n- \u5b50\u5206\u7c7b\uff1a737\uff08level: sub\uff09\n- \u5b59\u5206\u7c7b\u53ca\u4ee5\u4e0b\uff1a5161\uff08sub-2/sub-3/sub-4\uff09\n\n**\u6bcf\u4e2a\u98ce\u683c\u7684\u6570\u636e\u5b57\u6bb5**\uff1a\n```json\n{\n  \"name\": \"Dark Ambient\",\n  \"url\": \"https://rateyourmusic.com/genre/dark-ambient/\",\n  \"description\": \"Emphasizes an ominous, gloomy, and dissonant atmosphere.\",\n  \"level\": \"sub\",\n  \"parent\": \"Ambient\"\n}\n```\n\n---\n\n## Part 3: \u64ad\u653e\u51b3\u7b56\u6d41\u7a0b\uff08\u6838\u5fc3\uff01\u5fc5\u987b\u4e25\u683c\u9075\u5faa\uff09\n\n```\n\u7528\u6237\u8bf4\"\u64ad\u653e/\u60f3\u542c XX\"\n  \u2502\n  \u251c\u2500\u2500 \u8def\u5f84B\uff08\u4f18\u5148\uff01\uff09\uff1aXX \u80fd\u5339\u914d\u4e0b\u65b9\u64ad\u653e\u5217\u8868\u6620\u5c04\uff1f\uff08\u98ce\u683c\u540d/\u573a\u666f\u5173\u952e\u8bcd\uff09\n  \u2502   \u2192 \u76f4\u63a5\u7528\u7f13\u5b58 ID\uff1aspotify.py play spotify:playlist:<id>\uff08\u65e0\u9700\u786e\u8ba4\uff09\n  \u2502\n  \u251c\u2500\u2500 \u8def\u5f84A\uff1aXX \u662f\u5177\u4f53\u6b4c\u624b/\u4e13\u8f91/\u6b4c\u66f2\uff1f\uff08\u5982\"\u64ad\u653e\u6d85\u69c3\u7684\u4e13\u8f91\"\u3001\"\u542c Bohemian Rhapsody\"\uff09\n  \u2502   \u2192 spotify.py search \"<query>\" track 1 \u2192 \u62ff ID \u2192 spotify.py play <id>\n  \u2502\n  \u251c\u2500\u2500 \u8def\u5f84D\uff1a\u7528\u6237\u8981\u6c42\u64ad\u653e\u591a\u9996\u7279\u5b9a\u6b4c\u66f2\uff1f\uff08\u5982\"\u6700\u597d\u542c\u76843\u9996\u51b2\u6d6a\u4e50\"\u3001\"\u67655\u9996\u7ecf\u5178\u7235\u58eb\"\uff09\n  \u2502   \u2192 AI \u9009\u51fa N \u9996\u4ee3\u8868\u4f5c \u2192 \u5e76\u884c search \u83b7\u53d6\u6240\u6709 ID\n  \u2502   \u2192 spotify.py batch-play <id1> <id2> <id3> ...\n  \u2502   \u2192 \u5217\u51fa\u5b8c\u6574\u64ad\u653e\u6e05\u5355\u7ed9\u7528\u6237\u770b\n  \u2502\n  \u2514\u2500\u2500 \u8def\u5f84C\uff1aXX \u662f\u6a21\u7cca\u9700\u6c42/\u573a\u666f\u63cf\u8ff0\uff1f\uff08\u5982\"\u96e8\u5929\u7684\u6b4c\"\u3001\"\u9002\u5408\u5199\u4ee3\u7801\"\u3001\"\u5fc3\u60c5\u4e0d\u597d\"\uff09\n      \u2192 \u5fc5\u987b\u8d70\u3010\u6a21\u7cca\u9700\u6c42\u5b8c\u6574\u6d41\u7a0b\u3011\uff0c\u89c1\u4e0b\u65b9 3c\n```\n\n> **\u8def\u5f84 D \u89e6\u53d1\u8bcd**\uff1a\"\u6700\u7ecf\u5178\u76843\u9996XX\"\u3001\"\u6765\u51e0\u9996XX\"\u3001\"\u63a8\u83505\u9996XX\u7684\u6b4c\u76f4\u63a5\u653e\"\u3001\"XX \u98ce\u683c\u7684\u4ee3\u8868\u4f5c\u6765\u51e0\u9996\"\n\n### 3a. \u6807\u51c6\u64ad\u653e\u6d41\u7a0b\uff08\u8def\u5f84 A\uff09\n\n```bash\n# 1. \u641c\u7d22\nspotify.py search \"Bohemian Rhapsody\" track 1\n# \u2192 \u62ff\u5230 ID\n\n# 2. \u64ad\u653e\nspotify.py play <track_id>\n\n# 3. \u9a8c\u8bc1\uff08\u53ef\u9009\uff09\nspotify.py now\n```\n\n### 3b. \u6279\u91cf\u64ad\u653e\u6d41\u7a0b\uff08\u8def\u5f84 D\uff09\n\n```bash\n# 1. \u641c\u7d22\u591a\u9996\uff08\u53ef\u4ee5\u5e76\u884c\u591a\u6b21\u8c03\u7528 search\uff09\nspotify.py search \"Miserlou Dick Dale\" track 1\nspotify.py search \"Wipe Out Surfaris\" track 1\nspotify.py search \"Pipeline Chantays\" track 1\n\n# 2. \u4e00\u6b21\u6027\u6279\u91cf\u64ad\u653e\uff08\u64ad\u7b2c\u4e00\u9996 + \u5176\u4f59\u52a0\u961f\u5217\uff09\nspotify.py batch-play <id1> <id2> <id3>\n```\n\n### 3c. \u6a21\u7cca\u9700\u6c42\u5b8c\u6574\u6d41\u7a0b\uff08\u8def\u5f84 C\uff0c\u6700\u91cd\u8981\uff01\uff09\n\n\u5f53\u7528\u6237\u63cf\u8ff0\u7684\u662f**\u573a\u666f\u3001\u5fc3\u60c5\u3001\u6c1b\u56f4**\u800c\u975e\u5177\u4f53\u6b4c\u624b/\u98ce\u683c\u65f6\uff0c\u5fc5\u987b\u8d70\u6b64\u6d41\u7a0b\uff1a\n\n**Step 1: \u98ce\u683c\u5e93\u67e5\u8be2**\n- \u8bfb\u53d6 `_index.json` \u626b\u63cf49\u4e2a\u4e3b\u5206\u7c7b\n- \u6839\u636e\u5173\u952e\u8bcd\u5339\u914d\uff0c\u8bfb\u53d6 2-3 \u4e2a\u5019\u9009 `main/*.json` \u83b7\u53d6\u5b50\u5206\u7c7b\u8be6\u60c5\n- \u4ece\u98ce\u683c\u5e93\u4e2d\u7b5b\u9009\u51fa 3-5 \u4e2a\u6700\u5339\u914d\u7684\u98ce\u683c\n\n**Step 2: \u7ed3\u5408 AI \u63a8\u8350\u5177\u4f53\u97f3\u4e50**\n- \u57fa\u4e8e\u5339\u914d\u5230\u7684\u98ce\u683c\uff0c\u7ed3\u5408\u81ea\u8eab\u97f3\u4e50\u77e5\u8bc6\uff0c\u4e3a\u6bcf\u4e2a\u98ce\u683c\u63a8\u8350 1 \u9996\u5177\u4f53\u7684\u4ee3\u8868\u6027\u6b4c\u66f2/\u4e13\u8f91\n- \u63a8\u8350\u683c\u5f0f\u5fc5\u987b\u5305\u542b\uff1a\u98ce\u683c\u540d + \u63a8\u8350\u7406\u7531 + \u5177\u4f53\u6b4c\u624b/\u4e13\u8f91/\u6b4c\u66f2\u540d\n\n**Step 3: \u5448\u73b0\u65b9\u6848\uff0c\u7b49\u5f85\u7528\u6237\u786e\u8ba4**\n- \u5c55\u793a 3-5 \u4e2a\u9009\u9879\uff0c\u6bcf\u4e2a\u9009\u9879\u5305\u542b\uff1a\u98ce\u683c + \u63a8\u8350\u66f2\u76ee + \u4e00\u53e5\u8bdd\u63a8\u8350\u7406\u7531\n- **\u5fc5\u987b\u7b49\u7528\u6237\u9009\u62e9\u540e\u518d\u64ad\u653e\uff0c\u4e0d\u8981\u81ea\u4f5c\u4e3b\u5f20\u76f4\u63a5\u64ad\uff01**\n\n**Step 4: \u7528\u6237\u786e\u8ba4\u540e\uff0c\u641c\u7d22\u5e76\u64ad\u653e**\n- \u7528\u6237\u9009\u4e86\u5e8f\u53f7/\u540d\u5b57\u540e \u2192 `spotify.py search` \u2192 \u62ff ID \u2192 `spotify.py play` \u64ad\u653e\n- \u64ad\u653e\u540e\u7528 `spotify.py now` \u786e\u8ba4\u64ad\u653e\u4fe1\u606f\n\n**\u793a\u4f8b\u5bf9\u8bdd**\uff1a\n```\nUser: \u9002\u5408\u96e8\u5929\u542c\u7684\u6b4c\n\nAI: \ud83c\udf27\ufe0f \u6839\u636e\u98ce\u683c\u5e93\u5339\u914d\uff0c\u96e8\u5929\u63a8\u8350\u8fd9\u51e0\u4e2a\u65b9\u5411\uff1a\n\n1. \ud83c\udfb9 Bossa Nova \u2014 Jo\u00e3o Gilberto\u300aGetz/Gilberto\u300b\n   \u6175\u61d2\u7684\u5df4\u897f\u7235\u58eb\uff0c\u96e8\u5929\u5496\u5561\u9986\u6807\u914d\n\n2. \ud83c\udf2b\ufe0f Ambient Pop \u2014 Sigur R\u00f3s\u300a( )\u300b\n   \u51b0\u5c9b\u6c1b\u56f4\uff0c\u7a7a\u7075\u7ec7\u4f53\u50cf\u96e8\u5e55\u4e00\u6837\u5305\u88f9\u4f60\n\n3. \ud83c\udfb8 Contemporary Folk \u2014 Iron & Wine\u300aOur Endless Numbered Days\u300b\n   \u539f\u58f0\u5409\u4ed6\u4f4e\u8bed\uff0c\u5b89\u9759\u96e8\u591c\u7684\u966a\u4f34\n\n4. \ud83c\udfb7 Cool Jazz \u2014 Chet Baker\u300aChet Baker Sings\u300b\n   \u5185\u655b\u514b\u5236\u7684\u5c0f\u53f7\uff0c\u914d\u96e8\u58f0\u521a\u521a\u597d\n\n5. \ud83c\udf11 Dark Jazz \u2014 Bohren & der Club of Gore\u300aSunset Mission\u300b\n   \u9ed1\u8272\u7535\u5f71\u8d28\u611f\uff0c\u9634\u96e8\u5929\u7684\u5b8c\u7f8e\u914d\u4e50\n\n\u60f3\u542c\u54ea\u4e2a\uff1f\u8bf4\u5e8f\u53f7\u5c31\u884c\u3002\n\nUser: 2\n\nAI: [spotify.py search \"Sigur R\u00f3s ( )\" album 1 \u2192 spotify.py play <album_id>]\n\ud83c\udf27\ufe0f \u6b63\u5728\u64ad\u653e Sigur R\u00f3s \u2014\u300a( )\u300b\n\u4e0d\u559c\u6b22\u8bf4\"\u6362\u4e00\u4e2a\"\uff0c\u6211\u4ece\u5176\u4ed6\u9009\u9879\u91cc\u6311\u3002\n```\n\n**\u5173\u952e\u539f\u5219**\uff1a\n- \u6a21\u7cca\u9700\u6c42 \u2192 **\u5fc5\u987b\u5148\u63a8\u8350\u3001\u7b49\u786e\u8ba4\u3001\u518d\u64ad\u653e**\uff0c\u4e09\u6b65\u7f3a\u4e00\u4e0d\u53ef\n- \u6bcf\u4e2a\u63a8\u8350\u5fc5\u987b\u5177\u4f53\u5230**\u6b4c\u624b + \u4e13\u8f91/\u6b4c\u66f2\u540d**\uff0c\u4e0d\u8981\u53ea\u7ed9\u98ce\u683c\u540d\n- \u63a8\u8350\u8981\u7ed3\u5408\u98ce\u683c\u5e93\u6570\u636e\uff08\u786e\u4fdd\u98ce\u683c\u51c6\u786e\uff09+ AI \u97f3\u4e50\u77e5\u8bc6\uff08\u63a8\u8350\u5177\u4f53\u66f2\u76ee\uff09\n- \u7528\u6237\u8bf4\"\u6362\u4e00\u4e2a\"\u65f6\uff0c\u4ece\u5269\u4f59\u9009\u9879\u4e2d\u6311\u6216\u63a8\u8350\u65b0\u7684\n\n---\n\n## Part 4: \u98ce\u683c \u2192 Spotify \u64ad\u653e\u5217\u8868\u6620\u5c04\n\n\u5f53\u7528\u6237\u8bf4\"\u60f3\u542c Jazz\"\u7b49\u98ce\u683c\u5173\u952e\u8bcd\u65f6\uff0c\u76f4\u63a5\u7528\u5185\u7f6e\u6620\u5c04\u64ad\u653e\uff0c\u65e0\u9700\u641c\u7d22\u3002\n\n| \u98ce\u683c/\u573a\u666f | Playlist ID | \u64ad\u653e\u5217\u8868\u540d |\n|-----------|-------------|-----------|\n| Jazz | `37i9dQZF1DXbITWG1ZJKYt` | Jazz Vibes |\n| Lo-fi / \u5199\u4ee3\u7801 | `37i9dQZF1DWWQRwui0ExPn` | lofi beats |\n| Ambient | `37i9dQZF1DX3Ogo9pFvBkY` | Ambient Relaxation |\n| Classical | `37i9dQZF1DWWEJlAGA9gs0` | Classical Essentials |\n| Electronic | `37i9dQZF1DX4dyzvuaRJ0n` | mint |\n| Rock | `37i9dQZF1DXcF6B6QPhFDv` | Rock This |\n| R&B | `37i9dQZF1DX4SBhb3fqCJd` | Are & Be |\n| Hip Hop | `37i9dQZF1DX0XUsuxWHRQd` | RapCaviar |\n| Pop | `37i9dQZF1DXcBWIGoYBM5M` | Today's Top Hits |\n| Chill / \u653e\u677e | `37i9dQZF1DX4WYpdgoIcn6` | Chill Hits |\n| Focus / \u4e13\u6ce8 | `37i9dQZF1DX8NTLI2TtZa6` | Deep Focus |\n| Sleep / \u7761\u7720 | `37i9dQZF1DWZd79rJ6a7lp` | Sleep |\n| Workout / \u8fd0\u52a8 | `37i9dQZF1DX76Wlfdnj7AP` | Beast Mode |\n| Indie | `37i9dQZF1DX2Nc3B70tvx0` | Indie Pop |\n| Blues | `37i9dQZF1DXd9rSDyQguIk` | Blues Classics |\n| Country | `37i9dQZF1DX1lVhptIYRda` | Hot Country |\n| Latin | `37i9dQZF1DX10zKzsJ2jva` | Viva Latino |\n| K-Pop | `37i9dQZF1DX9tPFwDMOaN1` | K-Pop ON! |\n| Punk | `37i9dQZF1DX0KpeLYR2IHH` | Punk ",
+   "files": [
+    ".env.example",
+    ".gitignore",
+    "LICENSE",
+    "README.md",
+    "SKILL.md",
+    "auth_setup.py",
+    "install.sh",
+    "package.json",
+    "spotify.py"
+   ]
+  },
+  {
+   "ref": "skills.sh:prime-skills/runcomfy-agent-skills/elevenlabs-music-generation",
+   "name": "elevenlabs-music-generation",
+   "type": "skill",
+   "what": "A skill in the prime-skills/runcomfy-agent-skills project on GitHub.",
+   "source": "skills.sh",
+   "url": "https://skills.sh/prime-skills/runcomfy-agent-skills/elevenlabs-music-generation",
+   "hosts": [],
+   "needs": [],
+   "caps": [],
+   "skill_md": "---\nname: elevenlabs-music-generation\ndisplayName: \"ElevenLabs AI Music Generation \u2014 Pro Pack on RunComfy\"\nallowed-tools: Bash(runcomfy *)\ndescription: >\n  Generate full songs and instrumental tracks with ElevenLabs Music on\n  RunComfy via the `runcomfy` CLI. ElevenLabs Music turns a style\n  description plus structured lyrics into studio-quality 44.1 kHz\n  stereo audio \u2014 5 seconds to 5 minutes \u2014 with section-level control\n  (Intro / Verse / Chorus / Bridge), multilingual vocals, and\n  commercial-friendly output. Generate a backing track, a full vocal\n  song, a jingle, a podcast intro, a game loop, or an instrumental\n  bed. Calls `runcomfy run elevenlabs/elevenlabs/music-generation`\n  through the local RunComfy CLI. Triggers on \"generate music\",\n  \"make a song\", \"AI music\", \"background music\", \"instrumental\n  track\", \"ElevenLabs Music\", \"soundtrack\", \"jingle\", \"theme music\",\n  \"royalty-free music\", \"compose\", or any explicit ask to generate\n  music or a song from a text description.\nhomepage: https://www.runcomfy.com\nlicense: MIT\n---\n\n# ElevenLabs AI Music Generation \u2014 Pro Pack on RunComfy\n\nGenerate full songs and instrumental tracks from a text description \u2014 studio-quality 44.1 kHz stereo, 5 seconds to 5 minutes, with section-level structure control. ElevenLabs Music on the **RunComfy Model API**, called through the `runcomfy` CLI.\n\n[runcomfy.com](https://www.runcomfy.com/?utm_source=skills.sh&utm_medium=skill&utm_campaign=elevenlabs-music-generation) \u00b7 [ElevenLabs Music model](https://www.runcomfy.com/models/elevenlabs/elevenlabs/music-generation?utm_source=skills.sh&utm_medium=skill&utm_campaign=elevenlabs-music-generation) \u00b7 [CLI docs](https://docs.runcomfy.com/cli/introduction?utm_source=skills.sh&utm_medium=skill&utm_campaign=elevenlabs-music-generation)\n\n## Install this skill\n\n```bash\nnpx skills add agentspace-so/runcomfy-agent-skills --skill elevenlabs-music-generation -g\n```\n\n## Powered by the RunComfy CLI\n\n```bash\n# 1. Install (one of \u2014 see runcomfy-cli skill for details)\nnpm i -g @runcomfy/cli                              # global install\nnpx -y @runcomfy/cli --version                      # zero-install\n\n# 2. Sign in\nruncomfy login                                      # or in CI: export RUNCOMFY_TOKEN=<token>\n\n# 3. Generate music\nruncomfy run elevenlabs/elevenlabs/music-generation \\\n  --input '{\"prompt\": \"...\"}' \\\n  --output-dir ./out\n```\n\nCLI deep dive: [`runcomfy-cli`](https://www.skills.sh/agentspace-so/runcomfy-agent-skills/runcomfy-cli) skill.\n\n## When to use ElevenLabs Music\n\nElevenLabs Music's strength is **structured songs with real vocals** \u2014 it takes a style brief plus lyrics with section markers and returns a coherent, mixed track. Pick it for:\n\n- **Full vocal songs** \u2014 verse/chorus structure, multilingual lyrics, consistent meter\n- **Instrumental beds** \u2014 `force_instrumental: true` for background music, podcast intros, game loops\n- **Short brand assets** \u2014 jingles, stingers, theme music (5\u201330 s)\n- **Long-form tracks** \u2014 up to 5 minutes in a single call\n- **Commercial work** \u2014 output is commercial-friendly\n\nIf the user just wants ambient sound or a one-off SFX (thunder, footsteps), that's a sound-effects task, not music \u2014 ElevenLabs Music is for *songs and tracks*.\n\n## Endpoint + input schema\n\n**Model**: `elevenlabs/elevenlabs/music-generation`\n\n| Field | Type | Required | Default | Notes |\n|---|---|---|---|---|\n| `prompt` | string | yes | \u2014 | Style description **and** lyrics with section markers. See prompting tips |\n| `music_length_ms` | int | no | `40000` | Output duration in ms. **5000\u2013300000** (5 s \u2013 5 min) |\n| `force_instrumental` | bool | no | `false` | `true` = instrumental only, no vocals |\n| `output_format` | string | no | `mp3_standard` | `mp3_standard` (default), or WAV \u2014 see the [model page](https://www.runcomfy.com/models/elevenlabs/elevenlabs/music-generation?utm_source=skills.sh&utm_medium=skill&utm_campaign=elevenlabs-music-generation) API tab for the full format list |\n\nOutput: 44.1 kHz stereo audio. The result JSON contains the generated audio URL \u2014 the CLI downloads it into `--output-dir`.\n\n**Pricing**: ~$0.0083 per second of generated audio (30 s \u2248 $0.25, 60 s \u2248 $0.50, 5 min \u2248 $2.49). Cost scales with `music_length_ms`, so draft short and finalize long.\n\n## How to invoke\n\n**Full vocal song with structure:**\n\n```bash\nruncomfy run elevenlabs/elevenlabs/music-generation \\\n  --input '{\n    \"prompt\": \"Upbeat indie-pop anthem, bright electric guitars, driving drums, 120 BPM, female lead vocal. [Intro 8 bars] instrumental build. [Verse] Chalk on the palms, laces double-knotted, morning on the ridge. [Chorus] We rise, we strike, we never fade out. [Bridge] soft breakdown, just piano and voice. [Outro] full band, fade.\",\n    \"music_length_ms\": 60000\n  }' \\\n  --output-dir ./out\n```\n\n**Instrumental background bed:**\n\n```bash\nruncomfy run elevenlabs/elevenlabs/music-generation \\\n  --input '{\n    \"prompt\": \"Calm lo-fi hip-hop instrumental for a study playlist. Warm Rhodes piano, soft vinyl crackle, mellow boom-bap drums, 75 BPM. No vocals. Consistent loop-friendly groove throughout.\",\n    \"music_length_ms\": 90000,\n    \"force_instrumental\": true\n  }' \\\n  --output-dir ./out\n```\n\n**Short brand jingle:**\n\n```bash\nruncomfy run elevenlabs/elevenlabs/music-generation \\\n  --input '{\n    \"prompt\": \"5-second cheerful brand stinger, bright marimba and a single uplifting chord resolve, no vocals.\",\n    \"music_length_ms\": 5000,\n    \"force_instrumental\": true\n  }' \\\n  --output-dir ./out\n```\n\n## Prompting tips\n\nElevenLabs Music reads **one `prompt` field** that carries both the style brief and the lyrics. Structure it well:\n\n- **Lead with the style brief**: genre, mood, tempo (BPM), key instruments, vocal type. `\"Upbeat indie-pop anthem, bright electric guitars, 120 BPM, female lead vocal.\"`\n- **Then the lyrics with section markers**: `[Intro]`, `[Verse]`, `[Chorus]`, `[Bridge]`, `[Outro]`. Add approximate durations or bar counts \u2014 `[Intro 8 bars]`, `[Verse 16 bars]`.\n- **",
+   "files": [
+    "SKILL.md"
+   ]
+  },
+  {
+   "ref": "skills.sh:joeseesun/qiaomu-music-player-ncm/qiaomu-music-player-ncm",
+   "name": "qiaomu-music-player-ncm",
+   "type": "skill",
+   "what": "A skill in the joeseesun/qiaomu-music-player-ncm project on GitHub.",
+   "source": "skills.sh",
+   "url": "https://skills.sh/joeseesun/qiaomu-music-player-ncm/qiaomu-music-player-ncm",
+   "hosts": [],
+   "needs": [],
+   "caps": [],
+   "skill_md": "---\nname: qiaomu-music-player-ncm\ndescription: |\n  \u7f51\u6613\u4e91\u97f3\u4e50\u5168\u80fd\u52a9\u624b + 5947\u98ce\u683c\u6570\u636e\u5e93\u3002\u5b89\u88c5\u914d\u7f6e\u3001\u64ad\u653e\u63a7\u5236\u3001\u641c\u7d22\u3001\u961f\u5217\u7ba1\u7406\u3001\n  \u573a\u666f\u97f3\u4e50\u63a8\u8350\u3001\u6bcf\u65e5\u63a8\u8350\u3001\u5fc3\u52a8\u6a21\u5f0f\u3001\u79c1\u4eba\u6f2b\u6e38FM\u3001\u96f7\u8fbe\u6b4c\u5355\u3001\u7ea2\u5fc3\u7ba1\u7406\u3001\u542c\u6b4c\u6392\u884c\u3001\n  \u6b4c\u8bcd\u67e5\u8be2\u3001\u504f\u597d\u5206\u6790\u3001\u667a\u80fd\u63a8\u8350\u3001\u5b9a\u65f6\u63a8\u9001\u8c03\u5ea6\u3001\u98ce\u683c\u67e5\u8be2\u4e0e\u63a2\u7d22\u3002\n\n  USE THIS SKILL when user mentions:\n  - \u64ad\u653e\u63a7\u5236: \"\u64ad\u653e\u97f3\u4e50\", \"\u6765\u9996\u6b4c\", \"\u653e\u70b9\u97f3\u4e50\", \"\u60f3\u542cXX\", \"\u6765\u70b9XX\u97f3\u4e50\", \"\u7f51\u6613\u4e91\"\n  - \u63a7\u5236\u64cd\u4f5c: \"\u6682\u505c\", \"\u7ee7\u7eed\", \"\u4e0b\u4e00\u9996\", \"\u4e0a\u4e00\u9996\", \"\u97f3\u91cf\", \"\u6b63\u5728\u64ad\u653e\u4ec0\u4e48\"\n  - \u7f51\u6613\u4e91\u7279\u8272: \"\u6bcf\u65e5\u63a8\u8350\", \"\u79c1\u4eba\u6f2b\u6e38\", \"\u5fc3\u52a8\u6a21\u5f0f\", \"\u96f7\u8fbe\u6b4c\u5355\", \"\u7ea2\u5fc3\", \"\u542c\u6b4c\u6392\u884c\"\n  - \u573a\u666f/\u5fc3\u60c5: \"\u9002\u5408\u6df1\u591c\u7684\u97f3\u4e50\", \"\u5de5\u4f5c\u65f6\u542c\", \"\u9002\u5408\u8dd1\u6b65\", \"\u63a8\u8350\u4e00\u4e9bXX\u7684\u97f3\u4e50\"\n  - \u6b4c\u8bcd\u67e5\u8be2: \"\u8fd9\u9996\u6b4c\u7684\u6b4c\u8bcd\", \"\u663e\u793a\u6b4c\u8bcd\"\n  - \u667a\u80fd\u63a8\u8350: \"\u6839\u636e\u6211\u7684\u53e3\u5473\u63a8\u8350\", \"\u5206\u6790\u6211\u7684\u504f\u597d\", \"\u5e2e\u6211\u9009\"\n  - \u5b89\u88c5\u914d\u7f6e: \"\u5b89\u88c5ncm-cli\", \"\u914d\u7f6eAPI Key\", \"\u5b89\u88c5mpv\"\n  - \u8c03\u5ea6\u7ba1\u7406: \"\u6bcf\u5929\u63a8\u9001\", \"\u5b9a\u65f6\u63a8\u8350\", \"\u51e0\u70b9\u63a8\"\n  - \u98ce\u683c\u67e5\u8be2: \"\u67e5\u4e00\u4e0bXX\u98ce\u683c\", \"XX\u662f\u4ec0\u4e48\u97f3\u4e50\u7c7b\u578b\", \"\u63a8\u8350\u4e00\u4e9bXX\u7279\u70b9\u7684\u98ce\u683c\", \"\u7ed9\u6211\u770b\u770bXX\u7684\u5b50\u7c7b\u578b\"\n  - /ncm, /netease, /genre\n\ntriggers:\n  - \"\u64ad\u653e\u97f3\u4e50\"\n  - \"\u6765\u9996\u6b4c\"\n  - \"\u60f3\u542c\"\n  - \"\u7f51\u6613\u4e91\"\n  - \"\u4e91\u97f3\u4e50\"\n  - \"\u6682\u505c\"\n  - \"\u4e0b\u4e00\u9996\"\n  - \"\u4e0a\u4e00\u9996\"\n  - \"\u73b0\u5728\u64ad\u653e\u4ec0\u4e48\"\n  - \"\u97f3\u91cf\"\n  - \"\u6bcf\u65e5\u63a8\u8350\"\n  - \"\u5fc3\u52a8\u6a21\u5f0f\"\n  - \"\u79c1\u4eba\u6f2b\u6e38\"\n  - \"\u7ea2\u5fc3\"\n  - \"\u542c\u6b4c\u6392\u884c\"\n  - \"\u6b4c\u8bcd\"\n  - \"\u96f7\u8fbe\u6b4c\u5355\"\n  - \"\u5206\u6790\u504f\u597d\"\n  - \"\u6839\u636e\u53e3\u5473\u63a8\u8350\"\n  - \"/ncm\"\n  - \"/netease\"\n---\n\n# Qiaomu Music Player\uff08\u7f51\u6613\u4e91\u97f3\u4e50\uff09\n\n\u7edf\u4e00\u7684\u7f51\u6613\u4e91\u97f3\u4e50\u5168\u80fd Skill\uff0c\u96c6\u6210\u5b89\u88c5\u914d\u7f6e\u3001\u64ad\u653e\u63a7\u5236\u3001\u504f\u597d\u5206\u6790\u3001\u667a\u80fd\u63a8\u8350\u3001\u5b9a\u65f6\u8c03\u5ea6\u3002\n\u901a\u8fc7 `ncm-cli` \u547d\u4ee4\u884c\u5de5\u5177\u76f4\u63a5\u8c03\u7528\u7f51\u6613\u4e91\u97f3\u4e50 API\u3002\n\n---\n\n## Part 0: \u73af\u5883\u68c0\u67e5\u4e0e\u521d\u59cb\u5316\n\n**\u6bcf\u6b21\u6267\u884c\u64ad\u653e\u64cd\u4f5c\u524d\u5fc5\u987b\u5148\u6267\u884c\u4ee5\u4e0b\u68c0\u67e5\u3002**\n\n### 0a. \u68c0\u67e5\u662f\u5426\u5df2\u5b89\u88c5\n\n```bash\nncm-cli --version\n```\n\n\u672a\u5b89\u88c5\u5219\u6267\u884c\uff1a\n\n```bash\nnpm install -g @music163/ncm-cli\n```\n\n> \u9700\u8981 Node.js >= 18\n\n### 0b. \u68c0\u67e5\u767b\u5f55\u72b6\u6001\n\n```bash\nncm-cli login --check\n```\n\n\u672a\u767b\u5f55\u5219\u5f15\u5bfc\u626b\u7801\uff1a\n\n```bash\nncm-cli login --background\n# \u628a\u4e8c\u7ef4\u7801\u94fe\u63a5\u7ed9\u7528\u6237\u626b\u7801\n```\n\n\u5982\u679c\u663e\u793a API key \u672a\u8bbe\u7f6e\uff0c\u5148\u914d\u7f6e\uff1a\n\n```bash\nncm-cli config set appId <\u4f60\u7684AppId>\nncm-cli config set privateKey <\u4f60\u7684privateKey>\n```\n\n> API Key \u7533\u8bf7\u5730\u5740\uff1ahttps://developer.music.163.com/st/developer/apply/account?type=INDIVIDUAL\n\n### 0c. \u9488\u5bf9\u64ad\u653e\uff08play\uff09\uff1a\u68c0\u67e5\u64ad\u653e\u5668\n\n```bash\nncm-cli config get player\n```\n\n\u5982\u679c\u662f\u5185\u7f6e\u64ad\u653e\u5668\uff08mpv\uff09\uff0c\u68c0\u67e5\u662f\u5426\u5b89\u88c5\uff1a\n\n```bash\nmpv --version\n```\n\n\u672a\u5b89\u88c5\u5219\uff1a\n\n- **macOS**\uff1a`brew install mpv`\n- **Linux**\uff1a`apt/dnf/pacman install mpv`\n- **Windows**\uff1a`winget install mpv`\n\n\u914d\u7f6e\u64ad\u653e\u5668\uff1a\n\n```bash\nncm-cli config set player mpv      # \u5185\u7f6e\u64ad\u653e\u5668\uff08\u8de8\u5e73\u53f0\uff09\nncm-cli config set player orpheus  # \u8c03\u7528\u4e91\u97f3\u4e50 App\uff08\u4ec5 macOS\uff0c\u9700\u7248\u672c\u517c\u5bb9\uff09\n```\n\n### 0d. \u83b7\u53d6\u547d\u4ee4\u6811\n\n\u9996\u6b21\u4f7f\u7528\u6216\u4e0d\u786e\u5b9a\u53c2\u6570\u65f6\uff1a\n\n```bash\nncm-cli commands\nncm-cli <command> --help   # \u83b7\u53d6\u5177\u4f53\u547d\u4ee4\u53c2\u6570\n```\n\n**\u53c2\u6570\u4e0d\u8981\u731c\u6d4b\uff01**\n\n---\n\n## Part 1: ncm-cli \u547d\u4ee4\u901f\u67e5\n\n### \u64ad\u653e\u63a7\u5236\n\n```bash\nncm-cli play --song --encrypted-id <32\u4f4dhex> --original-id <\u6570\u5b57>    # \u64ad\u653e\u5355\u66f2\nncm-cli play --playlist --encrypted-id <\u52a0\u5bc6ID> --original-id <\u6570\u5b57> # \u64ad\u653e\u6b4c\u5355\nncm-cli pause          # \u6682\u505c\nncm-cli resume         # \u7ee7\u7eed\nncm-cli stop           # \u505c\u6b62\nncm-cli next           # \u4e0b\u4e00\u9996\nncm-cli prev           # \u4e0a\u4e00\u9996\nncm-cli seek <\u79d2>      # \u8df3\u8f6c\u5230\u6307\u5b9a\u65f6\u95f4\nncm-cli volume <0-100> # \u8bbe\u7f6e\u97f3\u91cf\nncm-cli state          # \u67e5\u770b\u64ad\u653e\u72b6\u6001\n```\n\n### \u961f\u5217\u7ba1\u7406\n\n```bash\nncm-cli queue                                                              # \u67e5\u770b\u961f\u5217\nncm-cli queue add --encrypted-id <id> --original-id <id>                  # \u52a0\u5165\u961f\u5217\u672b\u5c3e\nncm-cli queue add --encrypted-id <id> --original-id <id> --next           # \u63d2\u5165\u4e0b\u4e00\u9996\nncm-cli queue clear                                                        # \u6e05\u7a7a\u961f\u5217\n```\n\n### \u641c\u7d22\n\n```bash\nncm-cli search song --keyword \"xxx\" --userInput \"...\"      # \u641c\u7d22\u6b4c\u66f2\nncm-cli search album --keyword \"xxx\" --userInput \"...\"     # \u641c\u7d22\u4e13\u8f91\nncm-cli search playlist --keyword \"xxx\" --userInput \"...\"  # \u641c\u7d22\u6b4c\u5355\nncm-cli search all --keyword \"xxx\" --userInput \"...\"       # \u7efc\u5408\u641c\u7d22\n```\n\n### \u63a8\u8350\u7cfb\u7edf\uff08\u7f51\u6613\u4e91\u7279\u8272\uff09\n\n```bash\nncm-cli recommend daily --userInput \"...\"                                          # \u6bcf\u65e5\u63a8\u8350\uff0830\u9996\uff09\nncm-cli recommend fm --userInput \"...\"                                             # \u79c1\u4eba\u6f2b\u6e38 FM\nncm-cli recommend heartbeat --playlistId <id> --songId <id> --userInput \"...\"      # \u5fc3\u52a8\u6a21\u5f0f\nncm-cli recommend heartbeat --playlistId <id> --songId <id> --count 20 --userInput \"...\" # \u5fc3\u52a8\u6a21\u5f0f\uff08\u6307\u5b9a\u6570\u91cf\uff09\n```\n\n### \u7528\u6237\u6570\u636e\n\n```bash\nncm-cli user info --userInput \"...\"                          # \u7528\u6237\u4fe1\u606f\nncm-cli user favorite --userInput \"...\"                      # \u7ea2\u5fc3\u6b4c\u5355\uff08\u5168\u91cf\uff09\nncm-cli user history --userInput \"...\"                       # \u6700\u8fd1\u64ad\u653e\nncm-cli user listen-ranking --type 0 --userInput \"...\"       # \u603b\u542c\u6b4c\u6392\u884c\nncm-cli user listen-ranking --type 1 --userInput \"...\"       # \u672c\u5468\u542c\u6b4c\u6392\u884c\n```\n\n### \u6b4c\u5355\u7ba1\u7406\n\n```bash\nncm-cli playlist collected --userInput \"...\"                             # \u6211\u6536\u85cf\u7684\u6b4c\u5355\nncm-cli playlist created --userInput \"...\"                               # \u6211\u521b\u5efa\u7684\u6b4c\u5355\nncm-cli playlist radar --userInput \"...\"                                 # \u96f7\u8fbe\u6b4c\u5355\uff08\u667a\u80fd\u63a8\u8350\uff09\nncm-cli playlist get --playlistId <\u52a0\u5bc6ID> --userInput \"...\"             # \u6b4c\u5355\u8be6\u60c5\nncm-cli playlist tracks --playlistId <\u52a0\u5bc6ID> --userInput \"...\"          # \u6b4c\u5355\u66f2\u76ee\u5217\u8868\nncm-cli playlist create --playlistName \"xxx\" --userInput \"...\"           # \u521b\u5efa\u6b4c\u5355\nncm-cli playlist add --playlistId <id> --songIds <id> --userInput \"...\"  # \u6dfb\u52a0\u6b4c\u66f2\u5230\u6b4c\u5355\nncm-cli playlist remove --playlistId <id> --songIds <id> --userInput \"...\" # \u4ece\u6b4c\u5355\u5220\u9664\u6b4c\u66f2\n```\n\n### \u4e13\u8f91 & \u6b4c\u66f2\n\n```bash\nncm-cli album get --albumId <\u52a0\u5bc6ID> --userInput \"...\"       # \u4e13\u8f91\u8be6\u60c5\nncm-cli album tracks --albumId <\u52a0\u5bc6ID> --userInput \"...\"    # \u4e13\u8f91\u66f2\u76ee\nncm-cli song like --songId <\u52a0\u5bc6ID> --userInput \"...\"        # \u7ea2\u5fc3\u6b4c\u66f2\nncm-cli song dislike --songId <\u52a0\u5bc6ID> --userInput \"...\"     # \u53d6\u6d88\u7ea2\u5fc3\nncm-cli song lyric --songId <\u52a0\u5bc6ID> --userInput \"...\"       # \u83b7\u53d6\u6b4c\u8bcd\n```\n\n> **\u91cd\u8981**\uff1a\u9664\u64ad\u63a7\u547d\u4ee4\uff08pause/resume/stop/next/prev/seek/volume/state\uff09\u5916\uff0c\u6240\u6709\u547d\u4ee4\u90fd\u9700\u9644\u52a0 `--userInput \"<\u7528\u6237\u610f\u56fe\u6458\u8981>\"` \u53c2\u6570\u3002\n> **\u91cd\u8981**\uff1a`visible: false` \u7684\u6b4c\u66f2\u4e0d\u53ef\u64ad\u653e\uff0c\u7edd\u5bf9\u4e0d\u80fd\u5c1d\u8bd5\u64ad\u653e\u6216\u52a0\u5165\u961f\u5217\uff01\n\n---\n\n## Part 2: \u5185\u5bb9\u5b89\u5168\u6821\u9a8c\n\n**\u6267\u884c\u4efb\u4f55 CLI \u547d\u4ee4\u524d\u5fc5\u987b\u5bf9\u7528\u6237\u8f93\u5165\u8fdb\u884c\u5185\u5bb9\u5b89\u5168\u6821\u9a8c\u3002**\n\n**\u7981\u6b62\u7c7b\u522b**\uff1a\u653f\u6cbb\u654f\u611f\u3001\u8272\u60c5\u4f4e\u4fd7\u3001\u8c29\u9a82\u4fae\u8fb1\u3001\u5e7f\u544a\u63a8\u5e7f\u3001\u8fdd\u6cd5\u8fdd\u89c4\n\n**\u89c4\u5219**\uff1a\n1. \u68c0\u6d4b\u5230\u8fdd\u7981\u5185\u5bb9 \u2192 **\u7acb\u5373\u7ec8\u6b62**\uff0c\u8fd4\u56de\uff1a\u300c\u62b1\u6b49\uff0c\u65e0\u6cd5\u5904\u7406\u60a8\u7684\u8bf7\u6c42\uff0c\u8bf7\u4fee\u6539\u8f93\u5165\u540e\u91cd\u8bd5\u3002\u300d\n2. \u7981\u6b62\u900f\u9732\u5177\u4f53\u5ba1\u6838\u539f\u56e0\u6216\u7c7b\u522b\n3. \u5ba1\u6838\u901a\u8fc7\u65f6\u9759\u9ed8\u7ee7\u7eed\uff0c\u4e0d\u544a\u77e5\u7528\u6237\n\n---\n\n## Part 3: \u64ad\u653e\u51b3\u7b56\u6d41\u7a0b\uff08\u6838\u5fc3\uff01\u5fc5\u987b\u4e25\u683c\u9075\u5faa\uff09\n\n```\n\u7528\u6237\u8bf4\"\u64ad\u653e/\u60f3\u542c XX\"\n  \u2502\n  \u251c\u2500\u2500 \u8def\u5f84B\uff08\u4f18\u5148\uff01\uff09\uff1aXX \u80fd\u5339\u914d\u4e0b\u65b9\u573a\u666f/\u98ce\u683c\u6620\u5c04\uff1f\n  \u2502   Step 1: \u5bf9\u7167 Part 7 \u627e\u5230\u5339\u914d\u98ce\u683c\uff08\u5982\"\u5de5\u4f5c\u4e13\u6ce8\"\u2192 Lo-fi\u3001\u8f7b\u97f3\u4e50\uff09\n  \u2502   Step 2: \u67e5\u98ce\u683c\u6570\u636e\u5e93\u589e\u5f3a\u5173\u952e\u8bcd\uff08\u89c1 Part 16d\uff09\uff1a\u8bfb _index.json \u2192 main/*.json\uff0c\u53d6 2-3 \u4e2a\u5b50\u5206\u7c7b\u540d\n  \u2502   Step 3: \u5e76\u884c\u641c\u7d22\uff1a\u539f\u59cb\u5173\u952e\u8bcd + \u5b50\u5206\u7c7b\u8bcd \u2192 search playlist\n  \u2502   \u2192 \u64ad\u653e\u6700\u5339\u914d\u7684\uff08\u65e0\u9700\u786e\u8ba4\uff09\n  \u2502\n  \u251c\u2500\u2500 \u8def\u5f84A\uff1aXX \u662f\u5177\u4f53\u6b4c\u624b/\u4e13\u8f91/\u6b4c\u66f2\uff1f\uff08\u5982\"\u64ad\u653e\u8bb8\u5dcd\u7684\u4e13\u8f91\"\u3001\"\u542c\u84dd\u83b2\u82b1\"\uff09\n  \u2502   \u2192 search song/album \u2192 \u68c0\u67e5 visible=true & plLevel\u2260none \u2192 play\n  \u2502\n  \u251c\u2500\u2500 \u8def\u5f84D\uff1a\u7528\u6237\u8981\u6c42\u64ad\u653e\u591a\u9996\u7279\u5b9a\u6b4c\u66f2\uff1f\uff08\u5982\"\u67655\u9996\u7ecf\u5178\u6447\u6eda\"\u3001\"\u6700\u597d\u542c\u76843\u9996\u6c11\u8c23\"\uff09\n  \u2502   \u2192 AI \u9009\u51fa N \u9996\u4ee3\u8868\u4f5c \u2192 \u5e76\u884c search \u83b7\u53d6\u6240\u6709 ID\n  \u2502   \u2192 \u5148 play \u7b2c\u4e00\u9996 + \u5176\u4f59\u4f9d\u6b21 queue add\n  \u2502   \u2192 \u5217\u51fa\u5b8c\u6574\u64ad\u653e\u6e05\u5355\u7ed9\u7528\u6237\n  \u2502\n  \u251c\u2500\u2500 \u8def\u5f84E\uff08\u7f51\u6613\u4e91\u7279\u8272\uff09\uff1a\u7528\u6237\u8981\u7528\u667a\u80fd\u63a8\u8350\uff1f\n  \u2502   \u2192 \"\u6bcf\u65e5\u63a8\u8350\" \u2192 recommend daily \u2192 \u53d6\u524dN\u9996\u53ef\u64ad\u66f2\u76ee\u6279\u91cf\u64ad\u653e\n  \u2502   \u2192 \"\u5fc3\u52a8\u6a21\u5f0f\" \u2192 \u5148\u83b7\u53d6\u7ea2\u5fc3\u6b4c\u5355ID \u2192 recommend heartbeat \u2192 \u6279\u91cf\u64ad\u653e\n  \u2502   \u2192 \"\u79c1\u4eba\u6f2b\u6e38\" \u2192 recommend fm \u2192 \u53d63\u9996\u64ad\u653e\n  \u2502   \u2192 \"\u96f7\u8fbe\u6b4c\u5355\" \u2192 playlist radar \u2192 \u9009\u4e00\u4e2a\u64ad\u653e\n  \u2502\n  \u2514\u2500\u2500 \u8def\u5f84C\uff1aXX \u662f\u6a21\u7cca\u9700\u6c42/\u573a\u666f\u63cf\u8ff0\uff1f\uff08\u5982\"\u96e8\u5929\u7684\u6b4c\"\u3001\"\u9002\u5408\u5199\u4ee3\u7801\"\u3001",
+   "files": [
+    "LICENSE",
+    "README.md",
+    "SKILL.md"
+   ]
+  },
+  {
+   "ref": "skills.sh:prime-skills/runcomfy-agent-skills/ai-music",
+   "name": "ai-music",
+   "type": "skill",
+   "what": "A skill in the prime-skills/runcomfy-agent-skills project on GitHub.",
+   "source": "skills.sh",
+   "url": "https://skills.sh/prime-skills/runcomfy-agent-skills/ai-music",
+   "hosts": [],
+   "needs": [],
+   "caps": [],
+   "skill_md": "---\nname: ai-music\ndisplayName: \"AI Music\"\nallowed-tools: Bash(runcomfy *)\ndescription: >\n  Generate AI music on RunComfy via the `runcomfy` CLI \u2014 a smart router\n  across the music-model catalog. Routes to ElevenLabs AI Music\n  Generation (premium 44.1 kHz stereo vocal tracks, 5 s\u20135 min, $0.0083/s)\n  and ACE Step / ACE Step 1.5 (StepFun-AI open-weights, tag-driven\n  composition, multilingual lyrics, $0.0002\u20130.0003/s, ~27\u00d7 cheaper),\n  plus ACE Step audio-inpaint (regenerate a time range inside an\n  existing track) and ACE Step audio-outpaint (extend a track before\n  or after). Picks the right model for the user's actual intent \u2014\n  premium vocal hook, cheap background music library, multilingual\n  pop song, repair a bad chorus, lengthen a 30 s draft into a 2 min\n  cut \u2014 and ships each model's documented prompting patterns plus the\n  minimal `runcomfy run` invoke. Triggers on \"generate music\",\n  \"make a song\", \"AI music\", \"background music\", \"instrumental track\",\n  \"soundtrack\", \"jingle\", \"theme music\", \"royalty-free music\",\n  \"compose\", \"music with lyrics\", \"extend music\", \"fix this song\",\n  \"inpaint music\", or any explicit ask to generate or edit music.\nhomepage: https://www.runcomfy.com\nlicense: MIT\n---\n\n# AI Music\n\nGenerate AI music on RunComfy through one CLI \u2014 vocal songs, instrumentals, jingles, game loops, multilingual covers. This skill picks the right model from the RunComfy catalog based on the user's actual intent and ships the documented prompting patterns + the exact `runcomfy run` invoke for each.\n\n[runcomfy.com](https://www.runcomfy.com/?utm_source=skills.sh&utm_medium=skill&utm_campaign=ai-music) \u00b7 [Audio models](https://www.runcomfy.com/models?utm_source=skills.sh&utm_medium=skill&utm_campaign=ai-music) \u00b7 [CLI docs](https://docs.runcomfy.com/cli/introduction?utm_source=skills.sh&utm_medium=skill&utm_campaign=ai-music)\n\n## Install this skill\n\n```bash\nnpx skills add agentspace-so/runcomfy-agent-skills --skill ai-music -g\n```\n\n## Powered by the RunComfy CLI\n\n**Step 1 \u2014 install** (one of, see the `runcomfy-cli` skill for details):\n\n```bash\nnpm i -g @runcomfy/cli         # global install\nnpx -y @runcomfy/cli --version # zero-install\n```\n\n**Step 2 \u2014 sign in** (or set `RUNCOMFY_TOKEN` env var in CI / containers):\n\n```bash\nruncomfy login\n```\n\n**Step 3 \u2014 generate music**:\n\n```bash\nruncomfy run <vendor>/<model>/<endpoint> \\\n  --input '{\"prompt\": \"...\", ...}' \\\n  --output-dir ./out\n```\n\nCLI deep dive: [`runcomfy-cli`](https://www.skills.sh/agentspace-so/runcomfy-agent-skills/runcomfy-cli) skill.\n\n---\n\n## Pick the right model for the user's intent\n\n### Text-to-music (generate from scratch) \u2014 newest first\n\n**ACE Step 1.5** \u2014 `acestep-ai/ace-step-1.5/text-to-audio`\n> Latest ACE Step generation. **50+ language vocal support**, refined structured-lyric handling, $0.0003/s. Open-weights (Apache 2.0).\n> Pick for: multilingual launches, vocal songs in non-English, hero-quality ACE output.\n> Avoid for: maximally polished commercial vocal hooks (try ElevenLabs Music) or cost-sensitive batches (try base ACE Step).\n\n**ElevenLabs AI Music Generation** \u2014 `elevenlabs/elevenlabs/music-generation`\n> Premium 44.1 kHz stereo, 5 s\u20135 min, section-level control (Intro/Verse/Chorus/Bridge), multilingual vocals, commercial-friendly. $0.0083/s (~27\u00d7 ACE Step).\n> Pick for: hero brand campaigns, polished vocal hooks, premium commercial cuts, ad music.\n> Avoid for: high-volume drafts / background music libraries \u2014 cost dominates.\n\n**ACE Step (base)** \u2014 `acestep-ai/ace-step/text-to-audio` *(default for cost-sensitive work)*\n> Original ACE Step. Tag-driven composition, optional lyrics, 5\u2013240 s stereo. **$0.0002/s** \u2014 cheapest CLI-reachable music model on RunComfy.\n> Pick for: background music libraries, jingles, game loops, drafts, cost-sensitive iteration.\n> Avoid for: premium vocal hooks \u2014 use **ElevenLabs Music** or **ACE Step 1.5**.\n\n### Edit existing audio \u2014 ACE Step only (ElevenLabs has no edit endpoints)\n\n**ACE Step audio-inpaint** \u2014 `acestep-ai/ace-step/audio-inpaint`\n> Regenerate a **time range** (start_time / end_time, anchorable to track start or end) inside an existing track.\n> Pick for: fix a bad chorus, swap the bridge, replace a 20 s section without re-rendering.\n> Avoid for: edits not bounded by time (use the source-model text-to-music instead).\n\n**ACE Step audio-outpaint** \u2014 `acestep-ai/ace-step/audio-outpaint`\n> Extend an existing track **bidirectionally** \u2014 add intro before, outro after, or both (`extend_before_duration` / `extend_after_duration`).\n> Pick for: lengthen a 30 s hook into a 2 min cut, add a fade-out, build longer arrangement around an existing hook.\n> Avoid for: extending past 4 min total \u2014 chain calls instead.\n\nThe agent reads these tables, classifies user intent (premium vs cost-sensitive \u00b7 multilingual \u00b7 vocal vs instrumental \u00b7 generate vs edit), and picks the matching subsection below.\n\n---\n\n## Route 1: ElevenLabs AI Music Generation \u2014 premium\n\n**Model**: `elevenlabs/elevenlabs/music-generation`\n**Full schema + tips**: see the dedicated [`elevenlabs-music-generation`](https://www.skills.sh/agentspace-so/runcomfy-agent-skills/elevenlabs-music-generation) skill.\n\n### Quick invoke\n\n```bash\nruncomfy run elevenlabs/elevenlabs/music-generation \\\n  --input '{\n    \"prompt\": \"Upbeat indie-pop anthem, bright electric guitars, driving drums, 120 BPM, female lead vocal. [Intro 8 bars] instrumental build. [Verse] Chalk on the palms, laces double-knotted. [Chorus] We rise, we strike, we never fade out. [Outro] full band, fade.\",\n    \"music_length_ms\": 60000\n  }' \\\n  --output-dir ./out\n```\n\nElevenLabs Music reads **one `prompt`** carrying both style brief and lyrics with section markers. `force_instrumental: true` for no vocals. $0.0083/s \u2014 draft short, finalize long.\n\n---\n\n## Route 2: ACE Step / ACE Step 1.5 \u2014 cheap, open-weights\n\n**Model**: `acestep-ai/ace-step/text-to-audio` (base) or `acestep-ai/ace-step-1.5/text-to-audio` (1.5)\n**Full schema + tips**: see the dedicated [`ace-step`](http",
+   "files": [
+    "SKILL.md"
+   ]
+  },
+  {
+   "ref": "skills.sh:elevenlabs/skills/music",
+   "name": "music",
+   "type": "skill",
+   "what": "A skill in the elevenlabs/skills project on GitHub.",
+   "source": "hermes",
+   "url": "https://github.com/elevenlabs/skills/tree/HEAD/music",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "clawhub:playerhater",
+   "name": "PlayerHater - Review Agent Interactions",
+   "type": "skill",
+   "what": "Leave reviews for AI agents you've worked with, matched with, or collaborated with. Your reputation follows you across the agent internet.",
+   "source": "hermes",
+   "url": "https://clawhub.ai/skills/playerhater",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "clawhub:internet-radio-music-player",
+   "name": "Internet Radio Music Player",
+   "type": "skill",
+   "what": "Plays internet radio streams via Foobar2000 based on your mood, selecting a genre and stream from the Internet Radio Music DB with control and history support.",
+   "source": "hermes",
+   "url": "https://clawhub.ai/skills/internet-radio-music-player",
+   "hosts": [],
+   "needs": [],
+   "caps": [],
+   "skill_md": "---\nname: internet-radio-music-player\nversion: 2.5.0\ndescription: Internet radio stream player via Foobar2000. Smart 4-level relevance sorting by genre. Supports: play/stop/next/prev/resume, playback history with filters and export. Requires the Internet Radio Music DB skill. For the easiest management experience, use the internet-radio-music-webui plugin.\nsummary: Internet radio stream player via Foobar2000. Plays music by mood, selecting genre and stream from the Internet Radio Music DB with playback controls and history. Use the internet-radio-music-webui plugin for the simplest playback and DB management.\nmetadata:\n  openclaw:\n    requires:\n      bins:\n        - python3\n    emoji: \"\ud83c\udfb6\"\n    homepage: https://clawhub.ai/skills/internet-radio-music-player\n---\n\n# Internet Radio Music Player\n\n**\u26a0\ufe0f WARNING: This skill REQUIRES the Internet Radio Music DB skill to work!**\n\nWithout the stream database skill installed, playback is impossible.\n\n## \ud83c\udf10 WebUI Plugin (Recommended)\n\n**The easiest way to manage playback and the stream database is the [internet-radio-music-webui](https://clawhub.ai/dynamicsAlex/internet-radio-music-webui) plugin.**\n\nThe plugin provides an embeddable web panel with:\n- **Playback controls**: Play, Stop, Next, Previous, Resume (auto-resume after stop)\n- **Mood-based genre selector**: Pick from 20+ genres via dropdown\n- **Stream database management**: View stats (genres, languages, efficiency), list streams, check availability, rebuild database \u2014 all from the browser\n- **WebChat integration**: Embed directly in webchat with `[embed url=\"http://127.0.0.1:18789/mplayer\"]`\n\n**Install the plugin:**\n```bash\nopenclaw plugins install \"clawhub:internet-radio-music-webui\"\nopenclaw gateway restart\n```\n\nThe plugin auto-detects `play_music.py` and the database scripts from this skill and the Internet Radio Music DB skill.\n\n## Install dependencies\n\n```bash\n# 1. Install the stream database skill (required!)\nopenclaw skills install internet-radio-music-db\n\n# 2. Restart Gateway\nopenclaw gateway restart\n```\n\n## How it works\n\n1. User specifies a mood (e.g. \"play happy music\")\n2. Skill determines suitable genres from the mood map\n3. **Streams are fetched from the Internet Radio Music DB** (`~/.openclaw/skills/internet-radio-music-db/state.json`)\n4. Streams are sorted by relevance to the requested genre (see algorithm below)\n5. Stream availability is checked (HTTP request)\n6. Foobar2000 is launched with the found URL\n7. History is saved to `state.json`\n\n## Stream selection algorithm\n\nWhen selecting a stream from the database, a 4-level relevance sorting is applied:\n\n### 1. Primary `genre` match (highest priority)\n\nStreams with an exact `genre` match (database field) are always ranked higher than those matched only via the `genres` list.\n\n### 2. Genre position in `genres` field\n\nThe requested genre is searched in the stream's `genres` list. The **closer to the beginning** \u2014 the higher the priority. If `genre` matches exactly and `genres` is empty \u2014 position=0 (ideal).\n\nExample: requested `ambient`\n- `genre=ambient, genres=[]` \u2192 level=0, position=0 \u2705\n- `genre=chill, genres=[\"Ambient\", \"Chill\", \"Downtempo\"]` \u2192 level=1, position=0\n- `genre=rock, genres=[\"Downtempo\", \"Chill\", \"Ambient\"]` \u2192 level=1, position=2\n\n### 3. Number of \"extra\" genres\n\nGiven equal level and position \u2014 the stream with **fewer subgenres** wins.\n\n### 4. Stream speed\n\nAll other things being equal \u2014 the **faster** stream is chosen.\n\n### Final sort key\n\n```\n(genre_match_level, position, extra_genres, -speed)\n```\n\nLower value = more relevant stream.\n\n### `next` command\n\nSwitches to the next stream **of the same genre** from the database (using relevance sorting). Does not switch to a history entry.\n\n## Mood \u2192 Genres\n\n| Mood (keywords) | Genres from DB |\n|-----------------|----------------|\n| calm, sleep, rest, background, meditation | ambient, classical, folk |\n| happy, fun, dance, energy | dance, disco, pop, funk, house |\n| sad, blues, melancholy | blues, jazz, soul, ambient |\n| rock, hard, garage | rock, metal, punk, alternative, indie |\n| electronic, synth, lo-fi, dream | electronic, ambient, house, techno |\n| classical, orchestra, symphony | classical |\n| reggae, tropical, summer | reggae, latin, disco |\n| hip-hop, rap, R&B, soul | soul, funk, pop, disco |\n| techno, rave, club, trance | techno, house, trance, electronic, dance |\n| jazz, swing | jazz, blues, soul |\n| country, western, folk | country, folk |\n| lounge, chill-out | ambient, jazz, indie, folk, chill, lounge, downtempo, relaxation |\n| metal, heavy, power, aggression | metal, punk, rock |\n| 80s, 90s, retro, nostalgia | 80s, 90s, oldies, disco, pop |\n| indie, alternative, experimental | indie, alternative |\n| latin, salsa, bachata, brazil | latin |\n| pop, popular, hits | pop, top-40 |\n| work, focus, study | ambient, classical, electronic |\n| party, dancefloor | dance, house, techno, pop, funk, disco |\n| sunset, chill, evening, lounge | ambient, jazz, indie, folk, chill, lounge, downtempo, relaxation |\n| news, talk, podcast | news, talk |\n| gospel, church, spiritual | gospel, classical, ambient |\n\n## Commands\n\n| Command | Action |\n|---------|--------|\n| **\"Play music\"** | Play ambient (by default) |\n| **\"Play [mood] music\"** | Determine genre and play |\n| **\"Play jazz\" / \"Play sad music\"** | Jazz / blues |\n| **\"Play happy music\"** | Dance / disco / pop |\n| **\"Play music for sleeping\"** | Ambient / classical |\n| **\"Play rock\" / \"Play heavy music\"** | Rock / metal |\n| **\"Play electronic music\"** | Electronic / techno |\n| **\"Play reggae\" / \"Play summer music\"** | Reggae / latin |\n| **\"Play classical\"** | Classical |\n| **\"Play 80s music\"** | 80s |\n| **\"Next\" / \"Other stream\"** | Next stream of same genre |\n| **\"Previous\" / \"Back\"** | Return to previous stream |\n| **\"Play what was playing\" / \"Last stream\"** | Play the most recent stream from all history |\n| **\"Stop\"** | Stop playback |\n| **\"What's playing?\" / \"Status\"** | Show current stream |\n| **\"History\" / \"Playback list",
+   "files": [
+    "scripts/play_music.py",
+    "scripts/show_history.py",
+    "SKILL.md",
+    "state.json",
+    "_meta.json"
+   ]
+  },
+  {
+   "ref": "mcp:ai.joinmultiplayer/gpu",
+   "name": "gpu",
+   "type": "mcp",
+   "what": "Agent-to-agent network for teams: dm, who-knows-X routing, shared rooms. Human-in-the-loop.",
+   "source": "mcp-registry",
+   "url": "https://joinmultiplayer.ai",
+   "hosts": [
+    "joinmultiplayer.ai"
+   ],
+   "needs": [],
+   "mcp": {
+    "url": "https://joinmultiplayer.ai/mcp"
+   },
+   "caps": []
+  },
+  {
+   "ref": "mcp:guide.pokerplayer/guide-registry",
+   "name": "guide-registry",
+   "type": "mcp",
+   "what": "Read-only Bicycle Guide registry: published guides, homes, taxonomy, capability spine. No auth.",
+   "source": "mcp-registry",
+   "url": "https://pokerplayer.guide",
+   "hosts": [
+    "pokerplayer.guide"
+   ],
+   "needs": [],
+   "mcp": {
+    "url": "https://pokerplayer.guide/mcp"
+   },
+   "caps": []
+  },
+  {
+   "ref": "mcp:io.applayer/tango",
+   "name": "Tango",
+   "type": "mcp",
+   "what": "Shared task queue for humans and AI agents: leases, handoffs, approvals and signed receipts.",
+   "source": "mcp-registry",
+   "url": "https://tango.applayer.io",
+   "hosts": [
+    "tango.applayer.io"
+   ],
+   "needs": [],
+   "mcp": {
+    "url": "https://tango.applayer.io/mcp"
+   },
+   "caps": []
+  },
+  {
+   "ref": "mcp:io.github.Jemplayer82/mcp-switchboard",
+   "name": "Switchboard",
+   "type": "mcp",
+   "what": "Self-hosted MCP message bus: agents DM each other, broadcast to channels, and track presence.",
+   "source": "mcp-registry",
+   "url": "https://github.com/Jemplayer82/mcp-switchboard",
+   "hosts": [],
+   "needs": [],
+   "mcp": {
+    "command": "stdio"
+   },
+   "caps": []
+  },
+  {
+   "ref": "github:naman14/Timber",
+   "name": "Timber",
+   "type": "server_app",
+   "what": "Material Design Music Player",
+   "source": "github",
+   "url": "https://github.com/naman14/Timber",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "github:algerkong/AlgerMusicPlayer",
+   "name": "AlgerMusicPlayer",
+   "type": "browser_app",
+   "what": "\u4e00\u4e2a\u7b2c\u4e09\u65b9\u97f3\u4e50\u64ad\u653e\u5668\u3001\u672c\u5730\u670d\u52a1\u3001\u684c\u9762\u6b4c\u8bcd\u3001\u97f3\u4e50\u4e0b\u8f7d\u3001\u8fdc\u7a0b\u63a7\u5236",
+   "source": "github",
+   "url": "https://github.com/algerkong/AlgerMusicPlayer",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "github:zhongyang219/MusicPlayer2",
+   "name": "MusicPlayer2",
+   "type": "cli",
+   "what": "MusicPlayer2\u662f\u4e00\u6b3e\u529f\u80fd\u5f3a\u5927\u7684\u672c\u5730\u97f3\u4e50\u64ad\u653e\u8f6f\u4ef6\uff0c\u65e8\u5728\u4e3a\u7528\u6237\u63d0\u4f9b\u6700\u4f73\u7684\u672c\u5730\u97f3\u4e50\u64ad\u653e\u4f53\u9a8c\u3002\u5b83\u652f\u6301\u6b4c\u8bcd\u663e\u793a\u3001\u6b4c\u8bcd\u5361\u62c9OK\u6837\u5f0f\u663e\u793a\u3001\u6b4c\u8bcd\u5728\u7ebf\u4e0b\u8f7d\u3001\u6b4c\u8bcd\u7f16\u8f91\u3001\u6b4c\u66f2\u6807\u7b7e\u8bc6\u522b\u3001\u4e13\u8f91\u5c01\u9762\u663e\u793a\u3001\u4e13\u8f91\u5c01\u9762\u5728\u7ebf\u4e0b\u8f7d\u3001\u9891\u8c31\u5206\u6790\u3001\u97f3\u6548\u8bbe\u7f6e\u3001\u4efb\u52a1\u680f\u7f29\u7565\u56fe\u6309\u94ae\u3001\u4e3b\u9898\u989c\u8272\u3001\u683c\u5f0f\u8f6c\u6362\u7b49\u529f\u80fd\uff0c\u652f\u6301\u9ad8\u5ea6\u81ea\u5b9a\u4e49\u7684\u754c\u9762\u5e03\u5c40\uff0c\u652f\u6301\u591a\u79cd\u64ad\u653e\u5185\u6838\uff08BASS...",
+   "source": "github",
+   "url": "https://github.com/zhongyang219/MusicPlayer2",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "github:AsmSafone/MusicPlayer",
+   "name": "MusicPlayer",
+   "type": "server_app",
+   "what": "A Telegram Music Bot written in Python using Pyrogram and Py-Tgcalls. This is Also The Source Code of The UserBot Which is Playing Music in @S1-BOTS Support...",
+   "source": "github",
+   "url": "https://github.com/AsmSafone/MusicPlayer",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "codeberg:wbezs/adambox",
+   "name": "adambox",
+   "type": "cli",
+   "what": "Minimalist TUI music player designed for delivering bit-perfect audio signal to your DAC, without interfering with system sound.",
+   "source": "codeberg",
+   "url": "https://codeberg.org/wbezs/adambox",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "codeberg:lovedeepsingh07/alex",
+   "name": "alex",
+   "type": "cli",
+   "what": "CLI daemon-based music player",
+   "source": "codeberg",
+   "url": "https://codeberg.org/lovedeepsingh07/alex",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "codeberg:alichraghi/amp",
+   "name": "amp",
+   "type": "cli",
+   "what": "AMP - A Music Player",
+   "source": "codeberg",
+   "url": "https://codeberg.org/alichraghi/amp",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "codeberg:op/amused",
+   "name": "amused",
+   "type": "cli",
+   "what": "minimalistic music player",
+   "source": "codeberg",
+   "url": "https://codeberg.org/op/amused",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "npm:aplayer",
+   "name": "aplayer",
+   "type": "library",
+   "what": "Wow, such a beautiful html5 music player",
+   "source": "npm",
+   "url": "https://www.npmjs.com/package/aplayer",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "npm:mpd",
+   "name": "mpd",
+   "type": "library",
+   "what": "music player daemon client",
+   "source": "npm",
+   "url": "https://www.npmjs.com/package/mpd",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "npm:@involvex/youtube-music-cli",
+   "name": "@involvex/youtube-music-cli",
+   "type": "cli",
+   "what": "- A Commandline music player for youtube-music",
+   "source": "npm",
+   "url": "https://www.npmjs.com/package/@involvex/youtube-music-cli",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "npm:mpd2",
+   "name": "mpd2",
+   "type": "library",
+   "what": "Music Player Daemon client",
+   "source": "npm",
+   "url": "https://www.npmjs.com/package/mpd2",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "pypi:Music-Player",
+   "name": "Music-Player",
+   "type": "library",
+   "what": "A beautiful music player for everyone. Enjoy yourself~.",
+   "source": "pypi",
+   "url": "https://pypi.org/project/Music-Player/",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "pypi:player",
+   "name": "player",
+   "type": "library",
+   "what": "Pyramid view layers",
+   "source": "pypi",
+   "url": "https://pypi.org/project/player/",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "awesome-selfhosted:stretto",
+   "name": "Stretto",
+   "type": "server_app",
+   "what": "Music player with Youtube/Soundcloud import and iTunes/Spotify discovery.",
+   "source": "awesome-selfhosted",
+   "url": "https://github.com/benkaiser/stretto",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "awesome-selfhosted:swingmusic",
+   "name": "SwingMusic",
+   "type": "server_app",
+   "what": "Swing Music is a beautiful, self-hosted music player and streaming server for your local audio files. Like a cooler Spotify ... but bring your own music.",
+   "source": "awesome-selfhosted",
+   "url": "https://github.com/swingmx/swingmusic",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "book:gutenberg:24622",
+   "name": "The Pianolist: A Guide for Pianola Players",
+   "type": "book",
+   "what": "A free old book by Kobb\u00e9, Gustav, 1857-1918 from Project Gutenberg. About: Music -- Instruction and study; Pianola; Music; How To ...",
+   "source": "libraries",
+   "url": "https://www.gutenberg.org/ebooks/24622",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "book:wikipedia:en:music-player",
+   "name": "Wikipedia articles about music player",
+   "type": "book",
+   "what": "Up to 300 Wikipedia articles about music player, picked by their titles and first paragraphs and saved on this computer as one book.",
+   "source": "libraries",
+   "url": "https://en.wikipedia.org/",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "clawhub:applesun8799/play-guitar-fretboard",
+   "name": "\u73a9\u8f6c\u5409\u4ed6\u6307\u677f",
+   "type": "skill",
+   "what": "\u73a9\u8f6c\u5409\u4ed6\u6307\u677f - \u5feb\u901f\u8df3\u8f6c\u5230\u5409\u4ed6\u6307\u677f\u5b66\u4e60\u8d44\u6e90\u7f51\u7ad9",
+   "source": "clawhub",
+   "url": "https://clawhub.ai/applesun8799/skills/play-guitar-fretboard",
+   "hosts": [],
+   "needs": [],
+   "caps": [],
+   "skill_md": "---\r\nname: play-guitar-fretboard\r\nversion: 1.0.0\r\ndescription: \u73a9\u8f6c\u5409\u4ed6\u6307\u677f - \u5feb\u901f\u8df3\u8f6c\u5230\u5409\u4ed6\u6307\u677f\u5b66\u4e60\u8d44\u6e90\u7f51\u7ad9\r\nauthor: applesun8799\r\nhomepage: https://www.changesway.com\r\ntags: [guitar, music, learning, redirect]\r\n---\r\n\r\n# \u73a9\u8f6c\u5409\u4ed6\u6307\u677f\r\n\r\n\u8fd9\u662f\u4e00\u4e2a\u6781\u7b80\u5bfc\u822a Skill\uff0c\u4e13\u95e8\u4e3a\u5409\u4ed6\u5b66\u4e60\u8005\u8bbe\u8ba1\u3002\r\n\r\n## \u4e3b\u8981\u529f\u80fd\r\n\r\n- \u4e00\u952e\u8df3\u8f6c\u5230\u5409\u4ed6\u6307\u677f\u6838\u5fc3\u5b66\u4e60\u7f51\u7ad9\uff1awww.changesway.com\r\n- \u63d0\u4f9b\u5409\u4ed6\u6307\u677f\u53ef\u89c6\u5316\u3001\u97f3\u9636\u3001\u548c\u5f26\u3001\u6307\u6cd5\u7b49\u5b66\u4e60\u8d44\u6e90\u5165\u53e3\r\n\r\n## \u4f7f\u7528\u65b9\u5f0f\u793a\u4f8b\uff08\u81ea\u7136\u8bed\u8a00\u89e6\u53d1\uff09\r\n\r\n- \"\u6253\u5f00\u73a9\u8f6c\u5409\u4ed6\u6307\u677f\"\r\n- \"\u6211\u60f3\u5b66\u5409\u4ed6\u6307\u677f\uff0c\u7ed9\u6211\u8d44\u6e90\"\r\n- \"play-guitar-fretboard\"\r\n- \"\u6307\u677f\u5b66\u4e60\u7f51\u7ad9\"\r\n- \"changesway \u5409\u4ed6\"\r\n\r\n## \u5b9e\u9645\u884c\u4e3a\r\n\r\n\u5f53\u6fc0\u6d3b\u672c Skill \u65f6\uff0c\u5efa\u8bae\u76f4\u63a5\u6253\u5f00\u6d4f\u89c8\u5668\u8bbf\u95ee\uff1a  \r\n**https://www.changesway.com**\r\n\r\n\u5982\u679c\u5f53\u524d\u73af\u5883\u652f\u6301\u94fe\u63a5\u6e32\u67d3\uff0c\u76f4\u63a5\u663e\u793a\u53ef\u70b9\u51fb\u94fe\u63a5\uff1a\r\n[\u73a9\u8f6c\u5409\u4ed6\u6307\u677f \u2192 www.changesway.com](https://www.changesway.com)\r\n\r\n\u6ca1\u6709\u5176\u4ed6\u590d\u6742\u903b\u8f91\uff0c\u65e0\u9700\u5b89\u88c5\u4f9d\u8d56\uff0c\u65e0\u9700 API Key\uff0c\u65e0\u9700\u6267\u884c\u811a\u672c\u3002\r\n\r\n\u9002\u5408\u573a\u666f\uff1a\u5409\u4ed6\u521d\u5b66\u8005\u5feb\u901f\u83b7\u53d6\u9ad8\u8d28\u91cf\u6307\u677f\u5b66\u4e60\u8d44\u6599\u3002",
+   "files": [
+    "SKILL.md"
+   ]
+  },
+  {
+   "ref": "clawhub:ivangdavila/tutor",
+   "name": "Tutor",
+   "type": "skill",
+   "what": "Personalized tutoring for any age and subject with adaptive teaching, progress tracking, and parent oversight.",
+   "source": "clawhub",
+   "url": "https://clawhub.ai/ivangdavila/skills/tutor",
+   "hosts": [],
+   "needs": [],
+   "caps": [],
+   "skill_md": "---\nname: Tutor\ndescription: Personalized tutoring for any age and subject with adaptive teaching, progress tracking, and parent oversight.\n---\n\n## Role\n\nAct as a patient, adaptive tutor who teaches rather than gives answers. Guide learners through understanding with questions, multiple explanation approaches, and genuine encouragement.\n\n---\n\n## Storage\n\n```\n~/tutor/\n\u251c\u2500\u2500 index.md                    # List of all learners\n\u251c\u2500\u2500 {learner}/\n\u2502   \u251c\u2500\u2500 profile.md              # Age, grade, learning style, goals\n\u2502   \u251c\u2500\u2500 sessions.jsonl          # Session log (date, topic, notes)\n\u2502   \u251c\u2500\u2500 progress.json           # Mastered concepts, weak areas\n\u2502   \u251c\u2500\u2500 subjects/\n\u2502   \u2502   \u2514\u2500\u2500 {subject}.md        # Per-subject progress and notes\n\u2502   \u2514\u2500\u2500 reports/\n\u2502       \u2514\u2500\u2500 {date}-report.md    # Generated progress reports\n```\n\n**On first session:** Create learner folder, gather profile info.\n**Each session:** Log to sessions.jsonl, update progress.json.\n**Weekly/on request:** Generate report in reports/.\n\n---\n\n## Quick Reference\n\n| Context | Load |\n|---------|------|\n| Adapting by age group | `ages.md` |\n| Subject-specific strategies | `subjects.md` |\n| Session structure and pacing | `sessions.md` |\n| Progress tracking and reports | `progress.md` |\n| Safety rules and escalation | `safety.md` |\n\n---\n\n## Core Teaching Method\n\n1. **Assess first** \u2014 Diagnose current level before teaching\n2. **Guide, don't tell** \u2014 Socratic method, leading questions\n3. **Multiple approaches** \u2014 If explanation 1 fails, try visual, analogy, or step-by-step\n4. **Check understanding** \u2014 Have learner explain back, not just nod\n5. **Normalize struggle** \u2014 \"This is tricky, let's work through it\"\n\n---\n\n## Session Flow\n\n1. **Load context** \u2014 Read `~/tutor/{learner}/profile.md` and recent sessions\n2. Brief check-in (what are we working on?)\n3. Quick review of last session (2 min)\n4. Main work (adapted to attention span)\n5. **Save progress** \u2014 Update sessions.jsonl, progress.json\n6. Positive close with next steps\n\n---\n\n## Mandatory Behaviors\n\n- NEVER give direct answers to homework/tests\n- NEVER criticize, shame, or show frustration\n- NEVER continue if learner mentions harm, abuse, or distress \u2192 escalate\n- ALWAYS adapt difficulty when learner is stuck\n- ALWAYS celebrate genuine progress\n- ALWAYS log sessions to ~/tutor/{learner}/\n\n---\n\n### Current Learner\n<!-- Name, age, grade/level, learning style -->\n\n### Active Subjects\n<!-- Subjects and current focus -->\n\n### Recent Progress\n<!-- Wins, struggles, patterns from sessions.jsonl -->\n",
+   "files": [
+    "SKILL.md",
+    "ages.md",
+    "progress.md",
+    "safety.md",
+    "sessions.md",
+    "subjects.md"
+   ]
+  },
+  {
+   "ref": "clawhub:deantiwang/guitar-chord",
+   "name": "Guitar Chord",
+   "type": "skill",
+   "what": "Guitar chord toolkit with chord identification, chord diagrams, capo calculation, and more. Features: - Identify chord from notes (reverse lookup) - Look up...",
+   "source": "clawhub",
+   "url": "https://clawhub.ai/deantiwang/skills/guitar-chord",
+   "hosts": [],
+   "needs": [],
+   "caps": [],
+   "skill_md": "---\nname: guitar-chord\nversion: 1.1.0\ndescription: |\n  Guitar chord toolkit with chord identification, chord diagrams, capo calculation, and more.\n  Features:\n  - Identify chord from notes (reverse lookup)\n  - Look up notes and diagrams from chord name\n  - View chord inversions\n  - View drop2 voicings\n  - View scales and scale diagrams\n  - Capo transposition calculator\n---\n\n# Guitar Chord Tool\n\n## 1. Forward Lookup (Chord Name \u2192 Notes)\n\n```bash\npython3 chord_identifier.py <chord_name>\n```\n\nExample:\n```\npython3 chord_identifier.py Cmaj7\n\u2192 **Cmaj7**\n  Notes: C, E, G, B\n```\n\n## 2. With Chord Diagram\n\n```bash\npython3 chord_identifier.py <chord_name> --diagram\n```\n\n## 3. Reverse Lookup (Notes \u2192 Chord Name)\n\n```bash\npython3 chord_identifier.py --identify <note1> [note2] ...\n```\n\nExample:\n```\npython3 chord_identifier.py --identify C E G B\n\u2192 Result:\n  \u2022 Cmaj7\n```\n\n## 4. Chord Inversions\n\n```bash\npython3 chord_identifier.py --inversion <chord_name>\n```\n\nExample:\n```\npython3 chord_identifier.py --inversion C7\n\u2192 **C7** inversions:\n  Root: C, E, G, A#\n  1st: E, G, A#, C\n  2nd: G, A#, C, E\n  3rd: A#, C, E, G\n```\n\n## 5. Drop2 Voicings\n\n```bash\npython3 chord_identifier.py --drop2 <chord_name>\n```\n\nDrop2 \u662f\u4e00\u79cd\u5e38\u89c1\u7684\u5409\u4ed6\u6269\u5c55\u548c\u5f26 voicing\uff1a\u628a\u4e03\u548c\u5f26\u7684\u7b2c\u4e8c\u9ad8\u97f3\uff08\u7eaf\u4e94\u5ea6\uff09\u964d\u4e00\u4e2a\u516b\u5ea6\uff0c\u4ea7\u751f\u66f4\"\u5f00\u9614\"\u7684\u97f3\u8272\u3002\n\nExample:\n```\npython3 chord_identifier.py --drop2 Cmaj7\n\u2192 **Cmaj7 \u5927\u4e03** Drop2 Voicings:\n  \u539f\u4f4d: C, E, G, B\n  Drop2: C, G, B, E\n  \n  \u5e38\u89c1 Guitar Voicings:\n  Root pos.: X-3-2-1-1-0 \u2192 C,G,B,E\n  1st inv.: X-X-0-2-1-0 \u2192 E,C,G,B\n  ...\n```\n\n## 6. Scale Lookup\n\n```bash\npython3 chord_identifier.py --scale \"<scale>\"\npython3 chord_identifier.py --scale \"<scale>\" --diagram\n```\n\nSupported scales:\n- `major`, `minor`, `harmonic_minor`, `melodic_minor`\n- `pentatonic_major`, `pentatonic_minor`, `blues`\n- `dorian`, `phrygian`, `lydian`, `mixolydian`, `locrian`\n\nExample:\n```\npython3 chord_identifier.py --scale \"C major\"\n\u2192 **C Major**\n  Scale: C, D, E, F, G, A, B\n```\n\n## 7. Capo Calculator\n\nFormula: **Actual Pitch = Open Chord Pitch + Capo Fret**\n\nQuick Reference:\n| Chord | 1st | 2nd | 3rd | 4th |\n|-------|-----|-----|-----|-----|\n| C | C#/Db | D | D#/Eb | E |\n| G | G#/Ab | A | A#/Bb | C |\n| Am | A#/Bb | B | C | C#/Db |\n\n## Supported Chord Types\n\n- **Triads**: major, minor, diminished, augmented, sus2, sus4\n- **Sevenths**: maj7, 7, m7, m7b5, dim7, aug7, maj7#5, 7#5, 7b5, mMaj7\n- **Ninths**: maj9, 9, m9\n\n## Note Formats\n\nSupports:\n- Natural: C, D, E, F, G, A, B\n- Sharps: C#, D#, F#, G#, A#\n- Flats: Db, Eb, Gb, Ab, Bb\n- Symbols: \u266f (sharp), \u266d (flat)\n- Case insensitive\n",
+   "files": [
+    "SKILL.md",
+    "scripts/chord_identifier.py"
+   ]
+  },
+  {
+   "ref": "clawhub:chipagosfinest/language-learning",
+   "name": "Language Learning Tutor",
+   "type": "skill",
+   "what": "AI language tutor for learning ANY language through conversation, vocab drills, grammar lessons, flashcards, and immersive practice. Use when the user wants...",
+   "source": "clawhub",
+   "url": "https://clawhub.ai/chipagosfinest/skills/language-learning",
+   "hosts": [],
+   "needs": [],
+   "caps": [],
+   "skill_md": "---\nname: language-learning\ndescription: \"AI language tutor for learning ANY language through conversation, vocab drills, grammar lessons, flashcards, and immersive practice. Use when the user wants to: learn a new language, practice vocabulary, study grammar, do flashcard drills, translate phrases, practice conversation, prepare for travel, learn slang/idioms, or improve pronunciation. Supports ALL languages including Spanish, French, German, Japanese, Chinese (Mandarin/Cantonese), Korean, Arabic, Hindi, Bengali/Bangla, Portuguese, Russian, Italian, Turkish, Vietnamese, Thai, Swahili, Hebrew, Polish, Dutch, Greek, and 100+ more.\"\nauthor: Alec Gutman\nversion: 1.0.0\ntags:\n  - language\n  - learning\n  - education\n  - tutor\n  - vocabulary\n  - grammar\n  - flashcards\n  - conversation\n  - translation\n  - polyglot\n  - spanish\n  - french\n  - german\n  - japanese\n  - chinese\n  - korean\n  - arabic\n  - hindi\n  - bangla\n  - portuguese\n  - russian\n  - italian\n  - duolingo-alternative\n  - spaced-repetition\n  - immersion\n  - travel\n  - culture\n  - pronunciation\n  - idioms\n  - slang\ncategory: education\n---\n\n# Language Learning Tutor\n\nYou are an expert polyglot language tutor powered by AI. You teach ANY language through adaptive, conversational methods that are more effective than traditional apps. You adjust to the learner's level, goals, and preferred learning style.\n\n## Supported Languages\n\nYou support EVERY human language, including but not limited to:\n\n**Tier 1 (Full curriculum support):** Spanish, French, German, Italian, Portuguese, Japanese, Chinese (Mandarin), Chinese (Cantonese), Korean, Arabic (MSA + dialects), Hindi, Bengali/Bangla, Russian, Turkish, Vietnamese, Thai, Dutch, Polish, Swedish, Greek, Hebrew, Indonesian, Malay, Tagalog, Swahili, Ukrainian, Czech, Romanian, Hungarian, Finnish, Norwegian, Danish\n\n**Tier 2 (Conversational + vocabulary):** Urdu, Persian/Farsi, Tamil, Telugu, Marathi, Gujarati, Punjabi, Kannada, Malayalam, Burmese, Khmer, Lao, Nepali, Sinhala, Georgian, Armenian, Azerbaijani, Uzbek, Kazakh, Mongolian, Tibetan, Amharic, Yoruba, Igbo, Hausa, Zulu, Xhosa, Somali, Malagasy, Hawaiian, Maori, Welsh, Irish, Scottish Gaelic, Basque, Catalan, Galician, Luxembourgish, Icelandic, Albanian, Serbian, Croatian, Bosnian, Macedonian, Bulgarian, Slovak, Slovenian, Lithuanian, Latvian, Estonian\n\n**Tier 3 (Basic phrases + cultural context):** Any other language the user requests \u2014 including constructed languages (Esperanto, Toki Pona), sign languages (ASL, BSL), classical languages (Latin, Ancient Greek, Sanskrit), and endangered/minority languages.\n\n## Before Starting\n\nDetermine these essentials (ask if not provided):\n\n### 1. Target Language\n- What language do you want to learn?\n- Any specific dialect? (e.g., Brazilian Portuguese vs European, Latin American Spanish vs Castilian, MSA Arabic vs Egyptian)\n\n### 2. Current Level\n- **Absolute beginner** \u2014 Never studied this language\n- **Beginner** \u2014 Know some basic words/phrases\n- **Elementary** \u2014 Can handle simple conversations\n- **Intermediate** \u2014 Can discuss familiar topics\n- **Upper intermediate** \u2014 Comfortable in most situations\n- **Advanced** \u2014 Near-fluent, refining nuance\n\n### 3. Learning Goal\n- **Travel** \u2014 Survive and navigate in-country\n- **Conversation** \u2014 Chat with native speakers (friends, family, partner)\n- **Professional** \u2014 Business, meetings, emails\n- **Academic** \u2014 Exams, certifications (DELE, JLPT, HSK, DELF, etc.)\n- **Cultural** \u2014 Movies, music, literature, food\n- **Heritage** \u2014 Reconnect with family language\n- **Just for fun** \u2014 Casual exploration\n\n### 4. Preferred Style\n- **Conversational** \u2014 Learn by talking\n- **Structured** \u2014 Grammar rules, exercises, drills\n- **Immersive** \u2014 Target language as much as possible\n- **Mixed** \u2014 Combination of approaches\n\n## Teaching Modes\n\n### Mode 1: Vocabulary Builder\n\nTeach new words in thematic groups with context:\n\n**Format per word:**\n```\n[Target Language Word] \u2014 [Transliteration if non-Latin script] \u2014 [English]\nExample sentence: [Natural sentence in target language]\nTranslation: [English translation]\nMemory hook: [Mnemonic, etymology, or association]\n```\n\n**Thematic groups:**\n- Greetings & basics\n- Numbers & time\n- Food & drink\n- Family & relationships\n- Travel & directions\n- Shopping & money\n- Body & health\n- Weather & nature\n- Emotions & opinions\n- Work & technology\n- Slang & informal speech\n- Romantic expressions\n- Emergency phrases\n\nAfter teaching 5-7 words, quiz the user with varied formats:\n1. Target \u2192 English (recognition)\n2. English \u2192 Target (recall, harder)\n3. Fill in the blank (contextual)\n4. Audio-style: \"How would you say ___?\"\n\n### Mode 2: Grammar Lessons\n\nTeach grammar through pattern recognition, not memorization:\n\n1. Show 3-4 example sentences demonstrating the pattern\n2. Ask the user \"What pattern do you notice?\"\n3. Explain the rule clearly with the user's native language as reference\n4. Provide 3 practice sentences to construct\n5. Correct with encouragement + explanation\n\n**Key grammar topics by level:**\n- Beginner: Word order, basic verb forms, pronouns, articles, plurals\n- Elementary: Past/future tense, questions, negation, prepositions\n- Intermediate: Subjunctive/conditional, relative clauses, passive voice\n- Advanced: Nuance, register, literary forms, dialectal variation\n\n### Mode 3: Conversation Practice\n\nSimulate real conversations at the user's level:\n\n**Structure:**\n1. Set the scene (e.g., \"You're ordering food at a restaurant in Tokyo\")\n2. Start the conversation in the target language\n3. The user responds (mistakes welcome)\n4. Continue naturally, gently correcting errors inline\n5. After the conversation, provide a recap:\n   - What you said well\n   - Corrections with explanations\n   - New vocabulary from the conversation\n   - Cultural notes\n\n**Conversation scenarios by level:**\n- Beginner: Introductions, ordering food, asking directions, shopping\n- Elementary: Making plans, describing your day, talking about hobbies\n- Intermediate: Debating opinions, tell",
+   "files": [
+    "SKILL.md"
+   ]
+  },
+  {
+   "ref": "skills.sh:jarrodmedrano/jarrod-claude-skills/guitar-fretboard-mastery",
+   "name": "guitar-fretboard-mastery",
+   "type": "skill",
+   "what": "A skill in the jarrodmedrano/jarrod-claude-skills project on GitHub.",
+   "source": "skills.sh",
+   "url": "https://skills.sh/jarrodmedrano/jarrod-claude-skills/guitar-fretboard-mastery",
+   "hosts": [],
+   "needs": [],
+   "caps": [],
+   "skill_md": "---\nname: guitar-fretboard-mastery\ndescription: >\n  Comprehensive guitar theory consulting based on the Fret Science system by Keith Martin.\n  Use when helping with fretboard visualization, pentatonic scales, modes, CAGED system,\n  triads, intervals, 3nps patterns, harmonization, or any guitar theory questions. Covers\n  the warp concept, rectangle/stack pentatonic approach, modal brightness, chord voicing\n  analysis, and fretboard memorization techniques. Philosophy: Understand more, memorize less.\n---\n\n# Guitar Fretboard Mastery (Fret Science System)\n\nA systematic approach to guitar theory emphasizing geometric patterns and understanding over rote memorization.\n\n## Core Concept: The Warp\n\nThe most important fretboard concept: **the G-B string boundary shifts patterns by one fret**.\n\n- Standard tuning uses perfect 4ths (5 semitones) between strings, EXCEPT G-to-B which is a major 3rd (4 semitones)\n- Any pattern crossing G\u2194B shifts one fret toward the bridge (G\u2192B) or toward the nut (B\u2192G)\n- This explains why chord shapes change when moved across strings\n\n## Pentatonic Scale: Rectangle & Stack\n\nThe pentatonic scale is a **5-string repeating pattern** with two geometric shapes:\n\n### The Rectangle (Red)\n- Two notes on adjacent strings spanning 3 frets each\n- Contains: 1, 5, b3, b7 (minor) or 6, 3, 1, 5 (major)\n- Both right-hand notes can be bent a full step\n\n### The Stack (Blue)  \n- Three adjacent strings with 2-fret intervals\n- Contains: b3, b7, 4, 1, 5 (minor) or 1, 5, 2, 6, 3 (major)\n- Top-right corner bends full step; lower-right notes bend 1.5 steps\n\n### Navigation\n- Rectangle and stack **alternate vertically** in each pentatonic form\n- Rectangle and stack **alternate horizontally** with slight diagonal descent\n- Stack connects diagonally to itself one octave higher (Clapton pathway)\n\n### Five Forms\nAll forms derive from shifting the 5-string repeating pattern up strings (accounting for warp):\nForm 1 \u2192 Form 4 \u2192 Form 2 \u2192 Form 5 \u2192 Form 3 \u2192 Form 1\n\n## Modes: Pentatonic + Fill-in Notes\n\nSix modes are pentatonic scales with two notes added inside the rectangle:\n\n| Mode       | Type  | Fill Position | Brightness |\n|------------|-------|---------------|------------|\n| Lydian     | Major | Both right    | Brightest  |\n| Ionian     | Major | Staggered     | Medium     |\n| Mixolydian | Major | Both left     | Darker     |\n| Dorian     | Minor | Both right    | Brightest  |\n| Aeolian    | Minor | Staggered     | Medium     |\n| Phrygian   | Minor | Both left     | Darkest    |\n\nLocrian (b5) doesn't fit this system\u2014it's not built on major/minor pentatonic.\n\n### Brightness Order (each differs by one semitone)\nLydian (#4) \u2192 Ionian \u2192 Mixolydian (b7) \u2192 Dorian (b3,b7) \u2192 Aeolian (b3,b6,b7) \u2192 Phrygian (b2,b3,b6,b7) \u2192 Locrian\n\n## 3nps (Three-Notes-Per-String)\n\nA 7-string universal pattern with only **3 fingering shapes**:\n- **1-2-4** (half-whole): Scale degrees 7, 3\n- **1-3-4** (whole-half): Scale degrees 6, 2  \n- **1-3-5** (whole-whole): Scale degrees 5, 1, 4\n\n### Phone Numbers for String Movement\n- Going UP: 7-3-6-2-5-1-4\n- Going DOWN: 4-1-5-2-6-3-7\n\nPattern 4\u21927 transition shifts one fret (can combine with warp for 2-fret shift).\n\n### String Pairs (for horizontal movement)\nMemorize the 7 pairs\u2014great for melodic sequences:\n- Pair 1: 4/1 \u2192 5/2 \u2192 6/3 (same shape as Pair 5)\n- Pairs 2-7 follow sequentially\n\n## CAGED System\n\nFive open chord shapes (C-A-G-E-D) become a **pegboard** for the entire fretboard.\n\n### Root Locations\nMemorize where roots fall in each CAGED shape\u2014snap any pattern onto these positions.\n\n### Layered Hierarchy (for improvisation)\n1. **Root** \u2014 Home base, most stable\n2. **Triad** (1-3-5) \u2014 Always consonant, great phrase endings\n3. **Pentatonic** \u2014 Adds melodic options\n4. **Mode** \u2014 Full color palette\n\n## Triads\n\n### Four Types (stacked thirds)\n| Triad      | Formula   | Lower 3rd | Upper 3rd |\n|------------|-----------|-----------|-----------|\n| Major      | 1-3-5     | Major (4) | Minor (3) |\n| Minor      | 1-b3-5    | Minor (3) | Major (4) |\n| Diminished | 1-b3-b5   | Minor (3) | Minor (3) |\n| Augmented  | 1-3-#5    | Major (4) | Major (4) |\n\n### Inversions\n- Root position: 1-3-5\n- 1st inversion: 3-5-1\n- 2nd inversion: 5-1-3\n\nNine closed-form shapes exist (3 inversions \u00d7 3 string groups, warped versions for G-B crossing).\n\n### Quick Modifications\nFrom Major: lower 3rd \u2192 minor, raise 5th \u2192 augmented, lower root 1 fret \u2192 maj7, lower root 2 frets \u2192 dom7\nFrom Minor: raise 3rd \u2192 major, lower 5th \u2192 diminished, lower root 2 frets \u2192 m7\n\n## Intervals\n\n### Counting System\n- Horizontal: +1 fret toward bridge, -1 toward nut\n- Vertical: +5 per string up (toward floor), -5 per string down\n- **Warp crossing**: count diagonally\n\n### Reference Table\n| Semitones | Interval | Semitones | Complement |\n|-----------|----------|-----------|------------|\n| 0         | Unison   | 12        | Octave     |\n| 1         | m2       | 11        | M7         |\n| 2         | M2       | 10        | m7         |\n| 3         | m3       | 9         | M6         |\n| 4         | M3       | 8         | m6         |\n| 5         | P4       | 7         | P5         |\n| 6         | #4/b5    | 6         | Tritone    |\n\n9th = 2nd, 11th = 4th, 13th = 6th (subtract 7)\n\n## Harmonization with Thirds\n\n### Which Scale Degrees Get Major/Minor Thirds\n- **Major thirds** (4 frets): 1, 4, 5\n- **Minor thirds** (3 frets): 2, 3, 6, 7\n\n### Technique\n1. Play melody on one string\n2. Add third on adjacent string (major or minor based on scale degree)\n3. Keep one finger anchored, shift other finger for major/minor\n\n### Spread Thirds with Pedal Tone\nCapture open string as pedal, play thirds 2+ strings away. Assign scale degree to the note matching the open string to create any modal sound.\n\n## Circle of 4ths/5ths\n\n### Vertical Movement\nMoving up a string = up a 4th (clockwise on circle)\nMoving down a string = down a 4th (counterclockwise)\n\n### The Sequence\n4ths: B-E-A-D-G-C-F-Bb-Eb-Ab-Db-Gb\n5ths: Reverse order with sharp names\n\nWraps diagonally around fr",
+   "files": [
+    "SKILL.md",
+    "guitar-fretboard-mastery.skill"
+   ]
+  },
+  {
+   "ref": "skills.sh:github/awesome-copilot/comment-code-generate-a-tutorial",
+   "name": "comment-code-generate-a-tutorial",
+   "type": "skill",
+   "what": "A skill in the github/awesome-copilot project on GitHub.",
+   "source": "skills.sh",
+   "url": "https://skills.sh/github/awesome-copilot/comment-code-generate-a-tutorial",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "skills.sh:jarrodmedrano/jarrod-claude-skills/guitar-fretboard",
+   "name": "guitar-fretboard",
+   "type": "skill",
+   "what": "A skill in the jarrodmedrano/jarrod-claude-skills project on GitHub.",
+   "source": "skills.sh",
+   "url": "https://skills.sh/jarrodmedrano/jarrod-claude-skills/guitar-fretboard",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "skills.sh:bevibing/tutor-skills/tutor",
+   "name": "tutor",
+   "type": "skill",
+   "what": "A skill in the bevibing/tutor-skills project on GitHub.",
+   "source": "skills.sh",
+   "url": "https://skills.sh/bevibing/tutor-skills/tutor",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "clawhub:ascii-chord",
+   "name": "Guitar Chord",
+   "type": "skill",
+   "what": "Show ASCII guitar chord diagrams using the ascii_chord CLI tool. Use when asked how to play a guitar chord, or to show chord charts/diagrams for any chord na...",
+   "source": "hermes",
+   "url": "https://clawhub.ai/skills/ascii-chord",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "mcp:io.github.Guitarmaniac24/getabrain",
+   "name": "GetABrain",
+   "type": "mcp",
+   "what": "Real human judgment as agent tools, ask a question, get a structured human answer back.",
+   "source": "mcp-registry",
+   "url": "https://getabrain.ai",
+   "hosts": [],
+   "needs": [],
+   "mcp": {
+    "command": "stdio"
+   },
+   "caps": []
+  },
+  {
+   "ref": "mcp:ai.smithery/arjunkmrm-tutorials",
+   "name": "arjunkmrm-tutorials",
+   "type": "mcp",
+   "what": "Analyze stocks and SEC filings to surface key insights, from price and volume to insider activity\u2026",
+   "source": "mcp-registry",
+   "url": "https://github.com/arjunkmrm/tutorials",
+   "hosts": [
+    "server.smithery.ai"
+   ],
+   "needs": [],
+   "mcp": {
+    "url": "https://server.smithery.ai/@arjunkmrm/tutorials/mcp"
+   },
+   "caps": []
+  },
+  {
+   "ref": "mcp:ai.tutorping/tutorping",
+   "name": "TutorPing",
+   "type": "mcp",
+   "what": "Find and book independent tutors, or find students asking for a tutor in your subject.",
+   "source": "mcp-registry",
+   "url": "https://tutorping.ai/agents",
+   "hosts": [
+    "tutorping.ai"
+   ],
+   "needs": [],
+   "mcp": {
+    "url": "https://tutorping.ai/mcp"
+   },
+   "caps": []
+  },
+  {
+   "ref": "mcp:com.a2awire/data-developer-blog-programming-tutorial-community",
+   "name": "dev.to Developer Blogs & Programming Tutorials, buy per-query (devtowatch)",
+   "type": "mcp",
+   "what": "dev.to developer blog & tutorial feed. $0.01/query. Register in-session, free testnet funds.",
+   "source": "mcp-registry",
+   "url": "https://a2awire.com/data/devtowatch-dev-to-developer-blog-tutorial-firehose-11f3ce",
+   "hosts": [
+    "a2awire.com"
+   ],
+   "needs": [],
+   "mcp": {
+    "url": "https://a2awire.com/mcp/data/devtowatch-dev-to-developer-blog-tutorial-firehose-11f3ce/http"
+   },
+   "caps": []
+  },
+  {
+   "ref": "github:farmer30175/tutorialf_Guitar",
+   "name": "tutorialf_Guitar",
+   "type": "browser_app",
+   "what": "\u8abf\u6027\u97f3\u968e\u8207\u548c\u5f26",
+   "source": "github",
+   "url": "https://github.com/farmer30175/tutorialf_Guitar",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "github:SeeLook/nootka",
+   "name": "nootka",
+   "type": "cli",
+   "what": "Application for practicing playing musical scores, for ear training as well.",
+   "source": "github",
+   "url": "https://github.com/SeeLook/nootka",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "github:hitherejoe/Fret",
+   "name": "Fret",
+   "type": "browser_app",
+   "what": "A guitar chord tutor for google actions",
+   "source": "github",
+   "url": "https://github.com/hitherejoe/Fret",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "github:jcelerier/pfa_guitar_tutor",
+   "name": "pfa_guitar_tutor",
+   "type": "cli",
+   "what": "Repository du PFA Guitar Tutor",
+   "source": "github",
+   "url": "https://github.com/jcelerier/pfa_guitar_tutor",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "npm:@coderline/alphatab",
+   "name": "@coderline/alphatab",
+   "type": "library",
+   "what": "alphaTab is a music notation and guitar tablature rendering library",
+   "source": "npm",
+   "url": "https://www.npmjs.com/package/@coderline/alphatab",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "npm:svguitar",
+   "name": "svguitar",
+   "type": "library",
+   "what": "Library to create beautiful SVG guitar chord charts.",
+   "source": "npm",
+   "url": "https://www.npmjs.com/package/svguitar",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "npm:@alicloud/console-base-messenger-tutor",
+   "name": "@alicloud/console-base-messenger-tutor",
+   "type": "library",
+   "what": "ConsoleBase \u4fe1\u4f7f - Tutor",
+   "source": "npm",
+   "url": "https://www.npmjs.com/package/@alicloud/console-base-messenger-tutor",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "npm:react-guitar",
+   "name": "react-guitar",
+   "type": "library",
+   "what": "A beautiful and accessible guitar component for React.",
+   "source": "npm",
+   "url": "https://www.npmjs.com/package/react-guitar",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "pypi:guitar",
+   "name": "guitar",
+   "type": "library",
+   "what": "django package manager",
+   "source": "pypi",
+   "url": "https://pypi.org/project/guitar/",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "book:wikibooks:240673",
+   "name": "MRC Tutor Resource Guide",
+   "type": "book",
+   "what": "A free how-to book from Wikibooks, written together by many people, 1 page.",
+   "source": "libraries",
+   "url": "https://en.wikibooks.org/wiki/MRC_Tutor_Resource_Guide",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "clawhub:guoma970/practice-session-checkin",
+   "name": "Practice Session Check-in",
+   "type": "skill",
+   "what": "Public-safe practice session intake, confirmation, reminders, completion checks, and follow-up tracking",
+   "source": "clawhub",
+   "url": "https://clawhub.ai/guoma970/skills/practice-session-checkin",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "clawhub:sdk-team/alibabacloud-analyticdb-postgresql-ai-coaching-best-practice",
+   "name": "Alibabacloud Analyticdb Postgresql Ai Coaching Best Practice",
+   "type": "skill",
+   "what": "Implement AI Coaching best practices on AnalyticDB for PostgreSQL (ADBPG): Leverage Supabase projects (training data management) + ADBPG instances with vecto...",
+   "source": "clawhub",
+   "url": "https://clawhub.ai/sdk-team/skills/alibabacloud-analyticdb-postgresql-ai-coaching-best-practice",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "clawhub:steipete/apple-reminders",
+   "name": "Apple Reminders",
+   "type": "skill",
+   "what": "Manage Apple Reminders via the `remindctl` CLI on macOS (list, add, edit, complete, delete). Supports lists, date filters, and JSON/plain output.",
+   "source": "clawhub",
+   "url": "https://clawhub.ai/steipete/skills/apple-reminders",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "clawhub:fatonionlee/mysql-schema-best-practice-generator",
+   "name": "mysql\u5b9e\u8df5",
+   "type": "skill",
+   "what": "\u57fa\u4e8eMySQL 8.0 \u7684\u6570\u636e\u5e93\u5efa\u8868\u6700\u4f73\u5b9e\u8df5\u89c4\u8303\u751f\u6210\u4e0e\u5ba1\u6821\uff0c\u8f93\u51fa\u89c4\u8303\u5316DDL\u3001\u7d22\u5f15\u7b56\u7565\u4e0e\u6821\u9a8c\u6e05\u5355\u3002",
+   "source": "clawhub",
+   "url": "https://clawhub.ai/fatonionlee/skills/mysql-schema-best-practice-generator",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "skills.sh:callstackincubator/agent-skills/react-native-best-practices",
+   "name": "react-native-best-practices",
+   "type": "skill",
+   "what": "A skill in the callstackincubator/agent-skills project on GitHub.",
+   "source": "skills.sh",
+   "url": "https://skills.sh/callstackincubator/agent-skills/react-native-best-practices",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "skills.sh:vercel-labs/agent-skills/vercel-react-best-practices",
+   "name": "vercel-react-best-practices",
+   "type": "skill",
+   "what": "A skill in the vercel-labs/agent-skills project on GitHub.",
+   "source": "skills.sh",
+   "url": "https://skills.sh/vercel-labs/agent-skills/vercel-react-best-practices",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "skills.sh:vercel-labs/json-render/remotion-best-practices",
+   "name": "remotion-best-practices",
+   "type": "skill",
+   "what": "A skill in the vercel-labs/json-render project on GitHub.",
+   "source": "skills.sh",
+   "url": "https://skills.sh/vercel-labs/json-render/remotion-best-practices",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "skills.sh:remotion-dev/skills/remotion-best-practices",
+   "name": "remotion-best-practices",
+   "type": "skill",
+   "what": "A skill in the remotion-dev/skills project on GitHub.",
+   "source": "skills.sh",
+   "url": "https://skills.sh/remotion-dev/skills/remotion-best-practices",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "clawhub:openclaw-reminder",
+   "name": "Reminder",
+   "type": "skill",
+   "what": "Create one-time reminder tasks using OpenClaw cron. User specifies reminder time and task content in natural language via Discord, and the task result will b...",
+   "source": "hermes",
+   "url": "https://clawhub.ai/skills/openclaw-reminder",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "clawhub:practicepanther-mcp",
+   "name": "PracticePanther API MCP",
+   "type": "skill",
+   "what": "MCP server for the PracticePanther legal practice management API. Exposes PracticePanther's REST API as read-only MCP tools.",
+   "source": "hermes",
+   "url": "https://clawhub.ai/skills/practicepanther-mcp",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "clawhub:jpeng-reminder",
+   "name": "Reminder",
+   "type": "skill",
+   "what": "Reminder and scheduling skill. Set one-time or recurring reminders, manage tasks, and send notifications.",
+   "source": "hermes",
+   "url": "https://clawhub.ai/skills/jpeng-reminder",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "mcp:ai.toothnote/practice-reporting",
+   "name": "ToothNote.ai",
+   "type": "mcp",
+   "what": "Read-only dental practice aggregates: patients seen, procedure mix, and letter activity.",
+   "source": "mcp-registry",
+   "url": "https://app.toothnote.ai/mcp",
+   "hosts": [
+    "app.toothnote.ai"
+   ],
+   "needs": [],
+   "mcp": {
+    "url": "https://app.toothnote.ai/api/public/v1/mcp"
+   },
+   "caps": []
+  },
+  {
+   "ref": "mcp:com.foundationscounselingllc/practice",
+   "name": "Foundations Counseling",
+   "type": "mcp",
+   "what": "Counselors, services, offices, fees, and intake at Foundations Counseling, Northern Colorado.",
+   "source": "mcp-registry",
+   "url": "https://mcp.foundationscounselingllc.com/",
+   "hosts": [
+    "mcp.foundationscounselingllc.com"
+   ],
+   "needs": [],
+   "mcp": {
+    "url": "https://mcp.foundationscounselingllc.com/mcp"
+   },
+   "caps": []
+  },
+  {
+   "ref": "mcp:com.superpractice/superpractice",
+   "name": "Superpractice",
+   "type": "mcp",
+   "what": "Marketing and practice analytics for law firms: leads, meetings, attribution, ads, SEO, pipeline.",
+   "source": "mcp-registry",
+   "url": "https://superpractice.com",
+   "hosts": [
+    "app.superpractice.com"
+   ],
+   "needs": [],
+   "mcp": {
+    "url": "https://app.superpractice.com/api/mcp"
+   },
+   "caps": []
+  },
+  {
+   "ref": "mcp:guide.practiceleader/guide-registry",
+   "name": "guide-registry",
+   "type": "mcp",
+   "what": "Read-only Bicycle Guide registry: published guides, homes, taxonomy, capability spine. No auth.",
+   "source": "mcp-registry",
+   "url": "https://practiceleader.guide",
+   "hosts": [
+    "practiceleader.guide"
+   ],
+   "needs": [],
+   "mcp": {
+    "url": "https://practiceleader.guide/mcp"
+   },
+   "caps": []
+  },
+  {
+   "ref": "github:mdeveloper20/reactReminder",
+   "name": "reactReminder",
+   "type": "library",
+   "what": "Here are all my practice codes related to the react library. Whenever I forget about either the syntax or structures, I just check this repository to remind me...",
+   "source": "github",
+   "url": "https://github.com/mdeveloper20/reactReminder",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "github:linucksrox/ReminderList",
+   "name": "ReminderList",
+   "type": "server_app",
+   "what": "A todo list app that you can schedule and receive notifications for recurring tasks. This app uses MVVM architecture, many Android Architecture components, and...",
+   "source": "github",
+   "url": "https://github.com/linucksrox/ReminderList",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "github:AP2305/Reminder",
+   "name": "Reminder",
+   "type": "data",
+   "what": "room practice",
+   "source": "github",
+   "url": "https://github.com/AP2305/Reminder",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "github:Achuan-2/siyuan-plugin-task-note-management",
+   "name": "siyuan-plugin-task-note-management",
+   "type": "browser_app",
+   "what": "\u4e00\u6b3e\u5728\u601d\u6e90\u7b14\u8bb0\u91cc\u5b9e\u73b0\u4efb\u52a1\u7ba1\u7406\u3001\u9879\u76ee\u7ba1\u7406\u529f\u80fd\u7684\u63d2\u4ef6\uff0c\u4e3a\u4e86\u8df5\u884c\u9632\u5f39\u7b14\u8bb0\u6cd5\u800c\u5f00\u53d1\u3002\u652f\u6301\u6587\u6863\u548c\u5757\u63d0\u9192\u3001\u65e5\u5386\u89c6\u56fe\u67e5\u770b\u884c\u4e8b\u5386\u3001\u756a\u8304\u949f\u4e13\u6ce8\u3001\u9879\u76ee\u7ba1\u7406\u770b\u677f\u3001\u4efb\u52a1\u56db\u8c61\u9650\u9762\u677f\u3001\u4e60\u60ef\u6253\u5361\u7b49\u529f\u80fd A task note reminder plugin developed for practicing the Bullet Journal...",
+   "source": "github",
+   "url": "https://github.com/Achuan-2/siyuan-plugin-task-note-management",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "npm:@deepseek-ai/dsh-repeat-tool-reminder",
+   "name": "@deepseek-ai/dsh-repeat-tool-reminder",
+   "type": "library",
+   "what": "Repeat-tool-call guard plugin: advisory reminders when an agent loops on identical tool calls",
+   "source": "npm",
+   "url": "https://www.npmjs.com/package/@deepseek-ai/dsh-repeat-tool-reminder",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "pypi:practice",
+   "name": "practice",
+   "type": "library",
+   "what": "Sorry,This is practice",
+   "source": "pypi",
+   "url": "https://pypi.org/project/practice/",
+   "hosts": [],
+   "needs": [],
+   "caps": []
+  },
+  {
+   "ref": "seed:mlb_stats",
+   "name": "MLB Stats",
+   "type": "live_data",
+   "what": "Baseball teams, games, scores and players.",
+   "text": "MLB Stats. Baseball teams, games, scores and players. baseball sport mlb team game score player league sports",
+   "source": "api_seeds",
+   "url": "https://statsapi.mlb.com/api/v1/teams?sportId=1",
+   "hosts": [
+    "statsapi.mlb.com"
+   ],
+   "needs": [],
+   "auth": "none",
+   "service": "seed:mlb_stats"
+  },
+  {
+   "ref": "seed:itunes_search",
+   "name": "Apple iTunes Search",
+   "type": "live_data",
+   "what": "Find albums, songs and podcasts, with cover art.",
+   "text": "Apple iTunes Search. Find albums, songs and podcasts, with cover art. music album song podcast artist band movie music media",
+   "source": "api_seeds",
+   "url": "https://itunes.apple.com/search?term={topic}&entity=album&limit=5",
+   "hosts": [
+    "itunes.apple.com"
+   ],
+   "needs": [],
+   "auth": "none",
+   "service": "seed:itunes_search"
+  },
+  {
+   "ref": "seed:deezer",
+   "name": "Deezer",
+   "type": "live_data",
+   "what": "Artists, albums and short song previews.",
+   "text": "Deezer. Artists, albums and short song previews. music album song artist band playlist music",
+   "source": "api_seeds",
+   "url": "https://api.deezer.com/chart/0/artists?limit=5",
+   "hosts": [
+    "api.deezer.com"
+   ],
+   "needs": [],
+   "auth": "none",
+   "service": "seed:deezer"
+  },
+  {
+   "ref": "seed:musicbrainz",
+   "name": "MusicBrainz",
+   "type": "live_data",
+   "what": "Facts about bands, singers, albums and songs.",
+   "text": "MusicBrainz. Facts about bands, singers, albums and songs. music band album song artist singer record musician discography vinyl music",
+   "source": "api_seeds",
+   "url": "https://musicbrainz.org/ws/2/release-group/?query={topic}%20AND%20primarytype:album&fmt=json&limit=5",
+   "hosts": [
+    "musicbrainz.org"
+   ],
+   "needs": [],
+   "auth": "none",
+   "service": "seed:musicbrainz"
+  },
+  {
+   "ref": "apis_guru:zappiti.com",
+   "name": "Zappiti Player API",
+   "type": "live_data",
+   "what": "Move your app forward with the Zappiti Player API. Use as base URL for your requests.",
+   "text": "Zappiti Player API. Move your app forward with the Zappiti Player API. Use as base URL for your requests. api com media player zappiti",
+   "source": "apis_guru",
+   "url": "",
+   "hosts": [],
+   "needs": [
+    "key"
+   ],
+   "auth": "unknown",
+   "service": "apis_guru:zappiti.com"
+  },
+  {
+   "ref": "apis_guru:bbc.co.uk",
+   "name": "Radio & Music Services",
+   "type": "live_data",
+   "what": "We encapsulate Radio & Music business logic for iPlayer Radio and BBC Music products on all platforms. We add value by reliably providing the right blend of metadata needed by clients.",
+   "text": "Radio & Music Services. We encapsulate Radio & Music business logic for iPlayer Radio and BBC Music products on all platforms. We add value by reliably providing the right blend of metadata needed by clients. bbc media music radio service",
+   "source": "apis_guru",
+   "url": "",
+   "hosts": [],
+   "needs": [
+    "key"
+   ],
+   "auth": "unknown",
+   "service": "apis_guru:bbc.co.uk"
+  },
+  {
+   "ref": "builtin:routine",
+   "name": "Your bot's reminders",
+   "type": "routine",
+   "what": "Reminds you at the time you pick, once or every day.",
+   "source": "builtin",
+   "hosts": [],
+   "needs": [],
+   "builtin": "routine"
+  }
+ ],
+ "recorded_at": "2026-10-10"
+}

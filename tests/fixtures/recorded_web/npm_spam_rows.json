@@ -1,0 +1,49 @@
+{
+ "note": "Recorded npm search answer rows (garden), 2026-09-26.",
+ "objects": [
+  {
+   "downloads": {
+    "monthly": 16,
+    "weekly": 2
+   },
+   "dependents": 0,
+   "updated": "2026-09-22T20:16:31.750Z",
+   "searchScore": 126.93337,
+   "package": {
+    "name": "crack_garden_planner_3_6_3_key_2018_new_best__velwc",
+    "keywords": [
+     "crack garden planner 3.6.3 key (2018) [new] |best|"
+    ],
+    "version": "1.0.0",
+    "description": "crack garden planner 3.6.3 key (2018) [new] |best|",
+    "sanitized_name": "crack_garden_planner_3_6_3_key_2018_new_best__velwc",
+    "publisher": {
+     "email": "someone@example.com",
+     "username": "trormilfulce"
+    },
+    "maintainers": [
+     {
+      "email": "someone@example.com",
+      "username": "trormilfulce"
+     }
+    ],
+    "license": "ISC",
+    "date": "2023-04-06T15:52:49.469Z",
+    "links": {
+     "npm": "https://www.npmjs.com/package/crack_garden_planner_3_6_3_key_2018_new_best__velwc"
+    }
+   },
+   "score": {
+    "final": 126.93337,
+    "detail": {
+     "popularity": 1,
+     "quality": 1,
+     "maintenance": 1
+    }
+   },
+   "flags": {
+    "insecure": 0
+   }
+  }
+ ]
+}

@@ -1,0 +1,37 @@
+@theme {
+  --scrollbar-track-basic: #0a0a14;
+  --scrollbar-thumb-basic: #00f0ff;
+  --scrollbar-basic: var(--scrollbar-thumb-basic) var(--scrollbar-track-basic);
+}
+
+@utility style-basic {
+  &:not(.dark) {
+    .aside {
+      @apply bg-[#080814];
+    }
+    .aside-scrollbar {
+      @apply scrollbar-styled-basic;
+    }
+    .aside-brand {
+      @apply bg-[#06060e] text-white;
+    }
+    .aside-menu-item {
+      @apply text-[#8899aa] hover:text-[#00f0ff];
+    }
+    .aside-menu-item-active {
+      @apply text-[#00f0ff];
+    }
+    .aside-menu-dropdown {
+      @apply bg-[#0c0c1a]/60;
+    }
+    .navbar-item-label {
+      @apply text-[#8899aa] hover:text-[#00f0ff];
+    }
+    .navbar-item-label-active {
+      @apply text-[#00f0ff];
+    }
+    .overlay {
+      @apply from-[#06060e] via-[#0a0a18] to-[#06060e];
+    }
+  }
+}

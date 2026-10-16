@@ -1,0 +1,61 @@
+{
+  "schema": "puffpai_app/v1",
+  "id": "fitfam",
+  "name": "FitFam",
+  "blurb": "Workouts per person, with streaks and a history that stays here.",
+  "version": "1.0.0",
+  "author": "Cypher Sisters",
+  "license": "Apache-2.0",
+  "order": 40,
+
+  "surfaces": ["daily.fitness"],
+
+  "data": {
+    "default": {
+      "users": {
+        "alex": {
+          "name": "Adult 1", "emoji": "\ud83e\uddd4",
+          "prefs": { "level": "mid", "type": "full", "duration": 45 },
+          "goals": [], "history": [], "streak": 0, "totalWorkouts": 0
+        },
+        "jordan": {
+          "name": "Adult 2", "emoji": "\ud83c\udfc4",
+          "prefs": { "level": "mid", "type": "full", "duration": 30 },
+          "goals": [], "history": [], "streak": 0, "totalWorkouts": 0
+        }
+      },
+      "last_updated": ""
+    }
+  },
+
+  "ui": { "route": "/dashboard/apps/fitfam", "icon": "mdiFire" },
+
+  "vocabulary": {
+    "keywords": [
+      "workout",
+      "exercise",
+      "fitness"
+    ],
+    "examples": [
+      "log today's workout"
+    ]
+  },
+
+  "actions": [
+    { "id": "fit_log_workout", "says": "log today's workout" },
+    { "id": "fit_log_set", "says": "log three sets of ten on the bench press" },
+    { "id": "fit_get_status", "says": "how long is my workout streak" }
+  ],
+
+  "doors": [
+    {
+      "hosts": [],
+      "purpose": "None. Workout history is written to this box and nowhere else.",
+      "data_sent_plain": "nothing"
+    }
+  ],
+  "credential": { "kind": "none" },
+  "children": { "may_be_used_by_minor": true },
+
+  "requires": { "home_assistant": false, "network": false, "ollama": false }
+}

@@ -1,0 +1,91 @@
+{
+"query": "3d printer",
+"searchType": "semantic",
+"searchVersion": "algolia",
+"skills": [
+{
+"id": "cloudai-x/threejs-skills/threejs-fundamentals",
+"source": "cloudai-x/threejs-skills",
+"skillId": "threejs-fundamentals",
+"name": "threejs-fundamentals",
+"installs": 13280
+},
+{
+"id": "earthtojake/text-to-cad/cad",
+"source": "earthtojake/text-to-cad",
+"skillId": "cad",
+"name": "cad",
+"installs": 12034
+},
+{
+"id": "cloudai-x/threejs-skills/threejs-geometry",
+"source": "cloudai-x/threejs-skills",
+"skillId": "threejs-geometry",
+"name": "threejs-geometry",
+"installs": 11149
+},
+{
+"id": "nvidia/skills/tao-train-sparse4d",
+"source": "nvidia/skills",
+"skillId": "tao-train-sparse4d",
+"name": "tao-train-sparse4d",
+"installs": 1600
+},
+{
+"id": "earthtojake/text-to-cad/gcode",
+"source": "earthtojake/text-to-cad",
+"skillId": "gcode",
+"name": "gcode",
+"installs": 7921
+},
+{
+"id": "earthtojake/text-to-cad/bambu-labs",
+"source": "earthtojake/text-to-cad",
+"skillId": "bambu-labs",
+"name": "bambu-labs",
+"installs": 7632
+},
+{
+"id": "mvanhorn/cli-printing-press/printing-press-publish",
+"source": "mvanhorn/cli-printing-press",
+"skillId": "printing-press-publish",
+"name": "printing-press-publish",
+"installs": 6475
+},
+{
+"id": "pixijs/pixijs-skills/pixijs-core-concepts",
+"source": "pixijs/pixijs-skills",
+"skillId": "pixijs-core-concepts",
+"name": "pixijs-core-concepts",
+"installs": 4984
+},
+{
+"id": "freshtechbro/claudedesignskills/threejs-webgl",
+"source": "freshtechbro/claudedesignskills",
+"skillId": "threejs-webgl",
+"name": "threejs-webgl",
+"installs": 4005
+},
+{
+"id": "freshtechbro/claudedesignskills/react-three-fiber",
+"source": "freshtechbro/claudedesignskills",
+"skillId": "react-three-fiber",
+"name": "react-three-fiber",
+"installs": 3124
+}
+],
+"count": 10,
+"duration_ms": 224,
+"timings_ms": {
+"rate_limit": 55.598794000048656,
+"flags": 1.746380999975372,
+"visibility": 80.41829599998891,
+"retrieval": 213.32721000001766,
+"algolia_processing": 143,
+"repositories": 6.735053999989759,
+"ranking": 1.3775299999979325,
+"search": 224,
+"total": 279.1661890000105
+},
+"provider_duration_ms": 213.32721000001766
+}

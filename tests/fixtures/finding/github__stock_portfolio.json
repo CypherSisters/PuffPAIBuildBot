@@ -1,0 +1,273 @@
+{
+"total_count": 21458,
+"items": [
+{
+"name": "LLM-Trading-Lab",
+"full_name": "LuckyOne7777/LLM-Trading-Lab",
+"owner": {
+"login": "LuckyOne7777"
+},
+"private": false,
+"description": "This repo powers my experiment where ChatGPT manages a real-money micro-cap stock portfolio.",
+"html_url": "https://github.com/LuckyOne7777/LLM-Trading-Lab",
+"homepage": "",
+"stargazers_count": 7501,
+"pushed_at": "2026-06-24T16:34:59Z",
+"archived": false,
+"fork": false,
+"license": null,
+"size": 19749,
+"language": "Python",
+"topics": [],
+"default_branch": "main"
+},
+{
+"name": "StockTicker",
+"full_name": "premnirmal/StockTicker",
+"owner": {
+"login": "premnirmal"
+},
+"private": false,
+"description": "A resizable widget that shows your financial portfolio on your iOS or Android home screen",
+"html_url": "https://github.com/premnirmal/StockTicker",
+"homepage": "",
+"stargazers_count": 574,
+"pushed_at": "2026-08-12T13:50:12Z",
+"archived": false,
+"fork": false,
+"license": {
+"spdx_id": "GPL-3.0",
+"name": "GNU General Public License v3.0"
+},
+"size": 6493,
+"language": "Kotlin",
+"topics": [
+"android",
+"finance",
+"kotlin",
+"widget"
+],
+"default_branch": "master"
+},
+{
+"name": "robin_stocks",
+"full_name": "jmfernandes/robin_stocks",
+"owner": {
+"login": "jmfernandes"
+},
+"private": false,
+"description": "This is a library to use with Robinhood Financial App. It currently supports trading crypto-currencies, options, and stocks. In addition, it can be used to get real time ticker information, assess the performance of your portfolio, and can also get tax documents, total dividends paid, and more. More info at",
+"html_url": "https://github.com/jmfernandes/robin_stocks",
+"homepage": "http://www.robin-stocks.com",
+"stargazers_count": 2123,
+"pushed_at": "2026-02-11T02:42:31Z",
+"archived": false,
+"fork": false,
+"license": {
+"spdx_id": "MIT",
+"name": "MIT License"
+},
+"size": 8431,
+"language": "Python",
+"topics": [
+"cryptocurrency",
+"options-trading",
+"quantitative-finance",
+"robinhood",
+"robinhood-api",
+"robinhood-portfolio",
+"robinhood-python",
+"stock-market",
+"stock-trading",
+"trading",
+"trading-algorithms",
+"trading-api"
+],
+"default_branch": "master"
+},
+{
+"name": "Finance",
+"full_name": "shashankvemuri/Finance",
+"owner": {
+"login": "shashankvemuri"
+},
+"private": false,
+"description": "Python toolkit for quantitative finance: stock analysis, technical indicators, strategy backtesting, portfolio optimization, and financial modeling.",
+"html_url": "https://github.com/shashankvemuri/Finance",
+"homepage": "",
+"stargazers_count": 4300,
+"pushed_at": "2026-09-12T01:00:07Z",
+"archived": false,
+"fork": false,
+"license": {
+"spdx_id": "MIT",
+"name": "MIT License"
+},
+"size": 97567,
+"language": "Python",
+"topics": [
+"algorithmic-trading",
+"data-science",
+"finance",
+"machine-learning",
+"pandas",
+"python",
+"quantitative-finance",
+"stock",
+"stock-market",
+"stocks",
+"technical-indicators",
+"trading-strategies"
+],
+"default_branch": "master"
+},
+{
+"name": "hikyuu",
+"full_name": "fasiondog/hikyuu",
+"owner": {
+"login": "fasiondog"
+},
+"private": false,
+"description": "An open-source, high-performance quantitative trading framework in C++/Python focused on strategy analysis and backtesting Trading model R&D · Ultra-fast engine · Efficient backtesting",
+"html_url": "https://github.com/fasiondog/hikyuu",
+"homepage": "http://hikyuu.org/",
+"stargazers_count": 3542,
+"pushed_at": "2026-10-04T08:18:51Z",
+"archived": false,
+"fork": false,
+"license": {
+"spdx_id": "Apache-2.0",
+"name": "Apache License 2.0"
+},
+"size": 227133,
+"language": "C++",
+"topics": [
+"algorithms-trading",
+"backtesting",
+"finance",
+"portfolio",
+"quant",
+"stock",
+"system-trading",
+"trading",
+"vestment"
+],
+"default_branch": "master"
+},
+{
+"name": "Deep-Reinforcement-Stock-Trading",
+"full_name": "Albert-Z-Guo/Deep-Reinforcement-Stock-Trading",
+"owner": {
+"login": "Albert-Z-Guo"
+},
+"private": false,
+"description": "A light-weight deep reinforcement learning framework for portfolio management. This project explores the possibility of applying deep reinforcement learning algorithms to stock trading in a highly modular and scalable framework.",
+"html_url": "https://github.com/Albert-Z-Guo/Deep-Reinforcement-Stock-Trading",
+"homepage": "",
+"stargazers_count": 691,
+"pushed_at": "2024-11-06T17:33:17Z",
+"archived": false,
+"fork": false,
+"license": {
+"spdx_id": "GPL-3.0",
+"name": "GNU General Public License v3.0"
+},
+"size": 10457,
+"language": "Jupyter Notebook",
+"topics": [],
+"default_branch": "master"
+},
+{
+"name": "pyrtfolio",
+"full_name": "alvarobartt/pyrtfolio",
+"owner": {
+"login": "alvarobartt"
+},
+"private": false,
+"description": "Python package to generate stock portfolios",
+"html_url": "https://github.com/alvarobartt/pyrtfolio",
+"homepage": "https://investpy-portfolio.readthedocs.io",
+"stargazers_count": 153,
+"pushed_at": "2022-05-14T21:32:20Z",
+"archived": false,
+"fork": false,
+"license": {
+"spdx_id": "GPL-3.0",
+"name": "GNU General Public License v3.0"
+},
+"size": 93,
+"language": "Python",
+"topics": [],
+"default_branch": "master"
+},
+{
+"name": "portfolio",
+"full_name": "paulhoughton/portfolio",
+"owner": {
+"login": "paulhoughton"
+},
+"private": false,
+"description": "Angular Stock Portfolio Tracker",
+"html_url": "https://github.com/paulhoughton/portfolio",
+"homepage": "",
+"stargazers_count": 33,
+"pushed_at": "2018-05-08T20:25:18Z",
+"archived": false,
+"fork": false,
+"license": {
+"spdx_id": "MIT",
+"name": "MIT License"
+},
+"size": 660,
+"language": "TypeScript",
+"topics": [],
+"default_branch": "master"
+},
+{
+"name": "stock-portfolio-manager",
+"full_name": "wensongz/stock-portfolio-manager",
+"owner": {
+"login": "wensongz"
+},
+"private": false,
+"description": "A personal stock portfolio manager",
+"html_url": "https://github.com/wensongz/stock-portfolio-manager",
+"homepage": null,
+"stargazers_count": 72,
+"pushed_at": "2026-10-03T12:23:55Z",
+"archived": false,
+"fork": false,
+"license": {
+"spdx_id": "GPL-3.0",
+"name": "GNU General Public License v3.0"
+},
+"size": 53433,
+"language": "Rust",
+"topics": [],
+"default_branch": "main"
+},
+{
+"name": "StockPortfolio",
+"full_name": "M3SOulu/StockPortfolio",
+"owner": {
+"login": "M3SOulu"
+},
+"private": false,
+"description": "A simple implementation of a stocks' portfolio to demonstrate the use of EasyMock",
+"html_url": "https://github.com/M3SOulu/StockPortfolio",
+"homepage": null,
+"stargazers_count": 2,
+"pushed_at": "2018-10-23T11:55:30Z",
+"archived": false,
+"fork": false,
+"license": {
+"spdx_id": "Apache-2.0",
+"name": "Apache License 2.0"
+},
+"size": 268,
+"language": "Java",
+"topics": [],
+"default_branch": "master"
+}
+]
+}

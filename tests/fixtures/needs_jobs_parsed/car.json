@@ -1,0 +1,51 @@
+{
+ "goal_id": "car",
+ "timing": {
+  "wall_s": 3.75,
+  "first_token_s": 0.07,
+  "first_job_s": 0,
+  "load_s": 0.0,
+  "prompt_tokens": 215,
+  "prompt_s": 0.04,
+  "out_tokens": 172,
+  "gen_s": 3.68,
+  "tok_per_s": 46.7,
+  "done_reason": "stop"
+ },
+ "parsed": {
+  "kind": "vehicle maintenance assistant",
+  "asked": [
+   "track oil changes",
+   "remind registration",
+   "look up recalls",
+   "figure out warning lights"
+  ],
+  "jobs": [
+   {
+    "name": "Track Oil Changes",
+    "does": "Monitors oil change intervals for both vehicles."
+   },
+   {
+    "name": "Remind Registration",
+    "does": "Sends notifications when registration is due."
+   },
+   {
+    "name": "Look Up Recalls",
+    "does": "Checks for manufacturer recalls on both vehicles."
+   },
+   {
+    "name": "Figure Out Warning Lights",
+    "does": "Interprets and explains warning lights on both vehicles."
+   },
+   {
+    "name": "Fuel Management",
+    "does": "Monitors fuel levels and suggests refueling."
+   },
+   {
+    "name": "Service Appointment Scheduling",
+    "does": "Schedules service appointments based on maintenance needs."
+   }
+  ]
+ },
+ "recall": 0.5714285714285714
+}

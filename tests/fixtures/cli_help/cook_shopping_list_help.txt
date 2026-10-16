@@ -1,0 +1,79 @@
+Create shopping lists from one or more recipes with ingredient aggregation and categorization
+
+Usage: cook shopping-list [OPTIONS] [RECIPES]...
+
+Arguments:
+  [RECIPES]...
+          Recipe files to include in the shopping list
+          
+          Specify one or more recipe files by name or path. Each recipe can include an optional scaling factor using the :N syntax (e.g., "recipe.cook:2" to double). Glob patterns are supported (e.g., "*.cook" for all recipes in a directory).
+          
+          Examples: pasta.cook              # Single recipe at default scale "Pasta.cook:3"          # Triple the pasta recipe recipe1.cook recipe2.cook  # Multiple recipes desserts/*.cook         # All recipes in desserts folder
+
+Options:
+  -b, --base-path <BASE_PATH>
+          Base directory to search for recipe files
+          
+          When recipe names (not full paths) are provided, the tool will search for them in this directory. Defaults to the current directory.
+
+  -v, --verbose...
+          Increase verbosity (-v for info, -vv for debug, -vvv for trace)
+
+  -o, --output <OUTPUT>
+          Output file path (stdout if not specified)
+          
+          The output format can be inferred from the file extension (.json, .yaml, .txt, .md)
+
+  -p, --plain
+          Display ingredients without aisle categories
+          
+          By default, ingredients are grouped by their aisle category (produce, dairy, etc.). This flag displays them as a simple list.
+
+  -f, --format <FORMAT>
+          Output format for the shopping list
+          
+          Available formats: human (default), json, yaml, markdown If not specified, format is inferred from output file extension.
+          
+          [possible values: human, json, yaml, markdown]
+
+      --pretty
+          Pretty output format, if available
+
+  -a, --aisle <AISLE>
+          Load aisle configuration file
+          
+          The aisle file groups ingredients into categories (produce, dairy, etc.) so the shopping list is organized by store section.
+          
+          If not specified, the tool looks for `aisle.conf` in `./config/` and then in the global config directory (`~/.config/cook/` or the platform equivalent).
+
+      --pantry <PANTRY>
+          Load pantry configuration file
+          
+          Ingredients you already have on hand are subtracted from the shopping list. The pantry file is TOML, with optional quantities and dates.
+          
+          If not specified, the tool looks for `pantry.conf` in `./config/` and then in the global config directory (`~/.config/cook/` or the platform equivalent). Use --ignore-pantry to skip pantry subtraction entirely.
+
+  -i, --ignore-references
+          Don't expand referenced recipes
+          
+          By default, recipes referenced from within a recipe (via @./other.cook) are expanded and their ingredients included. This flag treats each recipe in isolation.
+
+      --ignore-pantry
+          Don't subtract pantry items from the shopping list
+          
+          By default, ingredients found in the pantry configuration are subtracted from the shopping list. This flag includes every ingredient regardless of what's in the pantry, and skips loading the pantry file altogether.
+
+      --ingredients-only
+          Display only ingredient names, one per line, without amounts
+
+      --extra <ITEM>
+          Add an extra item that no recipe calls for
+          
+          For the paper towels and bin bags you want on the same shopping trip. Repeat the flag for each item. Each value is a Cooklang ingredient written without the leading `@`: a bare name for something with no amount, or the brace form to give one.
+          
+          Examples: --extra "paper towels"        # no amount --extra "eggs{12}"            # a count --extra "flour{200%g}"        # an amount and unit
+          
+          Extra items are merged with the recipe ingredients, so one that shares a name with an ingredient a recipe already needs adds to it, is grouped into its aisle category, and is subtracted from by the pantry.
+
+  -h, --help
+          Print help (see a summary with '-h')

@@ -1,0 +1,2194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bunny's Big Day &middot; Wedding Planning Dashboard</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<meta name="description" content="Bunny's Big Day — an elegant, self-contained wedding planning dashboard: guests, visual seating floor-plan, budget, timeline, vendors, checklist, and export. Your data stays in your browser." />
+<meta name="color-scheme" content="light" />
+<!--
+  Bunny's Big Day — a single-file wedding planning dashboard.
+  No build tools, no frameworks, no CDNs, no backend. Just open index.html.
+  All data lives in localStorage under the key defined by STORE_KEY.
+  Architecture:
+    - One state object (DB) holds every record (setup, guests, tables, budget,
+      timeline, vendor comparisons, locked vendors, tasks).
+    - save() serialises DB to localStorage; load() restores it.
+    - Each tab has a render*() function that rebuilds its DOM from DB.
+    - A single generic modal/form engine (openForm) drives all add/edit dialogs.
+    - All summary numbers are COMPUTED from the records, never hardcoded.
+-->
+<style>
+  /* ----------  Design tokens  ---------- */
+  :root{
+    --blush:#f6e2df;
+    --blush-deep:#e6b7b9;
+    --sage:#a7b59a;
+    --sage-deep:#7e9070;
+    --ivory:#fdfaf4;
+    --champagne:#c9a96a;
+    --gold:#b8924f;
+    --charcoal:#3b3a38;
+    --muted:#8a847d;
+    --line:#ece4d8;
+    --card:#ffffff;
+    --good:#5f9a6b;
+    --warn:#c98a3c;
+    --bad:#c2685f;
+    --shadow:0 8px 24px rgba(91,76,60,.08);
+    --shadow-sm:0 2px 8px rgba(91,76,60,.06);
+    --radius:18px;
+    --radius-sm:11px;
+    --serif:"Cormorant Garamond","Hoefler Text",Georgia,"Times New Roman",serif;
+    --sans:"Avenir Next","Segoe UI",system-ui,-apple-system,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:var(--sans);
+    color:var(--charcoal);
+    background:
+      radial-gradient(1200px 600px at 100% -10%, #fbeeea 0%, transparent 55%),
+      radial-gradient(1000px 500px at -10% 110%, #eef1e7 0%, transparent 55%),
+      var(--ivory);
+    min-height:100vh;
+    -webkit-font-smoothing:antialiased;
+    line-height:1.45;
+  }
+  h1,h2,h3,h4{font-family:var(--serif);font-weight:600;margin:0;line-height:1.15;}
+  a{color:var(--gold);}
+  button{font-family:inherit;}
+
+  /* ----------  Layout  ---------- */
+  .wrap{max-width:1180px;margin:0 auto;padding:0 18px 80px;}
+  header.app{
+    text-align:center;
+    padding:30px 16px 8px;
+  }
+  .monogram{
+    font-family:var(--serif);
+    font-size:13px;letter-spacing:.42em;text-transform:uppercase;
+    color:var(--gold);margin-bottom:6px;
+  }
+  header.app h1{font-size:clamp(32px,5vw,52px);letter-spacing:.5px;}
+  .divider{display:flex;align-items:center;justify-content:center;gap:14px;margin:14px auto 4px;max-width:340px;color:var(--blush-deep);}
+  .divider::before,.divider::after{content:"";height:1px;flex:1;background:linear-gradient(90deg,transparent,var(--blush-deep),transparent);}
+  .couple{color:var(--muted);font-size:14px;letter-spacing:.16em;text-transform:uppercase;}
+
+  /* setup bar */
+  .setup-bar{
+    display:grid;grid-template-columns:repeat(6,1fr);gap:10px;
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:14px;margin:18px 0 8px;box-shadow:var(--shadow-sm);
+  }
+  .setup-bar .cell{display:flex;flex-direction:column;gap:2px;min-width:0;}
+  .setup-bar .cell .k{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);}
+  .setup-bar .cell .v{font-family:var(--serif);font-size:19px;color:var(--charcoal);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .setup-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:6px 0 2px;}
+
+  /* ----------  Tabs  ---------- */
+  nav.tabs{
+    position:sticky;top:0;z-index:30;
+    display:flex;gap:4px;flex-wrap:wrap;justify-content:center;
+    background:rgba(253,250,244,.82);backdrop-filter:blur(8px);
+    border:1px solid var(--line);border-radius:999px;
+    padding:6px;margin:16px auto 26px;box-shadow:var(--shadow-sm);
+  }
+  nav.tabs button{
+    border:0;background:transparent;color:var(--muted);
+    padding:9px 16px;border-radius:999px;cursor:pointer;
+    font-size:13.5px;font-weight:600;letter-spacing:.02em;
+    display:inline-flex;align-items:center;gap:7px;transition:.18s;white-space:nowrap;
+  }
+  nav.tabs button .ico{width:15px;height:15px;display:inline-block;}
+  nav.tabs button:hover{color:var(--charcoal);background:var(--blush);}
+  nav.tabs button.active{background:var(--charcoal);color:#fff;box-shadow:var(--shadow-sm);}
+
+  /* ----------  Buttons  ---------- */
+  .btn{
+    border:1px solid var(--line);background:var(--card);color:var(--charcoal);
+    padding:9px 15px;border-radius:999px;cursor:pointer;font-size:13px;font-weight:600;
+    display:inline-flex;align-items:center;gap:7px;transition:.15s;box-shadow:var(--shadow-sm);
+  }
+  .btn:hover{transform:translateY(-1px);border-color:var(--blush-deep);}
+  .btn:active{transform:translateY(0);}
+  .btn.primary{background:linear-gradient(135deg,var(--sage-deep),var(--sage));color:#fff;border-color:transparent;}
+  .btn.gold{background:linear-gradient(135deg,var(--gold),var(--champagne));color:#fff;border-color:transparent;}
+  .btn.ghost{background:transparent;box-shadow:none;}
+  .btn.danger{color:var(--bad);border-color:#eccfca;}
+  .btn.danger:hover{background:#fbeeec;}
+  .btn.sm{padding:5px 10px;font-size:12px;}
+  .btn.icon{padding:6px 9px;}
+  .btn:focus-visible,nav.tabs button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{
+    outline:2px solid var(--sage-deep);outline-offset:2px;
+  }
+
+  /* ----------  Cards / sections  ---------- */
+  .tab-panel{display:none;animation:fade .25s ease;}
+  .tab-panel.active{display:block;}
+  @keyframes fade{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
+  .section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:8px 0 16px;}
+  .section-head h2{font-size:27px;}
+  .section-head .sub{color:var(--muted);font-size:13px;margin-top:2px;}
+  .toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px;}
+  .cards-grid{display:grid;gap:14px;}
+  .stat-grid{grid-template-columns:repeat(auto-fill,minmax(180px,1fr));}
+  .stat{position:relative;overflow:hidden;}
+  .stat .label{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:6px;}
+  .stat .num{font-family:var(--serif);font-size:34px;margin-top:4px;line-height:1;}
+  .stat .note{font-size:12px;color:var(--muted);margin-top:5px;}
+  .stat .corner{position:absolute;right:-10px;top:-12px;font-size:46px;opacity:.07;}
+  .stat.accent-blush{background:linear-gradient(160deg,#fff,#fdf2f0);}
+  .stat.accent-sage{background:linear-gradient(160deg,#fff,#f1f4ec);}
+  .stat.accent-gold{background:linear-gradient(160deg,#fff,#faf3e6);}
+
+  .countdown{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:4px;}
+  .countdown .unit{text-align:center;min-width:74px;background:var(--ivory);border:1px solid var(--line);border-radius:var(--radius-sm);padding:12px 8px;}
+  .countdown .unit b{font-family:var(--serif);font-size:32px;display:block;color:var(--gold);}
+  .countdown .unit span{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);}
+
+  /* hero banner (Overview) */
+  .hero{display:grid;grid-template-columns:320px 1fr;gap:0;background:linear-gradient(135deg,#fff,#fdf2ef 60%,#f1f4ec);
+    border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;margin-bottom:18px;min-height:280px;}
+  .hero-photo{position:relative;overflow:hidden;background:var(--blush);}
+  .hero-photo::after{content:"";position:absolute;inset:0;box-shadow:inset -40px 0 50px -30px rgba(255,255,255,.9);pointer-events:none;}
+  .hero-photo img{width:100%;height:100%;object-fit:cover;object-position:center 22%;display:block;}
+  .hero-text{padding:26px 30px;display:flex;flex-direction:column;justify-content:center;gap:8px;}
+  .hero-mono{font-family:var(--serif);font-size:12px;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);}
+  .hero-names{font-family:var(--serif);font-size:clamp(30px,4vw,46px);line-height:1.05;color:var(--charcoal);margin:0;}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:7px 16px;color:var(--muted);font-size:13.5px;margin-top:4px;}
+  .hero-count{margin-top:10px;align-self:flex-start;background:linear-gradient(135deg,var(--gold),var(--champagne));color:#fff;
+    font-weight:700;font-size:13px;padding:7px 16px;border-radius:999px;box-shadow:var(--shadow-sm);}
+  .hero.no-photo{grid-template-columns:1fr;min-height:0;text-align:center;background:linear-gradient(135deg,#fff,#fdf2ef);}
+  .hero.no-photo .hero-photo{display:none;}
+  .hero.no-photo .hero-text{align-items:center;}
+  .hero.no-photo .hero-count{align-self:center;}
+  @media(max-width:680px){
+    .hero{grid-template-columns:1fr;}
+    .hero-photo{height:300px;}
+    .hero-photo::after{box-shadow:inset 0 -40px 50px -30px rgba(255,255,255,.9);}
+  }
+
+  /* progress */
+  .progress-row{margin:14px 0;}
+  .progress-row .top{display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px;}
+  .progress-row .top b{font-weight:700;}
+  .bar{height:11px;background:#efe7da;border-radius:999px;overflow:hidden;}
+  .bar > i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--sage),var(--sage-deep));transition:width .5s ease;}
+  .bar.gold > i{background:linear-gradient(90deg,var(--champagne),var(--gold));}
+  .bar.blush > i{background:linear-gradient(90deg,var(--blush-deep),#d98f93);}
+  .bar.over > i{background:linear-gradient(90deg,#e0938b,var(--bad));}
+
+  /* ----------  Tables  ---------- */
+  .table-scroll{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow-sm);}
+  table.data{width:100%;border-collapse:collapse;font-size:13px;min-width:680px;}
+  table.data th{
+    text-align:left;font-weight:600;font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);
+    padding:12px 12px;border-bottom:1px solid var(--line);background:#fcf8f1;position:sticky;top:0;white-space:nowrap;cursor:default;
+  }
+  table.data th.sortable{cursor:pointer;}
+  table.data th.sortable:hover{color:var(--charcoal);}
+  table.data td{padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:middle;}
+  table.data tr:last-child td{border-bottom:0;}
+  table.data tr:hover td{background:#fdfbf6;}
+  .row-actions{display:flex;gap:5px;white-space:nowrap;}
+  .empty{text-align:center;color:var(--muted);padding:34px 16px;font-style:italic;}
+
+  /* chips / badges */
+  .chip{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;white-space:nowrap;}
+  .chip.gray{background:#f0ece4;color:var(--muted);}
+  .chip.green{background:#e7f1e5;color:var(--good);}
+  .chip.red{background:#fbe9e6;color:var(--bad);}
+  .chip.amber{background:#fbf0dc;color:var(--warn);}
+  .chip.blush{background:var(--blush);color:#b06b70;}
+  .chip.sage{background:#eaf0e3;color:var(--sage-deep);}
+  .chip.gold{background:#f7eccf;color:var(--gold);}
+  .pill-toggle{cursor:pointer;border:0;}
+
+  .filters{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:14px;}
+  .filters input,.filters select{
+    border:1px solid var(--line);border-radius:999px;padding:8px 13px;font-size:13px;background:var(--card);color:var(--charcoal);
+  }
+  .filters input[type=search]{min-width:200px;}
+  .mini-summary{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 16px;}
+  .mini-summary .ms{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-sm);padding:8px 13px;box-shadow:var(--shadow-sm);}
+  .mini-summary .ms b{font-family:var(--serif);font-size:21px;display:block;line-height:1;}
+  .mini-summary .ms span{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);}
+
+  /* ----------  Seating  ---------- */
+  .seat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;}
+  .seat-table{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:14px;display:flex;flex-direction:column;}
+  .seat-table.over{border-color:var(--bad);box-shadow:0 0 0 1px var(--bad) inset;}
+  .seat-table h4{font-size:18px;display:flex;align-items:center;gap:7px;justify-content:space-between;}
+  .seat-table .cap{font-size:12px;color:var(--muted);margin:2px 0 8px;}
+  .seat-list{list-style:none;margin:0;padding:0;flex:1;min-height:30px;border:1px dashed var(--line);border-radius:var(--radius-sm);padding:6px;transition:.15s;}
+  .seat-list.drag-over{background:#f1f4ec;border-color:var(--sage);}
+  .seat-list li{display:flex;align-items:center;justify-content:space-between;gap:6px;padding:6px 8px;border-radius:8px;background:var(--ivory);margin-bottom:5px;font-size:12.5px;cursor:grab;}
+  .seat-list li:last-child{margin-bottom:0;}
+  .seat-list li .x{cursor:pointer;color:var(--muted);border:0;background:none;font-size:14px;}
+  .unassigned-pool{background:linear-gradient(160deg,#fff,#fbf1ef);}
+  .pool-list{display:flex;flex-wrap:wrap;gap:7px;}
+  .pool-list .g{display:inline-flex;align-items:center;gap:7px;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:5px 8px 5px 11px;font-size:12.5px;cursor:grab;box-shadow:var(--shadow-sm);}
+  .pool-list .g select{border:1px solid var(--line);border-radius:999px;font-size:11px;padding:2px 4px;}
+
+  /* ----------  Floor-plan builder  ---------- */
+  .fp-toolbar{display:flex;gap:7px;flex-wrap:wrap;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:10px 12px;box-shadow:var(--shadow-sm);margin-bottom:12px;}
+  .fp-toolbar .grp{display:flex;gap:5px;align-items:center;flex-wrap:wrap;}
+  .fp-toolbar .sep{width:1px;align-self:stretch;background:var(--line);margin:0 3px;}
+  .fp-toolbar .lbl{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-right:2px;}
+  .add-btn{border:1px solid var(--line);background:var(--ivory);border-radius:10px;cursor:pointer;padding:6px 9px;font-size:12px;font-weight:600;color:var(--charcoal);display:inline-flex;align-items:center;gap:6px;transition:.15s;}
+  .add-btn:hover{border-color:var(--sage);background:#f1f4ec;transform:translateY(-1px);}
+  .add-btn .gly{width:18px;height:18px;display:inline-grid;place-items:center;}
+  .add-btn .gly svg{width:18px;height:18px;}
+
+  .fp-stage-wrap{position:relative;border:1px solid var(--line);border-radius:var(--radius);overflow:auto;background:#fcf9f3;box-shadow:var(--shadow-sm);height:min(72vh,640px);}
+  .fp-canvas{position:relative;width:1160px;height:820px;transform-origin:0 0;
+    background-image:
+      linear-gradient(rgba(167,181,154,.18) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(167,181,154,.18) 1px,transparent 1px),
+      linear-gradient(rgba(167,181,154,.09) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(167,181,154,.09) 1px,transparent 1px);
+    background-size:80px 80px,80px 80px,16px 16px,16px 16px;
+  }
+  /* a table = wrapper holding the top + the ring of chairs */
+  .fp-item{position:absolute;cursor:grab;touch-action:none;user-select:none;}
+  .fp-item.dragging{cursor:grabbing;z-index:40;}
+  .fp-item.selected .fp-top{box-shadow:0 0 0 2px var(--sage-deep),0 6px 18px rgba(91,76,60,.16);}
+  .fp-top{position:absolute;inset:0;z-index:3;background:linear-gradient(160deg,#ffffff,#f7f1e8);border:1.5px solid #d8cdb9;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;box-shadow:var(--shadow-sm);}
+  .fp-top.round,.fp-top.oval{border-radius:50%;}
+  .fp-top.square,.fp-top.rect,.fp-top.head{border-radius:12px;}
+  .fp-item.over .fp-top{border-color:var(--bad);background:linear-gradient(160deg,#fff,#fbeeeb);}
+  .fp-name{font-family:var(--serif);font-size:14px;line-height:1.05;color:var(--charcoal);padding:0 6px;}
+  .fp-sub{font-size:10px;color:var(--muted);margin-top:1px;}
+  .fp-seat{position:absolute;width:26px;height:26px;border-radius:50%;border:1.5px solid #cbbfa9;background:#fdfbf6;
+    display:grid;place-items:center;font-size:8.5px;font-weight:600;color:var(--charcoal);overflow:hidden;line-height:1;text-align:center;box-shadow:inset 0 -1px 2px rgba(0,0,0,.04);}
+  .fp-seat.filled{background:linear-gradient(160deg,#eaf0e3,#dbe6cf);border-color:var(--sage);color:#46603a;}
+  .fp-seat.couple{background:linear-gradient(160deg,#fbe3e1,#f6cdce);border-color:var(--blush-deep);color:#9a565a;}
+  .fp-seat span{transform:scale(.92);max-width:24px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+
+  /* fixtures (dance floor, stage, bar…) */
+  .fp-fx{position:absolute;cursor:grab;touch-action:none;user-select:none;border-radius:12px;border:1.5px dashed #c9bca4;
+    display:grid;place-items:center;text-align:center;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#9a8e76;}
+  .fp-fx.selected{box-shadow:0 0 0 2px var(--sage-deep);}
+  .fp-fx.floor{background:repeating-linear-gradient(45deg,#f3ece0,#f3ece0 12px,#efe6d6 12px,#efe6d6 24px);color:#8a7d64;}
+  .fp-fx.stage{background:linear-gradient(160deg,#efe7f2,#e6dcec);border-color:#c3b2cc;color:#7b6a86;}
+  .fp-fx.bar{background:linear-gradient(160deg,#e9f0ea,#dbe8dd);border-color:#a9c2ad;color:#5a7b60;}
+  .fp-fx.gift{background:linear-gradient(160deg,#fbf1dd,#f6e7c5);border-color:#e0c98c;color:#9a7e3f;}
+  .fp-fx.other{background:linear-gradient(160deg,#f4f1ec,#eae4da);color:#8a7f6e;}
+
+  /* editor panel */
+  .fp-grid{display:grid;grid-template-columns:1fr 300px;gap:14px;align-items:start;}
+  .fp-editor{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:15px;position:sticky;top:64px;}
+  .fp-editor h3{font-size:18px;margin-bottom:3px;}
+  .fp-editor .hint{font-size:12px;color:var(--muted);margin-bottom:12px;}
+  .fp-editor .erow{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px;}
+  .fp-editor .erow label{font-size:11.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);font-weight:600;}
+  .fp-editor input[type=text],.fp-editor input[type=number],.fp-editor select,.fp-editor textarea{
+    border:1px solid var(--line);border-radius:9px;padding:7px 9px;font-size:13px;background:var(--card);color:var(--charcoal);font-family:inherit;width:100%;}
+  .fp-editor textarea{resize:vertical;min-height:46px;}
+  .shape-row{display:flex;gap:6px;flex-wrap:wrap;}
+  .shape-row button{flex:1;min-width:54px;border:1px solid var(--line);background:var(--ivory);border-radius:9px;padding:7px 4px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px;font-size:10px;color:var(--muted);transition:.15s;}
+  .shape-row button.on{border-color:var(--sage-deep);background:#eef3e8;color:var(--sage-deep);}
+  .shape-row button svg{width:22px;height:16px;}
+  .stepper{display:flex;align-items:center;gap:0;border:1px solid var(--line);border-radius:9px;overflow:hidden;}
+  .stepper button{border:0;background:var(--ivory);width:30px;height:30px;cursor:pointer;font-size:16px;color:var(--charcoal);}
+  .stepper button:hover{background:#f1f4ec;}
+  .stepper .val{min-width:40px;text-align:center;font-weight:700;font-size:13px;}
+  .assign-list{display:flex;flex-direction:column;gap:5px;max-height:170px;overflow:auto;margin:6px 0 2px;}
+  .assign-list .ar{display:flex;align-items:center;justify-content:space-between;gap:6px;background:var(--ivory);border:1px solid var(--line);border-radius:8px;padding:5px 8px;font-size:12.5px;}
+  .assign-list .ar .x{border:0;background:none;color:var(--muted);cursor:pointer;font-size:14px;}
+  .seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:var(--card);}
+  .seg button{border:0;background:transparent;padding:7px 14px;font-size:12.5px;font-weight:600;color:var(--muted);cursor:pointer;}
+  .seg button.on{background:var(--charcoal);color:#fff;}
+  @media(max-width:820px){ .fp-grid{grid-template-columns:1fr;} .fp-editor{position:static;} }
+
+  /* ----------  Modal  ---------- */
+  .modal-back{position:fixed;inset:0;background:rgba(59,58,56,.42);backdrop-filter:blur(3px);display:none;align-items:center;justify-content:center;z-index:100;padding:18px;}
+  .modal-back.open{display:flex;animation:fade .15s;}
+  .modal{background:var(--ivory);border-radius:var(--radius);box-shadow:0 30px 70px rgba(59,46,33,.28);max-width:560px;width:100%;max-height:90vh;overflow:auto;border:1px solid var(--line);}
+  .modal header{padding:18px 22px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;background:var(--ivory);}
+  .modal header h3{font-size:22px;}
+  .modal .body{padding:18px 22px;}
+  .modal footer{padding:14px 22px;border-top:1px solid var(--line);display:flex;justify-content:flex-end;gap:9px;position:sticky;bottom:0;background:var(--ivory);}
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px;}
+  .field{display:flex;flex-direction:column;gap:4px;}
+  .field.full{grid-column:1/-1;}
+  .field label{font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:600;}
+  .field input,.field select,.field textarea{
+    border:1px solid var(--line);border-radius:var(--radius-sm);padding:9px 11px;font-size:14px;background:var(--card);color:var(--charcoal);font-family:inherit;width:100%;
+  }
+  .field textarea{resize:vertical;min-height:60px;}
+
+  /* toast */
+  .toast-wrap{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);z-index:200;display:flex;flex-direction:column;gap:8px;align-items:center;}
+  .toast{background:var(--charcoal);color:#fff;padding:10px 18px;border-radius:999px;font-size:13px;box-shadow:var(--shadow);animation:fade .2s;}
+  .toast.good{background:var(--sage-deep);}
+  .toast.warn{background:var(--warn);}
+  .toast.bad{background:var(--bad);}
+
+  .alert{display:flex;gap:9px;align-items:flex-start;padding:11px 14px;border-radius:var(--radius-sm);font-size:13px;margin-bottom:10px;}
+  .alert.warn{background:#fbf0dc;color:#8a6320;border:1px solid #efd9a8;}
+  .alert.bad{background:#fbe9e6;color:#9a463d;border:1px solid #f0c8c1;}
+  .alert.good{background:#e7f1e5;color:#3f6b48;border:1px solid #c8e0c8;}
+
+  .note-line{font-size:12.5px;color:var(--muted);margin:6px 2px;}
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  details.help{margin-top:10px;font-size:12.5px;color:var(--muted);}
+  details.help summary{cursor:pointer;color:var(--sage-deep);font-weight:600;}
+
+  .task-group{margin-bottom:18px;}
+  .task-group h3{font-size:18px;display:flex;align-items:center;gap:9px;margin-bottom:9px;}
+  .task-group h3 .count{font-size:12px;color:var(--muted);font-family:var(--sans);font-weight:600;}
+  .task-item{display:flex;align-items:flex-start;gap:11px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius-sm);padding:11px 13px;margin-bottom:7px;box-shadow:var(--shadow-sm);}
+  .task-item.done{opacity:.62;}
+  .task-item.done .t-name{text-decoration:line-through;}
+  .task-item .t-name{font-weight:600;font-size:14px;}
+  .task-item .t-meta{font-size:12px;color:var(--muted);margin-top:2px;display:flex;gap:9px;flex-wrap:wrap;}
+  .task-item .t-main{flex:1;min-width:0;}
+  .task-item input[type=checkbox]{width:19px;height:19px;margin-top:2px;accent-color:var(--sage-deep);cursor:pointer;}
+
+  .vendor-compare{overflow-x:auto;}
+  .vendor-compare table{min-width:560px;}
+  .vendor-compare th.crit{position:sticky;left:0;background:#fcf8f1;z-index:2;}
+  .vc-cat{margin-bottom:26px;}
+  .vc-cat h3{font-size:19px;margin-bottom:8px;display:flex;align-items:center;gap:8px;}
+
+  .export-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:13px;}
+  .export-card{display:flex;flex-direction:column;gap:9px;align-items:flex-start;}
+  .export-card p{margin:0;font-size:12.5px;color:var(--muted);}
+  .export-card h4{font-size:16px;}
+
+  footer.foot{text-align:center;color:var(--muted);font-size:12px;padding:30px 10px 10px;}
+  .heart{color:var(--blush-deep);}
+
+  /* ----------  Responsive  ---------- */
+  @media(max-width:880px){
+    .setup-bar{grid-template-columns:repeat(3,1fr);}
+    .grid-2{grid-template-columns:1fr;}
+  }
+  @media(max-width:560px){
+    .setup-bar{grid-template-columns:repeat(2,1fr);}
+    .form-grid{grid-template-columns:1fr;}
+    header.app h1{font-size:34px;}
+    nav.tabs{border-radius:var(--radius);}
+  }
+
+  /* ----------  Print  ---------- */
+  @media print{
+    body{background:#fff;}
+    nav.tabs,.setup-actions,.toolbar,.filters,.row-actions,.btn,.no-print,.modal-back,.toast-wrap{display:none !important;}
+    .tab-panel{display:block !important;page-break-after:always;}
+    .card,.table-scroll,.seat-table{box-shadow:none;}
+    header.app{padding-top:0;}
+    a{color:inherit;text-decoration:none;}
+  }
+  body.print-one .tab-panel{display:none !important;}
+  body.print-one .tab-panel.print-active{display:block !important;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="app">
+    <div class="monogram">The Wedding Of</div>
+    <h1 id="hdrCouple">Our Celebration</h1>
+    <div class="divider"><span>&#10086;</span></div>
+    <div class="couple" id="hdrTagline">A planning dashboard</div>
+
+    <!-- Setup bar: editable wedding details -->
+    <div class="setup-bar" id="setupBar"></div>
+    <div class="setup-actions">
+      <button class="btn" onclick="openSetup()">&#9998; Edit Wedding Details</button>
+      <button class="btn" id="acctBtn" onclick="openAccount()" style="display:none">&#9729; Sign in to sync</button>
+      <button class="btn ghost" onclick="confirmReset()">&#8634; Reset Demo Data</button>
+    </div>
+  </header>
+
+  <nav class="tabs" id="tabNav" role="tablist"></nav>
+
+  <main id="panels">
+    <section class="tab-panel" id="tab-overview" role="tabpanel"></section>
+    <section class="tab-panel" id="tab-guests" role="tabpanel"></section>
+    <section class="tab-panel" id="tab-seating" role="tabpanel"></section>
+    <section class="tab-panel" id="tab-budget" role="tabpanel"></section>
+    <section class="tab-panel" id="tab-timeline" role="tabpanel"></section>
+    <section class="tab-panel" id="tab-vendors" role="tabpanel"></section>
+    <section class="tab-panel" id="tab-tasks" role="tabpanel"></section>
+    <section class="tab-panel" id="tab-export" role="tabpanel"></section>
+  </main>
+
+  <footer class="foot">
+    Made with <span class="heart">&#10084;</span> for Bunny's Big Day &middot; your data is stored privately in this browser only.
+  </footer>
+</div>
+
+<!-- Generic modal -->
+<div class="modal-back" id="modalBack" role="dialog" aria-modal="true">
+  <div class="modal">
+    <header><h3 id="modalTitle">Title</h3><button class="btn icon ghost" onclick="closeModal()" aria-label="Close">&#10005;</button></header>
+    <div class="body" id="modalBody"></div>
+    <footer id="modalFooter"></footer>
+  </div>
+</div>
+
+<div class="toast-wrap" id="toastWrap"></div>
+
+<script>
+"use strict";
+/* ============================================================
+   1. CONSTANTS & STORAGE
+   ============================================================ */
+const STORE_KEY = "bunnysBigDay.v1";
+
+const TABS = [
+  ["overview","Overview","♥"],
+  ["guests","Guest List","✍"],
+  ["seating","Seating","◯"],
+  ["budget","Budget","⚖"],
+  ["timeline","Timeline","⏰"],
+  ["vendors","Vendors","☎"],
+  ["tasks","Checklist","✓"],
+  ["export","Export / Print","⤓"],
+];
+
+const SIDES = ["Bride","Groom","Shared","Family","Friend","Other"];
+const RSVP = ["Invited","Attending","Declined","Awaiting Response"];
+const MEALS = ["Chicken","Fish","Vegetarian","Vegan","Kids","Other"];
+const PRIORITIES = ["Low","Medium","High"];
+const TASK_STATUS = ["Not Started","In Progress","Done"];
+const TASK_GROUPS = ["12+ Months Out","9-12 Months Out","6-9 Months Out","3-6 Months Out","1-3 Months Out","Wedding Week","Day Before","Wedding Day","After the Wedding"];
+const VENDOR_CATS = ["Venue","Caterer","Photographer","Videographer","Florist","DJ / Band","Planner / Coordinator","Hair / Makeup","Officiant","Transportation","Cake / Desserts","Rentals","Stationery","Other"];
+const BUDGET_CATS = ["Venue","Catering","Bar / Drinks","Photography","Videography","Florals","Decor","Attire","Beauty / Hair / Makeup","Music / DJ","Officiant","Transportation","Stationery / Invitations","Favors / Gifts","Rentals","Cake / Desserts","Marriage License","Tips / Gratuities","Emergency / Miscellaneous"];
+
+let DB = null;          // the entire app state
+let activeTab = "overview";
+const sortState = {};   // per-table sort {col, dir}
+
+/* ============================================================
+   2. UTILITIES
+   ============================================================ */
+const $ = (s,root=document)=>root.querySelector(s);
+const uid = ()=> Date.now().toString(36)+Math.random().toString(36).slice(2,7);
+const esc = (s)=> String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const num = (v)=>{ const n=parseFloat(v); return isNaN(n)?0:n; };
+const money = (n)=> "$"+ (Math.round(num(n))).toLocaleString();
+const todayISO = ()=> new Date().toISOString().slice(0,10);
+
+function fmtDate(iso){
+  if(!iso) return "—";
+  const d = new Date(iso+"T00:00:00");
+  if(isNaN(d)) return iso;
+  return d.toLocaleDateString(undefined,{month:"short",day:"numeric",year:"numeric"});
+}
+function daysUntil(iso){
+  if(!iso) return null;
+  const d = new Date(iso+"T00:00:00"); if(isNaN(d)) return null;
+  const ms = d - new Date(new Date().toDateString());
+  return Math.round(ms/86400000);
+}
+// time helpers (work in minutes since midnight for the timeline)
+function timeToMin(t){
+  if(!t) return null;
+  const m = String(t).trim().match(/^(\d{1,2}):(\d{2})\s*([ap]m)?$/i);
+  if(!m) return null;
+  let h = parseInt(m[1],10), mn = parseInt(m[2],10);
+  const ap = m[3] ? m[3].toLowerCase() : null;
+  if(ap){ if(ap==="pm" && h<12) h+=12; if(ap==="am" && h===12) h=0; }
+  return h*60+mn;
+}
+function minToTime(mins){
+  mins = ((mins%1440)+1440)%1440;
+  let h = Math.floor(mins/60), m = mins%60;
+  const ap = h>=12 ? "PM":"AM";
+  let hh = h%12; if(hh===0) hh=12;
+  return hh+":"+String(m).padStart(2,"0")+" "+ap;
+}
+
+/* ============================================================
+   3. PERSISTENCE  (localStorage first; optional Supabase cloud sync)
+   ============================================================ */
+function save(){
+  try{ localStorage.setItem(STORE_KEY, JSON.stringify(DB)); }
+  catch(e){ toast("Could not save (storage full?)","bad"); }
+  scheduleCloudPush();   // no-op unless the user is signed in
+}
+function load(){
+  try{
+    const raw = localStorage.getItem(STORE_KEY);
+    if(raw){ DB = JSON.parse(raw); return true; }
+  }catch(e){ console.warn("load failed",e); }
+  return false;
+}
+
+/* ----------  Optional cloud sync (Supabase)  ----------
+   This is 100% optional: the app is fully local-first and works offline with no
+   account. If SUPABASE.url is set and the user signs in, their planner is backed
+   up to their own row in Supabase (protected by Row-Level Security) and synced
+   across devices. The publishable key below is safe to ship in client code —
+   it only works alongside RLS policies. See SUPABASE_SETUP.md for the 1 SQL script.
+*/
+const SUPABASE = {
+  url: "",   // e.g. "https://YOUR-REF.supabase.co" — set this to switch cloud sync on
+  anonKey: "sb_publishable_BhccKqa2o967MrqUfZeqDA_gdA5zz-x",
+  table: "planners"
+};
+const SESSION_KEY = "bunnysBigDay.session";
+let SESSION = null;        // {access_token, refresh_token, expires_at, user:{id,email}}
+let pushTimer = null;
+function cloudEnabled(){ return !!SUPABASE.url; }
+
+function authHeaders(useToken){
+  const h={ "apikey":SUPABASE.anonKey, "Content-Type":"application/json" };
+  if(useToken && SESSION) h["Authorization"]="Bearer "+SESSION.access_token;
+  return h;
+}
+async function sbJSON(path,opts){
+  const res=await fetch(SUPABASE.url+path,opts);
+  let body=null; try{ body=await res.json(); }catch(_){}
+  if(!res.ok) throw new Error((body&&(body.msg||body.error_description||body.message||body.error||body.error_code))||("Request failed ("+res.status+")"));
+  return body;
+}
+function setSession(data){
+  SESSION={ access_token:data.access_token, refresh_token:data.refresh_token,
+    expires_at: Date.now()+(num(data.expires_in||3600)*1000),
+    user: data.user?{id:data.user.id,email:data.user.email}:(SESSION&&SESSION.user) };
+  try{ localStorage.setItem(SESSION_KEY,JSON.stringify(SESSION)); }catch(_){}
+}
+function clearSession(){ SESSION=null; try{ localStorage.removeItem(SESSION_KEY); }catch(_){} }
+function loadSession(){ try{ const r=localStorage.getItem(SESSION_KEY); if(r) SESSION=JSON.parse(r); }catch(_){} }
+async function authRefresh(){
+  if(!SESSION||!SESSION.refresh_token) return false;
+  try{ setSession(await sbJSON("/auth/v1/token?grant_type=refresh_token",{method:"POST",headers:authHeaders(false),body:JSON.stringify({refresh_token:SESSION.refresh_token})})); return true; }
+  catch(e){ clearSession(); return false; }
+}
+async function ensureFreshToken(){ if(SESSION && Date.now()>SESSION.expires_at-60000) await authRefresh(); }
+async function authSignIn(email,password){ setSession(await sbJSON("/auth/v1/token?grant_type=password",{method:"POST",headers:authHeaders(false),body:JSON.stringify({email,password})})); }
+async function authSignUp(email,password){
+  const d=await sbJSON("/auth/v1/signup",{method:"POST",headers:authHeaders(false),body:JSON.stringify({email,password})});
+  if(d.access_token) setSession(d);            // session present only if email confirmation is OFF
+  return d;
+}
+async function authSignOut(){ try{ if(SESSION) await fetch(SUPABASE.url+"/auth/v1/logout",{method:"POST",headers:authHeaders(true)}); }catch(_){} clearSession(); }
+
+async function cloudPush(){
+  if(!SESSION) throw new Error("Not signed in");
+  await ensureFreshToken();
+  const res=await fetch(SUPABASE.url+"/rest/v1/"+SUPABASE.table+"?on_conflict=user_id",{
+    method:"POST",
+    headers:Object.assign(authHeaders(true),{ "Prefer":"resolution=merge-duplicates,return=minimal" }),
+    body:JSON.stringify({ user_id:SESSION.user.id, data:DB, updated_at:new Date().toISOString() })
+  });
+  if(!res.ok) throw new Error("Cloud save failed ("+res.status+")");
+}
+async function cloudPull(){
+  if(!SESSION) throw new Error("Not signed in");
+  await ensureFreshToken();
+  const res=await fetch(SUPABASE.url+"/rest/v1/"+SUPABASE.table+"?select=data,updated_at&user_id=eq."+SESSION.user.id,{headers:authHeaders(true)});
+  if(!res.ok) throw new Error("Cloud load failed ("+res.status+")");
+  const rows=await res.json();
+  return (rows&&rows[0])||null;
+}
+function scheduleCloudPush(){
+  if(!cloudEnabled()||!SESSION) return;
+  clearTimeout(pushTimer);
+  pushTimer=setTimeout(()=>{ cloudPush().then(()=>setSyncStatus("Synced ✓")).catch(()=>setSyncStatus("Sync error",true)); },1500);
+}
+function setSyncStatus(msg,bad){ const b=$("#acctBtn"); if(b&&SESSION) b.title=msg; if(bad) toast(msg,"warn"); }
+function updateAccountBtn(){
+  const b=$("#acctBtn"); if(!b) return;
+  if(!cloudEnabled()){ b.style.display="none"; return; }
+  b.style.display="";
+  b.innerHTML = SESSION&&SESSION.user ? `&#9729; ${esc(SESSION.user.email||"Account")}` : "&#9729; Sign in to sync";
+}
+
+/* ============================================================
+   4. DEMO DATA  (sensible, realistic starter content)
+   ============================================================ */
+function demoData(){
+  const wd = (()=>{ const d=new Date(); d.setDate(d.getDate()+180); return d.toISOString().slice(0,10); })();
+  const g = (name,group,side,rsvp,plus,diet,meal,table,notes)=>({id:uid(),name,group,side,rsvp,plusOne:plus,dietary:diet||"",meal:meal||"",table:table||"",notes:notes||""});
+  return {
+    setup:{ couple:"Sahib & Sarah", date:wd, guestGoal:120, budget:42000, vibe:"Romantic Garden", city:"Asheville, NC", ceremonyEnd:"16:30" },
+    guests:[
+      g("Sahib","Couple","Groom","Attending",false,"","Chicken","Head Table",""),
+      g("Sarah","Couple","Bride","Attending",false,"","Vegetarian","Head Table",""),
+      g("Margaret Hart","Hart Family","Family","Attending",false,"Gluten-free","Fish","Table 1","Mother of the bride"),
+      g("Robert Hart","Hart Family","Family","Attending",true,"","Chicken","Table 1","Father of the bride"),
+      g("Daniel Cole","Cole Family","Family","Attending",true,"","Chicken","Table 2","Father of the groom"),
+      g("Susan Cole","Cole Family","Family","Attending",false,"","Vegetarian","Table 2","Mother of the groom"),
+      g("Priya Nair","Bridesmaids","Friend","Attending",true,"Vegan","Vegan","Table 3","Maid of honor"),
+      g("Hannah Lee","Bridesmaids","Friend","Attending",false,"","Fish","Table 3",""),
+      g("Marcus Bell","Groomsmen","Friend","Attending",true,"","Chicken","Table 4","Best man"),
+      g("Tariq Khan","Groomsmen","Friend","Attending",false,"Halal","Other","Table 4",""),
+      g("Grace Miller","College Friends","Friend","Awaiting Response",true,"","","",""),
+      g("Noah Wright","College Friends","Friend","Invited",false,"","","",""),
+      g("Emma Davis","Work","Friend","Declined",false,"","","","Out of town"),
+      g("Liam Patel","Work","Friend","Attending",false,"","Fish","Table 3",""),
+      g("Sofia Garcia","Garcia Family","Shared","Attending",true,"","Chicken","Table 5",""),
+      g("Lucas Garcia","Garcia Family","Shared","Attending",false,"Nut allergy","Kids","Table 5","Age 8"),
+      g("Ava Thompson","Neighbors","Other","Awaiting Response",false,"","","",""),
+      g("Mason Clark","Cole Family","Family","Attending",false,"","Chicken","Table 2",""),
+    ],
+    // tables carry their own visual layout: shape, position (x,y on the canvas),
+    // body size (w,h) and rotation. computeSeatPositions() draws chairs around them.
+    tables:[
+      tbl("Head Table","head",2, 470,40, 260,70, 0,"Couple's table, head of room"),
+      tbl("Table 1","round",8, 120,200, 120,120, 0,"Bride's immediate family"),
+      tbl("Table 2","round",8, 360,210, 120,120, 0,"Groom's immediate family"),
+      tbl("Table 3","round",8, 620,210, 120,120, 0,"Bridesmaids & friends"),
+      tbl("Table 4","oval",8, 880,200, 170,110, 0,"Groomsmen"),
+      tbl("Table 5","round",8, 120,470, 120,120, 0,"Extended family"),
+      tbl("Table 6","square",8, 880,470, 130,130, 0,"Friends & plus-ones"),
+    ],
+    // non-seating fixtures: dance floor, stage, bar, etc.
+    fixtures:[
+      fx("Dance Floor","floor", 380,420, 220,180),
+      fx("DJ / Stage","stage", 640,470, 130,90),
+      fx("Bar","bar", 470,640, 180,70),
+      fx("Gifts","gift", 120,650, 120,60),
+    ],
+    budget:[
+      bItem("Venue","Maple Grove Estate",16000,15500,5000,"","yes","Includes ceremony + reception sites"),
+      bItem("Catering","Harvest Table Co.",9000,9200,2000,"","no","$74/head plated dinner"),
+      bItem("Bar / Drinks","Harvest Table Co.",3000,0,0,"","no","Open bar, 5 hrs"),
+      bItem("Photography","Lina Photo",4200,4200,1400,"","no","8 hrs + engagement"),
+      bItem("Videography","Lina Photo",2200,0,0,"","no","Add-on film team"),
+      bItem("Florals","Wild Stem Studio",3500,3700,1000,"","no","Arch, bouquets, centerpieces"),
+      bItem("Music / DJ","DJ Marcato",1800,1800,600,"","yes","Ceremony + reception"),
+      bItem("Cake / Desserts","Sugar & Sage",700,0,0,"","no","3-tier + dessert table"),
+      bItem("Attire","The Bridal Room",2500,2400,2400,"","yes","Gown + alterations"),
+      bItem("Stationery / Invitations","Paperwhite",600,520,520,"","yes","Invites + day-of signage"),
+      bItem("Officiant","Rev. Allen",400,400,200,"","no",""),
+      bItem("Transportation","Blue Ridge Shuttle",900,0,0,"","no","Guest shuttle 2 trips"),
+      bItem("Beauty / Hair / Makeup","Glow Bar","700",0,0,"","no","Bride + 4"),
+    ],
+    timeline:[
+      tItem("16:30","Ceremony ends","Garden Lawn","Officiant",0,"High",true,"Recessional + applause"),
+      tItem("16:35","Cocktail hour begins","Terrace","Caterer",60,"Medium",false,"Signature drinks served"),
+      tItem("16:40","Family photos","Rose Arbor","Lina Photo",30,"High",false,"Shot list with planner"),
+      tItem("17:10","Couple portraits","Orchard","Lina Photo",25,"Medium",false,"Golden hour"),
+      tItem("17:35","Reception doors open","Ballroom","Venue",10,"Medium",false,""),
+      tItem("17:45","Grand entrance","Ballroom","DJ Marcato",10,"High",false,"Bridal party intro"),
+      tItem("17:55","First dance","Ballroom","DJ Marcato",5,"High",false,""),
+      tItem("18:00","Dinner service","Ballroom","Caterer",55,"High",false,"Plated, 3 courses"),
+      tItem("18:55","Toasts","Ballroom","Best man / MOH",20,"Medium",false,"Keep to 3 mins each"),
+      tItem("19:20","Cake cutting","Ballroom","Caterer",10,"Medium",false,""),
+      tItem("19:30","Open dance floor","Ballroom","DJ Marcato",120,"Medium",false,""),
+      tItem("21:30","Last call","Bar","Caterer",0,"Low",false,""),
+      tItem("21:45","Send-off","Front Drive","Planner",15,"High",false,"Sparkler exit"),
+      tItem("22:00","Vendor breakdown","Ballroom","Venue",60,"Low",false,""),
+    ],
+    vendorCompare:[
+      vc("Venue","Maple Grove Estate",16000,"All-day, 2 sites, tables/chairs",5000,"Available","Signed",4.8,"Excellent","Stunning gardens; in budget","Limited indoor backup","",true,"Top pick"),
+      vc("Venue","Lakeside Pavilion",13500,"6 hrs, indoor only",4000,"Available","None",4.4,"Good","Cheaper","No garden; strict end time","Pushy on upsells",false,""),
+      vc("Photographer","Lina Photo",4200,"8 hrs + 2nd shooter + engagement",1400,"Available","Signed",4.9,"Excellent","Style matches mood board","Books fast","",true,""),
+      vc("Photographer","Bright Lens Co.",3600,"6 hrs, 1 shooter",1200,"Available","None",4.2,"Average","Lower price","Slow to reply","Hidden travel fee",false,""),
+      vc("Caterer","Harvest Table Co.",9000,"Plated 3-course, staff, rentals",2000,"Available","Signed",4.7,"Good","Tasting was amazing","Premium pricing","",true,""),
+      vc("Florist","Wild Stem Studio",3500,"Arch, 6 centerpieces, bouquets",1000,"Available","Verbal hold",4.6,"Excellent","Seasonal local blooms","Deposit non-refundable","",true,""),
+    ],
+    vendors:[
+      v("Venue","Maple Grove Estate","Carla Reyes","(828) 555-0142","events@example.com","maplegrove.com","yes","yes","",   "12:00 PM","Day-of coordinator on site","(828) 555-0143"),
+      v("Caterer","Harvest Table Co.","James Okonkwo","(828) 555-0188","hello@example.com","harvesttable.com","yes","yes","",   "2:00 PM","Final headcount due 10 days prior","(828) 555-0189"),
+      v("Photographer","Lina Photo","Lina Park","(828) 555-0110","lina@example.com","linaphoto.com","yes","yes","",  "1:30 PM","Getting-ready coverage starts at venue","(828) 555-0111"),
+      v("Music / DJ","DJ Marcato","Marc Allen","(828) 555-0177","marc@example.com","djmarcato.com","yes","no","",  "3:30 PM","Needs power + table near floor","(828) 555-0178"),
+      v("Florist","Wild Stem Studio","Wren Solis","(828) 555-0155","wren@example.com","wildstem.com","no","yes","",  "11:00 AM","Arch install before ceremony","(828) 555-0156"),
+    ],
+    tasks:[
+      task("Set the date & overall budget","12+ Months Out","Planning",-150,"Couple","Done","High",""),
+      task("Book ceremony & reception venue","12+ Months Out","Venue",-140,"Couple","Done","High",""),
+      task("Draft the guest list","9-12 Months Out","Guests",-120,"Couple","Done","Medium",""),
+      task("Book photographer & videographer","9-12 Months Out","Vendors",-110,"Olivia","Done","High",""),
+      task("Choose wedding party","9-12 Months Out","Planning",-100,"Couple","Done","Medium",""),
+      task("Book caterer & schedule tasting","6-9 Months Out","Vendors",-80,"Ethan","Done","High",""),
+      task("Order invitations","6-9 Months Out","Stationery",-70,"Olivia","In Progress","Medium",""),
+      task("Book florist","6-9 Months Out","Vendors",-65,"Olivia","Done","Medium",""),
+      task("Book DJ / band","6-9 Months Out","Vendors",-60,"Ethan","Done","Medium",""),
+      task("Send save-the-dates","3-6 Months Out","Stationery",-55,"Couple","Done","Medium",""),
+      task("Order wedding attire","3-6 Months Out","Attire",-50,"Olivia","In Progress","High",""),
+      task("Arrange transportation & lodging","3-6 Months Out","Logistics",-45,"Ethan","Not Started","Medium",""),
+      task("Mail invitations","1-3 Months Out","Stationery",-40,"Couple","Not Started","High",""),
+      task("Finalize menu & headcount","1-3 Months Out","Catering",-25,"Couple","Not Started","High",""),
+      task("Build seating chart","1-3 Months Out","Guests",-20,"Olivia","Not Started","Medium",""),
+      task("Confirm timeline with all vendors","Wedding Week","Vendors",-5,"Planner","Not Started","High",""),
+      task("Pick up attire & rings","Wedding Week","Logistics",-4,"Couple","Not Started","High",""),
+      task("Pack for honeymoon","Day Before","Logistics",-1,"Couple","Not Started","Low",""),
+      task("Rehearsal & rehearsal dinner","Day Before","Planning",-1,"Couple","Not Started","Medium",""),
+      task("Eat, breathe, marry!","Wedding Day","Day-Of",0,"Couple","Not Started","High","Enjoy every moment"),
+      task("Return rentals & send thank-you notes","After the Wedding","Wrap-up",10,"Couple","Not Started","Low",""),
+    ],
+  };
+  // local builders (closure helpers)
+  function tbl(name,shape,capacity,x,y,w,h,rot,notes){return {id:uid(),name,shape,capacity,x,y,w,h,rot:rot||0,notes:notes||""};}
+  function fx(label,type,x,y,w,h){return {id:uid(),label,type,x,y,w,h};}
+  function bItem(category,item,est,actual,deposit,dueDate,paid,notes){return {id:uid(),category,item,est:est,actual:actual,deposit:deposit,dueDate:dueDate||"",paid:paid||"no",notes:notes||""};}
+  function tItem(time,event,location,person,duration,priority,complete,notes){return {id:uid(),time,event,location,person:person||"",duration:duration||0,priority:priority||"Medium",complete:!!complete,notes:notes||""};}
+  function vc(category,name,price,pkg,deposit,availability,contract,rating,comm,pros,cons,redFlags,favorite,notes){return {id:uid(),category,name,price,pkg,deposit,availability,contract,rating,comm,pros,cons,redFlags,favorite:!!favorite,notes};}
+  function v(category,business,contact,phone,email,website,contractSigned,depositPaid,finalDue,arrival,notes,emergency){return {id:uid(),category,business,contact,phone,email,website,contractSigned,depositPaid,finalDue:finalDue||"",arrival:arrival||"",notes:notes||"",emergency:emergency||"",lockedIn:true};}
+  function task(name,group,category,offset,assigned,status,priority,notes){
+    // due date = wedding date + offset days (offsets are negative = before the wedding).
+    // We anchor to `wd` (the wedding date computed at the top of demoData) because the
+    // global DB isn't assigned yet while this object literal is still being built.
+    const d=new Date(wd+"T00:00:00"); d.setDate(d.getDate()+offset);
+    const due=d.toISOString().slice(0,10);
+    return {id:uid(),name,group,category,dueDate:due,assigned:assigned||"",status:status||"Not Started",priority:priority||"Medium",notes:notes||""};
+  }
+}
+/* Demo data needs DB.setup.date for task due dates; build in two passes. */
+function freshDemo(){
+  DB = demoData();
+  // recompute task due dates relative to the (now-known) wedding date
+  return DB;
+}
+
+/* ============================================================
+   5. CALCULATIONS  (explicit — never hardcoded)
+   ============================================================ */
+function calcGuestTotals(){
+  const t={invited:0,attending:0,declined:0,awaiting:0,plusOnes:0,mealsNeeded:0,total:DB.guests.length};
+  DB.guests.forEach(g=>{
+    if(g.rsvp==="Invited") t.invited++;
+    if(g.rsvp==="Attending") t.attending++;
+    if(g.rsvp==="Declined") t.declined++;
+    if(g.rsvp==="Awaiting Response") t.awaiting++;
+    // a plus-one only adds a head when the guest is actually attending
+    if(g.plusOne && g.rsvp==="Attending") t.plusOnes++;
+  });
+  // meals needed = attending guests + their attending plus-ones
+  t.mealsNeeded = t.attending + t.plusOnes;
+  return t;
+}
+function calcMealTotals(){
+  // Count meals only for attending guests. Plus-ones count as one extra of the
+  // same meal choice (a common simplification — couples confirm plus-one meals later).
+  const counts={Chicken:0,Fish:0,Vegetarian:0,Vegan:0,Kids:0,Other:0,Unselected:0};
+  DB.guests.forEach(g=>{
+    if(g.rsvp!=="Attending") return;
+    const heads = 1 + (g.plusOne?1:0);
+    if(g.meal && counts.hasOwnProperty(g.meal)) counts[g.meal]+=heads;
+    else counts.Unselected+=heads;
+  });
+  return counts;
+}
+function calcBudgetTotals(){
+  // For planning we use actual cost when present, otherwise fall back to estimate.
+  let est=0, actual=0, paid=0, planning=0;
+  const perCategory={};
+  DB.budget.forEach(b=>{
+    const e=num(b.est), a=num(b.actual), d=num(b.deposit);
+    est+=e; actual+=a; paid+=d;
+    const effective = a>0 ? a : e;     // planning figure
+    planning+=effective;
+    if(!perCategory[b.category]) perCategory[b.category]={est:0,effective:0};
+    perCategory[b.category].est+=e;
+    perCategory[b.category].effective+=effective;
+  });
+  const totalBudget=num(DB.setup.budget);
+  const remaining = totalBudget - planning;   // remaining vs planning spend
+  return {est,actual,paid,planning,totalBudget,remaining,perCategory};
+}
+function balanceRemaining(b){
+  // Balance Remaining = Actual Cost - Deposit Paid (fall back to estimate if no actual)
+  const cost = num(b.actual)>0 ? num(b.actual) : num(b.est);
+  return cost - num(b.deposit);
+}
+function calcTaskProgress(){
+  const total=DB.tasks.length;
+  const done=DB.tasks.filter(t=>t.status==="Done").length;
+  const inProgress=DB.tasks.filter(t=>t.status==="In Progress").length;
+  const overdue=DB.tasks.filter(t=>t.status!=="Done" && t.dueDate && daysUntil(t.dueDate)!==null && daysUntil(t.dueDate)<0).length;
+  return {total,done,inProgress,outstanding:total-done,overdue,pct: total?Math.round(done/total*100):0};
+}
+function countLockedVendors(){ return DB.vendors.filter(v=>v.lockedIn).length; }
+
+/* ============================================================
+   6. TAB NAV
+   ============================================================ */
+function buildTabs(){
+  const nav=$("#tabNav"); nav.innerHTML="";
+  TABS.forEach(([id,label,ico])=>{
+    const b=document.createElement("button");
+    b.setAttribute("role","tab");
+    b.id="tabbtn-"+id;
+    b.innerHTML=`<span class="ico" aria-hidden="true">${ico}</span>${label}`;
+    b.onclick=()=>switchTab(id);
+    nav.appendChild(b);
+  });
+}
+function switchTab(id){
+  activeTab=id;
+  document.querySelectorAll("nav.tabs button").forEach(b=>b.classList.toggle("active",b.id==="tabbtn-"+id));
+  document.querySelectorAll(".tab-panel").forEach(p=>p.classList.toggle("active",p.id==="tab-"+id));
+  renderActive();
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+function renderActive(){
+  ({overview:renderOverview,guests:renderGuests,seating:renderSeating,budget:renderBudget,
+    timeline:renderTimeline,vendors:renderVendors,tasks:renderTasks,export:renderExport}[activeTab])();
+}
+
+/* ============================================================
+   7. SETUP BAR
+   ============================================================ */
+function renderSetup(){
+  const s=DB.setup;
+  $("#hdrCouple").textContent = s.couple || "Our Celebration";
+  const d=daysUntil(s.date);
+  $("#hdrTagline").textContent = s.date ? (d>0? `${d} days to go · ${fmtDate(s.date)}` : (d===0?"It's today!":fmtDate(s.date))) : "A planning dashboard";
+  const cells=[
+    ["Wedding Date", s.date?fmtDate(s.date):"—"],
+    ["Guest Goal", s.guestGoal||"—"],
+    ["Total Budget", s.budget?money(s.budget):"—"],
+    ["Vibe / Theme", s.vibe||"—"],
+    ["Location", s.city||"—"],
+    ["Ceremony Ends", s.ceremonyEnd?minToTime(timeToMin(s.ceremonyEnd)):"—"],
+  ];
+  $("#setupBar").innerHTML = cells.map(([k,v])=>`<div class="cell"><span class="k">${esc(k)}</span><span class="v" title="${esc(v)}">${esc(v)}</span></div>`).join("");
+}
+function openSetup(){
+  const s=DB.setup;
+  openForm("Edit Wedding Details",[
+    {key:"couple",label:"Couple Names",type:"text",full:true,placeholder:"Olivia & Ethan"},
+    {key:"date",label:"Wedding Date",type:"date"},
+    {key:"ceremonyEnd",label:"Ceremony End Time",type:"time"},
+    {key:"guestGoal",label:"Guest Count Goal",type:"number"},
+    {key:"budget",label:"Total Budget ($)",type:"number"},
+    {key:"vibe",label:"Vibe / Theme",type:"text"},
+    {key:"city",label:"City / Location",type:"text"},
+  ], s, (vals)=>{
+    Object.assign(DB.setup, vals);
+    save(); renderSetup(); renderActive(); toast("Wedding details saved","good");
+  });
+}
+
+/* ============================================================
+   8. MODAL / FORM ENGINE
+   ============================================================ */
+let modalSaveHandler=null;
+function openForm(title, fields, values, onSave){
+  $("#modalTitle").textContent=title;
+  const body=$("#modalBody");
+  body.innerHTML=`<div class="form-grid">`+fields.map(f=>{
+    const id="f_"+f.key;
+    const val = values && values[f.key]!=null ? values[f.key] : (f.default!=null?f.default:"");
+    const cls = "field"+(f.full?" full":"");
+    let input;
+    if(f.type==="select"){
+      input=`<select id="${id}">`+ (f.placeholder?`<option value="">${esc(f.placeholder)}</option>`:"") +
+        f.options.map(o=>`<option value="${esc(o)}" ${String(val)===String(o)?"selected":""}>${esc(o)}</option>`).join("")+`</select>`;
+    }else if(f.type==="textarea"){
+      input=`<textarea id="${id}" placeholder="${esc(f.placeholder||"")}">${esc(val)}</textarea>`;
+    }else if(f.type==="checkbox"){
+      input=`<select id="${id}"><option value="false" ${!val?"selected":""}>No</option><option value="true" ${val?"selected":""}>Yes</option></select>`;
+    }else{
+      input=`<input id="${id}" type="${f.type||"text"}" value="${esc(val)}" placeholder="${esc(f.placeholder||"")}" ${f.step?`step="${f.step}"`:""}/>`;
+    }
+    return `<div class="${cls}"><label for="${id}">${esc(f.label)}</label>${input}</div>`;
+  }).join("")+`</div>`;
+
+  $("#modalFooter").innerHTML=`<button class="btn ghost" onclick="closeModal()">Cancel</button><button class="btn primary" id="modalSaveBtn">Save changes</button>`;
+  modalSaveHandler=()=>{
+    const out={};
+    fields.forEach(f=>{
+      const el=$("#f_"+f.key);
+      if(!el) return;
+      let v=el.value;
+      if(f.type==="number") v = v===""? "" : num(v);
+      if(f.type==="checkbox") v = v==="true";
+      out[f.key]=v;
+    });
+    onSave(out);
+    closeModal();
+  };
+  $("#modalSaveBtn").onclick=modalSaveHandler;
+  $("#modalBack").classList.add("open");
+  const first=body.querySelector("input,select,textarea"); if(first) setTimeout(()=>first.focus(),60);
+}
+function closeModal(){ $("#modalBack").classList.remove("open"); modalSaveHandler=null; }
+$("#modalBack").addEventListener("click",e=>{ if(e.target.id==="modalBack") closeModal(); });
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape" && $("#modalBack").classList.contains("open")) closeModal();
+  if(e.key==="Enter" && (e.ctrlKey||e.metaKey) && modalSaveHandler) modalSaveHandler();
+});
+
+/* confirm helper */
+function confirmAction(msg, fn){ if(window.confirm(msg)) fn(); }
+
+/* ----------  Account / cloud-sync modal  ---------- */
+function showModal(title,bodyHTML,footerHTML){
+  $("#modalTitle").textContent=title;
+  $("#modalBody").innerHTML=bodyHTML;
+  $("#modalFooter").innerHTML=footerHTML||"";
+  modalSaveHandler=null;
+  $("#modalBack").classList.add("open");
+}
+let authMode="signin";
+function openAccount(){
+  if(!cloudEnabled()){
+    showModal("Cloud sync","<p class=\"note-line\">Cloud sync isn't set up for this copy yet. Your planner is saved privately in this browser.</p>","<button class=\"btn ghost\" onclick=\"closeModal()\">Close</button>");
+    return;
+  }
+  if(SESSION&&SESSION.user) showModal("Your account",signedInPanel(),"<button class=\"btn ghost\" onclick=\"closeModal()\">Close</button>");
+  else { authMode="signin"; showModal("Sign in to sync",authPanel(),""); }
+}
+function authPanel(){
+  const signin=authMode==="signin";
+  return `
+    <div class="seg" style="margin-bottom:14px">
+      <button class="${signin?'on':''}" onclick="setAuthMode('signin')">Sign in</button>
+      <button class="${!signin?'on':''}" onclick="setAuthMode('signup')">Create account</button>
+    </div>
+    <div class="field" style="margin-bottom:10px"><label for="authEmail">Email</label><input type="email" id="authEmail" autocomplete="email" placeholder="you@example.com"></div>
+    <div class="field" style="margin-bottom:6px"><label for="authPass">Password</label><input type="password" id="authPass" autocomplete="${signin?'current-password':'new-password'}" placeholder="${signin?'Your password':'At least 6 characters'}"></div>
+    <div id="authMsg" class="note-line" style="min-height:18px;color:var(--bad)"></div>
+    <p class="note-line" style="margin-top:4px">Your planner stays in this browser and only syncs to your private account. Nothing is shared publicly.</p>
+    <div style="display:flex;gap:9px;margin-top:14px">
+      <button class="btn ghost" onclick="closeModal()">Cancel</button>
+      <button class="btn primary" style="flex:1" onclick="${signin?'doSignIn()':'doSignUp()'}">${signin?'Sign in':'Create account & sync'}</button>
+    </div>`;
+}
+function setAuthMode(m){ authMode=m; showModal(m==="signin"?"Sign in to sync":"Create your account",authPanel(),""); }
+function authMsg(t){ const e=$("#authMsg"); if(e) e.textContent=t||""; }
+function signedInPanel(){
+  return `
+    <p style="margin:0 0 4px">Signed in as <b>${esc(SESSION.user.email||"you")}</b>.</p>
+    <p class="note-line">Your planner backs up automatically as you make changes. You can also sync manually or pull the latest from another device.</p>
+    <div style="display:flex;flex-direction:column;gap:9px;margin-top:14px">
+      <button class="btn primary" onclick="doCloudPush()">&#9729; Back up now</button>
+      <button class="btn" onclick="doCloudPull()">&#8595; Load latest from cloud</button>
+      <button class="btn danger" onclick="doSignOut()">Sign out</button>
+    </div>`;
+}
+async function doSignIn(){
+  const email=($("#authEmail").value||"").trim(), pass=$("#authPass").value||"";
+  if(!email||!pass){ authMsg("Enter your email and password."); return; }
+  authMsg("Signing in…");
+  try{ await authSignIn(email,pass); await afterSignIn(); }
+  catch(e){ authMsg(e.message||"Sign-in failed."); }
+}
+async function doSignUp(){
+  const email=($("#authEmail").value||"").trim(), pass=$("#authPass").value||"";
+  if(!email||pass.length<6){ authMsg("Enter a valid email and a password of at least 6 characters."); return; }
+  authMsg("Creating your account…");
+  try{
+    await authSignUp(email,pass);
+    if(!SESSION){ authMsg("Account created — check your email to confirm, then sign in."); return; }
+    await afterSignIn();
+  }catch(e){ authMsg(e.message||"Sign-up failed."); }
+}
+async function afterSignIn(){
+  let cloud=null; try{ cloud=await cloudPull(); }catch(_){}
+  closeModal(); updateAccountBtn();
+  if(cloud&&cloud.data){
+    if(window.confirm("Found a saved planner in your account. Load it into this browser?\n\nOK = use the cloud copy · Cancel = keep this browser's data and update the cloud.")){
+      DB=normalize(cloud.data); save(); renderSetup(); renderActive(); toast("Loaded from your account","good");
+    } else { cloudPush().then(()=>toast("Cloud updated from this device","good")).catch(()=>{}); }
+  } else {
+    cloudPush().then(()=>toast("Signed in — your planner is now syncing","good")).catch(()=>toast("Signed in","good"));
+  }
+}
+function doCloudPush(){ cloudPush().then(()=>{ closeModal(); toast("Backed up to your account","good"); }).catch(e=>toast(e.message||"Back-up failed","bad")); }
+function doCloudPull(){
+  cloudPull().then(row=>{
+    if(!row||!row.data){ toast("No cloud copy found yet","warn"); return; }
+    if(window.confirm("Replace this browser's planner with the latest from your account?")){
+      DB=normalize(row.data); save(); renderSetup(); renderActive(); closeModal(); toast("Loaded latest from cloud","good");
+    }
+  }).catch(e=>toast(e.message||"Load failed","bad"));
+}
+async function doSignOut(){ await authSignOut(); closeModal(); updateAccountBtn(); toast("Signed out","good"); }
+
+/* ============================================================
+   9. TOAST
+   ============================================================ */
+function toast(msg,type=""){
+  const t=document.createElement("div");
+  t.className="toast "+type; t.textContent=msg;
+  $("#toastWrap").appendChild(t);
+  setTimeout(()=>{ t.style.opacity="0"; t.style.transition="opacity .4s"; setTimeout(()=>t.remove(),400); },2600);
+}
+
+/* ============================================================
+   10. OVERVIEW TAB
+   ============================================================ */
+function renderOverview(){
+  const g=calcGuestTotals(), b=calcBudgetTotals(), tp=calcTaskProgress();
+  const d=daysUntil(DB.setup.date);
+  const rsvpResponded = g.attending+g.declined;
+  const rsvpInvitedTotal = g.total; // every guest row is someone invited
+  const rsvpPct = rsvpInvitedTotal? Math.round(rsvpResponded/rsvpInvitedTotal*100):0;
+  const budgetPct = b.totalBudget? Math.round(b.planning/b.totalBudget*100):0;
+
+  const cd = (()=>{
+    if(d==null) return `<div class="empty">Set a wedding date to start the countdown.</div>`;
+    if(d<0) return `<div class="countdown"><div class="unit"><b>&#10084;</b><span>Just married</span></div></div>`;
+    const weeks=Math.floor(d/7), days=d%7;
+    return `<div class="countdown">
+      <div class="unit"><b>${d}</b><span>Days</span></div>
+      <div class="unit"><b>${weeks}</b><span>Weeks</span></div>
+      <div class="unit"><b>${days}</b><span>+ Days</span></div>
+      <div class="unit"><b>${Math.max(0,g.attending)}</b><span>Attending</span></div>
+    </div>`;
+  })();
+
+  const overBudget = b.planning > b.totalBudget && b.totalBudget>0;
+
+  const panel=$("#tab-overview");
+  panel.innerHTML=`
+    <div class="hero" id="hero">
+      <div class="hero-photo">
+        <img src="assets/couple.webp" alt="${esc(DB.setup.couple||"The couple")}" loading="lazy"
+             onerror="this.closest('.hero').classList.add('no-photo')" />
+      </div>
+      <div class="hero-text">
+        <div class="hero-mono">The Wedding Of</div>
+        <h2 class="hero-names">${esc(DB.setup.couple||"Our Celebration")}</h2>
+        <div class="hero-meta">
+          ${DB.setup.date?`<span>&#128197; ${esc(fmtDate(DB.setup.date))}</span>`:""}
+          ${DB.setup.city?`<span>&#128205; ${esc(DB.setup.city)}</span>`:""}
+          ${DB.setup.vibe?`<span>&#10086; ${esc(DB.setup.vibe)}</span>`:""}
+        </div>
+        ${d!=null&&d>=0?`<div class="hero-count">${d} day${d===1?"":"s"} to go</div>`:(d!=null&&d<0?`<div class="hero-count">Just married &#128156;</div>`:"")}
+      </div>
+    </div>
+
+    <div class="section-head"><div><h2>Overview</h2><div class="sub">Everything at a glance for ${esc(DB.setup.couple||"your big day")}.</div></div></div>
+
+    <div class="card" style="text-align:center;margin-bottom:16px;">
+      <div class="label" style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);">Countdown to ${esc(DB.setup.date?fmtDate(DB.setup.date):"the wedding")}</div>
+      ${cd}
+    </div>
+
+    <div class="cards-grid stat-grid" style="margin-bottom:16px;">
+      ${statCard("Invited Guests",g.total,`Goal: ${DB.setup.guestGoal||"—"}`,"blush","✉")}
+      ${statCard("Attending",g.attending,`${g.plusOnes} plus-ones`,"sage","♥")}
+      ${statCard("Declined",g.declined,"Can't make it","blush","✖")}
+      ${statCard("Awaiting Reply",g.awaiting,"Still to respond","gold","⏳")}
+      ${statCard("Total Budget",money(b.totalBudget),"Your ceiling","gold","⚖")}
+      ${statCard("Estimated Spend",money(b.est),"Sum of estimates","sage","≡")}
+      ${statCard("Actual Spend",money(b.actual),"Confirmed costs","blush","✓")}
+      ${statCard("Remaining",money(b.remaining),overBudget?"Over budget!":"vs. planning spend",overBudget?"blush":"sage", overBudget?"⚠":"✸")}
+      ${statCard("Locked-in Vendors",countLockedVendors(),`${DB.vendors.length} tracked`,"sage","☎")}
+      ${statCard("Open Tasks",tp.outstanding,`${tp.overdue} overdue`,tp.overdue?"blush":"gold","✓")}
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3 style="margin-bottom:6px;">Progress</h3>
+        ${progressRow("RSVP responses",rsvpPct,rsvpPct>=80?"":"blush",`${rsvpResponded}/${rsvpInvitedTotal} responded`)}
+        ${progressRow("Budget used",budgetPct,overBudget?"over":"gold",`${money(b.planning)} of ${money(b.totalBudget)}`)}
+        ${progressRow("Checklist complete",tp.pct,tp.pct>=60?"":"blush",`${tp.done}/${tp.total} tasks done`)}
+      </div>
+      <div class="card">
+        <h3 style="margin-bottom:8px;">Things to watch</h3>
+        ${overviewAlerts(g,b,tp)}
+      </div>
+    </div>
+  `;
+  // Watchdog: if the hero photo never loads (missing or slow), collapse the hero
+  // to a clean text-only banner instead of leaving an empty frame.
+  const hImg=panel.querySelector(".hero img");
+  if(hImg){ setTimeout(()=>{ const h=panel.querySelector(".hero"); if(h && (!hImg.complete || hImg.naturalWidth===0)) h.classList.add("no-photo"); },2500); }
+}
+function statCard(label,value,note,accent,corner){
+  return `<div class="card stat accent-${accent}">
+    <span class="corner" aria-hidden="true">${corner||""}</span>
+    <div class="label">${esc(label)}</div>
+    <div class="num">${esc(value)}</div>
+    <div class="note">${esc(note)}</div>
+  </div>`;
+}
+function progressRow(label,pct,cls,detail){
+  const p=Math.max(0,Math.min(100,pct));
+  return `<div class="progress-row">
+    <div class="top"><span>${esc(label)}</span><b>${pct}%</b></div>
+    <div class="bar ${cls}"><i style="width:${p}%"></i></div>
+    <div class="note" style="font-size:12px;color:var(--muted);margin-top:4px;">${esc(detail)}</div>
+  </div>`;
+}
+function overviewAlerts(g,b,tp){
+  const out=[];
+  if(b.totalBudget>0 && b.planning>b.totalBudget) out.push(alert("bad",`Projected spend (${money(b.planning)}) exceeds your budget by ${money(b.planning-b.totalBudget)}.`));
+  if(tp.overdue>0) out.push(alert("warn",`${tp.overdue} task${tp.overdue>1?"s are":" is"} overdue.`));
+  if(g.awaiting>0) out.push(alert("warn",`${g.awaiting} guest${g.awaiting>1?"s have":" has"} not RSVP'd yet.`));
+  const noTable=DB.guests.filter(x=>x.rsvp==="Attending" && !x.table).length;
+  if(noTable>0) out.push(alert("warn",`${noTable} attending guest${noTable>1?"s have":" has"} no table assigned.`));
+  const noContract=DB.vendors.filter(v=>v.lockedIn && v.contractSigned!=="yes").length;
+  if(noContract>0) out.push(alert("warn",`${noContract} locked-in vendor${noContract>1?"s are":" is"} missing a signed contract.`));
+  if(DB.setup.guestGoal && g.total>num(DB.setup.guestGoal)) out.push(alert("warn",`Guest list (${g.total}) is over your goal of ${DB.setup.guestGoal}.`));
+  if(!out.length) out.push(alert("good","You're on track — no warnings right now. ✨"));
+  return out.join("");
+}
+function alert(type,msg){
+  const ico={good:"✔",warn:"⚠",bad:"✖"}[type]||"";
+  return `<div class="alert ${type}"><span aria-hidden="true">${ico}</span><span>${esc(msg)}</span></div>`;
+}
+
+/* ============================================================
+   11. GENERIC TABLE RENDER + SORTING
+   ============================================================ */
+function sortRecords(records, key, accessor){
+  const st=sortState[key];
+  if(!st) return records;
+  const arr=records.slice();
+  arr.sort((a,b)=>{
+    let x=accessor(a,st.col), y=accessor(b,st.col);
+    if(typeof x==="string") x=x.toLowerCase(); if(typeof y==="string") y=y.toLowerCase();
+    if(x<y) return st.dir==="asc"?-1:1;
+    if(x>y) return st.dir==="asc"?1:-1;
+    return 0;
+  });
+  return arr;
+}
+function toggleSort(tableKey,col,rerender){
+  const st=sortState[tableKey];
+  if(st && st.col===col){ st.dir = st.dir==="asc"?"desc":"asc"; }
+  else sortState[tableKey]={col,dir:"asc"};
+  rerender();
+}
+
+/* ============================================================
+   12. GUEST LIST TAB
+   ============================================================ */
+const guestFilter={q:"",rsvp:"",side:""};
+function renderGuests(){
+  const g=calcGuestTotals(), meals=calcMealTotals();
+  const panel=$("#tab-guests");
+  panel.innerHTML=`
+    <div class="section-head">
+      <div><h2>Guest List</h2><div class="sub">Track invites, RSVPs, meals and table assignments.</div></div>
+      <div class="toolbar"><button class="btn primary" onclick="editGuest()">&#43; Add Guest</button></div>
+    </div>
+
+    <div class="mini-summary">
+      ${ms(g.total,"Invited")}${ms(g.attending,"Attending")}${ms(g.declined,"Declined")}
+      ${ms(g.awaiting,"Awaiting")}${ms(g.plusOnes,"Plus-Ones")}${ms(g.mealsNeeded,"Meals Needed")}
+    </div>
+
+    <div class="card" style="margin-bottom:16px;">
+      <h3 style="font-size:16px;margin-bottom:9px;">Meal Count <span style="font-size:12px;color:var(--muted);font-family:var(--sans);font-weight:600;">(attending guests + plus-ones)</span></h3>
+      <div class="mini-summary" style="margin:0;">
+        ${ms(meals.Chicken,"Chicken")}${ms(meals.Fish,"Fish")}${ms(meals.Vegetarian,"Vegetarian")}
+        ${ms(meals.Vegan,"Vegan")}${ms(meals.Kids,"Kids")}${ms(meals.Other,"Other")}${ms(meals.Unselected,"Unselected")}
+      </div>
+    </div>
+
+    <div class="filters">
+      <input type="search" id="gSearch" placeholder="&#128269; Search name, group, notes…" value="${esc(guestFilter.q)}" aria-label="Search guests" />
+      <select id="gRsvp" aria-label="Filter by RSVP"><option value="">All RSVP</option>${RSVP.map(r=>`<option ${guestFilter.rsvp===r?"selected":""}>${r}</option>`).join("")}</select>
+      <select id="gSide" aria-label="Filter by side"><option value="">All Sides</option>${SIDES.map(s=>`<option ${guestFilter.side===s?"selected":""}>${s}</option>`).join("")}</select>
+      <button class="btn ghost sm" onclick="clearGuestFilter()">Clear</button>
+    </div>
+
+    <div class="table-scroll">
+      <table class="data" id="guestTable"><thead><tr>
+        ${th("Name","name","guests",renderGuests)}
+        <th>Group</th>${th("Side","side","guests",renderGuests)}
+        ${th("RSVP","rsvp","guests",renderGuests)}<th>+1</th><th>Dietary</th><th>Meal</th>
+        ${th("Table","table","guests",renderGuests)}<th>Notes</th><th>Actions</th>
+      </tr></thead><tbody id="guestBody"></tbody></table>
+    </div>
+  `;
+  $("#gSearch").addEventListener("input",e=>{guestFilter.q=e.target.value;fillGuestBody();});
+  $("#gRsvp").addEventListener("change",e=>{guestFilter.rsvp=e.target.value;fillGuestBody();});
+  $("#gSide").addEventListener("change",e=>{guestFilter.side=e.target.value;fillGuestBody();});
+  fillGuestBody();
+}
+function ms(b,label){return `<div class="ms"><b>${esc(b)}</b><span>${esc(label)}</span></div>`;}
+function th(label,col,tableKey,rerender){
+  const st=sortState[tableKey];
+  const arrow = st&&st.col===col ? (st.dir==="asc"?" ▲":" ▼") : "";
+  return `<th class="sortable" onclick="toggleSort('${tableKey}','${col}',${rerender.name})">${esc(label)}${arrow}</th>`;
+}
+function fillGuestBody(){
+  let rows=DB.guests.slice();
+  const q=guestFilter.q.trim().toLowerCase();
+  if(q) rows=rows.filter(g=>(g.name+" "+g.group+" "+g.notes).toLowerCase().includes(q));
+  if(guestFilter.rsvp) rows=rows.filter(g=>g.rsvp===guestFilter.rsvp);
+  if(guestFilter.side) rows=rows.filter(g=>g.side===guestFilter.side);
+  rows=sortRecords(rows,"guests",(g,col)=>g[col]||"");
+  const body=$("#guestBody");
+  if(!rows.length){ body.innerHTML=`<tr><td colspan="10" class="empty">No guests match. Try clearing filters or add a guest.</td></tr>`; return; }
+  body.innerHTML=rows.map(g=>`<tr>
+    <td><b>${esc(g.name)}</b></td>
+    <td>${esc(g.group)||"—"}</td>
+    <td><span class="chip ${sideChip(g.side)}">${esc(g.side)}</span></td>
+    <td><span class="chip ${rsvpChip(g.rsvp)}">${esc(g.rsvp)}</span></td>
+    <td>${g.plusOne?'<span class="chip sage">+1</span>':'—'}</td>
+    <td>${esc(g.dietary)||"—"}</td>
+    <td>${esc(g.meal)||'<span class="chip gray">—</span>'}</td>
+    <td>${esc(g.table)||'<span class="chip amber">Unseated</span>'}</td>
+    <td>${esc(g.notes)||"—"}</td>
+    <td><div class="row-actions">
+      <button class="btn sm ghost" onclick="editGuest('${g.id}')" aria-label="Edit ${esc(g.name)}">&#9998;</button>
+      <button class="btn sm danger" onclick="deleteGuest('${g.id}')" aria-label="Delete ${esc(g.name)}">&#10005;</button>
+    </div></td>
+  </tr>`).join("");
+}
+function sideChip(s){return {Bride:"blush",Groom:"sage",Shared:"gold",Family:"amber",Friend:"gray",Other:"gray"}[s]||"gray";}
+function rsvpChip(r){return {Attending:"green",Declined:"red","Awaiting Response":"amber",Invited:"gray"}[r]||"gray";}
+function clearGuestFilter(){guestFilter.q="";guestFilter.rsvp="";guestFilter.side="";renderGuests();}
+function editGuest(id){
+  const g = id? DB.guests.find(x=>x.id===id) : {};
+  openForm(id?"Edit Guest":"Add Guest",[
+    {key:"name",label:"Guest Name",type:"text",full:true},
+    {key:"group",label:"Group / Household",type:"text"},
+    {key:"side",label:"Side",type:"select",options:SIDES,default:"Friend"},
+    {key:"rsvp",label:"RSVP Status",type:"select",options:RSVP,default:"Invited"},
+    {key:"plusOne",label:"Plus-One",type:"checkbox"},
+    {key:"dietary",label:"Dietary Restrictions",type:"text"},
+    {key:"meal",label:"Meal Choice",type:"select",options:MEALS,placeholder:"— none —"},
+    {key:"table",label:"Table Assignment",type:"select",options:DB.tables.map(t=>t.name),placeholder:"— unassigned —"},
+    {key:"notes",label:"Notes",type:"textarea",full:true},
+  ], g, (vals)=>{
+    if(id) Object.assign(g,vals);
+    else DB.guests.push(Object.assign({id:uid()},vals));
+    save(); renderGuests(); refreshIfOverview(); toast(id?"Guest updated":"Guest added","good");
+  });
+}
+function deleteGuest(id){
+  const g=DB.guests.find(x=>x.id===id); if(!g) return;
+  confirmAction(`Delete ${g.name} from the guest list? This cannot be undone.`,()=>{
+    DB.guests=DB.guests.filter(x=>x.id!==id); save(); renderGuests(); toast("Guest deleted","bad");
+  });
+}
+
+/* ============================================================
+   13. SEATING CHART TAB
+   ============================================================ */
+let dragGuestId=null;          // for the list-view HTML5 drag
+let seatingView="plan";        // "plan" (visual floor plan) | "list"
+let selectedFp=null;           // {kind:"table"|"fixture", id} currently selected on the canvas
+let fpZoom=1;                  // floor-plan zoom factor
+
+const TABLE_SHAPES=[["round","Round"],["oval","Oval"],["square","Square"],["rect","Rect"],["head","Head"]];
+const FIXTURE_TYPES=[["floor","Dance Floor"],["stage","Stage / DJ"],["bar","Bar"],["gift","Gift Table"],["other","Other"]];
+
+const clampN=(v,lo,hi)=>Math.max(lo,Math.min(hi,v));
+function firstName(name){ const f=String(name||"").trim().split(/\s+/)[0]||""; return f.length>7?f.slice(0,6)+"…":f; }
+function uniqueTableName(){ const names=new Set(DB.tables.map(t=>t.name)); let i=DB.tables.length+1; while(names.has("Table "+i)) i++; return "Table "+i; }
+function svgWrap(inner){ return `<span class="gly"><svg viewBox="0 0 24 18" fill="none" stroke="currentColor" stroke-width="1.6">${inner}</svg></span>`; }
+function shapeGlyph(s){ return svgWrap(({round:'<circle cx="12" cy="9" r="6.5"/>',oval:'<ellipse cx="12" cy="9" rx="9" ry="5.5"/>',square:'<rect x="5.5" y="2.5" width="13" height="13" rx="2"/>',rect:'<rect x="2.5" y="4" width="19" height="10" rx="2"/>',head:'<rect x="2.5" y="6.5" width="19" height="5" rx="2"/>'})[s]||''); }
+function fxGlyph(){ return svgWrap('<rect x="3" y="3" width="18" height="12" rx="2" stroke-dasharray="3 2"/>'); }
+function stepper(dec,val,inc){ return `<span class="stepper"><button type="button" onclick="${dec}">&minus;</button><span class="val">${val}</span><button type="button" onclick="${inc}">&plus;</button></span>`; }
+
+/* Distribute n chair positions around a table body of size w×h, returning {x,y}
+   offsets relative to the body's center. Round/oval use an ellipse; rectangular
+   shapes walk evenly around the perimeter and push each chair outward. */
+function computeSeatPositions(shape,w,h,n){
+  n=Math.max(1,Math.round(n)); const gap=17, out=[];
+  if(shape==="head"){
+    // a head/sweetheart table seats everyone along the back (top) edge, facing the room
+    const y=-h/2-gap;
+    for(let i=0;i<n;i++){ out.push({x: n===1?0 : -w/2 + (i+0.5)*(w/n), y}); }
+    return out;
+  }
+  if(shape==="round"||shape==="oval"){
+    const rx=w/2+gap, ry=h/2+gap;
+    for(let i=0;i<n;i++){ const a=-Math.PI/2 + i*2*Math.PI/n; out.push({x:rx*Math.cos(a), y:ry*Math.sin(a)}); }
+    return out;
+  }
+  const W=w,H=h,per=2*(W+H),step=per/n;
+  for(let i=0;i<n;i++){
+    let d=((i+0.5)*step)%per, x,y,nx,ny;
+    if(d<W){ x=-W/2+d; y=-H/2; nx=0; ny=-1; }
+    else if(d<W+H){ x=W/2; y=-H/2+(d-W); nx=1; ny=0; }
+    else if(d<2*W+H){ x=W/2-(d-W-H); y=H/2; nx=0; ny=1; }
+    else { x=-W/2; y=H/2-(d-2*W-H); nx=-1; ny=0; }
+    out.push({x:x+nx*gap, y:y+ny*gap});
+  }
+  return out;
+}
+
+function renderSeating(){
+  const panel=$("#tab-seating");
+  const attending=DB.guests.filter(g=>g.rsvp==="Attending");
+  const unassigned=attending.filter(g=>!g.table);
+  // remember scroll position so stepper clicks don't jump the canvas
+  const wrapOld=$("#fpWrap"); const sx=wrapOld?wrapOld.scrollLeft:0, sy=wrapOld?wrapOld.scrollTop:0;
+  panel.innerHTML=`
+    <div class="section-head">
+      <div><h2>Seating Chart</h2><div class="sub">Design your room visually — add tables of any shape, drag to arrange, and seat your guests.</div></div>
+      <div class="toolbar">
+        <span class="seg">
+          <button class="${seatingView==='plan'?'on':''}" onclick="setSeatingView('plan')">&#9638; Floor plan</button>
+          <button class="${seatingView==='list'?'on':''}" onclick="setSeatingView('list')">&#9776; List</button>
+        </span>
+      </div>
+    </div>
+    ${unassigned.length?alert("warn",`${unassigned.length} attending guest${unassigned.length>1?"s have":" has"} no table yet.`):alert("good","Every attending guest has a seat. ✨")}
+    ${ seatingView==="plan" ? fpHTML(attending) : listHTML(attending,unassigned) }
+  `;
+  if(seatingView==="plan"){
+    const wrap=$("#fpWrap"); if(wrap){ wrap.scrollLeft=sx; wrap.scrollTop=sy; }
+    attachFpDrag(); applyFpZoom();
+  }
+}
+function setSeatingView(v){ seatingView=v; selectedFp=null; renderSeating(); }
+
+/* ----- floor-plan view ----- */
+function fpHTML(attending){
+  return `
+    <div class="fp-toolbar">
+      <span class="lbl">Add table</span>
+      <div class="grp">${TABLE_SHAPES.map(([s,lbl])=>`<button class="add-btn" title="Add ${lbl} table" onclick="addTable('${s}')">${shapeGlyph(s)}${lbl}</button>`).join("")}</div>
+      <span class="sep"></span>
+      <span class="lbl">Add element</span>
+      <div class="grp">${FIXTURE_TYPES.map(([t,lbl])=>`<button class="add-btn" onclick="addFixture('${t}')">${fxGlyph()}${lbl}</button>`).join("")}</div>
+      <span class="sep"></span>
+      <div class="grp"><span class="lbl">Zoom</span>
+        <button class="add-btn" onclick="fpZoomStep(-0.1)" aria-label="Zoom out">&minus;</button>
+        <span id="fpZoomVal" style="font-weight:700;font-size:12px;min-width:40px;text-align:center;">100%</span>
+        <button class="add-btn" onclick="fpZoomStep(0.1)" aria-label="Zoom in">&plus;</button>
+        <button class="add-btn" onclick="fpZoomReset()">Reset</button>
+      </div>
+    </div>
+    <div class="fp-grid">
+      <div class="fp-stage-wrap" id="fpWrap">
+        <div class="fp-canvas" id="fpCanvas">
+          ${DB.fixtures.map(fxEl).join("")}
+          ${DB.tables.map(t=>tableEl(t)).join("")}
+        </div>
+      </div>
+      <div class="fp-editor" id="fpEditor">${fpEditorHTML(attending)}</div>
+    </div>
+    <details class="help" style="margin-top:10px;"><summary>How the floor-plan builder works</summary>
+      Click any table or element to select it, then use the panel to change its shape, size, seat count and guests.
+      Drag tables and elements to arrange your room. Chairs fill in the order guests are seated; the couple's chairs
+      show in blush. Switch to <b>List</b> view for a simple, fully tap-friendly seating tool on small screens.
+    </details>
+  `;
+}
+function tableEl(t){
+  const seated=DB.guests.filter(g=>g.table===t.name);
+  const cap=Math.max(1,num(t.capacity));
+  const over=seated.length>cap;
+  const w=num(t.w), h=num(t.h), cx=w/2, cy=h/2;
+  const seats=computeSeatPositions(t.shape,w,h,cap);
+  const sel=selectedFp&&selectedFp.kind==="table"&&selectedFp.id===t.id;
+  const seatEls=seats.map((p,i)=>{
+    const g=seated[i]; const couple=g&&g.group==="Couple";
+    return `<div class="fp-seat ${g?'filled':''} ${couple?'couple':''}" style="left:${(cx+p.x-13).toFixed(1)}px;top:${(cy+p.y-13).toFixed(1)}px" title="${g?esc(g.name):'Empty seat'}">${g?`<span>${esc(firstName(g.name))}</span>`:''}</div>`;
+  }).join("");
+  return `<div class="fp-item ${over?'over':''} ${sel?'selected':''}" data-kind="table" data-id="${t.id}" style="left:${num(t.x)}px;top:${num(t.y)}px;width:${w}px;height:${h}px;">
+    <div class="fp-top ${t.shape}"><div class="fp-name">${esc(t.name)}</div><div class="fp-sub">${seated.length}/${cap}${over?` &middot; +${seated.length-cap}`:''}</div></div>
+    ${seatEls}
+  </div>`;
+}
+function fxEl(f){
+  const sel=selectedFp&&selectedFp.kind==="fixture"&&selectedFp.id===f.id;
+  return `<div class="fp-fx ${f.type} ${sel?'selected':''}" data-kind="fixture" data-id="${f.id}" style="left:${num(f.x)}px;top:${num(f.y)}px;width:${num(f.w)}px;height:${num(f.h)}px;">${esc(f.label)}</div>`;
+}
+function fpEditorHTML(attending){
+  if(!selectedFp) return `<h3>Design your space</h3>
+    <div class="hint">Add tables and elements from the toolbar above, then click any of them here to edit its shape, size, seats and guests. Drag to rearrange the room.</div>
+    <div class="hint" style="margin:0">${seatLegend()}</div>`;
+  if(selectedFp.kind==="fixture") return fixtureEditorHTML();
+  const t=DB.tables.find(x=>x.id===selectedFp.id);
+  if(!t){ selectedFp=null; return fpEditorHTML(attending); }
+  const seated=DB.guests.filter(g=>g.table===t.name);
+  const cap=Math.max(1,num(t.capacity));
+  const movable=DB.guests.filter(g=>g.table!==t.name);
+  const linked=(t.shape==="round"||t.shape==="square");
+  return `
+    <h3>Table</h3><div class="hint">Shape it, size it, and seat your guests.</div>
+    <div class="erow"><label for="fpName">Name</label></div>
+    <input type="text" id="fpName" value="${esc(t.name)}" oninput="fpRename('${t.id}',this.value)" />
+    <div class="erow" style="margin-top:12px"><label>Shape</label></div>
+    <div class="shape-row">${TABLE_SHAPES.map(([s,lbl])=>`<button class="${t.shape===s?'on':''}" onclick="fpSetShape('${t.id}','${s}')">${shapeGlyph(s)}<span>${lbl}</span></button>`).join("")}</div>
+    ${ linked
+      ? `<div class="erow" style="margin-top:12px"><label>Size</label>${stepper(`fpSize('${t.id}',-10)`,num(t.w)+'px',`fpSize('${t.id}',10)`)}</div>`
+      : `<div class="erow" style="margin-top:12px"><label>Width</label>${stepper(`fpDim('${t.id}','w',-10)`,num(t.w)+'px',`fpDim('${t.id}','w',10)`)}</div>
+         <div class="erow"><label>Height</label>${stepper(`fpDim('${t.id}','h',-10)`,num(t.h)+'px',`fpDim('${t.id}','h',10)`)}</div>` }
+    <div class="erow"><label>Seats</label>${stepper(`fpSeats('${t.id}',-1)`,cap,`fpSeats('${t.id}',1)`)}</div>
+    <div class="erow" style="margin-top:6px"><label>Seated (${seated.length}/${cap})</label></div>
+    <div class="assign-list">
+      ${seated.length? seated.map(g=>`<div class="ar"><span>${esc(g.name)}${g.group==="Couple"?' &#128156;':''}${g.rsvp!=='Attending'?` <span class="chip amber" style="font-size:10px">${esc(g.rsvp)}</span>`:''}</span><button class="x" title="Unseat" onclick="assignGuest('${g.id}','')">&#10005;</button></div>`).join("") : '<div class="hint" style="margin:0">No one seated here yet.</div>'}
+    </div>
+    <select id="fpAssign" aria-label="Seat a guest" onchange="if(this.value){seatGuest(this.value,'${t.id}');}">
+      <option value="">&#43; Seat a guest…</option>
+      ${movable.map(g=>`<option value="${g.id}">${esc(g.name)}${g.table?` (from ${esc(g.table)})`:''}${g.rsvp!=='Attending'?` · ${esc(g.rsvp)}`:''}</option>`).join("")}
+    </select>
+    <div class="erow" style="margin-top:12px"><label for="fpNotes">Notes</label></div>
+    <textarea id="fpNotes" oninput="fpNotes('${t.id}',this.value)">${esc(t.notes||"")}</textarea>
+    <div style="margin-top:12px"><button class="btn danger sm" onclick="deleteTable('${t.id}')">&#128465; Delete table</button></div>`;
+}
+function fixtureEditorHTML(){
+  const f=DB.fixtures.find(x=>x.id===selectedFp.id);
+  if(!f){ selectedFp=null; return fpEditorHTML(DB.guests.filter(g=>g.rsvp==="Attending")); }
+  return `<h3>Element</h3><div class="hint">A non-seating area such as a dance floor, stage or bar.</div>
+    <div class="erow"><label>Label</label></div>
+    <input type="text" value="${esc(f.label)}" oninput="fxRename('${f.id}',this.value)" />
+    <div class="erow" style="margin-top:12px"><label>Type</label></div>
+    <select onchange="fxSetType('${f.id}',this.value)">${FIXTURE_TYPES.map(([tp,lbl])=>`<option value="${tp}" ${f.type===tp?'selected':''}>${lbl}</option>`).join("")}</select>
+    <div class="erow" style="margin-top:12px"><label>Width</label>${stepper(`fxDim('${f.id}','w',-10)`,num(f.w)+'px',`fxDim('${f.id}','w',10)`)}</div>
+    <div class="erow"><label>Height</label>${stepper(`fxDim('${f.id}','h',-10)`,num(f.h)+'px',`fxDim('${f.id}','h',10)`)}</div>
+    <div style="margin-top:12px"><button class="btn danger sm" onclick="deleteFixture('${f.id}')">&#128465; Delete element</button></div>`;
+}
+function seatLegend(){ return `Legend &middot; <b style="color:var(--sage-deep)">&#9679;</b> seated &nbsp; <b style="color:var(--blush-deep)">&#9679;</b> couple &nbsp; <b style="color:#bbae97">&#9675;</b> empty`; }
+
+/* ----- floor-plan mutations ----- */
+function addTable(shape){
+  const base=({round:[120,120],oval:[170,110],square:[120,120],rect:[180,100],head:[240,70]})[shape]||[120,120];
+  const n=DB.tables.length;
+  const t={id:uid(),name:uniqueTableName(),shape,capacity:shape==="head"?2:8,x:140+(n%5)*30,y:130+(n%4)*30,w:base[0],h:base[1],rot:0,notes:""};
+  DB.tables.push(t); selectedFp={kind:"table",id:t.id}; save(); renderSeating(); toast("Table added","good");
+}
+function addFixture(type){
+  const label=({floor:"Dance Floor",stage:"DJ / Stage",bar:"Bar",gift:"Gifts",other:"Area"})[type]||"Area";
+  const base=({floor:[200,160],stage:[130,90],bar:[180,70],gift:[120,60],other:[140,90]})[type]||[140,90];
+  const f={id:uid(),label,type,x:220,y:200,w:base[0],h:base[1]};
+  DB.fixtures.push(f); selectedFp={kind:"fixture",id:f.id}; save(); renderSeating(); toast(label+" added","good");
+}
+function fpRename(id,val){
+  const t=DB.tables.find(x=>x.id===id); if(!t) return;
+  const old=t.name; t.name=val;
+  DB.guests.forEach(g=>{ if(g.table===old) g.table=val; }); // keep seating in sync
+  save();
+  const el=document.querySelector(`.fp-item[data-id="${id}"] .fp-name`); if(el) el.textContent=val; // live, no re-render (keeps focus)
+}
+function fpNotes(id,val){ const t=DB.tables.find(x=>x.id===id); if(t){ t.notes=val; save(); } }
+function fpSetShape(id,shape){
+  const t=DB.tables.find(x=>x.id===id); if(!t) return;
+  t.shape=shape;
+  if(shape==="round"||shape==="square"){ const s=Math.min(num(t.w),num(t.h))||120; t.w=s; t.h=s; }
+  save(); renderSeating();
+}
+function fpSize(id,d){ const t=DB.tables.find(x=>x.id===id); if(!t) return; const s=clampN(num(t.w)+d,60,420); t.w=s; t.h=s; save(); renderSeating(); }
+function fpDim(id,dim,d){ const t=DB.tables.find(x=>x.id===id); if(!t) return; t[dim]=clampN(num(t[dim])+d,50,560); save(); renderSeating(); }
+function fpSeats(id,d){ const t=DB.tables.find(x=>x.id===id); if(!t) return; t.capacity=clampN(num(t.capacity)+d,1,30); save(); renderSeating(); }
+function seatGuest(gid,tid){ const t=DB.tables.find(x=>x.id===tid); assignGuest(gid, t?t.name:""); }
+function fxRename(id,val){ const f=DB.fixtures.find(x=>x.id===id); if(!f) return; f.label=val; save(); const el=document.querySelector(`.fp-fx[data-id="${id}"]`); if(el) el.textContent=val; }
+function fxSetType(id,val){ const f=DB.fixtures.find(x=>x.id===id); if(f){ f.type=val; save(); renderSeating(); } }
+function fxDim(id,dim,d){ const f=DB.fixtures.find(x=>x.id===id); if(f){ f[dim]=clampN(num(f[dim])+d,40,720); save(); renderSeating(); } }
+function deleteFixture(id){
+  const f=DB.fixtures.find(x=>x.id===id); if(!f) return;
+  confirmAction(`Delete the "${f.label}" element?`,()=>{ DB.fixtures=DB.fixtures.filter(x=>x.id!==id); selectedFp=null; save(); renderSeating(); toast("Element deleted","bad"); });
+}
+
+/* ----- zoom (uses CSS zoom so the scroll area grows with the content) ----- */
+function applyFpZoom(){ const c=$("#fpCanvas"); if(c) c.style.zoom=fpZoom; const v=$("#fpZoomVal"); if(v) v.textContent=Math.round(fpZoom*100)+"%"; }
+function fpZoomStep(d){ fpZoom=clampN(Math.round((fpZoom+d)*10)/10,0.5,1.6); applyFpZoom(); }
+function fpZoomReset(){ fpZoom=1; applyFpZoom(); }
+
+/* ----- pointer drag for tables & fixtures (works with mouse and touch) ----- */
+function attachFpDrag(){
+  const canvas=$("#fpCanvas"); if(!canvas) return;
+  let drag=null;
+  canvas.addEventListener("pointerdown",e=>{
+    const item=e.target.closest(".fp-item,.fp-fx");
+    if(!item){ if(selectedFp){ selectedFp=null; renderSeating(); } return; }
+    if(e.target.closest("button,select,input,textarea")) return;
+    const kind=item.dataset.kind, id=item.dataset.id;
+    const rec=kind==="table"?DB.tables.find(t=>t.id===id):DB.fixtures.find(f=>f.id===id);
+    if(!rec) return;
+    drag={item,rec,kind,id,startX:e.clientX,startY:e.clientY,ox:num(rec.x),oy:num(rec.y),moved:false,nx:num(rec.x),ny:num(rec.y)};
+    try{ item.setPointerCapture(e.pointerId); }catch(_){}
+    item.classList.add("dragging");
+  });
+  canvas.addEventListener("pointermove",e=>{
+    if(!drag) return;
+    const dx=(e.clientX-drag.startX)/fpZoom, dy=(e.clientY-drag.startY)/fpZoom;
+    if(Math.abs(dx)>3||Math.abs(dy)>3) drag.moved=true;
+    drag.nx=Math.max(0,Math.round(drag.ox+dx)); drag.ny=Math.max(0,Math.round(drag.oy+dy));
+    drag.item.style.left=drag.nx+"px"; drag.item.style.top=drag.ny+"px";
+  });
+  const end=()=>{
+    if(!drag) return;
+    drag.item.classList.remove("dragging");
+    if(drag.moved){ drag.rec.x=drag.nx; drag.rec.y=drag.ny; save(); }
+    selectedFp={kind:drag.kind,id:drag.id};   // a click (no move) just selects
+    drag=null; renderSeating();
+  };
+  canvas.addEventListener("pointerup",end);
+  canvas.addEventListener("pointercancel",end);
+}
+
+/* ----- list view (tap-friendly fallback) ----- */
+function listHTML(attending,unassigned){
+  return `
+    <div class="toolbar" style="margin-bottom:12px"><button class="btn primary" onclick="editTable()">&#43; Add Table</button></div>
+    <div class="card unassigned-pool" style="margin-bottom:16px;" id="pool" ondragover="event.preventDefault()" ondrop="dropToPool(event)">
+      <h3 style="font-size:16px;margin-bottom:9px;">Unassigned attending guests <span style="color:var(--muted);font-size:12px;font-weight:600;">(${unassigned.length})</span></h3>
+      <div class="pool-list" id="poolList">${unassigned.length? unassigned.map(g=>poolChip(g)).join("") : '<span class="note-line">All attending guests are seated.</span>'}</div>
+    </div>
+    <div class="seat-grid" id="seatGrid">${DB.tables.length? DB.tables.map(t=>tableCard(t,attending)).join("") : `<div class="empty card">No tables yet — add your first table.</div>`}</div>`;
+}
+function poolChip(g){
+  return `<span class="g" draggable="true" data-id="${g.id}" ondragstart="dragStart(event,'${g.id}')">
+    ${esc(g.name)} <small style="color:var(--muted)">${esc(g.group||"")}</small>
+    <select aria-label="Assign ${esc(g.name)} to table" onchange="assignGuest('${g.id}',this.value)">
+      <option value="">Seat…</option>
+      ${DB.tables.map(t=>`<option value="${esc(t.name)}">${esc(t.name)}</option>`).join("")}
+    </select>
+  </span>`;
+}
+function tableCard(t,attending){
+  const seated=attending.filter(g=>g.table===t.name);
+  const open=num(t.capacity)-seated.length;
+  const over=seated.length>num(t.capacity);
+  return `<div class="seat-table ${over?"over":""}" data-table="${esc(t.name)}"
+      ondragover="seatDragOver(event)" ondragleave="seatDragLeave(event)" ondrop="dropToTable(event,'${esc(t.name)}')">
+    <h4><span>${esc(t.name)}</span>
+      <span style="display:flex;gap:5px;">
+        <button class="btn icon ghost sm" onclick="editTable('${t.id}')" aria-label="Edit table">&#9998;</button>
+        <button class="btn icon danger sm" onclick="deleteTable('${t.id}')" aria-label="Delete table">&#10005;</button>
+      </span>
+    </h4>
+    <div class="cap">
+      Capacity ${esc(t.capacity)} ·
+      ${over? `<span class="chip red">Over by ${seated.length-num(t.capacity)}</span>` : `<span class="chip ${open<=0?'amber':'green'}">${open} open seat${open===1?"":"s"}</span>`}
+      ${t.notes?` · <span style="color:var(--muted)">${esc(t.notes)}</span>`:""}
+    </div>
+    <ul class="seat-list" data-table="${esc(t.name)}">
+      ${seated.length? seated.map(g=>`<li draggable="true" data-id="${g.id}" ondragstart="dragStart(event,'${g.id}')">
+          <span>${esc(g.name)} ${g.plusOne?'<span class="chip sage" style="font-size:10px;">+1</span>':''} <small style="color:var(--muted)">${esc(g.group||"")}</small></span>
+          <button class="x" title="Unseat" onclick="assignGuest('${g.id}','')">&#10005;</button>
+        </li>`).join("") : '<li style="background:none;color:var(--muted);font-style:italic;cursor:default;">Empty — drag guests here</li>'}
+    </ul>
+  </div>`;
+}
+function assignGuest(id,table){
+  const g=DB.guests.find(x=>x.id===id); if(!g) return;
+  g.table=table; save(); renderSeating(); refreshIfOverview();
+}
+function editTable(id){
+  const t=id?DB.tables.find(x=>x.id===id):{};
+  openForm(id?"Edit Table":"Add Table",[
+    {key:"name",label:"Table Name / Number",type:"text",full:true,placeholder:"Table 1"},
+    {key:"capacity",label:"Capacity",type:"number",default:8},
+    {key:"notes",label:"Notes",type:"text"},
+  ], t, (vals)=>{
+    if(id){
+      const oldName=t.name;
+      Object.assign(t,vals);
+      // keep guest assignments in sync if the table was renamed
+      if(oldName!==vals.name) DB.guests.forEach(g=>{ if(g.table===oldName) g.table=vals.name; });
+    } else DB.tables.push(Object.assign({id:uid(),shape:"round",x:140,y:140,w:120,h:120,rot:0},vals));
+    save(); renderSeating(); toast(id?"Table updated":"Table added","good");
+  });
+}
+function deleteTable(id){
+  const t=DB.tables.find(x=>x.id===id); if(!t) return;
+  confirmAction(`Delete ${t.name}? Guests at this table will become unassigned.`,()=>{
+    DB.guests.forEach(g=>{ if(g.table===t.name) g.table=""; });
+    DB.tables=DB.tables.filter(x=>x.id!==id); save(); renderSeating(); toast("Table deleted","bad");
+  });
+}
+/* drag & drop */
+function dragStart(e,id){ dragGuestId=id; e.dataTransfer.effectAllowed="move"; }
+function seatDragOver(e){ e.preventDefault(); const ul=e.currentTarget.querySelector(".seat-list"); if(ul) ul.classList.add("drag-over"); }
+function seatDragLeave(e){ const ul=e.currentTarget.querySelector(".seat-list"); if(ul) ul.classList.remove("drag-over"); }
+function dropToTable(e,table){ e.preventDefault(); if(dragGuestId) assignGuest(dragGuestId,table); dragGuestId=null; }
+function dropToPool(e){ e.preventDefault(); if(dragGuestId) assignGuest(dragGuestId,""); dragGuestId=null; }
+function enableSeatDnD(){ /* listeners are inline; nothing extra needed */ }
+
+/* ============================================================
+   14. BUDGET TAB
+   ============================================================ */
+function renderBudget(){
+  const b=calcBudgetTotals();
+  const panel=$("#tab-budget");
+  const overBudget=b.totalBudget>0 && b.planning>b.totalBudget;
+  // category over-estimate alerts: actual/effective exceeds the estimate for that category
+  const overCats=Object.entries(b.perCategory).filter(([c,v])=>v.est>0 && v.effective>v.est).map(([c])=>c);
+  // payments due within 30 days and not fully paid
+  const dueSoon=DB.budget.filter(x=>{
+    if(!x.dueDate) return false; const d=daysUntil(x.dueDate);
+    return d!=null && d>=0 && d<=30 && balanceRemaining(x)>0;
+  });
+
+  panel.innerHTML=`
+    <div class="section-head">
+      <div><h2>Budget Tracker</h2><div class="sub">Estimates, actuals, deposits and balances — auto-calculated.</div></div>
+      <div class="toolbar"><button class="btn primary" onclick="editBudget()">&#43; Add Line Item</button></div>
+    </div>
+
+    <div class="cards-grid stat-grid" style="margin-bottom:14px;">
+      ${statCard("Total Budget",money(b.totalBudget),"Your ceiling","gold","⚖")}
+      ${statCard("Estimated",money(b.est),"Sum of estimates","sage","≡")}
+      ${statCard("Projected Spend",money(b.planning),"actual or estimate",overBudget?"blush":"sage","∑")}
+      ${statCard("Actual Spend",money(b.actual),"Confirmed","blush","✓")}
+      ${statCard("Deposits Paid",money(b.paid),"Paid so far","gold","✔")}
+      ${statCard("Remaining",money(b.remaining),overBudget?"Over budget":"left to spend",overBudget?"blush":"sage","✸")}
+    </div>
+
+    <div class="card" style="margin-bottom:14px;">
+      ${progressRow("Budget used (projected vs total)", b.totalBudget?Math.round(b.planning/b.totalBudget*100):0, overBudget?"over":"gold", `${money(b.planning)} projected of ${money(b.totalBudget)}`)}
+      ${overBudget?alert("bad",`You're ${money(b.planning-b.totalBudget)} over your total wedding budget.`):""}
+      ${overCats.length?alert("warn",`Over estimate in: ${overCats.join(", ")}.`):""}
+      ${dueSoon.length?alert("warn",`${dueSoon.length} payment${dueSoon.length>1?"s":""} due within 30 days (${dueSoon.map(x=>x.item||x.category).join(", ")}).`):""}
+    </div>
+
+    <div class="table-scroll">
+      <table class="data"><thead><tr>
+        ${th("Category","category","budget",renderBudget)}${th("Item / Vendor","item","budget",renderBudget)}
+        <th>Estimated</th><th>Actual</th><th>Deposit</th><th>Balance</th>
+        ${th("Due","dueDate","budget",renderBudget)}<th>Paid</th><th>Notes</th><th>Actions</th>
+      </tr></thead><tbody>
+        ${(()=>{ let rows=sortRecords(DB.budget.slice(),"budget",(x,c)=>x[c]||"");
+          if(!rows.length) return `<tr><td colspan="10" class="empty">No budget items yet.</td></tr>`;
+          return rows.map(x=>{
+            const bal=balanceRemaining(x);
+            const dd=x.dueDate?daysUntil(x.dueDate):null;
+            const dueChip = x.dueDate? (bal<=0?`<span class="chip green">${fmtDate(x.dueDate)}</span>`: dd<0?`<span class="chip red">${fmtDate(x.dueDate)}</span>`: dd<=30?`<span class="chip amber">${fmtDate(x.dueDate)}</span>`:fmtDate(x.dueDate)) : "—";
+            return `<tr>
+              <td><span class="chip gray">${esc(x.category)}</span></td>
+              <td><b>${esc(x.item)||"—"}</b></td>
+              <td>${money(x.est)}</td>
+              <td>${num(x.actual)>0?money(x.actual):'<span style="color:var(--muted)">—</span>'}</td>
+              <td>${money(x.deposit)}</td>
+              <td><b style="color:${bal>0?'var(--warn)':'var(--good)'}">${money(bal)}</b></td>
+              <td>${dueChip}</td>
+              <td>${x.paid==="yes"?'<span class="chip green">Paid</span>':'<span class="chip gray">Unpaid</span>'}</td>
+              <td>${esc(x.notes)||"—"}</td>
+              <td><div class="row-actions">
+                <button class="btn sm ghost" onclick="editBudget('${x.id}')">&#9998;</button>
+                <button class="btn sm danger" onclick="deleteBudget('${x.id}')">&#10005;</button>
+              </div></td>
+            </tr>`;}).join("");
+        })()}
+      </tbody></table>
+    </div>
+    <p class="note-line">Balance Remaining = Actual Cost &minus; Deposit Paid. When Actual is blank, the Estimate is used for projections.</p>
+  `;
+}
+function editBudget(id){
+  const x=id?DB.budget.find(b=>b.id===id):{};
+  openForm(id?"Edit Budget Item":"Add Budget Item",[
+    {key:"category",label:"Category",type:"select",options:BUDGET_CATS,default:"Venue"},
+    {key:"item",label:"Item / Vendor",type:"text"},
+    {key:"est",label:"Estimated Cost ($)",type:"number"},
+    {key:"actual",label:"Actual Cost ($)",type:"number"},
+    {key:"deposit",label:"Deposit Paid ($)",type:"number"},
+    {key:"dueDate",label:"Payment Due Date",type:"date"},
+    {key:"paid",label:"Paid in Full",type:"select",options:["no","yes"],default:"no"},
+    {key:"notes",label:"Notes",type:"textarea",full:true},
+  ], x, (vals)=>{
+    if(id) Object.assign(x,vals); else DB.budget.push(Object.assign({id:uid()},vals));
+    save(); renderBudget(); refreshIfOverview(); toast(id?"Budget item updated":"Budget item added","good");
+  });
+}
+function deleteBudget(id){
+  const x=DB.budget.find(b=>b.id===id); if(!x) return;
+  confirmAction(`Delete budget item "${x.item||x.category}"?`,()=>{
+    DB.budget=DB.budget.filter(b=>b.id!==id); save(); renderBudget(); toast("Budget item deleted","bad");
+  });
+}
+
+/* ============================================================
+   15. DAY-OF TIMELINE TAB
+
+   Backward timeline logic:
+   A day-of schedule is often planned BACKWARD from a fixed anchor — here, the
+   "Ceremony ends" time from setup. Everything before the ceremony (hair, photos,
+   first look) is scheduled by SUBTRACTING each block's duration from the anchor,
+   working upward. Everything after (cocktails, dinner, dancing) is scheduled by
+   ADDING durations, working downward. regenerateTimeline() rewrites the sample
+   schedule so it flows out from the ceremony-end anchor while preserving the
+   default running order and each item's duration.
+   ============================================================ */
+let timelineVendorView=false;
+function renderTimeline(){
+  const panel=$("#tab-timeline");
+  let rows=DB.timeline.slice().sort((a,b)=>(timeToMin(a.time)??9999)-(timeToMin(b.time)??9999));
+  const doneCount=rows.filter(r=>r.complete).length;
+
+  panel.innerHTML=`
+    <div class="section-head">
+      <div><h2>Day-Of Timeline</h2><div class="sub">Built around your ceremony-end time of ${esc(DB.setup.ceremonyEnd?minToTime(timeToMin(DB.setup.ceremonyEnd)):"—")}. ${doneCount}/${rows.length} done.</div></div>
+      <div class="toolbar">
+        <button class="btn ghost sm" onclick="toggleVendorView()">${timelineVendorView?"&#9776; List view":"&#128100; Vendor view"}</button>
+        <button class="btn ghost sm" onclick="regenerateTimeline()" title="Re-flow sample times from ceremony end">&#8635; Re-time from ceremony</button>
+        <button class="btn primary" onclick="editTimeline()">&#43; Add Event</button>
+      </div>
+    </div>
+    ${ timelineVendorView ? vendorViewHTML(rows) : `
+    <div class="table-scroll">
+      <table class="data"><thead><tr>
+        <th>Done</th><th>Time</th><th>Event</th><th>Location</th><th>Assigned</th><th>Dur.</th><th>Priority</th><th>Notes</th><th>Actions</th>
+      </tr></thead><tbody>
+        ${rows.length? rows.map(r=>`<tr class="${r.complete?'':''}" style="${r.complete?'opacity:.55;':''}">
+          <td><input type="checkbox" ${r.complete?"checked":""} onchange="toggleTimelineDone('${r.id}')" aria-label="Mark ${esc(r.event)} complete" style="width:18px;height:18px;accent-color:var(--sage-deep);"></td>
+          <td><b>${esc(r.time?minToTime(timeToMin(r.time))||r.time:"—")}</b></td>
+          <td><b>${esc(r.event)}</b></td>
+          <td>${esc(r.location)||"—"}</td>
+          <td>${esc(r.person)||"—"}</td>
+          <td>${r.duration?esc(r.duration)+" min":"—"}</td>
+          <td><span class="chip ${prioChip(r.priority)}">${esc(r.priority)}</span></td>
+          <td>${esc(r.notes)||"—"}</td>
+          <td><div class="row-actions">
+            <button class="btn sm ghost" onclick="editTimeline('${r.id}')">&#9998;</button>
+            <button class="btn sm danger" onclick="deleteTimeline('${r.id}')">&#10005;</button>
+          </div></td>
+        </tr>`).join("") : `<tr><td colspan="9" class="empty">No timeline items yet.</td></tr>`}
+      </tbody></table>
+    </div>`}
+    <details class="help"><summary>How the backward timeline works</summary>
+      The schedule is anchored to your <b>Ceremony End</b> time. “Re-time from ceremony” re-flows the
+      sample events outward from that anchor — earlier prep blocks are spaced by subtracting their
+      durations, later reception blocks by adding theirs — then you fine-tune any row by editing its time.
+    </details>
+  `;
+}
+function prioChip(p){return {High:"red",Medium:"amber",Low:"gray"}[p]||"gray";}
+function vendorViewHTML(rows){
+  const groups={};
+  rows.forEach(r=>{ const k=r.person||"Unassigned"; (groups[k]=groups[k]||[]).push(r); });
+  const keys=Object.keys(groups).sort();
+  if(!keys.length) return `<div class="empty card">No timeline items yet.</div>`;
+  return keys.map(k=>`<div class="card" style="margin-bottom:12px;">
+    <h3 style="font-size:17px;margin-bottom:8px;">&#128100; ${esc(k)} <span style="font-size:12px;color:var(--muted);font-weight:600;font-family:var(--sans);">${groups[k].length} item${groups[k].length>1?"s":""}</span></h3>
+    ${groups[k].map(r=>`<div style="display:flex;gap:12px;padding:7px 0;border-bottom:1px solid var(--line);">
+      <b style="min-width:78px;">${esc(r.time?minToTime(timeToMin(r.time))||r.time:"—")}</b>
+      <span style="flex:1;">${esc(r.event)} ${r.location?`<small style="color:var(--muted)">· ${esc(r.location)}</small>`:""}</span>
+      <span class="chip ${prioChip(r.priority)}">${esc(r.priority)}</span>
+    </div>`).join("")}
+  </div>`).join("");
+}
+function toggleVendorView(){ timelineVendorView=!timelineVendorView; renderTimeline(); }
+function toggleTimelineDone(id){ const r=DB.timeline.find(x=>x.id===id); if(r){ r.complete=!r.complete; save(); renderTimeline(); } }
+function editTimeline(id){
+  const r=id?DB.timeline.find(x=>x.id===id):{};
+  openForm(id?"Edit Timeline Event":"Add Timeline Event",[
+    {key:"time",label:"Time (e.g. 5:30 PM or 17:30)",type:"text",placeholder:"5:30 PM"},
+    {key:"duration",label:"Duration (min)",type:"number"},
+    {key:"event",label:"Event / Task",type:"text",full:true},
+    {key:"location",label:"Location",type:"text"},
+    {key:"person",label:"Assigned Person / Vendor",type:"text"},
+    {key:"priority",label:"Priority",type:"select",options:PRIORITIES,default:"Medium"},
+    {key:"notes",label:"Notes",type:"textarea",full:true},
+  ], r, (vals)=>{
+    if(id) Object.assign(r,vals); else DB.timeline.push(Object.assign({id:uid(),complete:false},vals));
+    save(); renderTimeline(); toast(id?"Event updated":"Event added","good");
+  });
+}
+function deleteTimeline(id){
+  const r=DB.timeline.find(x=>x.id===id); if(!r) return;
+  confirmAction(`Delete "${r.event}" from the timeline?`,()=>{
+    DB.timeline=DB.timeline.filter(x=>x.id!==id); save(); renderTimeline(); toast("Event deleted","bad");
+  });
+}
+function regenerateTimeline(){
+  confirmAction("Re-flow all timeline times outward from your ceremony-end time? This overwrites current times (events & durations are kept).",()=>{
+    const anchor=timeToMin(DB.setup.ceremonyEnd); if(anchor==null){ toast("Set a ceremony end time first","warn"); return; }
+    // Find the anchor event ("Ceremony ends") and flow forward; if absent, flow from first row.
+    const rows=DB.timeline.slice();
+    let idx=rows.findIndex(r=>/ceremony ends/i.test(r.event));
+    if(idx<0) idx=0;
+    // forward from anchor
+    let t=anchor;
+    for(let i=idx;i<rows.length;i++){ rows[i].time=minToTime(t); t+=num(rows[i].duration); }
+    // backward before anchor
+    t=anchor;
+    for(let i=idx-1;i>=0;i--){ t-=num(rows[i].duration||30); rows[i].time=minToTime(t); }
+    save(); renderTimeline(); toast("Timeline re-flowed from ceremony end","good");
+  });
+}
+
+/* ============================================================
+   16. VENDORS TAB  (comparison matrix + locked-in contacts)
+   ============================================================ */
+function renderVendors(){
+  const panel=$("#tab-vendors");
+  panel.innerHTML=`
+    <div class="section-head">
+      <div><h2>Vendors</h2><div class="sub">Compare options side-by-side, then lock in your favorites with full contact details.</div></div>
+      <div class="toolbar">
+        <button class="btn" onclick="editCompare()">&#43; Add Comparison</button>
+        <button class="btn primary" onclick="editVendor()">&#43; Add Locked-In Vendor</button>
+      </div>
+    </div>
+
+    <h3 style="font-size:21px;margin:6px 0 12px;">A · Comparison Matrix</h3>
+    <div id="compareWrap">${compareMatrixHTML()}</div>
+
+    <h3 style="font-size:21px;margin:26px 0 12px;">B · Locked-In Vendor Contacts <span class="chip sage">${countLockedVendors()} confirmed</span></h3>
+    <div class="table-scroll">
+      <table class="data"><thead><tr>
+        <th>Category</th><th>Business</th><th>Contact</th><th>Phone</th><th>Email</th><th>Website</th>
+        <th>Contract</th><th>Deposit</th><th>Final Due</th><th>Arrival</th><th>Emergency</th><th>Actions</th>
+      </tr></thead><tbody>
+        ${DB.vendors.length? DB.vendors.map(v=>{
+          const missing = v.contractSigned!=="yes" || v.depositPaid!=="yes";
+          return `<tr style="${missing?'background:#fdf6ef;':''}">
+            <td><span class="chip gold">${esc(v.category)}</span></td>
+            <td><b>${esc(v.business)}</b>${v.lockedIn?' <span class="chip green">Locked</span>':''}</td>
+            <td>${esc(v.contact)||"—"}</td>
+            <td>${esc(v.phone)||"—"}</td>
+            <td>${v.email?`<a href="mailto:${esc(v.email)}">${esc(v.email)}</a>`:"—"}</td>
+            <td>${v.website?`<a href="${/^https?:/.test(v.website)?esc(v.website):'https://'+esc(v.website)}" target="_blank" rel="noopener">link</a>`:"—"}</td>
+            <td>${v.contractSigned==="yes"?'<span class="chip green">Signed</span>':'<span class="chip red">Missing</span>'}</td>
+            <td>${v.depositPaid==="yes"?'<span class="chip green">Paid</span>':'<span class="chip amber">No</span>'}</td>
+            <td>${esc(v.finalDue?fmtDate(v.finalDue):"—")}</td>
+            <td>${esc(v.arrival)||"—"}</td>
+            <td>${esc(v.emergency)||"—"}</td>
+            <td><div class="row-actions">
+              <button class="btn sm ghost" onclick="editVendor('${v.id}')">&#9998;</button>
+              <button class="btn sm danger" onclick="deleteVendor('${v.id}')">&#10005;</button>
+            </div></td>
+          </tr>`;}).join("") : `<tr><td colspan="12" class="empty">No locked-in vendors yet.</td></tr>`}
+      </tbody></table>
+    </div>
+    <p class="note-line">Rows highlighted in peach are missing a signed contract or deposit.</p>
+  `;
+}
+function compareMatrixHTML(){
+  if(!DB.vendorCompare.length) return `<div class="empty card">No vendors to compare yet — add a few options per category.</div>`;
+  const byCat={};
+  DB.vendorCompare.forEach(v=>{ (byCat[v.category]=byCat[v.category]||[]).push(v); });
+  const criteria=[
+    ["price","Price",v=>money(v.price)],
+    ["pkg","Package",v=>esc(v.pkg)||"—"],
+    ["deposit","Deposit",v=>money(v.deposit)],
+    ["availability","Availability",v=>esc(v.availability)||"—"],
+    ["contract","Contract",v=>esc(v.contract)||"—"],
+    ["rating","Rating",v=>v.rating?`&#9733; ${esc(v.rating)}`:"—"],
+    ["comm","Communication",v=>esc(v.comm)||"—"],
+    ["pros","Pros",v=>esc(v.pros)||"—"],
+    ["cons","Cons",v=>esc(v.cons)||"—"],
+    ["redFlags","Red Flags",v=>v.redFlags?`<span class="chip red">${esc(v.redFlags)}</span>`:'<span class="chip green">None</span>'],
+    ["notes","Notes",v=>esc(v.notes)||"—"],
+  ];
+  return Object.keys(byCat).sort().map(cat=>{
+    const list=byCat[cat].slice(0,3); // compare up to 3 per category
+    return `<div class="vc-cat">
+      <h3>${esc(cat)} <span style="font-size:12px;color:var(--muted);font-weight:600;font-family:var(--sans);">${byCat[cat].length} option${byCat[cat].length>1?"s":""}</span></h3>
+      <div class="vendor-compare table-scroll"><table class="data"><thead><tr>
+        <th class="crit">Criteria</th>
+        ${list.map(v=>`<th>${v.favorite?'&#9733; ':''}${esc(v.name)}
+          <div class="row-actions" style="margin-top:5px;">
+            <button class="btn sm ghost" onclick="toggleFav('${v.id}')" title="Top choice">${v.favorite?'&#9733;':'&#9734;'}</button>
+            <button class="btn sm ghost" onclick="editCompare('${v.id}')">&#9998;</button>
+            <button class="btn sm danger" onclick="deleteCompare('${v.id}')">&#10005;</button>
+          </div></th>`).join("")}
+      </tr></thead><tbody>
+        ${criteria.map(([k,label,fn])=>`<tr><th class="crit">${label}</th>${list.map(v=>`<td>${fn(v)}</td>`).join("")}</tr>`).join("")}
+      </tbody></table></div>
+    </div>`;
+  }).join("");
+}
+function toggleFav(id){ const v=DB.vendorCompare.find(x=>x.id===id); if(v){ v.favorite=!v.favorite; save(); renderVendors(); } }
+function editCompare(id){
+  const v=id?DB.vendorCompare.find(x=>x.id===id):{};
+  openForm(id?"Edit Vendor Comparison":"Add Vendor Comparison",[
+    {key:"category",label:"Category",type:"select",options:VENDOR_CATS,default:"Venue"},
+    {key:"name",label:"Vendor Name",type:"text"},
+    {key:"price",label:"Price ($)",type:"number"},
+    {key:"deposit",label:"Deposit Required ($)",type:"number"},
+    {key:"pkg",label:"Package Details",type:"textarea",full:true},
+    {key:"availability",label:"Availability",type:"text"},
+    {key:"contract",label:"Contract Status",type:"text"},
+    {key:"rating",label:"Reviews / Rating (0-5)",type:"number",step:"0.1"},
+    {key:"comm",label:"Communication Quality",type:"text"},
+    {key:"pros",label:"Pros",type:"textarea",full:true},
+    {key:"cons",label:"Cons",type:"textarea",full:true},
+    {key:"redFlags",label:"Red Flags",type:"text",full:true},
+    {key:"notes",label:"Notes",type:"textarea",full:true},
+    {key:"favorite",label:"Top Choice / Favorite",type:"checkbox"},
+  ], v, (vals)=>{
+    if(id) Object.assign(v,vals); else DB.vendorCompare.push(Object.assign({id:uid()},vals));
+    save(); renderVendors(); toast(id?"Comparison updated":"Comparison added","good");
+  });
+}
+function deleteCompare(id){
+  const v=DB.vendorCompare.find(x=>x.id===id); if(!v) return;
+  confirmAction(`Remove ${v.name} from the comparison?`,()=>{
+    DB.vendorCompare=DB.vendorCompare.filter(x=>x.id!==id); save(); renderVendors(); toast("Comparison removed","bad");
+  });
+}
+function editVendor(id){
+  const v=id?DB.vendors.find(x=>x.id===id):{};
+  openForm(id?"Edit Locked-In Vendor":"Add Locked-In Vendor",[
+    {key:"category",label:"Category",type:"select",options:VENDOR_CATS,default:"Venue"},
+    {key:"business",label:"Business Name",type:"text"},
+    {key:"contact",label:"Contact Person",type:"text"},
+    {key:"phone",label:"Phone",type:"text"},
+    {key:"email",label:"Email",type:"text"},
+    {key:"website",label:"Website",type:"text"},
+    {key:"contractSigned",label:"Contract Signed",type:"select",options:["no","yes"],default:"no"},
+    {key:"depositPaid",label:"Deposit Paid",type:"select",options:["no","yes"],default:"no"},
+    {key:"finalDue",label:"Final Payment Due",type:"date"},
+    {key:"arrival",label:"Arrival Time",type:"text"},
+    {key:"emergency",label:"Emergency Contact",type:"text"},
+    {key:"lockedIn",label:"Locked In",type:"checkbox",default:true},
+    {key:"notes",label:"Notes",type:"textarea",full:true},
+  ], (id?v:{lockedIn:true}), (vals)=>{
+    if(id) Object.assign(v,vals); else DB.vendors.push(Object.assign({id:uid()},vals));
+    save(); renderVendors(); refreshIfOverview(); toast(id?"Vendor updated":"Vendor added","good");
+  });
+}
+function deleteVendor(id){
+  const v=DB.vendors.find(x=>x.id===id); if(!v) return;
+  confirmAction(`Delete ${v.business} from your vendors?`,()=>{
+    DB.vendors=DB.vendors.filter(x=>x.id!==id); save(); renderVendors(); refreshIfOverview(); toast("Vendor deleted","bad");
+  });
+}
+
+/* ============================================================
+   17. TASKS / CHECKLIST TAB
+   ============================================================ */
+const taskFilter={status:"",priority:"",assigned:""};
+function renderTasks(){
+  const tp=calcTaskProgress();
+  const panel=$("#tab-tasks");
+  const assignees=[...new Set(DB.tasks.map(t=>t.assigned).filter(Boolean))];
+  panel.innerHTML=`
+    <div class="section-head">
+      <div><h2>Tasks &amp; Checklist</h2><div class="sub">${tp.done} of ${tp.total} done · ${tp.overdue} overdue.</div></div>
+      <div class="toolbar"><button class="btn primary" onclick="editTask()">&#43; Add Task</button></div>
+    </div>
+
+    <div class="card" style="margin-bottom:14px;">
+      ${progressRow("Checklist completion",tp.pct,tp.pct>=60?"":"blush",`${tp.done}/${tp.total} complete · ${tp.inProgress} in progress`)}
+      ${tp.overdue?alert("warn",`${tp.overdue} task${tp.overdue>1?"s are":" is"} overdue.`):""}
+    </div>
+
+    <div class="filters">
+      <select id="tStatus" aria-label="Filter status"><option value="">All Status</option>${TASK_STATUS.map(s=>`<option ${taskFilter.status===s?"selected":""}>${s}</option>`).join("")}</select>
+      <select id="tPrio" aria-label="Filter priority"><option value="">All Priority</option>${PRIORITIES.map(p=>`<option ${taskFilter.priority===p?"selected":""}>${p}</option>`).join("")}</select>
+      <select id="tAssigned" aria-label="Filter assignee"><option value="">Anyone</option>${assignees.map(a=>`<option ${taskFilter.assigned===a?"selected":""}>${esc(a)}</option>`).join("")}</select>
+      <button class="btn ghost sm" onclick="clearTaskFilter()">Clear</button>
+    </div>
+
+    <div id="taskGroups"></div>
+  `;
+  $("#tStatus").addEventListener("change",e=>{taskFilter.status=e.target.value;fillTaskGroups();});
+  $("#tPrio").addEventListener("change",e=>{taskFilter.priority=e.target.value;fillTaskGroups();});
+  $("#tAssigned").addEventListener("change",e=>{taskFilter.assigned=e.target.value;fillTaskGroups();});
+  fillTaskGroups();
+}
+function fillTaskGroups(){
+  let rows=DB.tasks.slice();
+  if(taskFilter.status) rows=rows.filter(t=>t.status===taskFilter.status);
+  if(taskFilter.priority) rows=rows.filter(t=>t.priority===taskFilter.priority);
+  if(taskFilter.assigned) rows=rows.filter(t=>t.assigned===taskFilter.assigned);
+  const wrap=$("#taskGroups");
+  if(!rows.length){ wrap.innerHTML=`<div class="empty card">No tasks match these filters.</div>`; return; }
+  // group by the timeline buckets, in defined order; unknown groups go last
+  const order=[...TASK_GROUPS,"Other"];
+  const byGroup={};
+  rows.forEach(t=>{ const k=TASK_GROUPS.includes(t.group)?t.group:"Other"; (byGroup[k]=byGroup[k]||[]).push(t); });
+  wrap.innerHTML=order.filter(g=>byGroup[g]).map(g=>{
+    const list=byGroup[g];
+    const done=list.filter(t=>t.status==="Done").length;
+    return `<div class="task-group">
+      <h3>${esc(g)} <span class="count">${done}/${list.length} done</span></h3>
+      ${list.map(t=>taskItemHTML(t)).join("")}
+    </div>`;
+  }).join("");
+}
+function taskItemHTML(t){
+  const d=t.dueDate?daysUntil(t.dueDate):null;
+  const overdue=t.status!=="Done" && d!=null && d<0;
+  const dueChip = t.dueDate? (t.status==="Done"?`<span class="chip green">${fmtDate(t.dueDate)}</span>` : overdue?`<span class="chip red">Overdue · ${fmtDate(t.dueDate)}</span>` : d<=14?`<span class="chip amber">${fmtDate(t.dueDate)}</span>`:`<span class="chip gray">${fmtDate(t.dueDate)}</span>`) : "";
+  return `<div class="task-item ${t.status==="Done"?"done":""}">
+    <input type="checkbox" ${t.status==="Done"?"checked":""} onchange="quickToggleTask('${t.id}')" aria-label="Mark ${esc(t.name)} done">
+    <div class="t-main">
+      <div class="t-name">${esc(t.name)}</div>
+      <div class="t-meta">
+        <span class="chip ${prioChip(t.priority)}">${esc(t.priority)}</span>
+        <span class="chip ${t.status==="Done"?"green":t.status==="In Progress"?"amber":"gray"}">${esc(t.status)}</span>
+        ${t.category?`<span>&#9656; ${esc(t.category)}</span>`:""}
+        ${t.assigned?`<span>&#128100; ${esc(t.assigned)}</span>`:""}
+        ${dueChip}
+        ${t.notes?`<span style="color:var(--muted)">${esc(t.notes)}</span>`:""}
+      </div>
+    </div>
+    <div class="row-actions">
+      <button class="btn sm ghost" onclick="editTask('${t.id}')">&#9998;</button>
+      <button class="btn sm danger" onclick="deleteTask('${t.id}')">&#10005;</button>
+    </div>
+  </div>`;
+}
+function quickToggleTask(id){
+  const t=DB.tasks.find(x=>x.id===id); if(!t) return;
+  t.status = t.status==="Done" ? "Not Started" : "Done";
+  save(); fillTaskGroups(); refreshIfOverview();
+  // update the progress bar at top
+  const tp=calcTaskProgress();
+}
+function clearTaskFilter(){taskFilter.status="";taskFilter.priority="";taskFilter.assigned="";renderTasks();}
+function editTask(id){
+  const t=id?DB.tasks.find(x=>x.id===id):{};
+  openForm(id?"Edit Task":"Add Task",[
+    {key:"name",label:"Task Name",type:"text",full:true},
+    {key:"group",label:"Timeline Group",type:"select",options:TASK_GROUPS,default:"6-9 Months Out"},
+    {key:"category",label:"Category",type:"text"},
+    {key:"dueDate",label:"Due Date",type:"date"},
+    {key:"assigned",label:"Assigned To",type:"text"},
+    {key:"status",label:"Status",type:"select",options:TASK_STATUS,default:"Not Started"},
+    {key:"priority",label:"Priority",type:"select",options:PRIORITIES,default:"Medium"},
+    {key:"notes",label:"Notes",type:"textarea",full:true},
+  ], t, (vals)=>{
+    if(id) Object.assign(t,vals); else DB.tasks.push(Object.assign({id:uid()},vals));
+    save(); renderTasks(); refreshIfOverview(); toast(id?"Task updated":"Task added","good");
+  });
+}
+function deleteTask(id){
+  const t=DB.tasks.find(x=>x.id===id); if(!t) return;
+  confirmAction(`Delete task "${t.name}"?`,()=>{
+    DB.tasks=DB.tasks.filter(x=>x.id!==id); save(); renderTasks(); refreshIfOverview(); toast("Task deleted","bad");
+  });
+}
+
+/* ============================================================
+   18. EXPORT / PRINT TAB
+   ============================================================ */
+function renderExport(){
+  const panel=$("#tab-export");
+  panel.innerHTML=`
+    <div class="section-head"><div><h2>Export &amp; Print</h2><div class="sub">Back up your planner, hand sheets to vendors, or print the whole thing.</div></div></div>
+    <div class="export-grid">
+      ${exportCard("Guest List → CSV","Names, RSVP, meals, tables and notes.","exportGuestsCSV","✉")}
+      ${exportCard("Budget → CSV","Every line item with balances.","exportBudgetCSV","⚖")}
+      ${exportCard("Vendor List → CSV","Locked-in vendor contacts.","exportVendorsCSV","☎")}
+      ${exportCard("Timeline → CSV","Your day-of run sheet.","exportTimelineCSV","⏰")}
+      ${exportCard("Full Planner → JSON","Complete backup of everything.","exportJSON","⤓")}
+      ${exportCard("Import Planner (JSON)","Restore from a backup file.","triggerImport","⤒")}
+      ${exportCard("Copy Summary","Copy a text overview to clipboard.","copySummary","⎘")}
+      ${exportCard("Print Planner","Open the print-friendly full view.","printAll","⎙")}
+    </div>
+    <input type="file" id="importFile" accept="application/json,.json" style="display:none" onchange="importJSON(event)" />
+    <details class="help" style="margin-top:18px;"><summary>About your data &amp; privacy</summary>
+      Everything you enter is stored only in this browser (localStorage) on this device — nothing is uploaded.
+      Use <b>Full Planner → JSON</b> to back up or move to another device, and <b>Import</b> to restore it.
+    </details>
+  `;
+}
+function exportCard(title,desc,fn,ico){
+  return `<div class="card export-card">
+    <h4>${ico} ${esc(title)}</h4><p>${esc(desc)}</p>
+    <button class="btn ${fn==="exportJSON"||fn==="printAll"?"primary":""}" onclick="${fn}()">${fn==="printAll"?"Print":fn==="triggerImport"?"Choose file":fn==="copySummary"?"Copy":"Download"}</button>
+  </div>`;
+}
+/* ---- CSV helpers ---- */
+function csvCell(v){ v=String(v==null?"":v); return /[",\n]/.test(v) ? '"'+v.replace(/"/g,'""')+'"' : v; }
+function toCSV(headers,rows){ return [headers.map(csvCell).join(","),...rows.map(r=>r.map(csvCell).join(","))].join("\r\n"); }
+function download(filename,text,mime="text/csv"){
+  const blob=new Blob([text],{type:mime+";charset=utf-8"});
+  const a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download=filename;
+  document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(a.href);
+  toast("Downloaded "+filename,"good");
+}
+function slug(){ return (DB.setup.couple||"wedding").replace(/[^a-z0-9]+/gi,"-").toLowerCase().replace(/(^-|-$)/g,""); }
+function exportGuestsCSV(){
+  download(slug()+"-guests.csv", toCSV(
+    ["Name","Group/Household","Side","RSVP","Plus-One","Dietary","Meal","Table","Notes"],
+    DB.guests.map(g=>[g.name,g.group,g.side,g.rsvp,g.plusOne?"Yes":"No",g.dietary,g.meal,g.table,g.notes])
+  ));
+}
+function exportBudgetCSV(){
+  download(slug()+"-budget.csv", toCSV(
+    ["Category","Item/Vendor","Estimated","Actual","Deposit","Balance Remaining","Due Date","Paid","Notes"],
+    DB.budget.map(b=>[b.category,b.item,b.est,b.actual,b.deposit,balanceRemaining(b),b.dueDate,b.paid,b.notes])
+  ));
+}
+function exportVendorsCSV(){
+  download(slug()+"-vendors.csv", toCSV(
+    ["Category","Business","Contact","Phone","Email","Website","Contract Signed","Deposit Paid","Final Due","Arrival","Emergency","Notes"],
+    DB.vendors.map(v=>[v.category,v.business,v.contact,v.phone,v.email,v.website,v.contractSigned,v.depositPaid,v.finalDue,v.arrival,v.emergency,v.notes])
+  ));
+}
+function exportTimelineCSV(){
+  const rows=DB.timeline.slice().sort((a,b)=>(timeToMin(a.time)??9999)-(timeToMin(b.time)??9999));
+  download(slug()+"-timeline.csv", toCSV(
+    ["Time","Event","Location","Assigned","Duration (min)","Priority","Complete","Notes"],
+    rows.map(r=>[r.time?minToTime(timeToMin(r.time))||r.time:"",r.event,r.location,r.person,r.duration,r.priority,r.complete?"Yes":"No",r.notes])
+  ));
+}
+function exportJSON(){
+  download(slug()+"-planner-backup.json", JSON.stringify(DB,null,2),"application/json");
+}
+function triggerImport(){ $("#importFile").click(); }
+function importJSON(e){
+  const file=e.target.files[0]; if(!file) return;
+  const reader=new FileReader();
+  reader.onload=()=>{
+    try{
+      const data=JSON.parse(reader.result);
+      if(!data.setup||!Array.isArray(data.guests)) throw new Error("Not a valid planner file");
+      confirmAction("Import this planner? It will REPLACE all current data.",()=>{
+        DB=normalize(data); save(); renderSetup(); renderActive(); toast("Planner imported","good");
+      });
+    }catch(err){ toast("Import failed: "+err.message,"bad"); }
+    e.target.value="";
+  };
+  reader.readAsText(file);
+}
+function copySummary(){
+  const g=calcGuestTotals(), b=calcBudgetTotals(), tp=calcTaskProgress(), m=calcMealTotals();
+  const s=DB.setup;
+  const txt=
+`${s.couple||"Our Wedding"} — Planning Summary
+${s.date?fmtDate(s.date)+(daysUntil(s.date)>=0?` (${daysUntil(s.date)} days to go)`:""):""}
+Location: ${s.city||"—"} · Vibe: ${s.vibe||"—"}
+
+GUESTS: ${g.total} invited · ${g.attending} attending · ${g.declined} declined · ${g.awaiting} awaiting · ${g.plusOnes} plus-ones
+MEALS:  Chicken ${m.Chicken} · Fish ${m.Fish} · Veg ${m.Vegetarian} · Vegan ${m.Vegan} · Kids ${m.Kids} · Other ${m.Other} · Unselected ${m.Unselected}
+BUDGET: ${money(b.totalBudget)} budget · ${money(b.planning)} projected · ${money(b.actual)} actual · ${money(b.paid)} deposits · ${money(b.remaining)} remaining
+VENDORS: ${countLockedVendors()} locked in
+TASKS: ${tp.done}/${tp.total} done (${tp.pct}%) · ${tp.overdue} overdue`;
+  navigator.clipboard.writeText(txt).then(()=>toast("Summary copied to clipboard","good"),()=>{
+    // fallback
+    const ta=document.createElement("textarea"); ta.value=txt; document.body.appendChild(ta); ta.select();
+    document.execCommand("copy"); ta.remove(); toast("Summary copied","good");
+  });
+}
+function printAll(){
+  // Render every tab, then print. We temporarily make all panels visible.
+  ["overview","guests","seating","budget","timeline","vendors","tasks"].forEach(id=>{
+    ({overview:renderOverview,guests:renderGuests,seating:renderSeating,budget:renderBudget,timeline:renderTimeline,vendors:renderVendors,tasks:renderTasks}[id])();
+  });
+  document.querySelectorAll(".tab-panel").forEach(p=>p.classList.add("active"));
+  window.print();
+  // restore single-tab view after printing
+  setTimeout(()=>{ document.querySelectorAll(".tab-panel").forEach(p=>p.classList.toggle("active",p.id==="tab-"+activeTab)); },300);
+}
+
+/* ============================================================
+   19. RESET / NORMALIZE / INIT
+   ============================================================ */
+function refreshIfOverview(){ if(activeTab==="overview") renderOverview(); }
+function confirmReset(){
+  confirmAction("Reset everything back to the demo data? Your current planner will be erased.",()=>{
+    freshDemo(); save(); renderSetup(); renderActive(); toast("Demo data restored","good");
+  });
+}
+// ensure every expected array/field exists so blank/old files don't break the app
+function normalize(d){
+  d=d||{};
+  d.setup=Object.assign({couple:"",date:"",guestGoal:"",budget:"",vibe:"",city:"",ceremonyEnd:""},d.setup||{});
+  ["guests","tables","budget","timeline","vendorCompare","vendors","tasks","fixtures"].forEach(k=>{ if(!Array.isArray(d[k])) d[k]=[]; });
+  // backfill ids
+  ["guests","tables","budget","timeline","vendorCompare","vendors","tasks","fixtures"].forEach(k=>d[k].forEach(r=>{ if(!r.id) r.id=uid(); }));
+  // backfill floor-plan layout fields on tables imported from older versions
+  d.tables.forEach((t,i)=>{
+    if(!t.shape) t.shape="round";
+    if(t.w==null) t.w = t.shape==="head"?240:t.shape==="oval"?170:t.shape==="rect"?180:120;
+    if(t.h==null) t.h = t.shape==="head"?70:t.shape==="oval"?110:t.shape==="rect"?100:120;
+    if(t.x==null) t.x = 120+(i%5)*180;
+    if(t.y==null) t.y = 110+Math.floor(i/5)*200;
+    if(t.rot==null) t.rot=0;
+    if(t.capacity==null) t.capacity=8;
+  });
+  return d;
+}
+function init(){
+  if(load()) DB=normalize(DB);
+  else { freshDemo(); save(); }
+  loadSession();
+  buildTabs();
+  renderSetup();
+  updateAccountBtn();
+  switchTab("overview");
+  // if a session was restored, refresh the token quietly in the background
+  if(cloudEnabled() && SESSION){ authRefresh().then(ok=>{ if(ok) updateAccountBtn(); }); }
+}
+document.addEventListener("DOMContentLoaded",init);
+</script>
+</body>
+</html>

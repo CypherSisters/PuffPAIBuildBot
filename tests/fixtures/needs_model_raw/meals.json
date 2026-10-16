@@ -1,0 +1,217 @@
+{
+ "goal_id": "meals",
+ "model": "qwen2.5:7b-instruct",
+ "prompt_tag": "v5",
+ "at": "2026-09-27T00:31:43",
+ "timing": {
+  "wall_s": 14.26,
+  "first_token_s": 0.08,
+  "first_job_s": 2.87,
+  "load_s": 0.01,
+  "prompt_tokens": 715,
+  "prompt_s": 0.04,
+  "out_tokens": 649,
+  "gen_s": 14.18,
+  "tok_per_s": 45.8,
+  "done_reason": "stop"
+ },
+ "raw": "{\n  \"kind\": \"meal planner\",\n  \"asked\": [\n    \"plan weekly dinners\",\n    \"save recipes from websites\",\n    \"make a grocery list sorted by aisle\",\n    \"use up what is in the fridge\"\n  ],\n  \"also_needed\": [\n    \"consider dietary restrictions\",\n    \"suggest healthy meal options\"\n  ],\n  \"jobs\": [\n    {\n      \"name\": \"meal planning\",\n      \"does\": \"create a weekly dinner plan for a family of five\",\n      \"parts\": [\n        { \"kind\": \"code-app\", \"search\": [\"meal planner\", \"weekly meal plan\"] },\n        { \"kind\": \"knowledge\", \"search\": [\"meal planning for families\", \"meal planning with dietaryrestrictions\"] }\n      ]\n    },\n    {\n      \"name\": \"recipe saving\",\n      \"does\": \"store recipes from various websites\",\n      \"parts\": [\n        { \"kind\": \"code-app\", \"search\": [\"recipe saver\", \"recipe manager\"] },\n        { \"kind\": \"data-template\", \"search\": [\"recipe database\", \"recipe spreadsheet\"] }\n      ]\n    },\n    {\n      \"name\": \"grocery list creation\",\n      \"does\": \"generate a grocery list based on the meal plan\",\n      \"parts\": [\n        { \"kind\": \"code-app\", \"search\": [\"grocery list generator\", \"shopping list app\"] },\n        { \"kind\": \"data-template\", \"search\": [\"grocery list template\", \"shopping list template\"] }\n      ]\n    },\n    {\n      \"name\": \"aisle sorting\",\n      \"does\": \"organize the grocery list by store aisles\",\n      \"parts\": [\n        { \"kind\": \"code-app\", \"search\": [\"aisle sorting\", \"grocery list by aisle\"] },\n        { \"kind\": \"knowledge\", \"search\": [\"grocery store layout\", \"store aisle organization\"] }\n      ]\n    },\n    {\n      \"name\": \"fridge inventory\",\n      \"does\": \"use existing food in the fridge to suggest meals\",\n      \"parts\": [\n        { \"kind\": \"code-app\", \"search\": [\"fridge inventory\", \"use fridge inventory\"] },\n        { \"kind\": \"live-info\", \"search\": [\"local grocery store prices\", \"grocery store inventory\"] }\n      ]\n    },\n    {\n      \"name\": \"dietary restriction handling\",\n      \"does\": \"ensure meal plans respect gluten-free and peanut-free requirements\",\n      \"parts\": [\n        { \"kind\": \"code-app\", \"search\": [\"dietary restrictions\", \"gluten free recipes\", \"peanut allergy recipes\"] },\n        { \"kind\": \"knowledge\", \"search\": [\"gluten free cooking\", \"peanut allergy cooking\"] }\n      ]\n    },\n    {\n      \"name\": \"healthy meal suggestions\",\n      \"does\": \"provide nutritious meal options\",\n      \"parts\": [\n        { \"kind\": \"code-app\", \"search\": [\"healthy meal planner\", \"healthy meal suggestions\"] },\n        { \"kind\": \"knowledge\", \"search\": [\"healthy eating\", \"balanced diet\"] }\n      ]\n    }\n  ]\n}",
+ "parsed": {
+  "kind": "meal planner",
+  "asked": [
+   "plan weekly dinners",
+   "save recipes from websites",
+   "make a grocery list sorted by aisle",
+   "use up what is in the fridge"
+  ],
+  "also_needed": [
+   "consider dietary restrictions",
+   "suggest healthy meal options"
+  ],
+  "jobs": [
+   {
+    "name": "meal planning",
+    "does": "create a weekly dinner plan for a family of five",
+    "parts": [
+     {
+      "kind": "code-app",
+      "search": [
+       "meal planner",
+       "weekly meal plan"
+      ]
+     },
+     {
+      "kind": "knowledge",
+      "search": [
+       "meal planning for families",
+       "meal planning with dietaryrestrictions"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "recipe saving",
+    "does": "store recipes from various websites",
+    "parts": [
+     {
+      "kind": "code-app",
+      "search": [
+       "recipe saver",
+       "recipe manager"
+      ]
+     },
+     {
+      "kind": "data-template",
+      "search": [
+       "recipe database",
+       "recipe spreadsheet"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "grocery list creation",
+    "does": "generate a grocery list based on the meal plan",
+    "parts": [
+     {
+      "kind": "code-app",
+      "search": [
+       "grocery list generator",
+       "shopping list app"
+      ]
+     },
+     {
+      "kind": "data-template",
+      "search": [
+       "grocery list template",
+       "shopping list template"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "aisle sorting",
+    "does": "organize the grocery list by store aisles",
+    "parts": [
+     {
+      "kind": "code-app",
+      "search": [
+       "aisle sorting",
+       "grocery list by aisle"
+      ]
+     },
+     {
+      "kind": "knowledge",
+      "search": [
+       "grocery store layout",
+       "store aisle organization"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "fridge inventory",
+    "does": "use existing food in the fridge to suggest meals",
+    "parts": [
+     {
+      "kind": "code-app",
+      "search": [
+       "fridge inventory",
+       "use fridge inventory"
+      ]
+     },
+     {
+      "kind": "live-info",
+      "search": [
+       "local grocery store prices",
+       "grocery store inventory"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "dietary restriction handling",
+    "does": "ensure meal plans respect gluten-free and peanut-free requirements",
+    "parts": [
+     {
+      "kind": "code-app",
+      "search": [
+       "dietary restrictions",
+       "gluten free recipes",
+       "peanut allergy recipes"
+      ]
+     },
+     {
+      "kind": "knowledge",
+      "search": [
+       "gluten free cooking",
+       "peanut allergy cooking"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "healthy meal suggestions",
+    "does": "provide nutritious meal options",
+    "parts": [
+     {
+      "kind": "code-app",
+      "search": [
+       "healthy meal planner",
+       "healthy meal suggestions"
+      ]
+     },
+     {
+      "kind": "knowledge",
+      "search": [
+       "healthy eating",
+       "balanced diet"
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "check": {
+  "valid": true,
+  "kind": "meal planner",
+  "jobs": 7,
+  "jobs_in_range": true,
+  "phrases": 29,
+  "unique_phrases": 29,
+  "parts_with_bad_phrase_count": 0,
+  "kinds": {
+   "code-app": 7,
+   "knowledge": 4,
+   "data-template": 2,
+   "live-info": 1
+  },
+  "leaks": [
+   {
+    "phrase": "gluten free recipes",
+    "why": [
+     "detail:gluten free"
+    ]
+   },
+   {
+    "phrase": "peanut allergy recipes",
+    "why": [
+     "detail:peanut allergy"
+    ]
+   },
+   {
+    "phrase": "gluten free cooking",
+    "why": [
+     "detail:gluten free"
+    ]
+   },
+   {
+    "phrase": "peanut allergy cooking",
+    "why": [
+     "detail:peanut allergy"
+    ]
+   }
+  ],
+  "kind_leak": []
+ }
+}

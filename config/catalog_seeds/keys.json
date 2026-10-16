@@ -1,0 +1,126 @@
+{
+  "schema": "puffpai_key_catalog/v1",
+  "checked": "2026-09-24",
+  "note": "Curated sign-up keys. DATA only: every address, host, header name and test address here was written by a person and checked against the service's own page on the date above. The model never adds or changes a row. A row may only use header placement in this version; query placement is refused by security/keys.py.",
+  "keys": [
+    {
+      "id": "brave_search",
+      "name": "Brave Search",
+      "for": "Searching the whole web when you ask me to.",
+      "used_by": "web_search",
+      "door": "brave_search",
+      "signup_url": "https://api-dashboard.search.brave.com/register",
+      "signup_steps": [
+        "Sign up with your email address.",
+        "Pick the free plan. Brave asks for a payment card to stop abuse. It does not charge while you stay under the free amount, and this bot stops at 900 searches a month so you stay under it.",
+        "Make a key on the API keys page and copy it."
+      ],
+      "how_long": "about 3 minutes",
+      "cost_note": "Free up to about 1,000 searches a month. Brave asks for a payment card when you sign up.",
+      "card_required": true,
+      "personal_use_only": false,
+      "placement": {"in": "header", "name": "X-Subscription-Token"},
+      "hosts": ["api.search.brave.com"],
+      "check": {
+        "url": "https://api.search.brave.com/res/v1/web/search?q=weather&count=1",
+        "ok": [200],
+        "rejected": [401, 403, 422]
+      },
+      "shape": "^[A-Za-z0-9_-]{16,128}$",
+      "monthly_cap": 900,
+      "per_minute_cap": 10,
+      "results_note": "Brave's terms do not let this bot keep search results, so saved chats keep a short note instead of the answer."
+    },
+    {
+      "id": "marginalia_search",
+      "name": "Marginalia Search",
+      "for": "Searching the web when you ask me to, with no payment card. Its list of websites is small, so answers can be thin.",
+      "used_by": "web_search",
+      "door": "marginalia_search",
+      "signup_url": "https://about.marginalia-search.com/article/api/",
+      "signup_steps": [
+        "That page gives an email address. Send it a short note asking for a free key for personal use.",
+        "The key comes back by email. Copy it."
+      ],
+      "how_long": "one email, then a wait for the reply",
+      "cost_note": "Free for personal use only. No payment card.",
+      "card_required": false,
+      "personal_use_only": true,
+      "placement": {"in": "header", "name": "API-Key"},
+      "hosts": ["api2.marginalia-search.com"],
+      "check": {
+        "url": "https://api2.marginalia-search.com/search?query=weather&count=1",
+        "ok": [200],
+        "rejected": [401, 403]
+      },
+      "shape": "^[A-Za-z0-9_-]{8,128}$",
+      "monthly_cap": null,
+      "per_minute_cap": 10,
+      "public_test_key": "public",
+      "results_note": "Marginalia's results are shared for non-commercial use only."
+    },
+    {
+      "id": "github",
+      "name": "GitHub",
+      "for": "Searching GitHub with your own account, and finding your own projects and the ones you starred.",
+      "used_by": "code_search",
+      "door": "github",
+      "signup_url": "https://github.com/settings/personal-access-tokens/new",
+      "signup_steps": [
+        "Sign in to GitHub. A free account is enough.",
+        "On the new token page, name the token BuildBot and pick when it runs out.",
+        "Choose Public repositories to let BuildBot search and see your public projects. To let it use a private project too, pick that project and set Contents to Read-only.",
+        "Press Generate token and copy it."
+      ],
+      "how_long": "about 2 minutes",
+      "cost_note": "Free. No payment card.",
+      "card_required": false,
+      "personal_use_only": false,
+      "vault_only": true,
+      "own_page": "github_account",
+      "check_before_setup": true,
+      "setup_service": "github",
+      "placement": {"in": "header", "name": "Authorization", "value_format": "Bearer {key}"},
+      "hosts": ["api.github.com"],
+      "check": {
+        "url": "https://api.github.com/user",
+        "ok": [200],
+        "rejected": [401]
+      },
+      "shape": "^(?:github_pat_[A-Za-z0-9_]{20,255}|gh[pousr]_[A-Za-z0-9]{30,255})$",
+      "monthly_cap": null,
+      "per_minute_cap": 30,
+      "privacy_note": "While your GitHub account is connected, GitHub can link these searches to your account."
+    },
+    {
+      "id": "anthropic",
+      "name": "Anthropic",
+      "for": "Toolsmith's cloud model, when you choose it in Settings: it installs and starts apps.",
+      "signup_url": "https://console.anthropic.com/settings/keys",
+      "door": "toolsmith_cloud",
+      "own_page": "toolsmith_cloud",
+      "vault_only": true,
+      "store_before_setup": true,
+      "how_long": "about 3 minutes",
+      "cost_note": "Anthropic bills your account for each use. Settings shows about how much Toolsmith used. This bot stops at 3000 requests a month.",
+      "card_required": true,
+      "personal_use_only": false,
+      "placement": {"in": "header", "name": "x-api-key"},
+      "hosts": ["api.anthropic.com"],
+      "check": {
+        "url": "https://api.anthropic.com/v1/models",
+        "ok": [200],
+        "rejected": [401]
+      },
+      "check_headers": {"anthropic-version": "2023-06-01"},
+      "shape": "^sk-ant-[A-Za-z0-9_-]{20,300}$",
+      "monthly_cap": 3000,
+      "per_minute_cap": 40,
+      "signup_steps": [
+        "Sign in to the Anthropic Console.",
+        "Add a payment method under Billing.",
+        "Make a key on the API keys page and copy it."
+      ]
+    }
+  ]
+}

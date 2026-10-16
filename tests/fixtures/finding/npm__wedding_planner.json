@@ -1,0 +1,467 @@
+{
+"objects": [
+{
+"downloads": {
+"monthly": 193,
+"weekly": 5
+},
+"dependents": 0,
+"updated": "2026-09-28T22:31:26.186Z",
+"searchScore": 397.55682,
+"package": {
+"name": "@xuda.dev/event-wedding-planner-ai-agent",
+"keywords": [
+"xuda",
+"ai-agent",
+"cli",
+"event-wedding-planner-ai-agent",
+"industry-specific",
+"events",
+"wedding",
+"run-sheet",
+"budget",
+"suppliers",
+"guest-list",
+"xlsx",
+"docx"
+],
+"version": "0.1.1",
+"description": "Event & Wedding Planner",
+"sanitized_name": "@xuda-dev/event-wedding-planner-ai-agent",
+"publisher": {
+"username": "xuda.io"
+},
+"license": "MIT",
+"date": "2026-08-31T22:07:33.421Z",
+"links": {
+"homepage": "https://dev.xuda.ai/marketplace/agents/7fc_agn_126c24a6515c",
+"repository": "git+https://github.com/xudaio/xuda.git",
+"bugs": "https://github.com/xudaio/xuda/issues",
+"npm": "https://www.npmjs.com/package/@xuda.dev/event-wedding-planner-ai-agent"
+}
+},
+"score": {
+"final": 397.55682,
+"detail": {
+"popularity": 1,
+"quality": 1,
+"maintenance": 1
+}
+},
+"flags": {
+"insecure": 0
+}
+},
+{
+"downloads": {
+"monthly": 59,
+"weekly": 13
+},
+"dependents": 0,
+"updated": "2026-09-27T09:51:08.569Z",
+"searchScore": 171.94016,
+"package": {
+"name": "weddingplanner-types",
+"keywords": [],
+"version": "1.0.21",
+"description": "Shared TypeScript types for wedding planner application",
+"sanitized_name": "weddingplanner-types",
+"publisher": {
+"username": "dragevmierkol"
+},
+"date": "2025-08-31T04:26:00.676Z",
+"links": {
+"npm": "https://www.npmjs.com/package/weddingplanner-types"
+}
+},
+"score": {
+"final": 171.94016,
+"detail": {
+"popularity": 1,
+"quality": 1,
+"maintenance": 1
+}
+},
+"flags": {
+"insecure": 0
+}
+},
+{
+"downloads": {
+"monthly": 1221875,
+"weekly": 348735
+},
+"dependents": "6",
+"updated": "2026-10-03T20:09:18.795Z",
+"searchScore": 84.31575,
+"package": {
+"name": "@apollo/query-planner",
+"keywords": [
+"graphql",
+"federation",
+"gateway",
+"server",
+"apollo"
+],
+"version": "2.14.4",
+"description": "Apollo Query Planner",
+"sanitized_name": "@apollo/query-planner",
+"publisher": {
+"actor": {
+"name": "apollo-bot",
+"type": "user"
+},
+"trustedPublisher": {
+"oidcConfigId": "oidc:3c8e6779-2bfb-41fb-8cc8-628ab94045a4",
+"id": "github"
+},
+"username": "GitHub Actions"
+},
+"license": "Elastic-2.0",
+"date": "2026-08-18T20:28:43.997Z",
+"links": {
+"homepage": "https://github.com/apollographql/federation#readme",
+"repository": "git+https://github.com/apollographql/federation.git",
+"bugs": "https://github.com/apollographql/federation/issues",
+"npm": "https://www.npmjs.com/package/@apollo/query-planner"
+}
+},
+"score": {
+"final": 84.31575,
+"detail": {
+"popularity": 1,
+"quality": 1,
+"maintenance": 1
+}
+},
+"flags": {
+"insecure": 0
+}
+},
+{
+"downloads": {
+"monthly": 3326,
+"weekly": 670
+},
+"dependents": 0,
+"updated": "2026-10-03T01:40:45.500Z",
+"searchScore": 70.083435,
+"package": {
+"name": "honeybook-mcp",
+"keywords": [
+"mcp",
+"honeybook",
+"wedding",
+"contracts",
+"invoices",
+"model-context-protocol",
+"claude",
+"messages",
+"meetings"
+],
+"version": "1.2.3",
+"description": "HoneyBook client-portal MCP server for Claude",
+"sanitized_name": "honeybook-mcp",
+"publisher": {
+"trustedPublisher": {
+"oidcConfigId": "bd683d97-561f-49ed-b0af-0cdd93a8e965",
+"id": "github"
+},
+"username": "GitHub Actions"
+},
+"license": "MIT",
+"date": "2026-10-03T01:40:14.323Z",
+"links": {
+"homepage": "https://github.com/chrischall/honeybook-mcp#readme",
+"repository": "git+https://github.com/chrischall/honeybook-mcp.git",
+"bugs": "https://github.com/chrischall/honeybook-mcp/issues",
+"npm": "https://www.npmjs.com/package/honeybook-mcp"
+}
+},
+"score": {
+"final": 70.083435,
+"detail": {
+"popularity": 1,
+"quality": 1,
+"maintenance": 1
+}
+},
+"flags": {
+"insecure": 0
+}
+},
+{
+"downloads": {
+"monthly": 270403,
+"weekly": 83459
+},
+"dependents": "5",
+"updated": "2026-10-04T00:40:22.749Z",
+"searchScore": 67.24822,
+"package": {
+"name": "jscad-planner",
+"keywords": [],
+"version": "0.0.18",
+"description": "jscad-planner is a TypeScript library that allows you to serialize JSCAD operations into a JSON plan, which can be executed later. This is particularly useful for storing JSCAD operations and executing them on demand.",
+"sanitized_name": "jscad-planner",
+"publisher": {
+"trustedPublisher": {
+"oidcConfigId": "2d9ec25d-8190-457b-b048-196b819ba295",
+"id": "github"
+},
+"username": "GitHub Actions"
+},
+"date": "2026-10-04T00:39:51.563Z",
+"links": {
+"homepage": "https://github.com/tscircuit/jscad-planner#readme",
+"repository": "git+https://github.com/tscircuit/jscad-planner.git",
+"bugs": "https://github.com/tscircuit/jscad-planner/issues",
+"npm": "https://www.npmjs.com/package/jscad-planner"
+}
+},
+"score": {
+"final": 67.24822,
+"detail": {
+"popularity": 1,
+"quality": 1,
+"maintenance": 1
+}
+},
+"flags": {
+"insecure": 0
+}
+},
+{
+"downloads": {
+"monthly": 16919,
+"weekly": 14761
+},
+"dependents": "0",
+"updated": "2026-10-02T23:47:27.329Z",
+"searchScore": 53.465008,
+"package": {
+"name": "react-planner",
+"keywords": [
+"floorplanner",
+"plan",
+"svg",
+"3d",
+"home design",
+"interior design",
+"react",
+"react-component",
+"react.js",
+"ui",
+"interface",
+"component"
+],
+"version": "2.0.6",
+"description": "react-planner is a React Component for plans design. Draw a 2D floorplan and navigate it in 3D mode.",
+"sanitized_name": "react-planner",
+"publisher": {
+"username": "danilosalvati"
+},
+"license": "MIT",
+"date": "2019-11-03T23:58:57.208Z",
+"links": {
+"homepage": "https://github.com/cvdlab/react-planner#readme",
+"repository": "git+https://github.com/cvdlab/react-planner.git",
+"bugs": "https://github.com/cvdlab/react-planner/issues",
+"npm": "https://www.npmjs.com/package/react-planner"
+}
+},
+"score": {
+"final": 53.465008,
+"detail": {
+"popularity": 1,
+"quality": 1,
+"maintenance": 1
+}
+},
+"flags": {
+"insecure": 0
+}
+},
+{
+"downloads": {
+"monthly": 13301,
+"weekly": 2968
+},
+"dependents": "1",
+"updated": "2026-10-01T15:19:42.158Z",
+"searchScore": 51.640892,
+"package": {
+"name": "@graphql-hive/router-query-planner",
+"keywords": [],
+"version": "0.0.47",
+"description": "A high-performance Node.js addon containing the query planner of [Hive Router](https://the-guild.dev/graphql/hive/docs/router). This package provides GraphQL Federation query planning capabilities built with Rust and N-API for optimal performance.",
+"sanitized_name": "@graphql-hive/router-query-planner",
+"publisher": {
+"trustedPublisher": {
+"oidcConfigId": "oidc:78b0bb6c-4c27-4344-9ceb-ea8cbf4b10ad",
+"id": "github"
+},
+"username": "GitHub Actions"
+},
+"license": "MIT",
+"date": "2026-09-28T12:04:44.648Z",
+"links": {
+"homepage": "https://the-guild.dev/graphql/hive/docs/router",
+"repository": "git+https://github.com/graphql-hive/router.git",
+"bugs": "https://github.com/graphql-hive/router/issues",
+"npm": "https://www.npmjs.com/package/@graphql-hive/router-query-planner"
+}
+},
+"score": {
+"final": 51.640892,
+"detail": {
+"popularity": 1,
+"quality": 1,
+"maintenance": 1
+}
+},
+"flags": {
+"insecure": 0
+}
+},
+{
+"downloads": {
+"monthly": 2228,
+"weekly": 193
+},
+"dependents": 0,
+"updated": "2026-10-02T18:25:49.457Z",
+"searchScore": 51.57067,
+"package": {
+"name": "fabric8-planner",
+"keywords": [
+"angular",
+"angular2",
+"angular 2",
+"angular4",
+"angular 4",
+"ng",
+"ng2",
+"ng4",
+"planner",
+"alm",
+"fabric8",
+"openshift",
+"openshiftio"
+],
+"version": "0.59.0",
+"description": "A planner front-end for Fabric8.",
+"sanitized_name": "fabric8-planner",
+"publisher": {
+"username": "fabric8cd"
+},
+"license": "Apache-2.0",
+"date": "2018-12-14T18:41:36.105Z",
+"links": {
+"homepage": "https://github.com/fabric8-ui/fabric8-planner",
+"repository": "git+https://github.com/fabric8-ui/fabric8-planner.git",
+"bugs": "https://github.com/fabric8-ui/fabric8-planner/issues",
+"npm": "https://www.npmjs.com/package/fabric8-planner"
+}
+},
+"score": {
+"final": 51.57067,
+"detail": {
+"popularity": 1,
+"quality": 1,
+"maintenance": 1
+}
+},
+"flags": {
+"insecure": 0
+}
+},
+{
+"downloads": {
+"monthly": 376374,
+"weekly": 56004
+},
+"dependents": "31",
+"updated": "2026-10-03T20:09:20.275Z",
+"searchScore": 50.898285,
+"package": {
+"name": "vuefire",
+"keywords": [
+"vue",
+"firebase",
+"vuefire",
+"vuexfire",
+"vuex",
+"composition",
+"api"
+],
+"version": "3.2.3",
+"description": "Official Firebase bindings for Vue.js",
+"sanitized_name": "vuefire",
+"publisher": {
+"trustedPublisher": {
+"oidcConfigId": "oidc:b97cbdaa-f1d3-407a-b667-366ef60f6db3",
+"id": "github"
+},
+"username": "GitHub Actions"
+},
+"license": "MIT",
+"date": "2026-04-15T14:49:22.892Z",
+"links": {
+"homepage": "https://github.com/vuejs/vuefire#readme",
+"repository": "git+https://github.com/vuejs/vuefire.git",
+"bugs": "https://github.com/vuejs/vuefire/issues",
+"npm": "https://www.npmjs.com/package/vuefire"
+}
+},
+"score": {
+"final": 50.898285,
+"detail": {
+"popularity": 1,
+"quality": 1,
+"maintenance": 1
+}
+},
+"flags": {
+"insecure": 0
+}
+},
+{
+"downloads": {
+"monthly": 28921,
+"weekly": 9361
+},
+"dependents": 0,
+"updated": "2026-10-04T07:18:49.412Z",
+"searchScore": 49.42268,
+"package": {
+"name": "@thanh01.pmt/curriculum-kit",
+"keywords": [],
+"version": "2.0.29",
+"description": "A high-fidelity AI curriculum & content generation engine powered by Vercel AI SDK, Zod, and Bloom-aligned pedagogical standards.",
+"sanitized_name": "@thanh01-pmt/curriculum-kit",
+"publisher": {
+"username": "thanh01.pmt"
+},
+"license": "MIT",
+"date": "2026-10-04T07:18:18.112Z",
+"links": {
+"npm": "https://www.npmjs.com/package/@thanh01.pmt/curriculum-kit"
+}
+},
+"score": {
+"final": 49.42268,
+"detail": {
+"popularity": 1,
+"quality": 1,
+"maintenance": 1
+}
+},
+"flags": {
+"insecure": 0
+}
+}
+],
+"total": 2630,
+"time": "2026-10-04T08:23:57.334Z"
+}

@@ -1,0 +1,42 @@
+{
+  "schema": "puffpai_package/v1",
+  "id": "assemble",
+  "kind": "skill",
+  "version": "1.0.0",
+  "author": "puffpai",
+  "license": "Apache-2.0",
+  "label": "Putting it together",
+  "description": "Makes the one build plan: works out the jobs, finds and checks what fits each, and saves one setup list. Nothing is made here; the owner's one Yes on the setup list starts the making.",
+  "reads": [
+    "persona",
+    "sources",
+    "tools",
+    "knowledge",
+    "posture"
+  ],
+  "writes": "assemble",
+  "permissions": {
+    "network_hosts": [],
+    "files": [
+      "data"
+    ],
+    "ha_domains": [],
+    "secrets": []
+  },
+  "doors": [],
+  "secrets": [],
+  "egress": "none",
+  "estimate": {
+    "bytes": 0,
+    "seconds": 0,
+    "basis": "unknown"
+  },
+  "rerun": "idempotent",
+  "undo": "reversible",
+  "blocking": false,
+  "provides": [
+    "assemble.plan"
+  ],
+  "needs": [],
+  "builtin": true
+}

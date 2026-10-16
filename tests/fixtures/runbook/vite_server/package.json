@@ -1,0 +1,1 @@
+{"name":"v","scripts":{"dev":"vite","build":"vite build"},"dependencies":{"express":"4"},"devDependencies":{"vite":"5"}}

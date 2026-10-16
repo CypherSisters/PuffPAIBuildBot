@@ -1,0 +1,470 @@
+{
+"objects": [
+{
+"downloads": {
+"monthly": 210938,
+"weekly": 76197
+},
+"dependents": 0,
+"updated": "2026-10-02T23:48:47.617Z",
+"searchScore": 113.763954,
+"package": {
+"name": "@pipedream/alpaca",
+"keywords": [
+"pipedream",
+"alpaca"
+],
+"version": "0.1.2",
+"description": "Pipedream Alpaca Components",
+"sanitized_name": "@pipedream/alpaca",
+"publisher": {
+"username": "adolfo-pd"
+},
+"date": "2026-09-08T15:42:56.867Z",
+"links": {
+"homepage": "https://pipedream.com/apps/alpaca",
+"npm": "https://www.npmjs.com/package/@pipedream/alpaca"
+}
+},
+"score": {
+"final": 113.763954,
+"detail": {
+"popularity": 1,
+"quality": 1,
+"maintenance": 1
+}
+},
+"flags": {
+"insecure": 0
+}
+},
+{
+"downloads": {
+"monthly": 139910,
+"weekly": 32126
+},
+"dependents": 0,
+"updated": "2026-10-03T20:13:34.703Z",
+"searchScore": 62.05421,
+"package": {
+"name": "@consensys/on-ramp-sdk",
+"keywords": [],
+"version": "2.1.14",
+"description": "## Getting started",
+"sanitized_name": "@consensys/on-ramp-sdk",
+"publisher": {
+"username": "rizedr"
+},
+"license": "ISC",
+"date": "2026-07-02T07:57:32.426Z",
+"links": {
+"npm": "https://www.npmjs.com/package/@consensys/on-ramp-sdk"
+}
+},
+"score": {
+"final": 62.05421,
+"detail": {
+"popularity": 1,
+"quality": 1,
+"maintenance": 1
+}
+},
+"flags": {
+"insecure": 0
+}
+},
+{
+"downloads": {
+"monthly": 13547,
+"weekly": 6087
+},
+"dependents": 0,
+"updated": "2026-10-03T20:10:13.708Z",
+"searchScore": 59.849247,
+"package": {
+"name": "@openmrs/esm-stock-management-app",
+"keywords": [
+"openmrs",
+"stock-management",
+"microfrontends"
+],
+"version": "3.2.1",
+"description": "Stock management microfrontend for OpenMRS 3.x",
+"sanitized_name": "@openmrs/esm-stock-management-app",
+"publisher": {
+"username": "openmrs-bot"
+},
+"license": "MPL-2.0",
+"date": "2026-06-10T09:47:20.746Z",
+"links": {
+"homepage": "https://github.com/openmrs/openmrs-esm-stock-management-app#readme",
+"repository": "git+https://github.com/openmrs/openmrs-esm-stock-management-app.git",
+"bugs": "https://github.com/openmrs/openmrs-esm-stock-management-app/issues",
+"npm": "https://www.npmjs.com/package/@openmrs/esm-stock-management-app"
+}
+},
+"score": {
+"final": 59.849247,
+"detail": {
+"popularity": 1,
+"quality": 1,
+"maintenance": 1
+}
+},
+"flags": {
+"insecure": 0
+}
+},
+{
+"downloads": {
+"monthly": 11199,
+"weekly": 2363
+},
+"dependents": "2",
+"updated": "2026-10-03T04:03:23.577Z",
+"searchScore": 59.516796,
+"package": {
+"name": "stock-sdk",
+"keywords": [
+"JavaScript",
+"TypeScript",
+"stock",
+"sdk",
+"cli",
+"mcp",
+"ai",
+"kline",
+"indicators",
+"browser",
+"node",
+"akshare",
+"A股",
+"港股",
+"美股",
+"行情"
+],
+"version": "2.4.6",
+"description": "零依赖股票行情 SDK：A股/港股/美股/基金/期货/期权，浏览器 + Node.js 双端，内置 CLI 与 MCP server。Zero-dependency stock market data SDK (CLI + MCP) for browser & Node.js.",
+"sanitized_name": "stock-sdk",
+"publisher": {
+"trustedPublisher": {
+"oidcConfigId": "947908d3-fb91-4668-ac1d-16af1707c1aa",
+"id": "github"
+},
+"username": "GitHub Actions"
+},
+"license": "ISC",
+"date": "2026-10-03T04:02:52.525Z",
+"links": {
+"homepage": "https://stock-sdk.linkdiary.cn",
+"repository": "git+https://github.com/chengzuopeng/stock-sdk.git",
+"bugs": "https://github.com/chengzuopeng/stock-sdk/issues",
+"npm": "https://www.npmjs.com/package/stock-sdk"
+}
+},
+"score": {
+"final": 59.516796,
+"detail": {
+"popularity": 1,
+"quality": 1,
+"maintenance": 1
+}
+},
+"flags": {
+"insecure": 0
+}
+},
+{
+"downloads": {
+"monthly": 3693,
+"weekly": 876
+},
+"dependents": 0,
+"updated": "2026-10-02T03:01:10.284Z",
+"searchScore": 59.076775,
+"package": {
+"name": "congressional-disclosures",
+"keywords": [
+"congress",
+"disclosures",
+"ptr",
+"house",
+"senate",
+"stock-trading",
+"political-trades",
+"edgar-adjacent",
+"sqlite",
+"ocr",
+"etl",
+"data-quality",
+"extraction"
+],
+"version": "2.2.2",
+"description": "Build a queryable SQLite lake of U.S. congressional trading disclosures (House PTRs and Senate eFD filings) from official sources: discovery, PDF decrypt/render, OCR, consensus model extraction, resumable sync, and integrity audits.",
+"sanitized_name": "congressional-disclosures",
+"publisher": {
+"username": "austin-starks"
+},
+"license": "MIT",
+"date": "2026-09-25T02:55:10.496Z",
+"links": {
+"homepage": "https://github.com/austin-starks/congressional-disclosures#readme",
+"repository": "git+https://github.com/austin-starks/congressional-disclosures.git",
+"bugs": "https://github.com/austin-starks/congressional-disclosures/issues",
+"npm": "https://www.npmjs.com/package/congressional-disclosures"
+}
+},
+"score": {
+"final": 59.076775,
+"detail": {
+"popularity": 1,
+"quality": 1,
+"maintenance": 1
+}
+},
+"flags": {
+"insecure": 0
+}
+},
+{
+"downloads": {
+"monthly": 155374,
+"weekly": 23512
+},
+"dependents": 0,
+"updated": "2026-10-03T20:18:31.689Z",
+"searchScore": 58.750286,
+"package": {
+"name": "@genspark/cli",
+"keywords": [
+"genspark",
+"gsk",
+"cli",
+"ai",
+"search",
+"web-search",
+"crawl",
+"image-generation",
+"image-search",
+"image-analysis",
+"video-generation",
+"audio-generation",
+"transcription",
+"text-to-speech",
+"email",
+"calendar",
+"cloud-storage",
+"social-media",
+"stock",
+"deep-research"
+],
+"version": "1.14.1",
+"description": "CLI tool for Genspark Tool API - search, crawl, analyze images, generate media",
+"sanitized_name": "@genspark/cli",
+"publisher": {
+"username": "kira.mainfunc.ai"
+},
+"license": "MIT",
+"date": "2026-09-30T14:15:09.567Z",
+"links": {
+"npm": "https://www.npmjs.com/package/@genspark/cli"
+}
+},
+"score": {
+"final": 58.750286,
+"detail": {
+"popularity": 1,
+"quality": 1,
+"maintenance": 1
+}
+},
+"flags": {
+"insecure": 0
+}
+},
+{
+"downloads": {
+"monthly": 70015,
+"weekly": 19833
+},
+"dependents": "2",
+"updated": "2026-10-02T23:48:24.210Z",
+"searchScore": 53.432026,
+"package": {
+"name": "@hasna/domains",
+"keywords": [
+"domains",
+"dns",
+"mcp",
+"ai",
+"coding-agent",
+"claude",
+"cli",
+"namecheap",
+"godaddy",
+"registrar"
+],
+"version": "0.3.1",
+"description": "Domain portfolio, registrar, marketplace, and DNS management for AI agents — CLI + MCP + HTTP API + SDK, shared account API and PostgreSQL",
+"sanitized_name": "@hasna/domains",
+"publisher": {
+"username": "andreihasna2"
+},
+"license": "Apache-2.0",
+"date": "2026-09-21T06:37:00.835Z",
+"links": {
+"homepage": "https://github.com/hasna/apps/tree/main/apps/domains#readme",
+"repository": "git+https://github.com/hasna/apps.git",
+"bugs": "https://github.com/hasna/apps/issues",
+"npm": "https://www.npmjs.com/package/@hasna/domains"
+}
+},
+"score": {
+"final": 53.432026,
+"detail": {
+"popularity": 1,
+"quality": 1,
+"maintenance": 1
+}
+},
+"flags": {
+"insecure": 0
+}
+},
+{
+"downloads": {
+"monthly": 717,
+"weekly": 220
+},
+"dependents": "8",
+"updated": "2026-09-28T08:26:12.391Z",
+"searchScore": 53.198788,
+"package": {
+"name": "hoodchain",
+"keywords": [
+"robinhood",
+"robinhood-chain",
+"stock-tokens",
+"tokenized-equities",
+"usdg",
+"viem",
+"arbitrum-orbit",
+"chainlink",
+"uniswap",
+"web3"
+],
+"version": "0.1.1",
+"description": "TypeScript SDK for Robinhood Chain (chain ID 4663): Stock Tokens, Chainlink quotes, multiplier-correct portfolios, Uniswap v3 swaps, USDG, launchpad watchers, and the sequencer firehose.",
+"sanitized_name": "hoodchain",
+"publisher": {
+"username": "three-ws"
+},
+"license": "Apache-2.0",
+"date": "2026-07-13T07:34:08.116Z",
+"links": {
+"homepage": "https://nirholas.github.io/robinhood-chain-sdk/",
+"repository": "git+https://github.com/nirholas/robinhood-chain-sdk.git",
+"bugs": "https://github.com/nirholas/robinhood-chain-sdk/issues",
+"npm": "https://www.npmjs.com/package/hoodchain"
+}
+},
+"score": {
+"final": 53.198788,
+"detail": {
+"popularity": 1,
+"quality": 1,
+"maintenance": 1
+}
+},
+"flags": {
+"insecure": 0
+}
+},
+{
+"downloads": {
+"monthly": 17,
+"weekly": 2
+},
+"dependents": 0,
+"updated": "2026-10-02T09:16:14.864Z",
+"searchScore": 52.86149,
+"package": {
+"name": "@helloxiaohu/plugin-stock-portfolio-constructor",
+"keywords": [],
+"version": "0.0.2",
+"description": "Build target weights from research signals and generate rebalance orders.",
+"sanitized_name": "@helloxiaohu/plugin-stock-portfolio-constructor",
+"publisher": {
+"username": "helloxiaohu"
+},
+"date": "2026-03-20T06:58:55.057Z",
+"links": {
+"homepage": "https://github.com/xpert-ai/xpert-plugins#readme",
+"repository": "git+https://github.com/xpert-ai/xpert-plugins.git",
+"bugs": "https://github.com/xpert-ai/xpert-plugins/issues",
+"npm": "https://www.npmjs.com/package/@helloxiaohu/plugin-stock-portfolio-constructor"
+}
+},
+"score": {
+"final": 52.86149,
+"detail": {
+"popularity": 1,
+"quality": 1,
+"maintenance": 1
+}
+},
+"flags": {
+"insecure": 0
+}
+},
+{
+"downloads": {
+"monthly": 1070,
+"weekly": 201
+},
+"dependents": 0,
+"updated": "2026-09-30T01:21:08.682Z",
+"searchScore": 52.323414,
+"package": {
+"name": "stock-analyzer-skill",
+"keywords": [
+"claude-code",
+"stock",
+"a-share",
+"analysis",
+"skills",
+"investing",
+"technical-analysis",
+"fundamental-analysis"
+],
+"version": "1.22.1",
+"description": "A 股分析 skill 包，包含 12 个 skill（8 核心 + 4 变体）：stock / market / sector / portfolio / screener / backtest / research / stock-help + stock-technical / portfolio-web / portfolio-natural / learn",
+"sanitized_name": "stock-analyzer-skill",
+"publisher": {
+"username": "curtistong"
+},
+"license": "MIT",
+"date": "2026-09-02T01:00:18.393Z",
+"links": {
+"homepage": "https://github.com/CurtisTong/stock-analyzer-skill",
+"repository": "git+https://github.com/CurtisTong/stock-analyzer-skill.git",
+"bugs": "https://github.com/CurtisTong/stock-analyzer-skill/issues",
+"npm": "https://www.npmjs.com/package/stock-analyzer-skill"
+}
+},
+"score": {
+"final": 52.323414,
+"detail": {
+"popularity": 1,
+"quality": 1,
+"maintenance": 1
+}
+},
+"flags": {
+"insecure": 0
+}
+}
+],
+"total": 9617,
+"time": "2026-10-04T08:24:27.687Z"
+}

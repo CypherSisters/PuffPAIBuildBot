@@ -1,0 +1,3 @@
+glance-1  | time=2026-10-14T21:02:11Z level=INFO msg="Starting server" host=0.0.0.0 port=8080
+glance-1  | time=2026-10-14T21:02:13Z level=ERROR msg="Failed to update widget" widget=videos error="unexpected status code 403 from https://www.reddit.com/r/videos/hot.json"
+glance-1  | time=2026-10-14T21:02:14Z level=INFO msg="Widget updated" widget=rss

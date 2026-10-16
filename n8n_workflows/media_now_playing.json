@@ -1,0 +1,113 @@
+{
+  "name": "PuffPAI - Media Now Playing",
+  "nodes": [
+    {
+      "id": "wh-media-1",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [250, 300],
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "media-now-playing",
+        "responseMode": "responseNode"
+      }
+    },
+    {
+      "id": "jf-sessions-1",
+      "name": "Get Jellyfin Sessions",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [480, 200],
+      "parameters": {
+        "method": "GET",
+        "url": "={{ $env.JELLYFIN_URL || 'http://localhost:8096' }}/Sessions",
+        "headers": {
+          "parameters": [
+            {
+              "name": "X-Emby-Authorization",
+              "value": "MediaBrowser Client=\"PuffPAI\", Device=\"n8n\", DeviceId=\"puffpai-n8n\", Version=\"1.0.0\", Token=\"{{ $env.JELLYFIN_API_KEY }}\""
+            }
+          ]
+        },
+        "options": {
+          "timeout": 10000
+        }
+      }
+    },
+    {
+      "id": "jf-stats-1",
+      "name": "Get Library Stats",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [480, 400],
+      "parameters": {
+        "method": "GET",
+        "url": "={{ $env.JELLYFIN_URL || 'http://localhost:8096' }}/Items/Counts",
+        "headers": {
+          "parameters": [
+            {
+              "name": "X-Emby-Authorization",
+              "value": "MediaBrowser Client=\"PuffPAI\", Device=\"n8n\", DeviceId=\"puffpai-n8n\", Version=\"1.0.0\", Token=\"{{ $env.JELLYFIN_API_KEY }}\""
+            }
+          ]
+        },
+        "options": {
+          "timeout": 10000
+        }
+      }
+    },
+    {
+      "id": "compile-media-1",
+      "name": "Compile Media Status",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [720, 300],
+      "parameters": {
+        "jsCode": "const sessions = $input.first().json;\nconst stats = $('Get Library Stats').first().json;\n\n// Parse active playback\nconst playing = [];\nif (Array.isArray(sessions)) {\n  for (const s of sessions) {\n    if (s.NowPlayingItem) {\n      const np = s.NowPlayingItem;\n      const ps = s.PlayState || {};\n      const pos = Math.floor((ps.PositionTicks || 0) / 10000000);\n      playing.push({\n        device: s.DeviceName,\n        title: np.Name,\n        artist: (np.Artists || []).join(', '),\n        album: np.Album || '',\n        type: np.Type === 'Audio' ? 'music' : 'movie',\n        paused: ps.IsPaused || false,\n        position: `${Math.floor(pos/60)}:${String(pos%60).padStart(2,'0')}`,\n      });\n    }\n  }\n}\n\nreturn [{\n  json: {\n    now_playing: playing,\n    library: {\n      tracks: stats.SongCount || 0,\n      albums: stats.AlbumCount || 0,\n      artists: stats.ArtistCount || 0,\n      movies: stats.MovieCount || 0,\n    },\n    timestamp: new Date().toISOString(),\n  }\n}];"
+      }
+    },
+    {
+      "id": "respond-media-1",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [940, 300],
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify($input.first().json) }}"
+      }
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          { "node": "Get Jellyfin Sessions", "type": "main", "index": 0 },
+          { "node": "Get Library Stats", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Get Jellyfin Sessions": {
+      "main": [
+        [{ "node": "Compile Media Status", "type": "main", "index": 0 }]
+      ]
+    },
+    "Get Library Stats": {
+      "main": [
+        [{ "node": "Compile Media Status", "type": "main", "index": 0 }]
+      ]
+    },
+    "Compile Media Status": {
+      "main": [
+        [{ "node": "Respond to Webhook", "type": "main", "index": 0 }]
+      ]
+    }
+  },
+  "settings": {},
+  "tags": [
+    { "name": "media" },
+    { "name": "jellyfin" },
+    { "name": "puffpai" }
+  ]
+}

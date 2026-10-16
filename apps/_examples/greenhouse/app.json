@@ -1,0 +1,34 @@
+{
+  "schema": "puffpai_app/v1",
+  "id": "greenhouse",
+  "name": "Greenhouse",
+  "blurb": "Soil moisture and bench temperature, written down and read back.",
+  "version": "1.0.0",
+  "author": "You",
+  "license": "Apache-2.0",
+  "order": 60,
+  "surfaces": ["house.sensors", "house.climate"],
+  "data": { "default": { "readings": [] } },
+  "ui": { "route": "/dashboard/apps/greenhouse", "icon": "mdiSprout" },
+  "vocabulary": {
+    "keywords": ["greenhouse", "seedlings", "soil moisture"],
+    "examples": [
+      "how is the greenhouse doing",
+      "log a greenhouse reading"
+    ]
+  },
+  "actions": [
+    { "id": "greenhouse_list_readings", "says": "how is the greenhouse doing" },
+    { "id": "greenhouse_add_reading", "says": "log a greenhouse reading" }
+  ],
+  "doors": [
+    {
+      "hosts": [],
+      "purpose": "None. Readings are typed in or read from sensors this build already sees.",
+      "data_sent_plain": "nothing"
+    }
+  ],
+  "credential": { "kind": "none" },
+  "children": { "may_be_used_by_minor": true },
+  "requires": { "home_assistant": false, "network": false, "ollama": false }
+}

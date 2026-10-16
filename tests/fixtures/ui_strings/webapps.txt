@@ -1,0 +1,132 @@
+That action is not available any more.
+The app did not take the change, so nothing was saved.
+Some of the details did not fit what the app accepts.
+being checked
+Drawbridge stopped this app, so nothing of it runs.
+This app opens inside your bot's dashboard.
+Drawbridge wants you to look at this app before it runs.
+Your bot can open this app, but cannot use it by itself until Node.js is updated to 22.4 or newer.
+Your bot can open this app, but cannot use it by itself because this computer's password store is not available.
+Your bot can open it for you, but cannot use it by itself yet (it works in a way BuildBot cannot drive).
+Not found.
+That is not in this build yet.
+Your bot can open this app, but cannot use it by itself because Microsoft Edge or Google Chrome was not found on this computer.
+Opens inside your bot.
+This app has no outside service switched on for that, so it was not sent.
+{app name} uses {registrable domain}
+{Toolsmith's words}. What the app sends there, and your internet address.
+This app loads parts from the internet, and saving a copy of them is not in this build yet, so it was not added.
+The app did more than that action should, so your bot put the app's data back the way it was.
+This app's files cannot be changed.
+That was refused.
+Your bot needs your yes before it removes anything.
+Your bot could not reach the app just now.
+Your bot can open this app, but its hidden browser did not start, so it cannot use the app by itself right now.
+Add {a} {noun}
+Change the {field} of {a} {noun}
+Edit {a} {noun}
+Read the {noun} list
+Remove {a} {noun}
+Unknown site name.
+Added {name}. You can open it, but there are 0 things your bot can do in it by itself.
+Added {name}. Your bot can do 1 thing in it.
+Added {name}. Your bot can do {count} things in it.
+Done in {app name}: {says}.
+{app name} has {count} in that list.
+loads program code from {h}
+loads its look (styles) from {h}
+loads lettering from {h}
+shows pictures from {h}
+connects ahead of time to {h}
+asks {h} for information while you use it
+sends a form you fill in to {h}
+shows a page from {h} inside itself
+has a link to {h} that you may click
+mentions {h} in its code (may never contact it)
+can connect to an account you would set up yourself at {h}; off unless you set it up
+lettering
+parts it loads
+fetching or saving data online
+signing in
+maps
+something the app does online
+Toolsmith is copying the app's files.
+Drawbridge checked the app. Toolsmith is finding what your bot can do in it.
+Drawbridge checked {count} things the bot could do in the app; {passed} passed.
+This app is not set up on your bot.
+Your bot did not answer, so the app cannot open right now.
+Opening the app.
+Back
+What your bot can do here
+Outside services
+Folder
+Remove this app
+Your bot did not answer just now.
+Removing this app from here is not in this build yet.
+Your bot can open this app for you, but cannot use it by itself yet.
+Giving this app a folder is not in this build yet.
+Remove {name} and its data from your bot?
+Remove it
+Keep it
+Your bot could not put all of the app's data back the way it was. Please open the app and check it.
+The app did not finish that, so your bot put its data back the way it was.
+Your bot lost touch with the app partway through, so it put the app's data back the way it was.
+Your bot can open it for you. It keeps nothing of its own, so there is nothing for your bot to do in it.
+Toolsmith is saving a copy of the parts this app loads from the internet.
+This app loads parts from the internet, and Toolsmith could not save a copy of all of them, so it was not added.
+{app name} wants to reach {registrable domain}.
+Toolsmith says it would use it for: {Toolsmith's words}.
+This app can also read {folder}. With an outside service on, it could send those files there.
+Switch on
+No
+This app cannot be given that site.
+Let {app name} read the files in your folder {folder}?
+Let {app name} read and change the files in your folder {folder}?
+It never sees your vault, your keys or other apps' data.
+Give it
+{app name} can now read {folder}.
+{app name} can no longer read your folder.
+Put back the way it was before that change.
+The app changed after that, so I did not undo it. Open it to fix it by hand.
+Your bot is using this app right now. Try again in a moment.
+That change can no longer be undone.
+This screen is not paired with your bot, so it cannot change that.
+Switch it on or off on the app's own page, under Outside services.
+Your bot changed this app while you were working in it, so your last change was not saved. Please make it again.
+OK
+Switched on.
+Switched off.
+Switch off
+Your bot can give this app one of your folders to read, like your pictures. Never your vault.
+The folder's full path, for example your Pictures folder
+The folder's full path
+Take it back
+That did not change anything.
+The app did not make that change the way it was asked, so your bot put its data back the way it was.
+More than one entry in the app matches that, so your bot changed nothing. Make this change in the app itself.
+Nothing in the app matches that, so your bot changed nothing.
+None of the app's choices matches your words, so your bot changed nothing. Say the choice the way the app shows it.
+Your words did not say plainly whether to tick that box or clear it, so your bot changed nothing.
+Looking at the app's forms: {i} of {n}.
+Trying the app's buttons: {i} of {n}.
+Toolsmith found {n} things to try in the app. Drawbridge checks each one.
+Tried {i} of {n} things so far.
+Found {n} more {things} to try.
+Tried {i} things so far.
+Stopped learning after {minutes} minutes: tried {i} of {n} things. Your bot can use the ones that passed.
+{n} of these came with the app as examples.
+1 of these came with the app as an example.
+This app came with {n} example entries of its own. They are not yours.
+This app came with 1 example entry of its own. It is not yours.
+Clear the examples
+Took out {n} example entries. Your own entries are kept. You can undo this.
+Took out 1 example entry. Your own entries are kept. You can undo this.
+There are no example entries left in this app.
+Your bot is using this app right now, so nothing was taken out. Try again in a moment.
+This app came with example details of its own, like names, a date or an amount. They are not yours.
+This app came with {n} example entries of its own, and example details like names, a date or an amount. They are not yours.
+Took out the app's example details, like names, a date or an amount. Your own entries are kept. You can undo this.
+Took out {n} example entries and the app's example details, like names, a date or an amount. Your own entries are kept. You can undo this.
+The app is still opening. Try again in a moment.
+This app came with 1 example entry of its own, and example details like names, a date or an amount. They are not yours.
+Took out 1 example entry and the app's example details, like names, a date or an amount. Your own entries are kept. You can undo this.

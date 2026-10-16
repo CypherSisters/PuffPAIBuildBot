@@ -1,0 +1,22 @@
+/* App fonts, offline.
+ *
+ * The standalone app pages used to pull Nunito / Exo 2 / Quicksand / Baloo 2 /
+ * Fira Code from fonts.googleapis.com, which is a request to a third party made
+ * by the browser every time an app opens — invisible to the box's doors and
+ * flatly against "your data never leaves your house". No webfont is vendored
+ * for body text (the only font file in this repo is the Material Symbols icon
+ * face the dashboard itself uses), so the pages now ask the operating system
+ * for the closest match instead. Same roles, no request.
+ */
+:root {
+  /* Body / UI text. */
+  --app-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+              Arial, "Noto Sans", sans-serif;
+  /* Display headings — the rounded, friendly role Baloo 2 / Exo 2 played. */
+  --app-rounded: "Segoe UI Variable Display", "Segoe UI Rounded", "SF Pro Rounded",
+                 "Segoe UI", system-ui, -apple-system, Roboto, "Trebuchet MS",
+                 sans-serif;
+  /* Code / numerals. */
+  --app-mono: ui-monospace, "Cascadia Mono", "Segoe UI Mono", SFMono-Regular,
+              Consolas, Menlo, monospace;
+}

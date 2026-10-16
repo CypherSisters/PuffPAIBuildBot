@@ -1,0 +1,8 @@
+# Blank issues stay on: the two templates here are a bug report and a wizard
+# gap, and a stranger with a question that fits neither should not have to
+# pretend it is a bug to be heard.
+blank_issues_enabled: true
+contact_links:
+  - name: Security issue?
+    url: https://github.com/CypherSisters/PuffPAIBuildBot/security/advisories/new
+    about: Please use GitHub private vulnerability reporting instead of a public issue. See SECURITY.md.

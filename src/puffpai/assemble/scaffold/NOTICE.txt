@@ -1,0 +1,9 @@
+Files in vendor/ come from other projects and keep their own licenses:
+
+- hls-1.6.15.min.js: hls.js 1.6.15 (https://github.com/video-dev/hls.js), Apache License 2.0,
+  see hls.js-LICENSE.txt. The source map comment was removed; nothing else was changed.
+  sha256 of the vendored file: 4725cc8f211d2b2c974bc92dac8ce48fe4e00d5193f8830d44f8afdee7857506
+- world.js: Natural Earth 1:110m land outline (v5.1.2), public domain
+  (https://www.naturalearthdata.com/about/terms-of-use/), turned into one SVG path.
+- nunito.woff2 and fredoka.woff2: the Nunito and Fredoka fonts, SIL Open Font License 1.1,
+  see nunito-OFL.txt and fredoka-OFL.txt.

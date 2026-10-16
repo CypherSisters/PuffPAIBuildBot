@@ -1,0 +1,77 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/forms';
+
+@source inline('style-{basic,white}');
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --transition-position: right, left, top, bottom, margin, padding;
+}
+
+@import './_fonts.css';
+@import './_checkbox-radio-switch.css';
+@import './_keyframes.css';
+@import './_progress.css';
+@import './_scrollbars.css';
+@import './_table.css';
+@import './_glassmorphism.css';
+@import './_bookshelf.css';
+@import './_tilegrid.css';
+
+@import './styles/_basic.css';
+@import './styles/_white.css';
+
+/* PuffPAI day/night re-skin — last so its overrides win */
+@import './_theme.css';
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+
+}
+
+/* Force form element text to be visible — sits outside @layer so it wins over the forms plugin */
+.dark input[type="text"],
+.dark input[type="email"],
+.dark input[type="url"],
+.dark input[type="password"],
+.dark input[type="number"],
+.dark input[type="search"],
+.dark input[type="tel"],
+.dark textarea,
+.dark select {
+  background-color: var(--color-slate-800) !important;
+  color: white !important;
+  border-color: var(--color-slate-600) !important;
+}
+
+.dark select option {
+  background-color: var(--color-slate-800) !important;
+  color: white !important;
+}
+
+/* Force table cell text to be visible in dark mode.
+   `.puff-bridge-table` opts out: those cells state their own colour from the
+   PuffPAI palette and this rule, being !important, outranked the inline style
+   and flattened every one of them to slate-200. */
+.dark table:not(.puff-bridge-table) td {
+  color: var(--color-slate-200) !important;
+}
+
+.dark table:not(.puff-bridge-table) th {
+  color: var(--color-slate-300) !important;
+}

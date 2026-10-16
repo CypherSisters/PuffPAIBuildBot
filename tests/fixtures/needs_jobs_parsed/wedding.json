@@ -1,0 +1,55 @@
+{
+ "goal_id": "wedding",
+ "timing": {
+  "wall_s": 4.1,
+  "first_token_s": 0.39,
+  "first_job_s": 0,
+  "load_s": 0.01,
+  "prompt_tokens": 222,
+  "prompt_s": 0.29,
+  "out_tokens": 175,
+  "gen_s": 3.72,
+  "tok_per_s": 47.1,
+  "done_reason": "stop"
+ },
+ "parsed": {
+  "kind": "wedding planner",
+  "asked": [
+   "track themes",
+   "come up with ideas",
+   "find vendors",
+   "plan budget"
+  ],
+  "jobs": [
+   {
+    "name": "Track Themes",
+    "does": "Gather and organize theme-related images and ideas."
+   },
+   {
+    "name": "Generate Ideas",
+    "does": "Suggest creative wedding themes and decorations."
+   },
+   {
+    "name": "Vendor Search",
+    "does": "Research and recommend local wedding vendors."
+   },
+   {
+    "name": "Budget Planner",
+    "does": "Create and manage a wedding budget."
+   },
+   {
+    "name": "Event Timeline",
+    "does": "Develop a detailed wedding day timeline."
+   },
+   {
+    "name": "Guest List Management",
+    "does": "Help manage and update the guest list."
+   },
+   {
+    "name": "Invitation Design",
+    "does": "Design and send out wedding invitations."
+   }
+  ]
+ },
+ "recall": 0.625
+}

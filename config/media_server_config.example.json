@@ -1,0 +1,9 @@
+{
+  "enabled": false,
+  "jellyfin_url": "http://localhost:8096",
+  "jellyfin_api_key": "PASTE_YOUR_JELLYFIN_API_KEY",
+  "calibre_web_url": "http://localhost:8083",
+  "calibre_db_path": "",
+  "media_mount": "",
+  "timeout": 10
+}

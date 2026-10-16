@@ -1,0 +1,54 @@
+Vendored webfonts - dashboard/app/_fonts/
+=========================================
+
+The three text families the dashboard design calls for are committed here and
+loaded with next/font/local from app/layout.tsx. Nothing is fetched from
+fonts.googleapis.com at build time or at runtime.
+
+All three are licensed under the SIL Open Font License, Version 1.1. The
+unmodified upstream OFL.txt sits beside each family's files; those files are the
+authoritative license text, and this file is only an index.
+
+Copyright lines below are read from each font's own `name` table, nameID 0.
+
+
+Fredoka  -  display / headings  (--font-fredoka)
+------------------------------------------------
+  File     Fredoka[wdth,wght].woff2   (variable: wght 300-700, wdth 75-125)
+  License  fredoka/OFL.txt
+  (c)      Copyright 2016 The Fredoka Project Authors
+           (https://github.com/hafontia/Fredoka-One)
+  Source   https://github.com/google/fonts/tree/a60a77e14f28abd4ef243a1b5dfc48df0cec5205/ofl/fredoka
+           Fetched as the upstream variable TTF `Fredoka[wdth,wght].ttf`
+           (159184 bytes) and converted to WOFF2 with fontTools; glyph set and
+           axes are unchanged (no subsetting).
+
+
+Nunito  -  body / UI text  (--font-nunito)
+------------------------------------------
+  File     Nunito[wght].woff2         (variable: wght 200-1000)
+  License  nunito/OFL.txt
+  (c)      Copyright 2014 The Nunito Project Authors
+           (https://github.com/googlefonts/nunito)
+  Source   https://github.com/google/fonts/tree/8b0a1d0f5983c89bc2b93f1b5fb55f9e252744b5/ofl/nunito
+           Fetched as the upstream variable TTF `Nunito[wght].ttf` (276932
+           bytes) and converted to WOFF2 with fontTools; glyph set and axis are
+           unchanged (no subsetting). The companion `Nunito-Italic[wght].ttf` is
+           deliberately not vendored - no dashboard surface sets italic body
+           copy, and it would nearly double the font payload.
+
+
+JetBrains Mono  -  stats, code, numerals  (--font-jbmono)
+---------------------------------------------------------
+  Files    JetBrainsMono-Regular.woff2   (400)
+           JetBrainsMono-Medium.woff2    (500)
+           JetBrainsMono-SemiBold.woff2  (600)
+           JetBrainsMono-Bold.woff2      (700)
+  License  jetbrains-mono/OFL.txt
+  (c)      Copyright 2020 The JetBrains Mono Project Authors
+           (https://github.com/JetBrains/JetBrainsMono)
+  Source   https://github.com/JetBrains/JetBrainsMono/tree/cd5227bd1f61dff3bbd6c814ceaf7ffd95e947d9/fonts/webfonts
+           (release tag v2.304). Upstream ships JetBrains Mono as static
+           instances rather than a variable font, so only the four weights the
+           dashboard asks for are vendored. These WOFF2 files are byte-identical
+           to upstream - not converted, not subset.

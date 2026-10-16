@@ -1,0 +1,116 @@
+{
+  "schema": "model_catalog/v1",
+  "_maintainer_note": "The RAM-first local-model ladder the BuildBot wizard fits against. Rules, so this stays honest as models rotate: (1) min_ram_gb is the floor of TOTAL system RAM to run the model at all; rec_ram_gb is where it is comfortable with room for the knowledge index. (2) A model is only offered on hardware that meets its floor. (3) benchmarks are measured on real silicon ONLY, keyed by an id in the 'silicon' map; a model or a hardware class we have not benched carries NO numbers and the wizard says 'untested, reports welcome'. Never extrapolate a number. (4) All models are local Ollama tags. There is no cloud model here, by design. Add rows as models rotate; add silicon entries as new boards get benched, and attach the measured numbers under the model's 'benchmarks'. (5) 'tools' is true when the model calls tools well enough for chat's tool loop (the 1B and 1.5B rows do not); 'params_b' is its size in billions of parameters. The wizard recommends a tool model of 9B or more where one fits, and otherwise the smallest tool model that fits (model_catalog.TOOL_MODEL_MIN_B).",
+  "silicon": {
+    "jetson_agx_orin_64gb": {
+      "label": "Jetson AGX Orin 64GB",
+      "hardware_class": "workstation",
+      "source": "PUFFPAI_ENGINE_BAKEOFF_2026-08-13"
+    }
+  },
+  "models": [
+    {
+      "id": "qwen3:30b-a3b",
+      "label": "Qwen3 30B",
+      "family": "qwen3",
+      "params": "30B total, ~3B active (mixture of experts)",
+      "min_ram_gb": 24,
+      "rec_ram_gb": 32,
+      "disk_gb": 19,
+      "strength": "Our reference brain. A mixture of experts, so it carries 30B breadth on a ~3B speed budget, and it is strong at the structured tool-routing the agent team needs.",
+      "benchmarks": {
+        "jetson_agx_orin_64gb": {
+          "classify_p50_s": 1.32,
+          "plan_p50_s": 5.88,
+          "chat_range_s": "11-78"
+        }
+      },
+      "params_b": 30.5,
+      "tools": true
+    },
+    {
+      "id": "qwen3.5:9b",
+      "label": "Qwen3.5 9B",
+      "family": "qwen3.5",
+      "params": "9B (dense)",
+      "params_b": 9.7,
+      "min_ram_gb": 10,
+      "rec_ram_gb": 16,
+      "disk_gb": 7,
+      "tools": true,
+      "strength": "The tool model this build is tested with. Big enough to look things up, add what you pick and use it in chat, and small enough for a 16 GB computer.",
+      "benchmarks": {}
+    },
+    {
+      "id": "qwen2.5:7b-instruct",
+      "label": "Qwen2.5 7B",
+      "family": "qwen2.5",
+      "params": "7B (dense)",
+      "min_ram_gb": 8,
+      "rec_ram_gb": 16,
+      "disk_gb": 5,
+      "strength": "A solid all-rounder that fits mid-range boxes and still handles the house intents.",
+      "benchmarks": {
+        "jetson_agx_orin_64gb": {
+          "classify_p50_s": 1.47,
+          "plan_p50_s": 6.91,
+          "chat_range_s": null
+        }
+      },
+      "params_b": 7.6,
+      "tools": true
+    },
+    {
+      "id": "qwen2.5:3b-instruct",
+      "label": "Qwen2.5 3B",
+      "family": "qwen2.5",
+      "params": "3B (dense)",
+      "min_ram_gb": 5,
+      "rec_ram_gb": 8,
+      "disk_gb": 2,
+      "strength": "Runs on modest hardware and stays responsive for focused, single-step tasks.",
+      "benchmarks": {},
+      "params_b": 3.1,
+      "tools": true
+    },
+    {
+      "id": "llama3.2:3b",
+      "label": "Llama 3.2 3B",
+      "family": "llama3.2",
+      "params": "3B (dense)",
+      "min_ram_gb": 5,
+      "rec_ram_gb": 8,
+      "disk_gb": 2,
+      "strength": "An alternative small brain with a different training mix, if you prefer the Llama family.",
+      "benchmarks": {},
+      "params_b": 3.2,
+      "tools": true
+    },
+    {
+      "id": "qwen2.5:1.5b-instruct",
+      "label": "Qwen2.5 1.5B",
+      "family": "qwen2.5",
+      "params": "1.5B (dense)",
+      "min_ram_gb": 3,
+      "rec_ram_gb": 4,
+      "disk_gb": 1,
+      "strength": "The lightest brain we list. Keeps a small board usable, with the narrowest range.",
+      "benchmarks": {},
+      "params_b": 1.5,
+      "tools": false
+    },
+    {
+      "id": "llama3.2:1b",
+      "label": "Llama 3.2 1B",
+      "family": "llama3.2",
+      "params": "1B (dense)",
+      "min_ram_gb": 2,
+      "rec_ram_gb": 3,
+      "disk_gb": 1,
+      "strength": "A last-resort brain for the smallest boards. Expect short, simple answers.",
+      "benchmarks": {},
+      "params_b": 1.2,
+      "tools": false
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+# PuffPAI BuildBot
+
+> BuildBot is a goal-agnostic factory that builds a local personal AI bot from one plain-words goal, on the owner's own computer, with a local model as the brain. One pipeline interprets the goal into jobs, finds what people already made, classifies each find by how it runs (APP, TOOL, DATA, TEXT, GUIDE), picks one route per job (app as built, connected tool, app put together from data, or nothing found yet), shows one setup list, asks one Yes, then makes and proves each job. Three zones: the vault, the brain, and the Bridge (the only way out, every outside service behind a switch that ships closed).
+
+## Start here
+
+- [AGENTS.md](AGENTS.md): what BuildBot is, the three zones, the agent team, the build steps and decision table, consent, data files, how to extend, how to test, hard rules
+- [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md): module map, data flow, build.json schema, Bridge and consent flow, run_here containment, Toolsmith loop, assembled app contract, chat tool loop, routes, tests
+- [SECURITY.md](SECURITY.md): trust boundaries, standing security contracts, known risks
+- [README.md](README.md): what owners see, install, commands
+
+## Key modules
+
+- [src/puffpai/build/pipeline.py](src/puffpai/build/pipeline.py): the one build pipeline
+- [src/puffpai/build/schema.py](src/puffpai/build/schema.py): enums, the Job record, build.json
+- [src/puffpai/build/classify.py](src/puffpai/build/classify.py): classes by how a thing runs
+- [src/puffpai/build/decide.py](src/puffpai/build/decide.py): fits and routes
+- [src/puffpai/build/make.py](src/puffpai/build/make.py): making each route after the Yes
+- [src/puffpai/build/prove.py](src/puffpai/build/prove.py): working means it answered a real ask
+- [src/puffpai/integrate/run_here.py](src/puffpai/integrate/run_here.py): outside projects on this computer, loopback only
+- [src/puffpai/assemble/toolsmith_loop.py](src/puffpai/assemble/toolsmith_loop.py): write, run, fix connecting code
+- [src/puffpai/security/egress_doors.py](src/puffpai/security/egress_doors.py): the Bridge
+- [src/puffpai/security/consent_tickets.py](src/puffpai/security/consent_tickets.py): single-use consent tickets
+- [src/puffpai/drawbridge.py](src/puffpai/drawbridge.py): checks on every addition
+- [src/puffpai/brain_loop.py](src/puffpai/brain_loop.py): the chat tool loop
+- [src/puffpai/brain_tools.py](src/puffpai/brain_tools.py): the one tool registry
+
+## Optional
+
+- [CONTRIBUTING.md](CONTRIBUTING.md): development setup and test commands
+- [docs/GETTING_STARTED.md](docs/GETTING_STARTED.md): a real wizard run

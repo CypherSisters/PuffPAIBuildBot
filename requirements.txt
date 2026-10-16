@@ -1,0 +1,75 @@
+# PuffPAI Requirements: base runtime
+# Python 3.10+
+#
+# This file is the BASE set installed by `pip install -e .`. Optional capability
+# groups live in setup.py `extras_require` and are opt-in:
+#
+#   pip install -e ".[voice]"     # offline voice: mic I/O + Vosk STT + Piper TTS
+#   pip install -e ".[dev]"       # pytest, black, flake8, mypy
+#   pip install -e ".[desktop]"   # PyInstaller (build a standalone binary)
+#
+# Every requirement below is actually imported by the base runtime.
+
+# Vector database: the dual-zone RAG index (vault + knowledge packs).
+# Pinned EXACTLY: puffpai.knowledge.reading_helper replaces a private chromadb
+# method so the reading helper model is never downloaded behind the owner's
+# back. A bump must re-run tests/test_reading_helper.py (it fails if the
+# method is renamed) before this line changes.
+chromadb==1.5.5
+
+# HTTP: Ollama, Home Assistant, media server, and n8n clients
+requests>=2.31.0,<3.0
+
+# REST API server (web dashboard + Home Assistant Assist backend, `puffpai serve`)
+Flask>=3.0,<4.0
+
+# Knowledge / ZIM packs: decompresses modern (v6) packs. The ZIM reader itself
+# is pure-Python, so older packs still read without this; v6 packs degrade with
+# a clear "install zstandard" message when it is absent.
+zstandard>=0.22.0
+
+# PDF text extraction for document ingestion (pypdf primary, pdfplumber fallback)
+pypdf>=6.0.0,<7.0
+pdfplumber>=0.11.0
+
+# Vault encryption (Fernet + PBKDF2-HMAC-SHA256). No X.509, no PKCS#7/CMS, no
+# cert-chain verification anywhere in this tree.
+#
+# The floor is 48.0.1, not 41.0.0: every wheel below it statically links an
+# OpenSSL predating the 2026-06-09 secadv (GHSA-537c-gmf6-5ccf), which is the
+# one advisory that applies regardless of which APIs you call. 49.0.0 and
+# 50.0.0 additionally close PYSEC-2026-3554/3553 (X.509 name-constraint escape,
+# path-building DoS) and PYSEC-2026-3552 (PKCS#7 EnvelopedData decrypt oracle) --
+# unreachable here, but taken anyway on every box that can take them.
+#
+# The ceiling stays open to <51.0 deliberately, because "any box" includes two
+# platforms pyca stopped shipping wheels for after 48.0.1: 32-bit Windows and
+# Intel macOS. On those, pip resolves to 48.0.1 (still patched for the live
+# advisory) instead of failing into a Rust source build. Everywhere else --
+# Windows x64, Linux x86_64/aarch64/armv7l/musl, Apple Silicon, Jetson -- it
+# resolves to 50.0.1. DO NOT lower the floor without re-checking the
+# advisories above.
+cryptography>=48.0.1,<51.0
+
+# Tool servers (MCP): Home Assistant's own MCP Server and any tool she adds
+# (puffpai.mcp_client). 1.x on purpose: it uses the httpx already here; 2.x
+# moves to httpx2 and adds more packages. Imported only when a tool server is
+# used, so a computer without it still starts and says how to add it.
+mcp>=1.24,<2
+
+# OS keychain backend for the secrets-provider chain
+keyring>=25.0
+
+# Image handling for the desktop UI and avatar generator (Image / ImageTk /
+# ImageDraw). Part of the base set because the packaged UI imports it directly.
+Pillow>=12.0.0,<13.0
+
+# Time zone names (America/Chicago) on Windows, where Python has no system list.
+tzdata>=2024.1
+
+# Office documents the brain makes and edits on this computer (make_document,
+# edit_document): Word, Excel and PowerPoint files in her My files folder.
+# python-docx and python-pptx also read uploads (file_processor).
+python-docx>=1.1
+openpyxl>=3.1
+python-pptx>=1.0

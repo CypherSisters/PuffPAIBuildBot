@@ -1,0 +1,102 @@
+{
+  "name": "PuffPAI - Daily News Summary",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "daily-news",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "wh-news-1",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [250, 300],
+      "webhookId": "daily-news"
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "=https://newsapi.org/v2/top-headlines?country={{ $json.body.country || 'us' }}&category={{ $json.body.category || 'general' }}&pageSize={{ $json.body.count || 10 }}&apiKey={{ $json.body.api_key || '' }}",
+        "options": {}
+      },
+      "id": "news-api-1",
+      "name": "Fetch News (NewsAPI)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [480, 200]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml",
+        "options": {}
+      },
+      "id": "nyt-rss-1",
+      "name": "NYT RSS Fallback",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [480, 420]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Try NewsAPI first, fallback to RSS parsing\nconst newsApiData = $('Fetch News (NewsAPI)').first().json;\nconst rssData = $('NYT RSS Fallback').first().json;\n\nlet articles = [];\n\n// Parse NewsAPI response\nif (newsApiData.articles && newsApiData.articles.length > 0) {\n  articles = newsApiData.articles.slice(0, 10).map(a => ({\n    title: a.title,\n    description: a.description,\n    source: a.source?.name || 'Unknown',\n    url: a.url,\n    publishedAt: a.publishedAt\n  }));\n} else {\n  // Fallback: parse RSS XML as text\n  const rssText = typeof rssData === 'string' ? rssData : JSON.stringify(rssData);\n  // Basic RSS title extraction\n  const titleMatches = rssText.match(/<title>([^<]+)<\\/title>/g) || [];\n  articles = titleMatches.slice(1, 11).map((m, i) => ({\n    title: m.replace(/<\\/?title>/g, ''),\n    description: '',\n    source: 'NYT RSS',\n    url: '',\n    publishedAt: new Date().toISOString()\n  }));\n}\n\nconst now = new Date();\nconst dateStr = now.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });\n\nreturn {\n  json: {\n    date: dateStr,\n    articleCount: articles.length,\n    articles: articles,\n    summary: articles.slice(0, 5).map((a, i) => `${i+1}. ${a.title} (${a.source})`).join('\\n'),\n    categories: [...new Set(articles.map(a => a.source))]\n  }\n};"
+      },
+      "id": "format-news-1",
+      "name": "Format News Summary",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [750, 300]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "respond-news-1",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [980, 300]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          { "node": "Fetch News (NewsAPI)", "type": "main", "index": 0 },
+          { "node": "NYT RSS Fallback", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Fetch News (NewsAPI)": {
+      "main": [
+        [
+          { "node": "Format News Summary", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "NYT RSS Fallback": {
+      "main": [
+        [
+          { "node": "Format News Summary", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Format News Summary": {
+      "main": [
+        [
+          { "node": "Respond to Webhook", "type": "main", "index": 0 }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "tags": [
+    { "name": "puffpai" },
+    { "name": "news" },
+    { "name": "automation" }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+ "goal_id": "space",
+ "timing": {
+  "wall_s": 2.97,
+  "first_token_s": 0.06,
+  "first_job_s": 0,
+  "load_s": 0.0,
+  "prompt_tokens": 206,
+  "prompt_s": 0.04,
+  "out_tokens": 136,
+  "gen_s": 2.91,
+  "tok_per_s": 46.7,
+  "done_reason": "stop"
+ },
+ "parsed": {
+  "kind": "space exploration",
+  "asked": [
+   "show cool pictures",
+   "tell when space station flies",
+   "quiz about stars and black holes"
+  ],
+  "jobs": [
+   {
+    "name": "Show Pictures",
+    "does": "Display stunning images of planets and rockets."
+   },
+   {
+    "name": "Notify Flyovers",
+    "does": "Alert user when the space station passes overhead."
+   },
+   {
+    "name": "Star Quiz",
+    "does": "Administer questions about celestial bodies."
+   },
+   {
+    "name": "Black Hole Facts",
+    "does": "Provide information about black holes."
+   },
+   {
+    "name": "Space News",
+    "does": "Share recent space exploration news and updates."
+   }
+  ]
+ },
+ "recall": 0.7142857142857143
+}

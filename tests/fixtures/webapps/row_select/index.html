@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Chore Board</title><style>body{font-family:sans-serif} td{padding:2px 6px}</style></head>
+<body><h1>Chore Board</h1><div role="tablist"><button role="tab" aria-controls="p1">Overview</button><button role="tab" aria-controls="p2">Shopping list</button></div><div role="tabpanel" id="p1"><p>Welcome. Pick a tab.</p></div><div role="tabpanel" id="p2" hidden><button id="open">+ Add item</button>
+<section id="add">
+  <h2>New item</h2>
+  <label for="f_name">Item name</label><input id="f_name" maxlength="80">
+  <label for="f_kind">Kind</label><select id="f_kind"><option value="">Choose one</option><option>Food</option><option>Drink</option><option>Decor</option></select>
+  <label for="f_qty">Quantity</label><input id="f_qty" type="number" min="0" max="500">
+  <label for="f_when">Needed by</label><input id="f_when" type="date">
+  <button id="save">Save item</button>
+</section><p id="count"></p><p id="note"></p><table><tbody id="rows"></tbody></table></div>
+<script>
+const CFG = {"key": "chores", "rowSelect": true, "tabs": true, "hiddenForm": true};
+const $ = (s) => document.querySelector(s);
+function blank() { return {items: []}; }
+function load() { try { return JSON.parse(localStorage.getItem(CFG.key)) || blank(); } catch (e) { return blank(); } }
+function save(d) { localStorage.setItem(CFG.key, JSON.stringify(d)); }
+let editing = null;
+function esc(t) { const d = document.createElement("span"); d.textContent = String(t == null ? "" : t); return d.innerHTML; }
+function render() {
+  const d = load();
+  const tb = $("#rows"); if (!tb) return;
+  tb.innerHTML = "";
+  d.items.forEach((it) => {
+    const tr = document.createElement("tr");
+    tr.className = "item-row";
+    let h = '<td class="name">' + esc(it.name) + '</td><td class="kind">' + esc(it.kind) + '</td><td class="qty">' + esc(it.qty) + '</td><td class="when">' + esc(it.when) + '</td>';
+    if (CFG.rowSelect) h += '<td><select class="status">' + ["To get", "Got it", "Skip"].map((o) => '<option' + (o === it.status ? ' selected' : '') + '>' + o + '</option>').join("") + '</select></td>';
+    if (CFG.rowEdit) h += '<td><button class="edit">Edit</button></td>';
+    if (CFG.rowDelete) h += '<td><button class="del" title="Delete">Delete</button></td>';
+    tr.innerHTML = h;
+    if (CFG.rowSelect) tr.querySelector("select.status").onchange = (e) => { const x = load(); const r = x.items.find((y) => y.id === it.id); r.status = e.target.value; save(x); };
+    if (CFG.rowEdit) tr.querySelector("button.edit").onclick = () => { editing = it.id; showForm(); $("#f_name").value = it.name; $("#f_kind").value = it.kind; $("#f_qty").value = it.qty; $("#f_when").value = it.when; };
+    if (CFG.rowDelete) tr.querySelector("button.del").onclick = () => { if (!confirm("Delete this item?")) return; const x = load(); x.items = x.items.filter((y) => y.id !== it.id); save(x); render(); };
+    tb.appendChild(tr);
+  });
+  const c = $("#count"); if (c) c.textContent = d.items.length + " items";
+}
+function showForm() { $("#add").style.display = "block"; }
+function readForm() {
+  return {name: $("#f_name").value.trim(), kind: $("#f_kind").value, qty: $("#f_qty").value === "" ? null : Number($("#f_qty").value), when: $("#f_when").value};
+}
+function clearForm() { ["#f_name", "#f_qty", "#f_when"].forEach((s) => $(s).value = ""); $("#f_kind").value = ""; }
+async function idbAdd(rec) {
+  const db = await new Promise((ok, no) => { const r = indexedDB.open("shelf", 1); r.onupgradeneeded = () => r.result.createObjectStore("items", {keyPath: "id"}); r.onsuccess = () => ok(r.result); r.onerror = () => no(r.error); });
+  await new Promise((ok) => { const t = db.transaction("items", "readwrite"); t.objectStore("items").put(rec); t.oncomplete = ok; });
+}
+$("#save").onclick = async () => {
+  const f = readForm();
+  if (!f.name) { alert("Type a name first"); return; }
+  if (CFG.store === "idb") { await idbAdd(Object.assign({id: String(Date.now())}, f)); clearForm(); $("#note").textContent = "Saved"; return; }
+  const d = load();
+  if (editing) { const r = d.items.find((y) => y.id === editing); Object.assign(r, f); editing = null; }
+  else { d.items.push(Object.assign({id: Date.now().toString(36) + Math.random().toString(36).slice(2, 6)}, f, CFG.rowSelect ? {status: "To get"} : {})); }
+  save(d); clearForm(); render();
+  if (CFG.hiddenForm) $("#add").style.display = "none";
+};
+if (CFG.hiddenForm) { $("#add").style.display = "none"; $("#open").onclick = showForm; }
+if (CFG.clearAll) $("#clear").onclick = () => { if (!confirm("Clear the whole list?")) return; save(blank()); render(); };
+if (CFG.tabs) {
+  document.querySelectorAll("[role=tab]").forEach((t) => t.onclick = () => {
+    document.querySelectorAll("[role=tabpanel]").forEach((p) => p.hidden = p.id !== t.getAttribute("aria-controls"));
+  });
+}
+render();
+</script>
+</body></html>

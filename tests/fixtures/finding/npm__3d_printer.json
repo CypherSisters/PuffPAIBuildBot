@@ -1,0 +1,478 @@
+{
+"objects": [
+{
+"downloads": {
+"monthly": 724,
+"weekly": 417
+},
+"dependents": "1",
+"updated": "2026-10-04T06:16:12.057Z",
+"searchScore": 330.054,
+"package": {
+"name": "mcp-3d-printer-server",
+"keywords": [
+"mcp",
+"3d-printer",
+"octoprint",
+"klipper",
+"duet",
+"repetier",
+"bambu",
+"prusa",
+"creality",
+"ender"
+],
+"version": "1.2.9",
+"description": "MCP server for connecting Claude with 3D printer management systems",
+"sanitized_name": "mcp-3d-printer-server",
+"publisher": {
+"username": "dmontgomery40"
+},
+"license": "GPL-2.0",
+"date": "2026-09-27T06:13:11.139Z",
+"links": {
+"homepage": "https://github.com/DMontgomery40/mcp-3D-printer-server#readme",
+"repository": "git+https://github.com/DMontgomery40/mcp-3D-printer-server.git",
+"bugs": "https://github.com/DMontgomery40/mcp-3D-printer-server/issues",
+"npm": "https://www.npmjs.com/package/mcp-3d-printer-server"
+}
+},
+"score": {
+"final": 330.054,
+"detail": {
+"popularity": 1,
+"quality": 1,
+"maintenance": 1
+}
+},
+"flags": {
+"insecure": 0
+}
+},
+{
+"downloads": {
+"monthly": 748,
+"weekly": 328
+},
+"dependents": 0,
+"updated": "2026-10-04T00:11:11.476Z",
+"searchScore": 265.52777,
+"package": {
+"name": "@ghosttypes/ff-api",
+"keywords": [
+"flashforge",
+"3d-printer",
+"api"
+],
+"version": "2.1.0",
+"description": "FlashForge 3D Printer API for Node.js",
+"sanitized_name": "@ghosttypes/ff-api",
+"publisher": {
+"trustedPublisher": {
+"oidcConfigId": "oidc:ea6f8877-7406-48ac-a359-c2f4ccba0d80",
+"id": "github"
+},
+"username": "GitHub Actions"
+},
+"license": "ISC",
+"date": "2026-09-27T00:09:41.913Z",
+"links": {
+"homepage": "https://github.com/GhostTypes/ff-5mp-api-ts#readme",
+"repository": "git+https://github.com/GhostTypes/ff-5mp-api-ts.git",
+"bugs": "https://github.com/GhostTypes/ff-5mp-api-ts/issues",
+"npm": "https://www.npmjs.com/package/@ghosttypes/ff-api"
+}
+},
+"score": {
+"final": 265.52777,
+"detail": {
+"popularity": 1,
+"quality": 1,
+"maintenance": 1
+}
+},
+"flags": {
+"insecure": 0
+}
+},
+{
+"downloads": {
+"monthly": 122,
+"weekly": 17
+},
+"dependents": 0,
+"updated": "2026-09-29T23:16:36.484Z",
+"searchScore": 252.69249,
+"package": {
+"name": "3d-printer-controller",
+"keywords": [
+"gcode",
+"3d",
+"printer",
+"3d printer",
+"serial port"
+],
+"version": "1.0.3",
+"description": "Control your 3D printer directly from nodeJS",
+"sanitized_name": "3d-printer-controller",
+"publisher": {
+"username": "processeus"
+},
+"license": "ISC",
+"date": "2020-04-17T21:17:37.917Z",
+"links": {
+"homepage": "https://github.com/tothambrus11/3d-printer-controller#readme",
+"repository": "git+https://github.com/tothambrus11/3d-printer-controller.git",
+"bugs": "https://github.com/tothambrus11/3d-printer-controller/issues",
+"npm": "https://www.npmjs.com/package/3d-printer-controller"
+}
+},
+"score": {
+"final": 252.69249,
+"detail": {
+"popularity": 1,
+"quality": 1,
+"maintenance": 1
+}
+},
+"flags": {
+"insecure": 0
+}
+},
+{
+"downloads": {
+"monthly": 170,
+"weekly": 52
+},
+"dependents": 0,
+"updated": "2026-09-29T07:46:14.464Z",
+"searchScore": 245.8054,
+"package": {
+"name": "iobroker.creality",
+"keywords": [
+"ioBroker",
+"creality",
+"3D",
+"Printer"
+],
+"version": "0.4.1",
+"description": "Creality 3D-Printer",
+"sanitized_name": "iobroker-creality",
+"publisher": {
+"trustedPublisher": {
+"oidcConfigId": "oidc:7892af8e-f1ed-482b-9eb3-8719d55be8a2",
+"id": "github"
+},
+"username": "GitHub Actions"
+},
+"license": "MIT",
+"date": "2026-08-25T06:43:06.818Z",
+"links": {
+"homepage": "https://github.com/inventwo/ioBroker.creality",
+"repository": "git+https://github.com/inventwo/ioBroker.creality.git",
+"bugs": "https://github.com/inventwo/ioBroker.creality/issues",
+"npm": "https://www.npmjs.com/package/iobroker.creality"
+}
+},
+"score": {
+"final": 245.8054,
+"detail": {
+"popularity": 1,
+"quality": 1,
+"maintenance": 1
+}
+},
+"flags": {
+"insecure": 0
+}
+},
+{
+"downloads": {
+"monthly": 77,
+"weekly": 5
+},
+"dependents": 0,
+"updated": "2026-10-01T02:26:16.942Z",
+"searchScore": 205.42548,
+"package": {
+"name": "3d-printer-mcp-server",
+"keywords": [
+"mcp",
+"3d-printer",
+"octoprint",
+"klipper",
+"duet",
+"repetier",
+"bambu"
+],
+"version": "0.1.0",
+"description": "MCP server for connecting Claude with 3D printer management systems",
+"sanitized_name": "3d-printer-mcp-server",
+"publisher": {
+"username": "dmontgomery40"
+},
+"license": "MIT",
+"date": "2025-02-26T19:33:36.597Z",
+"links": {
+"npm": "https://www.npmjs.com/package/3d-printer-mcp-server"
+}
+},
+"score": {
+"final": 205.42548,
+"detail": {
+"popularity": 1,
+"quality": 1,
+"maintenance": 1
+}
+},
+"flags": {
+"insecure": 0
+}
+},
+{
+"downloads": {
+"monthly": 37,
+"weekly": 10
+},
+"dependents": 0,
+"updated": "2026-10-02T07:06:08.577Z",
+"searchScore": 159.3272,
+"package": {
+"name": "@iflow-mcp/mcp-3d-printer-server",
+"keywords": [
+"mcp",
+"3d-printer",
+"octoprint",
+"klipper",
+"duet",
+"repetier",
+"bambu",
+"prusa",
+"creality",
+"ender"
+],
+"version": "1.0.2",
+"description": "MCP server for connecting Claude with 3D printer management systems",
+"sanitized_name": "@iflow-mcp/mcp-3d-printer-server",
+"publisher": {
+"username": "chatflowdev"
+},
+"license": "GPL-2.0",
+"date": "2025-11-07T03:14:08.440Z",
+"links": {
+"homepage": "https://github.com/DMontgomery40/mcp-3D-printer-server#readme",
+"repository": "git+https://github.com/DMontgomery40/mcp-3D-printer-server.git",
+"bugs": "https://github.com/DMontgomery40/mcp-3D-printer-server/issues",
+"npm": "https://www.npmjs.com/package/@iflow-mcp/mcp-3d-printer-server"
+}
+},
+"score": {
+"final": 159.3272,
+"detail": {
+"popularity": 1,
+"quality": 1,
+"maintenance": 1
+}
+},
+"flags": {
+"insecure": 0
+}
+},
+{
+"downloads": {
+"monthly": 314,
+"weekly": 314
+},
+"dependents": 0,
+"updated": "2026-09-30T00:26:23.669Z",
+"searchScore": 157.83148,
+"package": {
+"name": "gcode-seer",
+"keywords": [
+"3d-printer",
+"3d-printing",
+"analyzer",
+"bambu",
+"extrusion",
+"g-code",
+"gcode",
+"gcode-parser",
+"javascript",
+"prusa",
+"streaming",
+"typescript"
+],
+"version": "0.1.1",
+"description": "Dependency-free TypeScript and JavaScript library for streaming 3D printer G-code analysis: motion, extrusion, temperatures and printer constraints.",
+"sanitized_name": "gcode-seer",
+"publisher": {
+"approver": {
+"name": "andrewlemons"
+},
+"username": "andrewlemons"
+},
+"license": "MIT",
+"date": "2026-09-22T17:36:37.770Z",
+"links": {
+"homepage": "https://github.com/AndrewLemons/gcode-seer#readme",
+"repository": "git+https://github.com/AndrewLemons/gcode-seer.git",
+"bugs": "https://github.com/AndrewLemons/gcode-seer/issues",
+"npm": "https://www.npmjs.com/package/gcode-seer"
+}
+},
+"score": {
+"final": 157.83148,
+"detail": {
+"popularity": 1,
+"quality": 1,
+"maintenance": 1
+}
+},
+"flags": {
+"insecure": 0
+}
+},
+{
+"downloads": {
+"monthly": 137,
+"weekly": 22
+},
+"dependents": 0,
+"updated": "2026-10-03T19:11:11.383Z",
+"searchScore": 151.1266,
+"package": {
+"name": "@simplyprint/n8n-nodes-simplyprint",
+"keywords": [
+"n8n-community-node-package",
+"simplyprint",
+"3d-printing",
+"automation",
+"print-farm"
+],
+"version": "0.4.1",
+"description": "n8n community node for SimplyPrint - monitor 3D printer fleets, manage queues, automate print jobs.",
+"sanitized_name": "@simplyprint/n8n-nodes-simplyprint",
+"publisher": {
+"trustedPublisher": {
+"oidcConfigId": "oidc:15f3389e-512e-4740-8364-fc57075e8ff8",
+"id": "github"
+},
+"username": "GitHub Actions"
+},
+"license": "MIT",
+"date": "2026-05-16T17:34:58.184Z",
+"links": {
+"homepage": "https://simplyprint.io/integrations/n8n",
+"repository": "git+https://github.com/SimplyPrint/n8n-nodes-simplyprint.git",
+"bugs": "https://github.com/SimplyPrint/n8n-nodes-simplyprint/issues",
+"npm": "https://www.npmjs.com/package/@simplyprint/n8n-nodes-simplyprint"
+}
+},
+"score": {
+"final": 151.1266,
+"detail": {
+"popularity": 1,
+"quality": 1,
+"maintenance": 1
+}
+},
+"flags": {
+"insecure": 0
+}
+},
+{
+"downloads": {
+"monthly": 297,
+"weekly": 23
+},
+"dependents": 0,
+"updated": "2026-10-01T09:56:26.073Z",
+"searchScore": 150.39368,
+"package": {
+"name": "@hyydev/3d-printagent",
+"keywords": [
+"3d-printing",
+"3d-printer",
+"print-agent",
+"octoprint",
+"klipper",
+"moonraker",
+"prusalink",
+"bambu-lab",
+"gcode",
+"mcp",
+"websocket",
+"rest-api"
+],
+"version": "0.3.0",
+"description": "Local 3D printer agent: manage OctoPrint, Klipper/Moonraker, PrusaLink and Bambu Lab printers over REST API, WebSocket and MCP, with web UI and public tunnel",
+"sanitized_name": "@hyydev/3d-printagent",
+"publisher": {
+"username": "letienhuy"
+},
+"license": "MIT",
+"date": "2026-09-17T09:48:17.603Z",
+"links": {
+"npm": "https://www.npmjs.com/package/@hyydev/3d-printagent"
+}
+},
+"score": {
+"final": 150.39368,
+"detail": {
+"popularity": 1,
+"quality": 1,
+"maintenance": 1
+}
+},
+"flags": {
+"insecure": 0
+}
+},
+{
+"downloads": {
+"monthly": 61,
+"weekly": 1
+},
+"dependents": 0,
+"updated": "2026-10-03T19:21:15.163Z",
+"searchScore": 149.01286,
+"package": {
+"name": "@apexskier/homebridge-prusalink",
+"keywords": [
+"homebridge-plugin"
+],
+"version": "1.0.9",
+"description": "Use your Prusa 3D printer as a temperature sensor.",
+"sanitized_name": "@apexskier/homebridge-prusalink",
+"publisher": {
+"trustedPublisher": {
+"oidcConfigId": "oidc:185022f3-6867-4cf5-a05a-a35a56fdd730",
+"id": "github"
+},
+"username": "GitHub Actions"
+},
+"license": "Apache-2.0",
+"date": "2025-11-08T15:24:52.864Z",
+"links": {
+"homepage": "https://github.com/apexskier/homebridge-prusalink#readme",
+"repository": "git+https://github.com/apexskier/homebridge-prusalink.git",
+"bugs": "https://github.com/apexskier/homebridge-prusalink/issues",
+"npm": "https://www.npmjs.com/package/@apexskier/homebridge-prusalink"
+}
+},
+"score": {
+"final": 149.01286,
+"detail": {
+"popularity": 1,
+"quality": 1,
+"maintenance": 1
+}
+},
+"flags": {
+"insecure": 0
+}
+}
+],
+"total": 19794,
+"time": "2026-10-04T08:24:57.237Z"
+}

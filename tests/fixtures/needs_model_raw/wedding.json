@@ -1,0 +1,193 @@
+{
+ "goal_id": "wedding",
+ "model": "qwen2.5:7b-instruct",
+ "prompt_tag": "v5",
+ "at": "2026-09-27T00:28:28",
+ "timing": {
+  "wall_s": 15.04,
+  "first_token_s": 0.57,
+  "first_job_s": 3.32,
+  "load_s": 0.01,
+  "prompt_tokens": 724,
+  "prompt_s": 0.48,
+  "out_tokens": 669,
+  "gen_s": 14.47,
+  "tok_per_s": 46.2,
+  "done_reason": "stop"
+ },
+ "raw": "{\n  \"kind\": \"wedding planner\",\n  \"asked\": [\n    \"track themes from pictures\",\n    \"come up with ideas\",\n    \"find wedding vendors\",\n    \"plan the budget\",\n    \"do a whole wedding plan\"\n  ],\n  \"also_needed\": [\n    \"manage tasks\",\n    \"send reminders\"\n  ],\n  \"jobs\": [\n    {\n      \"name\": \"theme tracker\",\n      \"does\": \"collect and organize theme-related images and ideas\",\n      \"parts\": [\n        {\n          \"kind\": \"pictures\",\n          \"search\": [\"wedding themes\", \"theme ideas\"]\n        },\n        {\n          \"kind\": \"knowledge\",\n          \"search\": [\"wedding theme planning\", \"theme design resources\"]\n        }\n      ]\n    },\n    {\n      \"name\": \"idea generator\",\n      \"does\": \"suggest creative wedding ideas based on themes and trends\",\n      \"parts\": [\n        {\n          \"kind\": \"knowledge\",\n          \"search\": [\"wedding planning ideas\", \"creative wedding themes\"]\n        },\n        {\n          \"kind\": \"pictures\",\n          \"search\": [\"wedding inspiration\", \"wedding design\"]\n        }\n      ]\n    },\n    {\n      \"name\": \"vendor finder\",\n      \"does\": \"search for and compare wedding vendors and services\",\n      \"parts\": [\n        {\n          \"kind\": \"live-info\",\n          \"search\": [\"wedding vendors\", \"event planners\"]\n        },\n        {\n          \"kind\": \"code-app\",\n          \"search\": [\"vendor comparison app\", \"event planning software\"]\n        }\n      ]\n    },\n    {\n      \"name\": \"budget planner\",\n      \"does\": \"create and manage a wedding budget\",\n      \"parts\": [\n        {\n          \"kind\": \"data-template\",\n          \"search\": [\"wedding budget template\", \"event budget planner\"]\n        },\n        {\n          \"kind\": \"knowledge\",\n          \"search\": [\"wedding budgeting\", \"event cost management\"]\n        }\n      ]\n    },\n    {\n      \"name\": \"task manager\",\n      \"does\": \"organize and track wedding planning tasks\",\n      \"parts\": [\n        {\n          \"kind\": \"code-app\",\n          \"search\": [\"task management app\", \"to-do list software\"]\n        },\n        {\n          \"kind\": \"data-template\",\n          \"search\": [\"wedding planning checklist\", \"event planning tasks\"]\n        }\n      ]\n    },\n    {\n      \"name\": \"reminder sender\",\n      \"does\": \"send timely reminders for upcoming tasks and deadlines\",\n      \"parts\": [\n        {\n          \"kind\": \"code-app\",\n          \"search\": [\"reminder app\", \"task reminder software\"]\n        },\n        {\n          \"kind\": \"knowledge\",\n          \"search\": [\"task management techniques\", \"time management tips\"]\n        }\n      ]\n    },\n    {\n      \"name\": \"overall planner\",\n      \"does\": \"coordinate all aspects of the wedding plan\",\n      \"parts\": [\n        {\n          \"kind\": \"code-app\",\n          \"search\": [\"event planning app\", \"wedding planner software\"]\n        },\n        {\n          \"kind\": \"knowledge\",\n          \"search\": [\"event planning guide\", \"wedding planning advice\"]\n        }\n      ]\n    }\n  ]\n}",
+ "parsed": {
+  "kind": "wedding planner",
+  "asked": [
+   "track themes from pictures",
+   "come up with ideas",
+   "find wedding vendors",
+   "plan the budget",
+   "do a whole wedding plan"
+  ],
+  "also_needed": [
+   "manage tasks",
+   "send reminders"
+  ],
+  "jobs": [
+   {
+    "name": "theme tracker",
+    "does": "collect and organize theme-related images and ideas",
+    "parts": [
+     {
+      "kind": "pictures",
+      "search": [
+       "wedding themes",
+       "theme ideas"
+      ]
+     },
+     {
+      "kind": "knowledge",
+      "search": [
+       "wedding theme planning",
+       "theme design resources"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "idea generator",
+    "does": "suggest creative wedding ideas based on themes and trends",
+    "parts": [
+     {
+      "kind": "knowledge",
+      "search": [
+       "wedding planning ideas",
+       "creative wedding themes"
+      ]
+     },
+     {
+      "kind": "pictures",
+      "search": [
+       "wedding inspiration",
+       "wedding design"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "vendor finder",
+    "does": "search for and compare wedding vendors and services",
+    "parts": [
+     {
+      "kind": "live-info",
+      "search": [
+       "wedding vendors",
+       "event planners"
+      ]
+     },
+     {
+      "kind": "code-app",
+      "search": [
+       "vendor comparison app",
+       "event planning software"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "budget planner",
+    "does": "create and manage a wedding budget",
+    "parts": [
+     {
+      "kind": "data-template",
+      "search": [
+       "wedding budget template",
+       "event budget planner"
+      ]
+     },
+     {
+      "kind": "knowledge",
+      "search": [
+       "wedding budgeting",
+       "event cost management"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "task manager",
+    "does": "organize and track wedding planning tasks",
+    "parts": [
+     {
+      "kind": "code-app",
+      "search": [
+       "task management app",
+       "to-do list software"
+      ]
+     },
+     {
+      "kind": "data-template",
+      "search": [
+       "wedding planning checklist",
+       "event planning tasks"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "reminder sender",
+    "does": "send timely reminders for upcoming tasks and deadlines",
+    "parts": [
+     {
+      "kind": "code-app",
+      "search": [
+       "reminder app",
+       "task reminder software"
+      ]
+     },
+     {
+      "kind": "knowledge",
+      "search": [
+       "task management techniques",
+       "time management tips"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "overall planner",
+    "does": "coordinate all aspects of the wedding plan",
+    "parts": [
+     {
+      "kind": "code-app",
+      "search": [
+       "event planning app",
+       "wedding planner software"
+      ]
+     },
+     {
+      "kind": "knowledge",
+      "search": [
+       "event planning guide",
+       "wedding planning advice"
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "check": {
+  "valid": true,
+  "kind": "wedding planner",
+  "jobs": 7,
+  "jobs_in_range": true,
+  "phrases": 28,
+  "unique_phrases": 28,
+  "parts_with_bad_phrase_count": 0,
+  "kinds": {
+   "pictures": 2,
+   "knowledge": 5,
+   "live-info": 1,
+   "code-app": 4,
+   "data-template": 2
+  },
+  "leaks": [],
+  "kind_leak": []
+ }
+}

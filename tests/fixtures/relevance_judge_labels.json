@@ -1,0 +1,926 @@
+{
+ "note": "124 hand-labelled real candidates in 4 goals (design needs 5). Inputs from needs_runs/judge_band.json (job texts and candidate texts), labels from judge_eval.py YES (fit=FIT when the item would help a job, else OFF), judge answers from needs_runs/judge_eval_qwen2.5_7b-instruct.json (_scores[].judge: a job number keeps, 0 = no). The spec names relevance_report.json as the source; that file holds only per-goal summaries, so the labelled rows come from these.",
+ "goals": {
+  "wedding": {
+   "jobs": [
+    "wedding planner theme tracker: collect and organize theme-related pictures and ideas",
+    "wedding planner idea generator: suggest creative ideas for the wedding",
+    "wedding planner vendor finder: search for and list wedding vendors and materials to rent",
+    "wedding planner budget planner: create and manage a wedding budget",
+    "wedding planner wedding plan manager: coordinate and organize all aspects of the wedding",
+    "wedding planner contact list: maintain a list of important contacts for the wedding",
+    "wedding planner reminder system: set and send reminders for important wedding tasks"
+   ],
+   "items": [
+    {
+     "id": "github:Prajyot5015/wedding-event-management-group15-project1-icp7",
+     "src": "github",
+     "text": "wedding event management group15 project1 icp7. Wedding-Planner ",
+     "fit": "FIT",
+     "judge": "yes"
+    },
+    {
+     "id": "github:CatherineEvelyn/wedding-planner",
+     "src": "github",
+     "text": "wedding planner. Wedding Planner Web ",
+     "fit": "FIT",
+     "judge": "yes"
+    },
+    {
+     "id": "github:Akramovic1/Wedding-Planner",
+     "src": "github",
+     "text": "Wedding Planner. The website offers a full wedding package that initially concerns the reservation of weddings and offers all its features to the customers spec",
+     "fit": "FIT",
+     "judge": "yes"
+    },
+    {
+     "id": "github:Priyanka33591/Wedding-Planning-Website",
+     "src": "github",
+     "text": "Wedding Planning Website. This Wedding Planning Website is designed to simplify and organize every aspect of planning a perfect wedding. From managing guest lis",
+     "fit": "FIT",
+     "judge": "yes"
+    },
+    {
+     "id": "github:DwightTheShark/WeddingPlanApp",
+     "src": "github",
+     "text": "WeddingPlanApp. List sharing across users and topics for those planning an extensive wedding, with due dates and alerts ",
+     "fit": "FIT",
+     "judge": "yes"
+    },
+    {
+     "id": "github:randomutterings/wedding",
+     "src": "github",
+     "text": "wedding. wedding planning site ",
+     "fit": "FIT",
+     "judge": "yes"
+    },
+    {
+     "id": "public_apis:coworkingview",
+     "src": "public_apis",
+     "text": "CoworkingView. Coworking spaces and offices in 63 European and Gulf cities with operator-published prices",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "seed:themealdb",
+     "src": "api_seeds",
+     "text": "TheMealDB. Recipes with ingredients, steps and photos.",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "apis_guru:mastercard.com:MATCH",
+     "src": "apis_guru",
+     "text": "MATCH API. Helps acquirers identify potentially high-risk merchants before entering to a merchant agreement.",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "apis_guru:googleapis.com:essentialcontacts",
+     "src": "apis_guru",
+     "text": "Essential Contacts API. Essential Contacts API",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "apis_guru:spectrocoin.com",
+     "src": "apis_guru",
+     "text": "SpectroCoin Merchant. This is an API designed for merchants who are using SpectroCoin services and wishes to integrate them locally.",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "apis_guru:ote-godaddy.com:shoppers",
+     "src": "apis_guru",
+     "text": "ote-godaddy.com:shoppers. ote-godaddy.com:shoppers",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "public_apis:auto_body_shop_directory",
+     "src": "public_apis",
+     "text": "Auto Body Shop Directory. Find auto body shops by ZIP code, city, location, or profile",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "kiwix:publicdomainrecipes.com_en_all",
+     "src": "kiwix",
+     "text": "Public Domain Recipes. What do you want to cook? food",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "apis_guru:googleapis.com:ideahub",
+     "src": "apis_guru",
+     "text": "Idea Hub API. This is an invitation-only API.",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "public_apis:marketplace_fee_data",
+     "src": "public_apis",
+     "text": "Marketplace Fee Data. Seller fee schedules for 21 e-commerce marketplaces and payment processors as JSON",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "apis_guru:vtex.local:Profile-System",
+     "src": "apis_guru",
+     "text": "Profile System. Create shopper profiles and manage their information.",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "public_apis:tradedatahub",
+     "src": "public_apis",
+     "text": "TradeDataHub. U.S. contractor datasets with a free discovery API for coverage, pricing and masked previews",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "seed:met_museum",
+     "src": "api_seeds",
+     "text": "The Met Collection. Art and objects from The Metropolitan Museum of Art, with photos.",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "public_apis:49_gallery_historical_data",
+     "src": "public_apis",
+     "text": "49 Gallery Historical Data. Normalized historical records and 25 daily-updated reference series",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "public_apis:open_brewery_db",
+     "src": "public_apis",
+     "text": "Open Brewery DB. Breweries, Cideries and Craft Beer Bottle Shops",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "kiwix:libretexts.org_en_biz",
+     "src": "kiwix",
+     "text": "Business LibreTexts. Business courses and bookshelves from LibreTexts.org ",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "kiwix:www.ready.gov_en",
+     "src": "kiwix",
+     "text": "Ready.gov. Plan ahead for disasters (Weather, Fire, Makings plans, Building kits, etc.) preppers",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "kiwix:prunelle_en_budding-authors",
+     "src": "kiwix",
+     "text": "Budding authors. Interactive books by Prunelle. Print and write your own story! ",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "kiwix:crafts.stackexchange.com_en_all",
+     "src": "kiwix",
+     "text": "Arts & Crafts Q&A. Stack Exchange Q&A for artists and crafters stack_exchange",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "kiwix:ted_mul_design",
+     "src": "kiwix",
+     "text": "TED design. A collection of TED videos about design ted",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "seed:internet_archive",
+     "src": "api_seeds",
+     "text": "Internet Archive search. Search old books, magazines, recordings and videos kept by the Internet Archive.",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "seed:itunes_search",
+     "src": "api_seeds",
+     "text": "Apple iTunes Search. Find albums, songs and podcasts, with cover art.",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "seed:nominatim",
+     "src": "api_seeds",
+     "text": "OpenStreetMap place search. Find places on the map by name.",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "seed:nasa_epic",
+     "src": "api_seeds",
+     "text": "NASA EPIC Earth photos. Daily full-disc photos of Earth taken from a million miles away.",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "seed:nasa_images",
+     "src": "api_seeds",
+     "text": "NASA Image and Video Library. Search NASA's photos and videos of planets, rockets, astronauts and space.",
+     "fit": "OFF",
+     "judge": "no"
+    }
+   ]
+  },
+  "garden": {
+   "jobs": [
+    "garden watering reminders: reminds user to water plants",
+    "garden planting schedule: provides monthly planting suggestions",
+    "garden pest identification: identifies pests eating plants",
+    "garden task checklist: lists daily garden tasks",
+    "garden reminder calendar: schedules and reminds of garden tasks",
+    "garden local gardener contacts: provides contact information for local gardeners"
+   ],
+   "items": [
+    {
+     "id": "kiwix:gardening.stackexchange.com_en_all",
+     "src": "kiwix",
+     "text": "Gardening & Landscaping Q&A. Stack Exchange Q&A for gardeners and landscapers stack_exchange",
+     "fit": "FIT",
+     "judge": "yes"
+    },
+    {
+     "id": "kiwix:gardenology_en_all",
+     "src": "kiwix",
+     "text": "Gardenology. A complete plant and garden encyclopedia gardenology",
+     "fit": "FIT",
+     "judge": "yes"
+    },
+    {
+     "id": "kiwix:gutenberg_en_lcc-s",
+     "src": "kiwix",
+     "text": "Project Gutenberg Library. Agriculture gutenberg",
+     "fit": "FIT",
+     "judge": "yes"
+    },
+    {
+     "id": "kiwix:outdoors.stackexchange.com_en_all",
+     "src": "kiwix",
+     "text": "The Great Outdoors Q&A. Stack Exchange Q&A for everything being outdoors enjoying nature and wilderness stack_exchange",
+     "fit": "OFF",
+     "judge": "yes"
+    },
+    {
+     "id": "kiwix:ted_mul_gardening",
+     "src": "kiwix",
+     "text": "TED gardening. A collection of TED videos about gardening ted",
+     "fit": "FIT",
+     "judge": "yes"
+    },
+    {
+     "id": "github:DwightTheShark/WeddingPlanApp",
+     "src": "github",
+     "text": "WeddingPlanApp. List sharing across users and topics for those planning an extensive wedding, with due dates and alerts ",
+     "fit": "OFF",
+     "judge": "yes"
+    },
+    {
+     "id": "public_apis:cyclecalcs",
+     "src": "public_apis",
+     "text": "CycleCalcs. Interpreted astronomy: sun and moon times, moon phases, planets, eclipses, seasons",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "seed:inaturalist",
+     "src": "api_seeds",
+     "text": "iNaturalist. Plants and animals people have spotted, with photos and common names.",
+     "fit": "FIT",
+     "judge": "yes"
+    },
+    {
+     "id": "github:codegenixdev/meal-planner",
+     "src": "github",
+     "text": "meal planner.  ",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "public_apis:the_calendar",
+     "src": "public_apis",
+     "text": "The Calendar. Public holidays for US states and 30 countries plus sports and finance calendars as static JSON",
+     "fit": "OFF",
+     "judge": "yes"
+    },
+    {
+     "id": "apis_guru:googleapis.com:tasks",
+     "src": "apis_guru",
+     "text": "Google Tasks API. The Google Tasks API lets you manage your tasks and task lists.",
+     "fit": "OFF",
+     "judge": "yes"
+    },
+    {
+     "id": "apis_guru:googleapis.com:calendar",
+     "src": "apis_guru",
+     "text": "Calendar API. Manipulates events and other calendar data.",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "github:arimai/meal-planner",
+     "src": "github",
+     "text": "meal planner. A web application to plan what you eat daily in accordance to dietary needs  create-react-app edamam-api flexbox meal-planner react",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "public_apis:namedays_calendar",
+     "src": "public_apis",
+     "text": "Namedays Calendar. Provides namedays for multiple countries",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "github:JLambertazzo/MealPlanner",
+     "src": "github",
+     "text": "MealPlanner. A web application to help you plan out your meals! css css3 food full-stack full-stack-application full-stack-development full-stack-web-developmen",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "public_apis:tilth",
+     "src": "public_apis",
+     "text": "Tilth. Free daily UK fertiliser price index across nine grades, CC BY 4.0 licensed",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "github:wedding-planner-app/wedding-planner",
+     "src": "github",
+     "text": "wedding planner. MAJOR PROJECT #2- Summer weddings are in full swing!! To help make wedding planning easier, we would like to develop a wedding planner web appl",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "github:CivicTechFredericton/mealplanner",
+     "src": "github",
+     "text": "mealplanner. Primary Meal Planner repo docker graphql hacktoberfest react",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "public_apis:caldays",
+     "src": "public_apis",
+     "text": "caldays. Public holidays for 195+ countries",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "seed:sunrise_sunset",
+     "src": "api_seeds",
+     "text": "Sunrise Sunset. Sunrise, sunset and twilight times for your town.",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "kiwix:publicdomainrecipes.com_en_all",
+     "src": "kiwix",
+     "text": "Public Domain Recipes. What do you want to cook? food",
+     "fit": "OFF",
+     "judge": "yes"
+    },
+    {
+     "id": "apis_guru:thenounproject.com",
+     "src": "apis_guru",
+     "text": "The Noun Project. Icons for Everything",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "apis_guru:groundhog-day.com",
+     "src": "apis_guru",
+     "text": "Groundhog Day API. This API returns all of North America’s prognosticating animals and their yearly weather predictions.",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "public_apis:fruityvice",
+     "src": "public_apis",
+     "text": "Fruityvice. Data about all kinds of fruit",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "apis_guru:googleapis.com:cloudscheduler",
+     "src": "apis_guru",
+     "text": "Cloud Scheduler API. Creates and manages jobs run on a regular recurring schedule.",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "apis_guru:qualtrics.com",
+     "src": "apis_guru",
+     "text": "Qualtrics API. Work with Qualtrics surveys, distributions and response events",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "seed:seventimer",
+     "src": "api_seeds",
+     "text": "7Timer! stargazing forecast. Stargazing forecast for your town: cloud cover, steadiness of the air, and how clear the sky is.",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "seed:themealdb",
+     "src": "api_seeds",
+     "text": "TheMealDB. Recipes with ingredients, steps and photos.",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "seed:nasa_epic",
+     "src": "api_seeds",
+     "text": "NASA EPIC Earth photos. Daily full-disc photos of Earth taken from a million miles away.",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "seed:gbif_species",
+     "src": "api_seeds",
+     "text": "GBIF species. Names and details for plants, animals and fungi from around the world.",
+     "fit": "FIT",
+     "judge": "no"
+    },
+    {
+     "id": "seed:nasa_images",
+     "src": "api_seeds",
+     "text": "NASA Image and Video Library. Search NASA's photos and videos of planets, rockets, astronauts and space.",
+     "fit": "OFF",
+     "judge": "no"
+    }
+   ]
+  },
+  "dnd": {
+   "jobs": [
+    "D&D bot initiative tracker: keeps track of characters' initiative order",
+    "D&D bot dice roller: rolls dice for the game",
+    "D&D bot NPC generator: creates non-player characters for the game",
+    "D&D bot loot generator: provides random loot for the game",
+    "D&D bot session notes: keeps notes for the game sessions",
+    "D&D bot spell reference: provides spell information",
+    "D&D bot monster stats: provides monster statistics",
+    "D&D bot character sheets: manages character sheets",
+    "D&D bot campaign calendar: tracks campaign dates and events",
+    "D&D bot rules reference: provides rules and guidelines"
+   ],
+   "items": [
+    {
+     "id": "github:JakevdKolk/DND_Initiative_Tracker",
+     "src": "github",
+     "text": "DND Initiative Tracker.  ",
+     "fit": "FIT",
+     "judge": "yes"
+    },
+    {
+     "id": "github:the-nick-of-time/DnD",
+     "src": "github",
+     "text": "DnD. Python tools to do all the bothersome math for you. For use with 5e and Next. dice dm-tools dnd dnd5e player-tools roller",
+     "fit": "FIT",
+     "judge": "yes"
+    },
+    {
+     "id": "github:Cod-e-Codes/initiative-tracker",
+     "src": "github",
+     "text": "initiative tracker. Terminal-based D&D 5e initiative tracker with combat, HP, and condition management (C + ncurses) c dnd dnd5e initiative-tracker ncurses rpg ",
+     "fit": "FIT",
+     "judge": "yes"
+    },
+    {
+     "id": "github:filipdanic/dnd-initiative-order-tracker",
+     "src": "github",
+     "text": "dnd initiative order tracker. A React.js app for keeping tracker of turn/initiative order in Dungeons and Dragons. dnd dnd-tools dnd5e dungeons-and-dragons loca",
+     "fit": "FIT",
+     "judge": "yes"
+    },
+    {
+     "id": "public_apis:monster_hunter_world",
+     "src": "public_apis",
+     "text": "Monster Hunter World. Monster Hunter World data",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "github:Valforte/Initiative-Tracker",
+     "src": "github",
+     "text": "Initiative Tracker. A modern, themeable initiative tracker for Pathfinder 2e combat encounters with separate DM and player views combat-tracker daisyui dm-tools",
+     "fit": "FIT",
+     "judge": "no"
+    },
+    {
+     "id": "github:ThatCoolNerd/dnd_5e_character_generator",
+     "src": "github",
+     "text": "dnd 5e character generator. A tool for generating 5th edition Dungeons & Dragons characters ",
+     "fit": "FIT",
+     "judge": "no"
+    },
+    {
+     "id": "apis_guru:microsoft.com:cognitiveservices-SpellCheck",
+     "src": "apis_guru",
+     "text": "Spell Check Client. The Spell Check API - V7 lets you check a text string for spelling and grammar errors.",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "apis_guru:azure.com:botservice",
+     "src": "apis_guru",
+     "text": "Azure Bot Service. Azure Bot Service is a platform for creating smart conversational agents.",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "public_apis:robohash",
+     "src": "public_apis",
+     "text": "RoboHash. Generate random robot/alien avatars",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "apis_guru:googleapis.com:dfareporting",
+     "src": "apis_guru",
+     "text": "Campaign Manager 360 API. Build applications to efficiently manage large or complex trafficking, reporting, and attribution workflows for Campaign Manager 360.",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "apis_guru:fungenerators.com:lottery",
+     "src": "apis_guru",
+     "text": "Random Lottery Number generator API. Below is the documentation for the API calls. You can try them out right here.",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "public_apis:swarmmemo",
+     "src": "public_apis",
+     "text": "SwarmMemo. Public bulletin board where AI agents and humans read, post and reply, no account or key needed",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "public_apis:random_data",
+     "src": "public_apis",
+     "text": "Random Data. Random data generator",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "public_apis:botsarchive",
+     "src": "public_apis",
+     "text": "BotsArchive. JSON formatted details about Telegram Bots available in database",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "apis_guru:wellknown.ai",
+     "src": "apis_guru",
+     "text": "Wellknown. A registry of AI Plugins.",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "kiwix:ted_mul_current-events",
+     "src": "kiwix",
+     "text": "TED current events. A collection of TED videos about current events ted",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "public_apis:yes_no",
+     "src": "public_apis",
+     "text": "Yes No. Generate yes or no randomly",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "apis_guru:rapidapi.com:spellcheckpro",
+     "src": "apis_guru",
+     "text": "SpellCheckPro. SpellCheckPro",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "kiwix:ted_mul_ai",
+     "src": "kiwix",
+     "text": "TED ai. A collection of TED videos about ai ted",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "kiwix:learningstatistics_en_all",
+     "src": "kiwix",
+     "text": "Learning Statistics - CogStat. A tutorial for psychology students and other beginners ",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "kiwix:devhints.io_en_all",
+     "src": "kiwix",
+     "text": "DevHints - Rico's cheatsheets. A modest collection of software commands cheatsheets (ruby, bash, vim, etc.) ",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "kiwix:devdocs_en_statsmodels",
+     "src": "kiwix",
+     "text": "Statsmodels Docs. Statsmodels documentation, by DevDocs devdocs statsmodels",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "kiwix:genai.stackexchange.com_en_all",
+     "src": "kiwix",
+     "text": "GenAI Q&A. Stack Exchange Q&A for everything related to Generative Artificial Intelligence stack_exchange",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "seed:spaceflight_news",
+     "src": "api_seeds",
+     "text": "Spaceflight News API. Latest space news stories collected from many news websites.",
+     "fit": "OFF",
+     "judge": "yes"
+    },
+    {
+     "id": "seed:mlb_stats",
+     "src": "api_seeds",
+     "text": "MLB Stats. Baseball teams, games, scores and players.",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "seed:dnd5e",
+     "src": "api_seeds",
+     "text": "D&D 5e rules. Dungeons and Dragons rules: spells, monsters and classes.",
+     "fit": "FIT",
+     "judge": "no"
+    },
+    {
+     "id": "seed:launch_library",
+     "src": "api_seeds",
+     "text": "Launch Library 2 (The Space Devs). Upcoming rocket launches from around the world, with who is flying and when.",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "seed:disease_sh",
+     "src": "api_seeds",
+     "text": "disease.sh. Public disease numbers, such as COVID-19 case counts.",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "seed:datamuse",
+     "src": "api_seeds",
+     "text": "Datamuse. Words that rhyme, sound alike, or mean the same thing.",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "seed:nasa_epic",
+     "src": "api_seeds",
+     "text": "NASA EPIC Earth photos. Daily full-disc photos of Earth taken from a million miles away.",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "seed:nasa_images",
+     "src": "api_seeds",
+     "text": "NASA Image and Video Library. Search NASA's photos and videos of planets, rockets, astronauts and space.",
+     "fit": "OFF",
+     "judge": "no"
+    }
+   ]
+  },
+  "space": {
+   "jobs": [
+    "space picture-gallery: display images of planets and rockets",
+    "space iss-tracker: notify when the ISS passes overhead",
+    "space space-quiz: ask questions about stars and black holes",
+    "space weather-check: check the weather for Dayton",
+    "space iss-tracking: track the ISS's position",
+    "space educational-content: provide educational resources about space"
+   ],
+   "items": [
+    {
+     "id": "seed:nasa_images",
+     "src": "api_seeds",
+     "text": "NASA Image and Video Library. Search NASA's photos and videos of planets, rockets, astronauts and space.",
+     "fit": "FIT",
+     "judge": "yes"
+    },
+    {
+     "id": "kiwix:apod.nasa.gov_en_all",
+     "src": "kiwix",
+     "text": "Astronomy Picture of the Day. Images of our fascinating universe, along with a brief explanation astronomy,science,NASA",
+     "fit": "FIT",
+     "judge": "yes"
+    },
+    {
+     "id": "seed:nasa_epic",
+     "src": "api_seeds",
+     "text": "NASA EPIC Earth photos. Daily full-disc photos of Earth taken from a million miles away.",
+     "fit": "FIT",
+     "judge": "yes"
+    },
+    {
+     "id": "kiwix:astronomy.stackexchange.com_en_all",
+     "src": "kiwix",
+     "text": "Astronomy Q&A. Stack Exchange Q&A for astronomers and astrophysicists stack_exchange",
+     "fit": "FIT",
+     "judge": "yes"
+    },
+    {
+     "id": "public_apis:nasa",
+     "src": "public_apis",
+     "text": "NASA. NASA data, including imagery",
+     "fit": "FIT",
+     "judge": "yes"
+    },
+    {
+     "id": "seed:open_meteo",
+     "src": "api_seeds",
+     "text": "Open-Meteo weather. Weather forecast for your town: temperature, rain, wind and clouds.",
+     "fit": "FIT",
+     "judge": "yes"
+    },
+    {
+     "id": "kiwix:ted_mul_space",
+     "src": "kiwix",
+     "text": "TED space. A collection of TED videos about space ted",
+     "fit": "FIT",
+     "judge": "no"
+    },
+    {
+     "id": "kiwix:libretexts.org_en_geo",
+     "src": "kiwix",
+     "text": "Geosciences LibreTexts. Geosciences courses and bookshelves from LibreTexts.org ",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "public_apis:aviationweather",
+     "src": "public_apis",
+     "text": "AviationWeather. NOAA aviation weather forecasts and observations",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "public_apis:weathertotals",
+     "src": "public_apis",
+     "text": "WeatherTotals. Measured US snow, rain, hail and aurora totals by state and city",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "seed:swpc_kp",
+     "src": "api_seeds",
+     "text": "NOAA Space Weather Prediction Center. Space weather: solar storms and the chance of seeing the northern lights.",
+     "fit": "FIT",
+     "judge": "no"
+    },
+    {
+     "id": "apis_guru:traccar.org",
+     "src": "apis_guru",
+     "text": "Traccar. Open Source GPS Tracking Platform",
+     "fit": "OFF",
+     "judge": "yes"
+    },
+    {
+     "id": "public_apis:final_space",
+     "src": "public_apis",
+     "text": "Final Space. Final Space API",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "apis_guru:interzoid.com:getweatherzip",
+     "src": "apis_guru",
+     "text": "Interzoid Get Weather By Zip Code API. This API provides current weather information for US Cities, including temperatures, wind speeds, wind direction, relativ",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "apis_guru:interzoid.com:getweathercity",
+     "src": "apis_guru",
+     "text": "Interzoid Get Weather City API. This API provides current weather information for US Cities, including temperatures, wind speeds, wind direction, relative humid",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "public_apis:bucketlist_dream_of_the_day",
+     "src": "public_apis",
+     "text": "Bucketlist Dream of the Day. Daily travel and life-experience inspiration with canonical links and images",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "apis_guru:image-charts.com",
+     "src": "apis_guru",
+     "text": "Image-Charts. Charts, simple as a URL. A safe and fast replacement for Google Image Charts",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "kiwix:wikiversity_en_all:nopic",
+     "src": "kiwix",
+     "text": "Wikiversity. Wikiversity offers tutorials and other materials for the fostering of learning. wikiversity",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "kiwix:wikiversity_en_all:maxi",
+     "src": "kiwix",
+     "text": "Wikiversity. Wikiversity offers tutorials and other materials for the fostering of learning. wikiversity",
+     "fit": "OFF",
+     "judge": "yes"
+    },
+    {
+     "id": "public_apis:solar_system_opendata",
+     "src": "public_apis",
+     "text": "Solar System OpenData. Data and facts on solar system bodies and planets",
+     "fit": "FIT",
+     "judge": "no"
+    },
+    {
+     "id": "seed:iss_position",
+     "src": "api_seeds",
+     "text": "Where the ISS at. Where the International Space Station is right now.",
+     "fit": "FIT",
+     "judge": "no"
+    },
+    {
+     "id": "seed:nws",
+     "src": "api_seeds",
+     "text": "US National Weather Service. Official US forecasts and weather warnings.",
+     "fit": "FIT",
+     "judge": "no"
+    },
+    {
+     "id": "apis_guru:amentum.space:space_radiation",
+     "src": "apis_guru",
+     "text": "Space Radiation API. Space has a hostile radiation environment that increases the risk of cancers in humans and malfunctions in spacecraft electronics. The type",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "apis_guru:here.com:tracking",
+     "src": "apis_guru",
+     "text": "HERE Tracking. HERE Tracking is a cloud product designed to address location tracking problems for a wide range of Location IoT industry verticals. HERE Trackin",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "github:filipdanic/dnd-initiative-order-tracker",
+     "src": "github",
+     "text": "dnd initiative order tracker. A React.js app for keeping tracker of turn/initiative order in Dungeons and Dragons. dnd dnd-tools dnd5e dungeons-and-dragons loca",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "github:jazzsequence/DnD-Battle-Tracker",
+     "src": "github",
+     "text": "DnD Battle Tracker. A simple battle tracking system for Dungeons & Dragons written in React to track initiative and damage. ",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "github:JakevdKolk/DND_Initiative_Tracker",
+     "src": "github",
+     "text": "DND Initiative Tracker.  ",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "github:5e-bits/dnd-img",
+     "src": "github",
+     "text": "dnd img. A command-line tool that generates DnD SRD subject images using AI, creating high-quality artwork in the iconic 90s TSR catalog style. dnd gpt-4o",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "github:Cod-e-Codes/initiative-tracker",
+     "src": "github",
+     "text": "initiative tracker. Terminal-based D&D 5e initiative tracker with combat, HP, and condition management (C + ncurses) c dnd dnd5e initiative-tracker ncurses rpg ",
+     "fit": "OFF",
+     "judge": "no"
+    },
+    {
+     "id": "github:Valforte/Initiative-Tracker",
+     "src": "github",
+     "text": "Initiative Tracker. A modern, themeable initiative tracker for Pathfinder 2e combat encounters with separate DM and player views combat-tracker daisyui dm-tools",
+     "fit": "OFF",
+     "judge": "no"
+    }
+   ]
+  }
+ }
+}

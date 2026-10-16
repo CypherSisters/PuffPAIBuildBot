@@ -1,0 +1,49 @@
+{
+  "schema": "puffpai_package/v1",
+  "id": "handoff",
+  "kind": "skill",
+  "version": "1.0.0",
+  "author": "puffpai",
+  "license": "Apache-2.0",
+  "label": "How to start it",
+  "description": "How to start this build on this machine, and everything that is missing.",
+  "reads": [
+    "run",
+    "machine",
+    "persona",
+    "brain",
+    "sources",
+    "tools",
+    "knowledge",
+    "context",
+    "crew",
+    "surfaces",
+    "posture",
+    "prove"
+  ],
+  "writes": "handoff",
+  "permissions": {
+    "network_hosts": [],
+    "files": [
+      "data"
+    ],
+    "ha_domains": [],
+    "secrets": []
+  },
+  "doors": [],
+  "secrets": [],
+  "egress": "none",
+  "estimate": {
+    "bytes": 0,
+    "seconds": 0,
+    "basis": "unknown"
+  },
+  "rerun": "idempotent",
+  "undo": "reversible",
+  "blocking": false,
+  "provides": [
+    "handoff.commands"
+  ],
+  "needs": [],
+  "builtin": true
+}

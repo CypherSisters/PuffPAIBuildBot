@@ -1,0 +1,91 @@
+@layer base {
+  table {
+    @apply w-full;
+  }
+
+  thead {
+    @apply hidden lg:table-header-group;
+  }
+
+  tr {
+    @apply relative block max-w-full border-b-4 border-gray-100 lg:table-row lg:border-b-0 dark:border-slate-800;
+  }
+
+  tr:last-child {
+    @apply border-b-0;
+  }
+
+  td:not(:first-child) {
+    @apply lg:border-t-0 lg:border-r-0 lg:border-b-0 lg:border-l lg:border-gray-100 lg:dark:border-slate-700;
+  }
+
+  th {
+    @apply lg:p-3 lg:text-left;
+  }
+
+  td {
+    @apply flex justify-between border-b border-gray-100 px-4 py-3 text-right align-top lg:table-cell lg:border-b-0 lg:p-3 lg:text-left lg:align-middle dark:border-slate-800;
+  }
+
+  td:last-child {
+    @apply border-b-0;
+  }
+
+  tbody tr {
+    @apply lg:hover:bg-gray-100 lg:dark:hover:bg-slate-700/40;
+  }
+
+  tbody tr:nth-child(odd) {
+    @apply lg:bg-gray-50 lg:dark:bg-slate-800/30;
+  }
+
+  tbody tr:nth-child(even) {
+    @apply lg:bg-white lg:dark:bg-slate-900/20;
+  }
+
+  td:before {
+    content: attr(data-label);
+    @apply pr-3 text-left font-semibold lg:hidden;
+  }
+}
+
+/* Ensure table rows have proper dark backgrounds and text visibility.
+   Scoped away from `.puff-bridge-table`: those tables carry the PuffPAI
+   palette inline (var(--card2), var(--chip), var(--line)) and these slate
+   rescues, being !important, painted straight over them — which is why the
+   Bridge and Firewall pages read as grey boxes on a plum page. */
+.dark table:not(.puff-bridge-table) tbody tr:nth-child(odd) {
+  background-color: rgba(30, 41, 59, 0.3) !important;
+}
+
+.dark table:not(.puff-bridge-table) tbody tr:nth-child(even) {
+  background-color: rgba(15, 23, 42, 0.2) !important;
+}
+
+.dark table:not(.puff-bridge-table) tbody tr:hover {
+  background-color: rgba(51, 65, 85, 0.4) !important;
+}
+
+/* ── PuffPAI-themed tables ──────────────────────────────────────────────
+   Unlayered, so these beat the @layer base slate hairlines above without
+   needing !important — which matters, because the pages set their own cell
+   colours as inline styles and an !important rule here would outrank them. */
+.puff-bridge-table tr {
+  border-color: var(--line);
+}
+
+.puff-bridge-table td:not(:first-child) {
+  border-left-color: var(--line);
+}
+
+.puff-bridge-table tbody tr:nth-child(odd) {
+  background-color: transparent;
+}
+
+.puff-bridge-table tbody tr:nth-child(even) {
+  background-color: var(--card2);
+}
+
+.puff-bridge-table tbody tr:hover {
+  background-color: var(--chip);
+}

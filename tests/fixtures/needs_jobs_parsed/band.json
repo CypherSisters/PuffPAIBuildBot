@@ -1,0 +1,56 @@
+{
+ "goal_id": "band",
+ "timing": {
+  "wall_s": 5.52,
+  "first_token_s": 0.07,
+  "first_job_s": 0,
+  "load_s": 0.0,
+  "prompt_tokens": 213,
+  "prompt_s": 0.04,
+  "out_tokens": 252,
+  "gen_s": 5.45,
+  "tok_per_s": 46.2,
+  "done_reason": "stop"
+ },
+ "parsed": {
+  "kind": "musician assistant",
+  "asked": [
+   "keeps setlists",
+   "tracks songs",
+   "metronome and tuner",
+   "schedules gigs",
+   "splits money"
+  ],
+  "jobs": [
+   {
+    "name": "Setlist Manager",
+    "does": "Maintains and updates setlists for each band member."
+   },
+   {
+    "name": "Song Tracker",
+    "does": "Tracks which band members know which songs."
+   },
+   {
+    "name": "Metronome and Tuner",
+    "does": "Provides real-time metronome and tuner functions."
+   },
+   {
+    "name": "Gig Scheduler",
+    "does": "Schedules and reminds the band of upcoming gigs."
+   },
+   {
+    "name": "Revenue Splitter",
+    "does": "Calculates and splits money from shows among band members."
+   },
+   {
+    "name": "Practice Log",
+    "does": "Tracks practice sessions and their duration."
+   },
+   {
+    "name": "Reminders",
+    "does": "Sends reminders for upcoming gigs and practice sessions."
+   }
+  ]
+ },
+ "recall": 1.0
+}

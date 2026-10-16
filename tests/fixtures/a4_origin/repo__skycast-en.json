@@ -1,0 +1,7 @@
+{"id": 81234, "name": "skycast", "full_name": "mara-builds/skycast",
+ "owner": {"login": "mara-builds", "id": 5512, "type": "User"},
+ "private": false, "html_url": "https://github.com/mara-builds/skycast",
+ "description": "A tiny weather board for your town",
+ "fork": false, "stargazers_count": 97, "language": "TypeScript",
+ "license": {"key": "apache-2.0", "name": "Apache License 2.0", "spdx_id": "Apache-2.0"},
+ "default_branch": "main", "pushed_at": "2026-09-12T10:00:00Z"}

@@ -1,0 +1,24 @@
+{
+  "spec": {
+    "schema": "assembled_app/v1", "id": "records", "title": "Things passing by", "caps": ["cap-records"],
+    "settings": [],
+    "sources": [{"id": "recs", "kind": "http_json", "service": "records", "url": "https://example.org/records.json", "items": "$.items[*]"}],
+    "views": [{"type": "table", "source": "recs"},
+              {"type": "map", "source": "recs"},
+              {"type": "list", "source": "recs"},
+              {"type": "form", "action": "find_records"}],
+    "actions": [{"id": "all_records", "source": "recs", "input": {}},
+                {"id": "find_records", "source": "recs", "input": {"type": "object", "properties": {
+                  "name": {"type": "string", "description": "Part of a name"},
+                  "size": {"type": "number"}, "kind": {"enum": ["small", "large"]}}, "required": ["name"]}}],
+    "checks": []
+  },
+  "rows": {
+    "all_records": [
+      {"name": "Bravo", "size": 12.5, "lat": 40.0, "lon": -105.3, "when": "2026-10-01", "link": "https://example.org/r/b"},
+      {"name": "Alpha", "size": 3, "lat": 51.5, "lon": -0.1, "when": "2026-10-02"},
+      {"name": "Charlie", "size": 100, "lat": -33.9, "lon": 151.2, "when": "2026-10-03"}
+    ],
+    "find_records": [{"name": "Alpha", "size": 3}]
+  }
+}

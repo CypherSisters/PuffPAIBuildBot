@@ -1,0 +1,48 @@
+{
+ "goal_id": "pet",
+ "timing": {
+  "wall_s": 3.3,
+  "first_token_s": 0.06,
+  "first_job_s": 0,
+  "load_s": 0.0,
+  "prompt_tokens": 215,
+  "prompt_s": 0.04,
+  "out_tokens": 152,
+  "gen_s": 3.24,
+  "tok_per_s": 46.9,
+  "done_reason": "stop"
+ },
+ "parsed": {
+  "kind": "pet care assistant",
+  "asked": [
+   "tracks vet visits",
+   "reminds son to walk dog",
+   "vaccines and medications",
+   "feeding schedules",
+   "toxic foods"
+  ],
+  "jobs": [
+   {
+    "name": "Veterinary appointment scheduler",
+    "does": "Schedules and reminds for upcoming vet visits."
+   },
+   {
+    "name": "Medication reminder",
+    "does": "Reminds when to give pet medications."
+   },
+   {
+    "name": "Feeding schedule manager",
+    "does": "Manages and reminds feeding times."
+   },
+   {
+    "name": "Toxic food alert",
+    "does": "Notifies about toxic foods for pets."
+   },
+   {
+    "name": "Activity tracker",
+    "does": "Monitors and logs pet activities."
+   }
+  ]
+ },
+ "recall": 0.5714285714285714
+}

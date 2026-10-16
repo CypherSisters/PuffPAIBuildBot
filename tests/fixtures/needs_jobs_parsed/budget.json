@@ -1,0 +1,61 @@
+{
+ "goal_id": "budget",
+ "timing": {
+  "wall_s": 4.63,
+  "first_token_s": 0.06,
+  "first_job_s": 0,
+  "load_s": 0.0,
+  "prompt_tokens": 216,
+  "prompt_s": 0.04,
+  "out_tokens": 213,
+  "gen_s": 4.58,
+  "tok_per_s": 46.5,
+  "done_reason": "stop"
+ },
+ "parsed": {
+  "kind": "finance management bot",
+  "asked": [
+   "track spending",
+   "set monthly budgets",
+   "plan for Christmas",
+   "summer camp",
+   "pay down credit card",
+   "see charts"
+  ],
+  "jobs": [
+   {
+    "name": "Import financial data",
+    "does": "Automatically import bank exports."
+   },
+   {
+    "name": "Create budget categories",
+    "does": "Define spending categories for tracking."
+   },
+   {
+    "name": "Generate budget plans",
+    "does": "Propose monthly budget allocations."
+   },
+   {
+    "name": "Plan special expenses",
+    "does": "Schedule and allocate funds for Christmas and summer camp."
+   },
+   {
+    "name": "Credit card repayment",
+    "does": "Set up automatic payments and track progress."
+   },
+   {
+    "name": "Visualize spending",
+    "does": "Create charts and graphs to display spending trends."
+   },
+   {
+    "name": "Notify on budget breaches",
+    "does": "Alert when spending exceeds budget limits."
+   },
+   {
+    "name": "Sync with family members",
+    "does": "Allow multiple users to access and update the budget."
+   }
+  ]
+ },
+ "recall": 1.0
+}

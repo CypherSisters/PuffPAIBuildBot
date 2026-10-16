@@ -1,0 +1,5753 @@
+{
+"note": "Star-floor survivors (license, stars>=5, not archived/fork, pushed within 3y) of the recorded searches in raw/search_results.json, all ten goals. page_expected = output of k2_measure/page_check.py at 2026-09-27 (wedding 16 of 44, others 0 of 279).",
+"rows": [
+{
+"goal": "wedding",
+"full_name": "restylianos/bulma-wedding-planner-template",
+"description": "A bulma template for wedding planners \ud83d\udc70",
+"topics": [
+"bulma",
+"bulma-css-framework",
+"free",
+"wedding-website"
+],
+"stars": 21,
+"license": "MIT",
+"page_expected": true
+},
+{
+"goal": "wedding",
+"full_name": "gabriel1ll7/Seating-Planner",
+"description": " Beautiful, intuitive visual seating chart planner for events. Drag-and-drop interface for weddings, conferences, and celebrations.",
+"topics": [
+"drag-and-drop",
+"event-management",
+"event-planning",
+"guest-management",
+"seating-arrangement",
+"seating-chart",
+"wedding-planner"
+],
+"stars": 6,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "wedding",
+"full_name": "rampatra/wedding-website",
+"description": "Our Wedding Website \ud83d\udc6b",
+"topics": [
+"design",
+"google-sheets",
+"rsvp",
+"template",
+"templates",
+"website",
+"website-builder",
+"website-design",
+"website-template",
+"website-theme",
+"wedding",
+"wedding-invitation",
+"wedding-page",
+"wedding-rsvp",
+"wedding-website",
+"weddings"
+],
+"stars": 1832,
+"license": "GPL-3.0",
+"page_expected": true
+},
+{
+"goal": "wedding",
+"full_name": "ZEDLABS-TEKNOLOGI-INDONESIA/wedding-invitation",
+"description": "Website undangan pernikahan yang elegan, modern, dan interaktif dibangun menggunakan Astro, React, Tailwind CSS, dan SQLite. Dilengkapi dengan sistem manajemen tamu yang komprehensif, pelacakan RSVP real-time, notifikasi otomatis, dan tools desain profesional.",
+"topics": [
+"invitation",
+"pernikahan",
+"undangan",
+"undangan-digital",
+"undangan-online",
+"undangan-pernikahan",
+"wedding",
+"wedding-invitation"
+],
+"stars": 25,
+"license": "MIT",
+"page_expected": true
+},
+{
+"goal": "wedding",
+"full_name": "dannycahyo/weddingly-builder",
+"description": "A beautiful, simple, and efficient wedding website builder that allows couples to create stunning single-page wedding sites with RSVP management. Built with Astro, React, Tailwind CSS, and Prisma.",
+"topics": [
+"astrojs",
+"cloudinary",
+"postgresql",
+"prisma",
+"react",
+"typescript"
+],
+"stars": 23,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "wedding",
+"full_name": "kbichave/wedding-invite",
+"description": "Beautiful, free wedding website template built with React & Tailwind CSS. 100% FREE - no credit card required. Fully customizable with photo uploads, RSVP, blessings & more.",
+"topics": [
+"customizable",
+"free-template",
+"google-drive",
+"google-sheets",
+"modern-ui",
+"netlify",
+"netlify-functions",
+"open-source",
+"react",
+"react-router",
+"responsive-design",
+"serverless",
+"tailwindcss",
+"wedding-planning",
+"wedding-website"
+],
+"stars": 7,
+"license": "ISC",
+"page_expected": true
+},
+{
+"goal": "wedding",
+"full_name": "cybertiwari/WeddingInvitation",
+"description": "Digital Wedding Invitation is an open-source project that provides a visually appealing, customizable, and interactive wedding invitation webpage. It incorporates countdown timers, animations, and media integration to make the event memorable and engaging.",
+"topics": [
+"digital-invitation",
+"invitation",
+"rsvp",
+"wedding-invitation",
+"wedding-website"
+],
+"stars": 7,
+"license": "MIT",
+"page_expected": true
+},
+{
+"goal": "wedding",
+"full_name": "mshumayl/wedding-rsvp",
+"description": "Digital card with RSVP, wishes, countdown. Created for my wedding reception.",
+"topics": [],
+"stars": 8,
+"license": "GPL-3.0",
+"page_expected": true
+},
+{
+"goal": "wedding",
+"full_name": "Shin-da/wedding-invitation",
+"description": "A beautiful, responsive wedding invitation website created as a commissioned project. This elegant digital invitation features a countdown timer, photo gallery with lightbox, Google Maps integration, and a classy design perfect for modern couples.",
+"topics": [
+"html-css-javascript",
+"invitation",
+"php",
+"rsvp",
+"website",
+"wedding-invitation"
+],
+"stars": 6,
+"license": "NOASSERTION",
+"page_expected": true
+},
+{
+"goal": "wedding",
+"full_name": "alistairjoelquinn/wedding-invites",
+"description": "Application for managing wedding RSVPs with user admin dashboard. Nextjs, MUI, MongoDB and AWS SES.",
+"topics": [
+"aws-ses",
+"mongodb",
+"mui",
+"nextjs",
+"typescript"
+],
+"stars": 10,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "wedding",
+"full_name": "smileyface12349/wedding-website",
+"description": "A customisable wedding website with individual logins for guests, supporting RSVPs and a registry. Designed to be as easy as possible to hot-swap in your own wedding details, and customise the layout/theming of the site.",
+"topics": [
+"blazor",
+"customizable",
+"rspv",
+"wedding",
+"wedding-invitation",
+"wedding-page",
+"wedding-rsvp",
+"wedding-website",
+"weddings"
+],
+"stars": 5,
+"license": "NOASSERTION",
+"page_expected": true
+},
+{
+"goal": "wedding",
+"full_name": "aravindhsampath/hobbyboardv3",
+"description": "hobbyboard is a self hosted image search and organization tool for hobbyists, makers, and collectors.",
+"topics": [
+"masonry-grid",
+"moodboard",
+"pinterest-like",
+"rust",
+"self-hosted",
+"semantic-search"
+],
+"stars": 13,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "wedding",
+"full_name": "Valiera00/SPITE",
+"description": "AI-powered pre-production canvas for filmmakers. Flagship models, infinite canvas, auto-export.",
+"topics": [
+"ai",
+"ai-filmmaking",
+"cloudflare-r2",
+"fal-ai",
+"filmmaking",
+"generative-ai",
+"image-generation",
+"moodboard",
+"neon",
+"nextjs",
+"node-editor",
+"nodebased",
+"open-source",
+"react",
+"self-hosted",
+"storyboard",
+"text-to-video",
+"typescript",
+"video-generation"
+],
+"stars": 27,
+"license": "AGPL-3.0",
+"page_expected": false
+},
+{
+"goal": "wedding",
+"full_name": "Gianluca-Improta/cinekive",
+"description": "Local-first cinematic still archive for filmmakers. Search your frames by look, mood, technique or director with SigLIP semantic search; ingest video and URLs; build moodboards. Free desktop app for Win/Mac/Linux, Pro unlocks studio tools. Your library stays on your disk.",
+"topics": [
+"archive",
+"cinema",
+"computer-vision",
+"davinci-resolve",
+"electron",
+"fastapi",
+"film-still",
+"filmmaking",
+"local-first",
+"moodboard",
+"nextjs",
+"open-source",
+"privacy",
+"qdrant",
+"self-hosted",
+"semantic-search",
+"shot-library",
+"siglip",
+"visual-search",
+"yt-dlp"
+],
+"stars": 106,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "wedding",
+"full_name": "Cirx08/WeddingShare",
+"description": "A place for guests to view and drop pictures of the big day",
+"topics": [
+"gallery",
+"photos",
+"selfhosted",
+"wedding"
+],
+"stars": 878,
+"license": "GPL-3.0",
+"page_expected": false
+},
+{
+"goal": "wedding",
+"full_name": "dewanakl/undangan",
+"description": "\ud83d\udc8c Template website undangan pernikahan HTML sederhana menggunakan Bootstrap, AOS, Font Awesome, Canvas Confetti, Google Fonts, dan Vanilla JS.",
+"topics": [
+"invitation",
+"nikah",
+"pernikahan",
+"template",
+"template-pernikahan",
+"template-undangan",
+"undangan",
+"undangan-digital",
+"undangan-online",
+"undangan-pernikahan",
+"website",
+"website-invitation",
+"website-pernikahan",
+"website-undangan",
+"wedding",
+"wedding-invitation",
+"wedding-page",
+"wedding-rsvp",
+"wedding-template",
+"wedding-website"
+],
+"stars": 805,
+"license": "MIT",
+"page_expected": true
+},
+{
+"goal": "wedding",
+"full_name": "PhotoboothProject/photobooth",
+"description": "Self-hosted photo booth / photo box web app for events with live preview, collages, and printing.",
+"topics": [
+"photobooth",
+"photobooth-wedding",
+"raspberry",
+"raspberry-pi",
+"wedding"
+],
+"stars": 673,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "wedding",
+"full_name": "dmfeisal/simple-wedding-invitation",
+"description": "Wedding Invitation Landing Page ",
+"topics": [
+"bulma-css",
+"css",
+"html",
+"indonesian",
+"indonesian-language",
+"invitation",
+"landing-page",
+"netlify",
+"nikah",
+"wedding",
+"wedding-invitation"
+],
+"stars": 300,
+"license": "MIT",
+"page_expected": true
+},
+{
+"goal": "wedding",
+"full_name": "vinitshahdeo/Wedding-Invitation",
+"description": "Animated website for my Elder Sister's wedding Invitation (also contains timer & background music) | Save the Date: Nov 29, 2020",
+"topics": [
+"indian-wedding-website",
+"wedding",
+"wedding-invitation",
+"wedding-page",
+"wedding-rsvp",
+"wedding-website"
+],
+"stars": 254,
+"license": "AGPL-3.0",
+"page_expected": true
+},
+{
+"goal": "wedding",
+"full_name": "aaronyi97/wedding-video-guided-wizard",
+"description": "\u771f\u5b9e\u6545\u4e8b\u5a5a\u793c\u89c6\u9891\u7684 14 \u6b65\u5f15\u5bfc\u5f0f Skill\uff1a\u6545\u4e8b\u91c7\u96c6\u3001Kimi \u5199\u4f5c\u5305\u3001\u914d\u97f3\u3001\u5916\u90e8 GPT \u751f\u56fe\u3001\u89c6\u9891\u6253\u5305\u3001\u97f3\u4e50\u4e0e\u5b57\u5e55\u526a\u8f91\u3002",
+"topics": [
+"ai-video",
+"codex-skill",
+"guided-workflow",
+"wedding"
+],
+"stars": 240,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "wedding",
+"full_name": "zouyaoji/wedding-invitation",
+"description": "\u5fae\u4fe1\u5c0f\u7a0b\u5e8f\u5a5a\u793c\u8bf7\u67ec",
+"topics": [
+"invitation",
+"mpvue",
+"wechat-mini-program",
+"wedding"
+],
+"stars": 219,
+"license": "NOASSERTION",
+"page_expected": true
+},
+{
+"goal": "wedding",
+"full_name": "sakeenah-wedding/template",
+"description": "Elegant and modern digital wedding invitation template for the Sakeenah platform",
+"topics": [
+"bun",
+"cloudflare-workers",
+"docker",
+"hono",
+"islam",
+"islamic",
+"javascript",
+"motion",
+"postgresql",
+"react",
+"tailwindcss",
+"vite",
+"wedding",
+"wedding-invitation",
+"wedding-template",
+"wedding-website"
+],
+"stars": 207,
+"license": "NOASSERTION",
+"page_expected": true
+},
+{
+"goal": "wedding",
+"full_name": "dewanakl/undangan-api",
+"description": "\ud83d\udd25 API Backend undangan digital Ulems yang andal, sederhana, mudah diintegrasikan, berperforma tinggi, dan dibangun dengan \"Kamu PHP Framework\".",
+"topics": [
+"invitation",
+"nikah",
+"pernikahan",
+"template",
+"template-pernikahan",
+"template-undangan",
+"undangan",
+"undangan-digital",
+"undangan-online",
+"undangan-pernikahan",
+"website",
+"website-invitation",
+"website-pernikahan",
+"website-undangan",
+"wedding",
+"wedding-invitation",
+"wedding-page",
+"wedding-rsvp",
+"wedding-template",
+"wedding-website"
+],
+"stars": 117,
+"license": "MIT",
+"page_expected": true
+},
+{
+"goal": "wedding",
+"full_name": "zerosoul/tristan-wedding",
+"description": "\u7ed9\u81ea\u5df1\u505a\u7684\u5a5a\u793c\u9875\u9762",
+"topics": [
+"wedding",
+"wedding-page",
+"wedding-photography",
+"wedding-website"
+],
+"stars": 58,
+"license": "MIT",
+"page_expected": true
+},
+{
+"goal": "wedding",
+"full_name": "MSamor/WeddingShow",
+"description": "\u5a5a\u5e86\u4e92\u52a8\u9879\u76ee\uff0c\u5305\u62ec\u5a5a\u793c\u7535\u5b50\u9080\u8bf7\u51fd\uff0c\u5a5a\u5e86\u73b0\u573a\u4e92\u52a8\u6d3b\u52a8\uff0c\u5927\u5c4f\u5728\u7ebf\u8f6e\u64ad\u56fe\u4ee5\u53ca\u5f39\u5e55\u53d1\u9001\u5c55\u793a\uff0c\u73b0\u573a\u62bd\u5956\u6d3b\u52a8\u7b49\u3002wedding\uff0cweddingShow",
+"topics": [
+"activity",
+"bullet",
+"h5",
+"invite",
+"marry",
+"prize",
+"vue",
+"wedding",
+"weddingshow"
+],
+"stars": 52,
+"license": "GPL-2.0",
+"page_expected": false
+},
+{
+"goal": "wedding",
+"full_name": "Holymaiden/wedding-app",
+"description": "\ud83d\udc8d Elegant digital wedding invitation app with interactive letter opening animation, real-time countdown, music player, and multi-language support. Built with Next.js 15, TypeScript, Framer Motion & Tailwind CSS.",
+"topics": [
+"digital-invitation",
+"framer-motion",
+"interactive",
+"nextjs",
+"react",
+"responsive-design",
+"tailwindcss",
+"typescript",
+"wedding"
+],
+"stars": 32,
+"license": "MIT",
+"page_expected": true
+},
+{
+"goal": "garden",
+"full_name": "OpenFarmPlanner/planner",
+"description": "Open-source crop planning software for vegetable production. Plan crops, growing areas, and planting schedules in one place. Designed for market gardens and community-supported agriculture (CSA).",
+"topics": [],
+"stars": 6,
+"license": "AGPL-3.0",
+"page_expected": false
+},
+{
+"goal": "garden",
+"full_name": "bripatch/plant-variety-database",
+"description": "Open dataset of 1,972 plant varieties with growing requirements, USDA hardiness zones, planting calendars, companion plants, and nutrition data. CC BY 4.0.",
+"topics": [
+"companion-planting",
+"creative-commons",
+"csv",
+"dataset",
+"gardening",
+"hardiness-zones",
+"herbs",
+"horticulture",
+"nutrition",
+"open-data",
+"plant-database",
+"plants",
+"usda",
+"vegetables"
+],
+"stars": 5,
+"license": "NOASSERTION",
+"page_expected": false
+},
+{
+"goal": "garden",
+"full_name": "Helixien/ReGrowth2",
+"description": "ReGrowth: Core is both a content mod and a small framework, aiming to overhaul and improve on Rimworlds vanilla biomes, add new and unique features and biomes, replace many of the vanilla plant textures with HD ones and, in combination with its companion mods, add new plants that fit perfectly into the vanilla artstyle. On top of that, it adds a lot of new weather types, many with custom visual effects to spice up your game.",
+"topics": [],
+"stars": 10,
+"license": "NOASSERTION",
+"page_expected": false
+},
+{
+"goal": "garden",
+"full_name": "mniedermaier/gardener",
+"description": "Open-source self-sufficiency garden planner. Smart bed planning, companion planting, greenhouse support, weather alerts, harvest tracking, nutrition calculator, seed inventory, soil management. React + TypeScript. 4 languages (DE/EN/ES/FR). PWA + Docker.",
+"topics": [
+"companion-planting",
+"garden-planner",
+"greenhouse",
+"homesteading",
+"open-source",
+"pwa",
+"react",
+"self-sufficiency",
+"tailwindcss",
+"typescript"
+],
+"stars": 5,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "garden",
+"full_name": "AhmadHassan-BTed/GardenPulse",
+"description": "Method-agnostic smart garden companion built with React Native, Expo, and TypeScript. Adapts to soil, hydro, container, or indoor setups with location-aware intelligence, OpenWeather integration, and privacy-first, on-device Gemini AI plant diagnostics.",
+"topics": [
+"admob-integration",
+"computer-vision",
+"cross-platform",
+"expo",
+"firebase",
+"gardening-app",
+"gemini-ai",
+"google-ai-studio",
+"location-aware",
+"mit-license",
+"mobile-app",
+"offline-first",
+"on-device-ml",
+"plant-identification",
+"privacy-focused",
+"react-native",
+"smart-agriculture",
+"typescript",
+"urban-farming",
+"weather-api"
+],
+"stars": 171,
+"license": "NOASSERTION",
+"page_expected": false
+},
+{
+"goal": "garden",
+"full_name": "brycejohnston/awesome-agriculture",
+"description": "Open source technology for agriculture, farming, and gardening",
+"topics": [
+"agricultural",
+"agriculture",
+"awesome",
+"awesome-list",
+"crop",
+"farm",
+"farming",
+"gardening",
+"grower",
+"plants",
+"soil",
+"weather"
+],
+"stars": 1887,
+"license": "NOASSERTION",
+"page_expected": false
+},
+{
+"goal": "garden",
+"full_name": "danielbrendel/hortusfox-web",
+"description": "Self-hosted collaborative plant management and tracking system for plant enthusiasts",
+"topics": [
+"gardening",
+"home-plants",
+"horticulture",
+"hortusfox",
+"houseplants",
+"plant-care",
+"plant-collection",
+"plant-growth",
+"plant-journal",
+"plant-manager",
+"plant-monitoring",
+"plant-parent",
+"plant-tracking",
+"plants",
+"plants-grow",
+"selfhosted",
+"selfhosting"
+],
+"stars": 1676,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "garden",
+"full_name": "MDeLuise/plant-it",
+"description": "\ud83e\udeb4 Open source Android gardening companion app",
+"topics": [
+"dart",
+"flutter",
+"gardening",
+"plants"
+],
+"stars": 1369,
+"license": "GPL-3.0",
+"page_expected": false
+},
+{
+"goal": "garden",
+"full_name": "Growstuff/growstuff",
+"description": "Open data project for small-scale food growers, written in rails",
+"topics": [
+"food",
+"gardening"
+],
+"stars": 474,
+"license": "AGPL-3.0",
+"page_expected": false
+},
+{
+"goal": "garden",
+"full_name": "morkro/happy-plants",
+"description": "\ud83c\udf35 Web application to manage plants",
+"topics": [
+"firebase",
+"gardening",
+"green-technologies",
+"happy-plants",
+"houseplants",
+"lernajs",
+"plants",
+"pwa",
+"vuejs"
+],
+"stars": 297,
+"license": "BSD-3-Clause",
+"page_expected": false
+},
+{
+"goal": "garden",
+"full_name": "RonMcKay/capacitive-soil-moisture-sensor",
+"description": "Compact and battery powered capacitive soil moisture sensor.",
+"topics": [
+"arduino",
+"diy",
+"electronics",
+"gardening",
+"hardware",
+"iot",
+"kicad",
+"mysensors",
+"pcb",
+"sensor",
+"smart-home",
+"soil-moisture",
+"soil-moisture-sensor",
+"wireless"
+],
+"stars": 88,
+"license": "NOASSERTION",
+"page_expected": false
+},
+{
+"goal": "garden",
+"full_name": "OpenGrow-Box/OpenGrowBox-HA",
+"description": "Free open-source Home Assistant integration for autonomous indoor smart grow automation. Unlimited rooms, sensors & devices. Climate control, VPD, lighting & CO\u2082 \u2013 fully offline, no subscription. Zigbee, Z-Wave, ESPHome, Tasmota & MQTT supported. Premium available.",
+"topics": [
+"garden-automation",
+"gardening",
+"growbox",
+"hacs",
+"home-assistant",
+"opengrowbox",
+"plants",
+"smart-growbox",
+"smart-plant-care-system"
+],
+"stars": 59,
+"license": "NOASSERTION",
+"page_expected": false
+},
+{
+"goal": "garden",
+"full_name": "cloudless-garden/ha-gardena-smart-local-preview",
+"description": "Home Assistant integration for GARDENA smart devices using local communication.",
+"topics": [
+"garden",
+"garden-automation",
+"gardena",
+"gardening",
+"hacs",
+"home-assistant",
+"internet-of-things",
+"irrigation",
+"lan-of-things",
+"offline",
+"offline-first",
+"robotics",
+"sensors"
+],
+"stars": 43,
+"license": "Apache-2.0",
+"page_expected": false
+},
+{
+"goal": "garden",
+"full_name": "DaytimeLobster/gogrow",
+"description": "The GoGrow planning, homesteading, and image annotation app",
+"topics": [
+"app",
+"docker",
+"flask",
+"gardening",
+"gardening-app",
+"homesteading",
+"image-annotation",
+"javascript",
+"journal",
+"leaflet",
+"mapping",
+"open-source",
+"planning",
+"productivity",
+"python",
+"self-hosted"
+],
+"stars": 41,
+"license": "NOASSERTION",
+"page_expected": false
+},
+{
+"goal": "garden",
+"full_name": "ndesgranges/simple-plant",
+"description": "Home Assistant custom integration that Implements a simple plant device with watering schedule",
+"topics": [
+"gardening",
+"hacs",
+"hacs-integration",
+"hacs-plugin",
+"home-assistant",
+"home-assistant-card",
+"home-assistant-integration",
+"integration",
+"plants"
+],
+"stars": 33,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "garden",
+"full_name": "djmaxwell1975/plant-monitor-premium-card",
+"description": "Premium Home Assistant plant dashboard card for the custom Plant Monitor integration",
+"topics": [
+"custom-card",
+"gardening",
+"hacs",
+"home-assistant",
+"lovelace",
+"openplantbook",
+"plant-monitor",
+"plants",
+"zigbee2mqtt"
+],
+"stars": 30,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "garden",
+"full_name": "mergeos-bounties/PlantGuide",
+"description": "PlantGuide: plant species identification and per-species care guidance",
+"topics": [
+"bounty",
+"care",
+"gardening",
+"identification",
+"mergeos",
+"plants",
+"python"
+],
+"stars": 21,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "garden",
+"full_name": "heeplr/gardenmap",
+"description": "very simple webapp to visualize a garden over the year",
+"topics": [
+"garden",
+"gardening",
+"planning",
+"plants"
+],
+"stars": 19,
+"license": "Unlicense",
+"page_expected": false
+},
+{
+"goal": "garden",
+"full_name": "roe-dl/weewx-GTS",
+"description": "XType extension for WeeWX to provide solar energy, \"Gr\u00fcnlandtemperatursumme\" (a kind of growing degree days) and \"dayET\" and \"ET24\" as some kind of opposite to \"dayRain\" and \"rain24\"",
+"topics": [
+"climate-data",
+"gardening",
+"growing-degree-days",
+"gts",
+"solar-energy",
+"sun",
+"vegetation",
+"weewx",
+"xtypes"
+],
+"stars": 15,
+"license": "GPL-3.0",
+"page_expected": false
+},
+{
+"goal": "garden",
+"full_name": "robotrapta/garden-watcher",
+"description": "Artificial Dog to bark at deer and other garden pests using Raspberry Pi and Groundlight",
+"topics": [
+"computervision",
+"gardening",
+"raspberrypi"
+],
+"stars": 14,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "fitness",
+"full_name": "wger-project/wger",
+"description": "Self hosted FLOSS fitness/workout, nutrition and weight tracker",
+"topics": [
+"django",
+"fitness",
+"gym",
+"hacktoberfest",
+"python",
+"self-hosted",
+"workout"
+],
+"stars": 6974,
+"license": "AGPL-3.0",
+"page_expected": false
+},
+{
+"goal": "fitness",
+"full_name": "Cawlumm/lyftr",
+"description": "Self-hosted fitness tracker. Log workouts, track nutrition, and monitor progress. Docker deployment, mobile-friendly.",
+"topics": [
+"docker",
+"fitness",
+"go",
+"gym",
+"health",
+"react",
+"self-hosted",
+"sqlite",
+"strength-training",
+"workout-tracker"
+],
+"stars": 347,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "fitness",
+"full_name": "DuarteSantos8/openGym",
+"description": "Self-hosted gym & body-weight tracker \u2014 plan routines, log workouts (supersets, warm-ups, cardio), see which muscles are trained, fatigued or detrained, import from FitNotes/Strong/Hevy, passkey login. Your data, your server.",
+"topics": [
+"bodyweight",
+"docker",
+"fitness",
+"fitness-tracker",
+"gym",
+"health",
+"mcp",
+"nodejs",
+"passkeys",
+"progressive-web-applications",
+"pwa",
+"react",
+"self-hosted",
+"self-hosting",
+"vite",
+"webauthn",
+"weightlifting",
+"workout-tracker"
+],
+"stars": 1432,
+"license": "AGPL-3.0",
+"page_expected": false
+},
+{
+"goal": "fitness",
+"full_name": "jovandeginste/workout-tracker",
+"description": "A workout tracking web application for personal use (or family, friends), geared towards running and other GPX-based activities",
+"topics": [
+"docker",
+"fitness-tracker",
+"go",
+"gpx",
+"leaflet",
+"self-hosted",
+"tailwindcss",
+"workout-tracker",
+"workouts"
+],
+"stars": 1248,
+"license": "NOASSERTION",
+"page_expected": false
+},
+{
+"goal": "fitness",
+"full_name": "TraceApps/lifttrace",
+"description": "Self-hosted weightlifting tracker \u2014 single Docker container, AGPL-3.0, no telemetry, no cloud sync.",
+"topics": [
+"android",
+"bodybuilding",
+"capacitor",
+"docker",
+"exercise",
+"exercise-tracker",
+"fitness",
+"gym",
+"oidc",
+"powerlifting",
+"pwa",
+"self-hosted",
+"selfhosted",
+"sso",
+"strength-training",
+"svelte",
+"weightlifting",
+"workout",
+"workout-tracker"
+],
+"stars": 102,
+"license": "AGPL-3.0",
+"page_expected": false
+},
+{
+"goal": "fitness",
+"full_name": "Julien-Au/gymcoach",
+"description": "Self-hosted AI workout tracker. Bring your own LLM (Anthropic or OpenRouter): weekly debriefs, a chat coach, and AI-generated programs.",
+"topics": [
+"ai",
+"anthropic",
+"claude",
+"fitness",
+"llm",
+"nextjs",
+"openrouter",
+"opensource",
+"postgresql",
+"prisma",
+"pwa",
+"self-hosted",
+"typescript",
+"workout-tracker"
+],
+"stars": 30,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "fitness",
+"full_name": "deadlocker8/SportTracker",
+"description": "SportTracker is a self-hosted server for recording and analyzing your workout data. All data stays on your own server, fully under your control.",
+"topics": [
+"biking",
+"fitness",
+"flask",
+"hiking",
+"poetry",
+"python",
+"running",
+"self-hosted",
+"sport",
+"sport-data",
+"sport-tracker",
+"workout",
+"workout-tracker"
+],
+"stars": 20,
+"license": "GPL-3.0",
+"page_expected": false
+},
+{
+"goal": "fitness",
+"full_name": "Townzc/liftcut-tracker",
+"description": "Beginner-friendly open-source workout, nutrition, and progress tracker with guest mode and configurable AI planning.",
+"topics": [
+"ai",
+"fitness",
+"nextjs",
+"nutrition",
+"open-source",
+"self-hosted",
+"supabase",
+"typescript",
+"workout-tracker"
+],
+"stars": 102,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "fitness",
+"full_name": "MorrisMorrison/granite",
+"description": "Granite \u2014 open-source, self-hostable, offline-first workout tracker. Go API + SvelteKit/Capacitor app, REST + MCP.",
+"topics": [
+"capacitor",
+"fitness",
+"golang",
+"gym",
+"offline-first",
+"open-source",
+"self-hosted",
+"sveltekit",
+"workout-tracker"
+],
+"stars": 5,
+"license": "AGPL-3.0",
+"page_expected": false
+},
+{
+"goal": "fitness",
+"full_name": "EnjoyingFOSS/feeel",
+"description": "A cross-platform Flutter home workout app that respects your privacy. THIS IS A GITLAB MIRROR, file issues and contribute there.",
+"topics": [
+"android",
+"exercise",
+"f-droid",
+"flutter",
+"hacktoberfest",
+"ios",
+"workout"
+],
+"stars": 114,
+"license": "NOASSERTION",
+"page_expected": false
+},
+{
+"goal": "fitness",
+"full_name": "sergio11/fitflextv_android",
+"description": "FitFlexTV is a home workout app \ud83c\udfcb\ufe0f\u200d\u2640\ufe0f I created as a personal learning project. It includes personalized plans \ud83d\udccb and progress tracking \ud83d\udcca. I used Firebase \ud83d\udd25 for real-time data and authentication \ud83d\udd12, Clean Architecture \ud83c\udfdb\ufe0f with the MVI pattern, and Jetpack Compose for TV \ud83d\udcfa to build a reusable UI.",
+"topics": [],
+"stars": 55,
+"license": "Apache-2.0",
+"page_expected": false
+},
+{
+"goal": "fitness",
+"full_name": "jameskong098/home-gym",
+"description": "Home Gym is a smart personal fitness tracker app that enhances home workouts with real-time body tracking. It supports various exercises with automatic rep counting, personalized goals, workout history, and achievements. Track progress through detailed analytics and performance trends to stay motivated on your fitness journey.",
+"topics": [],
+"stars": 8,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "fitness",
+"full_name": "yuhonas/free-exercise-db",
+"description": "Open Public Domain Exercise Dataset in JSON format, over 800 exercises with a browsable public searchable frontend",
+"topics": [
+"data",
+"database",
+"exercise",
+"exercises",
+"fitness",
+"fitness-app",
+"fitnessapp",
+"free",
+"open-data",
+"public-domain",
+"workout-apps"
+],
+"stars": 1924,
+"license": "Unlicense",
+"page_expected": false
+},
+{
+"goal": "fitness",
+"full_name": "xze3n/ExerciseGifDownloader",
+"description": "Script for scraping an Open Public Domain Exercise Database in JSON format, 1300+ exercises.",
+"topics": [],
+"stars": 5,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "fitness",
+"full_name": "SamR1/FitTrackee",
+"description": "Self-hosted outdoor activity tracker :bicyclist: [mirror of codeberg repository: https://codeberg.org/FitTrackee/FitTrackee]",
+"topics": [
+"activity-tracker",
+"chartjs",
+"flask",
+"gpx",
+"gpxpy",
+"leaflet",
+"outdoor-activities",
+"python",
+"self-hosted",
+"vue3",
+"workout-tracker",
+"workouts"
+],
+"stars": 1166,
+"license": "AGPL-3.0",
+"page_expected": false
+},
+{
+"goal": "fitness",
+"full_name": "ExerciseDB/exercisedb-api",
+"description": "ExerciseDB API is an fitness exercise database api that allows users to access high-quality exercises data which consists 11000+ exercises. This API offers extensive information on each exercise, including target body parts, equipment needed, video, gifs, images for visual guidance, and step-by-step instructions.",
+"topics": [
+"datasets",
+"exercise-database-api",
+"exercise-dataset",
+"exercisedb-api",
+"exercises",
+"fitness",
+"fitness-api",
+"fitness-app",
+"fitness-dataset",
+"fitness-exercises",
+"fitness-tracker",
+"fitnessdb-api",
+"gym-workouts",
+"hacktoberfest",
+"hacktoberfest2025",
+"nutritionix-api",
+"workout-exercises",
+"workout-tracker",
+"workouts"
+],
+"stars": 669,
+"license": "AGPL-3.0",
+"page_expected": false
+},
+{
+"goal": "fitness",
+"full_name": "InlitX/GymMane",
+"description": " Offline gym log for Android. No account, no ads, no internet.",
+"topics": [
+"android",
+"bodybuilding",
+"dart",
+"exercises",
+"f-droid",
+"fitness",
+"flutter",
+"gym",
+"gym-app",
+"health",
+"privacy",
+"workout",
+"workout-app",
+"workout-tracker"
+],
+"stars": 662,
+"license": "GPL-3.0",
+"page_expected": false
+},
+{
+"goal": "fitness",
+"full_name": "itskovacs/wingfit",
+"description": "Minimalist fitness app to plan your workouts, track your personal records and leverage smartwatch data",
+"topics": [
+"fitness",
+"fitness-app",
+"health",
+"selfhosted",
+"sport",
+"sports",
+"workout",
+"workout-tracker"
+],
+"stars": 529,
+"license": "NOASSERTION",
+"page_expected": false
+},
+{
+"goal": "fitness",
+"full_name": "aree6/LiftShift",
+"description": "Your workout logs visualized!",
+"topics": [
+"analytics",
+"dashboard",
+"data-visualization",
+"fitness",
+"gym",
+"gym-website",
+"hevy",
+"logs",
+"lyfta",
+"strong",
+"workout",
+"workout-app",
+"workout-tracker",
+"workoutlogging"
+],
+"stars": 515,
+"license": "NOASSERTION",
+"page_expected": false
+},
+{
+"goal": "fitness",
+"full_name": "chrisdoc/hevy-mcp",
+"description": "Manage your Hevy workouts, routines, folders, and exercise templates. Create and update sessions faster, organize plans, and search exercises to build workouts quickly. Stay synced with changes so your training log is always up to date.",
+"topics": [
+"claude",
+"codex",
+"fitness",
+"hevy",
+"mcp",
+"mcp-server",
+"model-context-protocol",
+"workout-planner",
+"workout-tracker"
+],
+"stars": 485,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "fitness",
+"full_name": "aceberg/ExerciseDiary",
+"description": "Workout diary with GitHub-style year visualization",
+"topics": [
+"docker-apps",
+"self-hosted",
+"selfhosted",
+"workout",
+"workout-apps",
+"workout-tracker"
+],
+"stars": 472,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "fitness",
+"full_name": "apoorvdarshan/fud-ai",
+"description": "Fud AI \u2014 free & open-source AI calorie & workout tracker for iOS and Android. Privacy-first, local-first, bring your own key.",
+"topics": [
+"ai",
+"android",
+"calorie-tracker",
+"exercise",
+"fitness",
+"food-tracker",
+"health",
+"health-connect",
+"healthkit",
+"intermittent-fasting",
+"ios",
+"jetpack-compose",
+"kotlin",
+"macros",
+"nutrition",
+"open-source",
+"swift",
+"swiftui",
+"weight-tracker",
+"workout-tracker"
+],
+"stars": 435,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "fitness",
+"full_name": "brandonp2412/Flexify",
+"description": "Offline-first workout tracker for strength and cardio, with progress graphs, rest timers, and custom themes. Built with Flutter.",
+"topics": [
+"android",
+"cardio",
+"dart",
+"data-visualization",
+"fdroid",
+"fitness",
+"flutter",
+"gym",
+"offline-first",
+"open-source",
+"privacy",
+"progress-tracking",
+"rest-timer",
+"strength-training",
+"windows",
+"workout-tracker"
+],
+"stars": 434,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "fitness",
+"full_name": "hasaneyldrm/logpress-public",
+"description": "AI-powered workout tracker for iOS & Android \u2014 React Native app with AI fitness scoring, workout logging, gamification and an offline demo mode. Public, sanitized fork (no embedded secrets).",
+"topics": [
+"fitness-app",
+"openai",
+"react-native",
+"supabase",
+"typescript",
+"workout-tracker"
+],
+"stars": 265,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "fitness",
+"full_name": "aspain/git-sweaty",
+"description": "Turn your Strava and Garmin activities into GitHub-style contribution graphs.",
+"topics": [
+"activity-tracking",
+"data-visualization",
+"fitness",
+"garmin",
+"garmin-connect",
+"github-contributions",
+"github-pages",
+"strava",
+"strava-api",
+"workout-tracker"
+],
+"stars": 261,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "fitness",
+"full_name": "LibreFitOrg/LibreFit",
+"description": "The free and private workout tracker",
+"topics": [
+"exercise",
+"expressive",
+"fitness",
+"gym",
+"jetpack-compose",
+"kotlin-android",
+"libre",
+"material",
+"material-expressive",
+"material-ui",
+"offline",
+"open-source",
+"privacy",
+"wellbeing",
+"workout",
+"workout-tracker"
+],
+"stars": 227,
+"license": "GPL-3.0",
+"page_expected": false
+},
+{
+"goal": "fitness",
+"full_name": "WhyAsh5114/MyFit",
+"description": "Workout tracker inspired by the RP Hypertrophy App",
+"topics": [
+"fitness",
+"shadcn-svelte",
+"svelte",
+"sveltekit",
+"tailwindcss",
+"typescript",
+"workout-journal",
+"workout-tracker"
+],
+"stars": 141,
+"license": "AGPL-3.0",
+"page_expected": false
+},
+{
+"goal": "fitness",
+"full_name": "msimms/OpenWorkoutTracker",
+"description": "A workout tracker for iOS that includes cycling, running, as well as strength exercises. Supports Bluetooth sensors.",
+"topics": [
+"bike-computer",
+"bike-computers",
+"bluetooth-low-energy",
+"cpp",
+"cycling",
+"exercise",
+"fitness-app",
+"fitness-tracker",
+"live-tracking",
+"objective-c",
+"run-computer",
+"strength",
+"strength-exercises",
+"watchos",
+"workout-tracker",
+"xcode"
+],
+"stars": 86,
+"license": "NOASSERTION",
+"page_expected": false
+},
+{
+"goal": "fitness",
+"full_name": "KenAli77/InFit",
+"description": "A simple workout tracker app, to keep track of your progress.",
+"topics": [
+"android",
+"bodybuilding",
+"coroutines-android",
+"dagger-hilt",
+"firebase",
+"firebase-auth",
+"firestore",
+"fitness-app",
+"fitness-tracker",
+"gym",
+"jetpack-compose",
+"mvvm-android",
+"ui",
+"ui-design",
+"workout-tracker"
+],
+"stars": 71,
+"license": "Apache-2.0",
+"page_expected": false
+},
+{
+"goal": "fitness",
+"full_name": "alessioGalatolo/PerfectGymCoach",
+"description": "Material 3 Expressive gym workout app. Compose, MVI, Navigation 3, Adaptive screens, Wear OS integration",
+"topics": [
+"adaptive",
+"android",
+"fitness-app",
+"jetpack-compose",
+"material-design",
+"material-you",
+"material3-expressive",
+"mvi",
+"mvvm",
+"navigation3",
+"wear-os",
+"workout",
+"workout-tracker"
+],
+"stars": 63,
+"license": "GPL-3.0",
+"page_expected": false
+},
+{
+"goal": "fitness",
+"full_name": "open-trackers/Gym-Routine-Tracker-Watch-App",
+"description": "Minimalist gym workout tracker, as independent watchOS app",
+"topics": [
+"apple-watch",
+"cloudkit",
+"coredata",
+"fitness",
+"fitness-app",
+"gym-application",
+"minimalist",
+"swiftui",
+"swiftui-app",
+"watchos",
+"watchos-app",
+"workout",
+"workout-tracker"
+],
+"stars": 62,
+"license": "MPL-2.0",
+"page_expected": false
+},
+{
+"goal": "fitness",
+"full_name": "spech66/lifelogbb",
+"description": "Lifelog - All your life related things in one place.",
+"topics": [
+"fitness",
+"journal",
+"lifelog",
+"lifelogging",
+"self-improvement",
+"sqlite",
+"workout-tracker"
+],
+"stars": 48,
+"license": "AGPL-3.0",
+"page_expected": false
+},
+{
+"goal": "fitness",
+"full_name": "dmzoneill/hevyapp-api",
+"description": "API client for Hevy workout tracking app",
+"topics": [
+"api",
+"fitness",
+"workout-tracker"
+],
+"stars": 38,
+"license": "Apache-2.0",
+"page_expected": false
+},
+{
+"goal": "fitness",
+"full_name": "vlad-moroshan/gym-log",
+"description": "Workout tracker built with Django & React",
+"topics": [
+"django",
+"django-postgresql",
+"django-react",
+"django-rest-framework",
+"docker",
+"formik-yup",
+"heroku-deployment",
+"jwt-authentication",
+"python",
+"react",
+"react-query",
+"redux-toolkit",
+"workout-app",
+"workout-tracker"
+],
+"stars": 38,
+"license": "Apache-2.0",
+"page_expected": false
+},
+{
+"goal": "fitness",
+"full_name": "vincenzo-afk/Synapse",
+"description": "Synapse is a local-first, offline-first, installable PWA that unifies habit tracking, task management, workouts, finance, and more into a private personal operating system.",
+"topics": [
+"dexie",
+"finance-tracker",
+"habit-tracker",
+"indexeddb",
+"journaling",
+"local-first",
+"neo-brutalism",
+"offline-first",
+"personal-os",
+"privacy-first",
+"productivity",
+"pwa",
+"react",
+"self-hosted",
+"study-planner",
+"task-manager",
+"typescript",
+"vite",
+"web-app",
+"workout-tracker"
+],
+"stars": 37,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "fitness",
+"full_name": "Guiforge/bati",
+"description": "Dark-fantasy fitness RPG built with Expo, React Native and Tamagui. Offline-first on SQLite: your workouts become quests, boss fights, and a village that grows out of what you actually lifted.",
+"topics": [
+"android",
+"drizzle-orm",
+"expo",
+"expo-router",
+"fitness-app",
+"gamification",
+"ios",
+"mobile-app",
+"offline-first",
+"react-native",
+"rpg",
+"sqlite",
+"tamagui",
+"typescript",
+"workout-tracker",
+"zustand"
+],
+"stars": 34,
+"license": "NOASSERTION",
+"page_expected": false
+},
+{
+"goal": "dnd",
+"full_name": "DungeonMasterTools/DungeonMasterTools.github.io",
+"description": "Dungeon Master Tables and Tools for 5e",
+"topics": [
+"dnd",
+"dnd-5e",
+"dnd-tools",
+"dnd5e",
+"dnd5e-tools",
+"dungeons-and-dragons"
+],
+"stars": 17,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "dnd",
+"full_name": "elymsyr/dungeon-master-tool",
+"description": "A portable, offline-first DM tool designed for dual-monitor setups. Manage combat, take notes on mind map, track timelines, and project a rich campaign wiki seamlessly. Download for Android, Windows, Linux, and MacOS. Supports English, T\u00fcrk\u00e7e, French, and Deutch.",
+"topics": [
+"campaign-manager",
+"cloudflare",
+"dnd-tools",
+"dnd5e",
+"dual-monitor",
+"dungeon-master",
+"dungeon-master-tools",
+"dungeons-and-dragons",
+"flutter",
+"supabase",
+"supabase-auth",
+"virtual-tabletop"
+],
+"stars": 120,
+"license": "NOASSERTION",
+"page_expected": false
+},
+{
+"goal": "dnd",
+"full_name": "hpohlmann/dungeon-master",
+"description": "Dungeon Master is a pre-commit tool that enforces documentation quality through AI collaboration.",
+"topics": [],
+"stars": 5,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "dnd",
+"full_name": "zingazzi/lazydnd",
+"description": "D&D tool for dungeon master in lazygit style",
+"topics": [
+"command-line-tool",
+"dice-roller",
+"dungeon-master",
+"dungeons-and-dragons",
+"monsters"
+],
+"stars": 5,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "dnd",
+"full_name": "5e-bits/awesome-5e-srd",
+"description": "A compilation of all the cool things people make with the D&D 5e SRD API \ud83d\udd2e\u2728",
+"topics": [
+"api",
+"awesome",
+"awesome-list",
+"dnd",
+"dnd5e"
+],
+"stars": 79,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "dnd",
+"full_name": "Durtur/Dungeoneer",
+"description": "A virtual tabletop designed for 5e D&D, includes a map tool with dynamic lighting, initiative tracker, combat tracker and homebrew management. ",
+"topics": [
+"5e",
+"diceroller",
+"dnd",
+"dnd-tools",
+"dnd5e",
+"maptool",
+"role-playing",
+"rpg-tool",
+"virtual-tabletop",
+"virtualtabletop",
+"vtt"
+],
+"stars": 216,
+"license": "AGPL-3.0",
+"page_expected": false
+},
+{
+"goal": "dnd",
+"full_name": "Valforte/Initiative-Tracker",
+"description": "A modern, themeable initiative tracker for Pathfinder 2e combat encounters with separate DM and player views",
+"topics": [
+"combat-tracker",
+"daisyui",
+"dm-tools",
+"dnd",
+"game-master",
+"initiative-tracker",
+"pathfinder",
+"pathfinder-2e",
+"pf2e",
+"rpg",
+"tabletop",
+"tailwindcss",
+"ttrpg",
+"typescript",
+"vite",
+"vue",
+"vue3",
+"vuejs"
+],
+"stars": 5,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "dnd",
+"full_name": "Azgaar/Fantasy-Map-Generator",
+"description": "Web application generating interactive and highly customizable maps",
+"topics": [
+"cartography",
+"dungeons-and-dragons",
+"fantasy-maps",
+"generator",
+"javascript",
+"map-generation",
+"mapmaker",
+"procedural-generation"
+],
+"stars": 6030,
+"license": "NOASSERTION",
+"page_expected": false
+},
+{
+"goal": "dnd",
+"full_name": "rpgtex/DND-5e-LaTeX-Template",
+"description": "LaTeX package to typeset material for the fifth edition of the \"world's greatest roleplaying game\".",
+"topics": [
+"dnd",
+"dnd5e",
+"dungeons-and-dragons",
+"latex",
+"latex-template",
+"rpg",
+"tex"
+],
+"stars": 1630,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "dnd",
+"full_name": "game-icons/icons",
+"description": "All SVG icons available on https://game-icons.net",
+"topics": [
+"boardgame",
+"dungeons-and-dragons",
+"gamedev",
+"icons",
+"svg",
+"svg-icons"
+],
+"stars": 1349,
+"license": "NOASSERTION",
+"page_expected": false
+},
+{
+"goal": "dnd",
+"full_name": "ryceg/Eigengrau-s-Essential-Establishment-Generator",
+"description": "A town generator that is suitable for out of the box play in any fantasy TTRPG setting.",
+"topics": [
+"dnd",
+"dungeons-and-dragons",
+"dungeonsanddragons",
+"generator",
+"hacktober",
+"hacktoberfest",
+"hacktoberfest-2022",
+"hacktoberfest-accepted",
+"hacktoberfest2022",
+"javascript",
+"npc-generator",
+"procedural-generation",
+"procjam",
+"random-generation",
+"sugarcube-2",
+"tavern",
+"town-generator",
+"twine"
+],
+"stars": 883,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "dnd",
+"full_name": "mak-kirkland/chronicler",
+"description": "Chronicler is a free, offline worldbuilding tool and local wiki for writers, game masters, and tabletop RPG creators. It saves your notes as plain Markdown files on your computer. No sign-up, no subscription, no cloud. Your world stays on your device.",
+"topics": [
+"dnd",
+"dungeons-and-dragons",
+"knowledge-base",
+"markdown",
+"markdown-editor",
+"notes",
+"notes-app",
+"pathfinder",
+"rpg",
+"rpg-tool",
+"worldbuilding"
+],
+"stars": 727,
+"license": "NOASSERTION",
+"page_expected": false
+},
+{
+"goal": "dnd",
+"full_name": "delmarle/RPG-Core",
+"description": "UNITY engine RPG framework",
+"topics": [
+"addressables",
+"character",
+"character-creation",
+"core",
+"dungeons-and-dragons",
+"engine",
+"fps",
+"game",
+"inventory",
+"npcs",
+"open",
+"pokemon",
+"rpg",
+"rpg-maker",
+"rpg-station",
+"skills",
+"tabletop",
+"turn-based",
+"unity",
+"world"
+],
+"stars": 726,
+"license": "NOASSERTION",
+"page_expected": false
+},
+{
+"goal": "dnd",
+"full_name": "BigJk/snd",
+"description": "Sales & Dungeons \u2014 Thermal Printer as D&D / TTRPG Utility",
+"topics": [
+"dnd-tools",
+"dnd5e",
+"dungeon-master",
+"dungeons-and-dragons",
+"epson",
+"llm",
+"osr",
+"tabletop-gaming",
+"thermal-printer",
+"ttrpg"
+],
+"stars": 672,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "dnd",
+"full_name": "avrae/avrae",
+"description": "A Discord bot to streamline running D&D 5e.",
+"topics": [
+"avrae",
+"ddb",
+"discord-bot",
+"dnd5e",
+"dungeons-and-dragons",
+"hacktoberfest"
+],
+"stars": 468,
+"license": "GPL-3.0",
+"page_expected": false
+},
+{
+"goal": "dnd",
+"full_name": "ebullient/ttrpg-convert-cli",
+"description": "Utility to convert JSON data (for content you own) from 5etools or pf2etools into Obsidian-friendly Markdown.",
+"topics": [
+"5e-tools",
+"5etools",
+"dnd5e",
+"dungeons-and-dragons",
+"hacktoberfest",
+"java",
+"markdown",
+"obsidian-md",
+"pathfinder-2e",
+"pf2e",
+"picocli",
+"quarkus"
+],
+"stars": 376,
+"license": "Apache-2.0",
+"page_expected": false
+},
+{
+"goal": "dnd",
+"full_name": "justas-d/roll20-enhancement-suite",
+"description": "A browser plugin that enhances and fixes Roll20. Available for all users.",
+"topics": [
+"dnd",
+"dungeons-and-dragons",
+"enhancement",
+"roll20",
+"webextension"
+],
+"stars": 223,
+"license": "GPL-3.0",
+"page_expected": false
+},
+{
+"goal": "dnd",
+"full_name": "opendnd/opendnd",
+"description": "This is the main collection of OpenDnD Tools with generators for persons, dynasties, cities, towns, and more",
+"topics": [
+"dnd",
+"dnd-tools",
+"dnd5e",
+"dragons",
+"dungeon",
+"dungeons-and-dragons",
+"generators",
+"javascript",
+"node-cli",
+"nodejs"
+],
+"stars": 203,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "dnd",
+"full_name": "canismarko/dungeon-sheets",
+"description": "A tool to create character sheets and GM session notes for Dungeons and Dragons fifth edition (D&D 5e).",
+"topics": [
+"dungeons-and-dragons",
+"python3"
+],
+"stars": 199,
+"license": "GPL-3.0",
+"page_expected": false
+},
+{
+"goal": "dnd",
+"full_name": "DSPaul/COMPASS",
+"description": "TTRPG resource manager, bringing all your books, maps, etc. in one place.",
+"topics": [
+"dnd5e",
+"dungeons-and-dragons",
+"organization",
+"rpg-tool",
+"tabletop",
+"tabletop-rpgs",
+"ttrpg"
+],
+"stars": 158,
+"license": "GPL-3.0",
+"page_expected": false
+},
+{
+"goal": "dnd",
+"full_name": "avrae/d20",
+"description": "A fast, powerful, and extensible dice engine for D&D, d20 systems, and any other system that needs dice!",
+"topics": [
+"dice",
+"dice-roller",
+"dungeons-and-dragons",
+"parser",
+"tabletop"
+],
+"stars": 140,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "dnd",
+"full_name": "tegridydev/dnd-llm-game",
+"description": "MVP of an idea using multiple local LLM models to simulate and play D&D",
+"topics": [
+"agentic-ai",
+"agents",
+"ai-dnd",
+"dnd",
+"dungeon-generator",
+"dungeons-and-dragons",
+"llm",
+"llm-game",
+"llm-generator",
+"local",
+"local-ai",
+"localllm",
+"multi-ai",
+"multi-llm",
+"multiagent",
+"ollama",
+"ollama-python",
+"open-source"
+],
+"stars": 125,
+"license": "NOASSERTION",
+"page_expected": false
+},
+{
+"goal": "dnd",
+"full_name": "johnnovak/gridmonger",
+"description": "Your trusty old-school cRPG mapping companion",
+"topics": [
+"crpg",
+"dungeon-crawler",
+"dungeons-and-dragons",
+"mapping-tools",
+"nim",
+"nim-lang",
+"rpg"
+],
+"stars": 111,
+"license": "WTFPL",
+"page_expected": false
+},
+{
+"goal": "bakery",
+"full_name": "biswadeep-roy/bakery-mern",
+"description": "Heavenly bites is a full-featured bakery app using the MERN stack, offering seamless online cake browsing, ordering, and management.",
+"topics": [
+"bakery",
+"bakery-website",
+"css",
+"html",
+"html-css-javascript",
+"javascript",
+"mern",
+"mern-project",
+"mern-stack",
+"mern-stack-development",
+"mongodb",
+"nodejs",
+"react",
+"react-bootstrap",
+"reactjs"
+],
+"stars": 7,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "bakery",
+"full_name": "smartrecruiters/docker-bakery",
+"description": "Dockerfile hierarchy management tool with automatic rebuilding of dependent images when parent changes",
+"topics": [
+"bakery",
+"builder",
+"docker",
+"docker-hierarchy",
+"dockerfile-generator",
+"dockerfile-goodness",
+"dockerfile-templating",
+"dockerfiles",
+"dockerfiles-management",
+"dockerfiles-tree",
+"images",
+"owner-ship-group",
+"templating",
+"tree-structure"
+],
+"stars": 43,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "bakery",
+"full_name": "mealie-recipes/mealie",
+"description": "Mealie is a self hosted recipe manager and meal planner with a RestAPI backend and a reactive frontend application built in Vue for a pleasant user experience for the whole family. Easily add recipes into your database by providing the url and mealie will automatically import the relevant data or add a family recipe with the UI editor",
+"topics": [
+"meal-plans",
+"recipe-manager",
+"self-hosted"
+],
+"stars": 13332,
+"license": "AGPL-3.0",
+"page_expected": false
+},
+{
+"goal": "bakery",
+"full_name": "TomBursch/kitchenowl",
+"description": "KitchenOwl is a self-hosted grocery list and recipe manager. The backend is made with Flask and the frontend with Flutter. Easily add items to your shopping list before you go shopping. You can also create recipes and add items based on what you want to cook.",
+"topics": [
+"android",
+"cross-platform",
+"expense-tracker",
+"flutter",
+"grocery-list",
+"ios",
+"kitchenowl",
+"mobile-app",
+"recipe-manager",
+"self-hosted"
+],
+"stars": 3704,
+"license": "AGPL-3.0",
+"page_expected": false
+},
+{
+"goal": "bakery",
+"full_name": "TraceApps/cooktrace",
+"description": "Self-hosted recipe manager \u2014 single Docker container, AGPL-3.0, no telemetry, no cloud sync.",
+"topics": [],
+"stars": 53,
+"license": "AGPL-3.0",
+"page_expected": false
+},
+{
+"goal": "bakery",
+"full_name": "jvalskis/mealie-helm",
+"description": "Helm chart for Mealie - a self hosted recipe manager and meal planner",
+"topics": [
+"helm-chart",
+"kubernetes",
+"mealie"
+],
+"stars": 8,
+"license": "Apache-2.0",
+"page_expected": false
+},
+{
+"goal": "bakery",
+"full_name": "alexbates/Tamari",
+"description": "A fully-featured recipe manager web application built using Python and the Flask Framework.",
+"topics": [
+"cooking",
+"cooking-recipes",
+"docker",
+"flask",
+"meal-planner",
+"recipe-app",
+"recipe-manager",
+"self-hosted",
+"shopping-list"
+],
+"stars": 141,
+"license": "GPL-3.0",
+"page_expected": false
+},
+{
+"goal": "bakery",
+"full_name": "mariinkys/cocookies",
+"description": "A self-hostable recipe manager",
+"topics": [
+"cooking",
+"java",
+"java-springboot",
+"recipe-manager",
+"recipes",
+"self-hosted",
+"selfhosted",
+"vue"
+],
+"stars": 7,
+"license": "GPL-3.0",
+"page_expected": false
+},
+{
+"goal": "bakery",
+"full_name": "reaper47/recipya-rs",
+"description": "A clean, simple and powerful recipe manager your whole family will enjoy.",
+"topics": [
+"food",
+"recipe-manager",
+"self-hosted"
+],
+"stars": 37,
+"license": "AGPL-3.0",
+"page_expected": false
+},
+{
+"goal": "bakery",
+"full_name": "frobinson47/cookslate",
+"description": "Self-hosted recipe manager \u2014 React + PHP + MySQL",
+"topics": [],
+"stars": 6,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "bakery",
+"full_name": "mrshappy0/mini-mealie",
+"description": "Mini Mealie is a lightweight Chrome extension designed to enhance the experience of Mealie, an open-source recipe manager. With Mini Mealie, users can quickly import recipes from any website into their Mealie instance with a simple right-click.",
+"topics": [
+"homelab",
+"mealie",
+"self-hosted",
+"utility",
+"web-extension"
+],
+"stars": 15,
+"license": "AGPL-3.0",
+"page_expected": false
+},
+{
+"goal": "bakery",
+"full_name": "Vorisek-Labs/mealie-go",
+"description": "Mobile app for Mealie, the self-hosted recipe manager. Connects directly to your own Mealie server. React Native + Expo, Android-first.",
+"topics": [
+"android",
+"expo",
+"mealie",
+"react-native",
+"recipe-manager",
+"self-hosted"
+],
+"stars": 7,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "bakery",
+"full_name": "DaliangAuto/Dliang-Open-ERP",
+"description": "A lightweight open-source ERP system for BOM management, inventory control, purchasing, suppliers, and order workflow. Built for small businesses and fast-moving product teams.",
+"topics": [],
+"stars": 5,
+"license": "NOASSERTION",
+"page_expected": false
+},
+{
+"goal": "car",
+"full_name": "hargata/lubelog",
+"description": "LubeLogger is a web-based vehicle maintenance and fuel mileage tracker",
+"topics": [
+"fuel-consumption",
+"vehicle",
+"vehicles"
+],
+"stars": 2866,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "car",
+"full_name": "homelabforge/mygarage",
+"description": "Self-hosted vehicle maintenance tracking for vehicle enthusiasts ",
+"topics": [
+"automotive",
+"fuel-tracking",
+"homelab",
+"maintenance-tracker",
+"recreational-vehicles",
+"trailers"
+],
+"stars": 24,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "car",
+"full_name": "CodeWizardsDev/wizard-mileage",
+"description": "A comprehensive vehicle maintenance and mileage tracking system for FiveM servers that simulates realistic vehicle wear and tear, including oil life, filters, tires, and brake conditions. The system tracks vehicle mileage and component wear, requiring regular maintenance to maintain optimal vehicle performance.",
+"topics": [],
+"stars": 25,
+"license": "GPL-3.0",
+"page_expected": false
+},
+{
+"goal": "car",
+"full_name": "hawkinslabdev/motomate",
+"description": "Your personal vehicle maintenance tracker to keep track of mileage, service history, and spending.",
+"topics": [
+"bicycle",
+"bike",
+"expense-tracker",
+"lubelogger",
+"maintenance-log",
+"mileage-tracker",
+"motorcycle",
+"open-source",
+"self-hosted",
+"vehicle-maintenance"
+],
+"stars": 35,
+"license": "AGPL-3.0",
+"page_expected": false
+},
+{
+"goal": "car",
+"full_name": "nicinabox/spanner",
+"description": "A simple maintenance tracking tool for your vehicles.",
+"topics": [],
+"stars": 12,
+"license": "AGPL-3.0",
+"page_expected": false
+},
+{
+"goal": "car",
+"full_name": "flizzy27/smart-garage",
+"description": "Self-hosted vehicle management and maintenance tracking platform",
+"topics": [],
+"stars": 11,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "car",
+"full_name": "dannymcc/may",
+"description": "May is a web-based dashboard application that gives you a neat and clean interface for logging your fuel fill-ups for all of your vehicles. The application has full multi-user support, as well as multiple vehicles per user. Whenever you fill-up your car or motorcycle, keep the receipt and record the data in May.",
+"topics": [
+"docker",
+"flask",
+"fleet",
+"fuel",
+"maintenance",
+"python",
+"self-hosted",
+"vehicle"
+],
+"stars": 251,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "car",
+"full_name": "mkinitcpio/car-maintenance",
+"description": "App for log your car parts maintenance such as engine, oil and any what you want! Manage cost, date and mileage.",
+"topics": [
+"angular",
+"car",
+"car-maintaining",
+"electron",
+"linux-app",
+"organizer",
+"snap",
+"snapcraft"
+],
+"stars": 17,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "car",
+"full_name": "Squallqt/FS25_RealisticMechanicalSystems",
+"description": "In-depth vehicle wear, failure, and maintenance simulation for Farming Simulator 25.",
+"topics": [
+"farming-simulator-25",
+"fs25",
+"game-mod",
+"lua",
+"multiplayer",
+"realism",
+"vehicle-damage",
+"vehicle-maintenance"
+],
+"stars": 10,
+"license": "GPL-3.0",
+"page_expected": false
+},
+{
+"goal": "car",
+"full_name": "Stunspot/stunspots-guide-to-automotive-systems",
+"description": "A model-facing field manual for vehicle reality, machine physics, lifecycle economics, failure diagnosis, and practitioner judgment.",
+"topics": [
+"advanced-knowledge-base",
+"automotive-engineering",
+"automotive-safety",
+"automotive-software",
+"automotive-systems",
+"cars",
+"chassis-systems",
+"drivetrain",
+"electrical-systems",
+"hybrid-vehicles",
+"knowledge-base",
+"motorsport",
+"obd",
+"propulsion-systems",
+"rag",
+"supply-chain",
+"suspension-systems",
+"vehicle-dynamics",
+"vehicle-maintenance",
+"vehicles"
+],
+"stars": 6,
+"license": "NOASSERTION",
+"page_expected": false
+},
+{
+"goal": "spanish",
+"full_name": "vermont42/Conjugar",
+"description": "Conjugar is an iPhone app for learning Spanish verb conjugations. 100% programmatic layout!",
+"topics": [
+"hacktoberfest"
+],
+"stars": 50,
+"license": "AGPL-3.0",
+"page_expected": false
+},
+{
+"goal": "spanish",
+"full_name": "aarushkx/learn-spanish",
+"description": "Intermediate Spanish conversation learning app helping users master native-level dialogues through interactive lessons",
+"topics": [],
+"stars": 5,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "spanish",
+"full_name": "devmalik7/Game_Scripts",
+"description": "This repository contains beginner-friendly mini games built using multiple programming languages. Perfect for learning logic, loops, and conditionals while contributing to open source!.",
+"topics": [
+"app",
+"application",
+"hacktoberfest",
+"hacktoberfest-accepted",
+"java",
+"javascript",
+"python"
+],
+"stars": 7,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "spanish",
+"full_name": "securityfirst/Umbrella_android",
+"description": "Open source Android, iOS and Web app for learning about and managing digital and physical security. From how to send a secure message to dealing with a kidnap. Umbrella has best practice guides in over 40 topics in multiple languages. Used daily by people working in high risk countries - journalists, activists, diplomats, business travelers etc.",
+"topics": [
+"activism",
+"advice",
+"crypto",
+"encryption",
+"hacking",
+"human-rights-defenders",
+"infosec",
+"journalism",
+"lessons",
+"opensource",
+"protest",
+"risk",
+"security",
+"snowden",
+"travel",
+"umbrella"
+],
+"stars": 292,
+"license": "GPL-3.0",
+"page_expected": false
+},
+{
+"goal": "spanish",
+"full_name": "hoangkien1703/dual-sub-replay",
+"description": "Open-source Android app for YouTube dual subtitles, on-device translation, and tap-to-replay language learning.",
+"topics": [
+"android",
+"android-app",
+"anki",
+"bilingual-subtitles",
+"dual-subtitles",
+"jetpack-compose",
+"kotlin",
+"language-learning",
+"language-learning-app",
+"ml-kit",
+"on-device-translation",
+"open-source",
+"spaced-repetition-vocabulary",
+"subtitles",
+"tap-to-replay",
+"youtube",
+"youtube-captions"
+],
+"stars": 16,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "spanish",
+"full_name": "Blueturboguy07/freelingo",
+"description": "Open-source, local-only, pixel-parity language learning app (Duolingo-class). Code AGPL-3.0, content packs CC BY-NC-SA 4.0.",
+"topics": [],
+"stars": 6,
+"license": "AGPL-3.0",
+"page_expected": false
+},
+{
+"goal": "spanish",
+"full_name": "bretttolbert/verbecc",
+"description": "Verbe Complete Conjugator (verbecc) supports Catalan, Spanish, French, Italian, Portuguese and Romanian and can predict conjugation for unknown verbs using Machine Learning",
+"topics": [
+"catalan",
+"catalan-language",
+"conjugation",
+"conjugator",
+"french",
+"french-language",
+"french-nlp",
+"linguistics",
+"machine-learning",
+"natural-language-processing",
+"nlp",
+"portuguese-language",
+"portuguese-verbs",
+"romanian",
+"romanian-language",
+"scikit-learn",
+"spanish-language",
+"spanish-verbs",
+"verb-conjugation",
+"verbs"
+],
+"stars": 107,
+"license": "LGPL-3.0",
+"page_expected": false
+},
+{
+"goal": "spanish",
+"full_name": "bretttolbert/verbecc-svc",
+"description": "Dockerized Python microservice with REST API for verbs conjugation in French, Spanish and Portuguese",
+"topics": [
+"conjugation",
+"conjugator",
+"french",
+"french-language",
+"french-nlp",
+"linguistics",
+"machine-learning",
+"natural-language",
+"natural-language-processing",
+"nlp",
+"portuguese-language",
+"portuguese-verbs",
+"romanian",
+"romanian-language",
+"scikit-learn",
+"spanish-language",
+"spanish-verbs",
+"verb-conjugation"
+],
+"stars": 25,
+"license": "NOASSERTION",
+"page_expected": false
+},
+{
+"goal": "spanish",
+"full_name": "Ars-Linguistica/mlconjug3",
+"description": "A Python library to conjugate verbs in French, English, Spanish, Italian, Portuguese and Romanian (more soon) using Machine Learning techniques.",
+"topics": [
+"conjugation",
+"conjugator",
+"devops",
+"linguistics",
+"machine-learning",
+"nlp",
+"nlp-library",
+"nlp-machine-learning",
+"python3",
+"test-driven-development"
+],
+"stars": 82,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "spanish",
+"full_name": "SekouD/mlconjug",
+"description": "A Python library to conjugate verbs in French, English, Spanish, Italian, Portuguese and Romanian (more soon) using Machine Learning techniques.",
+"topics": [
+"conjugation",
+"conjugator",
+"linguistics",
+"machine-learning",
+"nlp",
+"nlp-library",
+"nlp-machine-learning",
+"python"
+],
+"stars": 75,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "spanish",
+"full_name": "bretttolbert/verbecc-web",
+"description": "Une interface web pour verbecc-svc | Web front-end for verbecc-svc",
+"topics": [
+"conjugation",
+"conjugator",
+"french",
+"french-language",
+"french-nlp",
+"french-verbs",
+"italian-language",
+"italian-verbs",
+"italiano",
+"linguistics",
+"machine-learning",
+"nlp",
+"portuguese-language",
+"portuguese-verbs",
+"romanian",
+"romanian-language",
+"spanish",
+"spanish-language",
+"verb-conjugation",
+"verb-conjugations"
+],
+"stars": 7,
+"license": "NOASSERTION",
+"page_expected": false
+},
+{
+"goal": "spanish",
+"full_name": "ankitects/anki",
+"description": "Anki is a smart spaced repetition flashcard program",
+"topics": [],
+"stars": 31585,
+"license": "NOASSERTION",
+"page_expected": false
+},
+{
+"goal": "spanish",
+"full_name": "st3v3nmw/obsidian-spaced-repetition",
+"description": "Fight the forgetting curve by reviewing flashcards & entire notes on Obsidian",
+"topics": [
+"flashcards",
+"obsidian",
+"obsidian-md",
+"obsidian-plugin",
+"spaced-repetition",
+"spaced-repetition-system",
+"srs"
+],
+"stars": 2570,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "spanish",
+"full_name": "open-spaced-repetition/free-spaced-repetition-scheduler",
+"description": "A spaced repetition algorithm based on DSR model",
+"topics": [
+"active-recall",
+"anki",
+"education",
+"flashcards",
+"fsrs",
+"spaced-repetition",
+"spaced-repetition-algorithm",
+"srs",
+"supermemo"
+],
+"stars": 721,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "spanish",
+"full_name": "helloworld1/AnyMemo",
+"description": "Advanced Spaced Repetition flashcard learning software for Android.",
+"topics": [],
+"stars": 158,
+"license": "GPL-2.0",
+"page_expected": false
+},
+{
+"goal": "spanish",
+"full_name": "VienDinhCom/supermemo",
+"description": "A JavaScript and TypeScript implementation of SuperMemo 2, a spaced repetition algorithm for flashcards.",
+"topics": [
+"deno",
+"flashcards",
+"javascript",
+"nodejs",
+"sm2",
+"spaced-repetition",
+"supermemo",
+"supermemo2",
+"typescript",
+"webpack"
+],
+"stars": 338,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "spanish",
+"full_name": "theq629/fulgurate",
+"description": "Simple spaced repetition flashcard software.",
+"topics": [],
+"stars": 66,
+"license": "NOASSERTION",
+"page_expected": false
+},
+{
+"goal": "spanish",
+"full_name": "h16nning/skola",
+"description": "A local-first spaced-repetition flashcard pwa",
+"topics": [
+"flashcard-application",
+"flashcards",
+"learn",
+"local-first",
+"pwa",
+"spaced-repetition",
+"spaced-repetition-flashcards",
+"studying"
+],
+"stars": 53,
+"license": "AGPL-3.0",
+"page_expected": false
+},
+{
+"goal": "spanish",
+"full_name": "ankimcp/anki-mcp-server",
+"description": "A Model Context Protocol (MCP) server that enables AI assistants to interact with Anki, the spaced repetition flashcard application.",
+"topics": [
+"ai",
+"ai-learning-tool",
+"ai-tutor",
+"anki",
+"anki-addon",
+"anki-flashcards"
+],
+"stars": 495,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "spanish",
+"full_name": "artcc/freelingo",
+"description": "Open-source, self-hosted AI language learning platform with local or cloud LLMs, CEFR study plans, an AI tutor, voice conversations, flashcards, and spaced repetition.",
+"topics": [
+"ai-tutor",
+"cefr",
+"docker-compose",
+"edtech",
+"fastapi",
+"flashcards",
+"language-learning",
+"listening-practice",
+"llm",
+"nextjs",
+"ollama",
+"personalized-learning",
+"python",
+"self-hosted",
+"spaced-repetition",
+"speaking-practice",
+"speech-to-text",
+"text-to-speech"
+],
+"stars": 141,
+"license": "AGPL-3.0",
+"page_expected": false
+},
+{
+"goal": "spanish",
+"full_name": "flashcards/flashcards.github.io",
+"description": "An open, community-driven library of developer flashcards \u2014 powered by Flashcards.io. Contribute Markdown files and instantly turn them into AI-generated flashcards with spaced repetition to level up your engineering skills.",
+"topics": [
+"ai-powered",
+"developer-learning",
+"flashcards",
+"interview-prep",
+"learning-tools",
+"markdown",
+"open-source",
+"software-engineering",
+"spaced-repetition",
+"study-resources"
+],
+"stars": 184,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "spanish",
+"full_name": "SYuan03/Skill-Anything",
+"description": "Any source (PDF, video, web, audio, text) to interactive learning package with quizzes, flashcards and spaced repetition. One command, 12-section study guide.",
+"topics": [
+"active-recall",
+"ai-learning",
+"cli-tool",
+"education",
+"flashcard-generator",
+"knowledge-extraction",
+"learning-tool",
+"llm",
+"openai",
+"pdf-to-quiz",
+"python",
+"quiz-generator",
+"skill-anything",
+"spaced-repetition",
+"study-guide"
+],
+"stars": 331,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "spanish",
+"full_name": "bttger/markdown-flashcards",
+"description": "Small CLI app to learn with flashcards and spaced repetition. Follows the UNIX philosophy by utilizing portable, flat markdown files.",
+"topics": [],
+"stars": 95,
+"license": "GPL-3.0",
+"page_expected": false
+},
+{
+"goal": "spanish",
+"full_name": "ctrlaltwill/LearnKit",
+"description": "A native study system for your Obsidian vault. LearnKit turns notes into durable knowledge with flashcards, spaced repetition, reviews, tests, and AI tools.",
+"topics": [
+"anki",
+"education",
+"flashcards",
+"fsrs",
+"image-occlusion",
+"learning",
+"markdown",
+"note-taking",
+"obsidian",
+"obsidian-plugin",
+"productivity",
+"spaced-repetition",
+"study"
+],
+"stars": 177,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "spanish",
+"full_name": "kirill-markin/flashcards-open-source-app",
+"description": "AI-powered flashcards app built for serious daily study on iOS, Android, and the web. Use it to prepare for exams, learn vocabulary, memorize technical terms and facts, improve your material with AI, and review with spaced repetition.",
+"topics": [
+"android",
+"anki-alternative",
+"aws",
+"edtech",
+"flashcards",
+"fsrs",
+"indexeddb",
+"ios",
+"kotlin",
+"local-first",
+"offline-first",
+"postgresql",
+"react",
+"self-hosted",
+"spaced-repetition",
+"sqlite",
+"swiftui",
+"sync",
+"typescript",
+"web"
+],
+"stars": 73,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "spanish",
+"full_name": "4rays/swift-fsrs",
+"description": "A Swift implementation of the FSRS spaced repetition algorithm",
+"topics": [
+"dsr",
+"flashcards",
+"fsrs",
+"spaced-repetition",
+"spaced-repetition-algorithm"
+],
+"stars": 34,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "spanish",
+"full_name": "pieralukasz/true-recall",
+"description": "Native spaced repetition for Obsidian: AI-generated flashcards, FSRS v6 scheduling, image occlusion and retention analytics \u2014 without leaving your vault.",
+"topics": [
+"active-recall",
+"anki",
+"flashcards",
+"fsrs",
+"learning",
+"obsidian",
+"obsidian-plugin",
+"spaced-repetition",
+"srs",
+"typescript"
+],
+"stars": 64,
+"license": "NOASSERTION",
+"page_expected": false
+},
+{
+"goal": "pets",
+"full_name": "Rainbowfish-Tech-Collab/Pet-Health-Tracker",
+"description": "Log, Track, Love - The Best Pet Care Starts with the Right Data",
+"topics": [],
+"stars": 5,
+"license": "Apache-2.0",
+"page_expected": false
+},
+{
+"goal": "pets",
+"full_name": "Quincunx33/mycat-companion",
+"description": "A cross-platform desktop cat companion with pet care, Pomodoro focus sessions, sticky notes, sounds, smooth eye tracking, and dark skins.",
+"topics": [
+"cat",
+"cross-platform",
+"cross-platform-app",
+"cross-platform-development",
+"cross-platform-gui",
+"cute-cat",
+"desktop",
+"desktop-pet",
+"linux",
+"linux-shell",
+"pet-care",
+"pomodoro",
+"pyside6",
+"python",
+"qt",
+"sticky-notes",
+"windows"
+],
+"stars": 7,
+"license": "NOASSERTION",
+"page_expected": false
+},
+{
+"goal": "pets",
+"full_name": "jigsawpieces/dog-api-images",
+"description": "Collection of all the images served from Dog API sorted by breed category",
+"topics": [
+"dog",
+"dog-api",
+"images",
+"jpeg"
+],
+"stars": 432,
+"license": "GPL-3.0",
+"page_expected": false
+},
+{
+"goal": "pets",
+"full_name": "bocaletto-luca/Dogs-Cats-Explorer",
+"description": "Dogs & Cats Explorer is a fun and interactive web app designed to help users search and discover images of dogs and cats using free open-data APIs. This tool is ideal for pet lovers, breeders, and anyone who enjoys exploring different dog and cat breeds with visual references. By Bocaletto Luca",
+"topics": [
+"animal",
+"animal-image",
+"api",
+"bocale",
+"cats",
+"css3",
+"dogs",
+"dogs-cats-explorer",
+"free-api",
+"html5",
+"image-explorer",
+"javascript",
+"open-data",
+"opensource",
+"responsive",
+"webapp"
+],
+"stars": 9,
+"license": "GPL-3.0",
+"page_expected": false
+},
+{
+"goal": "pets",
+"full_name": "lstasiak/StanfordDogs-Classifier-FastApi",
+"description": "Simple ML API built on FastApi for classifying breed of dog  based on uploaded image with provided token authorization. PyTorch CNN model trained on Stanford Dogs dataset",
+"topics": [
+"authentication-backend",
+"celery",
+"cnn-classification",
+"computer-vision",
+"deep-learning",
+"docker-compose",
+"fastapi",
+"machine-learning",
+"pytorch"
+],
+"stars": 5,
+"license": "GPL-3.0",
+"page_expected": false
+},
+{
+"goal": "pets",
+"full_name": "geosem42/PetCare",
+"description": "Veterinary Clinic Patient Management System (PMS) built with Laravel, Inertia.js and Vue.js",
+"topics": [
+"clinic",
+"inertiajs",
+"laravel",
+"patient-management",
+"pets",
+"pms",
+"veterinarian",
+"veterinary-clinics",
+"vue",
+"vuejs"
+],
+"stars": 26,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "pets",
+"full_name": "Tharaka4452/Pet-Care-Management-System",
+"description": "This project is a comprehensive web-based platform designed to support pet owners, veterinary professionals, and pet adoption coordinators. It provides a seamless experience for managing pet care, adoption, and community engagement.",
+"topics": [],
+"stars": 8,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "securo-finance/securo",
+"description": "Open-source personal finance manager. Self-hosted, privacy-first.",
+"topics": [
+"expense-tracker",
+"finance-management",
+"python"
+],
+"stars": 3819,
+"license": "AGPL-3.0",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "mayswind/ezbookkeeping",
+"description": "ezBookkeeping is an open source, powerful, self-hosted personal finance app that is easy to use.",
+"topics": [
+"accounting",
+"app",
+"bookkeeping",
+"docker",
+"expense-manager",
+"expense-tracker",
+"expenses",
+"finance",
+"finance-management",
+"finances",
+"financial",
+"golang",
+"homelab",
+"mobile",
+"money",
+"money-manager",
+"personal-finance",
+"self-hosted",
+"typescript",
+"vue"
+],
+"stars": 5664,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "moneymanagerex/android-money-manager-ex",
+"description": "Local-first personal finance app. Encrypted, self-hosted, sync across devices.",
+"topics": [
+"cipher",
+"encryption",
+"finance",
+"mmex4android",
+"moneymanagerex"
+],
+"stars": 714,
+"license": "GPL-3.0",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "ellite/Wallos",
+"description": "Wallos: Open-source, self-hostable personal subscription tracker. Visualize your recurring expenses, manage your budget, and save money.",
+"topics": [
+"budgeting",
+"docker",
+"finance",
+"php",
+"self-hosted",
+"subscription-tracker"
+],
+"stars": 8585,
+"license": "GPL-3.0",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "Cloeille/picsou-finance",
+"description": "Self-hosted personal finance dashboard  Track bank accounts, brokerage, crypto, and net worth \u2014 all in one place.",
+"topics": [
+"bank",
+"budget",
+"finance",
+"sync"
+],
+"stars": 517,
+"license": "NOASSERTION",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "wealthfolio/wealthfolio",
+"description": "A beautiful, private, local-first personal finance tracker. Investments, net worth, spending, and simulations.",
+"topics": [
+"macos-app",
+"portfolio-tracker",
+"self-hosted",
+"tauri-app"
+],
+"stars": 9062,
+"license": "AGPL-3.0",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "danielalves96/zublo",
+"description": "The best open-source, self-hostable personal subscription tracker.",
+"topics": [
+"docker",
+"finance",
+"self-hosted",
+"subscription-manager",
+"subscription-tracker"
+],
+"stars": 181,
+"license": "NOASSERTION",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "Zproger/Aurum",
+"description": "Self-hosted personal finance OS \u2014 cash flow, net worth, budgets, and every income stream you own. Free for personal use.",
+"topics": [
+"budgeting",
+"crypto-portfolios",
+"docker",
+"expense-tracker",
+"fastapi",
+"finance",
+"finance-tracker",
+"net-worth",
+"personal-finance",
+"postgresql",
+"react",
+"self-hosted",
+"typescript"
+],
+"stars": 233,
+"license": "NOASSERTION",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "fmaclen/canutin",
+"description": "Open-source, self-hosted personal finance platform",
+"topics": [
+"budgeting",
+"docker",
+"finance",
+"personal-finance",
+"pocketbase",
+"self-hosted",
+"svelte",
+"sveltekit"
+],
+"stars": 69,
+"license": "Apache-2.0",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "kylesean/finvo",
+"description": "Self-hosted AI personal finance assistant. 100% private, total data sovereignty",
+"topics": [
+"bookkeeping",
+"expense-tracker",
+"flutter",
+"genui",
+"langgraph",
+"self-hosted"
+],
+"stars": 50,
+"license": "AGPL-3.0",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "VMelnalksnis/Gnomeshade",
+"description": "Self-hosted personal finance tracker",
+"topics": [
+"accounting",
+"aspnetcore",
+"avalonia",
+"csharp",
+"docker",
+"dotnet",
+"finance",
+"money",
+"personal-finance",
+"personal-finance-manager",
+"self-hosted",
+"windows-app"
+],
+"stars": 35,
+"license": "AGPL-3.0",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "finanze/finanze",
+"description": "Self-hosted personal finance & net worth tracker. Aggregate banks, investments, crypto & real estate. Privacy-first.",
+"topics": [
+"banking",
+"degiro",
+"financial-aggregation",
+"google-sheets",
+"indexa-capital",
+"ing",
+"interactive-brokers",
+"investments",
+"mintos",
+"myinvestor",
+"net-worth",
+"open-banking",
+"personal-finance",
+"portfolio",
+"portfolio-manager",
+"psd2",
+"self-hosted",
+"trade-republic",
+"trading212",
+"urbanitae"
+],
+"stars": 56,
+"license": "AGPL-3.0",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "hisabi-app/hisabi",
+"description": "\ud83e\udd11 Open-source personal finance tracking web application with SMS parser",
+"topics": [
+"finance-management",
+"finance-tracker",
+"gpt",
+"graphql",
+"laravel",
+"laravel-framework",
+"mysql",
+"open-source",
+"openai",
+"personal-finance",
+"php",
+"self-hosted"
+],
+"stars": 459,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "enudler/nudlers",
+"description": "Smart personal finance tracker for Israeli banks & cards. Features AI categorization, recurring payments, self-hosting (Docker), and MCP support.",
+"topics": [
+"ai",
+"budgeting",
+"docker",
+"israel",
+"mcp",
+"nextjs",
+"personal-finance",
+"postgresql",
+"scrapers",
+"typescript"
+],
+"stars": 26,
+"license": "NOASSERTION",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "OopsApps/OopsBudgeter",
+"description": "A self-hosted personal finance management app designed to help YOU track income and expenses",
+"topics": [
+"budget",
+"budget-app",
+"iconical",
+"nextjs",
+"self-hosted",
+"selfhosted"
+],
+"stars": 40,
+"license": "Apache-2.0",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "danielvsantos/bliss",
+"description": "Self-Hosted Personal Finance for Global Citizens",
+"topics": [
+"finance-management",
+"personal-finance-manager",
+"self-hosted"
+],
+"stars": 20,
+"license": "AGPL-3.0",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "syllogic-ai/syllogic",
+"description": "Self-hosted personal finance dashboard with AI categorization, recurring spend tracking, and a live demo.",
+"topics": [
+"ai",
+"budgeting",
+"docker",
+"finance",
+"finance-management",
+"homelab",
+"open-source",
+"personal-finance",
+"railway",
+"self-hosted",
+"subscription-management"
+],
+"stars": 16,
+"license": "AGPL-3.0",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "kirill-markin/expense-budget-tracker",
+"description": "Self-hosted open-source personal finance expense and budget tracker with balances, transfers, and multi-currency reporting on Postgres.",
+"topics": [
+"budget-tracker",
+"expense-tracker",
+"multi-currency",
+"open-source",
+"personal-finance",
+"postgresql",
+"self-hosted"
+],
+"stars": 32,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "KenTaniguchi-R/ledgr",
+"description": "Self-hostable, open-source personal finance app (AGPLv3)",
+"topics": [
+"ai",
+"budgeting",
+"docker",
+"expense-tracker",
+"finance",
+"finance-tracker",
+"llm",
+"mcp",
+"money",
+"personal-finance",
+"plaid",
+"self-hosted"
+],
+"stars": 16,
+"license": "AGPL-3.0",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "dreamxist/balance",
+"description": "Personal finance app with Balance Assertion + Reconciliation (delta = 0). Self-hosted Supabase backend + TypeScript CLI + React dashboard. @dreamxist/bal-cli on npm.",
+"topics": [
+"balance-assertion",
+"cli",
+"personal-finance",
+"postgres",
+"react",
+"reconciliation",
+"self-hosted",
+"supabase",
+"typescript",
+"vite"
+],
+"stars": 23,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "machulav/accountant24",
+"description": "Open source AI agent for personal finance",
+"topics": [
+"accounting",
+"ai-agent",
+"ai-harnesses",
+"bookkeeping",
+"budget-tracker",
+"budgeting",
+"expense-tracker",
+"finance",
+"hledger",
+"llm",
+"local-first",
+"money",
+"ollama",
+"open-source",
+"personal-finance",
+"pi-coding-agent",
+"plaintext-accounting",
+"privacy",
+"self-hosted",
+"ynab-alternative"
+],
+"stars": 55,
+"license": "Apache-2.0",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "osirishorus/opencoffer",
+"description": "Self-hosted personal finance with SimpleFIN sync, dashboards, BYO-LLM chat, and an MCP endpoint.",
+"topics": [],
+"stars": 18,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "itskovacs/stonks",
+"description": "Minimalist personal portfolio tracker, self-hosted.",
+"topics": [
+"finance",
+"finance-management",
+"finances",
+"portfolio",
+"portfolio-tracker",
+"self-hosted"
+],
+"stars": 37,
+"license": "AGPL-3.0",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "kzekiue/kosh",
+"description": "A self-hosted, privacy-first personal finance app for accounts, budgets, cashflow, goals, and CSV imports.",
+"topics": [
+"budgeting",
+"drizzle-orm",
+"expense-tracker",
+"finance",
+"money-management",
+"nextjs",
+"open-source",
+"personal-finance",
+"postgresql",
+"privacy",
+"self-hosted",
+"typescript"
+],
+"stars": 42,
+"license": "AGPL-3.0",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "aeshef/obsidian-agent",
+"description": "Telegram bot for Obsidian \u2014 self-hosted AI agent / life OS: PKM notes RAG, kanban tasks, personal finance. Python, DeepSeek, fail-closed modules.",
+"topics": [
+"ai-agent",
+"aiogram",
+"automation",
+"deepseek",
+"kanban",
+"life-os",
+"llm",
+"markdown",
+"note-taking",
+"obsidian",
+"personal-assistant",
+"personal-finance",
+"personal-knowledge-management",
+"pkm",
+"python",
+"rag",
+"second-brain",
+"self-hosted",
+"task-management",
+"telegram-bot"
+],
+"stars": 9,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "econumo/econumo",
+"description": "Econumo - A personal and family budgeting app with multi-currency support, shared accounts, and flexible budgets",
+"topics": [
+"budget",
+"budget-app",
+"expense-tracker",
+"money-tracker",
+"pfm"
+],
+"stars": 110,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "doxigo/muchToman",
+"description": "An Android app and iOS PWA that shows what all your money adds up to in Toman, and where it goes: a ledger filled from bank SMS, budgets, savings goals and installments, for one person or, if you choose, the whole family.",
+"topics": [
+"android",
+"compose",
+"iran",
+"kotlin"
+],
+"stars": 59,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "ardov/zerro",
+"description": "Unofficial ZenMoney client with envelope budgeting superpowers",
+"topics": [
+"budget",
+"budgeting",
+"finance",
+"local-first",
+"pwa",
+"zenmoney"
+],
+"stars": 281,
+"license": "GPL-2.0",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "polarmutex/fava-envelope",
+"description": "A beancount fava extension to add a envelope budgeting capability",
+"topics": [],
+"stars": 144,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "zombor/hledger-envelope-budget",
+"description": "A description for YNAB-like envelope budgeting with hledger",
+"topics": [],
+"stars": 47,
+"license": "CC0-1.0",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "KayleeBeyene/EnvelopeCLI",
+"description": "Take control of your money from the terminal. Local Zero-based budgeting. CLI + TUI app with budget targets, bank import, encryption, and vim-style navigation.",
+"topics": [
+"budgeting",
+"cli",
+"command-line",
+"finance",
+"money-management",
+"personal-finance",
+"ratatui",
+"rust",
+"terminal",
+"tui",
+"ynab",
+"zero-based-budgeting"
+],
+"stars": 5,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "marstr/envelopes",
+"description": "A collection of Go packages to express Budget calculations and state easily.",
+"topics": [
+"budgeting",
+"currency",
+"personal-finance",
+"stocks"
+],
+"stars": 6,
+"license": "Apache-2.0",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "jackob25-PTPCS/Envelopes",
+"description": "Envelopes is a self-hosted budgeting platform inspired by Dave Ramsey's envelope method. Manage cash-style budgets, track spending, and tackle debt with Snowball and Avalanche planners. Available as a server app with browser access, Windows (.exe), Linux (.deb), and Android (APK) clients.",
+"topics": [],
+"stars": 5,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "Tanq16/ExpenseOwl",
+"description": "Extremely simple, self-hosted expense tracker with a beautiful UI.",
+"topics": [
+"chartjs",
+"docker",
+"expense-manager",
+"expense-tracker",
+"finance",
+"finance-management",
+"finance-tracker",
+"go",
+"golang",
+"homelab",
+"personal-finance",
+"self-hosted"
+],
+"stars": 1515,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "polius/Wally",
+"description": "Self-hosted, lightweight expense tracker.",
+"topics": [
+"aggrid",
+"chartjs",
+"docker",
+"expense-manager",
+"expense-tracker",
+"finance",
+"finance-management",
+"finance-tracker",
+"homelab",
+"personal-finance",
+"python",
+"self-hosted"
+],
+"stars": 55,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "madalinpopa/gocost-web",
+"description": "The anti-subscription expense tracker. Self-hosted. Open source. brutally simple.",
+"topics": [
+"alpinejs",
+"expense-tracker",
+"go",
+"htmx",
+"webapp"
+],
+"stars": 69,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "balajiregt/myFinance",
+"description": "Self-hosted, single-file Indian portfolio tracker with AI insights, Gmail expense tracking",
+"topics": [
+"ai-assistant",
+"gmail-api",
+"indian-finance",
+"mutual-funds",
+"personal-finance",
+"portfolio-tracker",
+"self-hosted"
+],
+"stars": 13,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "1oannis/budget-lens",
+"description": "The open-source receipt scanner & expense tracker made for self-hosting ",
+"topics": [],
+"stars": 19,
+"license": "GPL-3.0",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "RzlAm/incomex",
+"description": "Personal daily income  and expense tracker based on Laravel Filament.",
+"topics": [
+"filament",
+"filamentphp",
+"income-and-expense-tracker",
+"laravel",
+"moneytracker",
+"self-hosted"
+],
+"stars": 16,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "alex-k-chen/spendwise",
+"description": "Lightweight self-hosted expense tracker",
+"topics": [
+"expense-tracker",
+"flask",
+"python",
+"self-hosted"
+],
+"stars": 8,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "tornikegomareli/Xarji",
+"description": "Simple, SMS based, self hosted expense tracker for Georgian Banks",
+"topics": [],
+"stars": 19,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "Usmansagemode/daily-expenses-tracker",
+"description": "A modern, self-hosted expense tracking application built with Next.js, TailwindCSS, Supabase, and shadcn/ui. Track your daily expenses with meaningful charts, categorize spending, and gain insights into your financial habits.",
+"topics": [
+"finance-tracker",
+"gemini",
+"nextjs",
+"open-source",
+"react",
+"shadcn-ui",
+"supabase",
+"tailwindcss",
+"tanstack-react-query",
+"tanstack-table",
+"typescript"
+],
+"stars": 7,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "pnowy/sknerus",
+"description": "Simple, self-hosted expense tracker with a beautiful UI.",
+"topics": [
+"expense-manager",
+"expense-tracker",
+"finance",
+"finance-manager",
+"finance-tracker",
+"homelab",
+"self-hosted",
+"tanstack-start"
+],
+"stars": 7,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "frysztak/pennywise",
+"description": "A self-hosted expense tracking and splitting application for groups",
+"topics": [],
+"stars": 10,
+"license": "GPL-3.0",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "dhruv282/expense-manager",
+"description": "\ud83d\udcb3\ud83d\udcb5\ud83d\udcc8 Open-source web app for expense tracking and visualizing",
+"topics": [
+"cross-platform",
+"expense-manager",
+"expense-tracker",
+"flutter",
+"postgresql",
+"self-hosted"
+],
+"stars": 7,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "ninidas/cowallet",
+"description": "Self-hosted expense tracker for couples. Budget planning, bank sync and notifications. Deployable with Docker.",
+"topics": [
+"budget",
+"budget-tracker",
+"couple",
+"docker",
+"expense-tracker",
+"fastapi",
+"finance",
+"homelab",
+"household-expenses",
+"pwa",
+"react",
+"self-hosted",
+"shared-expenses",
+"sqlite"
+],
+"stars": 6,
+"license": "AGPL-3.0",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "sebitr/balancia",
+"description": "Privacy-first shared expense tracker and self-hosted Splitwise or tricount alternative. Exact splits, multi-currency, guests, receipts, and portable exports.",
+"topics": [
+"docker",
+"expense-splitting",
+"expense-tracker",
+"nextjs",
+"open-source",
+"personal-finance",
+"postgresql",
+"privacy",
+"pwa",
+"self-hosted",
+"shared-expenses",
+"splitwise-alternative",
+"tricount-alternative",
+"typescript"
+],
+"stars": 6,
+"license": "AGPL-3.0",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "actualbudget/actual",
+"description": "A local-first personal finance app",
+"topics": [
+"budgeting",
+"finance",
+"money",
+"personal-finance"
+],
+"stars": 29168,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "firefly-iii/firefly-iii",
+"description": "Firefly III: a personal finances manager",
+"topics": [
+"accounting",
+"budget",
+"budgeting",
+"budgets",
+"cash-flow",
+"cashflow",
+"credit-card",
+"docker",
+"expenses",
+"finance",
+"finances",
+"financial",
+"linux",
+"money",
+"paycheck",
+"personal-finance",
+"php",
+"php7"
+],
+"stars": 24742,
+"license": "AGPL-3.0",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "jameskokoska/Cashew",
+"description": "\ud83d\udcb8 An app created to help users manage a budget and purchases",
+"topics": [
+"android",
+"budget-app",
+"budgeting",
+"finance",
+"flutter",
+"ios",
+"sql",
+"ui-design",
+"webapp"
+],
+"stars": 4663,
+"license": "GPL-3.0",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "serversideup/financial-freedom",
+"description": "\ud83d\udd25\ud83d\udd25\ud83d\udd25 An open source alternative to Mint, YNAB, and more. Stay on budget and build wealth without sacrificing your privacy.",
+"topics": [
+"budgeting",
+"finance",
+"financial-independence",
+"laravel",
+"vuejs"
+],
+"stars": 2923,
+"license": "GPL-3.0",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "kevinschaich/mintable",
+"description": "\ud83c\udf43 Automate your personal finances \u2013 for free, with no ads, and no data collection.",
+"topics": [
+"analytics",
+"budget",
+"budget-management",
+"budgeting",
+"finance",
+"finance-management",
+"finance-tracker",
+"google-sheets",
+"google-sheets-api",
+"javascript",
+"mint",
+"mintable",
+"money",
+"personal-capital",
+"personal-finance",
+"plaid",
+"plaid-api",
+"sheets-api",
+"spreadsheet",
+"tracker"
+],
+"stars": 1629,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "whisper-money/whisper-money",
+"description": "Understand your personal finances. Forget Excels, try Whisper Money.",
+"topics": [
+"budgeting",
+"money-management",
+"open-source",
+"personal-finance",
+"privacy",
+"react",
+"self-hosted"
+],
+"stars": 1125,
+"license": "NOASSERTION",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "TheAxelander/OpenBudgeteer",
+"description": "OpenBudgeteer is a budgeting app based on the Bucket Budgeting Principle",
+"topics": [
+"accounting",
+"blazor",
+"budgeting",
+"csharp",
+"docker",
+"dotnet",
+"financial",
+"money",
+"self-hosted",
+"web-app",
+"web-application"
+],
+"stars": 972,
+"license": "AGPL-3.0",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "teelur/budget-board",
+"description": "A simple app for tracking monthly spending and working towards financial goals.",
+"topics": [
+"asp-net",
+"bank-account-sync",
+"budgeting",
+"money",
+"personal-finance",
+"reactjs"
+],
+"stars": 884,
+"license": "AGPL-3.0",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "firefly-iii/data-importer",
+"description": "The Firefly III Data Importer can import data into Firefly III",
+"topics": [
+"budgeting",
+"csv",
+"data-management",
+"firefly",
+"firefly-iii",
+"gocardless",
+"import",
+"money",
+"money-tracker",
+"nordigen",
+"personal-finance-manager",
+"personal-finances",
+"psd2",
+"salt-edge",
+"spectre"
+],
+"stars": 839,
+"license": "AGPL-3.0",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "budgetzero/budgetzero",
+"description": "Open-source, self-hosted, zero-based budgeting.",
+"topics": [
+"budgeting",
+"cloud-sync",
+"envelope-budget",
+"envelope-budgeting",
+"free",
+"offline",
+"open-source",
+"transactions",
+"ynab"
+],
+"stars": 656,
+"license": "AGPL-3.0",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "simonwep/ocular",
+"description": "\ud83d\udcb0 Ocular - A fancy, simplistic, beautiful and straight-forward, open-source budgeting tracking app to track your budget across the years. Easy to use, to get started and to set up.",
+"topics": [
+"budget-analysis",
+"budget-app",
+"budget-manager",
+"budget-planner",
+"budget-tracker",
+"budgeting",
+"budgets",
+"cash-flow",
+"expenses",
+"finance",
+"finance-management",
+"finance-tracker",
+"financial",
+"financial-analysis",
+"modern",
+"personal-finance",
+"self-hosted",
+"vue3"
+],
+"stars": 566,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "Floe-Labs/floe-guard",
+"description": "Spend meter and budget gate for AI tasks. Meters every vendor leg (LLM, speech, telephony, search, tools), hard-stops before the ceiling. Local, MIT, no account. Built by Floe.",
+"topics": [
+"ai-agents",
+"ai-agents-cli",
+"ai-safety",
+"ai-tools",
+"bland-ai",
+"budget",
+"budgeting",
+"cogs",
+"cost-tracking",
+"elevenlabs",
+"livekit",
+"open-source",
+"pipecat",
+"pricing",
+"retell-ai",
+"spending-tracker",
+"stt",
+"tts",
+"vapi"
+],
+"stars": 360,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "Feromond/budget-tracker-tui",
+"description": "A TUI budget tracker app built in rust. Designed to track income and expenses and help visualize and gather basic insights from your transactions.",
+"topics": [
+"budget",
+"budget-tracker",
+"budgeting",
+"finance",
+"ratatui",
+"ratatui-rs",
+"rust",
+"tui",
+"tui-rs"
+],
+"stars": 342,
+"license": "GPL-3.0",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "emansih/FireflyMobile",
+"description": "Mobile Application for Firefly III written in Kotlin",
+"topics": [
+"android",
+"budgeting",
+"finance",
+"kotlin"
+],
+"stars": 338,
+"license": "GPL-3.0",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "DumbWareio/DumbBudget",
+"description": "A stupid simple budget app!",
+"topics": [
+"budget-app",
+"budgeting",
+"dumbwareio",
+"money-manager"
+],
+"stars": 328,
+"license": "GPL-3.0",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "afaneca/myfin",
+"description": "MyFin Budget - Web frontend for the personal finances platform that'll help you budget, keep track of your income/spending and forecast your financial future.",
+"topics": [
+"budget-app",
+"budget-manager",
+"budgeting",
+"finance-management",
+"personal-finance-manager",
+"personal-finances",
+"pfm"
+],
+"stars": 312,
+"license": "GPL-3.0",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "cdinnison/ray-finance",
+"description": "An open-source AI financial advisor that learns your situation and gets smarter every conversation.",
+"topics": [
+"ai",
+"budgeting",
+"claude",
+"cli",
+"finance",
+"financial-advisor",
+"fintech",
+"llm",
+"open-source",
+"personal-finance",
+"plaid",
+"privacy",
+"spending-tracker"
+],
+"stars": 307,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "ynab/ynab-sdk-js",
+"description": "Official JavaScript client for the YNAB API",
+"topics": [
+"api",
+"budgeting",
+"finance",
+"nodejs",
+"rest-api",
+"typescript",
+"ynab",
+"ynab-api"
+],
+"stars": 239,
+"license": "Apache-2.0",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "sbine/bdgt",
+"description": "Big finance tools in a small package",
+"topics": [
+"budgeting",
+"docker",
+"finance",
+"hacktoberfest",
+"laravel",
+"money",
+"php",
+"vue"
+],
+"stars": 198,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "band",
+"full_name": "Cesc1986/SongHub",
+"description": "Private guitar song/tab manager with setlists and password-protected access (based on UltimateTab)",
+"topics": [],
+"stars": 5,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "band",
+"full_name": "ChordPro/chordpro",
+"description": "Reference implementation of the ChordPro standard for musical lead sheets.",
+"topics": [],
+"stars": 526,
+"license": "NOASSERTION",
+"page_expected": false
+},
+{
+"goal": "band",
+"full_name": "chordbook/chordpro",
+"description": "A ruby parser for the chordpro song file format.",
+"topics": [],
+"stars": 36,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "band",
+"full_name": "ricardomfmsousa/vscode-chordpro",
+"description": "Visual Studio Code ChordPro Extension",
+"topics": [],
+"stars": 28,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "band",
+"full_name": "nicolaswurtz/chordpro-php",
+"description": "Parse, transpose and format (html,json,plaintext) ChordPro format for songs lyrics with chords.",
+"topics": [],
+"stars": 17,
+"license": "LGPL-3.0",
+"page_expected": false
+},
+{
+"goal": "band",
+"full_name": "martijnversluis/ChordSheetJS",
+"description": "A JavaScript library for parsing and formatting chords and chord sheets",
+"topics": [
+"chord-sheet",
+"chordpro",
+"chords",
+"javascript",
+"parsing",
+"typescript"
+],
+"stars": 443,
+"license": "GPL-2.0",
+"page_expected": false
+},
+{
+"goal": "band",
+"full_name": "ptsefton/chordprobook",
+"description": "Script to convert collections  of chordpro format song charts to PDF, HTML, and word processing doc formats",
+"topics": [],
+"stars": 34,
+"license": "NOASSERTION",
+"page_expected": false
+},
+{
+"goal": "band",
+"full_name": "chordproject/chordproject-parser",
+"description": "A TypeScript library for parsing, transposing and formatting ChordPro songs",
+"topics": [
+"chordpro",
+"music",
+"parser",
+"song",
+"typescript"
+],
+"stars": 16,
+"license": "AGPL-3.0",
+"page_expected": false
+},
+{
+"goal": "band",
+"full_name": "Desbeers/Chord-Provider",
+"description": "A ChordPro file parser and editor for Linux. Show the song with the chords for guitar, guitalele or ukulele.",
+"topics": [
+"adwaita-swift",
+"chordpro",
+"chords",
+"gnome",
+"guitar",
+"guitar-chords",
+"guitar-tab",
+"linux",
+"swift",
+"ukulele",
+"ukulele-chords",
+"ukulele-tab"
+],
+"stars": 140,
+"license": "GPL-3.0",
+"page_expected": false
+},
+{
+"goal": "band",
+"full_name": "reverentgeek/charter",
+"description": "Generate chord charts from chordpro files",
+"topics": [],
+"stars": 35,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "band",
+"full_name": "chordproject/chordproject-editor",
+"description": "A CodeMirror 6 based editor for ChordPro songs",
+"topics": [
+"chordpro",
+"editor",
+"javascript",
+"music",
+"song"
+],
+"stars": 20,
+"license": "AGPL-3.0",
+"page_expected": false
+},
+{
+"goal": "band",
+"full_name": "menees/Chords",
+"description": "Helpers for parsing chord sheets and ChordPro files and converting them to other formats.",
+"topics": [],
+"stars": 27,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "band",
+"full_name": "blindpassasjer/gigboy",
+"description": "Self-hosted songbook and gig-prep app for bands \u2014 ChordPro songs, setlists, press kits, and rehearsal tools. Own your data, no subscriptions.",
+"topics": [
+"band",
+"chordpro",
+"docker",
+"music",
+"postgresql",
+"presskits",
+"pwa",
+"react",
+"self-hosted",
+"selfhosted",
+"setlist"
+],
+"stars": 18,
+"license": "Apache-2.0",
+"page_expected": false
+},
+{
+"goal": "band",
+"full_name": "ntworm/rc-setlist",
+"description": "Source-available setlist extension for Ableton Live.",
+"topics": [
+"ableton-extensions",
+"ableton-live",
+"ableton-live-12",
+"live-performance",
+"lyrics",
+"midi",
+"nodejs",
+"osc",
+"setlist",
+"source-available",
+"teleprompter",
+"typescript",
+"websocket"
+],
+"stars": 5,
+"license": "NOASSERTION",
+"page_expected": false
+},
+{
+"goal": "wedding",
+"full_name": "web-codings123/EazyWed",
+"description": "EazyWed is a MERN-stack wedding planning platform that simplifies vendor booking, budget tracking, and digital invitations. With personalized recommendations and an AI-powered chatbot, it ensures an elegant and joyful wedding planning experience.",
+"topics": [
+"ai-chatbot",
+"digital-invitations",
+"expressjs",
+"mern-stack-project",
+"mongodb-atlas",
+"nodejs",
+"personalized-recommendations",
+"reactjs",
+"vendor-booking-budget-tracking",
+"wedding-planning"
+],
+"stars": 16,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "wedding",
+"full_name": "pinry/pinry",
+"description": "Pinry, a tiling image board system for people who want to save, tag, and share images, videos and webpages in an easy to skim through format. It's open-source and self-hosted.",
+"topics": [
+"django",
+"huaban",
+"images",
+"node",
+"pinterest",
+"python",
+"self-hosted",
+"vue"
+],
+"stars": 3423,
+"license": "BSD-2-Clause",
+"page_expected": false
+},
+{
+"goal": "wedding",
+"full_name": "trypostit/trypost",
+"description": "Open-source Social Media Scheduling",
+"topics": [
+"content-scheduling",
+"creators",
+"facebook",
+"instragram",
+"laravel",
+"linkedin",
+"marketing",
+"open-source",
+"php",
+"pinterest",
+"self-hosted",
+"social-media",
+"social-media-management",
+"social-media-marketing",
+"social-media-scheduler",
+"threads",
+"tiktok",
+"twitter",
+"vuejs",
+"youtube"
+],
+"stars": 650,
+"license": "AGPL-3.0",
+"page_expected": false
+},
+{
+"goal": "wedding",
+"full_name": "google-research/mood-board-search",
+"description": "",
+"topics": [],
+"stars": 179,
+"license": "Apache-2.0",
+"page_expected": false
+},
+{
+"goal": "wedding",
+"full_name": "bycs-lp/moodle-mod_kanban",
+"description": "A kanban board activity for moodle",
+"topics": [],
+"stars": 15,
+"license": "GPL-3.0",
+"page_expected": false
+},
+{
+"goal": "wedding",
+"full_name": "EyeOdin/Imagine_Board",
+"description": "Krita - Plugin - Browse images and create reference mood boards.",
+"topics": [
+"animated-gifs",
+"batch-script",
+"image-viewer",
+"kra-files",
+"krita",
+"krita-plugin",
+"reference-manager",
+"rename-files",
+"save-files",
+"svg-images",
+"threading",
+"zip-files"
+],
+"stars": 72,
+"license": "GPL-3.0",
+"page_expected": false
+},
+{
+"goal": "wedding",
+"full_name": "Saadzwak/design-office",
+"description": "A quiet co-architect for office interiors. Built with Claude Opus 4.7 for the Anthropic Built with Opus 4.7 hackathon. Brief \u2192 3D test fit \u2192 mood board \u2192 client argumentaire \u2192 DXF export, all driven by managed-agent orchestration, Vision HD plan parsing, and a double SketchUp+AutoCAD MCP.",
+"topics": [],
+"stars": 9,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "wedding",
+"full_name": "lokesh/color-thief",
+"description": "Grab the color palette from an image using just Javascript.  Works in the browser and in Node.",
+"topics": [],
+"stars": 13644,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "wedding",
+"full_name": "ksubileau/color-thief-php",
+"description": "Grabs the dominant color or a representative color palette from an image. Uses PHP and GD, Imagick or Gmagick.",
+"topics": [
+"color-palette",
+"dominant-colors",
+"gd",
+"image-processing",
+"imagick",
+"php"
+],
+"stars": 638,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "wedding",
+"full_name": "DenDmitriev/DominantColors",
+"description": "Extractor dominant colors from image",
+"topics": [
+"color-palette",
+"colors",
+"library",
+"palette",
+"swift",
+"swiftpackagemanager"
+],
+"stars": 142,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "wedding",
+"full_name": "yamoridon/ColorThiefSwift",
+"description": "Grabs the dominant color or a representative color palette from an image.  A Swift port of Sven Woltmann's Java implementation.",
+"topics": [],
+"stars": 286,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "wedding",
+"full_name": "qTipTip/Pylette",
+"description": "A Python library for extracting color palettes from supplied images.",
+"topics": [
+"color",
+"color-palette",
+"color-scheme",
+"colorpicker",
+"command-line-interface",
+"image-analysis",
+"image-processing",
+"pillow",
+"python",
+"visualization-tools"
+],
+"stars": 170,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "wedding",
+"full_name": "jordond/kmpalette",
+"description": "\ud83c\udfa8 A Compose multiplatform port for Androidx Palette. Generate a color palette from an image.",
+"topics": [
+"android",
+"androidx",
+"androidx-palette",
+"compose",
+"compose-multiplatform",
+"dominant-color",
+"ios",
+"kotlin",
+"kotlin-js",
+"kotlin-multiplatform",
+"palette",
+"palette-generation"
+],
+"stars": 296,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "wedding",
+"full_name": "zumbov2/colorfindr",
+"description": "Extracts colors from various image types, plots treemaps and 3D scatterplots of color compositions, create color palettes.",
+"topics": [
+"3d-scatter-plot",
+"colors",
+"plotly",
+"rstats",
+"treemap"
+],
+"stars": 149,
+"license": "NOASSERTION",
+"page_expected": false
+},
+{
+"goal": "wedding",
+"full_name": "angristan/palette",
+"description": "Extract color palette from an image with k-means and k-NN // Project for the AI/ML class at Hanyang University",
+"topics": [
+"color-palette",
+"flask",
+"kmeans",
+"knn",
+"opencv",
+"pandas",
+"python",
+"scikit-learn"
+],
+"stars": 31,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "wedding",
+"full_name": "microlinkhq/splashy",
+"description": "Extract predominant and palette colors from an image URL or file buffer.",
+"topics": [
+"canvas",
+"color",
+"colorthief",
+"dominant",
+"extract",
+"image",
+"palette",
+"photo",
+"swatch",
+"theme"
+],
+"stars": 122,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "wedding",
+"full_name": "Thiritin/streaming",
+"description": "Self-hosted livestream platform for conventions: RTMP ingest, ABR HLS across edge servers you add during the event, chat with moderation, programme planning and cut-from-archive recordings.",
+"topics": [
+"conventions",
+"dvr",
+"ffmpeg",
+"hls",
+"inertiajs",
+"laravel",
+"live-chat",
+"livestreaming",
+"php",
+"rtmp",
+"self-hosted",
+"srs",
+"streaming-server",
+"video-streaming",
+"vuejs"
+],
+"stars": 17,
+"license": "GPL-3.0",
+"page_expected": false
+},
+{
+"goal": "wedding",
+"full_name": "artwork-software/artwork",
+"description": "Operations software for cultural venues: theatres, production houses, festivals and event-driven museums plan events, rooms, shifts, inventory, contacts and budgets in one open-source system (Laravel/Vue, AGPL-3.0).",
+"topics": [
+"agpl",
+"arts-management",
+"cultural-institutions",
+"event-management",
+"festivals",
+"germany",
+"inertiajs",
+"inventory-management",
+"laravel",
+"open-source",
+"php",
+"room-booking",
+"scheduling",
+"self-hosted",
+"shift-planning",
+"theatre",
+"venue-management",
+"vue"
+],
+"stars": 32,
+"license": "AGPL-3.0",
+"page_expected": false
+},
+{
+"goal": "garden",
+"full_name": "cofade/open-garden-planner",
+"description": "Open-source garden planning tool with CAD-like precision. Plan your garden with metric accuracy, track plants with rich metadata, and export to standard formats. Free forever.",
+"topics": [],
+"stars": 26,
+"license": "GPL-3.0",
+"page_expected": false
+},
+{
+"goal": "fitness",
+"full_name": "Agnik-git-sys/-AI-Gym-Trainer-Multi-Agent-Workout-Planner",
+"description": "A smart, adaptive multi-agent fitness system that generates personalised workout plans, optimises them using training science, and tracks your long-term progress. Built using LLM-powered agents, MCP tools, A2A communication, and session/state management.",
+"topics": [],
+"stars": 5,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "fitness",
+"full_name": "RepDB/exercise-dataset",
+"description": "Free exercise dataset: 600+ exercises in JSON with 512px WebP images, muscles, equipment and EN/DE/ES instructions. Commercial in-app use with attribution. Paid RepDB Standard adds smooth animations with transparent backgrounds and one consistent character.",
+"topics": [
+"dataset",
+"exercise-database",
+"exercise-dataset",
+"exercisedb-alternative",
+"exercises",
+"fitness",
+"fitness-dataset",
+"gym",
+"json",
+"repdb",
+"webp",
+"workout"
+],
+"stars": 57,
+"license": "NOASSERTION",
+"page_expected": false
+},
+{
+"goal": "bakery",
+"full_name": "Lightning-AI/litgpt",
+"description": "20+ high-performance LLMs with recipes to pretrain, finetune and deploy at scale.",
+"topics": [
+"ai",
+"artificial-intelligence",
+"deep-learning",
+"large-language-models",
+"llm",
+"llm-inference",
+"llms"
+],
+"stars": 13687,
+"license": "Apache-2.0",
+"page_expected": false
+},
+{
+"goal": "bakery",
+"full_name": "rampasek/GraphGPS",
+"description": "Recipe for a General, Powerful, Scalable Graph Transformer",
+"topics": [
+"graph-neural-network",
+"graph-representation-learning",
+"graph-transformer",
+"long-range-dependence"
+],
+"stars": 880,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "bakery",
+"full_name": "ByteDance-Seed/VeOmni",
+"description": "VeOmni: Scaling Any Modality Model Training with Model-Centric Distributed Recipe Zoo",
+"topics": [],
+"stars": 2225,
+"license": "Apache-2.0",
+"page_expected": false
+},
+{
+"goal": "bakery",
+"full_name": "huggingface/search-and-learn",
+"description": "Recipes to scale inference-time compute of open models",
+"topics": [],
+"stars": 1132,
+"license": "Apache-2.0",
+"page_expected": false
+},
+{
+"goal": "bakery",
+"full_name": "lab-cosmo/atomistic-cookbook",
+"description": "A collection of simulation recipes for the atomic-scale modeling of materials and molecules",
+"topics": [
+"atomistic-simulations",
+"machine-learning",
+"modeling",
+"molecular-dynamics",
+"simulation"
+],
+"stars": 55,
+"license": "BSD-3-Clause",
+"page_expected": false
+},
+{
+"goal": "bakery",
+"full_name": "JuliaAPlavin/MakieExtra.jl",
+"description": "Extra features for Makie.jl including plot recipes, scales, ticks, and advanced visualization utilities.",
+"topics": [
+"animations",
+"graphics",
+"makie",
+"plot-recipes",
+"plotting",
+"visualization"
+],
+"stars": 67,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "bakery",
+"full_name": "TIGER-AI-Lab/SWE-QA-Pro",
+"description": "SWE-QA-Pro: A Representative Benchmark and Scalable Training Recipe for Repository-Level Code Understanding [ACL 2026]",
+"topics": [
+"benchmark",
+"llm",
+"qa",
+"swe"
+],
+"stars": 15,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "bakery",
+"full_name": "NERSC/swin_v2_weather",
+"description": "This repository contains the SwinV2_Weather model, developed for the \"Analyzing and Exploring Training Recipes for Large-Scale Transformer-Based Weather Prediction\" paper. The repo includes training scripts, pre-processing utilities, and model configuration files.",
+"topics": [],
+"stars": 22,
+"license": "Apache-2.0",
+"page_expected": false
+},
+{
+"goal": "bakery",
+"full_name": "jeje42/NextcloudAIO_On_TruenasScale_Recipe",
+"description": "Guide on how to run Nextcloud AIO on Truenas Scale leveraging docker compose from version ElectricEel-24.10",
+"topics": [],
+"stars": 10,
+"license": "Apache-2.0",
+"page_expected": false
+},
+{
+"goal": "bakery",
+"full_name": "InvoicePlane/InvoicePlane",
+"description": "A self-hosted open source application for managing your invoices, clients and payments.",
+"topics": [
+"billing",
+"codeigniter",
+"crm",
+"invoiceplane",
+"invoices",
+"invoicing",
+"open-source",
+"php"
+],
+"stars": 3142,
+"license": "NOASSERTION",
+"page_expected": false
+},
+{
+"goal": "bakery",
+"full_name": "kittendevv/Invio",
+"description": "Self-hosted invoicing without the bloat.",
+"topics": [
+"invoicing",
+"invoicing-application",
+"invoicing-software",
+"minimalist",
+"self-hosted",
+"selfhosted"
+],
+"stars": 1186,
+"license": "Unlicense",
+"page_expected": false
+},
+{
+"goal": "bakery",
+"full_name": "vas3k/TaxHacker",
+"description": "Self-hosted AI accounting app. LLM analyzer for receipts, invoices, transactions with custom prompts and categories",
+"topics": [
+"accounting",
+"ai-analysis",
+"currency-exchange",
+"expenses",
+"gemini",
+"invoices",
+"llm",
+"ocr-recognition",
+"ollama",
+"openai",
+"self-hosted",
+"taxes"
+],
+"stars": 6722,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "bakery",
+"full_name": "alvarcarto/url-to-pdf-api",
+"description": "Web page PDF/PNG rendering done right. Self-hosted service for rendering receipts, invoices, or any content.",
+"topics": [
+"chrome",
+"headless",
+"headless-chrome",
+"heroku",
+"heroku-button",
+"html",
+"invoice",
+"pdf",
+"puppeteer",
+"receipt"
+],
+"stars": 7105,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "bakery",
+"full_name": "Hasnayeen/invobook",
+"description": "Self-hosted app for Time Tracking, Invoice Generation, Project & Client Management, built with Laravel & Filament.",
+"topics": [
+"client-management",
+"filament",
+"filamentadmin",
+"invoice",
+"laravel",
+"php",
+"project-management",
+"tailwindcss",
+"time-tracker"
+],
+"stars": 2234,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "bakery",
+"full_name": "ad-on-is/rachoon",
+"description": "\ud83e\udd9d Rachoon \u2014 A self-hostable way to handle invoices",
+"topics": [],
+"stars": 977,
+"license": "AGPL-3.0",
+"page_expected": false
+},
+{
+"goal": "bakery",
+"full_name": "lsfusion-solutions/mycompany",
+"description": "Free, open-source, self-hosted ERP and CRM for small businesses: inventory, invoicing, manufacturing, sales, projects, HR and POS. Built on lsFusion.",
+"topics": [
+"erp",
+"erp-framework",
+"erp-software",
+"human-resources",
+"inventory-management",
+"invoicing",
+"lsfusion",
+"manufacturing",
+"open-source",
+"open-source-erp",
+"point-of-sale",
+"polish-language",
+"postgresql",
+"project-management",
+"russian-language",
+"self-hosted",
+"small-business",
+"warehouse-management"
+],
+"stars": 336,
+"license": "Apache-2.0",
+"page_expected": false
+},
+{
+"goal": "bakery",
+"full_name": "SolidInvoice/SolidInvoice",
+"description": "Simple and elegant invoicing solution.",
+"topics": [
+"billing",
+"billing-application",
+"freelancer",
+"hacktoberfest",
+"invoice",
+"invoicing",
+"invoicing-application",
+"php",
+"quotes",
+"self-hosted",
+"symfony"
+],
+"stars": 973,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "bakery",
+"full_name": "pigontech/inkvoice",
+"description": "Self-hostable open-source invoicing for freelancers & small teams \u2014 invoices, online payments, expenses, multi-currency & reports. Bun + Hono + React.",
+"topics": [
+"accounting",
+"billing",
+"bun",
+"coolify",
+"docker",
+"dokploy",
+"freelancer",
+"hono",
+"invoice",
+"invoice-generator",
+"invoicing",
+"invoicing-software",
+"open-source",
+"react",
+"self-hosted",
+"selfhosted",
+"small-business",
+"sqlite",
+"stripe",
+"typescript"
+],
+"stars": 27,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "bakery",
+"full_name": "VladSez/easy-invoice-pdf",
+"description": "Free & Open-Source Invoice Generator - No Sign-Up, No Ads, Instant PDF Export, 100% In-Browser, and Fully Customizable Templates. \u2b50 Star the repo if you like it",
+"topics": [
+"fintech",
+"invoice",
+"invoice-generator",
+"invoice-pdf",
+"invoice-template",
+"invoices",
+"nextjs",
+"open-source",
+"quotes",
+"react",
+"react-pdf-renderer",
+"self-hosted",
+"shadcn-ui",
+"tailwindcss",
+"typescript"
+],
+"stars": 1099,
+"license": "AGPL-3.0",
+"page_expected": false
+},
+{
+"goal": "bakery",
+"full_name": "DrDBanner/inmanage",
+"description": "Invoice Ninja CLI: Install, configure, update, backup, monitor, and receive notifications for your self-hosted ...",
+"topics": [
+"backup-scripts",
+"backup-solution",
+"bash-script",
+"cli",
+"command-line",
+"command-line-interface",
+"command-line-tool",
+"installation-script",
+"invoice-ninja",
+"invoiceninja",
+"invoiceninja5",
+"updater-script"
+],
+"stars": 74,
+"license": "NOASSERTION",
+"page_expected": false
+},
+{
+"goal": "bakery",
+"full_name": "YunoHost-Apps/invoiceninja5_ynh",
+"description": "self-hosted invoicing platform to create & email invoices, track payments and expenses, and time billable tasks & projects for clients.",
+"topics": [
+"invoice-ninja",
+"invoiceninja5",
+"yunohost",
+"yunohost-apps"
+],
+"stars": 12,
+"license": "GPL-3.0",
+"page_expected": false
+},
+{
+"goal": "bakery",
+"full_name": "gorkem-bwl/atlas",
+"description": "Self-hosted business platform with CRM, HRM, invoices, projects, e-signatures, calendar, drive, docs, drawing, and tasks. Multi-tenant, 5 languages, with an Odoo importer to bring your data across. Alternative to Zoho and Odoo.",
+"topics": [
+"analytics",
+"business",
+"crm",
+"documentation-tool",
+"drive",
+"file",
+"file-manager",
+"hrm"
+],
+"stars": 186,
+"license": "AGPL-3.0",
+"page_expected": false
+},
+{
+"goal": "bakery",
+"full_name": "samber/invoice-as-a-service",
+"description": "\ud83d\udcb0 Simple invoicing service (REST API): from JSON to PDF",
+"topics": [
+"api",
+"braintree",
+"hosted",
+"invoice",
+"json",
+"laravel",
+"nocode",
+"paymentwall",
+"paypal",
+"pdf",
+"rest",
+"saas",
+"self-hosted",
+"stripe"
+],
+"stars": 218,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "bakery",
+"full_name": "ArdineHQ/ardine",
+"description": "Self-hosted time tracking and invoicing app for freelancers and small teams. Simple, private, and built for developers.",
+"topics": [],
+"stars": 28,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "bakery",
+"full_name": "prasadus92/invoicing-app",
+"description": "A self-hosted PHP application for generating professional invoices in PDF format. Features multi-user support, client management, and email integration.",
+"topics": [
+"invoice",
+"javascript",
+"mpdf",
+"mysql",
+"php"
+],
+"stars": 9,
+"license": "GPL-3.0",
+"page_expected": false
+},
+{
+"goal": "bakery",
+"full_name": "Goncafer47/Stablecoin-Payment-Gateway",
+"description": "Self-hosted, non-custodial stablecoin payment gateway with x402 and invoice checkout. Accepts USDC, USDT, PYUSD and DAI across 8 networks with QR payments, payment links, settlement tracking and signed webhooks. REST API, micropayments, exports, zero platform fees and no KYC. Python, cross-platform.",
+"topics": [
+"coinbase-x402",
+"coinpayments-api",
+"crypto-checkout-form",
+"crypto-payment-system",
+"cryptopayments",
+"gopay-merchant",
+"http-x402",
+"invoice-automation",
+"machine-payments-protocol",
+"merchant-api",
+"online-payments",
+"payment-api",
+"payment-link",
+"payment-page",
+"payment-system",
+"paymentgateway",
+"usdc-payments",
+"web3-payments",
+"x-402",
+"x402"
+],
+"stars": 194,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "car",
+"full_name": "mikaelacaron/Basic-Car-Maintenance",
+"description": "A basic app to track your car's maintenance. Open source for Hacktoberfest 2025. Beginners are welcome!",
+"topics": [
+"contributions-welcome",
+"firebase",
+"firestore",
+"first-timers-friendly",
+"hacktoberfest",
+"hacktoberfest2025",
+"ios",
+"ios-app",
+"ios-swift",
+"ios26",
+"macos",
+"open-source",
+"swift",
+"swiftui"
+],
+"stars": 335,
+"license": "Apache-2.0",
+"page_expected": false
+},
+{
+"goal": "car",
+"full_name": "luxhomelab/car-maintenance-tracker",
+"description": "Car Maintenance Tracker App",
+"topics": [],
+"stars": 11,
+"license": "GPL-3.0",
+"page_expected": false
+},
+{
+"goal": "car",
+"full_name": "XenoWang/Car_smart_maintenance_project",
+"description": "",
+"topics": [],
+"stars": 8,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "car",
+"full_name": "TryTryAgain/msfs2024-career-maintenance",
+"description": "\u2708\ufe0f\ud83d\ude81  Microsoft Flight Simulator 2024 (MSFS 2024) Career Maintenance Automation using AutoHotKey (AHK) \ud83d\udd27",
+"topics": [],
+"stars": 5,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "car",
+"full_name": "Irsheid/Car-Maintenance-and-Repair-Center-Management-System",
+"description": "",
+"topics": [],
+"stars": 5,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "spanish",
+"full_name": "Spanish-teacher/awesome-learning-spanish",
+"description": "Community-curated resources to learn Spanish: courses, tools, YouTube, podcasts, etc.",
+"topics": [],
+"stars": 9,
+"license": "NOASSERTION",
+"page_expected": false
+},
+{
+"goal": "spanish",
+"full_name": "AmirmAfzal/Hablar-Spanish-Learning",
+"description": "",
+"topics": [],
+"stars": 5,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "spanish",
+"full_name": "mdhvandoorn/anki_contextify",
+"description": "Add context to anki notes using ChatGPT. Currently implemented solely for Anki's \"Essential Spanish Vocabulary Top 5000\" deck. ",
+"topics": [],
+"stars": 6,
+"license": "Apache-2.0",
+"page_expected": false
+},
+{
+"goal": "pets",
+"full_name": "magikh0e/ha-medication-reminder",
+"description": "Home Assistant custom integration: UI-managed medication dose tracking for pets and people, with companion reminder automations.",
+"topics": [
+"custom-component",
+"custom-integration",
+"hacs",
+"home-assistant",
+"homeassistant",
+"medication",
+"medication-reminder",
+"pets",
+"python"
+],
+"stars": 35,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "pets",
+"full_name": "guangshu100/EyeCare",
+"description": "Lightweight eye-care & health reminder desktop app built with Tauri v2 + Rust. Features AI-personalized break messages, smart water scheduling, medication reminders, virtual pet companion, eye-health system, and auto-pause in meeting apps (Zoom/Teams/Tencent Meeting). Cross-platform with native idle detection.",
+"topics": [
+"20-20-20-rule",
+"ai-agents",
+"break-reminder",
+"cross-platform",
+"eye-care",
+"health-reminder",
+"healthcare",
+"idle-detection",
+"medication-reminder",
+"system-tray",
+"tauri2",
+"water-reminder"
+],
+"stars": 6,
+"license": "Apache-2.0",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "ulsklyc/yuvomi",
+"description": "Self-hosted family planner - tasks, calendars, shopping, meals, budget. Your data, your server.",
+"topics": [
+"calendar",
+"docker",
+"family",
+"family-planner",
+"household",
+"meal-planning",
+"nodejs",
+"open-source",
+"planner-app",
+"privacy-first",
+"progressive-web-app",
+"pwa",
+"self-hosted",
+"selfhosted",
+"selfhosted-apps",
+"sqlite"
+],
+"stars": 1582,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "Iran-Open-Data/HBSIR",
+"description": "An intuitive platform designed to simplify the analysis of Iran household budget survey data.",
+"topics": [
+"economics",
+"iran"
+],
+"stars": 17,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "gbowne1/SavvyBudget",
+"description": "A React 18.2 and MUI 5.11 Budget, Expense, Bill Tracker for the home",
+"topics": [
+"bills",
+"budget",
+"budgeting",
+"expenses",
+"household",
+"personal",
+"tracking"
+],
+"stars": 12,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "bbharathbala/actual-budget-telegram-bot",
+"description": "Telegram bot for household expense tracking with Actual Budget. No LLMs, no AI costs. Receipt scanning, auto-learning categories, tags, transfers, daily nudge.",
+"topics": [],
+"stars": 17,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "k3nd0x/piglet",
+"description": "Simple Webapp to manage and administrate budgets in a household",
+"topics": [
+"budget-manager",
+"docker",
+"docker-compose",
+"money",
+"money-manager",
+"selfhosted"
+],
+"stars": 110,
+"license": "GPL-3.0",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "RobertAmbroziak/BudgetWallet",
+"description": "Web application for managing household budget",
+"topics": [],
+"stars": 21,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "robin994/billy",
+"description": "Home Assistant integration to track household bills, recurring expenses and forecasts.",
+"topics": [
+"bills",
+"budget",
+"expenses",
+"hacs",
+"home-assistant",
+"homeassistant",
+"lovelace"
+],
+"stars": 24,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "neiliro/neiliro",
+"description": "Tasks, notes, calendar, money and mail for your household \u2014 one Docker container, one SQLite file per family, words encrypted in the browser. Self-host it or use neiliro.com",
+"topics": [
+"budget",
+"budgeting",
+"calendars",
+"docker",
+"end-to-end-encryption",
+"family",
+"family-calendar",
+"family-dashboard",
+"family-organizer",
+"homelab",
+"household",
+"notes",
+"personal-finance",
+"privacy",
+"productivity",
+"pwa",
+"self-hosted",
+"sqlite",
+"tasks"
+],
+"stars": 45,
+"license": "AGPL-3.0",
+"page_expected": false
+},
+{
+"goal": "budget",
+"full_name": "vchiapaikeo/netty-public",
+"description": "A personal/household net-worth + budgeting tracker",
+"topics": [],
+"stars": 6,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "band",
+"full_name": "Selbi182/SetlistFmToSpotifyPlaylist",
+"description": "A simple bot that converts any given setlist.fm setlist into a Spotify playlist",
+"topics": [],
+"stars": 48,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "band",
+"full_name": "scottbrown/setlist",
+"description": "Setlist is a CLI tool to automatically generate a .aws/config file based on AWS SSO rules in your org.",
+"topics": [
+"aws",
+"cli",
+"configuration-files",
+"configuration-management",
+"go",
+"golang",
+"sso"
+],
+"stars": 8,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "band",
+"full_name": "iKadmium/reaper-setlist",
+"description": "A tool for managing setlists with Reaper",
+"topics": [
+"live-music",
+"music",
+"reaper-daw"
+],
+"stars": 8,
+"license": "GPL-3.0",
+"page_expected": false
+},
+{
+"goal": "band",
+"full_name": "justinshapiro/SetlistFMKit",
+"description": "A Swift wrapper around the Setlist.fm API, ready to use for iOS and macOS applications",
+"topics": [],
+"stars": 5,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "band",
+"full_name": "olvidalo/obsidian-chord-sheets",
+"description": "Work with chord sheets (chords over lyrics or inline in brackets) in Obsidian: Chord diagrams for guitar, ukulele and mandolin, transpose, autoscroll and more. Works in Live Preview and reading mode.",
+"topics": [
+"chords",
+"guitar",
+"lyrics",
+"mandolin",
+"music",
+"obsidian",
+"obsidian-plugin",
+"plugin",
+"tabs",
+"ukulele"
+],
+"stars": 169,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "band",
+"full_name": "chordbook/chordbook",
+"description": "Chord sheets and tab for guitar and ukulele.",
+"topics": [
+"app",
+"chord-charts",
+"chord-diagram",
+"chord-sheet",
+"chordpro",
+"guitar",
+"guitar-chords",
+"guitar-tablatures",
+"guitar-tabs",
+"guitar-tuner",
+"ionic",
+"ionic-framework",
+"rails",
+"ruby",
+"tablature",
+"ukulele",
+"ukulele-chords",
+"vue",
+"vuejs",
+"vuejs3"
+],
+"stars": 88,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "band",
+"full_name": "martijnversluis/ChordFiddle",
+"description": "Online chord sheet playground - edit, render and transpose chord pro",
+"topics": [],
+"stars": 54,
+"license": "GPL-3.0",
+"page_expected": false
+},
+{
+"goal": "band",
+"full_name": "stufro/chordly",
+"description": "A free, open-source, online chord sheet creator",
+"topics": [
+"chord-sheet",
+"chords-transposer",
+"guitar",
+"music",
+"opensource",
+"rails"
+],
+"stars": 60,
+"license": "GPL-3.0",
+"page_expected": false
+},
+{
+"goal": "band",
+"full_name": "hyvyys/chordline",
+"description": "Guitar tab and chord sheet editor. Chord diagrams and playback, embedded YouTube player.",
+"topics": [],
+"stars": 20,
+"license": "GPL-3.0",
+"page_expected": false
+},
+{
+"goal": "band",
+"full_name": "hbjpn/fumen",
+"description": "Music sheet rendering engine specialized for Chord and Rhythm chart !",
+"topics": [],
+"stars": 36,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "band",
+"full_name": "Valdens/chord-organizer",
+"description": "Busker's multitool for lead sheet import and organization",
+"topics": [
+"busking",
+"firebase",
+"gemini-api",
+"guitar-chords",
+"musician-tools",
+"open-source",
+"react",
+"self-hosted",
+"sheet-music"
+],
+"stars": 6,
+"license": "ISC",
+"page_expected": false
+},
+{
+"goal": "band",
+"full_name": "gldraphael/chordsheet",
+"description": "\ud83d\udce6 An NPM module to create chord sheets out of markdown files.",
+"topics": [
+"chords",
+"npm-package"
+],
+"stars": 6,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "band",
+"full_name": "notochord/notochord",
+"description": "An online lead-sheet editor and chord player",
+"topics": [],
+"stars": 7,
+"license": "MIT",
+"page_expected": false
+},
+{
+"goal": "band",
+"full_name": "chromatone/circular",
+"description": "Circular polyrhythmic metronome web-app",
+"topics": [],
+"stars": 8,
+"license": "AGPL-3.0",
+"page_expected": false
+},
+{
+"goal": "band",
+"full_name": "york9675/Tempo-Sync",
+"description": "A simple metronome web app.",
+"topics": [
+"metronome",
+"webapp"
+],
+"stars": 5,
+"license": "MIT",
+"page_expected": false
+}
+]
+}

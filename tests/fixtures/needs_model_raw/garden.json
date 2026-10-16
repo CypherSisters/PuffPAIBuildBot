@@ -1,0 +1,164 @@
+{
+ "goal_id": "garden",
+ "model": "qwen2.5:7b-instruct",
+ "prompt_tag": "v5",
+ "at": "2026-09-27T00:28:43",
+ "timing": {
+  "wall_s": 15.4,
+  "first_token_s": 5.08,
+  "first_job_s": 7.81,
+  "load_s": 0.01,
+  "prompt_tokens": 719,
+  "prompt_s": 0.04,
+  "out_tokens": 480,
+  "gen_s": 10.32,
+  "tok_per_s": 46.5,
+  "done_reason": "stop"
+ },
+ "raw": "{\n  \"kind\": \"garden helper bot\",\n  \"asked\": [\n    \"remind me when to water\",\n    \"tell me what to plant each month\",\n    \"help me figure out what is eating my kale\"\n  ],\n  \"also_needed\": [\n    \"suggest garden tools\",\n    \"provide plant care tips\"\n  ],\n  \"jobs\": [\n    {\n      \"name\": \"watering reminders\",\n      \"does\": \"sends notifications about watering plants\",\n      \"parts\": [\n        { \"kind\": \"code-app\", \"search\": [\"garden watering reminders\", \"smart garden reminders\"] },\n        { \"kind\": \"live-info\", \"search\": [\"tucson weather api\", \"arizona climate data\"] }\n      ]\n    },\n    {\n      \"name\": \"monthly planting guide\",\n      \"does\": \"provides a list of plants to grow each month\",\n      \"parts\": [\n        { \"kind\": \"data-template\", \"search\": [\"garden planting calendar\", \"monthly planting guide\"] },\n        { \"kind\": \"knowledge\", \"search\": [\"tucson garden planting\", \"southwest garden calendar\"] }\n      ]\n    },\n    {\n      \"name\": \"pest identification\",\n      \"does\": \"identifies pests eating plants\",\n      \"parts\": [\n        { \"kind\": \"code-app\", \"search\": [\"plant pest identification\", \"garden pest recognition\"] },\n        { \"kind\": \"pictures\", \"search\": [\"kale pest photos\", \"garden pests images\"] }\n      ]\n    },\n    {\n      \"name\": \"tool suggestions\",\n      \"does\": \"recommends tools for gardening\",\n      \"parts\": [\n        { \"kind\": \"code-app\", \"search\": [\"garden tool finder\", \"garden equipment suggestions\"] },\n        { \"kind\": \"knowledge\", \"search\": [\"best garden tools\", \"garden equipment reviews\"] }\n      ]\n    },\n    {\n      \"name\": \"care tips\",\n      \"does\": \"provides care tips for plants\",\n      \"parts\": [\n        { \"kind\": \"knowledge\", \"search\": [\"tomato care tips\", \"herb care guide\"] },\n        { \"kind\": \"pictures\", \"search\": [\"healthy plant examples\", \"garden plant care\"] }\n      ]\n    }\n  ]\n}",
+ "parsed": {
+  "kind": "garden helper bot",
+  "asked": [
+   "remind me when to water",
+   "tell me what to plant each month",
+   "help me figure out what is eating my kale"
+  ],
+  "also_needed": [
+   "suggest garden tools",
+   "provide plant care tips"
+  ],
+  "jobs": [
+   {
+    "name": "watering reminders",
+    "does": "sends notifications about watering plants",
+    "parts": [
+     {
+      "kind": "code-app",
+      "search": [
+       "garden watering reminders",
+       "smart garden reminders"
+      ]
+     },
+     {
+      "kind": "live-info",
+      "search": [
+       "tucson weather api",
+       "arizona climate data"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "monthly planting guide",
+    "does": "provides a list of plants to grow each month",
+    "parts": [
+     {
+      "kind": "data-template",
+      "search": [
+       "garden planting calendar",
+       "monthly planting guide"
+      ]
+     },
+     {
+      "kind": "knowledge",
+      "search": [
+       "tucson garden planting",
+       "southwest garden calendar"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "pest identification",
+    "does": "identifies pests eating plants",
+    "parts": [
+     {
+      "kind": "code-app",
+      "search": [
+       "plant pest identification",
+       "garden pest recognition"
+      ]
+     },
+     {
+      "kind": "pictures",
+      "search": [
+       "kale pest photos",
+       "garden pests images"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "tool suggestions",
+    "does": "recommends tools for gardening",
+    "parts": [
+     {
+      "kind": "code-app",
+      "search": [
+       "garden tool finder",
+       "garden equipment suggestions"
+      ]
+     },
+     {
+      "kind": "knowledge",
+      "search": [
+       "best garden tools",
+       "garden equipment reviews"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "care tips",
+    "does": "provides care tips for plants",
+    "parts": [
+     {
+      "kind": "knowledge",
+      "search": [
+       "tomato care tips",
+       "herb care guide"
+      ]
+     },
+     {
+      "kind": "pictures",
+      "search": [
+       "healthy plant examples",
+       "garden plant care"
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "check": {
+  "valid": true,
+  "kind": "garden helper bot",
+  "jobs": 5,
+  "jobs_in_range": true,
+  "phrases": 20,
+  "unique_phrases": 20,
+  "parts_with_bad_phrase_count": 0,
+  "kinds": {
+   "code-app": 3,
+   "live-info": 1,
+   "data-template": 1,
+   "knowledge": 3,
+   "pictures": 2
+  },
+  "leaks": [
+   {
+    "phrase": "tucson weather api",
+    "why": [
+     "detail:tucson"
+    ]
+   },
+   {
+    "phrase": "tucson garden planting",
+    "why": [
+     "detail:tucson"
+    ]
+   }
+  ],
+  "kind_leak": []
+ }
+}

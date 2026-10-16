@@ -1,0 +1,238 @@
+{app} did not do that. Nothing was changed.
+Added {name}.
+Adding {name}
+one of its checks failed
+it did not come from the place the plan named
+it was not the exact version the plan showed
+the download changed since the plan was made
+it has no licence file, so nobody says you may use it
+its licence does not let you use it freely
+it is too big to add
+some of its words read like orders to a computer
+it has code that opens a hidden connection to the internet
+the checks could not finish
+BuildBot does not know what kind of thing it is
+Your bot can open it for you, but cannot use it by itself yet (it works in a way BuildBot cannot drive).
+Say "undo" to take it back.
+Drawbridge checked it: {license_words}, size is fine, no hidden connections ... done
+That removes {what} from {app}. Remove it? (say "yes, remove")
+Saying yes to this has to be done from a browser that is paired with your bot.
+Done in {app}: {says}.
+Downloaded the version from {when} ({size}) ... done
+Downloaded the version BuildBot picked ({size}) ... done
+The download did not work, so it was left out. Nothing else changed.
+Drawbridge found something the plan did not show: {reason}.
+It is waiting for your yes.
+Kept it. Nothing was removed.
+Left out {name}. Nothing was added.
+Tell me the {field} and I will do it in {app}.
+This is not in this build yet. Nothing was changed.
+That is not waiting for a yes.
+There is nothing of yours to undo from the last 10 minutes.
+This needs the internet to download, and the build is offline. It was left out; you can add it later from the Add page.
+and {n} more
+{app} has nothing there yet.
+{n} {things} in {app}: {values} (read from {app})
+its licence file says {words}, not what GitHub said
+it wants to reach {host}, which the plan did not show
+it is much bigger than the plan said ({mb} MB)
+its description says it is written by an AI and not checked by a person
+it has little code for what it claims to do
+its data has what looks like personal details (names, phone numbers)
+it turned out to be a different kind of project than the plan said
+one of its checks did not pass
+That question is more than 10 minutes old, so nothing was removed. Ask again.
+Removing this is not in this build yet. Nothing was changed.
+Saved {n} parts it loads from the internet, so it works offline ... done
+Set it up to open inside your bot ... done
+{name} changed since you were asked, so it is still waiting. Look at the new reason first.
+Drawbridge stopped this one: {reason}. It was not added.
+Taught your bot what it can do there: {abilities} ... done
+Undone. {app} is back to how it was.
+The app changed after that, so I did not undo it. Open it to fix it by hand.
+BuildBot does not know that one.
+Open your dashboard to do that.
+Open your dashboard to confirm removing that.
+Should I use {a} or {b}?
+free to use (MIT)
+free to use (Apache 2.0)
+free to use (BSD)
+free to use (ISC)
+free to use (public domain)
+free to use (WTFPL)
+free to use (zlib)
+free to use (Mozilla)
+free to use (LGPL)
+free to use, changes must stay open (GPL 2)
+free to use, changes must stay open (GPL 3)
+free to use, changes must stay open (AGPL)
+free to use with credit (CC BY)
+free to use with credit (CC BY-SA)
+for personal use only (CC BY-NC)
+not free to use (Commons Clause)
+not free to use (Business Source)
+its own licence words
+no licence
+{name}: waiting for your yes.
+Say yes or no.
+Add {name} anyway, with what Drawbridge found.
+{name}: BuildBot could not find that one any more. Nothing was changed.
+The ``code_project`` checklist (spec L6, design 2.12). Reads only the
+    draft (facts recorded from the download and the tree scan).
+Comes from the place the plan named
+Exactly the version the plan showed
+Has not changed since it was checked
+Has a licence file
+Free to use
+Not too big
+Has real code for what it claims
+Words read as a description, not orders
+Checked by a person
+No hidden connections
+Needs nothing the plan did not show
+The kind of project the plan said
+Downloaded from the project's own site.
+It did not come from the project's own site.
+It is the version the plan showed.
+It is not the version the plan showed.
+The download is the same as before.
+The download changed since it was checked.
+It could not be downloaded as the plan said.
+It has a licence file.
+It has no licence file.
+Its licence: 
+Licence matches the plan
+Its size is fine.
+It is too big to add.
+Size matches the plan
+The plan did not say how big it is.
+It has code for what it says it does.
+Its words read like orders to a computer.
+Its words read as a description.
+Nothing says it was left unchecked.
+It has code that opens a hidden connection.
+No hidden connections found.
+Nothing needs to be installed first.
+The kind of project the plan said.
+Still looked after
+Its author has stopped changing it.
+Same licence as the plan.
+About the size the plan said.
+Its licence: {words}.
+Setting it up did not work, so it was left out. Nothing else changed.
+That list changed while I was saving, so nothing was saved. Say it again.
+I could not save that list, so nothing was changed.
+Undone. The list is back to how it was.
+{app} is not ready to use yet, so nothing was done.
+I have not changed anything in your apps.
+To let Home Assistant voice use your apps, give Home Assistant this voice key.
+Made a new voice key. Paste it into Home Assistant; the old one no longer works.
+Make a voice key
+Home Assistant voice has no key, so it can chat but cannot use your apps.
+The voice key can only be shown in a browser that is paired with your bot.
+Make a new voice key (the old one stops working)
+In Home Assistant, open the voice assistant setup that talks to your bot (the OpenAI-compatible conversation one).
+Paste this voice key where it asks for the key, then save.
+Ask Home Assistant something about one of your apps to try it.
+Home Assistant voice
+Home Assistant voice can no longer use your apps. It can still chat.
+Turn off voice use of your apps
+With it, Home Assistant voice can read your apps and make changes you can undo. Removing things always waits for your dashboard.
+This page opens only in a browser that is paired with your bot.
+Your bot did not answer just now. Nothing was changed.
+Open {name} inside your bot (your bot cannot use it by itself yet)
+{name} can reach {host} (switched {state})
+Use {name}: {says}
+it has files BuildBot does not read as data
+a column name in its data is not a plain word
+a file in it could not be read
+it is not an ordinary picture
+the picture did not open
+that folder cannot be given to an app
+it has no recorded list of its parts, so it cannot be built the same way twice
+Building it in the locked box ... this can take a few minutes
+This project does not build right now (a mistake in its own code). It was left out; nothing else changed.
+Say which one: puffpai integrations remove <id> (the id is in the list).
+Toolsmith has not added anything yet.
+Adding {name} ... done: {rows} rows your bot can read
+From {url} ({license})
+Finish
+Finish adding {n} things that were waiting for the locked box
+Giving an app a folder has to be done from a browser that is paired with your bot.
+That folder holds private PuffPAI or system files, so no app can have it.
+It has no recorded list of its parts, so BuildBot cannot build it the same way twice. It was left out; nothing else changed.
+Put a Mood board on your home page ... done. Choose a pictures folder there and your bot will find the colours and themes in it.
+Choose a pictures folder
+Let {name} read the pictures in this folder (it never changes them).
+Looked at {n} pictures and found {themes} colour themes.
+Mood board
+Colours and themes from your own pictures.
+Show the colours and themes from your pictures
+It had no pictures BuildBot could keep, so it was left out. Nothing else changed.
+Pictures for your bot, with who made each one.
+Kept the picture {title} in {shelf} ... done
+BuildBot could not find that picture any more. Nothing was changed.
+Kept {n} pictures from {name} ... done
+it has more rows than one list keeps (5,000), so only the first 5,000 would be kept
+it wants parts from somewhere other than the usual place for them
+Removed {name}. A copy of its data is kept for 30 days in case you want it back.
+{name} was not removed: BuildBot could not keep a copy of its data first. Nothing was changed.
+Removing an app has to be done from a browser that is paired with your bot.
+Adding {name} ... done: its pages are in what your bot knows
+Your bot can {says} here.
+Open this on the computer BuildBot runs on.
+{name}. {purpose}. {abilities}
+Opens inside your bot.
+That folder could not be used. Nothing was changed.
+The locked box did not answer just now. Nothing was changed.
+Your pictures folder
+Home Assistant voice key
+To let Home Assistant voice use your apps, give Home Assistant its voice key.
+Home Assistant voice can use your apps. See or change its voice key.
+I have not changed anything in your apps: I could not tell which list or app that is for. Say its name too.
+I have not changed anything in your apps. They can only be changed from a paired device, from this computer, or by Home Assistant with its voice key.
+Say "add tomatoes to the {label} list" or "what is on the {label} list". Removing things waits for your dashboard.
+See or make the voice key
+its files changed after you were asked, so every check runs again
+it still loads parts of itself from the internet while it runs
+it looks like a page with nothing to use
+Uses the same Mood board on your home page ... done
+I have not changed anything in your apps. If you want a change, say it in your own words, with the list or app it is for.
+Nothing changed in {app}: it took the request, but its data is the same as before.
+What I put in: {values}.
+I could not set the {fields} from your words. Tell me which one you want.
+I have not changed anything in your apps: I could not tell what to change about {what} in {app}. Tell me the new {fields}.
+I have not changed anything in your apps: I could not tell which thing {app} does that is. It can {can}.
+The last change I made was in {last}, not {named}, so I did not undo anything. Say "undo" to take back the change in {last}.
+Ask for "the whole list" to hear every one.
+That is {shown} of {n}. Say "more" to hear the next ones.
+{first} to {last} of {n} in {app}: {values} (read from {app})
+{n} {things} in {app} are {value}: {values} (read from {app})
+No {things} in {app} are {value} yet (read from {app}).
+It does not keep that in those words: it marks each one {choices}. Ask "who is {first}?" to hear just those.
+Yes, {name} is in {app}{details} (read from {app}).
+Yes, {name} is {value} in {app} (read from {app}).
+No, {name} is {actual} in {app}, not {value} (read from {app}).
+No, I did not find {name} in {app} (read from {app}).
+{n} {things} in {app} match {name}: {values} (read from {app}).
+it has install steps of its own
+it runs as its own program on this computer, with your permissions
+it needs a program this computer does not have yet
+{name} is checked and ready for your yes.
+Drawbridge checked it: it passed every check.
+Drawbridge checked it and noticed this: {reason}. Your yes covers it.
+It opens as a page inside your bot.
+It is built in the locked box, then opens as a page inside your bot.
+{name} runs on this computer, the way its authors built it.
+{name} is waiting for your yes to run on this computer.
+  Started it. It opens at {url} ... done
+  It is starting. Its page shows when it opens.
+  It did not start yet: {why} You can start it on its page.
+  Its command line tools are ready for your bot: {names} ... done
+  Kept it on this computer for other programs to use ... done
+  Your bot can use its own tools: {line}
+BuildBot cannot run it on this computer: {why}. Nothing was changed.
+{line} Nothing was set up yet; it stays here until that is installed.
+{line} It was left out; nothing else changed.
+Your own project
+It is your own project on GitHub, so its licence is yours to decide.

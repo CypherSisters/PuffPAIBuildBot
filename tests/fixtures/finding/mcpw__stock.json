@@ -1,0 +1,307 @@
+{
+"servers": [
+{
+"server": {
+"$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+"name": "ai.smithery/jjlabsio-korea-stock-mcp",
+"description": "Search company disclosures and financial statements from the Korean market. Retrieve stock profile…",
+"repository": {
+"url": "https://github.com/jjlabsio/korea-stock-mcp",
+"source": "github"
+},
+"version": "1.0.0",
+"remotes": [
+{
+"type": "streamable-http",
+"url": "https://server.smithery.ai/@jjlabsio/korea-stock-mcp/mcp",
+"headers": [
+{
+"description": "Bearer token for Smithery authentication",
+"isRequired": true,
+"value": "Bearer {smithery_api_key}",
+"isSecret": true,
+"name": "Authorization"
+}
+]
+}
+]
+},
+"_meta": {
+"io.modelcontextprotocol.registry/official": {
+"status": "active",
+"statusChangedAt": "2025-09-19T09:01:49.012754Z",
+"publishedAt": "2025-09-19T09:01:49.012754Z",
+"updatedAt": "2025-09-19T09:01:49.012754Z",
+"isLatest": true
+}
+}
+},
+{
+"server": {
+"$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+"name": "ai.smithery/xinkuang-china-stock-mcp",
+"description": "Access real-time and historical market data for China A-shares and Hong Kong stocks, along with ne…",
+"repository": {
+"url": "https://github.com/xinkuang/china-stock-mcp",
+"source": "github"
+},
+"version": "1.15.0",
+"remotes": [
+{
+"type": "streamable-http",
+"url": "https://server.smithery.ai/@xinkuang/china-stock-mcp/mcp",
+"headers": [
+{
+"description": "Bearer token for Smithery authentication",
+"value": "Bearer {smithery_api_key}",
+"name": "Authorization"
+}
+]
+}
+]
+},
+"_meta": {
+"io.modelcontextprotocol.registry/official": {
+"status": "active",
+"statusChangedAt": "2025-09-30T01:41:03.405268Z",
+"publishedAt": "2025-09-30T01:41:03.405268Z",
+"updatedAt": "2025-09-30T01:41:03.405268Z",
+"isLatest": true
+}
+}
+},
+{
+"server": {
+"$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+"name": "ai.tru-stock/inventory",
+"description": "Find the cash trapped in your inventory, then size reorder points, safety stock and EOQ.",
+"title": "Tru-Stock AI",
+"version": "1.0.0",
+"websiteUrl": "https://www.tru-stock.ai",
+"remotes": [
+{
+"type": "streamable-http",
+"url": "https://www.tru-stock.ai/api/mcp/public"
+}
+]
+},
+"_meta": {
+"io.modelcontextprotocol.registry/official": {
+"status": "active",
+"statusChangedAt": "2026-09-10T17:44:35.040989Z",
+"publishedAt": "2026-09-10T17:44:35.040989Z",
+"updatedAt": "2026-09-10T17:44:35.040989Z",
+"isLatest": true
+}
+}
+},
+{
+"server": {
+"$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+"name": "cn.pianam.mcp/stock-mcp",
+"description": "China A-share real-time stock quotes and major indices with dual-source fallback.",
+"repository": {
+"url": "https://github.com/boy-373/stock-mcp",
+"source": "github"
+},
+"version": "1.0.0",
+"remotes": [
+{
+"type": "streamable-http",
+"url": "https://mcp.pianam.cn/stock-mcp/mcp"
+}
+]
+},
+"_meta": {
+"io.modelcontextprotocol.registry/official": {
+"status": "active",
+"statusChangedAt": "2026-09-04T22:55:20.684541Z",
+"publishedAt": "2026-09-04T22:55:20.684541Z",
+"updatedAt": "2026-09-04T22:55:20.684541Z",
+"isLatest": true
+}
+}
+},
+{
+"server": {
+"$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+"name": "com.aikstockdata/mcp",
+"description": "KOSPI/KOSDAQ closing prices and DART regulatory filings. Free, no signup, no API key.",
+"title": "aikstockdata — Korean Stock Data",
+"repository": {
+"url": "https://github.com/na77tech-creator/aikstockdata",
+"source": "github"
+},
+"version": "2.0.0",
+"websiteUrl": "https://aikstockdata.com",
+"remotes": [
+{
+"type": "streamable-http",
+"url": "https://mcp.aikstockdata.com/mcp"
+}
+]
+},
+"_meta": {
+"io.modelcontextprotocol.registry/official": {
+"status": "active",
+"statusChangedAt": "2026-07-31T06:56:29.333529Z",
+"publishedAt": "2026-07-31T06:56:29.333529Z",
+"updatedAt": "2026-07-31T06:56:29.333529Z",
+"isLatest": false
+}
+}
+},
+{
+"server": {
+"$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+"name": "com.aikstockdata/mcp",
+"description": "Korean stocks: median price path after each DART filing type, plus T+1 closes.",
+"title": "aikstockdata — Korean Stock Data",
+"repository": {
+"url": "https://github.com/na77tech-creator/aikstockdata",
+"source": "github"
+},
+"version": "2.1.0",
+"websiteUrl": "https://aikstockdata.com",
+"remotes": [
+{
+"type": "streamable-http",
+"url": "https://mcp.aikstockdata.com/mcp"
+}
+]
+},
+"_meta": {
+"io.modelcontextprotocol.registry/official": {
+"status": "active",
+"statusChangedAt": "2026-08-12T08:35:47.158778Z",
+"publishedAt": "2026-08-12T08:35:47.158778Z",
+"updatedAt": "2026-08-12T08:35:47.158778Z",
+"isLatest": false
+}
+}
+},
+{
+"server": {
+"$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+"name": "com.aikstockdata/mcp",
+"description": "Korean stocks: median price path after each DART filing type, T+1 closes, earnings. 12 tools, no key",
+"title": "aikstockdata — Korean Stock Data",
+"repository": {
+"url": "https://github.com/na77tech-creator/aikstockdata",
+"source": "github"
+},
+"version": "2.1.2",
+"websiteUrl": "https://aikstockdata.com",
+"icons": [
+{
+"src": "https://aikstockdata.com/img/logo_mark.png",
+"mimeType": "image/png",
+"sizes": [
+"160x160"
+]
+}
+],
+"remotes": [
+{
+"type": "streamable-http",
+"url": "https://mcp.aikstockdata.com/mcp"
+}
+]
+},
+"_meta": {
+"io.modelcontextprotocol.registry/official": {
+"status": "active",
+"statusChangedAt": "2026-09-11T01:38:45.788529Z",
+"publishedAt": "2026-09-11T01:38:45.788529Z",
+"updatedAt": "2026-09-11T01:38:45.788529Z",
+"isLatest": true
+}
+}
+},
+{
+"server": {
+"$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+"name": "com.airblockfz/stock-signal-kr",
+"description": "Korea stock (KOSPI/KOSDAQ) bottom/top signals: verdict + score, scans. Pay-per-call x402.",
+"version": "1.0.0",
+"websiteUrl": "https://airblockfz.com",
+"remotes": [
+{
+"type": "streamable-http",
+"url": "https://stock-signal-kr.airblock2026.workers.dev/mcp"
+}
+]
+},
+"_meta": {
+"io.modelcontextprotocol.registry/official": {
+"status": "active",
+"statusChangedAt": "2026-07-16T07:50:49.687288Z",
+"publishedAt": "2026-07-16T07:50:49.687288Z",
+"updatedAt": "2026-07-16T07:50:49.687288Z",
+"isLatest": true
+}
+}
+},
+{
+"server": {
+"$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+"name": "com.airblockfz/stock-signal-us",
+"description": "US stock bottom/top signals: S&P500 + indexes, verdict + score, scans. Pay-per-call x402.",
+"version": "1.0.0",
+"websiteUrl": "https://airblockfz.com",
+"remotes": [
+{
+"type": "streamable-http",
+"url": "https://stock-signal-us.airblock2026.workers.dev/mcp"
+}
+]
+},
+"_meta": {
+"io.modelcontextprotocol.registry/official": {
+"status": "active",
+"statusChangedAt": "2026-07-16T07:50:52.518673Z",
+"publishedAt": "2026-07-16T07:50:52.518673Z",
+"updatedAt": "2026-07-16T07:50:52.518673Z",
+"isLatest": true
+}
+}
+},
+{
+"server": {
+"$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+"name": "com.binstockly/binstockly-tools",
+"description": "Binstockly: the monthly US search demand across the sheets this product ships, read from monthly...",
+"repository": {
+"url": "https://github.com/joeetdev/venture-estate",
+"source": "github"
+},
+"version": "1.0.0",
+"websiteUrl": "https://binstockly.com",
+"packages": [
+{
+"registryType": "npm",
+"registryBaseUrl": "https://registry.npmjs.org",
+"identifier": "@ellul-estate/binstockly-com-binstockly-tools-mcp",
+"version": "1.0.0",
+"transport": {
+"type": "stdio"
+}
+}
+]
+},
+"_meta": {
+"io.modelcontextprotocol.registry/official": {
+"status": "active",
+"statusChangedAt": "2026-09-06T17:57:41.611197Z",
+"publishedAt": "2026-09-06T17:57:41.611197Z",
+"updatedAt": "2026-09-06T17:57:41.611197Z",
+"isLatest": true
+}
+}
+}
+],
+"metadata": {
+"nextCursor": "com.binstockly/binstockly-tools:1.0.0",
+"count": 10
+}
+}

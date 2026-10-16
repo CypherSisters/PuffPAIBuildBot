@@ -1,0 +1,10 @@
+#!/bin/sh
+# Runs INSIDE bwrap as the first process. If this run has an approved outside
+# list, bridge 127.0.0.1:3128 (inside the empty network namespace) to the
+# egress proxy's Unix socket, then become the requested program.
+if [ -S /run/egress.sock ]; then
+  socat TCP-LISTEN:3128,bind=127.0.0.1,fork,reuseaddr UNIX-CONNECT:/run/egress.sock </dev/null >/dev/null 2>&1 &
+  i=0
+  while [ $i -lt 50 ] && ! grep -q "0100007F:0C38 00000000:0000 0A" /proc/net/tcp 2>/dev/null; do sleep 0.1; i=$((i+1)); done
+fi
+exec "$@"

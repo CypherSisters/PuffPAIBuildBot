@@ -1,0 +1,78 @@
+{
+  "schema": "model_profiles/v1",
+  "_maintainer_note": "How much scaffolding each brain needs. BuildBot has no native tool-calling, so tool routing is done with keyword rulepacks plus prompt-shaped structure, and how much of that a model needs depends on the model. Rules, so this stays honest as models rotate: (1) routing_tier is the amount of scaffolding, not a quality score - 'light' means the model can be trusted to pick its own way through a request, 'guided' means it needs one step at a time, 'rails' means only the set phrasings work. (2) budgets are CEILINGS. A caller may ask for less; it can never be handed more than the profile allows, so a small brain is never given a context it will quietly truncate. (3) basis is 'measured:<silicon_id>' ONLY for a model we have actually benched on that board (see config/model_catalog.json 'silicon'). Today that is exactly one pair: qwen3:30b-a3b on jetson_agx_orin_64gb. Everything else is 'conservative-default' and must say so. Never invent a measured number. (4) limits_note is one plain sentence the bot or the wizard can say out loud about what this tier cannot do. Write it for a person, not a spec sheet. (5) '_default' is what an unknown or user-supplied model gets: the safe middle, never the light tier. Add a profile when you add a model to the catalog; if you have not benched it, 'conservative-default' is the correct and honest answer.",
+  "profiles": {
+    "qwen3:30b-a3b": {
+      "routing_tier": "light",
+      "dialect": "json_block",
+      "supports": { "planning": true, "json_mode": true, "thinking": true },
+      "budgets": { "num_ctx": 8192, "num_predict": 1024, "plan_ctx": 8192 },
+      "prompt": { "no_think_token": "/no_think", "system_suffix": null },
+      "limits_note": "This brain handles multi-step requests and picks its own tools, so you can ask in your own words.",
+      "basis": "measured:jetson_agx_orin_64gb"
+    },
+    "qwen3.5:9b": {
+      "routing_tier": "light",
+      "dialect": "json_mode",
+      "supports": { "planning": true, "json_mode": true, "thinking": true },
+      "budgets": { "num_ctx": 16384, "num_predict": 2048, "plan_ctx": 8192 },
+      "prompt": { "no_think_token": null, "system_suffix": null },
+      "limits_note": "This brain uses tools: it can look things up, use what you added and ask before it runs anything, so you can ask in your own words.",
+      "basis": "conservative-default"
+    },
+    "qwen2.5:7b-instruct": {
+      "routing_tier": "guided",
+      "dialect": "json_mode",
+      "supports": { "planning": true, "json_mode": true, "thinking": false },
+      "budgets": { "num_ctx": 8192, "num_predict": 1024, "plan_ctx": 4096 },
+      "prompt": { "no_think_token": null, "system_suffix": "Answer briefly. If you cannot do something, say so plainly instead of describing an action you did not take." },
+      "limits_note": "This brain does one job at a time. Ask for one thing per message and it will do it well; a chain of tasks in one breath will lose a step.",
+      "basis": "conservative-default"
+    },
+    "qwen2.5:3b-instruct": {
+      "routing_tier": "guided",
+      "dialect": "json_mode",
+      "supports": { "planning": false, "json_mode": true, "thinking": false },
+      "budgets": { "num_ctx": 4096, "num_predict": 768, "plan_ctx": 2048 },
+      "prompt": { "no_think_token": null, "system_suffix": "Answer briefly. If you cannot do something, say so plainly instead of describing an action you did not take." },
+      "limits_note": "This brain does one job at a time and does not plan ahead. Keep each request to a single step and it stays reliable.",
+      "basis": "conservative-default"
+    },
+    "llama3.2:3b": {
+      "routing_tier": "guided",
+      "dialect": "json_mode",
+      "supports": { "planning": false, "json_mode": true, "thinking": false },
+      "budgets": { "num_ctx": 4096, "num_predict": 768, "plan_ctx": 2048 },
+      "prompt": { "no_think_token": null, "system_suffix": "Answer briefly. If you cannot do something, say so plainly instead of describing an action you did not take." },
+      "limits_note": "This brain does one job at a time and does not plan ahead. Keep each request to a single step and it stays reliable.",
+      "basis": "conservative-default"
+    },
+    "qwen2.5:1.5b-instruct": {
+      "routing_tier": "rails",
+      "dialect": "keyword_only",
+      "supports": { "planning": false, "json_mode": false, "thinking": false },
+      "budgets": { "num_ctx": 2048, "num_predict": 256, "plan_ctx": 2048 },
+      "prompt": { "no_think_token": null, "system_suffix": "Answer in one or two short sentences. Never say you did something. If you are unsure, say you are unsure." },
+      "limits_note": "This brain follows set phrasings only. It cannot plan, chain steps, or work out what you meant, so use the wordings in the phrasebook.",
+      "basis": "conservative-default"
+    },
+    "llama3.2:1b": {
+      "routing_tier": "rails",
+      "dialect": "keyword_only",
+      "supports": { "planning": false, "json_mode": false, "thinking": false },
+      "budgets": { "num_ctx": 2048, "num_predict": 256, "plan_ctx": 2048 },
+      "prompt": { "no_think_token": null, "system_suffix": "Answer in one or two short sentences. Never say you did something. If you are unsure, say you are unsure." },
+      "limits_note": "This brain follows set phrasings only. It cannot plan, chain steps, or work out what you meant, so use the wordings in the phrasebook.",
+      "basis": "conservative-default"
+    },
+    "_default": {
+      "routing_tier": "guided",
+      "dialect": "json_mode",
+      "supports": { "planning": false, "json_mode": true, "thinking": false },
+      "budgets": { "num_ctx": 4096, "num_predict": 512, "plan_ctx": 4096 },
+      "prompt": { "no_think_token": null, "system_suffix": "Answer briefly. If you cannot do something, say so plainly instead of describing an action you did not take." },
+      "limits_note": "We have not tested this brain, so it is set up to be told one step at a time. Reports welcome if it does better than that.",
+      "basis": "conservative-default"
+    }
+  }
+}

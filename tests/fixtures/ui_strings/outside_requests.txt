@@ -1,0 +1,119 @@
+short search words
+a project you picked
+pictures you picked
+code parts while building
+what an added tool sends
+what an added app sends
+parts an app loads, saved once
+stopped: it was bigger than allowed
+stopped: the download was not the exact version you picked
+stopped: not a website this service may use
+stopped: the site sent it somewhere else too many times
+stopped: it tried to send something extra
+stopped: your key may not be sent to that website
+stopped: your key could not be used
+That address is not one this may fetch, so nothing was fetched.
+That is switched off under "What leaves your computer", so nothing was fetched.
+That address does not use a secure connection, so nothing was fetched.
+That address carries a sign-in, which is never sent.
+That website is not on the list for this, so nothing was fetched.
+That website's name could not be found.
+That address points inside your home network or this computer, so nothing was fetched.
+The website sent it somewhere else too many times.
+It was bigger than allowed, so it was not kept.
+The download was not the exact version that was picked, so it was not kept.
+The website did not answer.
+The website gave an answer this could not use.
+That website's rules for robots do not allow this.
+Only the owner of this bot can say yes to that, on one of their own devices.
+it is a link to somewhere else
+it is a second name for another file
+it is a device, not a file
+it is a special kind of file, not a normal one
+it is not a regular file
+The apps folder cannot be a whole drive. Nothing was unpacked.
+The apps folder is a link to somewhere else. Nothing was unpacked.
+No size limit was given, so nothing was unpacked.
+No file limit was given, so nothing was unpacked.
+That folder is not inside the apps folder, so nothing was unpacked there.
+The download has more than 20000 files, so nothing was unpacked.
+The download would take more room unpacked than allowed, so nothing was unpacked.
+No folder was given to remove.
+No folder is allowed to be removed.
+That folder is a link to somewhere else, so it was not removed.
+That folder is not one BuildBot made, so it was not removed.
+A whole drive is never removed.
+Could not tell where BuildBot keeps its private files, so nothing was unpacked.
+Could not tell where your vault is, so nothing was unpacked.
+The apps folder is set to a place that holds BuildBot's private files. Nothing was unpacked there.
+That folder is not a plain folder, so nothing was unpacked there.
+That folder already has things in it, so nothing was unpacked there.
+The download could not be read, so nothing was unpacked.
+A file in the download tried to land outside its folder, so nothing was unpacked.
+That is one of your own folders, so it was not removed.
+The download is not a kind of file this can unpack.
+The download is damaged, so nothing was unpacked.
+A file in the download unpacks to far more than its size, so nothing was unpacked.
+The download unpacks to far more than its size, so nothing was unpacked.
+another file has the same name (apart from capital letters)
+a file already uses one of its folder names
+its folder could not be made here
+it could not be saved on this computer
+A file in the download was bigger than it said, so nothing was unpacked.
+it has no name
+its name has hidden characters in it
+its name is longer than 240 characters
+its name has a backslash in it
+its name has a colon in it (a drive or a hidden stream)
+it points at a fixed place on the computer
+its name has an empty folder in it
+it tries to climb out of its folder
+its name has a folder called '.' in it
+a name in it ends with a dot or a space
+its name has a character Windows cannot use
+it uses a name Windows keeps for devices
+The download needs a full path to save to, so nothing was fetched.
+The website answered 403, so nothing was downloaded.
+Could not tell where your vault is, so nothing was fetched.
+A download is never saved next to your vault or keys.
+The place to save the download is not a plain file, so nothing was fetched.
+The expected version check is not a proper fingerprint, so nothing was fetched.
+The download could not be saved.
+A folder changed while it was being removed, so it was left.
+The folder changed while it was being removed, so it was left.
+This computer cannot remove a folder safely, so it was not removed.
+Looking for apps and code
+Finding apps and code for the jobs you ticked, when you press Start looking.
+Only the short search words shown on screen, and your internet address.
+Switched on. Used only when you press Start looking.
+the code sites under Where to look
+Downloading an app or code you picked
+Downloading an app or code you ticked, at the version shown on your plan.
+The name of the project and your internet address.
+Switched on. Used only for something you ticked.
+the site the project is kept on
+Looking for pictures
+Finding free pictures for the jobs you ticked, when you press Start looking.
+the picture sites under Where to look
+Downloading pictures you picked
+Downloading the pictures you ticked.
+Which pictures, and your internet address.
+Switched on. Used only for pictures you ticked.
+the site each picture is kept on
+Saving the parts an app loads
+Saving, once, the parts an app you added loads from the internet, so it runs without fetching them again.
+Which parts, once, and your internet address.
+Switched on. Used only while an app is being added.
+the sites the app loads its parts from
+Switch this on from the app's own page, where it shows what the app sends.
+Switch this on again where the tool was added, where it shows what the tool sends.
+This cannot be switched from this list.
+An app you added
+A tool in the locked box
+That app has no outside sites here, so nothing was changed.
+That app did not ask for that site, so nothing was changed.
+Say yes to one outside site at a time.
+Your choice could not be saved on this computer, so nothing was changed.
+That outside site is switched off for this app, so nothing was sent.
+An added app's outside sites.
+What the app sends there, and your internet address.

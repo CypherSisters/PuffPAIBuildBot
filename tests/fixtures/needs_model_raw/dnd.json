@@ -1,0 +1,193 @@
+{
+ "goal_id": "dnd",
+ "model": "qwen2.5:7b-instruct",
+ "prompt_tag": "v5",
+ "at": "2026-09-27T00:29:29",
+ "timing": {
+  "wall_s": 28.84,
+  "first_token_s": 13.89,
+  "first_job_s": 16.79,
+  "load_s": 0.01,
+  "prompt_tokens": 714,
+  "prompt_s": 0.04,
+  "out_tokens": 689,
+  "gen_s": 14.96,
+  "tok_per_s": 46.1,
+  "done_reason": "stop"
+ },
+ "raw": "{\n  \"kind\": \"dungeons and dragons campaign helper\",\n  \"asked\": [\n    \"track initiative\",\n    \"roll dice\",\n    \"make up NPCs and loot\",\n    \"keep session notes\",\n    \"look up spells and monster stats\"\n  ],\n  \"also_needed\": [\n    \"manage player characters\",\n    \"schedule sessions\"\n  ],\n  \"jobs\": [\n    {\n      \"name\": \"initiative tracker\",\n      \"does\": \"keeps track of character initiative order\",\n      \"parts\": [\n        {\n          \"kind\": \"code-app\",\n          \"search\": [\"dnd initiative tracker\", \"rpg initiative tracker\"]\n        },\n        {\n          \"kind\": \"data-template\",\n          \"search\": [\"dnd initiative sheet\", \"rpg initiative template\"]\n        }\n      ]\n    },\n    {\n      \"name\": \"dice roller\",\n      \"does\": \"rolls dice for the game\",\n      \"parts\": [\n        {\n          \"kind\": \"code-app\",\n          \"search\": [\"dnd dice roller\", \"rpg dice roller\"]\n        },\n        {\n          \"kind\": \"live-info\",\n          \"search\": [\"dice roll generator\", \"random dice roll\"]\n        }\n      ]\n    },\n    {\n      \"name\": \"npc and loot generator\",\n      \"does\": \"creates non-player characters and loot\",\n      \"parts\": [\n        {\n          \"kind\": \"code-app\",\n          \"search\": [\"dnd npc generator\", \"rpg loot generator\"]\n        },\n        {\n          \"kind\": \"knowledge\",\n          \"search\": [\"dnd monster guide\", \"rpg loot guide\"]\n        }\n      ]\n    },\n    {\n      \"name\": \"session notes keeper\",\n      \"does\": \"records session details and events\",\n      \"parts\": [\n        {\n          \"kind\": \"code-app\",\n          \"search\": [\"dnd session notes\", \"rpg session tracker\"]\n        },\n        {\n          \"kind\": \"data-template\",\n          \"search\": [\"dnd session log\", \"rpg session template\"]\n        }\n      ]\n    },\n    {\n      \"name\": \"spell and monster stats lookup\",\n      \"does\": \"finds spell and monster statistics\",\n      \"parts\": [\n        {\n          \"kind\": \"code-app\",\n          \"search\": [\"dnd spell lookup\", \"rpg monster stats\"]\n        },\n        {\n          \"kind\": \"knowledge\",\n          \"search\": [\"dnd spellbook\", \"rpg monster guide\"]\n        }\n      ]\n    },\n    {\n      \"name\": \"session scheduler\",\n      \"does\": \"reminds of upcoming sessions\",\n      \"parts\": [\n        {\n          \"kind\": \"code-app\",\n          \"search\": [\"dnd session scheduler\", \"rpg campaign planner\"]\n        },\n        {\n          \"kind\": \"device\",\n          \"search\": [\"smartphone calendar\", \"smartwatch reminder\"]\n        }\n      ]\n    },\n    {\n      \"name\": \"character manager\",\n      \"does\": \"tracks player character stats and progress\",\n      \"parts\": [\n        {\n          \"kind\": \"code-app\",\n          \"search\": [\"dnd character manager\", \"rpg character tracker\"]\n        },\n        {\n          \"kind\": \"data-template\",\n          \"search\": [\"dnd character sheet\", \"rpg character template\"]\n        }\n      ]\n    }\n  ]\n}",
+ "parsed": {
+  "kind": "dungeons and dragons campaign helper",
+  "asked": [
+   "track initiative",
+   "roll dice",
+   "make up NPCs and loot",
+   "keep session notes",
+   "look up spells and monster stats"
+  ],
+  "also_needed": [
+   "manage player characters",
+   "schedule sessions"
+  ],
+  "jobs": [
+   {
+    "name": "initiative tracker",
+    "does": "keeps track of character initiative order",
+    "parts": [
+     {
+      "kind": "code-app",
+      "search": [
+       "dnd initiative tracker",
+       "rpg initiative tracker"
+      ]
+     },
+     {
+      "kind": "data-template",
+      "search": [
+       "dnd initiative sheet",
+       "rpg initiative template"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "dice roller",
+    "does": "rolls dice for the game",
+    "parts": [
+     {
+      "kind": "code-app",
+      "search": [
+       "dnd dice roller",
+       "rpg dice roller"
+      ]
+     },
+     {
+      "kind": "live-info",
+      "search": [
+       "dice roll generator",
+       "random dice roll"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "npc and loot generator",
+    "does": "creates non-player characters and loot",
+    "parts": [
+     {
+      "kind": "code-app",
+      "search": [
+       "dnd npc generator",
+       "rpg loot generator"
+      ]
+     },
+     {
+      "kind": "knowledge",
+      "search": [
+       "dnd monster guide",
+       "rpg loot guide"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "session notes keeper",
+    "does": "records session details and events",
+    "parts": [
+     {
+      "kind": "code-app",
+      "search": [
+       "dnd session notes",
+       "rpg session tracker"
+      ]
+     },
+     {
+      "kind": "data-template",
+      "search": [
+       "dnd session log",
+       "rpg session template"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "spell and monster stats lookup",
+    "does": "finds spell and monster statistics",
+    "parts": [
+     {
+      "kind": "code-app",
+      "search": [
+       "dnd spell lookup",
+       "rpg monster stats"
+      ]
+     },
+     {
+      "kind": "knowledge",
+      "search": [
+       "dnd spellbook",
+       "rpg monster guide"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "session scheduler",
+    "does": "reminds of upcoming sessions",
+    "parts": [
+     {
+      "kind": "code-app",
+      "search": [
+       "dnd session scheduler",
+       "rpg campaign planner"
+      ]
+     },
+     {
+      "kind": "device",
+      "search": [
+       "smartphone calendar",
+       "smartwatch reminder"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "character manager",
+    "does": "tracks player character stats and progress",
+    "parts": [
+     {
+      "kind": "code-app",
+      "search": [
+       "dnd character manager",
+       "rpg character tracker"
+      ]
+     },
+     {
+      "kind": "data-template",
+      "search": [
+       "dnd character sheet",
+       "rpg character template"
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "check": {
+  "valid": true,
+  "kind": "dungeons and dragons campaign helper",
+  "jobs": 7,
+  "jobs_in_range": true,
+  "phrases": 28,
+  "unique_phrases": 28,
+  "parts_with_bad_phrase_count": 0,
+  "kinds": {
+   "code-app": 7,
+   "data-template": 3,
+   "live-info": 1,
+   "knowledge": 2,
+   "device": 1
+  },
+  "leaks": [],
+  "kind_leak": []
+ }
+}
