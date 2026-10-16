@@ -180,8 +180,25 @@ def _save(items: list[dict]) -> None:
     os.replace(tmp, path)
 
 
+#: Widget types that read one of the first apps' data (puffpai.first_apps).
+#: While that app is turned off the widget is neither added nor shown.
+WIDGET_APP = {"calendar": "calendar", "alarmflow": "alarmflow"}
+
+
+def _app_off(wtype: str) -> str:
+    """The app's turned-off line when this widget type's app is off, else ""."""
+    app_id = WIDGET_APP.get(wtype)
+    if not app_id:
+        return ""
+    try:
+        from puffpai import first_apps
+        return first_apps.turned_off_line(app_id) if first_apps.is_off(app_id) else ""
+    except Exception:  # noqa: BLE001 - never hide a widget over this check
+        return ""
+
+
 def list_widgets(include_cameras: bool = False) -> list[dict]:
-    items = list(_load())
+    items = [w for w in _load() if not _app_off(str(w.get("type") or ""))]
     if include_cameras:
         try:
             from puffpai import dashboard_registry as _dreg
@@ -208,6 +225,9 @@ def add_widget(wtype: str, props: dict, added_by: str = "agent") -> tuple[bool, 
     if wtype == "camera":
         return False, ("Cameras are Drawbridge-gated. Use dashboard_add_camera "
                        "(or POST /dashboard/cameras) instead."), None
+    off = _app_off(wtype)
+    if off:
+        return False, off, None
 
     props = dict(props or {})
     if wtype == "news":

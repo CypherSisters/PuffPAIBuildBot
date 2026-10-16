@@ -1,6 +1,6 @@
 # PuffPAI BuildBot
 
-> BuildBot is a goal-agnostic factory that builds a local personal AI bot from one plain-words goal, on the owner's own computer, with a local model as the brain. One pipeline interprets the goal into jobs, finds what people already made, classifies each find by how it runs (APP, TOOL, DATA, TEXT, GUIDE), picks one route per job (app as built, connected tool, app put together from data, or nothing found yet), shows one setup list, asks one Yes, then makes and proves each job. Three zones: the vault, the brain, and the Bridge (the only way out, every outside service behind a switch that ships closed).
+> BuildBot is a goal-agnostic factory that builds a local personal AI bot from one plain-words goal, on the owner's own computer, with a local model as the brain. One pipeline interprets the goal into jobs, finds what people already made, classifies each find by how it runs (APP, TOOL, DATA, TEXT, GUIDE), picks one route per job (app as built, connected tool, app put together from data, or nothing found yet), shows one setup list, asks one Yes, then makes and proves each job. Three zones: the vault, the brain, and the Bridge (the only way out, every outside service behind its own switch: the named outside services ship off, and BuildBot's own finders, searching GitHub for apps, downloading the app you picked, the free book library and catalog refresh, are on from the start so the wizard can look for apps and books, each with a switch on "What leaves your computer").
 
 ## Start here
 

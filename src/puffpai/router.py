@@ -74,6 +74,17 @@ _ALL_AGENT_KEYWORDS = (
 )
 
 
+def reload_app_words() -> None:
+    """Read the apps' words again (an app was turned on or off,
+    :mod:`puffpai.first_apps`), so the change routes without a restart."""
+    global _PACKS, _APP_KEYWORDS, _ALL_AGENT_KEYWORDS
+    _PACKS = rulepacks.load_packs()
+    _APP_KEYWORDS = _kw("apps")
+    _ALL_AGENT_KEYWORDS = (
+        _HOME_KEYWORDS + _SECURITY_KEYWORDS + _MEDIA_KEYWORDS + _APP_KEYWORDS
+    )
+
+
 # ── Routing tier ────────────────────────────────────────────────────────────
 # Which packs this build loads depends on the brain it is running. Resolved
 # lazily and cached: the router is on the hot path and must not pay for a

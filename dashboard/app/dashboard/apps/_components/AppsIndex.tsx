@@ -15,7 +15,7 @@
  * Copyright (c) Cypher Sisters. Apache-2.0 License.
  */
 
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import { mdiChevronRight, mdiPlus } from "@mdi/js";
 import Icon from "../../../_components/Icon";
@@ -24,6 +24,8 @@ import { usePersonaApps } from "../../../_lib/hooks/usePersonaApps";
 import { getFront, type FrontApp } from "../../../_lib/services/frontService";
 import { appsToList } from "../_lib/appsIndex";
 import AppLink from "../_lib/AppLink";
+import FirstApps from "./FirstApps";
+import { getFirstApps, noAppsLine, type FirstAppsAnswer } from "../../../_lib/services/firstAppsService";
 import { AppHeader, AppPage, FREDOKA, NUNITO, Panel, microLabel } from "./ui";
 
 export default function AppsIndex() {
@@ -35,6 +37,20 @@ export default function AppsIndex() {
   // added (the Mood board has no page of its own and is listed here too).
   const { apps: personas } = usePersonaApps();
   const [added, setAdded] = useState<FrontApp[] | null>(null);
+  // Her first apps, or that this browser is not paired (the empty line says so).
+  const [firstApps, setFirstApps] = useState<FirstAppsAnswer>(null);
+  const reloadFirstApps = useCallback(async () => {
+    setFirstApps(await getFirstApps());
+  }, []);
+  useEffect(() => {
+    let alive = true;
+    void getFirstApps().then((got) => {
+      if (alive) setFirstApps(got);
+    });
+    return () => {
+      alive = false;
+    };
+  }, []);
   useEffect(() => {
     let alive = true;
     getFront()
@@ -72,16 +88,7 @@ export default function AppsIndex() {
               margin: 0,
             }}
           >
-            This build carries none of the built-in apps. They load with the
-            surfaces they need, which this build was not set up for.{" "}
-            <Link
-              href="/onboarding?rerun=1"
-              className="hover:underline"
-              style={{ color: "var(--sky)" }}
-            >
-              Change what it carries
-            </Link>
-            .
+            {noAppsLine(firstApps)}
           </p>
         </Panel>
       )}
@@ -192,6 +199,8 @@ export default function AppsIndex() {
           </AppLink>
         ))}
       </div>
+
+      <FirstApps answer={firstApps} reload={reloadFirstApps} />
     </AppPage>
   );
 }

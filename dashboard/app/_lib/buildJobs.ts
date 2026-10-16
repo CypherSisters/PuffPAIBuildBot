@@ -208,6 +208,14 @@ export interface KnowledgeItem {
 
 const KNOWLEDGE_STATES = ["", "downloading", "added", "failed"] as const;
 
+/** One of her first apps the plan turns on with the same Yes
+ *  (src/puffpai/first_apps.py): "Turn on: FitFam (one of your first apps)". */
+export interface FirstAppLine {
+  id: string;
+  name: string;
+  line: string;
+}
+
 export interface BuildStatus {
   /** False while the bot's start-up work runs; `line` says so. */
   ready: boolean;
@@ -223,6 +231,8 @@ export interface BuildStatus {
   dropped: DroppedFind[];
   /** Books for the goal, each a tickable line on the Yes. */
   knowledge?: KnowledgeItem[];
+  /** Her first apps that fit the goal, turned on by the same Yes. */
+  firstApps?: FirstAppLine[];
   /** She picked Anthropic for Toolsmith but its key is not saved: the build
    *  waits, with this line and Open Settings / Use this computer. */
   toolsmithHold?: string;
@@ -532,6 +542,10 @@ export function readBuildStatus(raw: unknown): BuildStatus {
         reason: text(k.reason),
       }))
       .filter((k) => k.id),
+    firstApps: list(d.first_apps)
+      .map(obj)
+      .map((a) => ({ id: text(a.id), name: text(a.name) || text(a.id), line: text(a.line) }))
+      .filter((a) => a.id && a.line),
     toolsmithHold: text(d.toolsmith_hold),
     vaultWait: text(d.vault_wait),
     running: d.running === true,
@@ -726,7 +740,11 @@ export function openRows(setup: SetupRow[], yesGiven = false): SetupRow[] {
 /** Is there anything her one Yes would build (a job that is not "nothing
  *  found", or a knowledge line still to add)? */
 export function hasBuildable(status: BuildStatus): boolean {
-  return status.jobs.some((j) => j.route !== "D") || (status.knowledge ?? []).some((k) => k.status !== "added");
+  return (
+    status.jobs.some((j) => j.route !== "D") ||
+    (status.knowledge ?? []).some((k) => k.status !== "added") ||
+    (status.firstApps ?? []).length > 0
+  );
 }
 
 /** The wizard's last screen title for a bot with jobs: it is not built

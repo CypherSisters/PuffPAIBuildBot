@@ -1143,11 +1143,22 @@ def ingest_file(
         # propagate to the outer handler so `result.error` is set honestly.
         _index_study_doc(file_id, filename, text, classification=classification)
 
-        # Parse + (optionally) apply
+        # Parse + (optionally) apply. A first app that is turned off
+        # (puffpai.first_apps) gets nothing written; the line says so.
+        def _app_on(app_id: str) -> bool:
+            try:
+                from puffpai import first_apps
+                if first_apps.is_off(app_id):
+                    result.actions_taken.append(first_apps.turned_off_line(app_id))
+                    return False
+            except Exception:  # noqa: BLE001 - the check never stops an upload
+                pass
+            return True
+
         if classification == "recipe":
             parsed = parse_recipe(text)
             result.structured_data = parsed
-            if auto_apply and parsed:
+            if auto_apply and parsed and _app_on("freshtable"):
                 from puffpai.app_data import AppData
                 app = AppData()
                 app.fresh_create_recipe(
@@ -1160,7 +1171,7 @@ def ingest_file(
         elif classification == "event":
             parsed = parse_event(text)
             result.structured_data = parsed
-            if auto_apply and parsed:
+            if auto_apply and parsed and _app_on("calendar"):
                 from puffpai.app_data import AppData
                 app = AppData()
                 app.cal_add_event(
@@ -1173,7 +1184,7 @@ def ingest_file(
         elif classification == "schedule":
             events = parse_schedule(text)
             result.structured_data = {"events": events}
-            if auto_apply and events:
+            if auto_apply and events and _app_on("calendar"):
                 from puffpai.app_data import AppData
                 app = AppData()
                 for ev in events:
@@ -1201,7 +1212,7 @@ def ingest_file(
             # Parse line-by-line for items
             items = _parse_shopping_lines(text)
             result.structured_data = {"items": items}
-            if auto_apply and items:
+            if auto_apply and items and _app_on("freshtable"):
                 from puffpai.app_data import AppData
                 app = AppData()
                 for item in items:

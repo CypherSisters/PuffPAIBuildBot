@@ -38,7 +38,7 @@ These are contracts enforced in code, not a diagram.
 |------|------------|------|
 | **Zone 1, your private stuff** | The vault: an encrypted store (Fernet, PBKDF2-HMAC-SHA256) for keys, personal details and private files, opened with the owner's PIN, locks itself when idle. | `security/vault.py`, `zone_vault.py`, `security/keys.py`, `security/chat_privacy.py`, `security/vault_inbox.py` |
 | **Zone 2, the brain** | The local model, the agents, what the bot knows (books, files, skills), apps running on this computer. | `brain_loop.py`, `brain_tools.py`, `agents/`, `knowledge/`, `skills.py`, `integrate/run_here.py` |
-| **Zone 3, the Bridge** | The only way out for BuildBot's own calls. Every outside service has its own switch, listed on the "What leaves your computer" page, and every switch ships closed. | `security/egress_doors.py`, `security/egress_ledger.py`, `outside_services.py`, `outside_api.py`, `zone_bridge.py` |
+| **Zone 3, the Bridge** | The only way out for BuildBot's own calls. Every outside service has its own switch, listed on the "What leaves your computer" page. The named outside services (weather, news, web search, live cards and the rest) ship off. BuildBot's own finders (searching GitHub for apps, downloading the app you picked, the free book library, catalog refresh) are on from the start so the wizard can look for apps and books; each has its own switch on that page. | `security/egress_doors.py`, `security/egress_ledger.py`, `outside_services.py`, `outside_api.py`, `zone_bridge.py` |
 
 What may cross:
 
@@ -604,6 +604,7 @@ state folder). Never inside the checkout.
 | `mcp_servers.json` | tool servers (never a header value) |
 | `finding/installed.json`, `finding/capabilities.json` | installs; the jobs as capabilities |
 | `dashboard_layout.json` | how the owner arranged her home page and sidebar (section 7) |
+| `apps_on.json` | `{"on": [ids]}`: the first apps this bot turned on (section 7) |
 | `addition_checks.jsonl` | every Drawbridge verdict |
 | `logs/outside.jsonl` | every outside request (no query strings) |
 | `knowledge/my_data.json` | what the data-folder watcher has seen: per file mtime, size, doc id, status |
@@ -656,6 +657,27 @@ Always add a test with the change. Tests never go online.
   kind to `KIND_WORDS` and `KIND_ICON` there (and to `KINDS` in
   `layoutService.ts`). It appears by itself when installed; a running app
   opens in a new tab, never a frame. Tests: `tests/test_dashboard_layout.py`.
+- **Your first apps.** The five shipped apps (`apps/alarmflow`, `calendar`,
+  `fitfam`, `freshtable`, `trivia`) say `"first_app": true` in their
+  manifests: off on a new bot, turned on per bot (`first_apps.py`,
+  `<state>/apps_on.json`). An app that is off is left out of
+  `app_registry.load_manifests()` (sidebar, home tiles, brain tools, chat fast
+  paths, router words); `load_manifests(include_off=True)` sees it (data
+  layer, wizard matching, id checks), and its `/apps/<id>/data|action|updated`
+  routes answer 409 "turned off". A bot with no `apps_on.json` yet keeps on
+  each first app it already uses (saved data, its surface on the build's
+  trimmed page list, or its tile on her home page); reading never writes, and
+  `first_apps.settle` keeps the set once, when the backend starts and before a
+  build record is written (`build_manifest.write_manifest`). On and off: the
+  Apps page section "Your first apps" (`GET /apps/first`, `POST
+  /apps/first/turn {id, on}`, paired device, local only). The build plan lists
+  the ones that fit the goal (`build_interview` catalog tags) on its one Yes
+  as "Turn on: FitFam (one of your first apps)" (`build["first_apps"]`, part
+  of `yes.sha`), and her Yes turns them on. Home tiles that show an app's data
+  (`surfaceMap.ts` `APPS_BY_WIDGET`) and the Calendar and Timers widgets
+  (`dashboard_widgets.WIDGET_APP`) show only while that app is on. Owner apps
+  in `<state>/apps` are never off. Tests: `tests/test_first_apps.py`.
+- The five first apps are planned as independent marketplace apps.
 - **A data seed.** Add a row to `config/catalog_seeds/apis.json` with a
   keyless https sample on the row's own host (`catalogs/api_seeds.py` drops bad
   rows). Tests: `tests/test_catalogs_seeds_goals.py`.

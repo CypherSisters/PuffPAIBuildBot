@@ -171,6 +171,18 @@ def _handwritten_mentioned(lower: str, manifests: list[dict[str, Any]]) -> bool:
     for manifest in manifests:
         if str(manifest.get("id") or "") in HANDWRITTEN and _mentions_app(lower, manifest):
             return True
+    # A hand-written app that is turned off (puffpai.first_apps) still owns
+    # its words: "add milk to the shopping list" is never a persona's list.
+    try:
+        from puffpai import app_registry
+        listed = {str(m.get("id") or "") for m in manifests}
+        for manifest in app_registry.all_manifests():
+            app_id = str(manifest.get("id") or "")
+            if (app_id in HANDWRITTEN and app_id not in listed
+                    and _mentions_app(lower, manifest)):
+                return True
+    except Exception:  # noqa: BLE001 - the floor: answer as before
+        pass
     return False
 
 

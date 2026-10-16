@@ -69,6 +69,9 @@ def owner(tmp_path, monkeypatch):
     into the repo, and cannot leak into the next test either.
     """
     monkeypatch.setenv("PUFFPAI_STATE_DIR", str(tmp_path / "state"))
+    # A bot with its first apps on: these tests are about owner apps beside them.
+    from conftest import turn_on_first_apps
+    turn_on_first_apps(str(tmp_path / "state"))
     monkeypatch.setattr(app_data_mod, "_DATA_DIR", str(tmp_path / "app_data"))
     app_registry.rescan()
     return tmp_path

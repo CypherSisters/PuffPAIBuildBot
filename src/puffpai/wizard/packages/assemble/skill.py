@@ -46,5 +46,10 @@ def part_plan(ctx):
     setup = [r for r in record.get("setup") or () if isinstance(r, dict)]
     note = (f"{len(jobs)} job{'' if len(jobs) == 1 else 's'} planned, "
             f"{len(setup)} thing{'' if len(setup) == 1 else 's'} on the setup list")
+    # Her first apps that fit the goal: on the same Yes (puffpai.first_apps).
+    from puffpai import first_apps
+    turn_on = first_apps.lines(record)
+    if turn_on:
+        note += "; " + "; ".join(turn_on)
     return {"status": "done", "note": note,
             "shared": {"build_plan": {"jobs": len(jobs), "setup": len(setup)}}}

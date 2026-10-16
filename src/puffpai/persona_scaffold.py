@@ -404,7 +404,7 @@ def preview(app_id: Any, name: Any = "", goal: Any = "",
         "pack_path": os.path.join(app_registry.user_packs_dir(), request["id"],
                                   app_registry.PACK_MANIFEST_NAME),
         "taken": request["id"] in app_registry.installed_ids(
-            app_registry.current_manifests()),
+            app_registry.load_manifests(include_off=True)),
     }
 
 
@@ -609,7 +609,7 @@ def scaffold(app_id: str, *, name: str = "", goal: str = "",
             f"'{app_id}' already exists here: {', '.join(existing)}. Pick "
             f"another id, or edit that file - nothing of yours is overwritten.")
 
-    for other in app_registry.load_manifests():
+    for other in app_registry.load_manifests(include_off=True):
         if str(other.get("id")) == app_id:
             raise ScaffoldError(
                 f"An app called '{app_id}' is already installed on this build. "
@@ -992,7 +992,7 @@ def rename_id(app_id: str, new_id: str) -> dict[str, Any]:
         raise ScaffoldError(
             f"'{new_id}' already exists here: {', '.join(taken)}. Pick another "
             f"id - nothing of yours is overwritten, so nothing was changed.")
-    for other in app_registry.load_manifests():
+    for other in app_registry.load_manifests(include_off=True):
         if str(other.get("id")) == new_id:
             raise ScaffoldError(
                 f"An app called '{new_id}' is already installed on this build. "

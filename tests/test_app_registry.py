@@ -397,7 +397,7 @@ def test_an_existing_data_file_still_loads_from_the_same_path(tmp_path, monkeypa
 
 
 def test_app_data_falls_back_when_no_manifests_are_readable(monkeypatch):
-    monkeypatch.setattr(app_registry, "load_manifests", lambda path=None: [])
+    monkeypatch.setattr(app_registry, "load_manifests", lambda path=None, **_: [])
     data = app_data.AppData()
     assert data.VALID_APPS == list(OLD_DEFAULTS)
     for app in OLD_DEFAULTS:
@@ -856,6 +856,6 @@ def test_a_web_manifest_with_anything_extra_or_odd_is_refused(over, surfaces):
 
 def test_app_data_opens_no_store_for_a_browser_app(tmp_path, monkeypatch):
     write_app(tmp_path, WEB_ID, web_manifest())
-    monkeypatch.setattr(app_registry, "load_manifests", lambda path=None: [web_manifest()])
+    monkeypatch.setattr(app_registry, "load_manifests", lambda path=None, **_: [web_manifest()])
     valid, files, _defaults = app_data._manifest_tables()
     assert WEB_ID not in valid and WEB_ID not in files

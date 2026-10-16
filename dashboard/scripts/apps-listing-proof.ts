@@ -9,6 +9,7 @@ import { vaultStatus } from "../app/dashboard/developer/overviewWords";
 import type { BuildSelf, InstalledApp, VaultZone } from "../app/_lib/services/buildService";
 import { FOLDER_NO_ANSWER, folderReply } from "../app/_lib/moodBoard";
 import { appOnBuild } from "../app/_lib/surfaceMap";
+import { noAppsLine, readFirstApps, turnWords } from "../app/_lib/services/firstAppsService";
 
 let failed = 0;
 function check(name: string, ok: boolean): void {
@@ -101,6 +102,38 @@ check("no answer at all says so, plainly", folderReply(false, null) === FOLDER_N
       icon: "", surfaces: [], order: 10 } as InstalledApp],
   } as unknown as BuildSelf;
   check("a build with AlarmFlow reads it", appOnBuild(withAlarms, "alarmflow"));
+}
+
+// -- your first apps: off on a new bot, listed with a Turn on button --
+{
+  // A new bot: /build/self carries none of the five, so the Apps list and the
+  // sidebar have none of them; "Your first apps" lists all five, off.
+  const fresh = { configured: true, surfaces: { trimmed: false, allowlist: [] }, apps: [] } as unknown as BuildSelf;
+  const five = ["alarmflow", "calendar", "freshtable", "fitfam", "trivia"];
+  check("a new bot lists none of the five as apps", appsToList(fresh, null, null).length === 0);
+  check("a new bot does not read the five apps' data", five.every((id) => !appOnBuild(fresh, id)));
+  const listed = readFirstApps({
+    ok: true,
+    apps: five.map((id) => ({ id, name: id, blurb: `${id} line`, route: `/dashboard/apps/${id}`, icon: "", on: false })),
+  });
+  check("Your first apps lists all five", listed.map((a) => a.id).join(",") === five.join(","));
+  check("each starts off, with a Turn on button", listed.every((a) => !a.on && turnWords(a) === "Turn on"));
+  check("an app that is on says Turn off", turnWords({ ...listed[0], on: true }) === "Turn off");
+  check("a bad answer lists nothing", readFirstApps(null).length === 0 && readFirstApps({ apps: "x" }).length === 0);
+  check("an id that is not an app id is dropped", readFirstApps({ apps: [{ id: "../x", name: "x" }] }).length === 0);
+  // FitFam turned on: /build/self carries it, so it is listed and read.
+  const withFit = {
+    ...fresh,
+    apps: [{ id: "fitfam", name: "FitFam", blurb: "Workouts.", route: "/dashboard/apps/fitfam", icon: "", surfaces: [], order: 40 } as InstalledApp],
+  } as unknown as BuildSelf;
+  check("a first app turned on is listed", labels(appsToList(withFit, null, null)).join(",") === "FitFam");
+  check("a first app turned on is read", appOnBuild(withFit, "fitfam") && !appOnBuild(withFit, "trivia"));
+  check("an unpaired browser is told to pair, not to turn apps on below",
+    noAppsLine({ apps: [], unpaired: true }) === "No apps are on yet. Pair this device to turn on your first apps.");
+  check("a paired browser with first apps is pointed below",
+    noAppsLine({ apps: listed, unpaired: false }).includes("Turn on one of your first apps below"));
+  check("no answer never promises a section that is not drawn",
+    !noAppsLine(null).includes("below") && !noAppsLine({ apps: [], unpaired: false }).includes("below"));
 }
 
 const vault = (v: Partial<VaultZone>) => ({ initialized: true, ...v }) as VaultZone;

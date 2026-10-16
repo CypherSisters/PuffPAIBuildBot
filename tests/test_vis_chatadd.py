@@ -47,6 +47,11 @@ def world(monkeypatch, tmp_path):
     brain_tools.clear()
     brain_tools_builtin.reset_for_tests()
     w = sup.setup_chat(monkeypatch, tmp_path, brain=sup.Brain())
+    # A bot whose first apps are on: the chat offers a built-in app it has.
+    from conftest import turn_on_first_apps
+    from puffpai import app_registry
+    turn_on_first_apps(os.environ["PUFFPAI_STATE_DIR"])
+    app_registry.rescan()
     monkeypatch.setattr(api_server, "_LOOP_UNSUPPORTED", {})
     monkeypatch.setattr(api_server, "_grounding_context", lambda *a, **k: ("", []))
     monkeypatch.setattr(api_server, "_query_ollama_direct",

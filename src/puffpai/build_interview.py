@@ -161,7 +161,9 @@ def installed_catalog(catalog: Optional[dict[str, Any]] = None) -> dict[str, Any
 
     try:
         from puffpai import app_registry
-        manifests = app_registry.load_manifests()
+        # Off first apps too: the wizard suggests them, and her Yes turns
+        # them on (puffpai.first_apps).
+        manifests = app_registry.load_manifests(include_off=True)
     except Exception:  # pragma: no cover - defensive; the scan is quiet already
         return cat
 

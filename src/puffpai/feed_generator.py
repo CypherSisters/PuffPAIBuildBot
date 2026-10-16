@@ -753,7 +753,7 @@ def _slug(name: str) -> str:
 
 def _free_id(base: str) -> str:
     from puffpai import app_registry
-    taken = set(app_registry.installed_ids())
+    taken = set(app_registry.installed_ids(app_registry.load_manifests(include_off=True)))
     try:
         taken |= set(os.listdir(drafts_dir()))
     except OSError:
@@ -1315,7 +1315,7 @@ def install_draft(draft_id: str, *, allow: bool = False) -> dict[str, Any]:
     problem = app_registry.validate_manifest(manifest)
     if problem is not None:
         raise DraftError(f"That draft no longer passes its checks: {problem}")
-    if draft_id in app_registry.installed_ids():
+    if draft_id in app_registry.installed_ids(app_registry.load_manifests(include_off=True)):
         raise DraftError("An app with that name is already installed.")
     target_root = app_registry.user_apps_dir()
     target = app_registry.resolve_within(target_root, draft_id)

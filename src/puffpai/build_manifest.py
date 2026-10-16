@@ -493,6 +493,12 @@ def write_manifest(manifest: dict[str, Any], path: Optional[str] = None) -> str:
     """
     target = path or manifest_path()
     clean = sanitize_manifest(manifest)
+    if path is None:
+        # This bot's first apps on-set is settled from the build as it was,
+        # before the new one is written: a new bot's own page list is never
+        # read as an older bot's use (puffpai.first_apps).
+        from puffpai import first_apps
+        first_apps.settle()
     os.makedirs(os.path.dirname(target), exist_ok=True)
     with open(target, "w", encoding="utf-8") as fh:
         json.dump(clean, fh, indent=2)

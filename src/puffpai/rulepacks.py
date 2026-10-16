@@ -484,6 +484,11 @@ def _apply_app_manifests(
     from puffpai import app_registry
     manifests = app_registry.load_manifests(apps_dir)
     if not manifests:
+        # Apps on disk that are all turned off (puffpai.first_apps) are not a
+        # missing apps/ folder: their words stay out of the router.
+        if apps_dir is None and app_registry.load_manifests(include_off=True):
+            return [p if p.get("surface") != app_registry.APPS_SURFACE
+                    else {**p, "keywords": [], "examples": []} for p in packs]
         return packs
     vocabulary = app_registry.assemble_vocabulary(manifests)
     if not vocabulary["keywords"]:

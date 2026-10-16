@@ -1280,3 +1280,14 @@ def test_the_inline_unlock_is_on_every_build_view_and_uses_the_vault_route():
                 "_components/Jobs/JobsHome.tsx", "dashboard/apps/[id]/BotApps.tsx",
                 "dashboard/jobs/[id]/page.tsx"):
         assert "<VaultWaitUnlock" in (root / rel).read_text(encoding="utf-8"), rel
+
+def test_clean_hides_generated_secrets_in_env_and_compose_text():
+    from puffpai.security import toolsmith_cloud as TC
+    hexv = "0123456789abcdef" * 2
+    text = (f'APP_KEY="{hexv}"\nDB_PASS=EXAMPLE9\n'
+            "services:\n  db:\n    environment:\n      POSTGRES_PASSWORD: abc123\n"
+            "    ports:\n      - \"5432:5432\"\n")
+    out = TC.clean(text)
+    assert hexv not in out and "EXAMPLE9" not in out and "abc123" not in out
+    assert "POSTGRES_PASSWORD: " in out and '"5432:5432"' in out and "APP_KEY=" in out
+    assert TC.clean(out) == out

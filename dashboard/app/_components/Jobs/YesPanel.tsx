@@ -10,7 +10,9 @@
  * The Yes sends the list's sha, so it covers exactly the rows on screen.
  *
  * Books for the goal are one row, "Add to the knowledge base", one tickable
- * line each (a big one starts unticked and says its size).
+ * line each (a big one starts unticked and says its size). Her first apps
+ * that fit the goal are one row too, "Turn on: FitFam (one of your first
+ * apps)", turned on by the same Yes.
  *
  * Backend: POST /build/setup/<row>, POST /build/knowledge {id, ticked},
  * POST /build/yes {sha}.
@@ -22,7 +24,14 @@ import { useCallback, useEffect, useState, type CSSProperties } from "react";
 import Link from "next/link";
 import { chooseLocal, getToolsmithModel } from "../../_lib/services/toolsmithModelService";
 import { doSetupRow, sayBuildYes, tickKnowledge } from "../../_lib/services/buildService";
-import { openRows, type BuildStatus, type KnowledgeItem, type SetupRow, type SetupValue } from "../../_lib/buildJobs";
+import {
+  openRows,
+  type BuildStatus,
+  type FirstAppLine,
+  type KnowledgeItem,
+  type SetupRow,
+  type SetupValue,
+} from "../../_lib/buildJobs";
 import { SetupList, TeamLines, small } from "./BuildViews";
 
 const NO_ANSWER = "No answer from this computer.";
@@ -86,6 +95,7 @@ export default function YesPanel({
   const rows = given ? openRows(status.setup, true).filter((r) => !rowsFor || rowsFor(r)) : status.setup;
   const open = openRows(status.setup, given);
   const books = (status.knowledge ?? []).filter((k) => k.status !== "added");
+  const firstApps = status.firstApps ?? [];
   const building = status.running || status.jobs.some((j) => j.status === "building" || j.status === "queued");
 
   return (
@@ -98,6 +108,7 @@ export default function YesPanel({
       {!given && books.length ? (
         <KnowledgeRow items={books} busy={busy} onTick={(i) => void tick(i)} />
       ) : null}
+      {!given && firstApps.length ? <FirstAppsRow items={firstApps} /> : null}
       {!given ? (
         <div>
           <button
@@ -179,6 +190,23 @@ function ToolsmithModelLine() {
     <p style={{ ...small, margin: 0 }}>
       {line}. <Link href="/dashboard/settings">Change it in Settings</Link>
     </p>
+  );
+}
+
+/** Her first apps the Yes turns on: one plain line each. They are already on
+ *  this computer, so nothing is downloaded. */
+function FirstAppsRow({ items }: { items: FirstAppLine[] }) {
+  return (
+    <div style={{ border: "1px solid var(--line)", borderRadius: 10, padding: "10px 12px" }}>
+      <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "grid", gap: 4 }}>
+        {items.map((item) => (
+          <li key={item.id} style={{ fontSize: 14, fontWeight: 700, color: "var(--text)" }}>
+            {item.line}
+          </li>
+        ))}
+      </ul>
+      <p style={{ ...small, marginTop: 4 }}>Already on this computer. Your yes turns {items.length === 1 ? "it" : "them"} on.</p>
+    </div>
   );
 }
 

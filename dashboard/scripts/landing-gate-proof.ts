@@ -16,8 +16,8 @@
 // Copyright (c) Cypher Sisters. Apache-2.0 License.
 import { readFileSync } from "fs";
 import { join } from "path";
-import { hrefLoaded, widgetLoaded } from "../app/_lib/surfaceMap";
-import type { BuildSelf } from "../app/_lib/services/buildService";
+import { hrefLoaded, widgetLoaded, widgetTypeLoaded } from "../app/_lib/surfaceMap";
+import type { BuildSelf, InstalledApp } from "../app/_lib/services/buildService";
 
 /** The draggable tile ids in app/dashboard/page.tsx, in page order. Keep in
  *  step with that file: a tile added there and not here proves nothing. */
@@ -138,6 +138,32 @@ const checks: [string, boolean][] = [
     rendered({ ...SPACE, weather_on: true } as BuildSelf).tiles.length ===
       rendered(SPACE).tiles.length + 1],
 ];
+// Your first apps: a tile that shows an app's data shows only while that app
+// is on (/build/self `apps`), whatever the page list says.
+const APP_TILES = ["schedule", "reminders", "meals", "workout"];
+const app = (id: string) =>
+  ({ id, name: id, blurb: "", route: `/dashboard/apps/${id}`, icon: "", surfaces: [], order: 1 }) as InstalledApp;
+const NEW_BOT = { ...STOCK, apps: [] } as unknown as BuildSelf;
+const FIT_ON = { ...STOCK, apps: [app("fitfam")] } as unknown as BuildSelf;
+const TRIM_FIT = shape("Gym", true, ["daily.fitness"]);
+checks.push(
+  ["a new bot (untrimmed, no app on) shows none of the four app tiles",
+    APP_TILES.every((id) => !rendered(NEW_BOT).tiles.includes(id))],
+  ["a new bot still shows its other tiles",
+    rendered(NEW_BOT).tiles.includes("weather") && rendered(NEW_BOT).tiles.includes("recent-chats")],
+  ["FitFam turned on shows the Workout tile, and only that app tile",
+    rendered(FIT_ON).tiles.includes("workout") &&
+      ["schedule", "reminders", "meals"].every((id) => !rendered(FIT_ON).tiles.includes(id))],
+  ["FitFam turned off again hides the Workout tile, page list or not",
+    !rendered({ ...TRIM_FIT, apps: [] } as unknown as BuildSelf).tiles.includes("workout")],
+  ["FitFam on with its page on a trimmed build shows the Workout tile",
+    rendered({ ...TRIM_FIT, apps: [app("fitfam")] } as unknown as BuildSelf).tiles.includes("workout")],
+  ["the Calendar widget waits for Calendar to be on",
+    !widgetTypeLoaded(NEW_BOT, "calendar") &&
+      widgetTypeLoaded({ ...STOCK, apps: [app("calendar")] } as unknown as BuildSelf, "calendar")],
+  ["the Timers and Alarms widget waits for AlarmFlow to be on",
+    !widgetTypeLoaded(NEW_BOT, "alarmflow") && widgetTypeLoaded(NULL_BUILD, "alarmflow")],
+);
 console.log("\n--- fail-open assertions ---");
 for (const [label, ok] of checks) {
   console.log(`  ${ok ? "OK  " : "FAIL"} ${label}`);

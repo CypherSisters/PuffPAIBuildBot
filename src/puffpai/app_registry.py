@@ -67,6 +67,12 @@ PACK_MANIFEST_NAME = "pack.json"
 CONFIG_NAME = "app_manifests"
 PACK_CONFIG_NAME = "pack_manifests"
 
+#: A SHIPPED app whose manifest says ``"first_app": true`` is one of the bot's
+#: first apps: it ships turned off, and the owner (or the plan's Yes) turns it
+#: on per bot (:mod:`puffpai.first_apps`). An app in the owner's own folder is
+#: never off, whatever its manifest says.
+FIRST_APP_KEY = "first_app"
+
 
 # ---------------------------------------------------------------------------
 # bounds
@@ -457,6 +463,9 @@ def validate_manifest(
         if field in data and not _ascii_text(data.get(field), MAX_LABEL_LEN):
             return f"App '{app_id}' has an unusable '{field}'."
 
+    if FIRST_APP_KEY in data and not isinstance(data.get(FIRST_APP_KEY), bool):
+        return f"App '{app_id}' says '{FIRST_APP_KEY}' with something other than true or false."
+
     if "order" in data:
         order = data.get("order")
         if not isinstance(order, int) or isinstance(order, bool):
@@ -815,8 +824,18 @@ def _sort_key(manifest: dict[str, Any]) -> tuple[int, str]:
     return (order, str(manifest.get("id", "")))
 
 
-def load_manifests(path: Optional[str] = None) -> list[dict[str, Any]]:
-    """Every valid installed manifest, in consultation order.
+def is_first_app(manifest: dict[str, Any]) -> bool:
+    """True for a SHIPPED app that starts turned off (``"first_app": true``)."""
+    app_id = manifest.get("id") if isinstance(manifest, dict) else None
+    if (manifest.get(FIRST_APP_KEY) is not True or not valid_id(app_id)
+            or is_issued_id(app_id)):
+        return False
+    return os.path.isfile(os.path.join(_apps_dir(), str(app_id), MANIFEST_NAME))
+
+
+def load_manifests(path: Optional[str] = None, *,
+                   include_off: bool = False) -> list[dict[str, Any]]:
+    """Every valid installed manifest that is turned on, in consultation order.
 
     Installing is rescanning: this function IS the install mechanism. One bad
     manifest does not take the others down - it is recorded in
@@ -833,6 +852,12 @@ def load_manifests(path: Optional[str] = None) -> list[dict[str, Any]]:
     owner's :func:`user_apps_dir` - so a pip-installed build can be extended
     without editing the package. A named ``path`` scans exactly that folder and
     nothing else, which is what every caller that passes one means.
+
+    With no ``path``, a first app (:func:`is_first_app`) that this bot has not
+    turned on is left out: it is not in the sidebar, not offered to the brain
+    and not in the router's words. ``include_off=True`` keeps it, for the few
+    callers that must see every app on disk (the data layer, the Apps page's
+    "Your first apps" list, the wizard's suggestions, id collision checks).
     """
     from puffpai import build_interview
     known_surfaces = set(build_interview.surface_taxonomy())
@@ -854,6 +879,9 @@ def load_manifests(path: Optional[str] = None) -> list[dict[str, Any]]:
             reduced=False,
         )
         manifests = manifests[:MAX_INSTALLED_APPS]
+    if path is None and not include_off:
+        from puffpai import first_apps
+        manifests = first_apps.only_on(manifests)
     return manifests
 
 
@@ -1021,6 +1049,9 @@ def assemble_vocabulary(
 
 _cache_lock = threading.Lock()
 _cached_manifests: Optional[list[dict[str, Any]]] = None
+#: Every manifest on disk, turned on or not, keyed by the folders it was read
+#: from (a moved state folder reads again). Dropped by :func:`rescan`.
+_cached_all: Optional[tuple[tuple[str, ...], list[dict[str, Any]]]] = None
 
 
 def current_manifests() -> list[dict[str, Any]]:
@@ -1032,6 +1063,17 @@ def current_manifests() -> list[dict[str, Any]]:
         return list(_cached_manifests)
 
 
+def all_manifests() -> list[dict[str, Any]]:
+    """Every manifest on disk, first apps that are off included, scanning
+    once per set of folders and reusing until :func:`rescan`."""
+    global _cached_all
+    key = tuple(apps_dirs())
+    with _cache_lock:
+        if _cached_all is None or _cached_all[0] != key:
+            _cached_all = (key, load_manifests(include_off=True))
+        return list(_cached_all[1])
+
+
 def rescan() -> list[dict[str, Any]]:
     """Re-read ``apps/`` from disk. This IS the install/uninstall mechanism.
 
@@ -1039,9 +1081,10 @@ def rescan() -> list[dict[str, Any]]:
     runs, nothing is imported. An app whose folder is gone is gone from the
     answer on the next call, which is what makes removing a folder an uninstall.
     """
-    global _cached_manifests
+    global _cached_manifests, _cached_all
     with _cache_lock:
         _cached_manifests = None
+        _cached_all = None
     manifests = current_manifests()
     # A rescan IS install and uninstall, so it is also when an app's outside
     # service (its feed host) is registered or dropped. Every one starts shut.
@@ -1126,6 +1169,15 @@ def validate_pack(data: Any, installed: Optional[set] = None) -> Optional[str]:
     return None
 
 
+def _off_first_apps(have: dict) -> list[dict[str, Any]]:
+    """The first apps on disk that are not in *have* (turned off). Never raises."""
+    try:
+        return [m for m in load_manifests(include_off=True)
+                if is_first_app(m) and str(m.get("id")) not in have]
+    except Exception:  # noqa: BLE001
+        return []
+
+
 def load_packs(path: Optional[str] = None,
                manifests: Optional[list[dict[str, Any]]] = None,
                available: Optional[dict[str, Any]] = None) -> list[dict[str, Any]]:
@@ -1142,6 +1194,10 @@ def load_packs(path: Optional[str] = None,
     """
     app_manifests = manifests if manifests is not None else load_manifests()
     by_app_id = {str(m["id"]): m for m in app_manifests if valid_id(m.get("id"))}
+    # A first app that is turned off is still on disk: a pack naming it is not
+    # broken (puffpai.first_apps).
+    for first in _off_first_apps(by_app_id):
+        by_app_id.setdefault(str(first["id"]), first)
 
     def note(where: str, detail: str) -> None:
         config_health.record(PACK_CONFIG_NAME, where, config_health.INVALID,
@@ -1412,6 +1468,7 @@ __all__ = [
     "HOSTS_ENFORCEMENT_NOTICE",
     "REQUIREMENT_REASONS",
     "REQUIREMENT_UNVERIFIED",
+    "all_manifests",
     "app_dir",
     "assemble_vocabulary",
     "current_manifests",
@@ -1426,6 +1483,8 @@ __all__ = [
     "data_path",
     "default_data",
     "installed_ids",
+    "is_first_app",
+    "FIRST_APP_KEY",
     "load_manifests",
     "resolve_within",
     "ui_records",

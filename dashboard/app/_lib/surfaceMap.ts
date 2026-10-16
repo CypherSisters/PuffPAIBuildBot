@@ -251,11 +251,39 @@ export function withInstalledApps(
 }
 
 
+/**
+ * Home tiles that show one of the first apps' data, keyed by tile id: the tile
+ * shows only while one of these apps is on (in /build/self `apps`, the same
+ * list the sidebar reads). A first app that is off has no tile, whatever the
+ * page list says; its saved data stays. Unknown app list: fail open.
+ */
+export const APPS_BY_WIDGET: Record<string, string[]> = {
+  schedule: ["calendar"],
+  meals: ["freshtable"],
+  workout: ["fitfam"],
+  reminders: ["alarmflow", "calendar"],
+};
+
+/** The same for registry widgets, keyed by their `type`. */
+export const APPS_BY_WIDGET_TYPE: Record<string, string[]> = {
+  calendar: ["calendar"],
+  alarmflow: ["alarmflow"],
+};
+
+/** Is one of these apps on? Unknown app list (null build, older backend): yes. */
+function anyAppOn(build: BuildSelf | null, ids: string[] | undefined): boolean {
+  if (!ids) return true;
+  const apps = installedApps(build);
+  if (!apps) return true;
+  return ids.some((id) => apps.some((a) => a.id === id));
+}
+
 /** Does this build carry the widget with this id? Unmapped widgets always do. */
 export function widgetLoaded(build: BuildSelf | null, id: string): boolean {
   // The weather card is also where the town is typed, so ANY bot with the
   // weather forecast switched on carries it, whatever its page list says.
   if (id === "weather" && build?.weather_on === true) return true;
+  if (!anyAppOn(build, APPS_BY_WIDGET[id])) return false;
   const surfaces = SURFACES_BY_WIDGET[id];
   if (!surfaces) return true;
   return anySurfaceLoaded(build, surfaces);
@@ -282,6 +310,7 @@ export const SURFACES_BY_WIDGET_TYPE: Record<string, string[]> = {
 
 /** Does this build carry a registry widget of this type? Unmapped types do. */
 export function widgetTypeLoaded(build: BuildSelf | null, type: string): boolean {
+  if (!anyAppOn(build, APPS_BY_WIDGET_TYPE[type])) return false;
   const surfaces = SURFACES_BY_WIDGET_TYPE[type];
   if (!surfaces) return true;
   return anySurfaceLoaded(build, surfaces);

@@ -564,6 +564,11 @@ def _vault_wait_line(build: dict) -> str:
         return ""
 
 
+def _first_apps_public(build: dict) -> list[dict]:
+    from puffpai import first_apps
+    return first_apps.public(build)
+
+
 def status_view() -> dict:
     try:
         build = _unstick(_build())
@@ -584,6 +589,8 @@ def status_view() -> dict:
             "dropped": _public_dropped(build),
             # Books for the goal on the same Yes, each tickable (build.knowledge).
             "knowledge": knowledge_mod.public(build),
+            # Her first apps that fit the goal, turned on by the same Yes.
+            "first_apps": _first_apps_public(build),
             "running": _running.is_set(), "lines": recent_lines(), "words": S.WORDS,
             "bot": _bot_name(),
             # She picked Anthropic in the wizard, its key is not saved: the
@@ -908,10 +915,17 @@ def build_yes():
         started = enqueue(todo)
     # The ticked knowledge lines download beside the jobs, one at a time.
     knowledge_mod.start_downloads()
+    # Her first apps the list named: turned on now, on this computer only.
+    from puffpai import first_apps
+    turned_on = first_apps.turn_on_listed(build)
     off = [s for s in sites if s["state"] == yes_mod.SITE_NOT_ON]
     line = (_hold_line() if held else
             f"Building {len(todo)} job{'s' if len(todo) != 1 else ''} now."
             if todo else "Nothing is waiting to be built.")
+    if turned_on and not held:
+        line += " Turned on: " + ", ".join(
+            i.get("name") or i["id"] for i in first_apps.listed(build)
+            if i["id"] in turned_on) + "."
     if off:
         line += f" {len(off)} outside site{'s are' if len(off) != 1 else ' is'} not on yet; " \
                 f"{'they stay' if len(off) != 1 else 'it stays'} on the list."

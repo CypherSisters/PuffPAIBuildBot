@@ -1,7 +1,7 @@
 """The product agrees on the name of its own security agent.
 
 `README.md:50` names Drawbridge and captions the screenshot "Drawbridge holding
-the veto"; the agents screenshot that used to sit above that caption
+the veto"; the shipped `docs/images/agents.png` directly above that caption
 reads "Reviewer Sentinel", a card titled "Sentinel", and a badge `sentinel`.
 A stranger catches it without cloning anything.
 

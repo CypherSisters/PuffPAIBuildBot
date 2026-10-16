@@ -169,7 +169,9 @@ def _manifest_tables():
     from puffpai import app_registry
 
     defaults: dict = {}
-    for manifest in app_registry.load_manifests():
+    # Off first apps too: the data layer keeps every app's document where it
+    # is, and the routes answer "turned off" (puffpai.first_apps).
+    for manifest in app_registry.load_manifests(include_off=True):
         app_id = str(manifest["id"])
         try:
             app_registry.data_path(app_id, data_dir_for(app_id))

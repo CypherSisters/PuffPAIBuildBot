@@ -696,9 +696,13 @@ REDACTION_MARKERS: dict[str, str] = {
 }
 # Stands in for a marker while scanning; never a character people type.
 _MARKER_FILL = "\x00"
+#: The key detector's mark (``secret_detector.HELD``) is a marker too: text
+#: cleaned for a cloud model runs the key detector first, then this scan, and
+#: "PASSWORD: [held in vault]" must not become "[password kept private] in vault]".
+_KEY_HELD_MARK = "[held in vault]"
 _MARKER_RE = re.compile(
-    "|".join(re.escape(m) for m in sorted(REDACTION_MARKERS.values(),
-                                          key=len, reverse=True)))
+    "|".join(re.escape(m) for m in sorted(list(REDACTION_MARKERS.values())
+                                          + [_KEY_HELD_MARK], key=len, reverse=True)))
 
 # Replacement order: the most specific shapes first, so a phone number inside
 # an address line or a date inside a DOB sentence is replaced whole.

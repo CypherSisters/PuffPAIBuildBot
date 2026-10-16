@@ -296,6 +296,9 @@ def plan(goal: str, ctx: Optional[dict] = None) -> dict:
             build["knowledge"] = [i for i in old.get("knowledge") or []
                                   if i.get("status") == knowledge_mod.ADDED]
     knowledge_mod.plan(build, jobs, goal)
+    # Her first apps that fit the goal, turned on by the same one Yes.
+    from puffpai import first_apps
+    first_apps.plan(build, goal)
     yes_mod.reset(build)
     setup_mod.apply_statuses(build, only_open=False)
     if ctx["save"]:

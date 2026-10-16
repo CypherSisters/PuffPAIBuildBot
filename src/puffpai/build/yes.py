@@ -72,6 +72,10 @@ def sha(build: dict) -> str:
             "setup": sorted((_row_print(r) for r in build.get("setup") or []
                              if not r.get("also")),
                             key=lambda x: json.dumps(x, sort_keys=True, default=str))}
+    if build.get("first_apps"):
+        # Her first apps the list turns on (puffpai.first_apps).
+        body["first_apps"] = sorted(str(i.get("id")) for i in build["first_apps"]
+                                    if isinstance(i, dict))
     if build.get("knowledge"):
         # The knowledge lines she ticked (build.knowledge): a change is a new list.
         body["knowledge"] = sorted(str(i.get("id")) for i in build["knowledge"]
@@ -91,6 +95,12 @@ def _books(build: dict) -> list[str]:
             and i.get("ticked") and i.get("status") != "added"]
 
 
+def _first_apps(build: dict) -> list[str]:
+    """The first apps her Yes turns on, as shown ("Turn on: FitFam (...)")."""
+    from puffpai import first_apps
+    return first_apps.lines(build)
+
+
 SENTENCE_MAX = 600
 
 
@@ -103,7 +113,8 @@ def sentence(build: dict) -> str:
                         if parts.get((j.get("pick") or {}).get("ref"))
                         and (j.get("pick") or {}).get("class") not in S.ANSWER_CLASSES else "")
                      for j in _open_jobs(build)) or "none"
-    rows = "; ".join(r["label"] for r in build.get("setup") or []) or "nothing"
+    rows = "; ".join([r["label"] for r in build.get("setup") or []]
+                     + _first_apps(build)) or "nothing"
     books = "; ".join(_books(build))
     head = f"Build all of this? Add to the knowledge base: {books}." if books         else "Build all of this?"
     rest = f" Jobs: {jobs}. Setup: {rows}. {WRITES}"
@@ -140,7 +151,7 @@ def give(device_id: str, *, seen_sha: str = "") -> dict:
     if not consent_tickets.usable_device(device_id):
         raise YesError("Open this from a browser that is paired with your bot.", 403)
     build = S.load_build()
-    if not _open_jobs(build) and not _books(build):
+    if not _open_jobs(build) and not _books(build) and not _first_apps(build):
         raise YesError("There is nothing to build yet.", 404)
     digest = sha(build)
     if seen_sha and seen_sha != digest:

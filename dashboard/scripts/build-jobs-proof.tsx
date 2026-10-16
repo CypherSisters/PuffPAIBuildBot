@@ -21,6 +21,7 @@ import {
   SETUP_KINDS,
   feedThingId,
   handoffTitle,
+  hasBuildable,
   howLine,
   jobForThing,
   openRows,
@@ -335,6 +336,20 @@ check("the rail drops live cards the build placed, keeps the rest",
 check("the bot's own page keeps its rail entry even if a job names it",
   (withoutPlacedFeeds([{ id: "stargazerbot", own: true }], readBuildStatus({ jobs: [{ id: "a", ingredients: ["app:stargazerbot"] }] })) || []).length === 1);
 check("the rail is unchanged without an answer", withoutPlacedFeeds(apps, null) === apps);
+
+// Her first apps on the plan's one Yes (build/api.py first_apps).
+{
+  const got = readBuildStatus({
+    first_apps: [
+      { id: "fitfam", name: "FitFam", line: "Turn on: FitFam (one of your first apps)" },
+      { id: "", name: "x", line: "dropped" },
+    ],
+  });
+  check("the Yes lists her first app to turn on",
+    (got.firstApps ?? []).map((a) => a.line).join("|") === "Turn on: FitFam (one of your first apps)");
+  check("a plan that only turns on a first app is still something to say yes to", hasBuildable(got));
+  check("no first apps: nothing listed", (readBuildStatus({}).firstApps ?? []).length === 0);
+}
 
 console.log(failed ? `${failed} failed` : "all passed");
 process.exit(failed ? 1 : 0);

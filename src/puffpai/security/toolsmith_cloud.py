@@ -978,7 +978,7 @@ def clean(text: Any) -> str:
         return hit
     try:
         from puffpai.security import secret_detector
-        out = secret_detector.redact_only(text)
+        out = secret_detector.redact_only(text, anywhere=True)
         clf = _classifier_box.get("c")
         if clf is None:
             from puffpai.security.data_classifier import DataClassifier

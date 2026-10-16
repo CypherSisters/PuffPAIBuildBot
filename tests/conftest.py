@@ -24,6 +24,13 @@ import pytest
 # Each is set only if the environment has not already chosen a value.
 os.environ.setdefault(
     "PUFFPAI_STATE_DIR", tempfile.mkdtemp(prefix="puffpai_test_state_"))
+# A bot with every first app on (see turn_on_first_apps below), from the very
+# first import: the router reads the apps' words once, at import time.
+os.makedirs(os.environ["PUFFPAI_STATE_DIR"], exist_ok=True)
+if not os.path.exists(os.path.join(os.environ["PUFFPAI_STATE_DIR"], "apps_on.json")):
+    with open(os.path.join(os.environ["PUFFPAI_STATE_DIR"], "apps_on.json"), "w",
+              encoding="utf-8") as _fh:
+        _fh.write('{"on": ["alarmflow", "calendar", "fitfam", "freshtable", "trivia"]}')
 # The pairing code is per build now (<state>/pairing/pairing.json), but a
 # test must never find, claim or rotate the checkout's own
 # dashboard/data/pairing.json either. Tests about the per-build rules clear
@@ -256,6 +263,35 @@ def keyring_entries(request):
     return entries
 
 
+#: The five shipped apps are first apps: off on a new bot, turned on per bot
+#: (puffpai.first_apps). The older tests are about those apps working, so the
+#: pinned test state is a bot that has all five on; the first-apps tests start
+#: from a state with no on-set (tests/test_first_apps.py).
+FIRST_APPS = ("alarmflow", "calendar", "fitfam", "freshtable", "trivia")
+
+
+def turn_on_first_apps(state_dir: str) -> None:
+    """Make *state_dir* a bot that has every first app turned on."""
+    import json
+    os.makedirs(state_dir, exist_ok=True)
+    with open(os.path.join(state_dir, "apps_on.json"), "w", encoding="utf-8") as fh:
+        json.dump({"on": list(FIRST_APPS)}, fh)
+
+
+@pytest.fixture(autouse=True)
+def _router_app_words_kept():
+    """Turning a first app on or off reloads the router's app words
+    (router.reload_app_words). Each test gets back the words it started with,
+    so one test's bot does not route the next test's sentences."""
+    router = sys.modules.get("puffpai.router")
+    saved = ({n: getattr(router, n) for n in ("_PACKS", "_APP_KEYWORDS", "_ALL_AGENT_KEYWORDS")}
+             if router is not None else None)
+    yield
+    if router is not None and saved is not None:
+        for name, value in saved.items():
+            setattr(router, name, value)
+
+
 @pytest.fixture(autouse=True)
 def _pin_state_roots(tmp_path_factory, monkeypatch, _no_real_ollama):
     """Pin the state, data and config roots at tmp; forbid the real one.
@@ -272,6 +308,7 @@ def _pin_state_roots(tmp_path_factory, monkeypatch, _no_real_ollama):
     data = root / "data"
     state.mkdir(parents=True, exist_ok=True)
     data.mkdir(parents=True, exist_ok=True)
+    turn_on_first_apps(str(state))
     monkeypatch.setenv("PUFFPAI_STATE_DIR", str(state))
     monkeypatch.setenv("PUFFPAI_DATA_DIR", str(data))
 

@@ -7,6 +7,7 @@
   "author": "Cypher Sisters",
   "license": "Apache-2.0",
   "order": 30,
+  "first_app": true,
 
   "surfaces": ["daily.kitchen"],
 

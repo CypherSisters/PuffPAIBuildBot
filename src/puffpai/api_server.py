@@ -6573,6 +6573,19 @@ def _valid_apps() -> list[str]:
         return []
 
 
+def _turned_off(name):
+    """A plain "turned off" answer for a first app this bot has not turned
+    on (:mod:`puffpai.first_apps`), or None. Its saved data is untouched."""
+    try:
+        from puffpai import first_apps
+        if first_apps.is_off(name):
+            return jsonify({'error': first_apps.turned_off_line(name),
+                            'turned_off': True}), 409
+    except Exception:  # noqa: BLE001 - never a 500 over this check
+        logger.warning("first apps check failed for %s", name)
+    return None
+
+
 
 
 #: Requirement probes are cached for a minute. They are cheap but not free,
@@ -7001,6 +7014,9 @@ def app_get_data(name):
 
     if name not in _valid_apps():
         return jsonify({'error': f'Unknown app: {name}'}), 404
+    off = _turned_off(name)
+    if off:
+        return off
 
     ad = _get_app_data()
     try:
@@ -7019,6 +7035,9 @@ def app_put_data(name):
     """Replace full JSON data for an app — HTML apps push state here."""
     if name not in _valid_apps():
         return jsonify({'error': f'Unknown app: {name}'}), 404
+    off = _turned_off(name)
+    if off:
+        return off
 
     from puffpai.app_data import AppDataUnreadable
 
@@ -7081,6 +7100,9 @@ def app_action(name):
 
     if name not in _valid_apps():
         return jsonify({'error': f'Unknown app: {name}'}), 404
+    off = _turned_off(name)
+    if off:
+        return off
 
     body = request.json or {}
     action = body.get('action')
@@ -7118,6 +7140,9 @@ def app_updated(name):
     """Lightweight poll — returns last_updated timestamp for change detection."""
     if name not in _valid_apps():
         return jsonify({'error': f'Unknown app: {name}'}), 404
+    off = _turned_off(name)
+    if off:
+        return off
 
     from puffpai.app_data import AppDataUnreadable
 
@@ -13630,6 +13655,15 @@ app.register_blueprint(_add_more_api.bp)
 from puffpai import things_api as _things_api  # noqa: E402
 
 app.register_blueprint(_things_api.bp)
+
+# ── Your first apps (puffpai.first_apps_api) ────────────────────────────────
+# The apps BuildBot ships with, off until she turns them on. Same API-key
+# hook, and a paired device for every route. Local only: no ticket.
+from puffpai import first_apps_api as _first_apps_api  # noqa: E402
+
+app.register_blueprint(_first_apps_api.bp)
+# A bot made before first apps keeps the ones it already uses, kept once here.
+_first_apps_api.first_apps.settle()
 
 # ── Fix it now (puffpai.fix_api) ────────────────────────────────────────────
 # The chat's one-tap cards: switch an outside service on (the same consent

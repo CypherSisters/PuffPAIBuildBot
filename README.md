@@ -144,6 +144,9 @@ what is still learning, what is still missing, and your first pairing code.
 Books learn in the background once your bot is running. A small book can
 answer questions within a minute or two. You can chat while the rest learns.
 
+![The one plan, in the browser: the brain, the daily update it can send, and the books it could learn, each with its size and a checkbox.](docs/images/wizard-summary.png)
+*The plan for a garden bot, in the browser. The terminal shows the same plan.*
+
 A real run, start to finish, is in
 [docs/GETTING_STARTED.md](docs/GETTING_STARTED.md).
 
@@ -161,6 +164,9 @@ what it is still learning. Ask "what can you do?" and it lists what it really
 has. If you ask for something it has no way to do, it says it is **not
 connected yet** instead of making something up. It may offer a daily update;
 say yes or no.
+
+![The home page of a new garden bot: a chat box, three app jobs waiting for a yes, the weather, and its first book.](docs/images/dashboard-home.png)
+*A new build's home page, a few minutes after setup. The apps it found wait for your yes.*
 
 ### Adding more later
 
@@ -213,6 +219,9 @@ vault. Your bot only searches when you ask it to.
 - **One bot, one set of keys.** Every bot on one computer has its own API key
   and its own pairing code. A device paired with one bot is not paired with
   another.
+
+![What leaves your computer: each outside service with what it is for, what it sends, where it goes, and a switch.](docs/images/outside.png)
+*What leaves your computer, on the garden bot. Weather is on because the plan included it; the rest wait for your switch.*
 
 ---
 
@@ -452,6 +461,34 @@ names. `puffpai setup --help` lists every option.
 **[docs/GETTING_STARTED.md](docs/GETTING_STARTED.md)** walks through all of it
 with a real wizard run, and **[docs/TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md)**
 covers the common snags.
+
+---
+
+## What it looks like
+
+Shot on a fresh garden bot built with this code, a few minutes after setup.
+Nothing personal is in them.
+
+![The pairing screen: a device asks for the code from the computer running your bot.](docs/images/pair.png)
+*Every device has to be let in with a code from the computer running BuildBot.*
+
+![The one plan the wizard shows, in the browser.](docs/images/wizard-summary.png)
+*The wizard's one plan. "Looks good" builds exactly this.*
+
+![The home page of a new garden bot.](docs/images/dashboard-home.png)
+*Home: chat, the apps waiting for your yes, the weather, and what it knows.*
+
+![What leaves your computer: every outside service and its switch.](docs/images/outside.png)
+*Every outside service, what it sends, and a switch.*
+
+![The agent team page: the message bus with Drawbridge as reviewer, and six of the seven specialist cards.](docs/images/agents.png)
+*Seven specialists and the message bus between them.*
+
+![The Knowledge page: a Wikipedia garden book learning in the background, and the other books the wizard suggested.](docs/images/knowledge.png)
+*The library while its first book is still learning.*
+
+![The vault, locked, asking for a PIN.](docs/images/vault.png)
+*The vault stays locked until you type the PIN.*
 
 ---
 

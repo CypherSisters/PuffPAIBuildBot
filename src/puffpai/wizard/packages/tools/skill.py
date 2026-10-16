@@ -120,7 +120,8 @@ def _declared(ctx) -> list[dict]:
 def _installed_apps() -> set[str]:
     try:
         from puffpai import app_registry
-        return {str(m.get("id") or "") for m in app_registry.load_manifests()}
+        # A first app that is off counts: the plan's Yes turns it on.
+        return {str(m.get("id") or "") for m in app_registry.load_manifests(include_off=True)}
     except Exception:  # noqa: BLE001 - no app scan is "nothing here does this"
         return set()
 
