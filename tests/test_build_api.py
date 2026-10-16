@@ -732,6 +732,38 @@ def test_either_button_releases_the_held_build(client, no_sites, wished, monkeyp
     assert client.get("/build/status").get_json()["toolsmith_hold"] == ""
 
 
+@pytest.fixture
+def old_yes(monkeypatch):
+    """Her Anthropic setting from before the consent sentence changed (2026-10-16)."""
+    from puffpai import fsutil
+    from puffpai.security import toolsmith_cloud as tc
+    monkeypatch.setattr(tc, "_resumers", [])
+    fsutil.atomic_write_json(tc._path(tc.SETTING_FILE), {  # noqa: SLF001
+        "schema": tc.SCHEMA, "where": "cloud", "provider": "anthropic",
+        "model": "claude-opus-5-5", "consent": {"text": "0123456789abcdef"}})
+    yield tc
+    try:
+        os.unlink(tc._path(tc.SETTING_FILE))         # noqa: SLF001
+    except OSError:
+        pass
+
+
+def test_a_changed_consent_sentence_holds_the_build_and_says_why(client, no_sites, old_yes):
+    run_goal("RecipeBot")
+    tc = old_yes
+    assert not tc.in_use() and tc.consent_outdated()
+    assert client.get("/build/status").get_json()["toolsmith_hold"] == tc.RECONSENT_HOLD_LINE
+    body = client.post("/build/yes", json={"sha": _shown_sha(client)}).get_json()
+    assert body["held"] is True and body["line"] == tc.RECONSENT_HOLD_LINE
+    assert client.spawned == [] and api.queued() == []
+    # "Use this computer": the old yes ends and the held jobs go on.
+    tc.use_local()
+    assert not tc.held()
+    api._resume_vault_waits()                       # noqa: SLF001 - the release callback
+    assert client.spawned == [True] and len(api.queued()) == 2
+    assert client.get("/build/status").get_json()["toolsmith_hold"] == ""
+
+
 def test_a_queued_job_never_starts_toolsmith_while_held(state, wished, monkeypatch):
     run_goal("RecipeBot")
     tc = wished

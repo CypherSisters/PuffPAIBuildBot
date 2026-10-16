@@ -110,12 +110,20 @@ PROVIDERS: dict[str, dict[str, Any]] = {
                   "key_id": "anthropic", "models": MODELS, "default": DEFAULT_MODEL},
 }
 
-#: The consent sentence, shown in Settings and minted into her ticket.
-CONSENT_TEXT = ("When Toolsmith installs an app, it sends Anthropic the job's name and "
-                "what you asked it to do, that app's README and file list, and the "
-                "commands it runs with their output. Keys and personal details it "
-                "spots are taken out first. It never sends your files, chats or "
-                "vault. Everything else in BuildBot stays on this computer.")
+#: The consent sentence, shown in Settings and minted into her ticket. It must
+#: stay true of what is sent: the finding asks (build/apps.py search_words and
+#: rank), the install and make loop (build/toolsmith_run.py task, download,
+#: read_docs, terminal, server_log, read_page), a folder of her own code read
+#: like any app, and :func:`clean` before anything leaves. Changing it asks
+#: every owner on Anthropic to agree again (read_setting, RECONSENT_LINE).
+CONSENT_TEXT = ("When Toolsmith finds and installs apps, it sends Anthropic your goal "
+                "and your bot's jobs, the names and descriptions of the apps it found, "
+                "each app's README, docs and file list, the start of its setup files, "
+                "the commands it runs with their output, and what the app's pages "
+                "show. If you point it at a folder of your own, it reads that folder "
+                "the same way. Keys and personal details it spots are taken out first. "
+                "It never sends your chats or your vault. Everything else in BuildBot "
+                "stays on this computer.")
 
 KEY_LINE = "Toolsmith's Anthropic key was not accepted. Check it in Settings."
 OFFLINE_LINE = ("Toolsmith could not reach Anthropic, so it uses the model on this "
@@ -732,6 +740,24 @@ def read_setting() -> dict:
                         "text": consent["text"]}}
 
 
+def consent_outdated() -> bool:
+    """She chose Anthropic and said yes to an EARLIER consent sentence: the
+    setting reads as local (:func:`read_setting`) until she reads the new
+    sentence and picks Anthropic again. Never migrated for her; this only
+    lets the pages say so instead of switching quietly."""
+    from puffpai import fsutil
+    try:
+        data = fsutil.read_json(_path(SETTING_FILE), default=None)
+    except Exception:  # noqa: BLE001 - unreadable: nothing to say
+        return False
+    if not isinstance(data, dict) or data.get("schema") != SCHEMA \
+            or data.get("where") != "cloud":
+        return False
+    consent = data.get("consent")
+    return (isinstance(consent, dict) and isinstance(consent.get("text"), str)
+            and consent["text"] != _sha(CONSENT_TEXT)[:16])
+
+
 def _write(setting: dict) -> None:
     from puffpai import fsutil
     fsutil.atomic_write_json(_path(SETTING_FILE), {"schema": SCHEMA, **setting,
@@ -756,6 +782,13 @@ BEFORE_SETUP_LINE = ("Your key can be saved once you approve your plan. Go on wi
                      "BuildBot asks for it before Toolsmith's first install.")
 HOLD_LINE = ("You picked Anthropic for Toolsmith, but its key isn't saved yet. "
              "Save it in Settings, or choose This computer.")
+#: Said where Toolsmith's model shows while her yes was to an earlier sentence.
+RECONSENT_LINE = ("What Toolsmith sends to Anthropic now reads differently. Read it "
+                  "and pick Anthropic again to keep using it.")
+#: The build holds with this line in that case (no quiet switch to this computer).
+RECONSENT_HOLD_LINE = ("What Toolsmith sends to Anthropic now reads differently. Read "
+                       "it in Settings and pick Anthropic again to keep using it, or "
+                       "choose This computer.")
 WISH_FILE = "toolsmith_wish.json"
 WISH_SCHEMA = "puffpai_toolsmith_wish/v1"
 
@@ -803,14 +836,23 @@ def wished_cloud() -> bool:
 
 
 def held() -> bool:
-    """True while she picked Anthropic in the wizard but Toolsmith is still on
-    this computer: the build does not start Toolsmith (no silent local build)."""
-    return wished_cloud() and not in_use()
+    """True while she picked Anthropic (in the wizard, or earlier under an
+    older consent sentence) but Toolsmith is still on this computer: the
+    build does not start Toolsmith (no silent local build)."""
+    return (wished_cloud() or consent_outdated()) and not in_use()
 
 
-def _wish_met() -> None:
-    """Saved, or she chose this computer: the wish is done and held jobs go on."""
-    if clear_wish():
+def hold_line() -> str:
+    """Why the build holds, in her words; "" when it does not."""
+    if not held():
+        return ""
+    return RECONSENT_HOLD_LINE if consent_outdated() else HOLD_LINE
+
+
+def _wish_met(released: bool = False) -> None:
+    """Saved, or she chose this computer: the wish (or the hold for an older
+    consent sentence, *released*) is done and held jobs go on."""
+    if clear_wish() or released:
         for cb in list(_resumers):
             try:
                 threading.Thread(target=cb, name="toolsmith-release", daemon=True).start()
@@ -823,21 +865,28 @@ def status() -> dict:
     st = read_setting()
     usage = read_usage()
     model = st.get("model") or st.get("last_model") or DEFAULT_MODEL
+    again = st["where"] != "cloud" and consent_outdated()
+    key_state = _key_state()
+    line = ("Toolsmith's model: Anthropic " + MODELS[model]["name"]
+            if st["where"] == "cloud" else "Toolsmith's model: on this computer")
+    if again:
+        line += ". " + RECONSENT_LINE
+        if key_state not in ("", "missing"):
+            line += " Your key is still in your vault."
     return {"where": st["where"], "provider": st.get("provider") or "anthropic",
             "model": model,
             "models": [{"id": mid, "name": row["name"], "in": row["in"],
                         "out": row["out"], "cache_read": row["cache_read"]}
                        for mid, row in MODELS.items()],
-            "consent_text": CONSENT_TEXT, "key_state": _key_state(),
+            "consent_text": CONSENT_TEXT, "key_state": key_state,
+            "consent_again": again,
             "spent_usd": round(float(usage.get("total_usd") or 0.0), 4),
             "spent_line": spent_line(usage),
             "lease_line": lease_line(),
             "keep": keep_choice(), "keep_question": KEEP_QUESTION,
-            "hold_line": HOLD_LINE if held() else "",
+            "hold_line": hold_line(),
             "keep_choices": [{"id": k, "name": KEEP_LABELS[k]} for k in KEEP_CHOICES],
-            "line":("Toolsmith's model: Anthropic " + MODELS[model]["name"]
-                     if st["where"] == "cloud" else
-                     "Toolsmith's model: on this computer")}
+            "line": line}
 
 
 def spent_line(usage: Optional[dict] = None) -> str:
@@ -857,6 +906,7 @@ def choose_cloud(model: Any, device: str, *, key: Any = None, by: str = "owner",
     mid = model if isinstance(model, str) and model in MODELS else None
     if mid is None:
         raise CloudError("model", "Pick Opus 5.5 or Sonnet 5.5.", 400)
+    again = consent_outdated()         # her yes was to an earlier sentence: held jobs wait
     if key not in (None, ""):
         try:
             keys.check_shape("anthropic", key)       # nothing is sent if this fails
@@ -905,7 +955,7 @@ def choose_cloud(model: Any, device: str, *, key: Any = None, by: str = "owner",
             _take(vault, "saved")
         except Exception as exc:  # noqa: BLE001 - a run or an unlock takes it later
             logger.info("toolsmith lease not taken at key save: %s", type(exc).__name__)
-    _wish_met()
+    _wish_met(again)
     return status()
 
 
@@ -931,6 +981,7 @@ def use_local(*, by: str = "owner") -> dict:
     key stays in the vault until she removes it (Settings, Remove key)."""
     from puffpai import outside_services
     with _lock:
+        again = consent_outdated()
         prior = read_setting()
         _write({"where": "local", "model": prior.get("model") or DEFAULT_MODEL})
     drop_lease("off")
@@ -939,7 +990,7 @@ def use_local(*, by: str = "owner") -> dict:
     except Exception as exc:  # noqa: BLE001 - the setting above already says local
         logger.info("toolsmith cloud switch not closed: %s", type(exc).__name__)
     _audit("toolsmith_cloud_off", "local", by)
-    _wish_met()                    # "Use this computer": her choice, the hold ends
+    _wish_met(again)               # "Use this computer": her choice, the hold ends
     return status()
 
 
@@ -1251,4 +1302,5 @@ __all__ = ["CONSENT_TEXT", "CloudError", "CloudOffline", "DEFAULT_MODEL", "KEY_L
            "take_for_yes", "ask_json", "FIND_CALLERS", "HOLD_LINE", "VAULT_LOCKED_LINE",
            "BEFORE_SETUP_LINE", "clear_wish", "held", "record_wish", "wished_cloud",
            "key_saved", "set_wizard_probe", "take_for_plan", "vault_wait_line",
-           "wizard_touched"]
+           "wizard_touched", "RECONSENT_LINE", "RECONSENT_HOLD_LINE", "consent_outdated",
+           "hold_line"]

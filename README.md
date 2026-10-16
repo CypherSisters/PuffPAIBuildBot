@@ -269,15 +269,14 @@ What that means:
 
 - **Only Toolsmith.** The brain and the other six agents always run on your
   computer.
-- **What is sent.** When Toolsmith installs an app, it sends Anthropic the
-  job's name and what you asked it to do, that app's README and file list, and
-  the commands it runs with their output. To find and pick apps it also sends
-  your goal, your bot's jobs, and the public names, descriptions, stars and
-  topics of the apps it found. Keys and personal details it spots are taken
-  out first. It never sends your chats or vault. If you ask it to use a
-  project of your own, it reads that folder like any app: its README and file
-  list, the start of its setup files, and the commands it runs there with
-  their output.
+- **What is sent.** When Toolsmith finds and installs apps, it sends Anthropic
+  your goal and your bot's jobs, the public names, descriptions, stars and
+  topics of the apps it found, each app's README, docs and file list, the
+  start of its setup files, the commands it runs with their output, and what
+  the app's pages show. Keys and personal details it spots are taken out
+  first. It never sends your chats or vault. If you ask it to use a project of
+  your own, it reads that folder like any app: its README and file list, the
+  start of its setup files, and the commands it runs there with their output.
 - **The key stays ready while it builds.** The vault locks itself after 5
   minutes without use. Toolsmith keeps its key in memory only, never on disk, while it
   works and for 1 hour after (Settings: 1 hour, 4 hours, or until you lock

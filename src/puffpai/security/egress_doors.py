@@ -479,11 +479,14 @@ DOORS: tuple[Door, ...] = (
         hosts=("api.anthropic.com",),
         purpose="Toolsmith's cloud model, when you choose Anthropic for it in "
                 "Settings: it works out how to install and start an app.",
-        data_sent="When Toolsmith installs an app: that app's README, its file "
-                  "list, and the commands Toolsmith runs with their output, after "
-                  "keys and private details are taken out, with your Anthropic "
-                  "key (only to api.anthropic.com) and your internet address. "
-                  "Never your files, chats or vault.",
+        data_sent="When Toolsmith finds and installs apps: your goal and your "
+                  "bot's jobs, the names and descriptions of the apps it found, "
+                  "each app's README, docs and file list, the start of its setup "
+                  "files, the commands it runs with their output, and what the "
+                  "app's pages show (a folder of your own is read the same way), "
+                  "after keys and private details are taken out, with your "
+                  "Anthropic key (only to api.anthropic.com) and your internet "
+                  "address. Never your chats or vault.",
         config_flag="toolsmith_cloud",
         env_var="PUFFPAI_EGRESS_TOOLSMITH_CLOUD",
         posture_switch=None,

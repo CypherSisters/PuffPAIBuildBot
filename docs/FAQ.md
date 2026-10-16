@@ -729,26 +729,34 @@ you add the key in Settings.
 Nothing, unless you chose Anthropic. When you choose it, you agree to this
 consent sentence, word for word:
 
-> "When Toolsmith installs an app, it sends Anthropic the job's name and what
-> you asked it to do, that app's README and file list, and the commands it
-> runs with their output. Keys and personal details it spots are taken out
-> first. It never sends your files, chats or vault. Everything else in
-> BuildBot stays on this computer."
+> "When Toolsmith finds and installs apps, it sends Anthropic your goal and
+> your bot's jobs, the names and descriptions of the apps it found, each app's
+> README, docs and file list, the start of its setup files, the commands it
+> runs with their output, and what the app's pages show. If you point it at a
+> folder of your own, it reads that folder the same way. Keys and personal
+> details it spots are taken out first. It never sends your chats or your
+> vault. Everything else in BuildBot stays on this computer."
 
-The sentence is shorter than what can really be sent. The full list:
+In more detail:
 
 - **Finding and picking apps** (before any install): your goal, each job's
   name and what it does, and the public names, descriptions, stars, topics
   and language of the projects it found.
-- **Installing an app:** the job's name and what you asked for, the app's
-  README, its file list, the first lines of its run files (`package.json`,
-  `pyproject.toml`, the compose file), pages of its own docs it reads, and
-  the commands it runs with their output.
-- **A folder of your own code:** the same as installing an app, and these are
-  your files: its README, file list and run files, and the output of the
-  commands run there. A command that prints a file (`cat`, `type`) sends that
-  file's text.
+- **Installing an app:** the job's name and what it does, the app's README,
+  its file list, the first lines of its setup files (`package.json`,
+  `pyproject.toml`, the compose file), pages of its own docs it reads, the
+  commands it runs with their output, and the text of its pages once it runs.
+- **A folder of your own code:** read the same way, and these are your files:
+  its README, file list and setup files, and the output of the commands run
+  there. A command that prints a file (`cat`, `type`) sends that file's text.
 - **Never sent:** your chats, your vault, and files Toolsmith does not read.
+
+If this sentence changes in an update, Toolsmith goes back to this computer
+until you read the new one and pick Anthropic again. Settings says "What
+Toolsmith sends to Anthropic now reads differently. Read it and pick
+Anthropic again to keep using it." Your key stays in your vault, so you do
+not paste it again. A build waits for your answer instead of quietly using
+this computer.
 
 Before anything leaves, every piece of text passes a key and password
 detector and a personal details screen (a health statement loses the person

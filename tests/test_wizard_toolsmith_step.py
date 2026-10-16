@@ -175,6 +175,49 @@ def test_this_computer_or_skip_clears_the_wish(wizard, cloud):
     assert not tc.wished_cloud() and wizard.flow()["toolsmith"]["asked"] is True
 
 
+def test_this_computer_in_the_wizard_ends_a_yes_to_the_old_sentence(wizard, cloud):
+    """Her yes was to an earlier consent sentence: status says local, so the
+    page never calls "back to this computer" itself. Her answer still ends
+    the old record, and with it the build's hold."""
+    from test_toolsmith_cloud import _old_yes, _turn_on
+    from puffpai.security import toolsmith_cloud as tc
+    _to_after_github(wizard)
+    _turn_on(cloud)
+    _old_yes()
+    assert tc.consent_outdated() and tc.held()
+    assert cloud.client.post("/wizard/toolsmith", headers=DEV,
+                             json={"choice": "local"}).status_code == 200
+    assert not tc.consent_outdated() and not tc.held() and not tc.in_use()
+    assert tc.status()["line"] == "Toolsmith's model: on this computer"
+
+
+def test_skip_and_anthropic_keep_the_hold_on_a_yes_to_the_old_sentence(wizard, cloud):
+    """Only her own pick of This computer ends the old yes. Skip leaves the
+    build held, and Anthropic says to agree again, not that the key is
+    missing (it is in her vault)."""
+    from test_toolsmith_cloud import _old_yes, _turn_on
+    from puffpai.security import toolsmith_cloud as tc
+    _to_after_github(wizard)
+    _turn_on(cloud)
+    _old_yes()
+    assert cloud.client.post("/wizard/toolsmith", headers=DEV,
+                             json={"choice": "skipped"}).status_code == 200
+    assert tc.consent_outdated() and tc.held() and not tc.in_use()
+    r = cloud.client.post("/wizard/toolsmith", headers=DEV, json={"choice": "cloud"})
+    assert r.status_code == 409
+    assert "reads differently" in r.get_data(as_text=True)
+    assert "not saved" not in r.get_data(as_text=True)
+    assert tc.consent_outdated() and tc.held() and not tc.in_use()
+
+
+def test_the_settings_card_opens_on_the_new_sentence_after_a_change():
+    root = pathlib.Path(__file__).resolve().parents[1] / "dashboard" / "app"
+    card = (root / "dashboard" / "settings" / "ToolsmithModelCard.tsx").read_text(
+        encoding="utf-8")
+    assert 'r.data.consent_again ? "cloud"' in card
+    assert "st?.consent_again ? void toLocal()" in card
+
+
 def test_the_cards_show_the_pin_box_and_every_refusal():
     root = pathlib.Path(__file__).resolve().parents[1] / "dashboard" / "app"
     card = (root / "dashboard" / "settings" / "ToolsmithModelCard.tsx").read_text(

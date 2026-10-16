@@ -13,6 +13,7 @@ import os
 import pathlib
 import re
 import threading
+import time
 from typing import Any
 
 import pytest
@@ -399,6 +400,112 @@ def test_a_cloud_setting_without_her_yes_reads_as_local(cloud):
         "schema": tc.SCHEMA, "where": "cloud", "provider": "anthropic",
         "model": "claude-haiku-9", "consent": {"text": tc._sha(tc.CONSENT_TEXT)[:16]}})
     assert not tc.in_use()
+
+
+# -- the consent sentence is true, and a change asks her again (2026-10-16) -----
+
+#: The sentence owners agreed to before 2026-10-16 (it left out the goal, the
+#: finding asks and her own folder).
+OLD_CONSENT = ("When Toolsmith installs an app, it sends Anthropic the job's name and "
+               "what you asked it to do, that app's README and file list, and the "
+               "commands it runs with their output. Keys and personal details it "
+               "spots are taken out first. It never sends your files, chats or "
+               "vault. Everything else in BuildBot stays on this computer.")
+
+
+def test_the_consent_sentence_names_what_really_leaves():
+    text = tc.CONSENT_TEXT
+    for part in ("your goal and your bot's jobs",
+                 "the names and descriptions of the apps it found",
+                 "each app's README, docs and file list",
+                 "the start of its setup files",
+                 "the commands it runs with their output",
+                 "If you point it at a folder of your own, it reads that folder the same way.",
+                 "Keys and personal details it spots are taken out first.",
+                 "It never sends your chats or your vault."):
+        assert part in text, part
+    assert text.endswith("Everything else in BuildBot stays on this computer.")
+    assert "your files" not in text                   # her own folder CAN be sent
+    for bad in ("—", "–", "door", "beta"):
+        assert bad not in text.lower()
+    assert text != OLD_CONSENT
+
+
+def _old_yes(model: str = "claude-opus-5-5") -> None:
+    """Her setting as an earlier version wrote it: Anthropic, her yes to OLD_CONSENT."""
+    from puffpai import fsutil
+    fsutil.atomic_write_json(tc._path(tc.SETTING_FILE), {  # noqa: SLF001
+        "schema": tc.SCHEMA, "where": "cloud", "provider": "anthropic", "model": model,
+        "consent": {"at": "2026-10-01T00:00:00+00:00", "by": "owner",
+                    "text": tc._sha(OLD_CONSENT)[:16], "device": "x"}})  # noqa: SLF001
+
+
+def test_a_yes_to_the_old_sentence_reads_as_local_and_says_so(cloud):
+    _turn_on(cloud, "claude-sonnet-5-5")              # her key saved in the vault
+    _old_yes("claude-sonnet-5-5")
+    try:
+        assert tc.read_setting()["where"] == "local" and not tc.in_use()
+        assert tc.consent_outdated()
+        st = cloud.client.get("/toolsmith/model", headers=DEV).get_json()
+        assert st["where"] == "local" and st["consent_again"] is True
+        assert st["line"] == ("Toolsmith's model: on this computer. "
+                              "What Toolsmith sends to Anthropic now reads differently. "
+                              "Read it and pick Anthropic again to keep using it. "
+                              "Your key is still in your vault.")
+        assert st["consent_text"] == tc.CONSENT_TEXT
+        # The build holds with the same plain words; nothing quietly runs locally.
+        assert tc.held() and tc.hold_line() == tc.RECONSENT_HOLD_LINE
+        assert st["hold_line"] == tc.RECONSENT_HOLD_LINE
+        assert "now reads differently" in tc.RECONSENT_HOLD_LINE
+        # Nothing is sent on the old yes: a run gets no cloud scope at all.
+        before = len(cloud.posts)
+        assert _scope() is None
+        with pytest.raises((tc.CloudError, tc.ScopeRefused)):
+            tc.send(None, system="s", tools=[], messages=[
+                {"role": "user", "content": [{"type": "text", "text": "x"}]}])
+        assert len(cloud.posts) == before
+        for line in (tc.RECONSENT_LINE, tc.RECONSENT_HOLD_LINE):
+            assert "—" not in line and "–" not in line
+    finally:
+        tc.clear_wish()
+
+
+def test_agreeing_to_the_new_sentence_brings_anthropic_back_without_a_new_key(cloud):
+    _turn_on(cloud)
+    calls_before = len(cloud.calls)
+    _old_yes()
+    released: list = []
+    tc._resumers.append(lambda: released.append(True))  # noqa: SLF001 - the build's hook
+    # Her one tap: Anthropic again, the new sentence on screen, no key pasted.
+    r = cloud.client.post("/toolsmith/model", headers=DEV,
+                          json={"where": "cloud", "model": "claude-opus-5-5"})
+    assert r.status_code == 200, r.get_json()
+    got = r.get_json()
+    assert got["where"] == "cloud" and got["consent_again"] is False
+    assert got["line"] == "Toolsmith's model: Anthropic Opus 5.5"
+    assert tc.in_use() and not tc.consent_outdated() and not tc.held()
+    assert tc.read_setting()["consent"]["text"] == tc._sha(tc.CONSENT_TEXT)[:16]  # noqa: SLF001
+    assert keys._record_for(cloud.vault, "anthropic")["value"] == KEY  # noqa: SLF001
+    assert len(cloud.calls) == calls_before           # no key check: the same key
+    deadline = time.time() + 5
+    while not released and time.time() < deadline:
+        time.sleep(0.02)
+    assert released == [True]                          # held jobs go on
+
+
+def test_this_computer_ends_the_old_yes_and_the_hold(cloud):
+    _turn_on(cloud)
+    _old_yes()
+    released: list = []
+    tc._resumers.append(lambda: released.append(True))  # noqa: SLF001
+    st = cloud.client.post("/toolsmith/model", headers=DEV, json={"where": "local"}).get_json()
+    assert st["where"] == "local" and st["consent_again"] is False
+    assert st["line"] == "Toolsmith's model: on this computer" and st["hold_line"] == ""
+    assert not tc.consent_outdated() and not tc.held()
+    deadline = time.time() + 5
+    while not released and time.time() < deadline:
+        time.sleep(0.02)
+    assert released == [True]
 
 
 # -- the request shape -----------------------------------------------------------

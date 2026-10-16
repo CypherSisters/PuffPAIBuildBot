@@ -97,11 +97,14 @@ _BUILT_IN: dict[str, dict[str, str]] = {
         "for": "Toolsmith installs and starts apps faster with Anthropic's model, "
                "when you choose it in Settings. Every other agent stays on this "
                "computer.",
-        "what_leaves": "When Toolsmith installs an app: the job's name and what you "
-                       "asked it to do, that app's README and file list, and the "
-                       "commands it runs with their output, with keys and personal "
-                       "details it spots taken out. Your Anthropic key goes only to "
-                       "api.anthropic.com. Never your files, chats or vault.",
+        "what_leaves": "When Toolsmith finds and installs apps: your goal and your "
+                       "bot's jobs, the names and descriptions of the apps it found, "
+                       "each app's README, docs and file list, the start of its setup "
+                       "files, the commands it runs with their output, and what the "
+                       "app's pages show, with keys and personal details it spots "
+                       "taken out. A folder of your own it is pointed at is read the "
+                       "same way. Your Anthropic key goes only to api.anthropic.com. "
+                       "Never your chats or vault.",
     },
     "geocode": {
         "name": "Town lookup",

@@ -124,18 +124,18 @@ def _toolsmith_held() -> bool:
 
 def _hold(job_ids: list[str]) -> None:
     """The jobs wait for her answer, with the one plain line."""
-    from puffpai.security import toolsmith_cloud
     want = set(job_ids)
+    why = _why_held()
 
     def change(b: dict) -> None:
         for j in b.get("jobs") or []:
             if j.get("id") in want and j.get("status") in (S.WAITING_YES, S.QUEUED):
-                j.update(status=S.WAITING_YES, reason=toolsmith_cloud.HOLD_LINE)
+                j.update(status=S.WAITING_YES, reason=why)
     try:
         S.update_build(change)
     except Exception:  # noqa: BLE001 - the word only; nothing started
         logger.info("build: held status not kept")
-    logger.info("build: held before Toolsmith's first run: %s", toolsmith_cloud.HOLD_LINE)
+    logger.info("build: held before Toolsmith's first run: %s", why)
 
 
 def _work() -> None:
@@ -180,6 +180,7 @@ def _resume_vault_waits() -> None:
         waits = {toolsmith_cloud.VAULT_WAIT_LINE}
         if not toolsmith_cloud.held():
             waits.add(toolsmith_cloud.HOLD_LINE)      # she saved the key or chose local
+            waits.add(toolsmith_cloud.RECONSENT_HOLD_LINE)   # or agreed to the new sentence
         jids = [j["id"] for j in build.get("jobs") or []
                 if j.get("status") == S.WAITING_YES and j.get("reason") in waits]
         if jids and yes_mod.covers(build):
@@ -544,8 +545,17 @@ def _unstick(build: dict) -> dict:
 
 
 def _hold_line() -> str:
+    return _why_held() if _toolsmith_held() else ""
+
+
+def _why_held() -> str:
+    """The hold's plain line: a key not saved yet, or a consent sentence that
+    changed since her yes. Unknown says the first (the hold stays)."""
     from puffpai.security import toolsmith_cloud
-    return toolsmith_cloud.HOLD_LINE if _toolsmith_held() else ""
+    try:
+        return toolsmith_cloud.hold_line() or toolsmith_cloud.HOLD_LINE
+    except Exception:  # noqa: BLE001 - a line never lifts the hold
+        return toolsmith_cloud.HOLD_LINE
 
 
 def _vault_wait_line(build: dict) -> str:

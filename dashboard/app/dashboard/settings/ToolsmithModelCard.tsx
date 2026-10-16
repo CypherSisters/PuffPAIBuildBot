@@ -101,7 +101,8 @@ export default function ToolsmithModelCard({
     const r = await getToolsmithModel();
     if (r.data) {
       setSt(r.data);
-      if (!inWizard) setPick(r.data.where);
+      // Her yes was to an earlier sentence: open on Anthropic so the new one shows.
+      if (!inWizard) setPick(r.data.consent_again ? "cloud" : r.data.where);
       if (r.data.model) setModel(r.data.model);
     } else if (r.message) {
       setSay(r.message);
@@ -199,7 +200,7 @@ export default function ToolsmithModelCard({
           aria-checked={pick === "local"}
           style={button(pick === "local")}
           disabled={busy}
-          onClick={() => (st?.where === "cloud" ? void toLocal() : setPick("local"))}
+          onClick={() => (st?.where === "cloud" || st?.consent_again ? void toLocal() : setPick("local"))}
         >
           On this computer (private, slower)
         </button>

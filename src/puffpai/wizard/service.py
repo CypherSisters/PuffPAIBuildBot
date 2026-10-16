@@ -967,10 +967,17 @@ def toolsmith_choose(choice: Any, args=None, cfg=None) -> dict:
     from puffpai.security import toolsmith_cloud
     if choice == "cloud" and toolsmith_cloud.status().get("where") != "cloud":
         toolsmith_cloud.record_wish()
+        if toolsmith_cloud.consent_outdated():
+            # Her key is saved; only her yes is to an older sentence.
+            raise ToolsmithNotSaved(toolsmith_cloud.RECONSENT_HOLD_LINE)
         raise ToolsmithNotSaved("Your Anthropic key is not saved yet, so Toolsmith still "
                                 "uses this computer. BuildBot asks for the key before "
                                 "Toolsmith's first install.")
     toolsmith_cloud.clear_wish()
+    if choice == "local" and toolsmith_cloud.consent_outdated():
+        # Only her own pick of This computer ends a yes to the old sentence;
+        # "skipped" leaves the hold in place until she picks.
+        toolsmith_cloud.use_local()
     args = args or _args()
     cfg = cfg or _cfg()
     lock = _take_lock(cfg)

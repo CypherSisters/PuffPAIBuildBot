@@ -31,6 +31,8 @@ export interface ToolsmithModel {
   keep_choices: ToolsmithModelRow[];
   /** Set while she picked Anthropic in the wizard but its key is not saved. */
   hold_line: string;
+  /** Her yes was to an earlier consent sentence: Toolsmith is on this computer until she agrees again. */
+  consent_again: boolean;
   line: string;
 }
 
@@ -72,6 +74,7 @@ function read(raw: unknown): ToolsmithModel | null {
     keep_question: s(d.keep_question),
     keep_choices: keepChoices,
     hold_line: s(d.hold_line),
+    consent_again: d.consent_again === true,
     line: s(d.line),
   };
 }

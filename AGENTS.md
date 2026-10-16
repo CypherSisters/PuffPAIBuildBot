@@ -117,8 +117,14 @@ everything else runs locally. One setting, `toolsmith.model`
 `{"where": "local"}` (default, today's behavior exactly) or `{"where":
 "cloud", "provider": "anthropic", "model": "claude-opus-5-5" |
 "claude-sonnet-5-5"}`. Cloud without her recorded yes to the current consent
-sentence reads as local. Settings card `settings/ToolsmithModelCard.tsx`, one
-line on the setup list (`YesPanel.tsx`), routes `toolsmith_model_api.py`
+sentence reads as local. A yes to an EARLIER sentence (`consent_outdated`) is
+never migrated: Settings says `RECONSENT_LINE` (in `status().line`,
+`consent_again` opens the card on the new sentence; the key stays in the
+vault, so agreeing again is one tap), and the build HOLDS like the wish below
+(`hold_line()` = `RECONSENT_HOLD_LINE`) until she picks Anthropic again or
+this computer. `CONSENT_TEXT` must stay true of what is sent ("What is sent"
+below); changing it asks everyone on Anthropic to agree again. Settings card
+`settings/ToolsmithModelCard.tsx`, one line on the setup list (`YesPanel.tsx`), routes `toolsmith_model_api.py`
 (paired device; the key only in the POST body).
 
 * **Scope guard.** `toolsmith_cloud.send` needs a `Scope` that only
@@ -198,8 +204,11 @@ line on the setup list (`YesPanel.tsx`), routes `toolsmith_model_api.py`
   /wizard/build carries that line, and the wizard's Building screen, its last
   screen, the Build jobs tile, the bot page and the job page show a PIN box
   with Unlock (`VaultWaitUnlock.tsx`, the existing POST /vault/unlock).
-* **What is sent.** The app's README and docs, file listings, Toolsmith's
-  commands and their output; every user turn passes `secret_detector` and the
+* **What is sent.** The goal and the jobs (finding, above), the app's README
+  and docs, file listings, the first 60 lines of its `package.json`,
+  `pyproject.toml` and compose file, Toolsmith's commands and their output
+  (server log and `read_page` text included), and the same for a folder of
+  her own code; every user turn passes `secret_detector` and the
   PII screen first (`toolsmith_cloud.clean`, fails closed). Each call writes
   one outside-traffic line (`what: toolsmith_install`, bytes only) and a
   usage row (`<state>/toolsmith_cloud_usage.json`: provider, model, purpose
