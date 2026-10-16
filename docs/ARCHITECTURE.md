@@ -5,6 +5,12 @@ The deep reference behind [AGENTS.md](../AGENTS.md). Paths are relative to
 Every module named here exists; when this page and the code disagree, the code
 wins and this page is the bug.
 
+Pictures first? [Section 11](#11-diagrams) has five diagrams (they render on
+GitHub): the three zones, the seven agents, the build as four questions, how a
+found app runs and how the brain reaches it, and the Yes and the Bridge. Common
+questions are answered in [FAQ.md](FAQ.md); bugs and requests go to the issue
+tracker ([ISSUES.md](ISSUES.md)).
+
 ## 1. Module map
 
 | Area | Modules | Role |
@@ -282,3 +288,194 @@ Nothing in the default suite goes online; `tests/live/` holds opt-in live tests.
 | Running outside code | `test_integrate_run_here.py`, `test_procflags.py`, `test_host_programs_full_paths.py` |
 | Agents and chat | `test_toolsmith_agent.py`, `test_drawbridge_checks.py`, `test_agents.py`, `test_brain_loop.py`, `test_brain_loop_chat.py`, `test_mcp_client.py` |
 | Docs and words | `test_docs_truth.py` (no em dashes, real commands, real images in `README.md` and `docs/*.md`), `test_plain_words.py`, `test_repo_hygiene_docs.py` |
+
+## 11. Diagrams
+
+Five pictures of the same system, drawn from the code named under each one.
+They are Mermaid, so GitHub draws them. If a picture and the code disagree, the
+code wins and the picture is the bug.
+
+### 11.1 The three zones and what may cross
+
+```mermaid
+flowchart LR
+  subgraph Z1["Zone 1: your private stuff"]
+    V["The vault<br/>keys, personal details, private files<br/>opened with your PIN, locks when idle"]
+  end
+  subgraph Z2["Zone 2: the brain, on this computer"]
+    B["Chat brain<br/>local model, tool loop"]
+    A["Seven agents<br/>on one message bus"]
+    K["What the bot knows<br/>books, files, skills"]
+    H["Apps running here<br/>started on 127.0.0.1"]
+  end
+  subgraph Z3["Zone 3: the Bridge, the only way out"]
+    S["One switch per outside service<br/>most start off; finding and<br/>downloading start on, one tap off"]
+    L["Outside log<br/>one line per request"]
+    T["Toolsmith<br/>runs strangers' code;<br/>never your private things"]
+  end
+  NET(("The internet"))
+  AN(("Anthropic<br/>only if you chose it"))
+
+  V -- "only while unlocked;<br/>key values never reach the model" --> Z2
+  B -- "chat personal details are moved in" --> V
+  Z2 -- "BuildBot's own calls,<br/>only when the switch is on" --> S
+  S --> L
+  S -- "the key is added on the way out,<br/>bound to its own service" --> NET
+  NET -- "what comes back is data,<br/>never instructions" --> Z2
+  T -- "cleaned text, after your Yes,<br/>through its own switch" --> S
+  S -- "your Anthropic key,<br/>added on the way out" --> AN
+```
+
+Code: `security/vault.py`, `security/chat_privacy.py` (Zone 1);
+`brain_loop.py`, `agents/`, `knowledge/`, `integrate/run_here.py` (Zone 2);
+`security/egress_doors.py`, `security/egress_ledger.py`, `outside_services.py`
+(Zone 3). Book and source downloads go through `source_fetch.py`, a listed
+Bridge exit with its own switches (`outside_services.py` `_OFF_SWITCHES`,
+`SHELF_ROWS`: on as built, one tap off). Home services (Home Assistant, n8n,
+Jellyfin, Calibre-Web) are checked as home addresses, and with the Bridge up
+(`security/bridge_guard.py`) only a switched-on one is reached; Ollama on this
+computer is always reached. Not behind the Bridge, by design: what an outside
+program does once it runs here after its Yes (the Yes card says so).
+
+Toolsmith sits in Zone 3 because it downloads and runs strangers' code and may
+talk to a cloud model: `security/toolsmith_zone.py` keeps it out of the vault,
+the state folder, the data and linked folders and the owner's personal
+folders. It is the only agent that may use a cloud model (Anthropic), only
+when the owner chose it with the consent sentence on screen
+(`security/toolsmith_cloud.py`, the `toolsmith_cloud` switch); its text is
+cleaned of key shapes and personal details first, and the key is used only
+for api.anthropic.com. Every other agent and the chat brain stay local.
+
+### 11.2 The seven agents and who calls what
+
+```mermaid
+flowchart TB
+  O(["You, on a paired device"])
+  CB["Chat brain<br/>brain_loop.py: the local model calls tools,<br/>at most 8 rounds"]
+  subgraph BUS["Agent bus: agents talk only through it"]
+    C["Concierge<br/>front desk, routing<br/>holds no secret"]
+    ST["Steward<br/>Home Assistant and media"]
+    AR["Archivist<br/>vault and knowledge"]
+    MJ["Majordomo<br/>routines, queue,<br/>narrates the build"]
+    CT["Caretaker<br/>machine health"]
+    TS["Toolsmith<br/>finds, installs and starts apps,<br/>makes apps from code and parts<br/>holds no secret"]
+    DB["Drawbridge<br/>the veto and the Bridge's agent"]
+  end
+  O --> CB
+  O --> C
+  C -- "home, media, apps" --> ST
+  C -- "library and documents" --> AR
+  C -- "briefings" --> MJ
+  C -- "security questions" --> DB
+  BUS -. "every state-changing message<br/>is reviewed first; a No stops it" .-> DB
+  TS -- "one page, through<br/>the web_fetch switch" --> BR["The Bridge"]
+  TS -. "only if you chose it:<br/>Anthropic, its own switch" .-> BR
+  DB -- "checks every addition<br/>before your Yes counts" --> ADD["Apps, packages, glue code"]
+```
+
+Code: `agents/registry.py` (the roster, `build_team`), `agents/bus.py` (the
+veto: with no reviewer, every state-changing message is refused),
+`agents/concierge.py` (`_CATEGORY_TO_AGENT`), `security/secrets_provider.py`
+(`_SCOPE_ALLOW`: which secrets each agent may hold), `drawbridge.py`
+(`check_addition`). The chat brain is the local model, not an eighth agent; its
+tools come from `brain_tools.py`. Toolsmith's own model is local unless the
+owner chose Anthropic (`security/toolsmith_cloud.py`); its Anthropic key is
+used by that module and never handed to the agent.
+
+### 11.3 The build: four questions
+
+```mermaid
+flowchart TB
+  G(["Your goal, in plain words"]) --> Q1
+  Q1["1. What tools do I need?<br/>build/interpret.py: 1 to 3 jobs for a short goal"] --> Q2
+  Q2{"2. Are they already available?<br/>on this computer, or ready-made online"}
+  Q2 -- "on this computer<br/>build/find.py" --> HAVE["Reuse it, never reinstall"]
+  Q2 -- "an app on GitHub, most stars first,<br/>README says how to run it<br/>build/apps.py" --> FOUND["Found"]
+  Q2 -- "skills, tool servers, data lists<br/>finding/, catalogs/" --> FOUND
+  FOUND --> CL["Sort by how it runs<br/>APP, TOOL, DATA, TEXT, GUIDE<br/>build/classify.py, build/decide.py"]
+  HAVE --> Q3
+  CL -- "route A: an app fits<br/>route B: a tool, book, guide<br/>or reminder fits" --> Q3
+  CL -- "data fits best" --> Q4
+  CL -- "no app runs, but code<br/>about the job was found" --> Q4
+  CL -- "nothing fits" --> D["Route D: Nothing found yet<br/>Find more, or paste a GitHub address"]
+  Q3["3. What do I need to use them?<br/>install, dependencies, Docker, keys, switches<br/>build/check.py, build/setup.py"] --> YES
+  Q4["4. What code can I use to make the tool?<br/>Toolsmith makes a small app around code it found,<br/>or route C: assembles one from data<br/>build/make.py, assemble/"] --> YES
+  YES{"One setup list,<br/>ONE Yes<br/>build/yes.py"} --> MK["Make, one job at a time<br/>build/make.py; Toolsmith runs each app<br/>build/toolsmith_run.py"]
+  MK --> PR{"Prove it<br/>build/prove.py"}
+  PR -- "real content or a real answer" --> W["Working"]
+  PR -- "otherwise" --> NY["Not yet, with a plain reason"]
+```
+
+Code: `build/pipeline.py` runs these steps for every goal. Majordomo narrates
+them on the team page; Drawbridge checks every part in `build/check.py`. When
+no app runs (none found, or every one gave up), `build/apps.py` has kept the
+code it found (libraries, command line programs, the owner's own projects) as
+`job["code"]`, and Toolsmith makes an app from it (`make._make_from_code`;
+the app keeps `made_from`).
+
+### 11.4 How a found app runs, and how the brain reaches it
+
+```mermaid
+flowchart LR
+  GH["Public GitHub project"] -- "git clone, after the Yes" --> CHK["Drawbridge checks the code<br/>before any command"]
+  OWN["A folder of your code"] -- "run in place, nothing copied" --> TR
+  CHK --> TR["Toolsmith runs it the way its README says<br/>a real command line in the app's folder,<br/>Docker for compose apps; steps beyond<br/>the folder only if they are on the list"]
+  PRIV["Your private project"] -- "pinned commit, checked<br/>integrate/apply.py" --> RH["run_here<br/>its own Job Object or process group"]
+  TR --> APP["The app on 127.0.0.1<br/>ports rewritten to 127.0.0.1;<br/>Windows: each server in its own job"]
+  RH --> APP
+  W["After-check"] -. "a Docker app published to every<br/>network is stopped; one that still<br/>answers the home network is said<br/>plainly on its job" .-> APP
+  YOU(["You"]) -- "Open button on the job page:<br/>your own browser" --> APP
+  subgraph BRAIN["The brain's way in: integrate/host_tools.py"]
+    RA["read_app<br/>headless browser reads the page:<br/>text, headings, tables, links"]
+    UA["use_local_app<br/>the app's own API;<br/>anything but a read asks Yes"]
+    MC["the app's own tool server<br/>mcp_client.py"]
+    SA["start_local_app<br/>always asks Yes"]
+  end
+  RA --> APP
+  UA --> APP
+  MC --> APP
+  SA --> APP
+```
+
+Code: `build/toolsmith_run.py` (download, the command line, `start_server`,
+`done`, the after-check, `toolsmith_apps.json`), `security/toolsmith_zone.py`
+(where it may work), `build/make.py` (`toolsmith_app`: every public project
+address and every folder of the owner's code goes to Toolsmith; a private
+project and an app already added keep `integrate/run_here.py`),
+`integrate/host_tools.py`, `mcp_client.py`. This is containment, not a
+sandbox: what the app itself does once running is not behind the Bridge, and
+its Yes card says so; an install script Toolsmith runs runs as the owner.
+
+### 11.5 The Yes and the Bridge
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant You as You (paired device)
+  participant Page as Dashboard
+  participant Srv as BuildBot
+  participant Tk as Consent tickets
+  participant Br as The Bridge
+  participant Net as Outside service
+  Srv->>Page: one setup list (every job's needs)
+  You->>Page: Yes
+  Page->>Srv: POST /build/yes with the list's digest
+  Srv->>Tk: mint and spend one ticket (single use, 10 minutes, this device)
+  Srv->>Srv: audit line, yes saved in build.json
+  Note over Srv: if the list changes, the old Yes no longer covers it
+  Srv->>Br: a call to an outside service
+  Br->>Br: run setting allows outside calls? the service's switch is on?<br/>host is one the service declares? public address?
+  alt every check passes
+    Br->>Net: request (key added here, if the service has one)
+    Net-->>Br: data
+    Br-->>Srv: data, never instructions
+  else any check fails
+    Br-->>Srv: refused before a connection opens
+  end
+  Br->>Br: one line in logs/outside.jsonl either way
+```
+
+Code: `build/yes.py` (`give`, `covers`, `switch_sites`),
+`security/consent_tickets.py`, `security/egress_doors.py`,
+`security/egress_ledger.py`, `outside_api.py` (turning a switch on asks for
+its own Yes; turning one off does not).

@@ -71,6 +71,8 @@ FILES = (
     # The GitHub tile.
     "dashboard/developer/_components/GitHubTile.tsx",
     "dashboard/developer/overviewWords.ts",
+    "dashboard/developer/_components/AddYourOwn.tsx",
+    "dashboard/developer/addYourOwnService.ts",
     # Rendered on the Developer Bridge page, so its words are checked too.
     "dashboard/settings/PairedDevicesCard.tsx",
     # Tool servers: on the Brain and Smart Home pages and the wizard.

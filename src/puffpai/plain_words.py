@@ -100,7 +100,7 @@ _TLDS = frozenset({"com", "org", "net", "ai", "io", "gov", "edu", "local",
                    "codes", "digital", "network", "systems", "tools",
                    "garden", "music", "photo", "photos", "pics", "social"})
 #: A file an owner is told to open or run is named as it is on disk.
-_FILE_EXTS = frozenset({"cmd", "sh", "ps1", "env", "md", "txt", "json"})
+_FILE_EXTS = frozenset({"cmd", "sh", "ps1", "env", "md", "txt", "json", "exe"})
 
 
 def _blank_allowed(line: str) -> str:

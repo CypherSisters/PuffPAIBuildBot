@@ -1,6 +1,6 @@
-# Blank issues stay on: the two templates here are a bug report and a wizard
-# gap, and a stranger with a question that fits neither should not have to
-# pretend it is a bug to be heard.
+# Blank issues stay on: the templates here are a bug report, a feature
+# request, a build-help request and a wizard gap; a question that fits none
+# of them should not have to pretend it is a bug to be heard.
 blank_issues_enabled: true
 contact_links:
   - name: Security issue?

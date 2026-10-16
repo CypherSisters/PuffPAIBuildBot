@@ -37,48 +37,14 @@ We are committed to providing a welcoming and inspiring community for all. Pleas
 
 ## How Can I Contribute?
 
-### Reporting Bugs
+### Reporting Bugs and Suggesting Features
 
-Before creating bug reports, please check existing issues. When creating a bug report, include:
-
-- **Clear title** describing the issue
-- **Detailed steps** to reproduce
-- **Expected behavior** vs actual behavior
-- **System information** (OS, Python version, hardware)
-- **Screenshots** if applicable
-- **Logs** from console or `journalctl -u puffpai`
-
-**Template:**
-```markdown
-**Environment:**
-- OS: Windows 11 / Ubuntu 22.04 / macOS 14 (say which, and the version)
-- Python: 3.12.15
-- PuffPAI Version: 0.1.0-alpha
-- Hardware: CPU, RAM, and accelerator if any (e.g. "Ryzen 7, 32 GB, RTX 4070")
-
-**Steps to Reproduce:**
-1. Start PuffPAI
-2. Click "New Chat"
-3. Send message "test"
-
-**Expected Behavior:**
-Response appears in chat
-
-**Actual Behavior:**
-Application crashes with error
-
-**Error Message:**
-[Paste error here]
-```
-
-### Suggesting Features
-
-Feature requests are welcome! Please:
-
-- **Check existing requests** first
-- **Explain the use case** clearly
-- **Describe the expected behavior**
-- **Consider alternatives** you've thought about
+Use the [issue tracker](https://github.com/CypherSisters/PuffPAIBuildBot/issues).
+[docs/ISSUES.md](docs/ISSUES.md) explains which form to pick (bug report,
+feature request, help me build a bot for..., wizard gap), what to include,
+where the logs are on each computer, and how to take private things out first.
+Never attach your vault, a key or a token. Check the [FAQ](docs/FAQ.md) and
+existing issues first.
 
 ### Contributing Code
 

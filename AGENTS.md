@@ -1,9 +1,16 @@
 # AGENTS.md: how BuildBot works, for coding agents and for the bot's own brain
 
 Read this first. Deeper detail (module map, data flow, schemas, contracts) is
-in [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md). Security promises are in
-[SECURITY.md](SECURITY.md). Owner-facing docs are [README.md](README.md) and
-`docs/`. Every path below is relative to the repo root; Python lives under
+in [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md), and its
+[section 11](docs/ARCHITECTURE.md#11-diagrams) has the diagrams (three zones,
+seven agents, the four questions, how a found app runs, the Yes and the
+Bridge). Security promises are in [SECURITY.md](SECURITY.md). Owner-facing docs
+are [README.md](README.md) and `docs/`; [docs/FAQ.md](docs/FAQ.md) answers what
+owners and builders ask, and says plainly what is not built yet. Bugs and
+requests go to the issue tracker,
+[github.com/CypherSisters/PuffPAIBuildBot/issues](https://github.com/CypherSisters/PuffPAIBuildBot/issues);
+[docs/ISSUES.md](docs/ISSUES.md) says what to attach and how to take private
+things out of logs. Every path below is relative to the repo root; Python lives under
 `src/puffpai/`.
 
 ## 1. What BuildBot is
@@ -758,6 +765,11 @@ on spare ports (`puffpai start --port <n> --dashboard-port <m>`) with a fresh
 state folder and the local brain; give the one Yes from a paired device; judge
 it by what the owner sees on each job page (working, or not yet with a true
 reason). Unit tests passing is not done.
+
+When an owner or a builder asks the bot a question about BuildBot itself,
+answer from [docs/FAQ.md](docs/FAQ.md) and the code, and point at the issue
+tracker for anything not built yet. A change that makes an FAQ answer untrue
+updates the FAQ in the same change.
 
 ## 9. Hard rules
 

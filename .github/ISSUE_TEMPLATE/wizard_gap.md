@@ -18,10 +18,10 @@ assignees: ''
 
 <!-- What the correct behavior would have been. -->
 
-## OS / `puffpai --version` or commit
+## Your computer
 
 - OS:
-- `puffpai --version` or commit:
+- `puffpai version`, or the commit you installed from:
 
 ## Census summary from setup
 

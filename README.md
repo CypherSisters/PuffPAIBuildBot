@@ -8,6 +8,14 @@ You say yes, and it builds the bot. You can add more to it later.
 The bot's brain runs on your computer. One page lists every outside service
 your bot can use, what each one sends, and a switch for each.
 
+**Questions?** The [FAQ](docs/FAQ.md) answers the common ones: phones, smart
+home, firewalls, models (and Toolsmith's optional cloud model), adding your
+own apps, code, programs and GitHub projects.
+**Something broken, or an idea?** Tell us on the
+[issue tracker](https://github.com/CypherSisters/PuffPAIBuildBot/issues)
+([how to report](docs/ISSUES.md)). **How it fits together:** the
+[architecture diagrams](docs/ARCHITECTURE.md#11-diagrams).
+
 > **What computer you need**
 >
 > - A Windows 10 or 11 PC, a Linux PC, or a Mac with macOS 14 or newer (Apple
@@ -111,6 +119,9 @@ Then it asks three questions:
    shorter sentences. Only a rough age group is kept, never the number, and
    the finished bot never reads it. Press Enter to skip.
 
+In the browser it also asks **Do you have a GitHub account?** Connect it and
+your bot searches better and can use your own projects, or press **Skip**.
+
 Then it shows **one plan**. Nothing has been downloaded or turned on yet.
 Each line says what it is, how big it is, and which website it comes from.
 Its parts, in order:
@@ -129,17 +140,37 @@ Its parts, in order:
 - **How it looks.** Colours picked from your words.
 
 Something it found but did not switch on reads "Not included (you can add
-it)", with its size and one plain reason.
+it)", with its size and one plain reason. In the browser, under the plan it
+asks **Where should BuildBot keep your knowledge and your files?** and shows
+the free space there; **Change** picks another folder.
 
 Press Enter for **Looks good** and it builds exactly that. Or pick **Change
 something**, type an item's number, and switch it in or out. The same list
 lets you pick a different brain, or keep your bot off the internet
 completely.
 
-After you say yes, you choose a **vault PIN**. The wizard shows a **recovery
-code** once. Write it down: it is the only way back in if you forget the PIN.
-Then it builds, and the last screen, **How to start it**, says what was added,
-what is still learning, what is still missing, and your first pairing code.
+After you say yes, it asks **Where should your vault live?** (on this
+computer, a drive or folder you choose, or a vault you already have), and you
+choose a **vault PIN**. The wizard shows a **recovery code** once. Write it
+down: it is the only way back in if you forget the PIN.
+
+It also asks **Who should do Toolsmith's installs?** **This computer (private,
+slower)** keeps everything on your computer. **Anthropic (faster, your
+choice)** puts Toolsmith, and only Toolsmith, on Anthropic's Claude with your
+own key, which gets much better results (see
+[Toolsmith works best on a frontier model](#toolsmith-works-best-on-a-frontier-model)).
+Paste the key on that screen, never in chat. You can change your answer any
+time in Settings.
+
+Then it builds. While it builds, BuildBot looks for apps that do each part of
+your goal; each one it picks waits for your yes under **Build jobs**. If one of
+the apps that come with BuildBot fits your goal, that list offers to turn it
+on, and your yes there does. The last
+screen, **How to start it**, says what was added, what is still learning, what
+is still missing, and your first pairing code. The first time you open the
+dashboard, **Show me around the pages** walks you through it: where to add
+tools and apps, how to unlock your vault, and how to give your bot your own
+files and books to learn from.
 
 Books learn in the background once your bot is running. A small book can
 answer questions within a minute or two. You can chat while the rest learns.
@@ -194,11 +225,78 @@ web, add a free key on the **Sign-up keys** page: Brave Search is tried first
 backup that needs no card (personal use only). A key goes straight into your
 vault. Your bot only searches when you ask it to.
 
+### Apps
+
+For each part of your goal, BuildBot looks for an app someone already built
+(on GitHub, Codeberg and the skill and tool lists), picks the best fit and
+shows it under **Build jobs**, waiting for your yes. Say yes and Toolsmith
+downloads it, Drawbridge checks the code before anything runs, then Toolsmith
+installs what it needs, starts it the way its README says (in Docker when it
+ships its own containers) and checks that it really works. If no app fits, it
+can make one from code that does the job. BuildBot starts the apps it runs so
+they answer only on this computer; if one still answers other devices, its job
+says so.
+
+**Your first apps.** AlarmFlow, Calendar, FreshTable, FitFam and Trivia come
+with BuildBot and start off. The Build jobs list offers the ones that fit your
+goal, and your yes there turns them on. The Apps page lists all five under **Your first apps**,
+each with **Turn on** or **Turn off**. Turning one off hides it and keeps its
+saved data. A bot that already used one keeps it on.
+
+### Toolsmith works best on a frontier model
+
+Installing someone else's app is hard work: read its README, run its install
+steps, fix what breaks, start it and check it. Toolsmith can do this with the
+model on your computer, but a small local model often gets stuck and gives up
+on an app. **Connect Toolsmith to a frontier model and you get much better
+results:** far more apps installed and working, and much faster. Today that
+means Anthropic's Claude (Opus 5.5 by default, or Sonnet 5.5).
+
+To connect it:
+
+1. Make a key (about 3 minutes): sign in to the
+   [Anthropic Console](https://console.anthropic.com/settings/keys), add a
+   payment method under Billing, then make a key on the API keys page and copy
+   it.
+2. In the wizard, on **Who should do Toolsmith's installs?**, pick
+   **Anthropic (faster, your choice)** and paste the key there. Already set
+   up? Open **Settings**, find **Toolsmith's model** and pick **Anthropic
+   (faster, your choice)**.
+3. The key goes straight into your vault. If the vault is locked, the page
+   asks for your PIN right there.
+
+What that means:
+
+- **Only Toolsmith.** The brain and the other six agents always run on your
+  computer.
+- **What is sent.** When Toolsmith installs an app, it sends Anthropic the
+  job's name and what you asked it to do, that app's README and file list, and
+  the commands it runs with their output. To find and pick apps it also sends
+  your goal, your bot's jobs, and the public names, descriptions, stars and
+  topics of the apps it found. Keys and personal details it spots are taken
+  out first. It never sends your chats or vault. If you ask it to use a
+  project of your own, it reads that folder like any app: its README and file
+  list, the start of its setup files, and the commands it runs there with
+  their output.
+- **The key stays ready while it builds.** The vault locks itself after 5
+  minutes without use. Toolsmith keeps its key in memory only, never on disk, while it
+  works and for 1 hour after (Settings: 1 hour, 4 hours, or until you lock
+  the vault), so a long build does not stop. Lock the vault to end it at once.
+  If the key is not ready, the build waits and shows a PIN box to unlock.
+- **Cost.** Anthropic bills your account for each use. Settings shows about
+  how much Toolsmith has used, and your bot stops at 3000 requests a month. A
+  test build that installed one app used about 25 cents.
+- **No connection?** If Anthropic cannot be reached, Toolsmith uses the model
+  on this computer for that app.
+
 ---
 
 ## Your privacy
 
 - **The brain runs on this computer.** What you type stays here.
+- **Toolsmith on Anthropic, only if you choose it.** What it sends is listed
+  under [Toolsmith works best on a frontier model](#toolsmith-works-best-on-a-frontier-model).
+  Your key lives in your vault.
 - **Personal details.** Phone numbers, home addresses, birthdays, ID and card
   numbers are taken out of a chat before it is saved and put in the vault.
   While the vault is locked they go into a sealed inbox that only the vault
@@ -276,14 +374,19 @@ with a worked example that passes the validator:
 
 Stated up front so nobody finds out the hard way.
 
-- **No cloud models.** Ollama models only. There is no hosted-model path, by
-  design.
+- **One cloud option, for Toolsmith only.** The brain and six of the seven
+  agents run on Ollama on this computer. Toolsmith can use Anthropic with your
+  own key if you choose it; it starts on this computer.
+- **Small local models struggle to install apps.** On the model on your
+  computer, Toolsmith often fails to get an app running; Anthropic is what
+  works well today. Big apps made of many services may not come up; Toolsmith
+  says so and moves on to the next one.
 - **No gadgets yet.** The wizard lists your gadgets (a smart telescope, a
   record player) and says "not connected yet". Home Assistant is the one hub it
   can connect to today.
 - **No sandbox on Windows.** The Toolsmith's shell tool needs Linux and
-  bubblewrap (see below). Bringing in outside code, and BuildBot writing tools
-  of its own, are planned, not built.
+  bubblewrap (see below). Apps Toolsmith installs after your yes run on your
+  computer as they were built, like a program you install yourself.
 - **No network census.** The wizard surveys the machine, not the wire: no LAN
   scan, no discovery of what else is on your network. Deliberately deferred.
 - **No peripheral registry.** Cameras, microphones and USB devices are not
@@ -312,18 +415,20 @@ silently: every state-changing action is visible and gated.
 | **Archivist** | The sole gateway to the vault and the knowledge packs. All reads and writes go through it. |
 | **Majordomo** | Proactive background work, the things that should happen without you asking. |
 | **Caretaker** | Health checks that keep the system honest and running. |
-| **Toolsmith** | The generic tool tier: reads one web page when you have switched on "Reading a web page" and asked for it in chat, and keeps working notes in its own sandbox. It holds **no** credentials at all. |
+| **Toolsmith** | The integration agent: finds an app for each part of your goal and, after your yes, installs it, starts it and checks it works. It also reads one web page when you have switched on "Reading a web page" and asked for it in chat. The only agent that may use a cloud model (Anthropic), and only if you choose it. It is never handed a key: its Anthropic key stays in your vault and is used for it. |
 
 Six live in the Brain; Drawbridge lives in the Bridge.
 
-**What the Toolsmith can do depends on the machine, and it says so.** On Linux
+**Toolsmith's own shell depends on the machine, and it says so.** On Linux
 with `bubblewrap` installed it also gets a sandboxed shell against its own
 workspace, with no network and no access to anything but that one directory.
 On Windows, and on any box without `bwrap`, that tool is **not registered at
 all** and the agent reports `shell: not on this machine (needs Linux +
-bubblewrap)`. It never runs a command unsandboxed, and it is never backed by
-Docker (Docker group membership is root-equivalent, which would turn a bad web
-page into root).
+bubblewrap)`. That shell never runs a command unsandboxed, and it is never
+backed by Docker (Docker group membership is root-equivalent, which would turn
+a bad web page into root). Installing an app is different: after your yes,
+Toolsmith runs the app's own install and start steps in the app's folder, or in
+Docker when the app ships its own containers.
 
 ---
 
@@ -364,6 +469,8 @@ you want it, and each degrades cleanly when it is absent.
 | **Required** | **[Ollama](https://ollama.com)** + a local instruct model | the assistant / all reasoning |
 | Optional | **Node.js 22.12+** | the web page (the installer can get it and builds it); without it, `puffpai chat` or `puffpai ui` |
 | Optional | **[Home Assistant](https://www.home-assistant.io)** + a long-lived token | smart-home control (the Steward) |
+| Optional | **An [Anthropic](https://console.anthropic.com/settings/keys) key** | Toolsmith on a frontier model: much better app installs ([details](#toolsmith-works-best-on-a-frontier-model)) |
+| Optional | **[Docker](https://www.docker.com)** | runs apps that ship their own containers |
 | Optional | **Voice models** (Vosk STT, Piper TTS, wake-word) + a mic | local voice; `pip install -e ".[voice]"`, then check with `puffpai voice test` |
 
 **Voice does not need Home Assistant.** The local pipeline is mic → wake word →
@@ -529,7 +636,8 @@ needs only Python and a display.
 
 ## Status
 
-**Public alpha.** The wizard, add-more, the outside page, sign-up keys, looks
+**The free early version you install yourself.** The wizard, add-more, app
+installs by Toolsmith, your first apps, the outside page, sign-up keys, looks
 and the agent team are implemented and tested; some rough edges remain. The full suite lives in `tests/`; run it with
 `pip install -e ".[dev]" && py -m pytest` (`pytest` is in the `[dev]` extra,
 not the base install). On PowerShell 5.1 run the two commands on separate
@@ -558,14 +666,16 @@ Known gaps:
 - Vendored fonts ship Latin subsets only; non-Latin scripts fall back to
   system fonts.
 
-Star or watch to follow along.
+Star or watch to follow along. Found another rough edge? Report it on the
+[issue tracker](https://github.com/CypherSisters/PuffPAIBuildBot/issues)
+([how](docs/ISSUES.md)).
 
 ---
 
 ## The rest of the family
 
 - **[CypherSisters/HomeBotBuild](https://github.com/CypherSisters/HomeBotBuild)**:
-  HomeBot, the first persona, with this wizard. Coming.
+  HomeBot, the first persona, with this wizard.
 - **[CypherSisters/HomeBotFounders](https://github.com/CypherSisters/HomeBotFounders)**:
   the Jetson Orin reference build.
 

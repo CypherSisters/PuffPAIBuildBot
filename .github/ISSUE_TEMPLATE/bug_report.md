@@ -1,51 +1,44 @@
 ---
 name: Bug report
-about: Something is broken or behaving unexpectedly
+about: Something broke, or did something you did not expect
 title: "[BUG] "
 labels: bug
 assignees: ''
 ---
 
+<!-- Before you post: take private things out. Never attach your vault, a
+     key or token, or whole log files. How: docs/ISSUES.md, "Take private
+     things out first". Security problem? Do not post it here; see
+     SECURITY.md. -->
+
 ## What happened
 
-<!-- What did you expect, and what did you get instead? -->
+<!-- What did you expect, and what happened instead? Copy the exact words
+     on the screen if you can. -->
 
-## Steps to reproduce
+## Steps to get there
 
 1.
 2.
 3.
 
-## Environment
+## Your computer
 
-<!-- OS, and `puffpai --version` if you have a release, otherwise the
-     commit you built from (`git rev-parse HEAD`). -->
+- Windows, Mac or Linux, and its version:
+- Memory (RAM):
+- Toolsmith's model (this computer / Anthropic):
+- `puffpai version`, or the commit you installed from (`git rev-parse HEAD`):
 
-- OS:
-- `puffpai --version` or commit:
+## Your goal (if this was a build)
 
-## Census summary from setup
+<!-- The words you typed into the wizard. Leave out anything private. -->
 
-<!-- The hardware/software census the wizard printed during setup
-     (posture chosen, models detected, etc.). Paste it as-is. -->
+## Log lines
 
-```
-paste here
-```
-
-## `/system/status` output
-
-<!-- Run `curl http://<box>:PORT/system/status` (or the equivalent chat
-     command) and paste the output below. REDACT the API key and any other
-     secret field before pasting. -->
-
-```
-paste here, API key REDACTED
-```
-
-## Closing-screen text
-
-<!-- What the wizard printed on its closing/summary screen. -->
+<!-- `puffpai where` shows the state folder; the logs are in its `logs`
+     folder (bot.log, web-page.log, outside.jsonl). Paste only the lines
+     around the problem, with names, towns, home addresses and keys
+     replaced by <my-town>, <home-ip>, REDACTED. -->
 
 ```
 paste here
@@ -53,4 +46,4 @@ paste here
 
 ## Anything else
 
-<!-- Logs, screenshots, or context that would help. -->
+<!-- Screenshots (cropped), what you already tried. -->
