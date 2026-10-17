@@ -1830,6 +1830,20 @@ def _run_key(run: wizard_runner.Runner) -> str:
     return f"{float(run.started_at):.6f}"
 
 
+def _take_lock_soon(cfg, wait_s: float = 5.0) -> str:
+    """:func:`_take_lock`, waiting out a background step's short save (the
+    looking step shows "done", then saves its results behind the lock)
+    instead of answering "a build is already running" for it."""
+    deadline = time.time() + wait_s
+    while True:
+        try:
+            return _take_lock(cfg)
+        except RunInProgress:
+            if time.time() > deadline:
+                raise
+            time.sleep(0.1)
+
+
 def _update_run(cfg, args, change: Callable[[wizard_runner.Runner], None],
                 wait_s: float = 30.0) -> bool:
     """Load the run record, change it, save it, behind the one-run lock."""
@@ -2253,7 +2267,7 @@ def needs_choose(body: Any, args=None, cfg=None, *,
     elif clean["helper_no"]:
         _update_run(cfg, args, lambda r: r.shared.update(
             needs_helper="declined"))
-    lock = _take_lock(cfg)
+    lock = _take_lock_soon(cfg)
     try:
         run, goal = _needs_run(args, cfg)
         mode = wording.mode_of(run.shared)

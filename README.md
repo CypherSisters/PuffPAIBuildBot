@@ -601,6 +601,17 @@ Nothing personal is in them.
 
 ---
 
+## How this was built
+
+We're two people, and we vibe coded the whole thing with AI coding tools
+(Claude Code). It works, and we think it's awesome. The code is probably a hot
+mess in places, and we'd love real coders and engineers to take a crack at it.
+Good places to start are the known rough edges under [Status](#status) and the
+[issue tracker](https://github.com/CypherSisters/PuffPAIBuildBot/issues);
+[docs/ISSUES.md](docs/ISSUES.md) says how to report one.
+
+---
+
 ## Dashboard
 
 The web page in [`dashboard/`](dashboard/) is a Next.js app served by the

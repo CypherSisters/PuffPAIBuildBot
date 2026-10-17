@@ -1,9 +1,17 @@
 name: CI
 
+# Minutes are kept low: main and pull requests only, one Python on each run.
+# 3.12 runs when asked for by hand (Actions, CI, Run workflow, tick it).
 on:
   push:
+    branches: [main]
   pull_request:
   workflow_dispatch:
+    inputs:
+      also_312:
+        description: "Also run the tests on Python 3.12"
+        type: boolean
+        default: false
 
 # A newer push to the same branch replaces a run still going (saves minutes).
 concurrency:
@@ -16,7 +24,8 @@ permissions:
 jobs:
   python:
     # The supported Pythons: 3.11 is the floor (tomllib, ExceptionGroup);
-    # 3.12 is the one install.sh downloads on a computer that has none.
+    # 3.12 is the one install.sh downloads on a computer that has none. Every
+    # run tests 3.11; 3.12 only when asked for by hand (also_312).
     name: Linux, Python ${{ matrix.python-version }}
     # Pinned: ubuntu-latest moves to Ubuntu 26 from 2026-10-19.
     runs-on: ubuntu-24.04
@@ -24,7 +33,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: ["3.11", "3.12"]
+        python-version: ${{ fromJSON(inputs.also_312 && '["3.11", "3.12"]' || '["3.11"]') }}
     env:
       PYTHON_KEYRING_BACKEND: keyring.backends.fail.Keyring
     steps:

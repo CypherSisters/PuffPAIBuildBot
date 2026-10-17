@@ -376,3 +376,20 @@ def test_the_terminal_offers_it_and_gets_it_on_yes(monkeypatch):
     assert render_cli.helper_screen({"helper_offer": ""},
                                     ask=lambda _p: "yes") is None
     assert "Get it now?" in " ".join(printed)
+
+
+def test_a_short_background_save_is_waited_out_not_called_a_running_build(tmp_path):
+    """The looking step shows "done", then saves behind the one-run lock for
+    a moment. A choice posted in that moment waits for it instead of being
+    told a build is running; a lock that stays held is still refused."""
+    import threading
+    import types
+    from puffpai.wizard import service
+    cfg = types.SimpleNamespace(CONFIG_DIR=str(tmp_path))
+    held = service._take_lock(cfg)  # noqa: SLF001
+    threading.Timer(0.3, lambda: service._drop_lock(held)).start()  # noqa: SLF001
+    got = service._take_lock_soon(cfg, wait_s=5.0)  # noqa: SLF001
+    assert got == held
+    with pytest.raises(service.RunInProgress):
+        service._take_lock_soon(cfg, wait_s=0.3)  # noqa: SLF001
+    service._drop_lock(got)  # noqa: SLF001
