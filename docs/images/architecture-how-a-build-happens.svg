@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 910 430" style="width:100%;height:auto" role="img" aria-label="How a build happens. Nine steps, read like lines of text: you say what bot you want, one plan, your yes, Toolsmith finds an app for each part, your yes for that app, Drawbridge checks the code, it runs on your computer, books and your files learn in the background, your bot can use it. The two yes points are marked in coral." aria-labelledby="hbh-t">
+<title id="hbh-t">How a build happens</title>
+<defs><filter id="hbh-rough" x="-2%" y="-2%" width="104%" height="104%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="7"/><feDisplacementMap in="SourceGraphic" scale="2.2"/></filter><filter id="hbh-soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="12"/></filter><marker id="hbh-ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9 Z" fill="currentColor"/></marker></defs>
+<rect x="10" y="40" width="130" height="128" rx="2" fill="none" stroke="currentColor" stroke-width="1.5" filter="url(#hbh-rough)"/>
+<text x="18" y="30" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor" fill-opacity="0.85">01</text>
+<text x="18" y="60" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor" fill-opacity="0.85">You</text>
+<text x="18" y="82" font-family="Fraunces, Georgia, 'Times New Roman', serif" font-size="13" font-weight="600" fill="currentColor">You say</text>
+<text x="18" y="97" font-family="Fraunces, Georgia, 'Times New Roman', serif" font-size="13" font-weight="600" fill="currentColor">what bot</text>
+<text x="18" y="112" font-family="Fraunces, Georgia, 'Times New Roman', serif" font-size="13" font-weight="600" fill="currentColor">you want</text>
+<path d="M144 100 L194 100" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" marker-end="url(#hbh-ah)"/>
+<text x="169.0" y="90" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor" text-anchor="middle">becomes</text>
+<rect x="200" y="40" width="130" height="128" rx="2" fill="none" stroke="currentColor" stroke-width="1.5" filter="url(#hbh-rough)"/>
+<text x="208" y="30" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor" fill-opacity="0.85">02</text>
+<text x="208" y="60" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor" fill-opacity="0.85">BuildBot</text>
+<text x="208" y="82" font-family="Fraunces, Georgia, 'Times New Roman', serif" font-size="13" font-weight="600" fill="currentColor">One plan</text>
+<text x="208" y="105" font-family="'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="400" fill="currentColor" fill-opacity="0.85">apps, books,</text>
+<text x="208" y="118" font-family="'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="400" fill="currentColor" fill-opacity="0.85">live info</text>
+<path d="M334 100 L384 100" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" marker-end="url(#hbh-ah)"/>
+<text x="359.0" y="90" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor" text-anchor="middle">needs</text>
+<rect x="390" y="40" width="130" height="128" rx="3" fill="#F0A98C"/>
+<rect x="390" y="40" width="130" height="128" rx="2" fill="none" stroke="currentColor" stroke-width="1.5" filter="url(#hbh-rough)"/>
+<text x="398" y="30" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor" fill-opacity="0.85">03</text>
+<text x="398" y="60" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor" fill-opacity="0.85">You</text>
+<text x="398" y="82" font-family="Fraunces, Georgia, 'Times New Roman', serif" font-size="13" font-weight="600" fill="currentColor">Your yes</text>
+<rect x="478" y="144" width="34" height="16" rx="8" fill="#F0A98C" stroke="currentColor" stroke-width="1.2"/>
+<text x="495.0" y="156" text-anchor="middle" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="#2A2320">YES</text>
+<path d="M524 100 L574 100" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" marker-end="url(#hbh-ah)"/>
+<text x="549.0" y="90" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor" text-anchor="middle">starts</text>
+<rect x="580" y="40" width="130" height="128" rx="3" fill="rgba(143,217,182,.34)"/>
+<rect x="580" y="40" width="130" height="128" rx="2" fill="none" stroke="currentColor" stroke-width="1.5" filter="url(#hbh-rough)"/>
+<text x="588" y="30" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor" fill-opacity="0.85">04</text>
+<text x="588" y="60" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor" fill-opacity="0.85">Toolsmith</text>
+<text x="588" y="82" font-family="Fraunces, Georgia, 'Times New Roman', serif" font-size="13" font-weight="600" fill="currentColor">Finds an app</text>
+<text x="588" y="97" font-family="Fraunces, Georgia, 'Times New Roman', serif" font-size="13" font-weight="600" fill="currentColor">for each part</text>
+<path d="M714 100 L764 100" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" marker-end="url(#hbh-ah)"/>
+<text x="739.0" y="90" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor" text-anchor="middle">asks</text>
+<rect x="770" y="40" width="130" height="128" rx="3" fill="#F0A98C"/>
+<rect x="770" y="40" width="130" height="128" rx="2" fill="none" stroke="currentColor" stroke-width="1.5" filter="url(#hbh-rough)"/>
+<text x="778" y="30" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor" fill-opacity="0.85">05</text>
+<text x="778" y="60" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor" fill-opacity="0.85">You</text>
+<text x="778" y="82" font-family="Fraunces, Georgia, 'Times New Roman', serif" font-size="13" font-weight="600" fill="currentColor">Your yes</text>
+<text x="778" y="97" font-family="Fraunces, Georgia, 'Times New Roman', serif" font-size="13" font-weight="600" fill="currentColor">for that app</text>
+<text x="778" y="120" font-family="'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="400" fill="currentColor" fill-opacity="0.85">then it downloads</text>
+<rect x="858" y="144" width="34" height="16" rx="8" fill="#F0A98C" stroke="currentColor" stroke-width="1.2"/>
+<text x="875.0" y="156" text-anchor="middle" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="#2A2320">YES</text>
+<rect x="10" y="250" width="130" height="128" rx="3" fill="rgba(143,217,182,.34)"/>
+<rect x="10" y="250" width="130" height="128" rx="2" fill="none" stroke="currentColor" stroke-width="1.5" filter="url(#hbh-rough)"/>
+<text x="18" y="240" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor" fill-opacity="0.85">06</text>
+<text x="18" y="270" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor" fill-opacity="0.85">Drawbridge</text>
+<text x="18" y="292" font-family="Fraunces, Georgia, 'Times New Roman', serif" font-size="13" font-weight="600" fill="currentColor">Checks</text>
+<text x="18" y="307" font-family="Fraunces, Georgia, 'Times New Roman', serif" font-size="13" font-weight="600" fill="currentColor">the code</text>
+<text x="18" y="330" font-family="'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="400" fill="currentColor" fill-opacity="0.85">before anything</text>
+<text x="18" y="343" font-family="'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="400" fill="currentColor" fill-opacity="0.85">runs</text>
+<path d="M144 310 L194 310" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" marker-end="url(#hbh-ah)"/>
+<text x="169.0" y="300" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor" text-anchor="middle">if safe</text>
+<rect x="200" y="250" width="130" height="128" rx="3" fill="rgba(143,202,221,.30)"/>
+<rect x="200" y="250" width="130" height="128" rx="2" fill="none" stroke="currentColor" stroke-width="1.5" filter="url(#hbh-rough)"/>
+<text x="208" y="240" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor" fill-opacity="0.85">07</text>
+<text x="208" y="270" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor" fill-opacity="0.85">Your computer</text>
+<text x="208" y="292" font-family="Fraunces, Georgia, 'Times New Roman', serif" font-size="13" font-weight="600" fill="currentColor">It runs here</text>
+<text x="208" y="315" font-family="'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="400" fill="currentColor" fill-opacity="0.85">answers only</text>
+<text x="208" y="328" font-family="'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="400" fill="currentColor" fill-opacity="0.85">on this computer</text>
+<path d="M334 310 L384 310" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" marker-end="url(#hbh-ah)"/>
+<text x="359.0" y="300" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor" text-anchor="middle">while</text>
+<rect x="390" y="250" width="130" height="128" rx="3" fill="rgba(143,202,221,.30)"/>
+<rect x="390" y="250" width="130" height="128" rx="2" fill="none" stroke="currentColor" stroke-width="1.5" filter="url(#hbh-rough)"/>
+<text x="398" y="240" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor" fill-opacity="0.85">08</text>
+<text x="398" y="270" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor" fill-opacity="0.85">Your bot</text>
+<text x="398" y="292" font-family="Fraunces, Georgia, 'Times New Roman', serif" font-size="13" font-weight="600" fill="currentColor">Books and files</text>
+<text x="398" y="307" font-family="Fraunces, Georgia, 'Times New Roman', serif" font-size="13" font-weight="600" fill="currentColor">learn</text>
+<text x="398" y="330" font-family="'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="400" fill="currentColor" fill-opacity="0.85">in the background,</text>
+<text x="398" y="343" font-family="'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="400" fill="currentColor" fill-opacity="0.85">chat meanwhile</text>
+<path d="M524 310 L574 310" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" marker-end="url(#hbh-ah)"/>
+<text x="549.0" y="300" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor" text-anchor="middle">lets</text>
+<rect x="580" y="250" width="130" height="128" rx="3" fill="rgba(143,202,221,.30)"/>
+<rect x="580" y="250" width="130" height="128" rx="2" fill="none" stroke="currentColor" stroke-width="1.5" filter="url(#hbh-rough)"/>
+<text x="588" y="240" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor" fill-opacity="0.85">09</text>
+<text x="588" y="270" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor" fill-opacity="0.85">Your bot</text>
+<text x="588" y="292" font-family="Fraunces, Georgia, 'Times New Roman', serif" font-size="13" font-weight="600" fill="currentColor">Can use it</text>
+<path d="M835.0 170 L835.0 210 L75.0 210 L75.0 248" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" marker-end="url(#hbh-ah)"/>
+<text x="455.0" y="203" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor" text-anchor="middle">fetches</text>
+<rect x="10" y="402" width="14" height="10" rx="3" fill="#F0A98C" stroke="currentColor" stroke-width="1"/>
+<text x="30" y="411" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor" fill-opacity="0.85">your yes</text>
+</svg>

@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1110 460" style="width:100%;height:auto" role="img" aria-label="The home build. Your computer, Home Assistant, your phone and your media drives sit inside your home network. Your router is on its edge and is the only link to the internet. The Bridge is the one lane out." aria-labelledby="hom-t">
+<title id="hom-t">The home build</title>
+<defs><filter id="hom-rough" x="-2%" y="-2%" width="104%" height="104%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="7"/><feDisplacementMap in="SourceGraphic" scale="2.2"/></filter><filter id="hom-soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="12"/></filter><marker id="hom-ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9 Z" fill="currentColor"/></marker></defs>
+<path d="M8 448 V8 H770 V186 M770 284 V448 H8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="7 5" stroke-linejoin="round"/>
+<text x="24" y="28" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor" fill-opacity="0.85" letter-spacing=".08em">YOUR HOME NETWORK (LAN)</text>
+<rect x="300" y="150" width="240" height="190" rx="2" fill="none" stroke="currentColor" stroke-width="1.5" filter="url(#hom-rough)"/>
+<text x="312" y="170" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor" fill-opacity="0.85" letter-spacing=".08em">YOUR COMPUTER</text>
+<rect x="312.0" y="184" width="65.33333333333333" height="142" rx="3" fill="rgba(240,169,140,.34)"/>
+<rect x="312.0" y="184" width="65.33333333333333" height="142" rx="2" fill="none" stroke="currentColor" stroke-width="1.2" filter="url(#hom-rough)"/>
+<text x="344.6666666666667" y="257.0" font-family="Fraunces, Georgia, 'Times New Roman', serif" font-size="13" font-weight="600" fill="currentColor" text-anchor="middle">Vault</text>
+<rect x="387.3333333333333" y="184" width="65.33333333333333" height="142" rx="3" fill="rgba(143,202,221,.30)"/>
+<rect x="387.3333333333333" y="184" width="65.33333333333333" height="142" rx="2" fill="none" stroke="currentColor" stroke-width="1.2" filter="url(#hom-rough)"/>
+<text x="420.0" y="257.0" font-family="Fraunces, Georgia, 'Times New Roman', serif" font-size="13" font-weight="600" fill="currentColor" text-anchor="middle">Brain</text>
+<rect x="462.66666666666663" y="184" width="65.33333333333333" height="142" rx="3" fill="rgba(143,217,182,.34)"/>
+<rect x="462.66666666666663" y="184" width="65.33333333333333" height="142" rx="2" fill="none" stroke="currentColor" stroke-width="1.2" filter="url(#hom-rough)"/>
+<text x="495.3333333333333" y="257.0" font-family="Fraunces, Georgia, 'Times New Roman', serif" font-size="13" font-weight="600" fill="currentColor" text-anchor="middle">Bridge</text>
+<rect x="24" y="200" width="150" height="70" rx="2" fill="none" stroke="currentColor" stroke-width="1.5" filter="url(#hom-rough)"/>
+<text x="36" y="226" font-family="Fraunces, Georgia, 'Times New Roman', serif" font-size="13" font-weight="600" fill="currentColor">Phone, laptop</text>
+<text x="36" y="242" font-family="'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="400" fill="currentColor" fill-opacity="0.85">paired to your bot</text>
+<path d="M174 235 L298 235" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" marker-end="url(#hom-ah)"/>
+<text x="180" y="214" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor">pairs, over</text>
+<text x="180" y="226" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor">your home network</text>
+<rect x="300" y="44" width="240" height="52" rx="2" fill="none" stroke="currentColor" stroke-width="1.5" filter="url(#hom-rough)"/>
+<text x="312" y="67" font-family="Fraunces, Georgia, 'Times New Roman', serif" font-size="13" font-weight="600" fill="currentColor">Home Assistant</text>
+<text x="312" y="83" font-family="'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="400" fill="currentColor" fill-opacity="0.85">lights, locks, sensors</text>
+<path d="M420 148 L420 98" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" marker-end="url(#hom-ah)"/>
+<text x="430" y="120" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor">over your home network,</text>
+<text x="430" y="132" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor">only if switched on</text>
+<rect x="300" y="384" width="240" height="52" rx="2" fill="none" stroke="currentColor" stroke-width="1.5" filter="url(#hom-rough)"/>
+<text x="312" y="407" font-family="Fraunces, Georgia, 'Times New Roman', serif" font-size="13" font-weight="600" fill="currentColor">Media drives</text>
+<text x="312" y="423" font-family="'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="400" fill="currentColor" fill-opacity="0.85">your media library</text>
+<path d="M420 382 L420 342" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" marker-end="url(#hom-ah)"/>
+<text x="430" y="358" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor">plays from, over</text>
+<text x="430" y="370" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor">your home network</text>
+<rect x="700" y="190" width="140" height="90" rx="2" fill="none" stroke="currentColor" stroke-width="1.5" filter="url(#hom-rough)"/>
+<text x="712" y="212" font-family="Fraunces, Georgia, 'Times New Roman', serif" font-size="13" font-weight="600" fill="currentColor">Your router</text>
+<text x="712" y="228" font-family="'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="400" fill="currentColor" fill-opacity="0.85">your own firewall</text>
+<text x="712" y="242" font-family="'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="400" fill="currentColor" fill-opacity="0.85">BuildBot never</text>
+<text x="712" y="256" font-family="'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="400" fill="currentColor" fill-opacity="0.85">changes it</text>
+<path d="M540 235 L698 235" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#hom-ah)"/>
+<text x="548" y="208" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor">goes out,</text>
+<text x="548" y="220" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor">only through a switch</text>
+<path d="M840 235 L928 235" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#hom-ah)"/>
+<text x="846" y="227" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor">goes out</text>
+<path d="M930 170 A13.5 13.5 0 0 1 958.3 170.0 A13.5 13.5 0 0 1 986.7 170.0 A13.5 13.5 0 0 1 1015.0 170.0 A13.5 13.5 0 0 1 1043.3 170.0 A13.5 13.5 0 0 1 1071.7 170.0 A13.5 13.5 0 0 1 1100.0 170.0 A12.3 12.3 0 0 1 1100.0 196.0 A12.3 12.3 0 0 1 1100.0 222.0 A12.3 12.3 0 0 1 1100.0 248.0 A12.3 12.3 0 0 1 1100.0 274.0 A12.3 12.3 0 0 1 1100.0 300.0 A13.5 13.5 0 0 1 1071.7 300.0 A13.5 13.5 0 0 1 1043.3 300.0 A13.5 13.5 0 0 1 1015.0 300.0 A13.5 13.5 0 0 1 986.7 300.0 A13.5 13.5 0 0 1 958.3 300.0 A13.5 13.5 0 0 1 930.0 300.0 A12.3 12.3 0 0 1 930.0 274.0 A12.3 12.3 0 0 1 930.0 248.0 A12.3 12.3 0 0 1 930.0 222.0 A12.3 12.3 0 0 1 930.0 196.0 A12.3 12.3 0 0 1 930.0 170.0 Z" fill="rgba(143,202,221,.14)" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+<text x="950" y="232" font-family="Fraunces, Georgia, 'Times New Roman', serif" font-size="13" font-weight="600" fill="currentColor">The internet</text>
+<text x="950" y="248" font-family="'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="400" fill="currentColor" fill-opacity="0.85">weather, search</text>
+</svg>

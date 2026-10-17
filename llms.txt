@@ -12,7 +12,7 @@
 - [docs/FAQ.md](docs/FAQ.md): short answers by audience and task (getting started, adding apps, skills, tools, data, your own code folders, programs and GitHub projects, Office files, the first apps, phones, smart home, networks and firewalls, privacy and the three zones, what Toolsmith may touch, models including Toolsmith's optional cloud model, developers, troubleshooting), each true to the code today, with what is not built yet said plainly
 - [docs/FAQ.md#working-on-the-developer-page](docs/FAQ.md#working-on-the-developer-page): the Developer page card by card, a workflow for it, what needs a Yes, a PIN or a restart, what is not built, running from source, the checks to run, where its code is and how to add a card or route
 - [docs/ISSUES.md](docs/ISSUES.md): how to report a bug or ask for a feature on the issue tracker (https://github.com/CypherSisters/PuffPAIBuildBot/issues), what logs to attach, how to take private things out; templates in .github/ISSUE_TEMPLATE/
-- [docs/ARCHITECTURE.md#11-diagrams](docs/ARCHITECTURE.md#11-diagrams): Mermaid diagrams of the three zones, the seven agents, the build as four questions, how a found app runs and how the brain reaches it, and the Yes and the Bridge
+- [docs/ARCHITECTURE.md#11-diagrams](docs/ARCHITECTURE.md#11-diagrams): three overview pictures (where everything lives, how a build happens, the home build; PNG and SVG in docs/images/architecture-*), then Mermaid diagrams of the three zones, the seven agents, the build as four questions, how a found app runs and how the brain reaches it, and the Yes and the Bridge
 
 ## Key modules
 

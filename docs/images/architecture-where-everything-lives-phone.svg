@@ -1,0 +1,165 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 375 1806" style="width:100%;height:auto" role="img" aria-label="Where everything lives, phone version. Inside your home network, your computer holds the Vault, the Brain with your knowledge base, and the Bridge. Your router is the only link to the internet." aria-labelledby="welp-t">
+<title id="welp-t">Where everything lives (phone)</title>
+<defs><filter id="welp-rough" x="-2%" y="-2%" width="104%" height="104%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="7"/><feDisplacementMap in="SourceGraphic" scale="2.2"/></filter><filter id="welp-soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="12"/></filter><marker id="welp-ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9 Z" fill="currentColor"/></marker></defs>
+<path d="M3 4 H372 V1468 H230 M40 1468 H3 Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="7 5" stroke-linejoin="round"/>
+<text x="14" y="20" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor" fill-opacity="0.85" letter-spacing=".08em">YOUR HOME NETWORK (LAN)</text>
+<rect x="14" y="32" width="110" height="64" rx="2" fill="none" stroke="currentColor" stroke-width="1.5" filter="url(#welp-rough)"/>
+<text x="22" y="52" font-family="Fraunces, Georgia, 'Times New Roman', serif" font-size="12" font-weight="600" fill="currentColor">Phone, laptop</text>
+<text x="22" y="68" font-family="'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="400" fill="currentColor" fill-opacity="0.85">paired</text>
+<rect x="132" y="32" width="110" height="64" rx="2" fill="none" stroke="currentColor" stroke-width="1.5" filter="url(#welp-rough)"/>
+<text x="140" y="52" font-family="Fraunces, Georgia, 'Times New Roman', serif" font-size="12" font-weight="600" fill="currentColor">Home Assistant</text>
+<text x="140" y="68" font-family="'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="400" fill="currentColor" fill-opacity="0.85">Steward talks</text>
+<text x="140" y="81" font-family="'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="400" fill="currentColor" fill-opacity="0.85">to it</text>
+<rect x="250" y="32" width="110" height="64" rx="2" fill="none" stroke="currentColor" stroke-width="1.5" filter="url(#welp-rough)"/>
+<text x="258" y="52" font-family="Fraunces, Georgia, 'Times New Roman', serif" font-size="12" font-weight="600" fill="currentColor">Media drives</text>
+<text x="258" y="68" font-family="'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="400" fill="currentColor" fill-opacity="0.85">your media</text>
+<text x="258" y="81" font-family="'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="400" fill="currentColor" fill-opacity="0.85">library</text>
+<path d="M26 96 L26 164" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#welp-ah)"/>
+<text x="34" y="112" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor">pairs, over</text>
+<text x="34" y="124" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor">your home</text>
+<text x="34" y="136" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor">network</text>
+<path d="M144 164 L144 98" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#welp-ah)"/>
+<text x="152" y="108" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor">over your</text>
+<text x="152" y="120" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor">home network,</text>
+<text x="152" y="132" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor">only if</text>
+<text x="152" y="144" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor">switched on</text>
+<path d="M262 98 L262 164" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#welp-ah)"/>
+<text x="270" y="130" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor">plays from</text>
+<rect x="12" y="166" width="351" height="1178" rx="2" fill="none" stroke="currentColor" stroke-width="1.5" filter="url(#welp-rough)"/>
+<text x="26" y="184" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor" fill-opacity="0.85" letter-spacing=".08em">YOUR COMPUTER</text>
+<rect x="64" y="194" width="247" height="54" rx="2" fill="none" stroke="currentColor" stroke-width="1.5" filter="url(#welp-rough)"/>
+<text x="74" y="212" font-family="Fraunces, Georgia, 'Times New Roman', serif" font-size="13" font-weight="600" fill="currentColor">Your files and folders</text>
+<text x="74" y="226" font-family="'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="400" fill="currentColor" fill-opacity="0.85">on your computer:</text>
+<text x="74" y="239" font-family="'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="400" fill="currentColor" fill-opacity="0.85">uploads, linked folders</text>
+<path d="M100 250 L100 286" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" marker-end="url(#welp-ah)"/>
+<text x="108" y="264" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor">keys and personal</text>
+<text x="108" y="276" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor">details go to the vault</text>
+<path d="M64 215 L26 215 L26 805 L62 805" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" marker-end="url(#welp-ah)"/>
+<text x="32" y="266" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor">read and</text>
+<text x="32" y="278" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor">learned</text>
+<clipPath id="welp-z1"><rect x="52" y="288" width="271" height="132" rx="3"/></clipPath>
+<rect x="52" y="288" width="271" height="132" rx="3" fill="rgba(240,169,140,.34)"/>
+<g clip-path="url(#welp-z1)" filter="url(#welp-soft)" fill="rgba(239,163,184,.30)"><ellipse cx="119.75" cy="314.4" rx="113.82" ry="21.12"/><ellipse cx="263.38" cy="383.03999999999996" rx="108.4" ry="26.400000000000002"/></g>
+<rect x="52" y="288" width="271" height="132" rx="3" fill="none" stroke="currentColor" stroke-width="1.5" filter="url(#welp-rough)"/>
+<text x="64" y="308" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor" fill-opacity="0.85" letter-spacing=".08em">ZONE 1</text>
+<text x="64" y="330" font-family="Fraunces, Georgia, 'Times New Roman', serif" font-size="13" font-weight="600" fill="currentColor">The Vault</text>
+<g fill="none" stroke="currentColor" stroke-width="1.5"><rect x="288" y="302" width="18" height="14" rx="2"/><path d="M292 302 v-4 a5 5 0 0 1 10 0 v4"/></g>
+<text x="64" y="358" font-family="'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="400" fill="currentColor">keys</text>
+<line x1="64" y1="365" x2="184" y2="365" stroke="currentColor" stroke-opacity=".25" stroke-width="1"/>
+<text x="64" y="378" font-family="'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="400" fill="currentColor">personal details</text>
+<line x1="64" y1="385" x2="184" y2="385" stroke="currentColor" stroke-opacity=".25" stroke-width="1"/>
+<text x="64" y="398" font-family="'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="400" fill="currentColor">private files</text>
+<line x1="64" y1="405" x2="184" y2="405" stroke="currentColor" stroke-opacity=".25" stroke-width="1"/>
+<text x="196" y="358" font-family="'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="600" fill="currentColor">locked with</text>
+<text x="196" y="372" font-family="'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="600" fill="currentColor">your PIN</text>
+<text x="196" y="396" font-family="'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="400" fill="currentColor" fill-opacity="0.85">Archivist is the</text>
+<text x="196" y="410" font-family="'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="400" fill="currentColor" fill-opacity="0.85">only way in or out</text>
+<path d="M78 422 L78 468" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" marker-end="url(#welp-ah)"/>
+<text x="88" y="450" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor">only with your PIN</text>
+<clipPath id="welp-z2"><rect x="52" y="470" width="271" height="478" rx="3"/></clipPath>
+<rect x="52" y="470" width="271" height="478" rx="3" fill="rgba(143,202,221,.30)"/>
+<g clip-path="url(#welp-z2)" filter="url(#welp-soft)" fill="rgba(143,202,221,.30)"><ellipse cx="119.75" cy="565.6" rx="113.82" ry="76.48"/><ellipse cx="263.38" cy="814.16" rx="108.4" ry="95.60000000000001"/></g>
+<rect x="52" y="470" width="271" height="478" rx="3" fill="none" stroke="currentColor" stroke-width="1.5" filter="url(#welp-rough)"/>
+<text x="64" y="490" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor" fill-opacity="0.85" letter-spacing=".08em">ZONE 2</text>
+<text x="64" y="512" font-family="Fraunces, Georgia, 'Times New Roman', serif" font-size="13" font-weight="600" fill="currentColor">The Brain</text>
+<rect x="64" y="522" width="247" height="40" rx="2" fill="none" stroke="currentColor" stroke-width="1"/>
+<text x="74" y="538" font-family="'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="600" fill="currentColor">Apps it runs</text>
+<text x="74" y="552" font-family="'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="400" fill="currentColor" fill-opacity="0.85">answer only on this computer</text>
+<rect x="64" y="572" width="247" height="36" rx="2" fill="none" stroke="currentColor" stroke-width="1"/>
+<text x="74" y="588" font-family="'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="600" fill="currentColor">AI model</text>
+<text x="74" y="602" font-family="'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="400" fill="currentColor" fill-opacity="0.85">runs on your computer</text>
+<text x="64" y="628" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor" fill-opacity="0.85" letter-spacing=".08em">THE TEAM</text>
+<text x="64" y="646" font-family="'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="600" fill="currentColor">Concierge</text>
+<text x="140" y="646" font-family="'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="400" fill="currentColor" fill-opacity="0.85">you talk to it</text>
+<line x1="64" y1="651" x2="311" y2="651" stroke="currentColor" stroke-opacity=".25" stroke-width="1"/>
+<text x="64" y="666" font-family="'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="500" fill="currentColor">Archivist</text>
+<text x="140" y="666" font-family="'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="400" fill="currentColor" fill-opacity="0.85">vault and knowledge</text>
+<line x1="64" y1="671" x2="311" y2="671" stroke="currentColor" stroke-opacity=".25" stroke-width="1"/>
+<text x="64" y="686" font-family="'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="500" fill="currentColor">Steward</text>
+<text x="140" y="686" font-family="'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="400" fill="currentColor" fill-opacity="0.85">Home Assistant, media</text>
+<line x1="64" y1="691" x2="311" y2="691" stroke="currentColor" stroke-opacity=".25" stroke-width="1"/>
+<text x="64" y="706" font-family="'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="500" fill="currentColor">Majordomo</text>
+<text x="140" y="706" font-family="'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="400" fill="currentColor" fill-opacity="0.85">routines</text>
+<line x1="64" y1="711" x2="311" y2="711" stroke="currentColor" stroke-opacity=".25" stroke-width="1"/>
+<text x="64" y="726" font-family="'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="500" fill="currentColor">Caretaker</text>
+<text x="140" y="726" font-family="'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="400" fill="currentColor" fill-opacity="0.85">machine health</text>
+<line x1="64" y1="731" x2="311" y2="731" stroke="currentColor" stroke-opacity=".25" stroke-width="1"/>
+<rect x="64" y="742" width="247" height="198" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/>
+<text x="74" y="762" font-family="Fraunces, Georgia, 'Times New Roman', serif" font-size="13" font-weight="600" fill="currentColor">Your knowledge base</text>
+<text x="74" y="776" font-family="'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="400" fill="currentColor" fill-opacity="0.85">kept separate from the Vault</text>
+<rect x="72" y="786" width="231" height="38" rx="2" fill="none" stroke="currentColor" stroke-width="1"/>
+<text x="80" y="802" font-family="Fraunces, Georgia, 'Times New Roman', serif" font-size="12" font-weight="600" fill="currentColor">Your files</text>
+<text x="80" y="816" font-family="'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="400" fill="currentColor" fill-opacity="0.85">uploads and linked folders</text>
+<rect x="72" y="830" width="231" height="38" rx="2" fill="none" stroke="currentColor" stroke-width="1"/>
+<text x="80" y="846" font-family="Fraunces, Georgia, 'Times New Roman', serif" font-size="12" font-weight="600" fill="currentColor">Public libraries</text>
+<text x="80" y="860" font-family="'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="400" fill="currentColor" fill-opacity="0.85">work offline once downloaded</text>
+<text x="74" y="886" font-family="'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="400" fill="currentColor" fill-opacity="0.85">learns in the background:</text>
+<text x="74" y="899" font-family="'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="400" fill="currentColor" fill-opacity="0.85">words first, then meaning</text>
+<text x="74" y="916" font-family="'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="400" fill="currentColor" fill-opacity="0.85">keys and personal details</text>
+<text x="74" y="929" font-family="'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="400" fill="currentColor" fill-opacity="0.85">show here as [held in vault]</text>
+<path d="M78 950 L78 1016" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" marker-end="url(#welp-ah)"/>
+<text x="88" y="986" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor">goes out</text>
+<path d="M200 1016 L200 942" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" marker-end="url(#welp-ah)"/>
+<text x="208" y="968" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor">downloads</text>
+<text x="208" y="980" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor">once through</text>
+<text x="208" y="992" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor">a switch</text>
+<clipPath id="welp-z3"><rect x="52" y="1018" width="271" height="312" rx="3"/></clipPath>
+<rect x="52" y="1018" width="271" height="312" rx="3" fill="rgba(143,217,182,.34)"/>
+<g clip-path="url(#welp-z3)" filter="url(#welp-soft)" fill="rgba(143,217,182,.34)"><ellipse cx="119.75" cy="1080.4" rx="113.82" ry="49.92"/><ellipse cx="263.38" cy="1242.6399999999999" rx="108.4" ry="62.400000000000006"/></g>
+<rect x="52" y="1018" width="271" height="312" rx="3" fill="none" stroke="currentColor" stroke-width="1.5" filter="url(#welp-rough)"/>
+<text x="64" y="1038" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor" fill-opacity="0.85" letter-spacing=".08em">ZONE 3</text>
+<text x="64" y="1060" font-family="Fraunces, Georgia, 'Times New Roman', serif" font-size="13" font-weight="600" fill="currentColor">The Bridge</text>
+<rect x="64" y="1074" width="247" height="66" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/>
+<text x="74" y="1092" font-family="Fraunces, Georgia, 'Times New Roman', serif" font-size="13" font-weight="600" fill="currentColor">Drawbridge</text>
+<text x="74" y="1106" font-family="'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="400" fill="currentColor" fill-opacity="0.85">the guard, never goes out itself</text>
+<text x="74" y="1119" font-family="'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="400" fill="currentColor" fill-opacity="0.85">checks what crosses, and apps</text>
+<text x="74" y="1132" font-family="'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="400" fill="currentColor" fill-opacity="0.85">before they run</text>
+<path d="M78 1176 L78 1142" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#welp-ah)"/>
+<text x="88" y="1164" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor">brings back</text>
+<rect x="64" y="1176" width="247" height="44" rx="2" fill="none" stroke="currentColor" stroke-width="1"/>
+<text x="74" y="1194" font-family="Fraunces, Georgia, 'Times New Roman', serif" font-size="13" font-weight="600" fill="currentColor">Toolsmith</text>
+<text x="74" y="1209" font-family="'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="400" fill="currentColor" fill-opacity="0.85">finds apps, kept out of vault</text>
+<rect x="64" y="1232" width="247" height="46" rx="2" fill="none" stroke="currentColor" stroke-width="1"/>
+<rect x="74" y="1240" width="24" height="12" rx="6" fill="currentColor" fill-opacity=".28" stroke="currentColor" stroke-width="1.2"/><circle cx="92" cy="1246" r="3.4" fill="currentColor"/>
+<rect x="104" y="1240" width="24" height="12" rx="6" fill="currentColor" fill-opacity="0" stroke="currentColor" stroke-width="1.2"/><circle cx="110" cy="1246" r="3.4" fill="currentColor"/>
+<rect x="134" y="1240" width="24" height="12" rx="6" fill="currentColor" fill-opacity="0" stroke="currentColor" stroke-width="1.2"/><circle cx="140" cy="1246" r="3.4" fill="currentColor"/>
+<text x="74" y="1270" font-family="'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="400" fill="currentColor" fill-opacity="0.85">a switch for each outside service</text>
+<rect x="64" y="1290" width="247" height="30" rx="2" fill="none" stroke="currentColor" stroke-width="1"/>
+<text x="74" y="1310" font-family="'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="600" fill="currentColor">every request logged</text>
+<path d="M56 1332 L56 1438" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#welp-ah)"/>
+<text x="96" y="1352" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor">goes out,</text>
+<text x="96" y="1364" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor">only through</text>
+<text x="96" y="1376" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor">a switch</text>
+<path d="M86 1438 L86 1332" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#welp-ah)"/>
+<text x="96" y="1398" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor">comes back as</text>
+<text x="96" y="1410" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor">data, never</text>
+<text x="96" y="1422" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor">instructions</text>
+<rect x="40" y="1440" width="190" height="56" rx="2" fill="none" stroke="currentColor" stroke-width="1.5" filter="url(#welp-rough)"/>
+<text x="52" y="1460" font-family="Fraunces, Georgia, 'Times New Roman', serif" font-size="13" font-weight="600" fill="currentColor">Your router</text>
+<text x="52" y="1476" font-family="'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="400" fill="currentColor" fill-opacity="0.85">your own firewall</text>
+<text x="52" y="1490" font-family="'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="400" fill="currentColor" fill-opacity="0.85">BuildBot never changes it</text>
+<path d="M311 542 L346 542 L346 1456 L232 1456" fill="none" stroke="currentColor" stroke-width="1.6" stroke-dasharray="6 5" stroke-linejoin="round" marker-end="url(#welp-ah)"/>
+<text x="338" y="1356" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor" text-anchor="end">apps you said yes</text>
+<text x="338" y="1368" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor" text-anchor="end">to can go online</text>
+<text x="338" y="1380" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor" text-anchor="end">on their own</text>
+<path d="M60 1498 L60 1556" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#welp-ah)"/>
+<text x="68" y="1530" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor">goes out</text>
+<path d="M130 1556 L130 1498" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#welp-ah)"/>
+<text x="138" y="1530" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor">as data</text>
+<path d="M200 1498 L200 1556" fill="none" stroke="currentColor" stroke-width="1.6" stroke-dasharray="6 5" stroke-linejoin="round" marker-end="url(#welp-ah)"/>
+<text x="208" y="1522" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor">on their</text>
+<text x="208" y="1534" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor">own</text>
+<path d="M14 1558 A13.7 13.7 0 0 1 42.8 1558.0 A13.7 13.7 0 0 1 71.7 1558.0 A13.7 13.7 0 0 1 100.5 1558.0 A13.7 13.7 0 0 1 129.3 1558.0 A13.7 13.7 0 0 1 158.2 1558.0 A13.7 13.7 0 0 1 187.0 1558.0 A13.7 13.7 0 0 1 215.8 1558.0 A13.7 13.7 0 0 1 244.7 1558.0 A13.7 13.7 0 0 1 273.5 1558.0 A13.7 13.7 0 0 1 302.3 1558.0 A13.7 13.7 0 0 1 331.2 1558.0 A13.7 13.7 0 0 1 360.0 1558.0 A13.8 13.8 0 0 1 360.0 1587.0 A13.8 13.8 0 0 1 360.0 1616.0 A13.8 13.8 0 0 1 360.0 1645.0 A13.8 13.8 0 0 1 360.0 1674.0 A13.8 13.8 0 0 1 360.0 1703.0 A13.8 13.8 0 0 1 360.0 1732.0 A13.8 13.8 0 0 1 360.0 1761.0 A13.8 13.8 0 0 1 360.0 1790.0 A13.7 13.7 0 0 1 331.2 1790.0 A13.7 13.7 0 0 1 302.3 1790.0 A13.7 13.7 0 0 1 273.5 1790.0 A13.7 13.7 0 0 1 244.7 1790.0 A13.7 13.7 0 0 1 215.8 1790.0 A13.7 13.7 0 0 1 187.0 1790.0 A13.7 13.7 0 0 1 158.2 1790.0 A13.7 13.7 0 0 1 129.3 1790.0 A13.7 13.7 0 0 1 100.5 1790.0 A13.7 13.7 0 0 1 71.7 1790.0 A13.7 13.7 0 0 1 42.8 1790.0 A13.7 13.7 0 0 1 14.0 1790.0 A13.8 13.8 0 0 1 14.0 1761.0 A13.8 13.8 0 0 1 14.0 1732.0 A13.8 13.8 0 0 1 14.0 1703.0 A13.8 13.8 0 0 1 14.0 1674.0 A13.8 13.8 0 0 1 14.0 1645.0 A13.8 13.8 0 0 1 14.0 1616.0 A13.8 13.8 0 0 1 14.0 1587.0 A13.8 13.8 0 0 1 14.0 1558.0 Z" fill="rgba(143,202,221,.14)" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+<text x="30" y="1582" font-family="'IBM Plex Mono', ui-monospace, Consolas, monospace" font-size="11" font-weight="500" fill="currentColor" fill-opacity="0.85" letter-spacing=".08em">THE INTERNET</text>
+<text x="30" y="1608" font-family="Fraunces, Georgia, 'Times New Roman', serif" font-size="13" font-weight="600" fill="currentColor">App sources</text>
+<text x="30" y="1622" font-family="'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="400" fill="currentColor" fill-opacity="0.85">like GitHub</text>
+<line x1="30" y1="1634" x2="344" y2="1634" stroke="currentColor" stroke-opacity=".25" stroke-width="1"/>
+<text x="30" y="1654" font-family="Fraunces, Georgia, 'Times New Roman', serif" font-size="13" font-weight="600" fill="currentColor">Book libraries</text>
+<text x="30" y="1668" font-family="'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="400" fill="currentColor" fill-opacity="0.85">Kiwix, Gutenberg, OpenStax</text>
+<line x1="30" y1="1680" x2="344" y2="1680" stroke="currentColor" stroke-opacity=".25" stroke-width="1"/>
+<text x="30" y="1700" font-family="Fraunces, Georgia, 'Times New Roman', serif" font-size="13" font-weight="600" fill="currentColor">Weather, web search</text>
+<text x="30" y="1714" font-family="'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="400" fill="currentColor" fill-opacity="0.85">only when switched on</text>
+<line x1="30" y1="1726" x2="344" y2="1726" stroke="currentColor" stroke-opacity=".25" stroke-width="1"/>
+<text x="30" y="1746" font-family="Fraunces, Georgia, 'Times New Roman', serif" font-size="13" font-weight="600" fill="currentColor">Anthropic</text>
+<text x="30" y="1760" font-family="'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="400" fill="currentColor" fill-opacity="0.85">only if you choose it, your own key</text>
+</svg>

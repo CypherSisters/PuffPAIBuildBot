@@ -291,8 +291,21 @@ Nothing in the default suite goes online; `tests/live/` holds opt-in live tests.
 
 ## 11. Diagrams
 
-Five pictures of the same system, drawn from the code named under each one.
-They are Mermaid, so GitHub draws them. If a picture and the code disagree, the
+Three overview pictures first, then the detailed developer view.
+
+![Where everything lives. Inside your home network, your computer holds the Vault, the Brain with your knowledge base, and the Bridge. Your router is the only link to the internet, and the Bridge is the one way out.](images/architecture-where-everything-lives.png)
+*Where everything lives. [Full size](images/architecture-where-everything-lives.svg)*
+
+![How a build happens. Nine steps: you say what bot you want, one plan, your yes, Toolsmith finds an app for each part, your yes for that app, Drawbridge checks the code, it runs on your computer, books and your files learn in the background, your bot can use it. The two yes points are marked in coral.](images/architecture-how-a-build-happens.png)
+*How a build happens. [Full size](images/architecture-how-a-build-happens.svg)*
+
+![The home build. Your computer, Home Assistant, your phone and your media drives sit inside your home network. Your router is on its edge and is the only link to the internet. The Bridge is the one lane out.](images/architecture-home-build.png)
+*The home build: your home network, your router and the one lane out. [Full size](images/architecture-home-build.svg)*
+
+Phone-width versions sit beside each one in `docs/images/` (`-phone`).
+
+Below them, five pictures of the same system, drawn from the code named under
+each one. They are Mermaid, so GitHub draws them. If a picture and the code disagree, the
 code wins and the picture is the bug.
 
 ### 11.1 The three zones and what may cross

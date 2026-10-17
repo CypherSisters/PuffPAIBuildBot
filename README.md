@@ -176,6 +176,9 @@ files and books to learn from.
 Books learn in the background once your bot is running. A small book can
 answer questions within a minute or two. You can chat while the rest learns.
 
+![How a build happens. Nine steps: you say what bot you want, one plan, your yes, Toolsmith finds an app for each part, your yes for that app, Drawbridge checks the code, it runs on your computer, books and your files learn in the background, your bot can use it. The two yes points are marked in coral.](docs/images/architecture-how-a-build-happens.png)
+*A build in nine steps. The two yes points are marked in coral: one for the plan, and one for each app before Toolsmith downloads it. [Full size](docs/images/architecture-how-a-build-happens.svg)*
+
 ![The one plan, in the browser: the brain, the daily update it can send, and the books it could learn, each with its size and a checkbox.](docs/images/wizard-summary.png)
 *The plan for a garden bot, in the browser. The terminal shows the same plan.*
 
@@ -324,6 +327,9 @@ What that means:
 ---
 
 ## The three zones
+
+![Where everything lives. Inside your home network, your computer holds the Vault, the Brain with your knowledge base, and the Bridge. Your router is the only link to the internet, and the Bridge is the one way out.](docs/images/architecture-where-everything-lives.png)
+*Where everything lives. The Vault opens only with your PIN, the Brain holds the team, the apps and your knowledge base, and the Bridge is the one way out, with a switch for each outside service. One honest exception: an app you said yes to can go online on its own. [Full size](docs/images/architecture-where-everything-lives.svg)*
 
 BuildBot ships all three, like every PuffPAI build. They are contracts, not a
 diagram.

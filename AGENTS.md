@@ -8,6 +8,7 @@
 - Change the wizard: [the build logic](#4-the-build-logic) (the wizard is that pipeline)
 - Run the tests: [How to run and test](#8-how-to-run-and-test)
 - The hard rules: [Hard rules](#9-hard-rules)
+- See it drawn: [the diagrams](docs/ARCHITECTURE.md#11-diagrams) (three overview pictures, then the Mermaid developer view)
 
 Read this first. Deeper detail (module map, data flow, schemas, contracts) is
 in [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md), and its
