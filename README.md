@@ -700,7 +700,8 @@ Star or watch to follow along. Found another rough edge? Report it on the
 ## The rest of the family
 
 - **[CypherSisters/HomeBotBuild](https://github.com/CypherSisters/HomeBotBuild)**:
-  HomeBot, the first persona, with this wizard.
+  HomeBot, the first persona, built with an earlier version of this wizard;
+  the current one is being brought over.
 - **[CypherSisters/HomeBotFounders](https://github.com/CypherSisters/HomeBotFounders)**:
   the Jetson Orin reference build.
 
