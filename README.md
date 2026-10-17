@@ -271,8 +271,8 @@ What that means:
 - **Only Toolsmith.** The brain and the other six agents always run on your
   computer.
 - **What is sent.** When Toolsmith finds and installs apps, it sends Anthropic
-  your goal and your bot's jobs, the public names, descriptions, stars and
-  topics of the apps it found, each app's README, docs and file list, the
+  your goal and your bot's jobs, the public names, descriptions, stars,
+  topics and language of the apps it found, each app's README, docs and file list, the
   start of its setup files, the commands it runs with their output, and what
   the app's pages show. Keys and personal details it spots are taken out
   first. It never sends your chats or vault. If you ask it to use a project of
@@ -331,15 +331,18 @@ diagram.
 - **Zone 1, the Vault.** An encrypted container for personal details, keys and
   private files, locked with your PIN. Nothing comes out without the PIN. Even
   the AI has to ask.
-- **Zone 2, the Brain.** The AI model, the agents, Home Assistant, and what
-  your bot knows: the books it learned and the files you gave it.
+- **Zone 2, the Brain.** The AI model, five of the seven agents, Home
+  Assistant, and what your bot knows: the books it learned and the files you
+  gave it.
 - **Zone 3, the Bridge.** The only zone that can reach outside, and responsible
   for the security and privacy of the whole build. The dashboard's **What leaves
   your computer** page lists every outside service this build has: what it is
   for, what leaves, where it goes, and a switch for each one that can be turned
   off. How many there are depends on the build. The page also shows every
-  request BuildBot made in the last day. Drawbridge, the Bridge's agent, checks
-  everything the wizard or "add more" brings in before it is used. The Bridge
+  request BuildBot made in the last day. Two agents work here. Drawbridge
+  checks everything the wizard or "add more" brings in before it is used.
+  Toolsmith finds and installs the apps your bot uses, kept out of your vault,
+  your bot's data and BuildBot's own parts. The Bridge
   works alongside the security gear you already run, and never touches it:
   it suggests a posture for your router or firewall and asks you.
 
@@ -626,7 +629,7 @@ proxy, so the browser never receives it. It needs **Node 20+**
 
 Its pages: Dashboard (home), Talk, Chat, Avatar, Device, Knowledge, Add more,
 Vault, Smart Home, Agent Team, What leaves your computer, Sign-up keys, Setup
-(the wizard), Looks, Settings, My Documents, Profile, Apps, and a page of its
+(the wizard), Looks, Developer, Settings, My Documents, Profile, Apps, and a page of its
 own for your bot and for each live card.
 
 If a pairing code has run out (they last an hour), `puffpai start` prints a

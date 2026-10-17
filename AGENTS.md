@@ -53,8 +53,8 @@ These are contracts enforced in code, not a diagram.
 | Zone | What it is | Code |
 |------|------------|------|
 | **Zone 1, your private stuff** | The vault: an encrypted store (Fernet, PBKDF2-HMAC-SHA256) for keys, personal details and private files, opened with the owner's PIN, locks itself when idle. | `security/vault.py`, `zone_vault.py`, `security/keys.py`, `security/chat_privacy.py`, `security/vault_inbox.py` |
-| **Zone 2, the brain** | The local model, the agents, what the bot knows (books, files, skills), apps running on this computer. | `brain_loop.py`, `brain_tools.py`, `agents/`, `knowledge/`, `skills.py`, `integrate/run_here.py` |
-| **Zone 3, the Bridge** | The only way out for BuildBot's own calls. Every outside service has its own switch, listed on the "What leaves your computer" page. The named outside services (weather, news, web search, live cards and the rest) ship off. BuildBot's own finders (searching GitHub for apps, downloading the app you picked, the free book library, catalog refresh) are on from the start so the wizard can look for apps and books; each has its own switch on that page. | `security/egress_doors.py`, `security/egress_ledger.py`, `outside_services.py`, `outside_api.py`, `zone_bridge.py` |
+| **Zone 2, the brain** | The local model, five of the seven agents (all but Drawbridge and Toolsmith, which work in zone 3), what the bot knows (books, files, skills), apps running on this computer. | `brain_loop.py`, `brain_tools.py`, `agents/`, `knowledge/`, `skills.py`, `integrate/run_here.py` |
+| **Zone 3, the Bridge** | The only way out for BuildBot's own calls. Its agents: Drawbridge (checks and veto) and Toolsmith (finds and installs apps; boundary in section 3c). Every outside service has its own switch, listed on the "What leaves your computer" page. The named outside services (weather, news, web search, live cards and the rest) ship off. BuildBot's own finders (searching GitHub for apps, downloading the app you picked, the free book library, catalog refresh) are on from the start so the wizard can look for apps and books; each has its own switch on that page. | `security/egress_doors.py`, `security/egress_ledger.py`, `outside_services.py`, `outside_api.py`, `zone_bridge.py` |
 
 What may cross:
 
@@ -742,6 +742,8 @@ each card with a one-line "What happens":
   routes answer 404 (`addYourOwnService.ts`).
 - **A tool server**: the existing "Add my own tool" on the Brain page
   (`AddOwnTool`, `mcp_client.add_server`).
+
+The whole Developer page, card by card, with its code and how to add a card: [docs/FAQ.md, Working on the Developer page](docs/FAQ.md#working-on-the-developer-page).
 
 **Office files.** The brain tools `make_document(kind, title, content)` and
 `edit_document(path, changes)` (`office_docs.py`, registered in

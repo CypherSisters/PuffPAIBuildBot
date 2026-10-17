@@ -19,6 +19,7 @@ For coding agents: [AGENTS.md](../AGENTS.md).
 [Privacy and the three zones](#privacy-and-the-three-zones) ·
 [Models and brains](#models-and-brains) ·
 [For developers and AI agents](#for-developers-and-ai-agents) ·
+[Working on the Developer page](#working-on-the-developer-page) ·
 [Troubleshooting](#troubleshooting) ·
 [Contributing and reporting issues](#contributing-and-reporting-issues)
 
@@ -363,10 +364,11 @@ BuildBot's own notes and logs go in a `.buildbot` folder inside it. It is never
 deleted. BuildBot refuses folders it must not touch: the vault, its own
 settings and code, system folders, sign-in keys, a whole drive, and the data
 folder itself (a folder you made inside My files is fine). If you chose the
-cloud model for Toolsmith, what it sends from your folder is its README, its
-file list, the first lines of its run files (`package.json`,
-`pyproject.toml`, the compose file), and the output of the commands it runs
-there. A command that prints a file sends that file's text too.
+cloud model for Toolsmith, it reads your folder the same way as any app, and
+sends Anthropic its README and docs, its file list, the first lines of its
+setup files (`package.json`, `pyproject.toml`, the compose file), the
+commands it runs there with their output, and what its pages show. A command
+that prints a file sends that file's text too.
 
 ### Can BuildBot use programs I already have?
 
@@ -390,9 +392,10 @@ Yes. Ask in chat ("make a packing list spreadsheet"). It makes the file in
 "My files", in a folder named "Made by" and your bot's name, and the answer
 has a one-click way to open it in Office. It can also change a Word, Excel or
 PowerPoint file (add paragraphs, rows or slides, or replace text). Files it
-made itself change at once. Any other file of yours in your data folder asks
-you first, one file per question. A file in a folder you linked asks too, says
-BuildBot normally never changes those, and keeps the original beside it as
+made itself change at once. Any other file of yours in your data folder waits
+for your yes, one file per question. A file in a folder you linked waits for
+your yes too, the question says BuildBot normally never changes those, and it
+keeps the original beside it as
 "<name> (before BuildBot)". The Knowledge page lists the newest files in My
 files with an **Open** button. This needs a model that can use tools.
 
@@ -400,12 +403,15 @@ files with an **Open** button. This needs a model that can use tools.
 
 BuildBot ships with five apps of its own (AlarmFlow, Calendar, FitFam,
 FreshTable and Trivia). A new bot starts with all of them off, so your bot
-only has what you asked for. Turn one on from the **Apps** page, under
-**Your first apps**. When one fits your goal, the wizard's plan lists it as
-"Turn on: <app> (one of your first apps)", and your Yes turns it on. Turning
-one on downloads nothing and reaches nothing outside. An app that is off keeps
-its saved data, and its home tiles and widgets are hidden until you turn it
-on. A bot made before this change keeps on the first apps it already used.
+only has what you asked for. On the **Apps** page, under **Your first apps**,
+each one has a **Turn on** or **Turn off** button. When one fits your goal,
+the setup list (on the wizard's last screen, the home page's Build jobs and
+each job's page) has the line "Turn on: <app> (one of your first apps)", and
+your **Yes, build all of this** turns it on. Turning one on downloads nothing
+and reaches nothing outside. Turning one off hides it (its menu entry, home
+tiles and widgets, and its tools in chat) and keeps its saved data for when
+you turn it on again. A bot made before this change keeps on the first apps it
+already used.
 
 ---
 
@@ -611,15 +617,17 @@ The outside log shows every request.
 - **Zone 1, your private stuff:** the vault, an encrypted store for keys,
   personal details and private files, opened with your PIN, which locks itself
   when idle.
-- **Zone 2, the brain:** the local model, the agents, what your bot knows, and
-  the apps running on this computer. Toolsmith is the exception: it downloads
-  and runs strangers' code and may talk to a cloud model, so it is treated as
-  part of Zone 3 and kept away from your private things (see
-  [What can Toolsmith touch?](#what-can-toolsmith-touch-on-my-computer)).
+- **Zone 2, the brain:** the local model, five of the seven agents
+  (Concierge, Steward, Archivist, Majordomo and Caretaker), what your bot
+  knows, and the apps running on this computer.
 - **Zone 3, the Bridge:** the only way out for BuildBot's own calls. Every
   outside service has its own switch on the **What leaves your computer**
   page. Most start off; the ones used to find and download what you pick
-  start on and switch off with one tap.
+  start on and switch off with one tap. Two agents work here: Drawbridge, the
+  Bridge's agent, which checks everything that comes in, and Toolsmith, which
+  downloads and runs strangers' code and may talk to a cloud model, so it is
+  kept away from your private things (see
+  [What can Toolsmith touch?](#what-can-toolsmith-touch-on-my-computer)).
 
 Picture: [ARCHITECTURE.md 11.1](ARCHITECTURE.md#111-the-three-zones-and-what-may-cross).
 
@@ -658,7 +666,10 @@ lines are fine; lines aimed at an AI are hidden from Toolsmith's model (the
 job says so), and clearly hostile text ("ignore previous instructions") stops
 it. Drawbridge stops real code-safety problems; it is not a promise that an
 outside app is safe, so the Yes card tells you what an app can do once it
-runs.
+runs. A link inside a download (a symbolic link or a Windows junction) is
+never followed when BuildBot checks, copies or deletes it, on every Python
+BuildBot supports (3.11 included), so a download cannot lead those steps into
+your other folders.
 
 ### What can Toolsmith touch on my computer?
 
@@ -698,8 +709,9 @@ downloads the model after it asks.
 
 For chat, no: the brain and every agent but one always run on a local
 model. The one exception is **Toolsmith**, the agent that finds, installs and
-starts apps. You may put it on Anthropic's model (Claude Opus 5.5 or Sonnet
-5.5), which is faster at installs; the model on this computer stays the
+starts apps. You may put it on a frontier model, which is faster and gets
+far more apps working. Today that means Anthropic's Claude (Opus 5.5 by
+default, or Sonnet 5.5). The model on this computer stays the
 default ("private, slower"). Choose it in **Settings**, on the
 **Toolsmith's model** card, or when the wizard asks "Who should do
 Toolsmith's installs?". You read one consent sentence, paste your own
@@ -746,17 +758,23 @@ In more detail:
   its file list, the first lines of its setup files (`package.json`,
   `pyproject.toml`, the compose file), pages of its own docs it reads, the
   commands it runs with their output, and the text of its pages once it runs.
-- **A folder of your own code:** read the same way, and these are your files:
-  its README, file list and setup files, and the output of the commands run
-  there. A command that prints a file (`cat`, `type`) sends that file's text.
+- **A folder of your own code:** read the same way as any app, and these
+  are your files: its README and docs, file list and setup files, the
+  commands run there with their output, and what its pages show. A command
+  that prints a file (`cat`, `type`) sends that file's text.
 - **Never sent:** your chats, your vault, and files Toolsmith does not read.
 
 If this sentence changes in an update, Toolsmith goes back to this computer
 until you read the new one and pick Anthropic again. Settings says "What
 Toolsmith sends to Anthropic now reads differently. Read it and pick
-Anthropic again to keep using it." Your key stays in your vault, so you do
-not paste it again. A build waits for your answer instead of quietly using
-this computer.
+Anthropic again to keep using it." The **Toolsmith's model** card opens on
+Anthropic with the new sentence, and your key stays in your vault, so
+agreeing again is one tap on **Use Anthropic for Toolsmith**, with no key to
+paste. Until you pick, a build waits instead of quietly using this computer,
+and says "What Toolsmith sends to Anthropic now reads differently. Read it in
+Settings and pick Anthropic again to keep using it, or choose This computer."
+Pressing **Skip** on the wizard's Toolsmith question does not end that wait;
+only picking Anthropic again or this computer does.
 
 Before anything leaves, every piece of text passes a key and password
 detector and a personal details screen (a health statement loses the person
@@ -826,8 +844,10 @@ Concierge (front desk), Steward (Home Assistant and media), Drawbridge
 Majordomo (routines, background work, narrates the build), Caretaker (machine
 health) and Toolsmith (finds, installs and starts apps, makes apps from code
 and parts, and keeps its own workspace; the only agent that may use a cloud
-model, and only if you choose it). They talk only through one message bus,
-and every message that changes something is reviewed by Drawbridge first. The
+model, and only if you choose it). Five work in the Brain; Drawbridge and
+Toolsmith work in the Bridge, the zone that touches the outside. They talk
+only through one message bus, and every message that changes something is
+reviewed by Drawbridge first. The
 chat brain is the local model with its tools, not an eighth agent. See the
 **Agent Team** page, `puffpai agents status`, `src/puffpai/agents/registry.py`, and the
 [agents diagram](ARCHITECTURE.md#112-the-seven-agents-and-who-calls-what).
@@ -885,7 +905,17 @@ python -m pytest -q
 ```
 
 On Windows use `py -3 -m pytest -q`. Tests never go online; opt-in live tests
-are in `tests/live/`. See [CONTRIBUTING.md](../CONTRIBUTING.md).
+are in `tests/live/`. While you work, run the tests for what you changed, not
+the whole suite. See [CONTRIBUTING.md](../CONTRIBUTING.md).
+
+On GitHub, CI (`.github/workflows/ci.yml`) runs on pushes to `main` and on
+pull requests. Each run tests Python 3.11 on Linux; Python 3.12 is tested only
+when someone starts the run by hand and ticks it. The same run also does a
+type check that reports problems but does not fail yet, installs BuildBot
+from nothing on a clean Linux computer, and type-checks and builds the
+dashboard. A separate Mac check (`.github/workflows/mac.yml`, macOS 14 on
+Apple silicon) installs and starts BuildBot when the installer or the files
+it covers change, or when started by hand.
 
 ### When is a change "done"?
 
@@ -906,9 +936,294 @@ folder option moves both); git leaves them out. Apps Toolsmith downloads go in
 `host_apps` in the state folder. Your own files and downloaded books go in
 your data folder (its "My files" folder holds your uploads and the files your
 bot makes); choose it on the Knowledge page under **Your files**.
-`puffpai where` prints every folder, and `puffpai vault location` shows the
-vault. The file list is in
+`puffpai where` prints the state, data and config folders and the vault's
+folder, and `puffpai vault location` shows the vault. The file list is in
 [AGENTS.md section 6](../AGENTS.md#6-data-files).
+
+### How should an AI coding agent work in this repo?
+
+Read [AGENTS.md](../AGENTS.md) first: it is the instructions for coding
+agents (`CLAUDE.md` points to it), with the hard rules in its section 9.
+[llms.txt](../llms.txt) lists the key files. The rules that catch agents most
+often: owner-facing words are plain (no em dashes, none of the machinery
+words listed in `src/puffpai/plain_words.py`, and the privacy line is exactly "Nothing leaves your computer without your
+consent."), code never names a subject or one bot, outbound calls go only
+through `security/egress_doors.py`, keys live only in the vault, new source
+files carry the copyright header, and the "puff puff pass" signature is never
+removed, moved or reworded. Add a test with every change, and run the tests
+for what you changed. When a change makes an answer in this FAQ untrue,
+update the FAQ in the same change. When someone asks about something not
+built, say so plainly and point to the
+[issue tracker](https://github.com/CypherSisters/PuffPAIBuildBot/issues).
+
+---
+
+## Working on the Developer page
+
+### What is the Developer page, and who is it for?
+
+One page in your bot's web page for people who like to see the parts and use
+commands: your own code, programs and tool servers, the three zones (Vault,
+Brain, Bridge), a real command line, and GitHub. You do not need to code to
+open it, but the command line is for people who know commands. Open
+**Developer** in the menu (in the lower group, between **Looks** and
+**Settings**), or press the "YOUR PRIVATE STUFF" card at the bottom of the
+menu. It is always there, on every bot.
+
+### What is on the Developer page?
+
+From top to bottom:
+
+- **Add your own**: four cards, each with a one-line "What happens".
+  **A folder of my code**, **A program on this computer**, **A desktop app**
+  and **A tool server** (see the questions under
+  [Adding things](#can-buildbot-run-a-folder-of-my-own-code)).
+- **Three cards**, one per zone: **Vault** (Zone 1), **Brain** (Zone 2) and
+  **Bridge** (Zone 3). Each shows a status line (for example "Made, locked",
+  or the model name and whether it is answering) and opens that zone's page.
+- **Add a tool**: three ways to give your bot something new: **Find one**
+  (goes to Find more), **Paste a link** (a GitHub, Codeberg, npm, PyPI,
+  ClawHub or skills.sh link goes to Find more; any other link, like a tool
+  server address or a docs page, goes to **Add my own tool**), and **For
+  developers: the command line**.
+- **Command line** and **GitHub**, side by side in one row. The command line
+  is a real shell on this computer, with **Bigger** and **Own window**.
+  GitHub connects your account (a read-only token is enough) so searches go
+  further and your own projects are offered.
+
+Near the top the page also shows the privacy line, "Nothing leaves your
+computer without your consent.", from the same place the menu's card and
+**What leaves your computer** read it.
+
+### What is on the Vault, Brain and Bridge pages?
+
+Each has **Use CLI** at the top: a side panel with the terminal commands for
+that page, for **Windows PowerShell** or **Mac or Linux**, ready to copy. No
+command there ever carries your PIN, a password or a key; the ones that need
+one ask when they run. Things with no command yet are said plainly there.
+
+- **Zone 1: Vault**: locked or open, the folder it lives in, how many things
+  wait to go in at the next unlock, and how it is locked. **Change where the
+  vault lives** moves it to another folder (it checks the copy opens with
+  your PIN and keeps the old copy), or uses a BuildBot vault already in
+  another folder. Locking, unlocking and a new recovery code stay on the
+  **Vault page**; keys on the **Sign-up keys page**.
+- **Zone 2: Brain**: the model in use, where it runs and where that address
+  came from, whether it is answering, and this computer's memory and
+  processor. **Pick another model** lists the models that fit; **Use this
+  one** then **Yes, use it** picks one already on this computer. Below:
+  **Home Assistant** (connect it with its address and token) and **Add my own
+  tool** (a tool server, or **Draft a skill** from a docs page), with links to
+  the **Smart Home page** and the **Device page**.
+- **Zone 3: Bridge**: the internet setting (for example "Only the services
+  you switched on"), your Bridge choice, how many outside services are on and
+  which ones, what BuildBot does and does not do with your own firewall,
+  router and home network, your paired
+  devices (with Revoke), and **Add a device** (the pairing page). Switches
+  for outside services stay on **What leaves your computer**, linked from
+  here.
+
+### How does the command line work?
+
+It is a real shell on the computer that runs your bot: PowerShell on Windows,
+bash on Mac and Linux. It starts in BuildBot's own folder with the `puffpai`
+command ready, and the folder and anything you set carry over from one
+command to the next. Ctrl+C or **Stop** stops a running command; `clear` or
+`cls` empties the screen; the Up and Down keys bring back earlier commands
+(kept in memory only). Leaving the page ends the shell, and your bot ends one
+left alone for 30 minutes. One device can have two open at once (a third
+ends the oldest).
+
+It is full access by design: there is no question before each command, and
+what you run here is not checked by the Bridge. It only opens on a paired
+device, it is off when commands are switched off for your bot (the same
+switch as the chat's), and each command you type is one line in the security
+log (secrets in it hidden, never what it printed). Commands that ask for a
+PIN or a password need a terminal window of their own, and so do
+`puffpai setup`, `puffpai chat`, `puffpai start` and `puffpai stop`
+(stopping your bot ends this command line too); **Use CLI** says how to open
+one. This is not the chat's way of running commands, which still waits for
+your yes on every command, except one plain call of a program you added and
+set to **Always allow this program**.
+
+### What is a good way to work there?
+
+A workflow that keeps each step easy to check:
+
+1. **Pair this device** if you have not. Every change on the Developer page
+   needs a paired device.
+2. **Connect GitHub** on the **GitHub** tile, so searches go further and your
+   own projects are offered.
+3. **Bring in your own code.** On **A folder of my code**, give the folder's
+   full path and press **Add this folder**. If it fits a job, pick **Run it
+   first**, **Add to the list** or **Its own job**. Then
+   **Open the job to give your Yes**. The job page shows what Toolsmith is
+   trying, and its notes and logs go in a `.buildbot` folder inside yours.
+4. **Register programs you use.** On **A program on this computer**, type a
+   name (like `ffmpeg`) or a full path, pick **Command line** or
+   **Has a window**, and press **Add**. Check the commands it listed. Leave
+   **Always allow this program** off until you trust how your bot uses it in
+   chat. Desktop apps go on **A desktop app**: search, **Add**, then
+   **Open**.
+5. **Connect a tool server.** **A tool server** leads to **Add my own tool**
+   on the Brain page: a short name, its address or the command that starts
+   it, a password if it needs one, then **Add** and **Yes, add it**. BuildBot
+   connects to it first and keeps it only if it answers.
+6. **Switch the model if you need to.** Brain page, **Pick another model**,
+   then restart your bot.
+7. **Try it, then check what happened.** Ask in chat. Then open **What leaves
+   your computer** (linked from the Bridge page) to see every outside request
+   from the last day, or type `puffpai outside log` in the command line.
+   `bot.log` is in the `logs` folder of your state folder (`puffpai where`
+   shows the state folder).
+
+### What takes effect at once, and what needs a restart?
+
+- **A new model** is used after your bot restarts. Stop and start it from a
+  terminal window of your own (`puffpai stop`, then `puffpai start`), not from
+  the Developer page's command line, which ends with your bot.
+- **A tool server** and **Home Assistant** give your bot their tools as soon
+  as they are added.
+- **A program** you add, and **Always allow this program**, count from your
+  next chat message.
+- **A folder of your code** joins a job and waits for your Yes on the job
+  page; nothing runs before that.
+- **GitHub** is connected (or disconnected) at once.
+- **Changing where the vault lives** happens when you press the button
+  (moving it, or using another vault, takes your PIN).
+- **The internet setting and the Bridge choice** are not changed here: run
+  Setup again. **Use CLI** on the Bridge page shows the command.
+
+### What on the Developer page asks for a Yes, a PIN or a paired device?
+
+The whole web page only opens on a paired device, and the backend checks
+again for the command line, your programs, a folder of your code, tool
+servers, Home Assistant, GitHub and where the vault lives. On top of that:
+
+- **A Yes:** **Yes, use it** for a new model; **Yes, add it** for a tool
+  server; **Yes, connect it** for Home Assistant; **Yes, add this skill** for
+  a drafted skill; the job page's Yes for
+  a folder of your code.
+- **Your PIN:** moving the vault or using another vault. A tool server's
+  password goes into your vault, so the vault must be open.
+- **No question each time:** the command line (full access, every command
+  logged), and a program you set to **Always allow** (one plain call of it,
+  logged; anything with shell features still waits for your yes).
+
+### What is not built on the Developer page yet?
+
+The pages, or their **Use CLI** panel, say these plainly:
+
+- Downloading a new model from the Brain page (run `puffpai setup` again).
+- Pointing your bot at a model on another computer from the Brain page (a
+  setup question).
+- A command for changing your PIN without the recovery code.
+- A list of websites to copy into your own firewall, and a command that
+  saves the outside log to a file.
+
+Also not built, though no page says so:
+
+- A log viewer. Read the files in the `logs` folder of your state folder
+  (`puffpai where` shows the state folder).
+- Adding a whole skill folder you wrote.
+
+If **A program on this computer** and **A desktop app** say "Coming soon",
+your bot is older than the web page: update both. Ask for anything else on
+the [issue tracker](https://github.com/CypherSisters/PuffPAIBuildBot/issues).
+
+### How do I run BuildBot from source to work on it?
+
+```bash
+git clone https://github.com/CypherSisters/PuffPAIBuildBot.git
+cd PuffPAIBuildBot
+pip install -e ".[dev]"
+puffpai setup
+puffpai start
+```
+
+Use a virtual environment if you like (CONTRIBUTING.md shows one). You need
+Python 3.11 or newer, Ollama, and Node.js 20.19 or newer in the 20 line, or
+22.12 or newer, for the web page (`^20.19.0 || >=22.12.0` in
+`dashboard/package.json`). `puffpai start` runs the bot on port 8000 and the
+web page on port 3003, on this computer only, and prints the pairing code.
+
+To keep a test bot apart from your real one, set `PUFFPAI_DATA_DIR` to a
+spare folder and pick spare ports
+(`puffpai start --port 8330 --dashboard-port 3330`). `PUFFPAI_DATA_DIR`
+moves your settings (`config/`), the vault (`vault_data`) and knowledge data
+out of BuildBot's folder, and the state folder (logs, chats, builds, keys for
+outside services) becomes its `state` folder. `PUFFPAI_STATE_DIR` moves only
+the state folder: set on its own, the settings and the vault stay in
+BuildBot's folder and are shared with your real bot. `puffpai where` shows
+which folders a copy uses.
+
+To work on the web page itself, run the two halves yourself:
+`puffpai serve --port 8000` in one terminal, and in the `dashboard` folder
+`npm install` then `npm run dev` (port 3003) in another. The web page needs
+the bot's API key in `dashboard/.env.local` (`puffpai apikey` prints it);
+the steps are in
+[GETTING_STARTED.md section 10](GETTING_STARTED.md#10-for-developers-the-two-halves-by-hand).
+
+### Which checks should I run for a Developer page change?
+
+- **Python:** `python -m pytest -q` with the test files for what you touched
+  (Windows: `py -3 -m pytest -q`). For the Developer page:
+  `tests/test_developer_pages.py`, `tests/test_developer_api.py`,
+  `tests/test_developer_terminal.py`, `tests/test_own_programs.py`,
+  `tests/test_build_local_folder.py`, `tests/test_mcp_api.py` and
+  `tests/test_dashboard_plain_words.py`.
+- **The web page:** in `dashboard`, `npx tsc --noEmit` and `npm run build`
+  (what CI runs). `npm run lint` runs ESLint, and the `npm run test:...`
+  scripts in `dashboard/package.json` run the pairing, proxy and page proofs.
+- **The docs:** `tests/test_docs_truth.py` (every `puffpai` command the docs
+  name must exist, no em dashes, the README's model tables),
+  `tests/test_no_ask_first_and_telemetry.py`, `tests/test_plain_words.py` and
+  `tests/test_repo_hygiene_docs.py`.
+
+### Where is the code for each part of the Developer page?
+
+Web page files are under `dashboard/app/`; Python under `src/puffpai/`.
+
+| Part | Web page | Backend |
+|------|----------|---------|
+| The page itself and its three cards | `dashboard/developer/page.tsx`, `overviewWords.ts` | `GET /build/self`, `GET /system/privacy` |
+| Add your own | `dashboard/developer/_components/AddYourOwn.tsx`, `dashboard/developer/addYourOwnService.ts` | `build/api.py` (`POST /build/project`), `build/apps.py` (`from_local_folder`), `programs.py`, `programs_api.py` |
+| Add a tool | `_components/AddATool.tsx` | (links only) |
+| Add my own tool, Home Assistant | `_components/ToolServers/AddOwnTool.tsx`, `ConnectHomeAssistant.tsx` | `mcp_api.py`, `mcp_client.py` |
+| Command line | `dashboard/developer/_components/CliTile.tsx`, `CommandLine.tsx`, `dashboard/developer/terminal/page.tsx` | `developer_terminal.py` |
+| Use CLI | `dashboard/developer/_components/UseCliPanel.tsx` | `developer_api.py` (`COMMANDS`, `NO_COMMAND_YET`) |
+| Vault page | `dashboard/developer/vault/page.tsx`, `ChangePlace.tsx` | `developer_api.py` (`GET /developer/vault`), `vault_place_api.py` |
+| Brain page | `dashboard/developer/brain/page.tsx` | `developer_api.py` (`GET /developer/brain`), `POST /setup/ollama` in `api_server.py` |
+| Bridge page | `dashboard/developer/bridge/page.tsx`, `dashboard/settings/PairedDevicesCard.tsx` | `GET /build/self`, `GET /system/privacy` |
+| GitHub | `dashboard/developer/_components/GitHubTile.tsx` | `github_account_api.py` |
+| The menu entry | `dashboard/_lib/menuAside.ts` | |
+
+### How do I add a new card or route to the Developer page?
+
+1. **The backend route.** Put it in a blueprint registered in `api_server.py`
+   with one line, like `developer_api.py` (read only) or `programs_api.py`.
+   Anything that changes something needs a paired device. Copy the
+   `_paired_only` check in `mcp_api.py`: it checks for a paired device AND
+   that the caller holds the bot's own key (`_app_caller_class() == "owner"`),
+   which the one in `programs_api.py` does not. If it is a real change, show
+   a Yes in one plain sentence first.
+2. **The web page's proxy list.** The browser reaches the backend only
+   through `/api/pai`, which carries only the paths in the
+   `PROXY_ALLOWED_PREFIXES` list in `dashboard/app/_lib/server/`. A new first
+   path segment goes there, in order, with a comment naming its caller.
+3. **The card.** Put it in `dashboard/app/dashboard/developer/` (a component
+   under `_components/`, its calls in a service file). The zone names
+   ("Zone 1: Vault" and the like) are allowed only inside that folder.
+4. **Its words.** Every file in the developer folder must be listed in
+   `FILES` in `tests/test_dashboard_plain_words.py`, and its text must pass
+   `src/puffpai/plain_words.py` (no machinery words; a file name like
+   `.exe` or `.json` is fine). A test fails if a developer file is missing
+   from that list.
+5. **Commands.** A command shown in **Use CLI** goes in `COMMANDS` in
+   `developer_api.py`; `tests/test_developer_api.py` checks every one is a
+   real `puffpai` command, and none may carry a PIN, password or key.
+6. **Tests and docs.** Add a test (tests never go online), keep the code free
+   of any subject or one bot, and update this FAQ in the same change.
 
 ---
 
@@ -923,9 +1238,20 @@ bot, it says "Your bot is already running" instead.
 ### An app needs Docker and Docker is not installed
 
 The setup list shows a Docker row. On computers where BuildBot can install
-it, your Yes installs Docker Desktop and starts it. Where it cannot, the row
-says to install Docker Desktop yourself and press **Check again**. If no app
-for that job runs without Docker, the job waits.
+it, your Yes installs Docker and starts it:
+
+- **Windows:** with Windows' own installer (winget). Windows asks you for an
+  admin yes once, and Docker Desktop may ask you to restart the computer;
+  restart, then press **Check again**.
+- **Mac:** BuildBot downloads Docker Desktop from Docker and copies it to
+  your Applications folder. The first start asks for your Mac password.
+- **Linux:** Docker Engine (not Docker Desktop), with Docker's own install
+  script, which needs admin (root or sudo).
+
+Where it cannot (Windows without winget, a Mac or Linux computer without
+`curl`, or Linux without admin), the row says to install Docker Desktop
+yourself and press **Check again**. If no app for that job runs without
+Docker, the job waits.
 
 ### Docker is installed but not running
 
@@ -971,8 +1297,10 @@ by BuildBot open no console windows.
 
 macOS 14 or newer (Ollama needs it). The first time, if your Mac says it
 cannot check who made a file, right-click it and pick **Open** (on macOS 15:
-System Settings, Privacy & Security, Open Anyway). Mac is less tested than
-Windows and Linux; reports are welcome. [INSTALL_MAC.md](INSTALL_MAC.md).
+System Settings, Privacy & Security, Open Anyway). The Mac is new: an
+automatic check installs BuildBot from nothing on an Apple silicon Mac and
+starts it, but no one has used it on their own Mac yet. Reports are welcome.
+[INSTALL_MAC.md](INSTALL_MAC.md).
 
 ### Linux notes
 
@@ -1019,8 +1347,14 @@ Do not open a public issue. Use GitHub's private vulnerability reporting; see
 
 ### How do I contribute code?
 
-Fork the project, make your change with a test, run the tests, and open a pull
-request. [CONTRIBUTING.md](../CONTRIBUTING.md) has setup and style;
+Fork [CypherSisters/PuffPAIBuildBot](https://github.com/CypherSisters/PuffPAIBuildBot),
+make your change with a test, run the tests, and open a
+[pull request](https://github.com/CypherSisters/PuffPAIBuildBot/pulls) there.
+Good places to start are the rough edges under the README's
+[Status](../README.md#status) and [How this was built](../README.md#how-this-was-built).
+If you work on the Developer page, see
+[Working on the Developer page](#working-on-the-developer-page).
+[CONTRIBUTING.md](../CONTRIBUTING.md) has setup and style;
 [AGENTS.md](../AGENTS.md) has the hard rules (plain words, goal-agnostic code,
 outbound only through the Bridge, keys only in the vault).
 

@@ -304,13 +304,14 @@ flowchart LR
   end
   subgraph Z2["Zone 2: the brain, on this computer"]
     B["Chat brain<br/>local model, tool loop"]
-    A["Seven agents<br/>on one message bus"]
+    A["Five agents<br/>Concierge, Steward, Archivist,<br/>Majordomo, Caretaker"]
     K["What the bot knows<br/>books, files, skills"]
     H["Apps running here<br/>started on 127.0.0.1"]
   end
   subgraph Z3["Zone 3: the Bridge, the only way out"]
     S["One switch per outside service<br/>most start off; finding and<br/>downloading start on, one tap off"]
     L["Outside log<br/>one line per request"]
+    D["Drawbridge<br/>the Bridge's agent:<br/>checks what comes in"]
     T["Toolsmith<br/>runs strangers' code;<br/>never your private things"]
   end
   NET(("The internet"))
@@ -322,14 +323,20 @@ flowchart LR
   S --> L
   S -- "the key is added on the way out,<br/>bound to its own service" --> NET
   NET -- "what comes back is data,<br/>never instructions" --> Z2
+  D -. "checks every addition<br/>before your Yes counts" .-> Z2
   T -- "cleaned text, after your Yes,<br/>through its own switch" --> S
   S -- "your Anthropic key,<br/>added on the way out" --> AN
 ```
 
 Code: `security/vault.py`, `security/chat_privacy.py` (Zone 1);
-`brain_loop.py`, `agents/`, `knowledge/`, `integrate/run_here.py` (Zone 2);
-`security/egress_doors.py`, `security/egress_ledger.py`, `outside_services.py`
-(Zone 3). Book and source downloads go through `source_fetch.py`, a listed
+`brain_loop.py`, Concierge, Steward, Archivist, Majordomo and Caretaker in
+`agents/`, `knowledge/`, `integrate/run_here.py` (Zone 2);
+`security/egress_doors.py`, `security/egress_ledger.py`, `outside_services.py`,
+`drawbridge.py` and `agents/sentinel_agent.py` (Drawbridge), and
+`agents/toolsmith.py` with `security/toolsmith_zone.py` (Toolsmith) (Zone 3). All seven
+agents share one message bus (`agents/bus.py`, picture 11.2), so `agents/`
+holds the agents of both zones: five work in Zone 2, and Drawbridge and
+Toolsmith work in the Bridge. Book and source downloads go through `source_fetch.py`, a listed
 Bridge exit with its own switches (`outside_services.py` `_OFF_SWITCHES`,
 `SHELF_ROWS`: on as built, one tap off). Home services (Home Assistant, n8n,
 Jellyfin, Calibre-Web) are checked as home addresses, and with the Bridge up
