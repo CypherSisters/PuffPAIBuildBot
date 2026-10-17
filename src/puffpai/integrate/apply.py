@@ -86,8 +86,10 @@ def _now() -> str:
 
 
 def _is_link(path: str) -> bool:
-    isjunction = getattr(os.path, "isjunction", None)
-    return os.path.islink(path) or bool(isjunction and isjunction(path))
+    # A symlink or a junction, read from the entry itself
+    # (os.path.isjunction is not in Python 3.11).
+    from puffpai.security import owner_folders
+    return owner_folders.is_link(path)
 
 
 def files_fingerprint(root: str) -> str:

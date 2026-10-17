@@ -392,8 +392,12 @@ def test_a_job_that_does_something_is_not_a_learn_job(name, subject, want):
 
 def test_the_brain_is_asked_for_everyday_features_of_this_kind():
     from puffpai.wizard import needs_llm
-    assert '"also_needed": 3 to 5 jobs' in needs_llm.SYSTEM_PROMPT_V5
-    assert "everyday features popular apps of this kind offer" in needs_llm.SYSTEM_PROMPT_V5
+    # 0bc6551c: 1 to 3 jobs for a short goal, so at most 2 everyday extras,
+    # and only when she asked for fewer than 3 things.
+    text = needs_llm.SYSTEM_PROMPT_V5
+    assert '"also_needed": 0 to 2 everyday features that popular apps of this kind offer' in text
+    assert 'only when "asked" holds fewer than 3 items' in text
+    assert needs_llm.SCHEMA_V5["properties"]["also_needed"]["maxItems"] == 2
 
 
 # -- the done screen ----------------------------------------------------------------------------------------------------

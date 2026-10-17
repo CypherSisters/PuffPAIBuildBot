@@ -43,7 +43,7 @@ SYSTEM_PROMPT_V5 = """You work out what a helper bot needs to do. A person descr
 
 "kind": what kind of bot this is, 2 to 5 words spelled out in full (no abbreviations) that keep its subject ("chess coach", "aquarium care helper"), no personal details.
 "asked": each separate thing the person asked the bot to do, 2 to 6 words each, in their words but without personal details.
-"also_needed": 0 to 2 everyday features that popular apps of this kind offer and the person did not ask for, only when "asked" holds fewer than 3 items. Each is a concrete feature a person would recognize ("Daily news briefing"), never an invented abstract one ("Contextual update generator"). Never a job that decides medicine doses or diagnoses an illness.
+"also_needed": 0 to 2 everyday features that popular apps of this kind offer and the person did not ask for, only when "asked" holds fewer than 3 items. Each is a concrete feature a person would recognize, never an invented abstract one, different from every "asked" item and clearly fitting this kind of bot. Put first the one people use this kind of app for most often. Never a job that decides medicine doses or diagnoses an illness.
 "jobs": one job for each item in "asked" (split an item that holds two different jobs), then one for each item in "also_needed". 1 to 3 jobs for a short goal (usually 1 or 2); when the person lists more things, one job per thing they listed (at most 6). No two jobs may do the same thing.
 
 For each job:

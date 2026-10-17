@@ -66,8 +66,16 @@ def _refused(cmd, p, category):
 def test_sign_in_keys_are_refused(places):
     _refused("cat ~/.ssh/id_rsa", places, Z.KEYS)
     _refused('cat "$HOME/.aws/credentials"', places, Z.KEYS)
-    _refused(r"type %APPDATA%\Microsoft\Credentials\x", places, Z.KEYS)
-    _refused(r"Get-Content $env:APPDATA\Microsoft\Credentials\x", places, Z.KEYS)
+    # The Windows Credentials folder, named with forward slashes: refused on
+    # every computer whose environment names an AppData folder.
+    _refused('cat "$APPDATA/Microsoft/Credentials/x"', places, Z.KEYS)
+    _refused("Get-Content $env:APPDATA/Microsoft/Credentials/x", places, Z.KEYS)
+    if os.name == "nt":
+        # cmd and PowerShell spellings with backslashes. Only Windows reads a
+        # backslash as a folder separator; on Linux and macOS the same text
+        # names one file in AppData itself, and that folder does not exist.
+        _refused(r"type %APPDATA%\Microsoft\Credentials\x", places, Z.KEYS)
+        _refused(r"Get-Content $env:APPDATA\Microsoft\Credentials\x", places, Z.KEYS)
 
 
 def test_buildbots_own_places_are_refused(places):

@@ -10,11 +10,13 @@ For every check in the spec, two halves, and both must pass:
    is called (:func:`puffpai.assemble.api.call_action`) with the check's
    input, and the answer must hold at least ``min_items`` rows with every
    ``fields`` entry filled, and give each view that shows it what that view
-   needs (:func:`view_problem`): a gallery pictures whose addresses load
-   through the Bridge, under the source's own switch (a ``HEAD``, or a small
-   ``GET`` when the service does not answer ``HEAD``); a forecast a time and
-   at least one named weather reading; a map a real position; a player a
-   stream that plays (a stream list must start with ``#EXTM3U``); any other
+   needs (:func:`view_problem`): a gallery a picture address on each of its
+   first rows (a picture that does not load shows a "No picture" tile and
+   never fails the job); a forecast a time and at least one named weather
+   reading; a map a real position; a player a stream that plays, reached
+   through the Bridge under the source's own switch (a ``HEAD``, or a small
+   ``GET`` when the service does not answer ``HEAD``; a stream list must
+   start with ``#EXTM3U``); any other
    view more than a name. A name alone never proves anything.
 2. **The brain uses it.** The check's ask goes through the chat's own tool
    loop (:func:`puffpai.brain_loop.run`) with only this app's tools on offer;
@@ -43,7 +45,7 @@ _REACH_FIELDS = ("image", "stream")
 #: capability. Measured on a real build: right asks 0.64 to 0.87, an ask
 #: about another job of the same bot 0.11 to 0.39.
 ASK_FIT = 0.45
-#: Pictures looked at per gallery (each must load).
+#: Rows looked at per gallery (each must name a picture).
 PICTURES_CHECKED = 3
 _SLOTS = frozenset({"title", "image", "when", "text", "lat", "lon", "stream", "link"})
 _WEATHER_RE = re.compile(r"(temp|cloud|rain|precip|wind|humid|snow|seeing|transparen|"

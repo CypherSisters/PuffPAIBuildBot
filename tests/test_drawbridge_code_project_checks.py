@@ -92,8 +92,9 @@ def test_little_code_with_many_claimed_features_is_held(tmp_path):
     ({"final_host": "objects.example"}, "wrong_host"),
     ({"commit": "b" * 40}, "not_pinned"),
     ({"expected_sha256": "cd" * 32}, "pin_changed"),
-    ({"bytes": 201 * 1024 * 1024}, "too_big"),
-    ({"extracted_bytes": 501 * 1024 * 1024}, "too_big"),
+    # The disk-space bound (decb3d9d: 4 GB download, 10 GB unpacked).
+    ({"bytes": fetch.MAX_ARCHIVE_BYTES + 1}, "too_big"),
+    ({"extracted_bytes": fetch.MAX_EXTRACTED_BYTES + 1}, "too_big"),
 ])
 def test_download_facts_that_block(tmp_path, over, code):
     v = _verdict(_clean(tmp_path), got=_got(**over),
@@ -394,3 +395,26 @@ def test_more_ordinary_readme_words_are_not_orders(tmp_path, fine):
     root = _clean(tmp_path)
     sup.write(root, "README.md", sup.FEATURE_README + NL + fine + NL)
     assert _verdict(root)["verdict"] == "allow"
+
+
+def test_a_junction_in_the_folder_is_recorded_by_where_it_points_never_walked(tmp_path):
+    """Python 3.11 has no os.path.isjunction: the fingerprint walk must still
+    never go into a Windows junction, only record where it points."""
+    root, outside = tmp_path / "app", tmp_path / "outside"
+    root.mkdir()
+    outside.mkdir()
+    (root / "index.html").write_text("<p>hi</p>", encoding="utf-8")
+    (outside / "secret.txt").write_text("one", encoding="utf-8")
+    try:
+        import _winapi
+        _winapi.CreateJunction(str(outside), str(root / "jdir"))
+    except (ImportError, AttributeError, OSError):
+        pytest.skip("no directory junctions here (Windows only)")
+    try:
+        before = apply.files_fingerprint(str(root))
+        assert before
+        (outside / "secret.txt").write_text("two", encoding="utf-8")
+        assert apply.files_fingerprint(str(root)) == before
+    finally:
+        os.rmdir(root / "jdir")                 # the junction itself only
+    assert (outside / "secret.txt").exists()

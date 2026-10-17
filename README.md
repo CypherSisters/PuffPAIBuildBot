@@ -19,8 +19,9 @@ own apps, code, programs and GitHub projects.
 > **What computer you need**
 >
 > - A Windows 10 or 11 PC, a Linux PC, or a Mac with macOS 14 or newer (Apple
->   silicon is best; Intel works, slower). The Mac is new: our automatic tests
->   check it, and reports are welcome.
+>   silicon is best; Intel works, slower). The Mac is new: an automatic check
+>   installs BuildBot from nothing on an Apple silicon Mac and starts it, but
+>   no one has used it on their own Mac yet. Reports are welcome.
 > - Memory (RAM) decides which AI model your bot can run, and so how well it
 >   can talk:
 >   - **24 GB or more:** the biggest model (32 GB runs it comfortably). It
@@ -395,7 +396,9 @@ Stated up front so nobody finds out the hard way.
   model list carries a benchmark solely for silicon we have actually benched;
   everything else reads "untested, reports welcome" and is never extrapolated.
 - **Hardware matrix:** Windows x64 verified, Linux x86_64 verified, Jetson AGX
-  Orin census verified. macOS and Raspberry Pi untested, reports welcome. The
+  Orin census verified. macOS 14 on Apple silicon installs and starts in an
+  automatic check; no one has used it on their own Mac yet. Raspberry Pi
+  untested. Reports welcome. The
   2 GB floor is enforced in code and tested with a synthetic census only.
 
 ---

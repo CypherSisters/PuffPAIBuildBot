@@ -286,6 +286,17 @@ def test_the_real_shell_keeps_its_state_stops_and_ends(client, state):
     time.sleep(1)
     assert client.post("/developer/terminal/interrupt", headers=PAIRED,
                        json={"id": sid}).status_code == 200
+    # The stopped command's end comes back from the shell a moment later
+    # (Linux and macOS: "(exit code 130)"); the next command follows it, as
+    # it does for a person. Sent sooner, it would go to the stopping command.
+    end = time.monotonic() + 20
+    while True:
+        got = client.post("/developer/terminal/output", headers=PAIRED,
+                          json={"id": sid, "since": got["next"]}).get_json()
+        if not got["busy"]:
+            break
+        assert time.monotonic() < end, "the stopped command did not end"
+        time.sleep(0.1)
     got = _run(client, sid, "echo after-stop", since=got["next"])
     assert "after-stop" in got["text"]
     proc = term._sessions[sid].proc

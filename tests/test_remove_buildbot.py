@@ -514,8 +514,12 @@ def test_stop_really_stops_a_program_holding_a_library_from_the_folder(tmp_path)
            or glob.glob(os.path.join(sys.base_prefix, "DLLs", "*.pyd")))[0]
     lib = lib_dir / "held.pyd"
     lib.write_bytes(Path(src).read_bytes())
+    # The interpreter itself, never a venv's Scripts\python.exe: that one is a
+    # launcher that starts the interpreter as its own child, so the program
+    # holding the library would not be the one started here.
+    python = getattr(sys, "_base_executable", "") or sys.executable
     child = subprocess.Popen(
-        [sys.executable, "-c", f"import ctypes, time; ctypes.WinDLL(r'{lib}'); time.sleep(60)"],
+        [python, "-c", f"import ctypes, time; ctypes.WinDLL(r'{lib}'); time.sleep(60)"],
         cwd=tempfile.gettempdir(), stdin=subprocess.DEVNULL)
     try:
         deadline = time.time() + 20
@@ -799,8 +803,11 @@ def test_the_process_list_reads_program_files_never_command_lines():
     assert "cmdline" not in src and "CommandLine" not in src
     me = [p for p in remove_cli.list_processes() if p["pid"] == os.getpid()]
     if sys.platform == "win32":
-        assert me and os.path.normcase(os.path.realpath(me[0]["exe"])) == \
-            os.path.normcase(os.path.realpath(sys.executable))
+        # Run from a venv, this process's program file is the interpreter the
+        # venv's launcher (sys.executable) started: sys._base_executable.
+        ours = {os.path.normcase(os.path.realpath(p)) for p in
+                (sys.executable, getattr(sys, "_base_executable", "")) if p}
+        assert me and os.path.normcase(os.path.realpath(me[0]["exe"])) in ours
         assert me[0]["created"] and me[0]["created"] <= time.time()
 
 

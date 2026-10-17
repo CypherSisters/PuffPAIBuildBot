@@ -38,9 +38,10 @@ def valid_app_id(value: Any) -> bool:
 
 
 def is_link(path: str) -> bool:
-    """A symbolic link or a Windows directory junction (never followed)."""
-    isjunction = getattr(os.path, "isjunction", None)
-    return os.path.islink(path) or bool(isjunction and isjunction(path))
+    """A symbolic link or a Windows directory junction (never followed).
+    Read from the entry itself: ``os.path.isjunction`` is not in Python 3.11."""
+    from puffpai.security import owner_folders
+    return owner_folders.is_link(path)
 
 
 def walk(root: str):

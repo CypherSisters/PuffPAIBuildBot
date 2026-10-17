@@ -114,13 +114,30 @@ def test_a_missing_node_gets_the_one_yes_card_and_installs_with_no_key(
     assert log.count('"install_missing"') == 1 and "app-piano-coach-abcdefgh" in log
 
 
-def test_docker_is_hers_to_install_and_no_plan_is_made(tmp_path, monkeypatch, installer):
+def test_docker_installs_with_the_one_yes_and_is_hers_where_buildbot_cannot(
+        tmp_path, monkeypatch, installer):
+    # Since ed27cfaa ("deps installs Docker and app runtimes") Docker is on
+    # BuildBot's own list: on Windows it is one winget step under her one yes.
     monkeypatch.setenv("PUFFPAI_STATE_DIR", str(tmp_path / "state"))
+    hook = run_here.install_missing({"integration": "x"}, ["docker"])
+    assert hook["ok"] is True and "needs Docker" in hook["line"]
+    assert hook["card"]["steps"] == ["Docker Desktop, with Windows' own installer (winget)."]
+    assert hook["card"]["manual"] == []
+    assert installer["ran"] == []                       # nothing before her yes
+    texts = [hook["line"], *hook["card"]["steps"]]
+    # Where no installer can take it (here Linux without admin), no plan is
+    # made: she installs it herself, with Docker's own page named.
+    monkeypatch.setattr(deps, "_is_windows", lambda: False)
+    monkeypatch.setattr(deps.sys, "platform", "linux")
+    monkeypatch.setattr(deps, "_is_root", lambda: False)
+    deps._PLANS.clear()  # noqa: SLF001
     hook = run_here.install_missing({"integration": "x"}, ["docker"])
     assert hook["ok"] is False and "needs Docker" in hook["line"]
     assert hook["card"]["plan"] == "" and hook["card"]["manual"]
     assert "Install it yourself" in hook["line"]
-    for text in [hook["line"], *hook["card"]["manual"]]:
+    assert deps.SYSTEM_PROGRAM_LINKS["docker"] in hook["card"]["manual"][0]
+    assert installer["ran"] == []
+    for text in [*texts, hook["line"], *hook["card"]["manual"]]:
         assert "—" not in text and "door" not in text.lower()
 
 

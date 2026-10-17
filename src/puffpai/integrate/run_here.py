@@ -1484,7 +1484,8 @@ def install_missing(thing: Any, programs: Optional[list[str]] = None) -> dict:
 
     Only names from :data:`PROGRAM_WORDS` are passed on, and deps installs
     only programs on BuildBot's own list (``deps.SYSTEM_PROGRAMS``), never a
-    name a project wrote. Docker is not on that list: she installs it
+    name a project wrote. Docker is on that list; where no installer can
+    take a program (a Mac, Linux without admin) the card says to install it
     herself. ``{"ok", "line", "programs", "thing", "installer", "card"}``;
     ``ok`` is True when one yes can install all of it."""
     progs = [p for p in (programs or []) if p in PROGRAM_WORDS]

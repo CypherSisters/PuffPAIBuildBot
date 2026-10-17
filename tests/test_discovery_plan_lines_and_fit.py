@@ -370,13 +370,14 @@ def test_the_brains_jobs_read_as_plain_doing_words(name, plain):
 def test_the_brain_is_asked_for_plain_job_names_and_no_gadgets():
     from puffpai.wizard import needs_llm
     text = needs_llm.SYSTEM_PROMPT_V5
-    assert "never a tool name" in text and "Keep the guest list" in text
+    # 0bc6551c: "never an invented tool name" (was "never a tool name").
+    assert "never an invented tool name" in text and "Keep the guest list" in text
     assert "Never name a gadget" in text
     also = text.split('"also_needed"', 1)[1].split('"jobs"', 1)[0]
     assert "for most often" in also
     # No example job in that sentence: a 7B brain copied "guest list" into a
-    # family budget bot.
-    assert "guest list" not in also
+    # family budget bot. No quoted example of any kind.
+    assert "guest list" not in also and '("' not in also
 
 
 def test_her_own_items_keep_her_words_and_the_brains_read_plainly(monkeypatch):

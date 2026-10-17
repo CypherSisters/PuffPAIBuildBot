@@ -61,10 +61,9 @@ class InstallError(ValueError):
 # ---------------------------------------------------------------------------
 
 def _is_link(entry: os.DirEntry) -> bool:
-    if entry.is_symlink():
-        return True
-    junction = getattr(entry, "is_junction", None)
-    return bool(junction and junction())
+    # A symlink, a junction or any other reparse point, read from the entry
+    # itself (DirEntry.is_junction is not in Python 3.11).
+    return entry.is_symlink() or webapps.is_link(entry.path)
 
 
 def _name_ok(name: str) -> bool:
@@ -137,8 +136,8 @@ def remove_tree(path: str, *, allowed_roots: list[str]) -> None:
         if os.path.islink(p):
             os.unlink(p)
             return
-        if getattr(os.path, "isjunction", lambda _p: False)(p):
-            os.rmdir(p)
+        if webapps.is_link(p):              # a junction: the link itself only
+            os.rmdir(p) if os.path.isdir(p) else os.unlink(p)
             return
         if os.path.isdir(p):
             with os.scandir(p) as it:

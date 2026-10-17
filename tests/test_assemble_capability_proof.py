@@ -211,20 +211,23 @@ def test_the_brain_is_asked_again_when_its_view_does_not_fit_the_capability():
 OK = (lambda d, u: (True, ""))  # noqa: E731
 
 
-def test_a_gallery_needs_pictures_that_load():
+def test_a_gallery_needs_pictures_and_one_that_does_not_load_never_fails_it():
+    # Since 4515fc54 (owner, 2026-10-12): a picture that does not load shows a
+    # "No picture" tile; it never fails a gallery whose rows load.
     rows = [{"title": "a", "image": "https://p.example/1.jpg"},
             {"title": "b", "image": "https://p.example/2.jpg"}]
     assert accept.view_problem("gallery", rows, door="d", reach=OK) == ""
     assert accept.view_problem("gallery", [{"title": "a"}], reach=OK) == \
+        "it has no pictures to show"
+    assert accept.view_problem("gallery", [rows[0], {"title": "b"}], reach=OK) == \
         "it has no pictures to show"
     tried = []
 
     def second_fails(door, url):
         tried.append(url)
         return (False, "p.example answered 404") if url.endswith("2.jpg") else (True, "")
-    assert accept.view_problem("gallery", rows, door="d", reach=second_fails) == \
-        "its picture: p.example answered 404"
-    assert tried == ["https://p.example/1.jpg", "https://p.example/2.jpg"]
+    assert accept.view_problem("gallery", rows, door="d", reach=second_fails) == ""
+    assert tried == []
 
 
 def test_a_name_alone_proves_nothing():
