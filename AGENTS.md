@@ -1,5 +1,14 @@
 # AGENTS.md: how BuildBot works, for coding agents and for the bot's own brain
 
+**Common tasks**
+
+- Add another cloud model for Toolsmith: [the recipe](#add-another-cloud-model-for-toolsmith)
+- Add your own app, skill, tool or data source: [How to extend](#7-how-to-extend) and [Add your own](#add-your-own)
+- Add an outside service with its switch: [the Bridge](#2-the-three-zones) (`security/egress_doors.py`), step 3 of [the recipe](#add-another-cloud-model-for-toolsmith) as a worked example
+- Change the wizard: [the build logic](#4-the-build-logic) (the wizard is that pipeline)
+- Run the tests: [How to run and test](#8-how-to-run-and-test)
+- The hard rules: [Hard rules](#9-hard-rules)
+
 Read this first. Deeper detail (module map, data flow, schemas, contracts) is
 in [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md), and its
 [section 11](docs/ARCHITECTURE.md#11-diagrams) has the diagrams (three zones,
@@ -116,7 +125,8 @@ everything else runs locally. One setting, `toolsmith.model`
 (`<state>/toolsmith_model.json`, `security/toolsmith_cloud.py`):
 `{"where": "local"}` (default, today's behavior exactly) or `{"where":
 "cloud", "provider": "anthropic", "model": "claude-opus-5-5" |
-"claude-sonnet-5-5"}`. Cloud without her recorded yes to the current consent
+"claude-sonnet-5-5"}`. Only Anthropic is offered today; to add another
+provider, follow [Add another cloud model for Toolsmith](#add-another-cloud-model-for-toolsmith). Cloud without her recorded yes to the current consent
 sentence reads as local. A yes to an EARLIER sentence (`consent_outdated`) is
 never migrated: Settings says `RECONSENT_LINE` (in `status().line`,
 `consent_again` opens the card on the new sentence; the key stays in the
@@ -748,6 +758,166 @@ BuildBot).<ext>". The answer carries "Open it in Office from your files" and the
 one-click `POST /files/open`; the Knowledge page lists the newest files in
 My files with an Open button (`my_data.recent_my_files`). The data folder's
 watcher indexes new files by itself. Tests: `tests/test_office_docs.py`.
+
+### Add another cloud model for Toolsmith
+
+Only Anthropic is offered today (section 3b). To add another provider ("add
+OpenAI", "add Google Gemini"), touch these in order. `<p>` is the new
+provider id (say `openai`); `tc` is `security/toolsmith_cloud.py`. Every name
+below is NEW and per provider; the Anthropic ones stay as they are. Today
+much of `tc` says `"anthropic"` or `PROVIDERS["anthropic"]` outright: each of
+those reads the CHOSEN provider (`read_setting()["provider"]`) instead.
+
+1. **Provider and prices** (`tc`). A `PROVIDERS["<p>"]` row: `label`, `host`,
+   `url` (its chat endpoint), `key_id` `"<p>"`, `models`, `default`. Its
+   `models` dict has the shape of `MODELS` (`{"name", "in", "out",
+   "cache_read"}`), prices in US dollars per million tokens taken from the
+   provider's current price page, never invented; model ids unique across
+   providers. Its cache-write factor too (`CACHE_WRITE_FACTOR` is
+   Anthropic's 1.25; 1.0 where writes bill as input). `MODELS`,
+   `DEFAULT_MODEL` and `CACHE_WRITE_FACTOR` are read directly today by
+   `read_setting` (`last_model`), `status` (`models`, `line`),
+   `choose_cloud` and `set_model` ("Pick Opus 5.5 or Sonnet 5.5."),
+   `cost_usd` and `cli._setup_toolsmith_model_step`: make each read the
+   chosen provider's row. The other hard-coded spots: `_key_state`, `_take`,
+   `lease_record` (its `service_id` check), `choose_cloud` (`check_shape`,
+   `add_key`, the written setting, the audit line), `record_usage` (`"provider"`
+   in `last`), and `keys._lease_ends` / `keys._lease_starts`.
+2. **Key row** in `config/catalog_seeds/keys.json`, a copy of the `anthropic`
+   row with id `<p>`: `name`, `for`, `signup_url`, `door` and `own_page` (both
+   the new switch id, step 3), `vault_only` true, `store_before_setup` true,
+   `card_required` true, `personal_use_only`, `how_long`, `cost_note`,
+   `placement` (header only; `value_format` `"Bearer {key}"` where the
+   provider wants it), `hosts` (1 or 2, all in the switch's hosts), `check`
+   (`url`, `ok`, `rejected` [401]) and `check_headers`, `shape` (the key's
+   regex, used by `keys.check_shape`), `monthly_cap`, `per_minute_cap`,
+   `signup_steps`. `keys.row_problem` refuses a row whose `signup_url` is not
+   on the same registered site as its `hosts` (Gemini's key page and its API
+   host differ: pick hosts and page that agree, or say why in the row). The
+   key leaves only through `keys.keyed_post(keys.handle(row["key_id"]),
+   lease=...)`, called only from `tc.send`. The lease holds ONE key: `_take`
+   reads the chosen provider's key (`keys.read_for_lease`), `lease_record`
+   accepts only that `key_id` and caller `toolsmith`; a provider switch drops
+   the lease (`drop_lease("off")`) before the new one is taken. Check that
+   `security/secret_detector.py` catches the new key's shape (`sk-...`
+   and `AIza...` are there) and add the route field to
+   `pasted_key_guard.py` if a new route takes the key.
+3. **The Bridge switch.** A new `Door` in `security/egress_doors.py`, id
+   `toolsmith_cloud_<p>`: `hosts` (the API host only), `purpose`, `data_sent`
+   (the same list as the consent sentence, naming the provider and its host),
+   `config_flag` = the id, `env_var` `PUFFPAI_EGRESS_TOOLSMITH_CLOUD_<P>`,
+   `posture_switch=None`, `settings_hint`, `notes`; and a `_WHAT_BY_DOOR`
+   entry mapping it to `"toolsmith_install"`. A `_BUILT_IN` row in
+   `src/puffpai/outside_services.py` (`name` "Toolsmith's cloud model
+   (<Provider>)", `for`, `what_leaves`). `tc.DOOR` becomes the provider row's
+   own switch id (`choose_cloud`, `use_local`).
+4. **The adapter.** Two halves, because only `tc` may call `keyed_post`:
+   * In `tc`: the provider's body and reply, picked by `PROVIDERS[provider]`
+     inside `send` (today `body_for`, the `anthropic-version` and
+     `anthropic-beta` headers, `fallbacks`, the `content` list check). Map:
+     the system prompt, tools (name, description, JSON schema; sorted by
+     name), tool calls and their results, stop reasons (to `end_turn`,
+     `tool_use`, `max_tokens`, `refusal`), the max tokens (`MAX_TOKENS`,
+     `FIND_MAX_TOKENS` for a find scope, which sends no tools), the effort
+     setting if it has one, and its `usage` into the four keys `cost_usd`,
+     `record_usage` and `context_tokens` read (`input_tokens`,
+     `cache_creation_input_tokens`, `cache_read_input_tokens`,
+     `output_tokens`). Errors: 429 and 5xx retry with `retry-after`
+     (`_retry_wait`, `RETRIES`); 401/403 raise `CloudError("key", ...)` with
+     that provider's own key line ("Toolsmith's <Provider> key was not
+     accepted. Check it in Settings."); `KeyUnavailable("unreachable")`
+     raises `CloudOffline` with its own offline line (step 9). Never send
+     `fallbacks` or the `anthropic-beta` header to another provider. Every user turn
+     goes through `clean()` (`secret_detector` plus the PII screen and
+     `scrub_health_statements`, fails closed) BEFORE the body is built: write
+     a `_clean_turn` for the provider's user and tool-result shapes, as
+     today's does for `text` and `tool_result` blocks. `ask_json` reads the
+     reply text: give it the provider's text the same way.
+   * In `build/`: a new loop module beside `toolsmith_cloud_loop.py` (say
+     `build/toolsmith_<p>_loop.py`, same `Conversation` and `run(conv, *,
+     scope, ctx, tools, max_steps, app_name)` contract and stop words). It
+     keeps the rules of the Anthropic loop: append-only per app try, the
+     model's own turns (reasoning items, thought signatures) go back
+     exactly as returned, all tool results of a turn together, `max_tokens`
+     goes on once, a too-large try ends (`FULL_LINE`). `Run._go` in
+     `build/toolsmith_run.py` picks the loop by `read_setting()["provider"]`;
+     no other module names it.
+   The scope guard does not change: `toolsmith_scope`, `SCOPE_CALLER`,
+   `FIND_CALLERS` and `Run._cloud_scope` stay exactly as they are, no new
+   callers.
+5. **Consent.** `CONSENT_TEXT` names Anthropic. Each provider gets its own
+   true sentence naming that company (a `consent_text` in its `PROVIDERS`
+   row, or `CONSENT_TEXT_<P>`), minted into her ticket by `choose_cloud`.
+   The stored hash (`consent.text`, `_sha(...)[:16]`) is per sentence:
+   `read_setting` and `consent_outdated` compare against the CHOSEN
+   provider's sentence, and changing a sentence takes the `RECONSENT_LINE` /
+   `RECONSENT_HOLD_LINE` path (both name the provider). `status()` returns
+   the chosen provider's `consent_text`. Keep README "What is sent", the
+   switch's `data_sent`, `what_leaves` and the FAQ quote word for word with
+   it.
+6. **Settings card and its service.**
+   `dashboard/app/dashboard/settings/ToolsmithModelCard.tsx`: a provider
+   choice beside "On this computer" and "Anthropic", that provider's model
+   list (from `status().models`), its key box and consent sentence; the
+   inline PIN box on 423 `vault_locked` (`/vault/unlock`, then the same save)
+   works for any provider. `dashboard/app/_lib/services/toolsmithModelService.ts`:
+   a `provider` on the POST (beside `chooseAnthropic`). `toolsmith_model_api.py`
+   `POST /toolsmith/model` passes `provider` to `choose_cloud` (its words
+   "Choose this computer or Anthropic." too); the key stays only in the POST
+   body.
+7. **The wizard step.** Browser: `dashboard/app/onboarding/ToolsmithStep.tsx`
+   (a button per provider; it opens the card). `wizard/service.py`:
+   `TOOLSMITH_CHOICES` stays `("local", "cloud", "skipped")` (the provider
+   lives in the setting); the wish (`record_wish`, `HOLD_LINE`) and
+   `ToolsmithNotSaved`'s words name the chosen provider. Console:
+   `cli.py` `TOOLSMITH_QUESTION`, the numbered menu, `check_shape("<p>",
+   key)`, the model names (no "Claude " prefix), the key prompt. The key
+   saves before setup through the row's `store_before_setup` (unchecked,
+   while `github_account.before_setup()`), exactly as Anthropic's.
+8. **Cost cap.** `monthly_cap` (enforced in `keys._keyed`, `paused_limit`)
+   and `per_minute_cap` (`_per_minute_ok`, `busy`, retried by `send`) on the
+   key row; `cost_note` states the same monthly number. Usage rows go to
+   `<state>/toolsmith_cloud_usage.json` with the real provider; Settings
+   shows `spent_line` and the run says "Toolsmith's cloud model: about $X
+   for this job so far." (`Run._say_cost`).
+9. **Offline.** No network or the provider down: `CloudOffline` with that
+   provider's `OFFLINE_LINE` ("Toolsmith could not reach <Provider>, so it
+   uses the model on this computer for this app."), and `Run._go` runs that
+   app try on the local model (`local_for`). Finding work in
+   `build/apps.py` (`search_words`, `rank`) falls back through
+   `_cloud_failed` (its "could not ask Anthropic" names the provider).
+10. **Docs.** README "### Toolsmith works best on a frontier model" (the
+    provider, its "What is sent" bullet, cost, no connection) and the
+    optional-needs row for its key; `docs/FAQ.md` "Can I use ChatGPT, Claude
+    or another cloud model?" and a "What does Toolsmith send to
+    <Provider>?" answer quoting its sentence; AGENTS.md 3b (stop saying only
+    Anthropic is offered); `llms.txt`; the outside list wording (step 3).
+    `grep -rn Anthropic src/puffpai dashboard/app` lists every owner line
+    that names the provider today.
+11. **Tests.** Copy and extend, never go online: provider copies of
+    `tests/test_toolsmith_cloud.py` (local by default, consent hash and the
+    reconsent hold, `clean` before send, retries, 401 key line, offline
+    fallback, cost, lease) and `tests/test_toolsmith_cloud_health_screen.py`;
+    `tests/test_wizard_toolsmith_step.py` and the hold tests in
+    `tests/test_build_api.py`; the key row in `tests/test_keys_broker.py`.
+    `test_only_toolsmith_run_mints_the_scope_and_runs_the_cloud_loop` keeps
+    its `minting` and `keyed` lists exactly as they are; extend only its
+    loop check so the new loop module is named by `build/toolsmith_run.py`
+    alone. Then the live run (section 8): a real build that installs one
+    app end to end on the new provider. Unit tests passing is not done.
+
+Hard rules for every provider:
+
+* Toolsmith is the ONLY agent that may use a cloud model; every other agent
+  stays local.
+* Only the owner's own key, kept in the vault; never in chat, a file or a log.
+* Off unless the owner chooses it, with her explicit yes to that provider's
+  consent sentence.
+* The consent sentence stays true of what is sent.
+* Everything sent passes `clean()` first.
+* Toolsmith stays in the Bridge (`security/toolsmith_zone.py`, `zone_for`).
+* No middleman aggregator without its own consent sentence naming it.
+* The local model stays the default.
 
 ## 8. How to run and test
 

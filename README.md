@@ -611,6 +611,8 @@ Good places to start are the known rough edges under [Status](#status) and the
 [issue tracker](https://github.com/CypherSisters/PuffPAIBuildBot/issues);
 [docs/ISSUES.md](docs/ISSUES.md) says how to report one.
 
+Working on the code with an AI coding tool? Point it at [AGENTS.md](AGENTS.md); [llms.txt](llms.txt) has the map.
+
 ---
 
 ## Dashboard

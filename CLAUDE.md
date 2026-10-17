@@ -1,1 +1,1 @@
-Read [AGENTS.md](AGENTS.md): it is the instructions for coding agents working in this repository.
+Read [AGENTS.md](AGENTS.md) first: it is the instructions for coding agents working in this repository. Its Common tasks list says where each change goes, for example adding another cloud model for Toolsmith.

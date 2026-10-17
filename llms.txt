@@ -5,6 +5,7 @@
 ## Start here
 
 - [AGENTS.md](AGENTS.md): what BuildBot is, the three zones, the agent team, the build steps and decision table, consent, data files, how to extend, how to test, hard rules
+- [AGENTS.md#add-another-cloud-model-for-toolsmith](AGENTS.md#add-another-cloud-model-for-toolsmith): how to add another cloud model for Toolsmith (OpenAI, Google Gemini or any other provider), every file to touch in order, with the hard rules
 - [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md): module map, data flow, build.json schema, Bridge and consent flow, run_here containment, Toolsmith loop, assembled app contract, chat tool loop, routes, tests
 - [SECURITY.md](SECURITY.md): trust boundaries, standing security contracts, known risks
 - [README.md](README.md): what owners see, install, commands
