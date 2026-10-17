@@ -417,9 +417,10 @@ silently: every state-changing action is visible and gated.
 | **Archivist** | The sole gateway to the vault and the knowledge packs. All reads and writes go through it. |
 | **Majordomo** | Proactive background work, the things that should happen without you asking. |
 | **Caretaker** | Health checks that keep the system honest and running. |
-| **Toolsmith** | The integration agent: finds an app for each part of your goal and, after your yes, installs it, starts it and checks it works. It also reads one web page when you have switched on "Reading a web page" and asked for it in chat. The only agent that may use a cloud model (Anthropic), and only if you choose it. It is never handed a key: its Anthropic key stays in your vault and is used for it. |
+| **Toolsmith** | The integration agent: finds an app for each part of your goal and, after your yes, installs it, starts it and checks it works. It also reads one web page when you have switched on "Reading a web page" and asked for it in chat. The only agent that may use a cloud model (Anthropic), and only if you choose it. It is never handed a key: its Anthropic key stays in your vault and is used for it. It works in the Bridge: a check on every command it runs keeps it out of your vault, your bot's data and BuildBot's own parts. That check is not a sandbox: an app's own install scripts still run as you, so say yes only to apps you trust (Docker apps stay inside Docker). |
 
-Six live in the Brain; Drawbridge lives in the Bridge.
+Five live in the Brain. Drawbridge and Toolsmith work in the Bridge, the zone
+that touches the outside.
 
 **Toolsmith's own shell depends on the machine, and it says so.** On Linux
 with `bubblewrap` installed it also gets a sandboxed shell against its own
