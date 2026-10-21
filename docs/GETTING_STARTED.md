@@ -329,15 +329,17 @@ Type the same PIN again
   There is no reset email, because there is no us. Nobody is holding a spare.
   Write it on paper and keep the paper where you would keep a spare house key.
   You will be asked to type it back on the next screen. That is on purpose.
-  This code is shown once. Once you leave this screen it is gone from the
-  screen and from memory, and we cannot show it to you again.
+  This code is shown once, and we cannot show it to you again. Your terminal
+  may still have it in its scroll history, so clear that history when you
+  are done.
 
       XXXXX-XXXXX-XXXXX-XXXXX-XXXXX
 
   If you cannot write it down right now, press Enter or type 'skip'.
   The code keeps working either way.
-  Type the recovery code back in. Capitals and dashes do not matter.
-  > skip
+  Type the recovery code back in. Capitals and dashes do not matter. What you
+  type stays hidden.
+  >
 
   Okay. That code still works, so keep it somewhere safe.
   Nobody typed it back, so the build record says it was not checked.

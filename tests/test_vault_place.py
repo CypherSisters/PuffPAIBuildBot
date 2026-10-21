@@ -713,6 +713,9 @@ class _Sink:
         self.shown.extend(lines)
 
     def ask(self, prompt):
+        raise AssertionError("the code typed back was read with echo on")
+
+    def ask_secret(self, prompt):
         return ""
 
 
@@ -789,6 +792,100 @@ def test_the_terminal_wizard_says_why_a_folder_will_not_do(tmp_path):
     assert "Git could copy" in out["gap"]["why"]
     assert not os.path.exists(inside_install)
     assert not os.path.exists(vp.default_folder())
+
+
+def _asked_in_terminal(where_answer):
+    """The questions the terminal asks on the vault card, *where* answered."""
+    from puffpai.wizard import render_cli
+    module, package = _secure()
+    card = module.propose(_ctx(package))["card"]
+    prompts = []
+
+    def ask(prompt):
+        prompts.append(prompt)
+        return where_answer if "Where should your vault live?" in prompt else ""
+    answers = render_cli.render(card, ask=ask, ask_secret=lambda p: "",
+                                out=lambda line: None)
+    return prompts, answers
+
+
+@pytest.mark.parametrize("where_answer,asked", [
+    ("", False), ("1", False), ("2", True), ("3", True)])
+def test_the_terminal_asks_which_folder_only_for_a_folder_or_a_vault_she_has(
+        where_answer, asked):
+    prompts, _answers = _asked_in_terminal(where_answer)
+    assert any("Which folder?" in p for p in prompts) is asked
+
+
+def test_a_quiet_run_does_not_list_the_folder_for_this_computer():
+    from puffpai.wizard import cards, render_cli
+    module, package = _secure()
+    card = cards.validate_card(module.propose(_ctx(package))["card"])
+    lines = render_cli.card_lines(card, interactive=False)
+    assert not any("Which folder?" in line for line in lines)
+    assert any("Where should your vault live?" in line for line in lines)
+
+
+def test_ask_if_must_name_a_field_and_its_answers():
+    from puffpai.wizard import cards
+    base = {"skill": "secure", "section": "posture", "title": "T", "decided": "",
+            "status": "ready", "consequential": False,
+            "estimate": {"bytes": 0, "seconds": 0, "basis": "measured"}}
+    for bad in ({"field": "where"}, {"field": "where", "values": []}, "where"):
+        with pytest.raises(cards.CardError):
+            cards.validate_card(dict(base, fields=[
+                {"id": "folder", "kind": "text", "label": "Which folder?", "ask_if": bad}]))
+
+
+@pytest.mark.parametrize("platform,drive,nas", [
+    ("win32", "E:\\PuffPAI Vault", "\\\\mynas\\vault"),
+    ("linux", "/media/<you>/<drive>/PuffPAI Vault", "/mnt/mynas/vault"),
+    ("darwin", "/Volumes/<Drive>/PuffPAI Vault", "/Volumes/mynas/vault"),
+])
+def test_the_folder_examples_fit_the_computer(monkeypatch, platform, drive, nas):
+    from puffpai.wizard import wording
+    monkeypatch.setattr(wording.sys, "platform", platform)
+    examples = wording.vault_folder_examples()
+    assert examples == {"drive": drive, "nas": nas}
+    standard = wording.say("vault_folder_help", wording.STANDARD, **examples)
+    simple = wording.say("vault_folder_help", wording.SIMPLE, **examples)
+    assert drive in standard and nas in standard and drive in simple
+    if platform != "win32":
+        assert "E:\\" not in standard and "\\\\mynas" not in standard
+
+
+def test_the_card_shows_this_computers_examples():
+    from puffpai.wizard import wording
+    module, package = _secure()
+    card = module.propose(_ctx(package))["card"]
+    folder = next(f for f in card["fields"] if f["id"] == "folder")
+    assert wording.vault_folder_examples()["drive"] in folder["help"]
+    assert folder["ask_if"] == {"field": "where", "values": ["folder", "existing"]}
+
+
+def test_a_typed_tilde_means_her_home_folder(tmp_path, monkeypatch):
+    monkeypatch.setenv("HOME", str(tmp_path))
+    monkeypatch.setenv("USERPROFILE", str(tmp_path))
+    module, package = _secure()
+    ctx = _ctx(package)
+    ctx.proposal = module.propose(ctx)
+    out = module.apply(ctx, {"where": "folder", "folder": "~/tilde-vault",
+                             "pin": PIN, "pin_again": PIN})
+    assert out["data"]["vault"]["ready"] is True
+    assert os.path.isfile(tmp_path / "tilde-vault" / "vault.meta.json")
+
+
+def test_a_folder_typed_with_this_computer_chosen_is_said_and_not_used(tmp_path, capsys):
+    module, package = _secure()
+    ctx = _ctx(package)
+    ctx.console = True
+    ctx.proposal = module.propose(ctx)
+    out = module.apply(ctx, {"where": "here", "folder": str(tmp_path / "ext"),
+                             "pin": PIN, "pin_again": PIN})
+    assert out["data"]["vault"]["ready"] is True
+    assert not os.path.exists(tmp_path / "ext")
+    said = " ".join(capsys.readouterr().out.split())
+    assert "the folder you typed was not used" in said
 
 
 def test_the_browser_wizard_flow_carries_the_question():

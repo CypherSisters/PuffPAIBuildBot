@@ -164,8 +164,15 @@ below); changing it asks everyone on Anthropic to agree again. Settings card
   `record_yes`, the key goes into the vault UNCHECKED (nothing is sent to
   Anthropic before setup; a 401 on Toolsmith's first call says the key was
   not accepted), and the plan's run setting opens the door. No vault yet:
-  "Set your vault PIN first". Outside a wizard run, not set up: 409
-  `before_setup`. The wizard records "cloud" only once `status()` says cloud;
+  "Set your vault PIN first". The terminal wizard asks after its plan and
+  vault, before the run setting is recorded: `cli._setup_toolsmith_model_step`
+  passes `wizard_run=True` (only it may; a route never does) so `keys.add_key`
+  keeps a `store_before_setup` key the same way while
+  `github_account.never_set_up()`; with no vault, or once saving is
+  refused, it does not ask for the key, keeps her wish and says the build
+  stops for it before Toolsmith's first install; a wrong PIN or a refused
+  save keeps her wish the same way (never a quiet local build). Outside a wizard run, not
+  set up: 409 `before_setup`. The wizard records "cloud" only once `status()` says cloud;
   otherwise her wish is kept (`<state>/toolsmith_wish.json`, 409
   `not_saved`, step not done) and the build HOLDS before Toolsmith's first
   run and on the Yes (`toolsmith_cloud.held`, `toolsmith_hold` on

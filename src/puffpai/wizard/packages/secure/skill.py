@@ -391,7 +391,9 @@ def _propose_vault(ctx) -> dict:
             "id": "folder", "kind": "text", "path_like": True,
             "max_length": 400,
             "label": wording.say("vault_folder", mode),
-            "help": _one_line(wording.say("vault_folder_help", mode)),
+            "help": _one_line(wording.say("vault_folder_help", mode,
+                                          **wording.vault_folder_examples())),
+            "ask_if": {"field": "where", "values": ["folder", "existing"]},
             "current": str(stated or "")})
         fields.append({
             "id": "pin", "kind": "secret_entry",
@@ -469,6 +471,10 @@ def _apply_vault(ctx, answers: dict) -> dict:
     where = answers.get("where") or ("folder" if stated else "here")
     folder_text = str(answers.get("folder") or stated or "").strip()
     target = None
+    if where == "here" and str(answers.get("folder") or "").strip():
+        # Her choice wins; the folder is not silently dropped.
+        _say(ctx, "You chose On this computer, so the folder you typed was "
+                  "not used. Your vault stays on this computer.")
     if where in ("folder", "existing"):
         if not folder_text:
             return _place_refused(setup_ops, "You picked your own folder but "

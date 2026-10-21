@@ -375,17 +375,21 @@ def test_the_titles_name_the_kind_once_it_is_known():
         ]
 
 
-@pytest.mark.parametrize("prompt,line", [
-    ("stage-A", "Your bot's brain is slow on this computer, so BuildBot used "
-                "your words and a short list."),
-    ("rules", "Your bot's brain did not answer in time, so this list comes "
-              "from your own words. You can add more below."),
+@pytest.mark.parametrize("prompt,missing,line", [
+    ("stage-A", False, "Your bot's brain is slow on this computer, so BuildBot used "
+                       "your words and a short list."),
+    ("rules", False, "Your bot's brain did not answer in time, so this list comes "
+                     "from your own words. You can add more below."),
+    ("rules", True, "Your bot's brain is not downloaded yet (that happens when you "
+                    "approve the plan), so this list comes from your own words."),
 ])
-def test_a_slow_or_silent_brain_is_said_plainly(prompt, line):
+def test_a_slow_or_silent_brain_is_said_plainly(prompt, missing, line):
     from puffpai.wizard import service
 
     result = needs_result("recipe box")
     result["prompt"] = prompt
+    if missing:
+        result["model_missing"] = True
     result["private_left_out"] = []
     lines = service.NeedsProgress.from_result(result).lines("standard")
     assert lines[-1] == line

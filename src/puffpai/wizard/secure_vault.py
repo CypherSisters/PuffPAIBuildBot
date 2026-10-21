@@ -77,6 +77,29 @@ FRESH_CODE_LINES = (
 )
 
 
+#: What a face must be able to do. ``ask_secret`` reads the code typed back the
+#: way the PIN is read, with no echo, so it does not land in a terminal's
+#: scroll history next to the copy that was shown. A face without one is not
+#: a face (fail closed): no face, no vault.
+FACE_METHODS = ("show", "ask", "ask_secret")
+
+
+#: Said with the prompt, the same words the PIN screen uses, so a prompt that
+#: shows nothing while she types does not look stuck.
+HIDDEN_NOTE = "What you type stays hidden."
+
+
+def _clear(sink: Any) -> None:
+    """Ask the face to clear the screen and its history. Optional, best effort."""
+    clear = getattr(sink, "clear", None)
+    if not callable(clear):
+        return
+    try:
+        clear()
+    except Exception:
+        pass
+
+
 def face_of(ctx: Any) -> Any:
     """The show-once face this run carries, or ``None``. Fail closed.
 
@@ -90,7 +113,7 @@ def face_of(ctx: Any) -> Any:
     sink = getattr(ctx, "show_once", None)
     if sink is None:
         return None
-    if not all(callable(getattr(sink, name, None)) for name in ("show", "ask")):
+    if not all(callable(getattr(sink, name, None)) for name in FACE_METHODS):
         return None
     return sink
 
@@ -148,6 +171,12 @@ def show_and_confirm(code: str, pin: str, vault: Any, *, sink: Any,
         sink.show([*UNCONFIRMED_LINES, *top, *_code_lines(code)])
         return False
 
+    ask_secret = getattr(sink, "ask_secret", None)
+    if not callable(ask_secret):
+        # A face that can only read back in the clear would put the code on
+        # the screen a second time. Same answer as no face at all.
+        return False
+
     shows = 0
     while shows < cli._RECOVERY_MAX_SHOWS:
         shows += 1
@@ -155,13 +184,16 @@ def show_and_confirm(code: str, pin: str, vault: Any, *, sink: Any,
 
         mismatches = 0
         while mismatches < cli._RECOVERY_MAX_MISMATCHES:
-            typed = (sink.ask(f"  {zone_vault.RECOVERY_CONFIRM_PROMPT}")
-                     or "").strip()
+            typed = (ask_secret(f"  {zone_vault.RECOVERY_CONFIRM_PROMPT} "
+                                f"{HIDDEN_NOTE}") or "").strip()
             if typed.lower() in cli._RECOVERY_ESCAPES or not typed:
                 sink.show(list(DECLINED_LINES) if recorded
                           else _unrecorded(DECLINED_LINES))
                 return False
             if setup_ops.confirm_vault_recovery(code, typed):
+                # Written down and checked: take it off the screen and out of
+                # the scroll history, where the terminal lets us.
+                _clear(sink)
                 sink.show(["  That matches. Your vault is locked and you have "
                            "a way back in."])
                 return True
@@ -182,6 +214,8 @@ def show_and_confirm(code: str, pin: str, vault: Any, *, sink: Any,
     return False
 
 
-__all__ = ["DECLINED_LINES", "FRESH_CODE_LINES", "NOT_CONFIRMED_LINES",
+__all__ = ["DECLINED_LINES", "FACE_METHODS", "FRESH_CODE_LINES",
+           "HIDDEN_NOTE",
+           "NOT_CONFIRMED_LINES",
            "SKIP_LINES", "UNCONFIRMED_LINES", "YOUNG_LINES",
            "can_show", "face_of", "show_and_confirm"]

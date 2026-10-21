@@ -1607,7 +1607,9 @@ class NeedsProgress:
             if prompt == "stage-A":
                 out.append(say("needs_slow"))
             elif prompt == "rules":
-                out.append(say("needs_failed"))
+                out.append(say("needs_not_downloaded"
+                               if (self.result or {}).get("model_missing")
+                               else "needs_failed"))
             elif self.kind:
                 out.append(say("needs_asking_done", kind=self.kind,
                                count=usual))

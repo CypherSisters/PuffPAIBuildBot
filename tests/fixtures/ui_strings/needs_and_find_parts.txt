@@ -1,6 +1,7 @@
 Asking your bot's brain what {kinds} usually need ... {n} more
 Asking your bot's brain what {kinds} usually need ...
 Your bot's brain did not answer in time, so this list comes from your own words. You can add more below.
+Your bot's brain is not downloaded yet (that happens when you approve the plan), so this list comes from your own words.
 From your words: {n} {things}
 Your bot's brain is not set up yet, so this list comes from your own words. You can add more below.
 Kept private, never searched: {words}

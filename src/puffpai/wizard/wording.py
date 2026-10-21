@@ -21,6 +21,7 @@ Copyright (c) 2025 Cypher Sisters. Apache-2.0 License.
 from __future__ import annotations
 
 import re
+import sys
 from typing import Any
 
 STANDARD = "standard"
@@ -518,12 +519,12 @@ TEXT: dict[str, dict[str, str]] = {
     },
     "vault_folder_help": {
         STANDARD: "Only for a drive or folder you choose, or a vault you "
-                  "already have. Type the whole path, like E:\\PuffPAI Vault "
-                  "or \\\\mynas\\vault. A drive you already lock: unlock that "
+                  "already have. Type the whole path, like {drive} "
+                  "or {nas}. A drive you already lock: unlock that "
                   "drive yourself first, then BuildBot keeps its vault inside "
                   "it.",
         SIMPLE: "Only if you picked your own folder. Type the whole path, "
-                "like E:\\PuffPAI Vault.",
+                "like {drive}.",
     },
     "vault_pin_existing_help": {
         STANDARD: "If you picked a vault you already have, type its PIN "
@@ -576,6 +577,12 @@ TEXT: dict[str, dict[str, str]] = {
                   "from your own words. You can add more below.",
         SIMPLE: "Your bot's brain did not answer in time.\nSo this list comes "
                 "from your own words.\nYou can add more below.",
+    },
+    "needs_not_downloaded": {
+        STANDARD: "Your bot's brain is not downloaded yet (that happens when you "
+                  "approve the plan), so this list comes from your own words.",
+        SIMPLE: "Your bot's brain is not downloaded yet.\nThat happens when you "
+                "approve the plan.\nSo this list comes from your own words.",
     },
     "needs_held": {
         STANDARD: "Not searched unless you tick it:",
@@ -839,6 +846,27 @@ TEXT: dict[str, dict[str, str]] = {
 #: found" finds, so the plan does not put that heading over it.
 FOUND_NOTHING = ("BuildBot found nothing ready-made it can add for this. Your "
                  "bot's brain can still help with it in chat.")
+
+
+#: Example vault folders per platform: (a drive, a network folder). On Linux
+#: and macOS a network folder is the place it is mounted, which is a path the
+#: vault check takes (an smb:// address is not).
+VAULT_FOLDER_EXAMPLES = {
+    "windows": ("E:\\PuffPAI Vault", "\\\\mynas\\vault"),
+    "linux": ("/media/<you>/<drive>/PuffPAI Vault", "/mnt/mynas/vault"),
+    "mac": ("/Volumes/<Drive>/PuffPAI Vault", "/Volumes/mynas/vault"),
+}
+
+
+def vault_folder_examples() -> dict[str, str]:
+    """``{drive, nas}`` for ``vault_folder_help`` on this computer."""
+    if sys.platform.startswith("win"):
+        drive, nas = VAULT_FOLDER_EXAMPLES["windows"]
+    elif sys.platform == "darwin":
+        drive, nas = VAULT_FOLDER_EXAMPLES["mac"]
+    else:
+        drive, nas = VAULT_FOLDER_EXAMPLES["linux"]
+    return {"drive": drive, "nas": nas}
 
 
 def say(key: str, mode: str = STANDARD, **values: Any) -> str:

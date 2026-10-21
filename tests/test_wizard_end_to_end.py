@@ -67,6 +67,9 @@ class Face:
                 self._code = token
 
     def ask(self, prompt: str) -> str:
+        raise AssertionError("the code typed back was read with echo on")
+
+    def ask_secret(self, prompt: str) -> str:
         return self._code or "skip"
 
 

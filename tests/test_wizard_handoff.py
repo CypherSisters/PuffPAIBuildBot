@@ -67,6 +67,9 @@ class _Face:
     def ask(self, prompt):
         return ""
 
+    def ask_secret(self, prompt):
+        return ""
+
 
 def _card(ctx, module):
     ctx.proposal = module.propose(ctx)

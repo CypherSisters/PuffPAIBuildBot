@@ -339,16 +339,18 @@ class RunContext:
     def face(self) -> Any:
         """The show-once face for this run, or ``None``. Fail closed.
 
-        A face is anything with ``show(lines)`` and ``ask(prompt)``. Anything
-        else -- including no face at all, which is what every HTTP request
-        carries -- is nobody, and a skill that cannot show a value once must
-        not create one.
+        A face is anything with ``show(lines)``, ``ask(prompt)`` and
+        ``ask_secret(prompt)`` (a read with no echo, for a recovery code typed
+        back). Anything else -- including no face at all, which is what every
+        HTTP request carries -- is nobody, and a skill that cannot show a
+        value once must not create one.
         """
+        from puffpai.wizard.secure_vault import FACE_METHODS
         sink = self.show_once
         if sink is None:
             return None
         if not all(callable(getattr(sink, name, None))
-                   for name in ("show", "ask")):
+                   for name in FACE_METHODS):
             return None
         return sink
 

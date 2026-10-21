@@ -152,8 +152,36 @@ _ANY_PHRASE_RE = re.compile(PHRASE_PATTERN)
 _PARAMS_RE = re.compile(r"(?<![a-z0-9.])(\d+(?:\.\d+)?)b\b")
 
 
+TIMED_OUT = "timeout"
+MODEL_MISSING = "model_missing"
+FAILED = "failed"
+
+
 class NeedsUnavailable(Exception):
-    """The model did not answer in time, or not in the one shape allowed."""
+    """The model did not answer in time, or not in the one shape allowed.
+
+    ``reason`` says which: :data:`TIMED_OUT`, :data:`MODEL_MISSING` (Ollama is
+    up but the model is not downloaded yet) or :data:`FAILED` (anything else).
+    """
+
+    def __init__(self, message: str = "", reason: str = FAILED):
+        super().__init__(message)
+        self.reason = reason
+
+
+def _model_missing(error_piece: str, url: str, model: str) -> bool:
+    """True when an Ollama error means *model* is not downloaded yet.
+
+    Ollama answers a chat for a model it does not have with a 404 (the
+    backend keeps only the status); Ollama's own list then says whether the
+    model is there (``brain_health``), so a 404 from anything else is not
+    taken for a missing model.
+    """
+    if "404" not in error_piece:
+        return False
+    from puffpai import brain_health
+    names = brain_health.list_models(url)
+    return names is not None and not brain_health.is_installed(model, names)
 
 
 def messages(goal: str, prompt: str = PROMPT_V5) -> list[dict[str, str]]:
@@ -364,8 +392,10 @@ def ask(goal: str, *, url: str, model: str, prompt: str, deadline_s: float,
             format=schema(prompt), on_line=_line)
         for piece in pieces:
             if clock() - t0 > deadline_s:
-                raise NeedsUnavailable("the model did not answer in time")
+                raise NeedsUnavailable("the model did not answer in time", TIMED_OUT)
             if not stream.text and str(piece).startswith("[Error]"):
+                if _model_missing(str(piece), url, model):
+                    raise NeedsUnavailable("the model is not downloaded", MODEL_MISSING)
                 raise NeedsUnavailable("the model did not answer")
             stream.feed(str(piece))
     except NeedsUnavailable:
@@ -373,7 +403,7 @@ def ask(goal: str, *, url: str, model: str, prompt: str, deadline_s: float,
     except Exception as exc:  # noqa: BLE001 - a brain that fails decides nothing
         raise NeedsUnavailable(f"the model call failed: {type(exc).__name__}")
     if clock() - t0 > deadline_s:
-        raise NeedsUnavailable("the model did not answer in time")
+        raise NeedsUnavailable("the model did not answer in time", TIMED_OUT)
     answer = parse(stream.text)
     if prompt == PROMPT_STAGE_A:
         answer["also_needed"] = []
@@ -389,7 +419,8 @@ def ask(goal: str, *, url: str, model: str, prompt: str, deadline_s: float,
     return answer
 
 
-__all__ = ["FAST_TOK_S", "KINDS", "MIN_PARAMS_B", "JobStream", "NeedsUnavailable",
+__all__ = ["FAILED", "FAST_TOK_S", "KINDS", "MIN_PARAMS_B", "MODEL_MISSING", "JobStream",
+           "NeedsUnavailable", "TIMED_OUT",
            "PROMPT_STAGE_A", "PROMPT_V5", "SCHEMA_STAGE_A", "SCHEMA_V5",
            "SYSTEM_PROMPT_STAGE_A", "SYSTEM_PROMPT_V5", "TEMPERATURE", "ask", "choose_prompt",
            "clean_job", "clean_phrase", "make_backend", "messages", "params_billions",

@@ -25,6 +25,9 @@ class Face:
         self.shown.extend(lines)
 
     def ask(self, prompt):
+        raise AssertionError("the code typed back was read with echo on")
+
+    def ask_secret(self, prompt):
         return self.answers.pop(0) if self.answers else ""
 
 

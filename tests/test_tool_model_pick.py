@@ -111,3 +111,72 @@ def test_the_tool_model_profile_has_room_for_tools():
     budgets = model_profile.resolve_budgets("qwen3.5:9b", requested_ctx=16384,
                                             requested_predict=1024)
     assert budgets["num_ctx"] == 16384
+
+
+# ---------------------------------------------------------------------------
+# PB-005: a benched board gets the model we measured on it
+# ---------------------------------------------------------------------------
+
+def _orin(ram=61.4, free=200.0, **extra):
+    census = {
+        "memory": {"total_gb": ram},
+        "hardware_class": "workstation",
+        "soc": {"model": "NVIDIA Jetson AGX Orin Developer Kit", "is_jetson": True},
+        "accelerator": {"kind": "nvidia_jetson", "name": "Orin"},
+        "disk": {"free_gb": free},
+    }
+    census.update(extra)
+    return census
+
+
+def _fit(census, installed=(), **kw):
+    return model_catalog.fit_menu(census, installed_models=list(installed),
+                                  catalog=_catalog(), **kw)["recommended"]
+
+
+def test_a_benched_orin_with_room_gets_the_measured_model_and_its_size():
+    rec = _fit(_orin())
+    assert rec["id"] == "qwen3:30b-a3b" and rec["tools"] is True
+    assert "Jetson AGX Orin 64GB" in rec["reason"]
+    assert "About 19 GB to download" in rec["reason"]
+    assert not plain_words.check(rec["reason"]), plain_words.check(rec["reason"])
+    assert "—" not in rec["reason"] and "–" not in rec["reason"]
+
+
+@pytest.mark.parametrize("free", [5.0, 22.7, None])
+def test_a_benched_orin_short_on_disk_keeps_the_9b(free):
+    rec = _fit(_orin(free=free))
+    assert rec["id"] == "qwen3.5:9b" and "About 7 GB to download" in rec["reason"]
+
+
+def test_the_disk_needs_twenty_percent_headroom():
+    assert _fit(_orin(free=22.8))["id"] == "qwen3:30b-a3b"
+
+
+def test_a_benched_orin_below_the_rows_recommended_ram_keeps_the_9b():
+    assert _fit(_orin(ram=30.0))["id"] == "qwen3.5:9b"
+
+
+def test_an_installed_9b_on_a_benched_orin_still_wins():
+    rec = _fit(_orin(), installed=["qwen3.5:9b"])
+    assert rec["id"] == "qwen3.5:9b" and "Nothing to download" in rec["reason"]
+
+
+def test_an_unattended_run_on_a_benched_orin_keeps_the_9b():
+    assert _fit(_orin(), prefer_hosted_tier=True)["id"] == "qwen3.5:9b"
+
+
+@pytest.mark.parametrize("census", [
+    # A Windows PC with a discrete GPU: same class, not the benched board.
+    {"memory": {"total_gb": 63.7}, "hardware_class": "workstation",
+     "soc": {"model": None, "is_jetson": False},
+     "accelerator": {"kind": "nvidia_dgpu", "name": "NVIDIA RTX 2000 Ada", "vram_gb": 8},
+     "cpu": {"model": "Intel Core Ultra 9"}, "disk": {"free_gb": 300.0}},
+    # A Jetson with no benchmark row (not an AGX Orin): never extrapolated.
+    {"memory": {"total_gb": 61.4}, "hardware_class": "workstation",
+     "soc": {"model": "NVIDIA Jetson Thor Developer Kit", "is_jetson": True},
+     "accelerator": {"kind": "nvidia_jetson"}, "disk": {"free_gb": 300.0}},
+])
+def test_a_machine_without_a_benchmark_keeps_the_9b(census):
+    rec = _fit(census)
+    assert rec["id"] == "qwen3.5:9b" and "About 7 GB to download" in rec["reason"]

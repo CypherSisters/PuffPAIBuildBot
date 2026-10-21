@@ -54,6 +54,8 @@ LINE_ASKED = "Asking your bot's brain what {kinds} usually need ... {n} more"
 LINE_SLOW = "Your bot's brain is slow on this computer, so BuildBot used your words and a short list."
 LINE_FAILED = ("Your bot's brain did not answer in time, so this list comes from your own words. "
                "You can add more below.")
+LINE_NOT_DOWNLOADED = ("Your bot's brain is not downloaded yet (that happens when you approve the "
+                       "plan), so this list comes from your own words.")
 LINE_SMALL = ("Your bot's brain is too small to help with this, so this list comes from your own "
               "words. You can add more below.")
 LINE_NO_BRAIN = ("Your bot's brain is not set up yet, so this list comes from your own words. "
@@ -698,6 +700,7 @@ def run(goal: str, *, cfg, on_line: Optional[Callable[[str], None]] = None,
     timings: dict = {"rules_ms": rules_ms, "first_job_s": None, "model_s": None}
     used_prompt = "rules"
     merged = rule_jobs
+    model_missing = False
     if prompt == "rules":
         say(LINE_NO_BRAIN if not (url and model) else LINE_SMALL)
     else:
@@ -722,9 +725,10 @@ def run(goal: str, *, cfg, on_line: Optional[Callable[[str], None]] = None,
             left = max(1.0, deadline_s - (time.monotonic() - t0))
             answer = needs_llm.ask(goal, url=url, model=model, prompt=prompt, deadline_s=left,
                                    on_job=_streamed)
-        except needs_llm.NeedsUnavailable:
+        except needs_llm.NeedsUnavailable as exc:
             answer = None
-            say(LINE_FAILED)
+            model_missing = exc.reason == needs_llm.MODEL_MISSING
+            say(LINE_NOT_DOWNLOADED if model_missing else LINE_FAILED)
         if answer is not None:
             used_prompt = prompt
             _remember_speed(model, answer["timings"].get("tok_s"))
@@ -771,6 +775,8 @@ def run(goal: str, *, cfg, on_line: Optional[Callable[[str], None]] = None,
         "helper": "ready" if meaning.helper_state() == "ready" else "missing",
         "timings": timings,
     }
+    if model_missing:
+        result["model_missing"] = True
     with _LOCK:
         _CACHE[key] = copy.deepcopy(result)
     return result
@@ -945,6 +951,7 @@ def sends(needs: dict, *, goal: str) -> list:
 
 
 __all__ = ["LINE_ASKED", "LINE_ASKING", "LINE_FAILED", "LINE_FROM_WORDS", "LINE_NO_BRAIN",
+           "LINE_NOT_DOWNLOADED",
            "LINE_PRIVATE", "LINE_READ_DONE", "LINE_READING", "LINE_SLOW", "LINE_SMALL",
            "SCHEMA", "choose", "from_words", "get_helper", "goal_digest", "prewarm", "run",
            "sends"]

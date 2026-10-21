@@ -115,6 +115,9 @@ def _fake_sink(asked=("skip",)):
             self.shown.extend(str(line) for line in lines)
 
         def ask(self, prompt):
+            raise AssertionError("the code typed back was read with echo on")
+
+        def ask_secret(self, prompt):
             return self.script.pop(0) if self.script else ""
 
     sink = Sink()
@@ -320,6 +323,9 @@ def test_the_recovery_code_is_shown_once_and_typed_back(steady):
             self.shown.extend(str(line) for line in lines)
 
         def ask(self, prompt):
+            raise AssertionError("the code typed back was read with echo on")
+
+        def ask_secret(self, prompt):
             return _code_in(self.shown) or "skip"
 
     sink = TypingSink()

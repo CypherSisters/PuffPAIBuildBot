@@ -219,14 +219,24 @@ def before_setup() -> bool:
     ``github/setup_seen.json`` was never written). Anything unknown is "set
     up" (fail closed)."""
     try:
+        if not never_set_up():
+            return False
+        from puffpai.wizard import service
+        return bool(service.setup_in_progress())
+    except Exception:  # noqa: BLE001
+        return False
+
+
+def never_set_up() -> bool:
+    """True only when no run setting is recorded here and none ever was (the
+    manifest has none and the sticky note ``github/setup_seen.json`` was never
+    written). Anything unknown is "set up" (fail closed)."""
+    try:
         from puffpai import outside_services
         if outside_services._has_posture_record():  # noqa: SLF001
             _note_setup_seen()
             return False
-        if os.path.exists(_path("setup_seen.json")):
-            return False
-        from puffpai.wizard import service
-        return bool(service.setup_in_progress())
+        return not os.path.exists(_path("setup_seen.json"))
     except Exception:  # noqa: BLE001
         return False
 

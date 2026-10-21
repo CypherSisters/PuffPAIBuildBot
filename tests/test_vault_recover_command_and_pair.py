@@ -266,9 +266,13 @@ def test_terminal_recover_happy_path(monkeypatch, capsys, vdir):
     keys = _Keys([code, NEW_PIN, NEW_PIN])
     rc, out = _run_recover(monkeypatch, capsys, vdir, keys)
     assert rc == 0
-    # Everything secret was asked for without echo.
-    assert keys.hidden_prompts == ["Recovery code: ", "New PIN: ",
-                                   "Type the new PIN once more: "]
+    # Everything secret was asked for without echo, the new code typed back
+    # included (PB-003: it used to be read in the clear).
+    assert keys.hidden_prompts[:3] == ["Recovery code: ", "New PIN: ",
+                                       "Type the new PIN once more: "]
+    assert len(keys.hidden_prompts) == 4
+    assert keys.hidden_prompts[3].strip().startswith(
+        "Type the recovery code back in.")
     assert code not in out and NEW_PIN not in out and OLD_PIN not in out
     assert "no longer work" in out
     assert "1 personal detail(s)" in out
@@ -294,8 +298,15 @@ def test_terminal_recover_typed_back_code_is_checked(monkeypatch, capsys, vdir):
     seen = {}
 
     class _Echo(_Keys):
-        def read_line(self, prompt):
+        def read_pin(self, prompt):
+            if self.hidden:
+                return super().read_pin(prompt)
+            self.hidden_prompts.append(prompt)
             return seen.get("code", "")
+
+        def read_line(self, prompt):
+            # Read in the clear, the code never arrives, and nothing matches.
+            return ""
 
     keys = _Echo([code, NEW_PIN, NEW_PIN])
     from puffpai.wizard import secure_vault

@@ -802,6 +802,19 @@ def _set_up() -> bool:
         return True
 
 
+def key_can_save_in_wizard() -> bool:
+    """Can the terminal wizard keep her key now? Yes once the run setting is
+    recorded, or while none has ever been (:func:`choose_cloud` with
+    *wizard_run* keeps it unchecked). Otherwise it is not asked for (PB-001)."""
+    if _set_up():
+        return True
+    try:
+        from puffpai import github_account
+        return github_account.never_set_up()
+    except Exception:  # noqa: BLE001 - not knowing: do not ask for a key it may drop
+        return False
+
+
 # -- her wish from the wizard: Anthropic picked, key not saved yet -------------
 
 def record_wish(*, by: str = "owner") -> None:
@@ -897,10 +910,13 @@ def spent_line(usage: Optional[dict] = None) -> str:
 
 
 def choose_cloud(model: Any, device: str, *, key: Any = None, by: str = "owner",
-                 vault: Any = None) -> dict:
+                 vault: Any = None, wizard_run: bool = False) -> dict:
     """Her tap on "Anthropic" in Settings (from a paired device) with the
     consent text on screen: her yes, a ``key_on`` ticket minted and spent at
-    once, the key (if pasted) checked and locked in the vault, the switch on."""
+    once, the key (if pasted) checked and locked in the vault, the switch on.
+
+    *wizard_run* is True ONLY from the terminal wizard's step
+    (``cli._setup_toolsmith_model_step``); see ``keys.add_key``."""
     from puffpai import outside_services
     from puffpai.security import consent_tickets, keys
     mid = model if isinstance(model, str) and model in MODELS else None
@@ -926,7 +942,8 @@ def choose_cloud(model: Any, device: str, *, key: Any = None, by: str = "owner",
     pasted = key not in (None, "")
     if pasted:
         try:
-            keys.add_key("anthropic", key, vault=vault, by=by)   # switches the door on
+            keys.add_key("anthropic", key, vault=vault, by=by,   # switches the door on
+                         wizard_run=wizard_run)
         except keys.KeyRefused as exc:
             if exc.code == "locked":
                 raise CloudError("vault_locked", VAULT_LOCKED_LINE, 423) from None

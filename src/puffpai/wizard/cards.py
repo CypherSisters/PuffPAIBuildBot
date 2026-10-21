@@ -114,7 +114,7 @@ _CARD_KEYS = {"schema", "skill", "section", "part", "title", "decided",
               "fields", "gaps"}
 _FIELD_KEYS = {"id", "kind", "label", "help", "current", "proposed", "options",
                "pattern", "max_length", "min", "max", "free_text", "path_like",
-               "examples"}
+               "examples", "ask_if"}
 #: Sample answers a text field may show (the browser's buttons fill the box).
 MAX_EXAMPLES = 3
 
@@ -226,6 +226,19 @@ def _validate_field(raw: Any, seen: set[str]) -> dict:
     if not out["label"]:
         raise CardError(f"Field '{field_id}' has no label. A question nobody "
                         f"can read is not a question.")
+    ask_if = raw.get("ask_if")
+    if ask_if is not None:
+        # Asked only when another field's answer is one of these values (the
+        # vault's folder only for "a folder I choose"). A renderer that does
+        # not ask questions one by one may ignore it.
+        values = ask_if.get("values") if isinstance(ask_if, dict) else None
+        if not (isinstance(ask_if, dict) and set(ask_if) == {"field", "values"}
+                and isinstance(ask_if["field"], str) and ID_RE.match(ask_if["field"])
+                and isinstance(values, list) and values
+                and all(isinstance(v, str) for v in values)):
+            raise CardError(f"Field '{field_id}': ask_if names one other field "
+                            f"and the answers that ask this one.")
+        out["ask_if"] = {"field": ask_if["field"], "values": list(values)}
 
     if kind == "secret_entry":
         # The card is stored and returned over HTTP. A secret has no business

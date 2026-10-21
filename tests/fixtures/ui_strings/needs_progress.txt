@@ -13,6 +13,10 @@ Your bot's brain did not answer in time, so this list comes from your own words.
 Your bot's brain did not answer in time.
 So this list comes from your own words.
 You can add more below.
+Your bot's brain is not downloaded yet (that happens when you approve the plan), so this list comes from your own words.
+Your bot's brain is not downloaded yet.
+That happens when you approve the plan.
+So this list comes from your own words.
 Not searched unless you tick it:
 Here is what a {kind} bot needs. Untick anything you do not want, or add your own.
 Here is what a {kind} bot needs.

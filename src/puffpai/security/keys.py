@@ -1127,9 +1127,14 @@ def _catalog_digest(row: dict) -> str:
 
 
 def add_key(service_id: str, value: Any, *, vault: Any = None,
-            background: bool = False, by: str = "owner") -> dict:
+            background: bool = False, by: str = "owner",
+            wizard_run: bool = False) -> dict:
     """Check a pasted key, then lock it in the vault. Call ONLY after the
     caller redeemed a ``key_on`` consent ticket for *service_id*.
+
+    *wizard_run* is True ONLY from the terminal wizard's own step (after its
+    plan, before its run setting is recorded): a ``store_before_setup`` row
+    is then kept as in the browser's wizard. Never from a route.
 
     Returns ``{"ok", "message", "notes", "key"}``. Never returns the value.
     """
@@ -1172,7 +1177,9 @@ def add_key(service_id: str, value: Any, *, vault: Any = None,
             if exc.code == "not_set_up" and early:
                 try:
                     from puffpai import github_account
-                    under_way = github_account.before_setup()
+                    under_way = github_account.before_setup() or (
+                        wizard_run and row.get("store_before_setup") is True
+                        and github_account.never_set_up())
                 except Exception:  # noqa: BLE001 - not knowing is "set up"
                     under_way = False
             if not under_way:

@@ -527,12 +527,17 @@ spans:
 you pick and uses it), so the brain must be able to call them. Where your
 computer can run a model of 9B or more, the wizard recommends one: a 9B or
 bigger model already installed if there is one, otherwise `qwen3.5:9b` (a 7 GB
-download), never the 19 GB row unless it is already there. Where no 9B model
-fits, it recommends the smallest model that still uses tools (a tool model you
-already have wins, so there is nothing to download). Only when no model that
-fits can use tools does it fall back to the most capable one, and it says chat
-will answer without tools. A `--yes` run picks the same way. `--model`
-overrides all of it.
+download), never the 19 GB row unless it is already there. The one exception
+is a board we have measured ourselves: on that exact board (today a Jetson AGX
+Orin 64GB), with at least the model's recommended RAM and free disk for its
+download plus 20%, the wizard recommends the model we measured there,
+`qwen3:30b-a3b`, and says it is a 19 GB download. Any other computer keeps the
+9B. Where no 9B model fits, it recommends the smallest model that still uses
+tools (a tool model you already have wins, so there is nothing to download).
+Only when no model that fits can use tools does it fall back to the most
+capable one, and it says chat will answer without tools. A `--yes` run picks
+the same way, except that it keeps the 9B on a measured board too, so nobody
+watching means no 19 GB download. `--model` overrides all of it.
 
 There is no enforced disk-space or CPU-architecture floor. Any CPU Ollama
 itself supports works. Before offering to download a model onto a **local**

@@ -342,6 +342,40 @@ def _tool_pick(options: list[dict[str, Any]]) -> Optional[tuple[dict[str, Any], 
     return min(tools, key=size), "small"
 
 
+#: Room a download needs on disk, as a multiple of its size (it unpacks).
+_DISK_HEADROOM = 1.2
+
+
+def _benchmarked_pick(options: list[dict[str, Any]], models: list[dict[str, Any]],
+                      census: dict[str, Any], ram: float) -> Optional[dict[str, Any]]:
+    """The strongest tool model MEASURED on this very board, when it fits well.
+
+    The one exception to "the 9B, not the 19 GB row": a board in the silicon
+    map (an exact match, see :func:`_benchmark_for`) gets the model we measured
+    on it, but only when total RAM reaches that row's ``rec_ram_gb`` and the
+    free disk holds its ``disk_gb`` x 1.2. Never extrapolated: a machine with no
+    measured row, or short on RAM or disk, keeps the 9B.
+    """
+    disk = census.get("disk") if isinstance(census.get("disk"), dict) else {}
+    free = disk.get("free_gb")
+    if not isinstance(free, (int, float)) or isinstance(free, bool):
+        return None
+    rows = {str(m.get("id")): m for m in models}
+    for option in options:  # strongest first
+        if not (option.get("benchmark") and option.get("tools")
+                and (option.get("params_b") or 0) >= TOOL_MODEL_MIN_B):
+            continue
+        row = rows.get(str(option.get("id")), {})
+        try:
+            rec_ram = float(row.get("rec_ram_gb"))
+            size = float(row.get("disk_gb"))
+        except (TypeError, ValueError):
+            continue
+        if ram >= rec_ram and float(free) >= size * _DISK_HEADROOM:
+            return option
+    return None
+
+
 def _tool_reason(kind: str, pick: dict[str, Any], ram: Optional[float]) -> str:
     """One plain line for why this brain, under the tool rule."""
     ram_str = f"your {ram} GB" if ram is not None else "this computer"
@@ -355,6 +389,12 @@ def _tool_reason(kind: str, pick: dict[str, Any], ram: Optional[float]) -> str:
                 "it. Nothing to download." + room)
     if kind == "big":
         return (f"Fits {ram_str} and is big enough (9B or more) to use tools "
+                f"well: it can look things up, add what you pick and use it."
+                + download + room)
+    if kind == "benchmarked":
+        board = (pick.get("benchmark") or {}).get("silicon_label") or "this board"
+        return (f"We measured it on a {board}, the same board as this computer. "
+                f"It fits {ram_str}, there is room on the disk, and it uses tools "
                 f"well: it can look things up, add what you pick and use it."
                 + download + room)
     if kind == "small_installed":
@@ -476,6 +516,13 @@ def fit_menu(
     tool_pick = _tool_pick(options)
     if tool_pick is not None:
         pick, kind = tool_pick
+        # A benched board with the RAM and disk for its measured model gets that
+        # model instead of a 9B download. An installed 9B-or-larger model still
+        # wins (nothing to download), and so does the unattended cap.
+        if kind == "big" and not prefer_hosted_tier:
+            measured = _benchmarked_pick(options, models, census, ram_f)
+            if measured is not None:
+                pick, kind = measured, "benchmarked"
 
         def _disk(o: dict[str, Any]) -> float:
             try:

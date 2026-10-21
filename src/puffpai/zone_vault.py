@@ -805,9 +805,12 @@ RECOVERY_NOTICE_LINES: tuple[str, ...] = (
     "You will be asked to type it back on the next screen. That is on purpose.",
 )
 
+# Says only what is true. A terminal, and tmux, keep their own scroll history,
+# which BuildBot cannot promise to empty, so the owner is told to.
 RECOVERY_SHOWN_ONCE_WARNING = (
-    "This code is shown once. Once you leave this screen it is gone from the "
-    "screen and from memory, and we cannot show it to you again."
+    "This code is shown once, and we cannot show it to you again. Your "
+    "terminal may still have it in its scroll history, so clear that history "
+    "when you are done."
 )
 
 RECOVERY_CONFIRM_PROMPT = (

@@ -1010,6 +1010,8 @@ def _wizard_runner_parts(may_complete=None) -> dict:
 
 TOOLSMITH_QUESTION = "Who should do Toolsmith's installs?"
 TOOLSMITH_KEY_LINE = "Paste the key in the web page's Settings, or here:"
+TOOLSMITH_HOLD_LINE = ("Before Toolsmith's first install, BuildBot stops and asks you "
+                       "to save your key in Settings, or to choose This computer.")
 
 
 def _setup_toolsmith_model_step(ctx) -> str:
@@ -1044,6 +1046,23 @@ def _setup_toolsmith_model_step(ctx) -> str:
         print(f"  {n}. Claude {toolsmith_cloud.MODELS[mid]['name']}{tag}")
     pick = (_ask("Which model", "1") or "1").strip()
     model = ids[int(pick) - 1] if pick.isdigit() and 1 <= int(pick) <= len(ids)         else toolsmith_cloud.DEFAULT_MODEL
+    # PB-001: the key is asked for only when it can be kept now. Otherwise her
+    # wish is kept and the build holds before Toolsmith's first install, as
+    # in the browser's wizard (``toolsmith_cloud.held``).
+    from puffpai.config import get_config
+    from puffpai.security.vault import Vault
+    vault = Vault(vault_dir=_vault_dir(get_config()))
+    if not vault.is_initialized:
+        toolsmith_cloud.record_wish()
+        print("Your key is kept in your vault, and there is no vault yet, so it is "
+              "not asked for here. Set your vault PIN, then save the key in "
+              "Settings. " + TOOLSMITH_HOLD_LINE)
+        return "local"
+    if not toolsmith_cloud.key_can_save_in_wizard():
+        toolsmith_cloud.record_wish()
+        print("Your key cannot be saved at this point, so it is not asked for "
+              "here. " + TOOLSMITH_HOLD_LINE)
+        return "local"
     print(TOOLSMITH_KEY_LINE)
     key = _read_pin("Anthropic key (it will not show, Enter to do it in Settings): ")
     try:
@@ -1055,28 +1074,27 @@ def _setup_toolsmith_model_step(ctx) -> str:
         except keys.KeyRefused as exc:
             print(f"{exc.message} You can add it in Settings.")
             return "local"
-        from puffpai.config import get_config
-        from puffpai.security.vault import Vault
-        vault = Vault(vault_dir=_vault_dir(get_config()))
-        if not vault.is_initialized:
-            print("Your key is kept in your vault, and there is no vault yet. "
-                  "Add the key in Settings once it is set.")
-            return "local"
         pin = _read_pin("Vault PIN (it opens the vault so the key can be locked in it): ")
         try:
             vault.unlock(pin)
         except Exception:  # noqa: BLE001 - a wrong PIN or a vault error, said plainly
+            # Her pick stands: the build holds, never a quiet local build.
+            toolsmith_cloud.record_wish()
             print("That PIN did not open the vault. Nothing was sent. "
-                  "You can add the key in Settings.")
+                  + TOOLSMITH_HOLD_LINE)
             return "local"
         finally:
             pin = ""
         try:
+            # wizard_run: after the plan and before its run setting is
+            # recorded, the key is locked in the vault unchecked and her yes
+            # kept, as the browser's wizard does (PB-001).
             got = toolsmith_cloud.choose_cloud(
                 model, consent_tickets.terminal_device_id(), key=key.strip(),
-                vault=vault)
+                vault=vault, wizard_run=True)
         except toolsmith_cloud.CloudError as exc:
-            print(f"{exc.message} Toolsmith uses this computer for now.")
+            toolsmith_cloud.record_wish()
+            print(f"{exc.message} {TOOLSMITH_HOLD_LINE}")
             return "local"
         finally:
             vault.lock()
@@ -2757,7 +2775,7 @@ def _recovery_ceremony(code: str, pin: str, vault, *,
     replaced, and running out leaves the vault locked and working with the
     build record saying, honestly, that no code was confirmed.
     """
-    from puffpai.wizard import secure_vault
+    from puffpai.wizard import render_cli, secure_vault
 
     class _Terminal:
         @staticmethod
@@ -2769,6 +2787,15 @@ def _recovery_ceremony(code: str, pin: str, vault, *,
         @staticmethod
         def ask(prompt):
             return _read_line(f"{prompt}: ")
+
+        @staticmethod
+        def ask_secret(prompt):
+            # Read the way the PIN is read: no echo on a terminal.
+            return _read_pin(f"{prompt}: ")
+
+        @staticmethod
+        def clear():
+            render_cli.clear_terminal()
 
     return secure_vault.show_and_confirm(code, pin, vault, sink=_Terminal(),
                                          non_interactive=non_interactive,

@@ -200,7 +200,59 @@ def test_timeout_falls_back_to_rules(brain, monkeypatch):
     lines: list[str] = []
     out = needs.run(_goal("wedding"), cfg=CFG, on_line=lines.append, deadline_s=30)
     assert out["prompt"] == "rules" and needs.LINE_FAILED in lines
+    assert needs.LINE_NOT_DOWNLOADED not in lines and "model_missing" not in out
     assert fake.consumed < len(fake.text)  # it stopped reading at the deadline
+
+
+NOT_FOUND = "[Error] Ollama error: 404 Client Error: Not Found for url: http://127.0.0.1:11435/api/chat"
+
+
+def _ollama_has(monkeypatch, names):
+    from puffpai import brain_health
+    asked: list[str] = []
+
+    def list_models(url, timeout=3):
+        asked.append(url)
+        return names
+    monkeypatch.setattr(brain_health, "list_models", list_models)
+    return asked
+
+
+def test_a_model_not_downloaded_yet_says_so(brain, monkeypatch):
+    # Ollama answers a chat for a model it does not have with a 404.
+    brain(FakeBrain(NOT_FOUND, piece=len(NOT_FOUND)))
+    asked = _ollama_has(monkeypatch, ["qwen3.5:9b"])
+    lines: list[str] = []
+    out = needs.run(_goal("car"), cfg=CFG, on_line=lines.append)
+    assert asked == [CFG["ollama_url"]]
+    assert out["prompt"] == "rules" and out["model_missing"] is True
+    assert needs.LINE_NOT_DOWNLOADED in lines and needs.LINE_FAILED not in lines
+    assert len(out["jobs"]) == 4  # the list from her own words, as before
+
+
+@pytest.mark.parametrize("names", [["qwen2.5:7b-instruct"], None])
+def test_a_404_with_the_model_there_or_ollama_gone_is_a_plain_failure(brain, monkeypatch,
+                                                                       names):
+    brain(FakeBrain(NOT_FOUND, piece=len(NOT_FOUND)))
+    _ollama_has(monkeypatch, names)
+    lines: list[str] = []
+    out = needs.run(_goal("car"), cfg=CFG, on_line=lines.append)
+    assert out["prompt"] == "rules" and "model_missing" not in out
+    assert needs.LINE_FAILED in lines and needs.LINE_NOT_DOWNLOADED not in lines
+
+
+def test_timeout_and_other_errors_keep_the_old_line_and_never_list_models(brain,
+                                                                          monkeypatch):
+    asked = _ollama_has(monkeypatch, [])
+    brain(FakeBrain("[Error] Cannot connect to Ollama. Is it running?"))
+    lines: list[str] = []
+    out = needs.run(_goal("car"), cfg=CFG, on_line=lines.append)
+    assert needs.LINE_FAILED in lines and "model_missing" not in out
+    with pytest.raises(needs_llm.NeedsUnavailable) as err:
+        needs_llm.ask("x", url=CFG["ollama_url"], model="m:7b", prompt=needs_llm.PROMPT_V5,
+                      deadline_s=-1.0)
+    assert err.value.reason == needs_llm.TIMED_OUT
+    assert asked == []
 
 
 def test_error_text_from_the_backend_counts_as_no_answer(brain):

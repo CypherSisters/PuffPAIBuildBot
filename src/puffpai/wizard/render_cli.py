@@ -215,7 +215,7 @@ def card_lines(card: dict, *, interactive: bool = False,
             last_label = label or last_label
             continue
         last_label, headed = "", False
-        if not interactive:
+        if not interactive and _asked(card, field, {}):
             label = str(field["label"])
             join = " " if label[-1:] in "?.:!)" else ": "
             lines.extend(wrap(f"{label}{join}{_shown(field)}", 0, 2))
@@ -300,18 +300,117 @@ def _page(options: list[dict], current: Any, mode: str,
     return options[:MAX_SHOWN_OPTIONS]
 
 
+#: Cursor home (H), erase the screen (2J), then erase the scroll history (3J),
+#: the order ``clear(1)`` uses. 3J goes LAST on purpose: some terminals (VTE,
+#: and tmux with scroll-on-clear) push the visible screen into the history on
+#: a 2J, so a 3J sent first would leave the code there.
+CLEAR_SEQUENCE = "\x1b[H\x1b[2J\x1b[3J"
+
+#: What a tmux pane id looks like ("%12"). Anything else in $TMUX_PANE is not
+#: handed to tmux as a target.
+_TMUX_PANE = re.compile(r"%\d{1,9}")
+
+#: Where tmux is looked for: fixed places only, never PATH and never a bare
+#: name (see :mod:`puffpai.security.host_programs`). None on Windows.
+_TMUX_PLACES = ("/usr/bin/tmux", "/usr/local/bin/tmux", "/opt/homebrew/bin/tmux")
+
+
+def _tmux_program() -> str | None:
+    if os.name == "nt":
+        return None
+    for place in _TMUX_PLACES:
+        if os.path.isfile(place) and os.access(place, os.X_OK):
+            return place
+    return None
+
+
+def _windows_vt_on(stream: Any) -> bool:
+    """Turn on escape-sequence handling for this console. False when it cannot.
+
+    An old Windows console prints ``ESC[3J`` as junk unless asked to read it,
+    so off Windows this is always True and on Windows the sequence is only
+    written once the console has agreed to understand it.
+    """
+    if os.name != "nt":
+        return True
+    try:
+        import ctypes
+        import msvcrt
+        handle = msvcrt.get_osfhandle(stream.fileno())
+        kernel32 = ctypes.windll.kernel32
+        mode = ctypes.c_uint32()
+        if not kernel32.GetConsoleMode(handle, ctypes.byref(mode)):
+            return False
+        wanted = mode.value | 0x0004  # ENABLE_VIRTUAL_TERMINAL_PROCESSING
+        return wanted == mode.value or bool(kernel32.SetConsoleMode(handle, wanted))
+    except Exception:
+        return False
+
+
+def clear_terminal(stream: Any = None, *, env: Any = None,
+                   run: Callable[..., Any] | None = None,
+                   tmux: Callable[[], str | None] | None = None) -> bool:
+    """Clear the screen and its scroll history, when this is a terminal.
+
+    Best effort, and it never raises: a terminal that ignores the request is
+    left as it was, and the caller goes on. Nothing is written unless
+    ``stream`` (stdout by default) is a terminal, so a pipe or a log file never
+    gets the escape bytes. Under tmux the pane's own history is cleared too,
+    with ``tmux clear-history``, because tmux keeps its scroll history itself.
+    Returns True when the sequence was written.
+    """
+    stream = sys.stdout if stream is None else stream
+    try:
+        if stream is None or not stream.isatty():
+            return False
+    except Exception:
+        return False
+    wrote = False
+    try:
+        if _windows_vt_on(stream):
+            stream.write(CLEAR_SEQUENCE)
+            stream.flush()
+            wrote = True
+    except Exception:
+        wrote = False
+    env = os.environ if env is None else env
+    try:
+        if env.get("TMUX"):
+            program = (tmux or _tmux_program)()
+            if program:
+                import subprocess
+                from puffpai import procflags
+                argv = [program, "clear-history"]
+                pane = str(env.get("TMUX_PANE") or "")
+                if _TMUX_PANE.fullmatch(pane):
+                    argv += ["-t", pane]
+                (run or subprocess.run)(
+                    argv, stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL,
+                    stderr=subprocess.DEVNULL, timeout=3, check=False,
+                    **procflags.hidden())
+    except Exception:
+        pass
+    return wrote
+
+
 class ConsoleShowOnce:
     """The console as a place a value can be shown once and never stored.
 
-    Two methods and no state. It is handed lines and prints them; it is handed
-    a prompt and reads one line back. It keeps no copy of either, which is what
-    makes it usable for a recovery code.
+    No state. It is handed lines and prints them; it is handed a prompt and
+    reads one line back, in the clear (``ask``) or without echo
+    (``ask_secret``, for the recovery code typed back); and it can clear the
+    screen once the code has done its job. It keeps no copy of anything, which
+    is what makes it usable for a recovery code.
     """
 
     def __init__(self, *, out: Callable[[str], None] = print,
-                 ask: Callable[[str], str | None] | None = None) -> None:
+                 ask: Callable[[str], str | None] | None = None,
+                 ask_secret: Callable[[str], str | None] | None = None,
+                 clear: Callable[[], Any] | None = None) -> None:
         self._out = out
         self._ask = ask or _read_line
+        self._ask_secret = ask_secret or _read_secret
+        self._clear = clear or clear_terminal
 
     @staticmethod
     def _safe(text: Any) -> str:
@@ -334,6 +433,17 @@ class ConsoleShowOnce:
 
     def ask(self, prompt: str) -> str | None:
         return self._ask(self._safe(prompt)[:cards.MAX_LABEL])
+
+    def ask_secret(self, prompt: str) -> str | None:
+        """One line read the way the PIN is read: no echo on a terminal."""
+        return self._ask_secret(self._safe(prompt)[:cards.MAX_LABEL])
+
+    def clear(self) -> None:
+        """Clear the screen and scroll history, best effort. Never raises."""
+        try:
+            self._clear()
+        except Exception:
+            pass
 
 
 # -- resume -------------------------------------------------------------------
@@ -419,10 +529,26 @@ def render(card: dict, *, non_interactive: bool = False,
         for field in card["fields"]:
             if field["kind"] in cards.READ_ONLY_KINDS:
                 continue
+            if not _asked(card, field, answers):
+                continue
             value = _ask_field(card, field, reader, secret_reader, out, mode)
             if value is not None:
                 answers[field["id"]] = value
     return answers
+
+
+def _asked(card: dict, field: dict, answers: dict) -> bool:
+    """False when the field's ``ask_if`` is not met by the answer so far (or,
+    unanswered, by what the card proposes)."""
+    cond = field.get("ask_if")
+    if not cond:
+        return True
+    if cond["field"] in answers:
+        value = answers[cond["field"]]
+    else:
+        other = cards.field_map(card).get(cond["field"]) or {}
+        value = other.get("proposed") or other.get("current")
+    return value in cond["values"]
 
 
 def _ask_field(card: dict, field: dict, reader, secret_reader, out,
@@ -983,8 +1109,9 @@ def _read_secret(prompt: str) -> str | None:
         return None
 
 
-__all__ = ["ANSWER_MARK", "BEGIN_MARK", "END_MARK", "RESUME_CHOICES",
-           "ConsoleShowOnce", "ascii_only", "card_lines", "how_long_ago",
+__all__ = ["ANSWER_MARK", "BEGIN_MARK", "CLEAR_SEQUENCE", "END_MARK",
+           "RESUME_CHOICES", "ConsoleShowOnce", "ascii_only", "card_lines",
+           "clear_terminal", "how_long_ago",
            "needs_lines", "needs_screen",
            "render", "resume_lines", "resume_screen", "say_line",
            "strip_block", "summary_lines", "summary_screen", "town_screen",

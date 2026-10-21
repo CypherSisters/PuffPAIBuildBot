@@ -119,6 +119,145 @@ def test_the_console_stores_the_key_through_the_same_function(wizard, cloud, mon
     assert cli._setup_toolsmith_model_step(ctx) == "local"   # noqa: SLF001
 
 
+def _console_after_the_plan(wizard, cloud, monkeypatch):
+    """Where the terminal asks (PB-001): goal saved, plan approved, vault
+    made, but the run setting not recorded yet (the manifest comes later)."""
+    from puffpai import github_account, outside_services
+    from puffpai.security import vault as vault_mod
+    _no_setup_yet()
+    _to_after_github(wizard)
+    monkeypatch.setattr(wizard, "_summary_state", lambda run: {"approved": True})
+    assert wizard.setup_in_progress() is False                 # the plan is approved
+    assert github_account.before_setup() is False
+    assert not outside_services._has_posture_record()          # noqa: SLF001
+    cloud.vault.lock()
+    monkeypatch.setattr(vault_mod, "Vault", lambda **k: cloud.vault)
+
+
+def test_pb001_the_console_saves_the_key_after_the_plan_before_the_run_setting(
+        wizard, cloud, monkeypatch, capsys, caplog):
+    """PB-001 (outside test, Jetson over SSH): the terminal asked for the key
+    after the plan and then dropped it ("can be saved once you approve your
+    plan"). Now it is locked in the vault unchecked, nothing is sent, and
+    her yes is recorded as in the browser."""
+    from puffpai.config import get_state_dir
+    from puffpai.security import keys
+    from puffpai.security import toolsmith_cloud as tc
+    caplog.set_level("DEBUG")
+    _console_after_the_plan(wizard, cloud, monkeypatch)
+    cli = _console(monkeypatch, ["2", "1"], [KEY, PIN])
+    ctx = types.SimpleNamespace(shared={}, non_interactive=False)
+    assert cli._setup_toolsmith_model_step(ctx) == "cloud"   # noqa: SLF001
+    out = capsys.readouterr().out
+    assert keys.key_status("anthropic")["state"] != "missing"
+    assert cloud.calls == [] and cloud.posts == []            # nothing went to Anthropic
+    assert tc.in_use() and not tc.held() and not tc.wished_cloud()
+    assert tc.read_setting()["consent"]["text"] == tc._sha(tc.CONSENT_TEXT)[:16]  # noqa: SLF001
+    cloud.vault.unlock(PIN)
+    assert keys._record_for(cloud.vault, "anthropic")["value"] == KEY  # noqa: SLF001
+    assert KEY not in out and KEY not in caplog.text
+    assert grep_tree(get_state_dir(), KEY) == []
+    assert ctx.shared == {"toolsmith_asked": "cloud"}
+    assert tc.BEFORE_SETUP_LINE not in out
+
+
+def test_pb001_a_malformed_key_is_refused_and_nothing_is_kept(wizard, cloud, monkeypatch,
+                                                              capsys):
+    from puffpai.security import keys
+    from puffpai.security import toolsmith_cloud as tc
+    _console_after_the_plan(wizard, cloud, monkeypatch)
+    bad = "not-a-key-" + "Z" * 30
+    cli = _console(monkeypatch, ["2", "1"], [bad])
+    ctx = types.SimpleNamespace(shared={}, non_interactive=False)
+    assert cli._setup_toolsmith_model_step(ctx) == "local"   # noqa: SLF001
+    out = capsys.readouterr().out
+    assert bad not in out
+    assert keys.key_status("anthropic")["state"] == "missing"
+    assert not tc.in_use() and cloud.calls == []
+
+
+def _held_not_saved(cli, out: str) -> None:
+    from puffpai.security import keys
+    from puffpai.security import toolsmith_cloud as tc
+    assert KEY not in out and cli.TOOLSMITH_HOLD_LINE in out
+    assert "uses this computer for now" not in out
+    assert tc.wished_cloud() and tc.held() and not tc.in_use()
+    assert tc.status()["hold_line"] == tc.HOLD_LINE
+    assert keys.key_status("anthropic")["state"] == "missing"
+
+
+def test_pb001_a_wrong_pin_holds_the_build_instead_of_going_local(wizard, cloud,
+                                                                  monkeypatch, capsys):
+    """Owner's 10-14 rule: she picked Anthropic, so no quiet local build."""
+    _console_after_the_plan(wizard, cloud, monkeypatch)
+    cli = _console(monkeypatch, ["2", "1"], [KEY, "not the pin at all"])
+    ctx = types.SimpleNamespace(shared={}, non_interactive=False)
+    assert cli._setup_toolsmith_model_step(ctx) == "local"   # noqa: SLF001
+    out = capsys.readouterr().out
+    assert "That PIN did not open the vault. Nothing was sent." in out
+    _held_not_saved(cli, out)
+    assert cloud.calls == []
+
+
+def test_pb001_a_refused_save_holds_the_build_instead_of_going_local(wizard, cloud,
+                                                                     monkeypatch, capsys):
+    from puffpai.security import keys
+    _console_after_the_plan(wizard, cloud, monkeypatch)
+    monkeypatch.setattr(keys, "_rate_limited", lambda: True)   # add_key refuses: busy
+    cli = _console(monkeypatch, ["2", "1"], [KEY, PIN])
+    ctx = types.SimpleNamespace(shared={}, non_interactive=False)
+    assert cli._setup_toolsmith_model_step(ctx) == "local"   # noqa: SLF001
+    out = capsys.readouterr().out
+    assert "Wait a minute and try again." in out
+    _held_not_saved(cli, out)
+    assert not cloud.vault.is_unlocked and cloud.calls == []
+
+
+def test_pb001_when_the_key_cannot_be_saved_it_is_not_asked_for(wizard, cloud,
+                                                                monkeypatch, capsys):
+    """A bot set up before (its sticky note) with no run setting now: saving
+    is refused, so the key is never asked for; her wish holds the build."""
+    from puffpai import github_account
+    from puffpai.security import toolsmith_cloud as tc
+    _console_after_the_plan(wizard, cloud, monkeypatch)
+    github_account._write("setup_seen.json", {"at": 1})       # noqa: SLF001
+    asked = []
+    cli = _console(monkeypatch, ["2", "1"], [])
+    monkeypatch.setattr(cli, "_read_pin", lambda prompt: asked.append(prompt) or KEY)
+    ctx = types.SimpleNamespace(shared={}, non_interactive=False)
+    assert cli._setup_toolsmith_model_step(ctx) == "local"   # noqa: SLF001
+    out = capsys.readouterr().out
+    assert asked == [] and cli.TOOLSMITH_KEY_LINE not in out
+    assert "Before Toolsmith's first install" in out
+    assert tc.wished_cloud() and tc.held() and not tc.in_use()
+
+
+def test_pb001_without_a_vault_the_key_is_not_asked_for(wizard, cloud, monkeypatch, capsys):
+    from puffpai.security import toolsmith_cloud as tc
+    _console_after_the_plan(wizard, cloud, monkeypatch)
+    from puffpai.security import vault as vault_mod
+    monkeypatch.setattr(vault_mod, "Vault",
+                        lambda **k: types.SimpleNamespace(is_initialized=False))
+    asked = []
+    cli = _console(monkeypatch, ["2", "1"], [])
+    monkeypatch.setattr(cli, "_read_pin", lambda prompt: asked.append(prompt) or KEY)
+    ctx = types.SimpleNamespace(shared={}, non_interactive=False)
+    assert cli._setup_toolsmith_model_step(ctx) == "local"   # noqa: SLF001
+    out = capsys.readouterr().out
+    assert asked == [] and "no vault yet" in out
+    assert tc.wished_cloud() and tc.held() and not tc.in_use()
+
+
+def test_pb001_only_the_terminal_wizard_says_it_is_the_wizard_run():
+    """``wizard_run=True`` lets a key be kept before the run setting; no
+    route may pass it (a request body never chooses it)."""
+    src = pathlib.Path(__file__).resolve().parents[1] / "src" / "puffpai"
+    users = sorted(str(p.relative_to(src)).replace("\\", "/")
+                   for p in src.rglob("*.py")
+                   if "wizard_run=True" in p.read_text(encoding="utf-8"))
+    assert users == ["cli.py"]
+
+
 def test_the_console_default_and_yes_keep_local(wizard, cloud, monkeypatch, capsys):
     from puffpai.security import toolsmith_cloud as tc
     cli = _console(monkeypatch, [""], [])
