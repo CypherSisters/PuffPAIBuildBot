@@ -343,10 +343,16 @@ def vault_initialized(vault: Any = None) -> bool:
 
 def set_ha_config(url: str, token: str, enabled: bool = True,
                   posture: Optional[str] = None) -> str:
-    """Write ``home_assistant_config.json`` with the given URL + token.
+    """Save the Home Assistant URL + token. Returns the settings file's path.
 
-    The token is written only to this gitignored file; it is never logged or
-    echoed. Returns the file path.
+    The token goes into the vault through the key broker
+    (:func:`puffpai.security.keys.put_house_key`), with the copy that keeps
+    the house answering while the vault is locked, and the file keeps only
+    the URL. When the vault cannot take it right now (locked, not set up, or
+    no machine key on this computer), the token is written to the file as
+    before, so Home Assistant works at once, and it moves into the vault the
+    next time the vault opens (:func:`move_plain_keys`). It is never logged
+    or echoed.
 
     **Posture-checked before the token touches disk.** Home Assistant is the one
     integration that carries a credential, and it is written to its own file
@@ -361,9 +367,103 @@ def set_ha_config(url: str, token: str, enabled: bool = True,
     """
     _check_lan_posture({"ha": {"url": url}}, posture)
     path = _ha_config_path()
-    _write_json(path, {"url": url, "token": token, "enabled": bool(enabled)})
+    data = {"url": url, "token": token, "enabled": bool(enabled)}
+    from puffpai.security import keys
+    # One lock with move_plain_keys, from keeping the token to writing the
+    # file: a move running now can neither keep an older token over this one
+    # nor write back an older address.
+    with keys.house_lock():
+        if _keep_in_vault("home_assistant", token):
+            data.pop("token")
+        _write_json(path, data)
     get_config(_force_reload=True)
     return path
+
+
+def _keep_in_vault(name: str, value: str, vault: Any = None) -> bool:
+    """True when the key broker kept *value* in the vault and read it back,
+    both copies. Never raises: any failure means "keep the plain copy"."""
+    try:
+        from puffpai.security import keys
+        return bool(keys.put_house_key(name, value, vault=vault).get("ok"))
+    except Exception:  # noqa: BLE001 - the plain copy stays; nothing is lost
+        return False
+
+
+#: Where each house key sat in plain text: (settings file, field).
+_PLAIN_HOUSE_KEYS: dict[str, tuple[str, str]] = {
+    "home_assistant": ("home_assistant_config.json", "token"),
+    "jellyfin": ("media_server_config.json", "jellyfin_api_key"),
+}
+
+
+def move_plain_keys(vault: Any = None) -> dict[str, str]:
+    """Move a plain-text Home Assistant token or Jellyfin key into the vault.
+
+    Called each time the vault opens (``keys.on_vault_opened``), so it runs at
+    the first open after an upgrade and again after a token was saved while
+    the vault was locked. Per key: the value goes into the vault (both copies
+    read back first, :func:`keys.put_house_key`), and only THEN is the field
+    taken out of the settings file. A locked or missing vault, no machine key,
+    a failed read-back, or a file changed meanwhile leaves the plain copy in
+    place to be tried again next time: a working token is never lost.
+
+    Returns ``{name: status}`` for keys that had a plain copy (``moved``, or
+    the reason it stayed). Never raises; never logs a value.
+    """
+    from puffpai import fsutil
+    out: dict[str, str] = {}
+    try:
+        config_dir = get_config().CONFIG_DIR
+        own_vault = os.path.normcase(os.path.abspath(_vault_dir()))
+    except Exception:  # noqa: BLE001
+        return out
+    # Only into this install's own vault: the one the bridges read from. A
+    # vault opened in some other folder on purpose never takes the token.
+    there = getattr(vault, "vault_dir", None) if vault is not None else None
+    if there is not None and os.path.normcase(os.path.abspath(there)) != own_vault:
+        return out
+    from puffpai.security import keys
+    try:
+        # One lock (the one set_ha_config takes) from reading the file to
+        # rewriting it: a token saved meanwhile waits, then wins.
+        with keys.house_lock():
+            for name, (filename, field) in _PLAIN_HOUSE_KEYS.items():
+                path = os.path.join(config_dir, filename)
+                value = _read_json(path).get(field)
+                if not isinstance(value, str) or not value.strip():
+                    continue
+                def unchanged(path=path, field=field, value=value) -> bool:
+                    return _read_json(path).get(field) == value
+                try:
+                    got = keys.put_house_key(name, value, vault=vault, by="move",
+                                             still_current=unchanged)
+                except Exception as exc:  # noqa: BLE001
+                    out[name] = type(exc).__name__
+                    continue
+                if not got.get("ok"):
+                    out[name] = str(got.get("reason") or "not_kept")
+                    continue
+                fresh = _read_json(path)
+                if fresh.get(field) != value:
+                    # Changed by hand meanwhile: keep it; the next open moves it.
+                    out[name] = "changed"
+                    continue
+                fresh.pop(field, None)
+                try:
+                    fsutil.atomic_write_json(path, fresh)
+                except OSError as exc:
+                    out[name] = type(exc).__name__
+                    continue
+                out[name] = ("moved" if field not in _read_json(path)
+                             else "not_removed")
+            # Carry the kept keys into this vault, or seal them again from it.
+            keys.sync_house_keys(keys._vault(vault))  # noqa: SLF001
+    except OSError as exc:              # the lock: another writer held it
+        out.setdefault("lock", type(exc).__name__)
+    if "moved" in out.values():
+        get_config(_force_reload=True)
+    return out
 
 
 def test_ha_connection(url: str, token: str, timeout: int = 5) -> dict[str, Any]:
@@ -406,10 +506,38 @@ def test_ha_connection(url: str, token: str, timeout: int = 5) -> dict[str, Any]
     }
 
 
-def ha_configured() -> bool:
-    """True when HA is configured with a URL + token and enabled."""
+def ha_key_problem() -> str:
+    """A plain line when HA is set up with a kept token this computer cannot
+    open right now (so the house does not answer), else ""."""
     data = _read_json(_ha_config_path())
-    return bool(data.get("enabled")) and bool(data.get("url")) and bool(data.get("token"))
+    if not (data.get("enabled") and data.get("url")) or data.get("token"):
+        return ""
+    from puffpai.security import keys
+    return keys.house_key_problem("home_assistant")
+
+
+def media_key_problem() -> str:
+    """The same for the Jellyfin key: a plain line when media is on and its
+    kept key cannot be opened right now, else ""."""
+    data = _read_json(os.path.join(get_config().CONFIG_DIR,
+                                   "media_server_config.json"))
+    if not data.get("enabled") or data.get("jellyfin_api_key"):
+        return ""
+    from puffpai.security import keys
+    return keys.house_key_problem("jellyfin")
+
+
+def ha_configured() -> bool:
+    """True when HA is configured with a URL + a token that can be read now,
+    and enabled. A kept token this computer cannot open is NOT configured
+    (:func:`ha_key_problem` says why)."""
+    data = _read_json(_ha_config_path())
+    if not (data.get("enabled") and data.get("url")):
+        return False
+    if data.get("token"):
+        return True
+    from puffpai.security import keys
+    return keys.has_house_key("home_assistant")
 
 
 def ha_url() -> str:
@@ -1077,7 +1205,8 @@ def setup_status(probe_ollama: bool = True) -> dict[str, Any]:
     return {
         "ollama": ollama,
         "vault": {"initialized": vault_initialized()},
-        "ha": {"configured": ha_configured(), "url": ha_url()},
+        "ha": {"configured": ha_configured(), "url": ha_url(),
+               "problem": ha_key_problem()},
         "knowledge": knowledge,
         "posture": manifest.get("posture"),
         "zones": {

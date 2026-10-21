@@ -740,6 +740,12 @@ def keyring_names(state_dir: str, vault_dir: str) -> list:
     from puffpai.security import api_key_store, vault
     names = [(KEYRING_SERVICE_VAULT, vault._keyring_user(vault_dir))]  # noqa: SLF001
     try:
+        # The machine key that seals the Home Assistant token and Jellyfin key.
+        from puffpai.security import keys as _keys
+        names.append((KEYRING_SERVICE_VAULT, _keys.house_keyring_user(state_dir)))
+    except Exception:
+        pass
+    try:
         names.append((KEYRING_SERVICE_KEYS, api_key_store.entry_name(state_dir)))
         names += [(KEYRING_SERVICE_KEYS, n) for n in api_key_store.old_entry_names(state_dir)]
     except Exception:

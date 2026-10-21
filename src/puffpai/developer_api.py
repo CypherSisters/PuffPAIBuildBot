@@ -388,6 +388,12 @@ def developer_brain():
     saved = str(cfg.ollama.model or "")
     ha = getattr(cfg, "ha", None)
     ha_set_up = bool(ha is not None and ha.enabled and ha.token)
+    ha_problem = ""
+    if not ha_set_up and ha is not None and ha.enabled:
+        from puffpai.security import keys
+        ha_set_up = keys.has_house_key("home_assistant")
+        if not ha_set_up:
+            ha_problem = keys.house_key_problem("home_assistant")
     gguf = str(getattr(getattr(cfg, "models", None), "llm_gguf_path", "") or "")
     return jsonify({
         # The model the running bot started with, and the one in its
@@ -400,6 +406,8 @@ def developer_brain():
         "home_assistant": {
             "set_up": ha_set_up,
             "address": _no_userinfo(ha.url) if ha_set_up else "",
+            # Only when a kept token cannot be opened now: said plainly.
+            **({"problem": ha_problem} if ha_problem else {}),
         },
         "only_ollama_line": "Your bot runs its models with Ollama on this "
                             "computer or another computer at home. Cloud "

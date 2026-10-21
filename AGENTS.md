@@ -92,7 +92,7 @@ state-changing envelope is reviewed by Drawbridge first.
 | **Toolsmith** (`toolsmith`) | `web_fetch` (one page via the `web_fetch` switch), `workspace_read/write/list`, `workspace_exec` (Linux + bubblewrap only), `write_glue` / `run_glue` for assembled apps. Its coding loop is `assemble/toolsmith_loop.py`. The only agent that may think with a cloud model (section 3b). | No secret at all (empty scope; its Anthropic key is used by `security/toolsmith_cloud.py`, never handed to it). Everything it returns is marked `untrusted`. | Run a shell on Windows; use Docker; touch files outside its workspace or `<state>/assemble/<id>/glue/`. |
 | **Drawbridge** (`sentinel`) | The Bridge's agent and the veto on state-changing actions. Its addition checks live in `drawbridge.py` (`check_addition`, verdicts `block` / `hold` / `warn` / `allow`), with checklists per kind (`glue`, packages in `deps.py`, code projects in `integrate/apply.py`). | `PUFFPAI_AUDIT_KEY` only. | Trust a stored `allow` (installs re-check); accept a checker registered after `close_registration`. |
 | **Majordomo** (`majordomo`) | Background work: routines, queue, scoped task workers with budgets (default 1 action, no egress). Narrates the build on the team page (`build/pipeline.py`, `AGENT = "majordomo"`). | n8n and calendar keys. | Go online from a routine; run a routine without its recorded yes. |
-| **Concierge**, **Steward**, **Archivist**, **Caretaker** | Conversation front desk; Home Assistant and media; the vault and knowledge; machine health. | Concierge: nothing. Steward: HA and media keys. Archivist: vault keys. Caretaker: service control. | Widen their own scope. |
+| **Concierge**, **Steward**, **Archivist**, **Caretaker** | Conversation front desk; Home Assistant and media; the vault and knowledge; machine health. | Concierge: nothing. Steward: USES the HA token and media key (kept in the vault, read by `keys.house_key`; it keeps no copy). Archivist: vault keys. Caretaker: service control. | Widen their own scope. |
 
 **The chat brain** is the local model in the Hermes-style tool loop
 (`brain_loop.py`): send the chat and this turn's tools, run each tool call,
@@ -273,6 +273,10 @@ the computer. It belongs to zone 3. One boundary, `security/toolsmith_zone.py`
   container that holds the Docker engine (`docker.sock`, the
   `docker_engine` pipe) or runs `--privileged` / `pid: host`: it could mount
   any folder (`ENGINE`; a Portainer-style app needs her change here).
+  A setting that cannot be read (the state folder, the vault place, the data
+  folder) never drops its places: its usual places stay refused (the vault's
+  own record of where it is, the default folders) and one plain line is
+  logged; the try's own folder still works.
 * **Where it is checked**: every terminal command (`command_check`: `~`,
   `$HOME`, `%APPDATA%`, `$env:X`, `${X:-d}`, `..`, quotes, `/c/...`, `cd`,
   redirections, copy targets, `-o`, `-C`, every path-like word, `-v` and
@@ -525,6 +529,38 @@ not_yet, nothing_found` (`schema.STATUSES`, owner words in `schema.WORDS`).
 - **Keys only in the vault** (`security/keys.py`). A key pasted into chat is
   refused (`security/pasted_key_guard.py`). Setup rows of kind `key` write
   straight to the vault (`POST /build/setup/<row>`).
+- **House keys** (the Home Assistant token and the Jellyfin key,
+  `keys.put_house_key` / `house_key`): a working copy in the STATE folder
+  (`<state>/house_keys/<name>.sealed`, AES-GCM under a scrypt key from this
+  install's machine key: password store entry `house-keys:<install id>`, or
+  the machine key file sources) plus a PIN-locked vault record
+  `__puffpai.key.svc.<name>.<install id>`. The install id
+  (`keys.install_id`, `<state>/house_keys/id`) is written once and moves with
+  the state folder, so a moved data folder still opens both copies. The
+  working copy does not depend on the vault folder, so lights and media work
+  while the vault is locked, moved, switched (`vault_place.use_existing`
+  carries the vault record along, `keys.sync_house_keys`) or on an unplugged
+  drive, with no new question. The install id keeps two installs sharing a
+  vault folder apart. Each sealed file's header carries a fingerprint of the
+  machine key (8 bytes of HMAC, never the key), so `has_house_key` /
+  `ha_configured` say not set up for a missing OR different machine key with
+  no scrypt run; `ha_key_problem` / `media_key_problem` / `house_key_problem`
+  say why in plain words (setup status, Developer page Brain section, Smart
+  Home page, `/api/media/status`, the Now Playing tile), and the next vault
+  open seals the working copy again from the vault record. A record from
+  4e0bbd71 (`svc.<name>` with no id) is moved in at the next open. Opened
+  values are cached in memory by file and fingerprint. `setup_ops.set_ha_config` keeps the token there when the
+  vault is open; otherwise it writes the token to `home_assistant_config.json`
+  as before, and `setup_ops.move_plain_keys` (run from `keys.on_vault_opened`,
+  install's own vault only) moves any plain copy in at the next open,
+  deleting it only after both copies read back. Every writer holds
+  `keys.house_lock` (a cross-process file lock) from reading the settings
+  file to rewriting it, and a move stops (`changed`) if the plain value
+  changed before it writes. While a plain copy is there it is used first
+  (newest). No machine key on this computer: the plain copy stays. `--ha-token -` (or
+  empty, or the bare flag) asks without echo or reads piped input; a token
+  typed after `--ha-token` still works and warns. The iPod import helper is
+  never given the Jellyfin key; the bridge rescans itself.
 - **Outside code runs on this computer after one Yes** (`integrate/run_here.py`):
   bound to 127.0.0.1, in its own Job Object on Windows or its own process group
   elsewhere, stopped at once if anything listens beyond loopback.

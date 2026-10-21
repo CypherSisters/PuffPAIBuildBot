@@ -752,6 +752,15 @@ def _known_secrets() -> list[str]:
         pass
     try:
         from puffpai.security import keys
+        found.append(str(keys._machine_secret() or ""))  # noqa: SLF001
+        # A Home Assistant token or Jellyfin key still in plain text too.
+        from puffpai.config import get_config
+        cfg = get_config()
+        found.append(str(getattr(cfg.ha, "token", "") or ""))
+        found.append(str(getattr(cfg.media_server, "jellyfin_api_key", "") or ""))
+        for house in keys.HOUSE_KEYS:
+            if keys.has_house_key(house):
+                found.append(str(keys.house_key(house) or ""))
         for name in keys._tool_names():  # noqa: SLF001
             for value in (keys.tool_secret(name) or {}).values():
                 found.append(str(value))

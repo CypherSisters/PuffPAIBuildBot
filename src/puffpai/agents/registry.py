@@ -76,9 +76,12 @@ ROSTER: tuple[RosterEntry, ...] = (
     RosterEntry("steward", StewardAgent, AgentScope.STEWARD,
                 "7-8B tool-calling", "WF-2", "Bridge", "Steward",
                 "Home and tools",
-                "Steward runs the house. It is the only agent holding the Home "
-                "Assistant and media credentials, so lights, climate, locks and "
-                "playback go through it."),
+                "Steward runs the house: lights, climate, locks and playback "
+                "go through it. It uses your Home Assistant and media keys but "
+                "does not keep them. They go into your vault, which is "
+                "Archivist's, with a sealed copy so the house still answers "
+                "while the vault is locked. A key saved while the vault was "
+                "locked moves in the next time you open it."),
     RosterEntry("sentinel", SentinelAgent, AgentScope.SENTINEL,
                 "small classifier + 70B incident analysis", "WF-3",
                 "(the original veto agent)", "Drawbridge",

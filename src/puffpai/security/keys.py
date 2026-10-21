@@ -52,6 +52,7 @@ Copyright (c) 2025 Cypher Sisters. Apache-2.0 License.
 from __future__ import annotations
 
 import collections
+import contextlib
 import hashlib
 import hmac
 import json
@@ -357,7 +358,9 @@ def background_file(service_id: str) -> str:
 
 def background_file_allowed(filename: Any) -> bool:
     """The vault's unattended-tier policy: a curated FREE no-card key, or a
-    tool server's headers the owner kept working while the vault is locked."""
+    tool server's headers the owner kept working while the vault is locked.
+    (The Home Assistant token and the Jellyfin key are not here: their
+    working copy lives in the state folder, see "House keys".)"""
     if _TOOL_FILE_RE.match(str(filename or "")):
         return True
     match = _BG_FILE_RE.match(str(filename or ""))
@@ -642,11 +645,19 @@ def purge_pending(vault: Any = None) -> int:
 
 def on_vault_opened(vault: Any) -> None:
     """The vault was just opened (unlock, create, recovery): clear the records
-    of keys removed while it was locked. Never raises."""
+    of keys removed while it was locked, and move a plain-text Home Assistant
+    token or Jellyfin key into it. Never raises."""
     try:
         purge_pending(vault)
     except Exception as exc:  # noqa: BLE001 - never block opening the vault
         logger.debug("pending key removals not cleared: %s", type(exc).__name__)
+    try:
+        # A Home Assistant token or Jellyfin key still in plain text (saved
+        # while the vault was locked, or before this version) moves in now.
+        from puffpai import setup_ops
+        setup_ops.move_plain_keys(vault)
+    except Exception as exc:  # noqa: BLE001 - never block opening the vault
+        logger.debug("plain house keys not moved yet: %s", type(exc).__name__)
 
 
 def purge_removed(vault: Any = None) -> int:
@@ -676,6 +687,8 @@ def purge_removed(vault: Any = None) -> int:
             continue
         if sid.startswith(_PROGRAM):
             continue                # program records hold no key; kept
+        if sid.startswith(_SVC):
+            continue                # house keys: the only copy, never swept
         if sid not in index:
             v._reserved_delete(name)  # noqa: SLF001
             gone += 1
@@ -1675,6 +1688,489 @@ def remove_tool_secret(name: str, *, vault: Any = None, by: str = "owner") -> bo
     return existed
 
 
+# ── House keys: the Home Assistant token and the Jellyfin key ───────────────
+#
+# They used to sit in plain text in home_assistant_config.json and
+# media_server_config.json. Each is now kept twice, and never in plain text:
+#
+# * **The working copy**, in this install's STATE folder
+#   (``<state>/house_keys/<name>.sealed``), sealed (AES-256-GCM under a scrypt
+#   key) with this install's own machine key: the operating system's password
+#   store entry ``house-keys:<install id>`` (Windows: the Credential Manager,
+#   this Windows user only), or the machine key FILE the vault's unattended
+#   tier also reads (systemd credential, ``PUFFPAI_VAULT_SERVICE_KEY_FILE``,
+#   ``/etc/puffpai/vault_service.key``). It does not depend on the vault being
+#   open, or on where the vault lives: lights and media answer while the vault
+#   is locked, after the vault is moved or switched, and while the drive a
+#   vault folder is on is unplugged, exactly as when the token was plain.
+# * **The vault copy**, a reserved record ``__puffpai.key.svc.<name>.<install
+#   id>``, behind the owner's PIN. It puts the working copy back when this
+#   computer can no longer open it (the machine key was removed or replaced),
+#   the next time the vault is open (:func:`sync_house_keys`), and it is
+#   carried into a vault BuildBot switches to.
+#
+# **The install id** (``<state>/house_keys/id``) is written once and then
+# MOVES WITH the state folder: a data folder moved to another path keeps the
+# same id, so the same password store entry, the same sealing and the same
+# vault record. Its first value is the build id of the folder at that time
+# (so a box sealed before the id file existed reads on). Two installs sharing
+# one vault folder have different ids and keep their own records.
+#
+# **The machine key's fingerprint** (8 bytes of HMAC-SHA256 keyed with the
+# machine key, over the install id; never the key) is in each sealed file's
+# header, so "can this be opened?" (:func:`has_house_key`) is a compare, not a
+# scrypt run, and a different machine key counts as "cannot be opened".
+#
+# A value is kept only when the vault is open, there is a machine key, and BOTH
+# copies read back as written; otherwise nothing new is kept and the caller
+# keeps its plain copy (:func:`puffpai.setup_ops.move_plain_keys` tries again
+# at the next open). While a plain copy is still there, readers use it first:
+# it is the newest one written. Read when used, never logged, never handed to
+# the model. One lock (:func:`house_lock`, across processes) is held by every
+# writer from reading the settings file to rewriting it.
+
+HOUSE_KEYS: tuple[str, ...] = ("home_assistant", "jellyfin")
+_SVC = "svc."
+HOUSE_SCHEMA = "puffpai_house_key/v1"
+_HOUSE_MAGIC_V1 = b"PHK1"           # 9783a49c: no fingerprint (still read)
+_HOUSE_MAGIC = b"PHK2"              # magic, fingerprint, scrypt N, salt, nonce
+_HOUSE_FP = 8
+_HOUSE_SALT = 16
+_INSTALL_ID_RE = re.compile(r"^[0-9a-f]{16,64}$")
+_house_local = threading.local()
+#: Opened values, so a page or a command scrub does not run scrypt again:
+#: ``{name: (file, mtime_ns, size, fingerprint, value)}``. Memory only.
+_house_cache: dict[str, tuple] = {}
+
+
+def _house_dir(state: Optional[str] = None) -> str:
+    if state:
+        return os.path.join(state, "house_keys")
+    return _state_path("house_keys")
+
+
+def install_id(state: Optional[str] = None, *, create: bool = False) -> str:
+    """This install's id for its house keys: read from ``<state>/house_keys/id``
+    (it moves with the folder). Until it is written (with *create*, when a
+    key is first sealed) the value it will get is returned. Not a secret."""
+    from puffpai import fsutil
+    path = os.path.join(_house_dir(state), "id")
+    try:
+        with open(path, "r", encoding="utf-8") as fh:
+            found = fh.read().strip()
+        if _INSTALL_ID_RE.match(found):
+            return found
+    except OSError:
+        pass
+    from puffpai.security import build_identity
+    first = build_identity.build_id(state)
+    if create:
+        try:
+            fsutil.atomic_write(path, first + "\n")
+        except OSError as exc:
+            logger.debug("house key id not written: %s", type(exc).__name__)
+    return first
+
+
+def house_key_file(name: str) -> str:
+    """Where *name*'s working copy lives (a path; it holds no plain text)."""
+    return os.path.join(_house_dir(), f"{name}.sealed")
+
+
+def _house_record_name(name: str) -> str:
+    return f"{_RESERVED}{_SVC}{name}.{install_id()}"
+
+
+def house_keyring_user(state: Optional[str] = None, *,
+                       create: bool = False) -> str:
+    """This install's machine key entry name in the password store. Not a
+    secret; ``puffpai remove`` lists it too."""
+    return "house-keys:" + install_id(state, create=create)
+
+
+def _machine_secret(*, create: bool = False) -> Optional[str]:
+    """This install's machine key, or None. Never logged."""
+    from puffpai.security import vault as vault_mod
+    user = house_keyring_user()
+    if create:
+        vault_mod.create_machine_key(None, keyring_user=user)
+    return vault_mod.read_service_key(None, keyring_user=user)[0]
+
+
+def _fingerprint(secret: str) -> bytes:
+    return hmac.new(secret.encode("utf-8"),
+                    b"puffpai-house-key-fp-v1:" + install_id().encode("ascii"),
+                    hashlib.sha256).digest()[:_HOUSE_FP]
+
+
+@contextlib.contextmanager
+def house_lock():
+    """Held by every writer of a house key, across processes and threads.
+    Re-entrant within one thread (a writer may call another)."""
+    depth = getattr(_house_local, "depth", 0)
+    if depth:
+        _house_local.depth = depth + 1
+        try:
+            yield
+        finally:
+            _house_local.depth -= 1
+        return
+    from puffpai import fsutil
+    with fsutil.file_lock(_state_path("house_keys.lock"), timeout=30.0):
+        _house_local.depth = 1
+        try:
+            yield
+        finally:
+            _house_local.depth = 0
+
+
+def _aad(name: str) -> bytes:
+    return f"puffpai-house-key-v1:{name}:{install_id()}".encode("utf-8")
+
+
+def _seal(name: str, value: str, secret: str) -> None:
+    from puffpai import fsutil
+    from puffpai.security import vault as vault_mod
+    install_id(create=True)         # from now on it moves with the folder
+    record = {"schema": HOUSE_SCHEMA, "name": name, "value": value,
+              "at": _now_iso()}
+    n_log2 = int(vault_mod._SCRYPT_N).bit_length() - 1  # noqa: SLF001
+    salt = os.urandom(_HOUSE_SALT)
+    kek = vault_mod._scrypt_kek(secret, salt, {"n": 2 ** n_log2})  # noqa: SLF001
+    nonce = os.urandom(12)
+    ct = vault_mod._aesgcm()(kek).encrypt(  # noqa: SLF001
+        nonce, json.dumps(record).encode("utf-8"), _aad(name))
+    _house_cache.pop(name, None)
+    fsutil.atomic_write(house_key_file(name), _HOUSE_MAGIC + _fingerprint(secret)
+                        + bytes([n_log2]) + salt + nonce + ct)
+
+
+def _header(name: str) -> tuple[bytes, Optional[bytes]]:
+    """``(magic, fingerprint)`` of the working copy; ``(b"", None)`` when
+    there is none. Reads a few bytes only."""
+    try:
+        with open(house_key_file(name), "rb") as fh:
+            head = fh.read(len(_HOUSE_MAGIC) + _HOUSE_FP)
+    except OSError:
+        return b"", None
+    magic = head[:len(_HOUSE_MAGIC)]
+    if magic == _HOUSE_MAGIC and len(head) == len(_HOUSE_MAGIC) + _HOUSE_FP:
+        return magic, head[len(_HOUSE_MAGIC):]
+    return magic, None
+
+
+def _key_matches(name: str, secret: Optional[str]) -> bool:
+    """Was the working copy sealed with *secret*? A compare, no scrypt. A
+    copy with no fingerprint (sealed by 9783a49c) is checked by opening it."""
+    if not secret:
+        return False
+    magic, fp = _header(name)
+    if magic == _HOUSE_MAGIC and fp is not None:
+        return hmac.compare_digest(fp, _fingerprint(secret))
+    if magic == _HOUSE_MAGIC_V1:
+        return _unseal(name, secret) is not None
+    return False
+
+
+def _unseal(name: str, secret: Optional[str]) -> Optional[str]:
+    """The working copy's value, or None (no file, no key, a different key, or
+    it does not authenticate). Never raises."""
+    if not secret:
+        return None
+    try:
+        path = house_key_file(name)
+        st = os.stat(path)
+        fp = _fingerprint(secret)
+        hit = _house_cache.get(name)
+        if hit and hit[:4] == (path, st.st_mtime_ns, st.st_size, fp):
+            return hit[4]
+        with open(path, "rb") as fh:
+            raw = fh.read()
+        if raw[:4] == _HOUSE_MAGIC:
+            if not hmac.compare_digest(raw[4:4 + _HOUSE_FP], fp):
+                return None
+            head = 4 + _HOUSE_FP
+        elif raw[:4] == _HOUSE_MAGIC_V1:
+            head = 4
+        else:
+            return None
+        body = head + 1 + _HOUSE_SALT + 12
+        if len(raw) < body + 16:
+            return None
+        from puffpai.security import vault as vault_mod
+        n_log2 = raw[head]
+        if not 10 <= n_log2 <= 20:
+            return None
+        salt = raw[head + 1:head + 1 + _HOUSE_SALT]
+        nonce = raw[head + 1 + _HOUSE_SALT:body]
+        kek = vault_mod._scrypt_kek(secret, salt, {"n": 2 ** n_log2})  # noqa: SLF001
+        plain = vault_mod._aesgcm()(kek).decrypt(  # noqa: SLF001
+            nonce, raw[body:], _aad(name))
+        value = _house_value(json.loads(plain.decode("utf-8")), name)
+        if value is not None:
+            _house_cache[name] = (path, st.st_mtime_ns, st.st_size, fp, value)
+        return value
+    except Exception:  # noqa: BLE001
+        return None
+
+
+def _house_value(raw: Any, name: str) -> Optional[str]:
+    if isinstance(raw, str):
+        try:
+            raw = json.loads(raw)
+        except ValueError:
+            return None
+    if not isinstance(raw, dict) or raw.get("schema") != HOUSE_SCHEMA \
+            or raw.get("name") != name or not isinstance(raw.get("value"), str):
+        return None
+    return raw["value"] or None
+
+
+def _vault_copy(vault: Any, name: str) -> Optional[str]:
+    if not _is_open(vault):
+        return None
+    try:
+        return _house_value(vault._reserved_get(_house_record_name(name)), name)  # noqa: SLF001
+    except Exception:  # noqa: BLE001
+        return None
+
+
+def _write_vault_copy(vault: Any, name: str, value: str) -> None:
+    record = {"schema": HOUSE_SCHEMA, "name": name, "value": value,
+              "at": _now_iso()}
+    vault._reserved_set(_house_record_name(name), json.dumps(record))  # noqa: SLF001
+
+
+def put_house_key(name: str, value: Any, *, vault: Any = None,
+                  by: str = "owner",
+                  still_current: Optional[Callable[[], bool]] = None) -> dict:
+    """Keep the Home Assistant token or the Jellyfin key (both copies).
+
+    Returns ``{"ok": True}`` only when the vault copy AND the working copy
+    both read back as *value*. Otherwise ``{"ok": False, "reason": ...}``
+    (``locked``, ``no_machine_key``, ``changed``, ``write_failed``,
+    ``read_back``) and both copies are as they were, so the caller keeps its
+    plain copy and the house keeps working. *still_current*, checked under the
+    lock right before anything is written, lets a move stop when a newer
+    token was saved since it read the old one (``changed``). Never logs the
+    value.
+    """
+    if name not in HOUSE_KEYS:
+        raise KeyRefused("That key name cannot be used.", "name")
+    if not isinstance(value, str) or not value.strip() \
+            or len(value) > MAX_TOOL_VALUE or "\n" in value.strip() \
+            or "\r" in value.strip():
+        raise KeyRefused("That key cannot be used.", "shape")
+    value = value.strip()
+    v = _vault(vault)
+    if not _is_open(v):
+        return {"ok": False, "reason": "locked"}
+    with house_lock(), _lock:
+        if still_current is not None and not still_current():
+            return {"ok": False, "reason": "changed"}
+        secret = _machine_secret(create=True)
+        if not secret:
+            return {"ok": False, "reason": "no_machine_key"}
+        old_vault = _vault_copy(v, name)
+        old_file: Optional[bytes] = None
+        try:
+            with open(house_key_file(name), "rb") as fh:
+                old_file = fh.read()
+        except OSError:
+            pass
+        reason = "read_back"
+        try:
+            _write_vault_copy(v, name, value)
+            _seal(name, value, secret)
+            ok = (_vault_copy(v, name) == value
+                  and _unseal(name, _machine_secret()) == value)
+        except Exception as exc:  # noqa: BLE001
+            logger.info("%s key stays where it was: %s", name, type(exc).__name__)
+            ok, reason = False, "write_failed"
+        if not ok:
+            _restore_house(v, name, old_vault, old_file)
+            return {"ok": False, "reason": reason}
+    _audit("house_key_add", by, "success", name)
+    _house_key_changed(name)
+    return {"ok": True}
+
+
+def _restore_house(vault: Any, name: str, old_vault: Optional[str],
+                   old_file: Optional[bytes]) -> None:
+    """Put both copies back as they were before a failed write."""
+    from puffpai import fsutil
+    _house_cache.pop(name, None)
+    try:
+        if old_vault is not None:
+            _write_vault_copy(vault, name, old_vault)
+        else:
+            vault._reserved_delete(_house_record_name(name))  # noqa: SLF001
+    except Exception as exc:  # noqa: BLE001
+        logger.debug("house vault copy not restored: %s", type(exc).__name__)
+    try:
+        if old_file is not None:
+            fsutil.atomic_write(house_key_file(name), old_file)
+        elif os.path.exists(house_key_file(name)):
+            os.unlink(house_key_file(name))
+    except OSError as exc:
+        logger.debug("house working copy not restored: %s", type(exc).__name__)
+
+
+def house_key(name: str, *, vault: Any = None) -> Optional[str]:
+    """The kept value, read now from the working copy. When this computer
+    cannot open it and the vault is open, it is sealed again from the vault
+    copy first. None when neither can be read. Never raises or logs."""
+    if name not in HOUSE_KEYS:
+        return None
+    try:
+        found = _unseal(name, _machine_secret())
+        if found is None:
+            v = _vault(vault)
+            if _is_open(v):
+                sync_house_keys(v)
+                found = _unseal(name, _machine_secret())
+        return found
+    except Exception as exc:  # noqa: BLE001 - a read never breaks a caller
+        logger.debug("%s key not read: %s", name, type(exc).__name__)
+        return None
+
+
+def has_house_key(name: str) -> bool:
+    """Can *name* be opened right now? Its working copy is there and was
+    sealed with the machine key this computer has now (a fingerprint
+    compare, no scrypt). A different or missing machine key is a no."""
+    if name not in HOUSE_KEYS:
+        return False
+    try:
+        ok = _key_matches(name, _machine_secret())
+    except Exception:  # noqa: BLE001
+        return False
+    if ok:
+        _pin_install_id()               # cheap: only when the id file is missing
+    return ok
+
+
+#: Said where Home Assistant or media shows its status, when its kept key
+#: cannot be opened right now. Plain, and never "connected". True in every
+#: case: an open vault puts the copy back when it can (the machine key was
+#: removed, replaced, or the copy is damaged); when it cannot (no vault copy,
+#: no password store), entering the key again works as it always did.
+HOUSE_KEY_UNREADABLE = {
+    "home_assistant": ("BuildBot kept your Home Assistant token, but this "
+                       "computer cannot open it right now, so the house does "
+                       "not answer. Open your vault once and BuildBot puts it "
+                       "back if it can; if Home Assistant still does not "
+                       "answer, enter the token again."),
+    "jellyfin": ("BuildBot kept your Jellyfin key, but this computer cannot "
+                 "open it right now, so media does not play. Open your vault "
+                 "once and BuildBot puts it back if it can; if media still "
+                 "does not play, enter the key again."),
+}
+
+
+def house_key_problem(name: str) -> str:
+    """A plain line when *name* was kept but cannot be opened now, else ""."""
+    if name not in HOUSE_KEYS or not os.path.isfile(house_key_file(name)):
+        return ""
+    return "" if has_house_key(name) else HOUSE_KEY_UNREADABLE[name]
+
+
+def _legacy_copy(vault: Any, name: str) -> Optional[str]:
+    """The record 4e0bbd71 wrote (no install id in its name), if any."""
+    try:
+        return _house_value(vault._reserved_get(_RESERVED + _SVC + name), name)  # noqa: SLF001
+    except Exception:  # noqa: BLE001
+        return None
+
+
+def _drop_legacy(vault: Any, name: str) -> None:
+    """Remove 4e0bbd71's record and its locked-tier file, once moved."""
+    try:
+        vault._reserved_delete(_RESERVED + _SVC + name)  # noqa: SLF001
+    except Exception as exc:  # noqa: BLE001
+        logger.debug("old house record not cleared: %s", type(exc).__name__)
+    try:
+        vault.delete_service_secret(f"key_svc_{name}.json")
+    except Exception as exc:  # noqa: BLE001
+        logger.debug("old house file not cleared: %s", type(exc).__name__)
+
+
+def sync_house_keys(vault: Any) -> dict[str, str]:
+    """With *vault* open: carry each working copy into it (a vault BuildBot
+    switched to, or one that never had it); seal a working copy again from it
+    when this computer cannot open the old one; and move a key kept by
+    4e0bbd71 (old record name) into this scheme. Never raises."""
+    out: dict[str, str] = {}
+    if not _is_open(vault):
+        return out
+    try:
+        with house_lock(), _lock:
+            for name in HOUSE_KEYS:
+                working = _unseal(name, _machine_secret())
+                kept = _vault_copy(vault, name)
+                legacy = _legacy_copy(vault, name)
+                if working:
+                    _pin_install_id()   # a 9783a49c box: its id file, now
+                try:
+                    if not working and not kept and legacy:
+                        if put_house_key(name, legacy, vault=vault,
+                                         by="upgrade").get("ok"):
+                            _drop_legacy(vault, name)
+                            out[name] = "upgraded"
+                        else:
+                            out[name] = "not_upgraded"
+                        continue
+                    if legacy and (working or kept):
+                        _drop_legacy(vault, name)
+                    if working and kept != working:
+                        _write_vault_copy(vault, name, working)
+                        out[name] = "carried"
+                    elif not working and kept:
+                        secret = _machine_secret(create=True)
+                        if secret:
+                            _seal(name, kept, secret)
+                            out[name] = ("sealed_again"
+                                         if _unseal(name, secret) == kept
+                                         else "not_sealed")
+                        else:
+                            out[name] = "no_machine_key"
+                except Exception as exc:  # noqa: BLE001
+                    out[name] = type(exc).__name__
+    except Exception as exc:  # noqa: BLE001 - never block opening the vault
+        logger.debug("house keys not synced: %s", type(exc).__name__)
+    for name, what in out.items():
+        if what == "sealed_again":      # "upgraded" went through put_house_key
+            _house_key_changed(name)
+    return out
+
+
+def _pin_install_id() -> None:
+    """Write ``<state>/house_keys/id`` if it is missing. Called only once a
+    sealed copy has been shown to open with the id it would get, so the id
+    written is the right one and from then on moves with the folder (a box
+    sealed by 9783a49c, before the id file existed). Never raises."""
+    try:
+        if not os.path.isfile(os.path.join(_house_dir(), "id")):
+            install_id(create=True)
+    except Exception as exc:  # noqa: BLE001
+        logger.debug("house key id not pinned: %s", type(exc).__name__)
+
+
+def _house_key_changed(name: str) -> None:
+    """A working copy was sealed again or changed: the live bridge that uses
+    it reads it now, so the house answers without a restart. Only a bridge
+    already built in this process is touched. Never raises."""
+    module = {"home_assistant": "puffpai.ha_bridge",
+              "jellyfin": "puffpai.media_bridge"}.get(name)
+    bridge_mod = sys.modules.get(module or "")
+    if bridge_mod is None:
+        return
+    try:
+        bridge_mod.reload_key()
+    except Exception as exc:  # noqa: BLE001
+        logger.debug("%s bridge not refreshed: %s", name, type(exc).__name__)
+
+
 # ── Skill keys ───────────────────────────────────────────────────────────────
 #
 # A skill can say it needs a key in an environment variable (OpenClaw's
@@ -2189,6 +2685,10 @@ __all__ = [
     "uses_this_month", "walk_through",
     "has_tool_secret", "put_tool_secret", "remove_tool_secret", "tool_file",
     "tool_secret",
+    "HOUSE_KEYS", "HOUSE_KEY_UNREADABLE", "has_house_key", "house_key",
+    "house_key_file", "house_key_problem", "house_keyring_user", "house_lock",
+    "install_id",
+    "put_house_key", "sync_house_keys",
     "locked_skill_sentence", "put_skill_key", "remove_skill_key", "skill_identity",
     "skill_keys",
     "skill_keys_set",

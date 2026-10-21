@@ -175,6 +175,13 @@ export default function DeveloperBrainPage() {
         )}
       </Panel>
 
+      {place?.home_assistant?.problem && (
+        <Panel>
+          <PanelTitle>Home Assistant</PanelTitle>
+          {/* A kept token this computer cannot open: said, never "set up". */}
+          <p role="status" style={small}>{place.home_assistant.problem}</p>
+        </Panel>
+      )}
       <ConnectHomeAssistant title="Home Assistant" />
       <AddOwnTool hideHomeAssistant />
 

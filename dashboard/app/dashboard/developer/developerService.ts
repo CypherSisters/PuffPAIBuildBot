@@ -56,7 +56,8 @@ export interface BrainPlace {
   address: string;
   address_from: string;
   model_file: string;
-  home_assistant: { set_up: boolean; address: string };
+  /** `problem`: only when a kept token cannot be opened now (plain words). */
+  home_assistant: { set_up: boolean; address: string; problem?: string };
   only_ollama_line: string;
   restart_line: string;
 }

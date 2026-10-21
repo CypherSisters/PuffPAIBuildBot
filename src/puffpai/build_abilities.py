@@ -561,6 +561,9 @@ def _device_row(cfg: Any) -> Row:
     try:
         ha = cfg.ha if cfg is not None else None
         configured = bool(ha and ha.enabled and ha.token)
+        if not configured and ha and ha.enabled:
+            from puffpai.security import keys
+            configured = keys.has_house_key("home_assistant")
     except Exception:
         configured = False
     if _ha_mcp_connected():

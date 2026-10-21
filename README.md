@@ -421,7 +421,7 @@ silently: every state-changing action is visible and gated.
 | Agent | Role |
 |-------|------|
 | **Concierge** | The conversation frontend, how you talk to your bot. |
-| **Steward** | Home Assistant and media control, and the sole holder of those credentials. |
+| **Steward** | Home Assistant and media control. It uses your Home Assistant token and media key but does not keep them: they are kept in your vault, which is Archivist's, with a copy sealed by this computer's own key in BuildBot's settings folder, so lights and media still work while the vault is locked, after it moves to another folder, or while the drive it is on is unplugged. A token saved while the vault was locked, or before this version, stays in BuildBot's settings until the next time you open the vault, then moves in. |
 | **Drawbridge** | The Bridge agent. Veto authority on any state-changing action; if Drawbridge says no, it doesn't happen. It also checks every book, live card and service before your bot uses it. (internal id `sentinel` in configs and logs) |
 | **Archivist** | The sole gateway to the vault and the knowledge packs. All reads and writes go through it. |
 | **Majordomo** | Proactive background work, the things that should happen without you asking. |

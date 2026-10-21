@@ -66,7 +66,7 @@ class AgentScope(Enum):
     SYSTEM = "system"      # the app itself / setup — unrestricted
     # ── master-agent product team ───────────────────────────────────
     CONCIERGE = "concierge"    # WF-1 conversation — holds NO external secret
-    STEWARD = "steward"        # WF-2 house ops — sole holder of HA + media creds
+    STEWARD = "steward"        # WF-2 house ops: uses HA + media keys (kept in the vault, security/keys.py)
     ARCHIVIST = "archivist"    # WF-4 memory — sole holder of vault/chromadb creds
     MAJORDOMO = "majordomo"    # WF-5 proactive — sole holder of n8n + calendar
     CARETAKER = "caretaker"    # WF-6 self-maint — sole holder of service-control

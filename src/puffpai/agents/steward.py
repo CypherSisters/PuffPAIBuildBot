@@ -1,7 +1,14 @@
 """Steward — WF-2 house operations (HA + media control).
 
-The Steward is the *only* agent that holds the Home Assistant token and the
-media-server API credentials (``AgentScope.STEWARD``). Concierge cannot control a
+The Steward USES the Home Assistant token and the media-server key; it does not
+keep them. They are kept in the vault (Zone 1, Archivist's), read through the key
+broker (``security/keys.py``, ``house_key``) when the HA or media bridge starts,
+from a working copy sealed with this install's machine key in its state folder,
+which keeps the house answering while the vault is locked, moved, switched or
+on an unplugged drive. A token saved while the
+vault was locked stays in plain text in the settings until the next vault open
+moves it in (``setup_ops.move_plain_keys``). ``AgentScope.STEWARD`` is the agent
+scope the secrets provider lets resolve them. Concierge cannot control a
 light or fetch a camera frame itself — it asks the Steward, whose state-changing
 requests are veto-reviewed by Sentinel on the way in.
 

@@ -346,6 +346,8 @@ function fmtTime(s: number): string {
 function NowPlayingWidget({ widget }: { widget: Widget }) {
   const [sessions, setSessions] = useState<NowPlayingSession[]>([]);
   const [error, setError] = useState(false);
+  // A kept Jellyfin key this computer cannot open (the server says why).
+  const [problem, setProblem] = useState("");
   const [busy, setBusy] = useState(false);
 
   const load = () => {
@@ -354,11 +356,17 @@ function NowPlayingWidget({ widget }: { widget: Widget }) {
       cache: "no-store",
       signal: AbortSignal.timeout(10000),
     })
-      .then((r) => (r.ok ? r.json() : Promise.reject(r.status)))
+      .then(async (r) => {
+        if (r.ok) return r.json();
+        const body = await r.json().catch(() => null);
+        setProblem(typeof body?.problem === "string" ? body.problem : "");
+        return Promise.reject(r.status);
+      })
       .then((d) => {
         if (Array.isArray(d?.sessions)) {
           setSessions(d.sessions);
           setError(false);
+          setProblem("");
         }
       })
       .catch(() => setError(true));
@@ -426,7 +434,7 @@ function NowPlayingWidget({ widget }: { widget: Widget }) {
                 media.* surface (see SURFACES_BY_WIDGET_TYPE), and what that
                 build answers to is the media agent's business, not a sentence
                 typed here. An empty tile says empty and nothing more. */}
-            {error ? "Media server unreachable." : "Nothing playing."}
+            {error ? problem || "Media server unreachable." : "Nothing playing."}
           </p>
         </div>
       ) : (

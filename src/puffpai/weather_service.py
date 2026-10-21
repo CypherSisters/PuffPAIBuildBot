@@ -219,7 +219,12 @@ def _hub_configured() -> bool:
     try:
         from puffpai.config import get_config
         ha = get_config().ha
-        return bool(ha and ha.enabled and ha.token)
+        if not (ha and ha.enabled):
+            return False
+        if ha.token:
+            return True
+        from puffpai.security import keys
+        return keys.has_house_key("home_assistant")
     except Exception:  # noqa: BLE001
         return False
 

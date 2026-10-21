@@ -546,11 +546,16 @@ def _require_key_broker(depth: int = 2) -> None:
 #
 # Same format as HomeBotBuild ``security/vault.py`` SERVICE_SECRET_FILES, ported
 # rather than re-invented, and RESTRICTED
-# BY POLICY: in BuildBot the only records that may live here are sign-up keys
-# for free services that need no payment card, and only when the owner ticked
-# "keep working when the vault is locked" for that key
-# (:func:`puffpai.security.keys.background_file_allowed`). A key that was
-# given with a payment card (Brave) can never be written here.
+# BY POLICY (:func:`puffpai.security.keys.background_file_allowed`): in
+# BuildBot the only records that may live here are sign-up keys for free
+# services that need no payment card, when the owner ticked "keep working when
+# the vault is locked" for that key; and a tool server's headers kept working
+# while locked. A key that was given with a payment card (Brave) can never be
+# written here. The Home Assistant token and the Jellyfin key are NOT here:
+# their working copy is sealed in the install's state folder with the same
+# machine-secret sources (an OS password store entry named for the install,
+# not this folder), so they survive a vault move, switch or unplugged drive
+# (``keys`` "House keys").
 #
 # The format, exactly as in HomeBotBuild:
 #   * a separate random 32-byte Service Data Key (SDK) encrypts ONLY the
@@ -580,7 +585,7 @@ def _require_key_broker(depth: int = 2) -> None:
 # A key FILE readable by group or others is refused on POSIX (the HBB rule).
 
 #: HomeBotBuild's allowlist had the Home Assistant token. BuildBot has no boot
-#: secret of its own; its records come only from the key policy.
+#: secret of its own here; its records come only from the key policy.
 SERVICE_SECRET_FILES: frozenset = frozenset()
 
 _SERVICE_KEY_CRED_NAME = "puffpai-vault-service-key"
@@ -636,11 +641,14 @@ def service_key_candidates() -> list:
     return out
 
 
-def read_service_key(vault_dir: Optional[str] = None):
+def read_service_key(vault_dir: Optional[str] = None, *,
+                     keyring_user: Optional[str] = None):
     """Return ``(secret, source_label)`` for the machine-bound service key.
 
     ``(None, reason)`` when no usable key is present. Never raises, never logs
-    or returns the key material in a message.
+    or returns the key material in a message. *keyring_user* names the
+    password store entry instead of the vault folder (the house keys use one
+    named for the install, so a vault in another folder does not lose them).
     """
     reason = "no machine key found"
     for label, path in service_key_candidates():
@@ -666,12 +674,12 @@ def read_service_key(vault_dir: Optional[str] = None):
             reason = f"machine key at {label} is too short to be a machine key"
             continue
         return secret, label
-    if vault_dir:
+    user = keyring_user or (_keyring_user(vault_dir) if vault_dir else "")
+    if user:
         store = _usable_keyring()
         if store is not None:
             try:
-                secret = store.get_password(_KEYRING_SERVICE,
-                                            _keyring_user(vault_dir))
+                secret = store.get_password(_KEYRING_SERVICE, user)
             except Exception:
                 secret = None
             if isinstance(secret, str) and len(secret) >= 32:
@@ -679,25 +687,29 @@ def read_service_key(vault_dir: Optional[str] = None):
     return None, reason
 
 
-def create_machine_key(vault_dir: str):
+def create_machine_key(vault_dir: Optional[str], *,
+                       keyring_user: Optional[str] = None):
     """Make the machine key in the OS password store, if there is none.
 
     Returns ``(True, label)`` when a usable machine key exists afterwards,
     ``(False, reason)`` otherwise. Only the OS store is ever written here: the
-    file sources belong to whoever runs the computer.
+    file sources belong to whoever runs the computer. *keyring_user*: as in
+    :func:`read_service_key`.
     """
-    secret, source = read_service_key(vault_dir)
+    secret, source = read_service_key(vault_dir, keyring_user=keyring_user)
     if secret is not None:
         return True, source
+    user = keyring_user or (_keyring_user(vault_dir) if vault_dir else "")
+    if not user:
+        return False, "no name for the machine key"
     store = _usable_keyring()
     if store is None:
         return False, "this computer has no password store BuildBot can use"
     try:
-        store.set_password(_KEYRING_SERVICE, _keyring_user(vault_dir),
-                           _secrets.token_hex(32))
+        store.set_password(_KEYRING_SERVICE, user, _secrets.token_hex(32))
     except Exception as exc:
         return False, f"the password store refused ({type(exc).__name__})"
-    secret, source = read_service_key(vault_dir)
+    secret, source = read_service_key(vault_dir, keyring_user=keyring_user)
     return (secret is not None), source
 
 
@@ -872,8 +884,10 @@ class Vault:
         vault = Vault(vault_dir="vault_data")
         session, code = vault.create_with_recovery("correct horse battery staple")
         # show `code` to the owner exactly once, then forget it
-        vault.store("HA_TOKEN", "eyJ...")
-        vault.retrieve("HA_TOKEN")                      # -> "eyJ..."
+        vault.store("PASSPORT_NO", "X1234567")
+        vault.retrieve("PASSPORT_NO")                   # -> "X1234567"
+        # Service keys (the Home Assistant token, sign-up keys) are not
+        # stored like this: they go through puffpai.security.keys.
         vault.lock()
 
     All read/write operations require an unlocked session and raise

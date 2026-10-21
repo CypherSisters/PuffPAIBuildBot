@@ -7,10 +7,11 @@ agent supplies the small set of *universal* tools a plan can compose into new
 behaviour without anyone shipping a new intent — reach one page on the outside
 world, and keep notes between steps.
 
-**Why this is not the Steward.** The Steward holds ``HA_TOKEN`` and the media
-key. Web content is attacker-controlled text: a page can carry instructions
+**Why this is not the Steward.** The Steward uses the Home Assistant token and
+the media key (kept in the vault, read for it by the key broker). Web content is
+attacker-controlled text: a page can carry instructions
 aimed at whatever model reads it next. Executing that fetch inside the
-component that holds the house credentials would put a prompt-injection surface
+component that uses the house credentials would put a prompt-injection surface
 and the ability to unlock the front door in the same privilege domain. The
 Toolsmith is therefore a *separate* domain and holds **no** credential at all
 (:data:`AgentScope.TOOLSMITH` maps to an empty allow-list, like the Concierge).

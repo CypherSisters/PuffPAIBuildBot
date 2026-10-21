@@ -19,7 +19,8 @@ export interface SetupStatus {
     url: string;
   };
   vault: { initialized: boolean };
-  ha: { configured: boolean; url: string };
+  /** `problem`: a plain line when a kept token cannot be opened now, else "". */
+  ha: { configured: boolean; url: string; problem?: string };
   knowledge: { zim_dir: string; auto_index: boolean };
   complete: boolean;
 }

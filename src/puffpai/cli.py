@@ -2515,6 +2515,29 @@ def _stdin_is_tty() -> bool:
         return False
 
 
+#: Said once when a Home Assistant token was typed on the command line. It
+#: still works; this only tells her the safer way. Never contains the token.
+HA_TOKEN_ARGV_WARNING = (
+    "Note: a Home Assistant token typed after --ha-token can be seen by other "
+    "programs on this computer and stays in your shell history. It still "
+    "works. Next time give --ha-token - and you are asked for it without it "
+    "showing, or pipe it in.")
+
+
+def _resolve_ha_token(given: str) -> str:
+    """The token behind ``--ha-token``.
+
+    ``-``, an empty value or the bare flag: asked for without echo at a real
+    terminal, else one line read from piped input (``_read_pin`` does both).
+    Anything else is the token itself, as before, with a warning on stderr.
+    """
+    if given.strip() in ("", "-"):
+        return _read_pin(
+            "Home Assistant long-lived access token (hidden): ").strip()
+    print(HA_TOKEN_ARGV_WARNING, file=sys.stderr)
+    return given
+
+
 def _read_pin(prompt: str) -> str:
     """Read a PIN without echoing it. Empty on EOF or Ctrl-C.
 
@@ -5209,8 +5232,13 @@ def build_parser() -> argparse.ArgumentParser:
                           "comma separated (e.g. \"plantings,harvest log\")")
     sub.add_argument("--ha-url", dest="ha_url", default=None,
                      help="Home Assistant base URL")
-    sub.add_argument("--ha-token", dest="ha_token", default=None,
-                     help="Home Assistant long-lived access token")
+    sub.add_argument("--ha-token", dest="ha_token", default=None, nargs="?",
+                     const="-",
+                     help="Home Assistant long-lived access token. Give it as "
+                          "- (or leave it empty) and you are asked for it "
+                          "without it showing, or it is read from piped "
+                          "input. A token typed here can be seen by other "
+                          "programs and stays in your shell history")
     sub.add_argument("--skip-ha", dest="skip_ha", action="store_true",
                      help="Skip Home Assistant configuration")
     sub.add_argument("--add-surface", dest="add_surface", action="append",
@@ -5595,6 +5623,8 @@ def main(argv: list[str] | None = None) -> int:
 
     parser = build_parser()
     args = parser.parse_args(argv)
+    if getattr(args, "ha_token", None) is not None:
+        args.ha_token = _resolve_ha_token(args.ha_token)
 
     if not args.command:
         parser.print_help()

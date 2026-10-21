@@ -141,7 +141,13 @@ class HABridge:
     def __init__(self, url: str | None = None, token: str | None = None):
         cfg = get_config()
         self._url = (url or cfg.ha.url).rstrip("/")
+        # The token is read now: the plain copy if one is still in the
+        # settings, else the vault (its locked copy while the vault is locked).
+        self._token_given = bool(token)
         self._token = token or cfg.ha.token
+        if not self._token and cfg.ha.enabled:
+            from puffpai.security import keys
+            self._token = keys.house_key("home_assistant") or ""
         self._enabled = cfg.ha.enabled
         self._cache = _StateCache(ttl=5.0)
         self._session = requests.Session()  # lan-egress: Home Assistant session on the configured LAN url
@@ -151,6 +157,24 @@ class HABridge:
             "Authorization": f"Bearer {self._token}",
             "Content-Type": "application/json",
         })
+
+    def reload_key(self) -> None:
+        """Read the token again (a kept key was sealed again or changed), in
+        place, so every holder of this bridge uses it at once. A token handed
+        in by the caller is left alone. Never raises, never logs the token."""
+        if self._token_given:
+            return
+        try:
+            cfg = get_config()
+            token = cfg.ha.token
+            if not token and cfg.ha.enabled:
+                from puffpai.security import keys
+                token = keys.house_key("home_assistant") or ""
+            self._token = token
+            self._session.headers["Authorization"] = f"Bearer {token}"
+            self._cache.invalidate()
+        except Exception as exc:  # noqa: BLE001
+            logger.debug("HA token not reloaded: %s", type(exc).__name__)
 
     # -- low-level request ----------------------------------------------------
 
@@ -563,3 +587,12 @@ def get_bridge(*, _force_reload: bool = False) -> HABridge:
             if _instance is None or _force_reload:
                 _instance = HABridge()
     return _instance
+
+
+def reload_key() -> None:
+    """The Home Assistant token was sealed again or changed: the live bridge
+    (if one was built) reads it now, no restart."""
+    with _lock:
+        bridge = _instance
+    if bridge is not None:
+        bridge.reload_key()

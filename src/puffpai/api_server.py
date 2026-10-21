@@ -2747,6 +2747,15 @@ def _loop_openai_stream(user_message, history, conversation_id, device, pii_meta
 _LAN_CHECK_CACHE = {'ha_connected': None, 'checked_at': 0}
 
 
+def _ha_token_now() -> str:
+    """The Home Assistant token for this call: the plain copy while one is
+    still in the settings, else the vault's (its locked copy while locked)."""
+    if _cfg.ha.token:
+        return _cfg.ha.token
+    from puffpai.security import keys as _house_keys
+    return _house_keys.house_key("home_assistant") or ""
+
+
 def _check_lan_connected(timeout=3):
     """Check if the local smart home network (Home Assistant) is reachable.
 
@@ -2766,7 +2775,7 @@ def _check_lan_connected(timeout=3):
         import requests as _requests
         r = _requests.get(  # lan-egress: Home Assistant reachability probe, LAN
             f"{_cfg.ha.url}/api/",
-            headers={"Authorization": f"Bearer {_cfg.ha.token}"},
+            headers={"Authorization": f"Bearer {_ha_token_now()}"},
             timeout=timeout,
             proxies=_lan_guard.no_proxies(),
         )
@@ -11363,11 +11372,14 @@ def dashboard_widgets_data(widget_id):
         return jsonify({'items': result, 'title': w['props'].get('title'),
                         'fetched_at': datetime.now().isoformat(timespec='seconds')})
     if w['type'] == 'now-playing':
+        from puffpai import setup_ops
         from puffpai.media_bridge import MediaBridgeError
         try:
             sessions = _now_playing_payload(_get_media_bridge())
         except MediaBridgeError as exc:
-            return jsonify({'error': str(exc)}), 503
+            # A kept Jellyfin key this computer cannot open is said plainly.
+            return jsonify({'error': str(exc),
+                            'problem': setup_ops.media_key_problem()}), 503
         return jsonify({'sessions': sessions, 'title': w['props'].get('title'),
                         'fetched_at': datetime.now().isoformat(timespec='seconds')})
     return jsonify({'error': f"widget type '{w['type']}' has no server data"}), 400
@@ -11884,8 +11896,12 @@ def _get_media_bridge():
 @app.route('/api/media/status', methods=['GET'])
 def media_status():
     """Connection health for media server (Jellyfin + Calibre-Web)."""
+    from puffpai import setup_ops
     bridge = _get_media_bridge()
-    return jsonify(bridge.get_status())
+    status = bridge.get_status()
+    # A kept Jellyfin key this computer cannot open: said plainly.
+    status["problem"] = "" if status.get("connected") else setup_ops.media_key_problem()
+    return jsonify(status)
 
 
 @app.route('/api/media/search', methods=['GET'])

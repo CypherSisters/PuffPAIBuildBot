@@ -40,6 +40,7 @@ import {
   type HAOverviewDevice,
   type HADeviceOverview,
 } from "../../_lib/services/haService";
+import { getSetupStatus } from "../../_lib/services/setupService";
 
 /* ------------------------------------------------------------------ */
 /*  Shell vocabulary                                                   */
@@ -427,6 +428,9 @@ const ROOM_DEFINITIONS: {
 export default function HomeAssistantPage() {
   // Connection state
   const [connected, setConnected] = useState(false);
+  // Why it is not connected, when the reason is a kept token this computer
+  // cannot open (setup status `ha.problem`). Plain words; "" otherwise.
+  const [keyProblem, setKeyProblem] = useState("");
   const [haUrl, setHaUrl] = useState("http://homeassistant.local:8123");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -465,11 +469,18 @@ export default function HomeAssistantPage() {
         getHADeviceOverview(),
       ]);
 
+      const isUp = statusRes.status === "fulfilled" && statusRes.value.connected;
       if (statusRes.status === "fulfilled") {
         setConnected(statusRes.value.connected);
         if (statusRes.value.ha_url) setHaUrl(statusRes.value.ha_url);
       } else {
         setConnected(false);
+      }
+      if (isUp) {
+        setKeyProblem("");
+      } else {
+        const setup = await getSetupStatus(false);
+        setKeyProblem(setup.ok ? setup.data?.ha?.problem ?? "" : "");
       }
 
       if (entitiesRes.status === "fulfilled") {
@@ -742,6 +753,13 @@ export default function HomeAssistantPage() {
           <PillButton icon="refresh" tone="quiet" title="Refresh" onClick={fetchAll} />
         </div>
       </div>
+
+      {/* ---- A kept token this computer cannot open: said plainly ---- */}
+      {!connected && keyProblem && (
+        <p role="status" style={{ color: RED, fontSize: 14, margin: 0 }}>
+          {keyProblem}
+        </p>
+      )}
 
       {/* ---- Toast ---- */}
       {toastMessage && (

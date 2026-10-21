@@ -151,7 +151,12 @@ class MediaBridge:
     def __init__(self):
         cfg = get_config()
         self._jellyfin_url = cfg.media_server.jellyfin_url.rstrip("/")
+        # Read now: the plain copy if one is still in the settings, else the
+        # vault (its locked copy while the vault is locked).
         self._jellyfin_api_key = cfg.media_server.jellyfin_api_key
+        if not self._jellyfin_api_key and cfg.media_server.enabled:
+            from puffpai.security import keys
+            self._jellyfin_api_key = keys.house_key("jellyfin") or ""
         self._calibre_db = cfg.media_server.calibre_db_path
         self._calibre_web_url = cfg.media_server.calibre_web_url.rstrip("/")
         self._media_mount = cfg.media_server.media_mount
@@ -169,6 +174,25 @@ class MediaBridge:
                 f'Token="{self._jellyfin_api_key}"'
             ),
         })
+
+    def reload_key(self) -> None:
+        """Read the Jellyfin key again (it was sealed again or changed), in
+        place, so every holder of this bridge uses it at once. Never raises,
+        never logs the key."""
+        try:
+            cfg = get_config()
+            key = cfg.media_server.jellyfin_api_key
+            if not key and cfg.media_server.enabled:
+                from puffpai.security import keys
+                key = keys.house_key("jellyfin") or ""
+            self._jellyfin_api_key = key
+            self._session.headers["X-Emby-Authorization"] = (
+                f'MediaBrowser Client="PuffPAI", Device="PuffPAI-Server", '
+                f'DeviceId="puffpai-bridge", Version="1.0.0", '
+                f'Token="{key}"')
+            self._cache.invalidate()
+        except Exception as exc:  # noqa: BLE001
+            logger.debug("Jellyfin key not reloaded: %s", type(exc).__name__)
 
     # --- Low-level Jellyfin HTTP ---
 
@@ -722,10 +746,10 @@ class MediaBridge:
         if dry_run:
             cmd.append("--dry-run")
 
-        # Add Jellyfin info for post-import rescan
-        if self._jellyfin_api_key:
-            cmd.extend(["--jellyfin-url", self._jellyfin_url])
-            cmd.extend(["--jellyfin-key", self._jellyfin_api_key])
+        # The Jellyfin key is never put on the helper's command line (anyone
+        # on this computer can read a process list). The helper used it only
+        # to ask Jellyfin to rescan after an import; this bridge does that
+        # itself below, with the key it already holds in memory.
 
         try:
             proc = subprocess.run(
@@ -747,9 +771,18 @@ class MediaBridge:
                     message=proc.stdout.strip(),
                 )
 
+            imported = result_data.get("imported", 0)
+            if not dry_run and self._jellyfin_api_key \
+                    and isinstance(imported, int) and imported > 0:
+                try:
+                    self.trigger_scan()
+                except Exception as exc:  # noqa: BLE001 - the import still counts
+                    logger.info("Jellyfin rescan after import failed: %s",
+                                type(exc).__name__)
+
             return ImportResult(
                 success=result_data.get("success", True),
-                tracks_imported=result_data.get("imported", 0),
+                tracks_imported=imported,
                 tracks_skipped=result_data.get("skipped", 0),
                 drm_skipped=result_data.get("drm_skipped", 0),
                 errors=result_data.get("errors", []),
@@ -781,3 +814,12 @@ def get_media_bridge(*, _force_reload: bool = False) -> MediaBridge:
             if _instance is None or _force_reload:
                 _instance = MediaBridge()
     return _instance
+
+
+def reload_key() -> None:
+    """The Jellyfin key was sealed again or changed: the live bridge (if one
+    was built) reads it now, no restart."""
+    with _lock:
+        bridge = _instance
+    if bridge is not None:
+        bridge.reload_key()

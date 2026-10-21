@@ -26,11 +26,14 @@ Copyright (c) 2025 Cypher Sisters. Apache-2.0 License.
 """
 from __future__ import annotations
 
+import logging
 import os
 import re
 import shutil
 from dataclasses import dataclass, field
 from typing import Any, Optional
+
+logger = logging.getLogger(__name__)
 
 #: The one line the model gets back for a refused path (no real path in it).
 REFUSED = "That path is outside what Toolsmith may touch ({category})."
@@ -145,53 +148,171 @@ def _sensitive(home: str) -> list[tuple[str, str]]:
     return out
 
 
+#: Settings already reported as unreadable (one log line each per process).
+_UNREADABLE: set[str] = set()
+
+
+def _unreadable(what: str) -> None:
+    """One plain log line when a setting cannot be read (no prompt to her)."""
+    if what not in _UNREADABLE:
+        _UNREADABLE.add(what)
+        logger.warning("Toolsmith's zone: %s could not be read; its usual place stays "
+                       "off limits to Toolsmith.", what)
+
+
+def _repo_root() -> str:
+    """The install folder this file sits in (src/puffpai/security/...)."""
+    d = os.path.dirname
+    return d(d(d(d(os.path.abspath(__file__)))))
+
+
+def _state_fallbacks() -> list[str]:
+    """Where the state folder would be when its setting cannot be read, the
+    most likely first (the order ``config.get_state_dir`` uses)."""
+    env = os.environ.get
+    out: list[str] = []
+    if env("PUFFPAI_STATE_DIR"):
+        out.append(env("PUFFPAI_STATE_DIR") or "")
+    if env("PUFFPAI_DATA_DIR"):
+        out.append(os.path.join(env("PUFFPAI_DATA_DIR") or "", "state"))
+    try:
+        from puffpai.config import _user_state_root
+        out.append(_user_state_root())
+    except Exception:  # noqa: BLE001 - the copies below still hold
+        pass
+    home = os.path.expanduser("~")
+    out += [os.path.join(env("LOCALAPPDATA") or home, "PuffPAI"),
+            os.path.join(home, "Library", "Application Support", "PuffPAI"),
+            os.path.join(env("XDG_STATE_HOME") or os.path.join(home, ".local", "state"),
+                         "puffpai")]
+    return out
+
+
+def _data_fallbacks() -> list[str]:
+    """Where BuildBot's data folder (DATA_DIR) is: the loaded setting when it
+    reads, and the places it would be by default."""
+    out: list[str] = []
+    try:
+        from puffpai.config import get_config
+        out.append(str(get_config().DATA_DIR or ""))
+    except Exception:  # noqa: BLE001
+        pass
+    out.append(os.environ.get("PUFFPAI_DATA_DIR") or "")
+    try:
+        from puffpai.config import _find_repo_root
+        out.append(_find_repo_root())
+    except Exception:  # noqa: BLE001
+        pass
+    out.append(_repo_root())
+    return [p for p in out if p]
+
+
+def _vault_fallbacks() -> list[str]:
+    """Where the vault would be: the place it recorded for itself, else
+    ``vault_data`` in each default data folder."""
+    out: list[str] = []
+    try:
+        from puffpai.security.vault import read_place
+        out.append(read_place() or "")
+    except Exception:  # noqa: BLE001
+        pass
+    out += [os.path.join(d, "vault_data") for d in _data_fallbacks()]
+    return [p for p in out if p]
+
+
 def _internal() -> list[tuple[str, str]]:
-    """BuildBot's own places: state, apps, vault, data, linked, its code."""
+    """BuildBot's own places: state, apps, vault, data, linked, its code.
+
+    Fail closed: each place is read on its own, and a setting that cannot be
+    read keeps its default places (``fallback``) off limits instead of
+    dropping them. On a computer where every setting reads, nothing changes.
+    """
     out: list[tuple[str, str]] = []
 
-    def add(get: Any, category: str) -> None:
-        try:
-            got = get()
-        except Exception:  # noqa: BLE001 - a setting that cannot be read adds nothing
-            return
+    def put(got: Any, category: str) -> None:
         for p in ([got] if isinstance(got, str) else list(got or [])):
             if isinstance(p, str) and p.strip():
                 out.append((p, category))
 
-    from puffpai.config import get_config, get_state_dir
-    add(get_state_dir, STATE)
-    add(lambda: os.path.join(get_state_dir(), "host_apps"), OTHER_APP)
+    def add(get: Any, category: str, what: str = "", fallback: Any = None) -> None:
+        try:
+            got = get()
+        except Exception:  # noqa: BLE001 - keep the default places refused
+            _unreadable(what or category)
+            try:
+                got = fallback() if fallback else []
+            except Exception:  # noqa: BLE001
+                got = []
+        put(got, category)
+
+    def state_dir() -> str:
+        from puffpai.config import get_state_dir
+        return get_state_dir()
+
+    def config() -> Any:
+        from puffpai.config import get_config
+        return get_config()
+
+    def apps_of(dirs: list[str]) -> list[str]:
+        return [os.path.join(d, "host_apps") for d in dirs]
+
+    add(state_dir, STATE, "the state folder", _state_fallbacks)
+    add(lambda: os.path.join(state_dir(), "host_apps"), OTHER_APP, "the state folder",
+        lambda: apps_of(_state_fallbacks()))
 
     def vaults() -> list[str]:
-        from puffpai.security import owner_folders, vault_place
-        got = [vault_place.configured_folder(), vault_place.default_folder(),
-               owner_folders.vault_dir()]
+        folders: list[str] = []
+        for name in ("configured_folder", "default_folder", "vault_dir"):
+            try:
+                from puffpai.security import owner_folders, vault_place
+                mod = owner_folders if name == "vault_dir" else vault_place
+                folders.append(getattr(mod, name)())
+            except Exception:  # noqa: BLE001 - keep the default places refused
+                _unreadable("the vault folder")
+                folders += _vault_fallbacks()
+        got = [f for f in folders if isinstance(f, str) and f.strip()]
         for f in list(got):
             got += [f + ".inbox"]
             try:
+                from puffpai.security import vault_place
                 got.append(vault_place.inbox_of(f))
-            except Exception:  # noqa: BLE001
+            except Exception:  # noqa: BLE001 - f + ".inbox" is the same place
                 pass
         return got
-    add(vaults, VAULT)
+    add(vaults, VAULT, "the vault folder", lambda: [
+        p for f in _vault_fallbacks() for p in (f, f + ".inbox")])
 
-    def data() -> list[str]:
-        from puffpai import setup_ops
+    def data_dir() -> str:
         from puffpai.knowledge import my_data
-        return [my_data.data_dir()] + my_data.previous_dirs() + [setup_ops.default_pack_dir()]
-    add(data, DATA)
+        return my_data.data_dir()
+
+    def previous() -> list[str]:
+        from puffpai.knowledge import my_data
+        return my_data.previous_dirs()
+
+    def pack_dir() -> str:
+        from puffpai import setup_ops
+        return setup_ops.default_pack_dir()
+
+    def pack_fallback() -> list[str]:
+        return [os.path.join(d, "knowledge_packs") for d in _data_fallbacks()]
+
+    add(data_dir, DATA, "the data folder", pack_fallback)
+    add(previous, DATA, "the earlier data folders")
+    add(pack_dir, DATA, "the data folder", pack_fallback)
 
     def linked() -> list[str]:
         from puffpai.knowledge import my_data
         return [str(r.get("path")) for r in my_data.linked_folders()]
-    add(linked, LINKED)
+    add(linked, LINKED, "the linked folders")
 
-    def code() -> list[str]:
+    def install_root() -> str:
         from puffpai.build import apps
-        return [apps.install_root(), get_config().REPO_ROOT]
-    add(code, CODE)
+        return apps.install_root()
+    add(install_root, CODE, "BuildBot's install folder", lambda: [_repo_root()])
+    add(lambda: config().REPO_ROOT, CODE, "BuildBot's install folder", lambda: [_repo_root()])
     # DATA_DIR defaults to the install folder; where it was moved, it is data.
-    add(lambda: get_config().DATA_DIR, DATA)
+    add(lambda: config().DATA_DIR, DATA, "the data folder", _data_fallbacks)
     return out
 
 
@@ -292,11 +413,15 @@ def zone_for(folder: str, *, logs: str = "", scratch: str = "") -> Zone:
 
 
 def _apps_root() -> str:
+    """``host_apps`` in the state folder. When the state folder's setting
+    cannot be read, the most likely place (so a try still has its folder;
+    every other place there stays refused)."""
     try:
         from puffpai.config import get_state_dir
         return canon(os.path.join(get_state_dir(), "host_apps"))
     except Exception:  # noqa: BLE001
-        return ""
+        _unreadable("the state folder")
+        return canon(os.path.join(_state_fallbacks()[0], "host_apps"))
 
 
 def _is_try_folder(real: str, root: str) -> bool:

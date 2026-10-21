@@ -264,3 +264,99 @@ def test_nothing_internal_is_in_a_runs_conversation(places, monkeypatch):
         assert os.path.normcase(place).lower() not in norm, place
         assert place.replace("\\", "/").lower() not in norm, place
     assert "private words" not in text
+
+
+# ── a setting that cannot be read keeps its place refused (B2-2) ─────────────
+
+def _unreadable_setting(*_a, **_k):
+    raise RuntimeError("this setting cannot be read")
+
+
+def test_an_unreadable_state_folder_setting_keeps_its_places_refused(places, monkeypatch,
+                                                                     caplog):
+    import logging
+
+    from puffpai import config
+    monkeypatch.setattr(Z, "_UNREADABLE", set())
+    monkeypatch.setattr(config, "get_state_dir", _unreadable_setting)
+    state, folder = places["state"], places["folder"]
+    with caplog.at_level(logging.WARNING, logger=Z.__name__):
+        z = Z.zone_for(folder)
+        Z.zone_for(folder)
+    assert z.classify(os.path.join(state, "toolsmith_model.json")) == (Z.DENY, Z.STATE)
+    assert z.classify(os.path.join(os.path.dirname(folder), "bb-other-def456")) == \
+        (Z.DENY, Z.OTHER_APP)
+    # The try's own folder still works: Toolsmith is not stopped.
+    assert z.classify(os.path.join(folder, "package.json"))[0] == Z.ALLOW
+    assert Z.folder_problem(os.path.join(state, "mycode")) == Z.refused_line(Z.STATE)
+    # One plain line, once.
+    lines = [r for r in caplog.records if "state folder could not be read" in r.getMessage()]
+    assert len(lines) == 1
+
+
+def test_an_unreadable_state_folder_refuses_its_default_place(places, monkeypatch):
+    """No state setting at all: the default per-user state folder is refused,
+    a try folder inside it too."""
+    import sys
+
+    from puffpai import config
+    monkeypatch.delenv("PUFFPAI_STATE_DIR")
+    monkeypatch.delenv("XDG_STATE_HOME", raising=False)
+    # config._user_state_root's place, worked out here (the suite forbids
+    # resolving the real one); HOME and LOCALAPPDATA are the fake home's.
+    home = os.path.expanduser("~")
+    default = (os.path.join(places["local"], "PuffPAI") if sys.platform == "win32"
+               else os.path.join(home, "Library", "Application Support", "PuffPAI")
+               if sys.platform == "darwin" else os.path.join(home, ".local", "state", "puffpai"))
+    assert Z.inside_or_equal(Z.canon(default), Z.canon(str(places["tmp"])))
+    mine = os.path.join(default, "mycode")
+    os.makedirs(mine)
+    # Normal computer: the setting reads and points elsewhere; nothing new.
+    monkeypatch.setattr(config, "get_state_dir", lambda **_k: places["state"])
+    assert Z.folder_problem(mine) == ""
+    monkeypatch.setattr(config, "get_state_dir", _unreadable_setting)
+    assert Z.folder_problem(mine) == Z.refused_line(Z.STATE)
+    z = Z.zone_for(mine)
+    assert z.carve == []
+    assert z.classify(os.path.join(default, "host_apps", "bb-x")) == (Z.DENY, Z.OTHER_APP)
+    assert z.refusal(os.path.join(default, "vault_place.json")) == Z.refused_line(Z.STATE)
+
+
+def test_an_unreadable_vault_setting_keeps_the_vault_refused(places, monkeypatch):
+    from puffpai.security import owner_folders, vault_place
+    for mod, name in ((vault_place, "configured_folder"), (vault_place, "default_folder"),
+                      (owner_folders, "vault_dir")):
+        monkeypatch.setattr(mod, name, _unreadable_setting)
+    z = Z.zone_for(places["folder"])
+    vault = places["vault"]
+    assert z.classify(os.path.join(vault, "keys.bin")) == (Z.DENY, Z.VAULT)
+    assert z.classify(vault + ".inbox") == (Z.DENY, Z.VAULT)
+    assert Z.command_check(f'cat "{vault}/keys.bin"', z)[0] == Z.refused_line(Z.VAULT)
+
+
+def test_a_vault_moved_elsewhere_stays_refused_when_its_setting_is_broken(places,
+                                                                          monkeypatch):
+    """A config whose vault folder is not text (``"vault_data_dir": null``)
+    made the whole vault list drop. The place the vault recorded for itself
+    is refused instead."""
+    from puffpai.config import get_config
+    from puffpai.security import vault
+    moved = os.path.join(str(places["tmp"]), "elsewhere", "vault_data")
+    os.makedirs(moved)
+    monkeypatch.setattr(vault, "read_place", lambda: moved)
+    monkeypatch.setattr(get_config().paths, "vault_data_dir", None)
+    z = Z.zone_for(places["folder"])
+    assert z.classify(os.path.join(moved, "x")) == (Z.DENY, Z.VAULT)
+    assert z.classify(moved + ".inbox") == (Z.DENY, Z.VAULT)
+    assert z.classify(os.path.join(places["vault"], "x")) == (Z.DENY, Z.VAULT)
+
+
+def test_the_deny_list_is_unchanged_when_every_setting_reads(places, monkeypatch, caplog):
+    import logging
+    monkeypatch.setattr(Z, "_UNREADABLE", set())
+    with caplog.at_level(logging.WARNING, logger=Z.__name__):
+        got = Z._internal()  # noqa: SLF001
+    assert not [r for r in caplog.records if r.name == Z.__name__]
+    # No fallback-only place is added on a normal computer.
+    local_default = os.path.join(places["local"], "PuffPAI")
+    assert all(not Z.inside_or_equal(Z.canon(p), Z.canon(local_default)) for p, _c in got)

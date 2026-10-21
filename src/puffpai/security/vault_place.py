@@ -620,8 +620,10 @@ def _keys_line(kept: Optional[bool]) -> list[str]:
                 "again for the new folder, and still work."]
     return ["Keys set to keep working while the vault is locked could not be "
             "saved again for the new folder. They work while the vault is "
-            "open; switch \"keep working when locked\" on again on the Sign-up "
-            "keys page."]
+            "open. For a sign-up key, switch \"keep working when locked\" on "
+            "again on the Sign-up keys page; for a tool, connect it again. "
+            "Your Home Assistant token and Jellyfin key do not depend on the "
+            "vault's folder, so this does not change them."]
 
 
 # ---------------------------------------------------------------------------
@@ -756,6 +758,11 @@ def use_existing(raw: Any, pin: Any, *, current_pin: Any = None,
         if missing and not at_terminal and not same:
             raise _missing_refusal(missing)
         kept = _keep_keys_working(handle)
+        # The Home Assistant token and the Jellyfin key: their working copy is
+        # in the state folder and keeps working; their PIN-locked copy is
+        # carried into the vault BuildBot uses from now on.
+        from puffpai.security import keys as _keys
+        _keys.sync_house_keys(handle)
     finally:
         handle.lock()
     save_folder(folder, fingerprint=fingerprint or None)
