@@ -217,6 +217,20 @@ def test_manifest_never_carries_the_pin_or_the_code(scratch, no_ollama, capsys):
     assert GOOD_PIN not in body
 
 
+def _route_hidden(monkeypatch, pin_reader) -> None:
+    """The typed-back recovery code is read hidden, through ``cli._read_pin``
+    like the PIN (PB-003). Send that one prompt to the test's typed answers
+    (``builtins.input``) and every other hidden prompt to *pin_reader*."""
+    import builtins
+
+    def read(prompt):
+        if zone_vault.RECOVERY_CONFIRM_PROMPT in prompt:
+            return builtins.input(prompt)
+        return pin_reader(prompt)
+
+    monkeypatch.setattr(cli, "_read_pin", read)
+
+
 def _ceremony_args() -> argparse.Namespace:
     return argparse.Namespace(skip_vault=False, vault_password=None)
 
@@ -232,7 +246,7 @@ def test_typing_the_code_back_is_what_confirms_it(scratch, monkeypatch):
 
     monkeypatch.setattr(setup_ops, "seal_vault_with_recovery", spy)
     monkeypatch.setattr(cli, "_stdin_is_tty", lambda: True)  # BB-WIZ-S10: a person at a keyboard
-    monkeypatch.setattr(cli, "_read_pin", lambda prompt: GOOD_PIN)
+    _route_hidden(monkeypatch, lambda prompt: GOOD_PIN)
 
     # One wrong attempt, then the real thing typed back with sloppy formatting.
     answers = iter(["not-the-code", "ECHO"])
@@ -271,7 +285,7 @@ def test_wrong_answers_burn_the_code_and_issue_another(scratch, monkeypatch):
     monkeypatch.setattr(setup_ops, "seal_vault_with_recovery", seal_spy)
     monkeypatch.setattr(setup_ops, "rotate_vault_recovery", rotate_spy)
     monkeypatch.setattr(cli, "_stdin_is_tty", lambda: True)  # BB-WIZ-S10: a person at a keyboard
-    monkeypatch.setattr(cli, "_read_pin", lambda prompt: GOOD_PIN)
+    _route_hidden(monkeypatch, lambda prompt: GOOD_PIN)
 
     answers = iter(["WRONG-CODE"] * cli._RECOVERY_MAX_MISMATCHES + ["ECHO"])
 
@@ -292,7 +306,7 @@ def test_skip_keeps_the_code(scratch, monkeypatch, capsys):
     monkeypatch.setattr(setup_ops, "rotate_vault_recovery",
                         lambda *a, **k: rotations.__setitem__("n", 1))
     monkeypatch.setattr(cli, "_stdin_is_tty", lambda: True)
-    monkeypatch.setattr(cli, "_read_pin", lambda prompt: GOOD_PIN)
+    _route_hidden(monkeypatch, lambda prompt: GOOD_PIN)
     monkeypatch.setattr("builtins.input", lambda prompt="": "skip")
 
     block = cli._setup_vault_step(_ceremony_args(), get_config(),
@@ -306,7 +320,7 @@ def test_skip_keeps_the_code(scratch, monkeypatch, capsys):
 def test_giving_up_leaves_a_working_vault_and_an_honest_record(
         scratch, monkeypatch, capsys):
     monkeypatch.setattr(cli, "_stdin_is_tty", lambda: True)  # BB-WIZ-S10: a person at a keyboard
-    monkeypatch.setattr(cli, "_read_pin", lambda prompt: GOOD_PIN)
+    _route_hidden(monkeypatch, lambda prompt: GOOD_PIN)
     # Every answer wrong, every time: after the last fresh code it gives up.
     monkeypatch.setattr("builtins.input", lambda prompt="": "WRONG-CODE")
 
@@ -321,7 +335,7 @@ def test_giving_up_leaves_a_working_vault_and_an_honest_record(
 def test_a_weak_pin_is_refused_with_a_reason_and_retried(scratch, monkeypatch, capsys):
     pins = iter(["1234", GOOD_PIN, GOOD_PIN])
     monkeypatch.setattr(cli, "_stdin_is_tty", lambda: True)  # BB-WIZ-S10: a person at a keyboard
-    monkeypatch.setattr(cli, "_read_pin", lambda prompt: next(pins))
+    _route_hidden(monkeypatch, lambda prompt: next(pins))
     monkeypatch.setattr("builtins.input", lambda prompt="": "skip")
 
     cli._setup_vault_step(_ceremony_args(), get_config(), non_interactive=False)

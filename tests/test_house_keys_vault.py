@@ -350,6 +350,7 @@ def test_a_lost_machine_key_is_said_plainly_and_sealed_again(install, vault,
     # A new machine key, and the owner opens the vault: put back.
     new_key = tmp_path / "new_machine.key"
     new_key.write_text(os.urandom(32).hex(), encoding="utf-8")
+    os.chmod(new_key, 0o600)  # POSIX refuses a key file others can read
     monkeypatch.setenv("PUFFPAI_VAULT_SERVICE_KEY_FILE", str(new_key))
     assert keys.house_key("home_assistant") is None      # still locked
     vault.unlock(PIN)
@@ -559,6 +560,7 @@ def test_a_different_machine_key_is_not_set_up(install, vault, tmp_path,
     keys.set_vault_provider(None)
     other = tmp_path / "other.key"
     other.write_text(os.urandom(32).hex(), encoding="utf-8")
+    os.chmod(other, 0o600)  # POSIX refuses a key file others can read
     monkeypatch.setenv("PUFFPAI_VAULT_SERVICE_KEY_FILE", str(other))
     from puffpai.security import vault as vault_mod
     runs = []
@@ -639,6 +641,7 @@ def test_media_status_says_when_the_jellyfin_key_cannot_be_opened(
     assert setup_ops.media_key_problem() == ""
     other = tmp_path / "other.key"
     other.write_text(os.urandom(32).hex(), encoding="utf-8")
+    os.chmod(other, 0o600)  # POSIX refuses a key file others can read
     monkeypatch.setenv("PUFFPAI_VAULT_SERVICE_KEY_FILE", str(other))
 
     class _Bridge:

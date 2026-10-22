@@ -152,12 +152,6 @@ Where should your vault live?
   Type a number. Press Enter for 1) On this computer (recommended).
   >
 
-Which folder?
-  Only if you picked your own folder. Type the whole path, like E:\PuffPAI
-  Vault.
-  Press Enter to skip.
-  >
-
 Pick a PIN
   Use at least 10 numbers. Do not use easy ones like 1234567890. If you already
   have a vault, type its PIN.
