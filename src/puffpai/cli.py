@@ -2327,7 +2327,11 @@ def _setup_ha_step(args: argparse.Namespace, gates: dict, *,
                   "written.")
             ha_url = ha_token = ""
         else:
-            ha_token = _ask("Long-lived access token")
+            # Read the way the PIN is read: no echo at a real terminal, so
+            # the token is neither on screen nor in scrollback; one plain
+            # line from piped input, which never hangs.
+            ha_token = _read_pin(
+                "Home Assistant long-lived access token (hidden): ").strip()
             if not (ha_url and ha_token):
                 print("  Incomplete, so Home Assistant is skipped for now.")
                 ha_url = ha_token = ""

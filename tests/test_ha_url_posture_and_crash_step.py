@@ -348,3 +348,108 @@ def test_the_label_matches_the_banner_number() -> None:
         label = cli.current_step_label()
         number = banner.split(" of ")[0]
         assert label.startswith(number), (name, banner, label)
+
+
+# ── B2-5: the interactive token question never echoes ───────────────────────
+
+_LAN_HUB = "http://192.168.1.50:8123"
+_TYPED_TOKEN = "b25-typed-token-not-real-0123456789"
+
+
+def _interactive_args():
+    import argparse
+    return argparse.Namespace(skip_ha=False, ha_url=None, ha_token=None)
+
+
+def _no_plain_reads(monkeypatch):
+    """Fail the test if the token is read through a plain, echoing reader."""
+    def _refuse(*_a, **_k):
+        raise AssertionError("the token was read through plain input")
+    monkeypatch.setattr(cli, "_read_line", _refuse)
+    monkeypatch.setattr("builtins.input", _refuse)
+
+
+def test_setup_reads_the_ha_token_without_echo(install, monkeypatch,
+                                              capsys) -> None:
+    """B2-5: the token goes through _read_pin, never _read_line or input()."""
+    install(run_egress="island")
+    asked = []
+    monkeypatch.setattr(cli, "_ask_yes_no", lambda *a, **k: True)
+    monkeypatch.setattr(cli, "_ask", lambda prompt, *a, **k: _LAN_HUB)
+    _no_plain_reads(monkeypatch)
+
+    def _hidden(prompt):
+        asked.append(prompt)
+        return _TYPED_TOKEN
+    monkeypatch.setattr(cli, "_read_pin", _hidden)
+
+    path = cli._setup_ha_step(_interactive_args(),
+                              {"may_offer_lan_integrations": True},
+                              non_interactive=False,
+                              posture={"run_egress": "island"})
+    assert path and Path(path).exists()
+    assert len(asked) == 1 and asked[0].endswith("(hidden): ")
+    assert _TYPED_TOKEN not in capsys.readouterr().out
+
+
+def test_an_empty_hidden_answer_skips_home_assistant(install, monkeypatch,
+                                                     capsys) -> None:
+    cfg_dir = install(run_egress="island")
+    monkeypatch.setattr(cli, "_ask_yes_no", lambda *a, **k: True)
+    monkeypatch.setattr(cli, "_ask", lambda prompt, *a, **k: _LAN_HUB)
+    _no_plain_reads(monkeypatch)
+    monkeypatch.setattr(cli, "_read_pin", lambda prompt: "")
+
+    path = cli._setup_ha_step(_interactive_args(),
+                              {"may_offer_lan_integrations": True},
+                              non_interactive=False,
+                              posture={"run_egress": "island"})
+    assert path == ""
+    assert not _ha_file(cfg_dir).exists()
+    assert ("Incomplete, so Home Assistant is skipped for now."
+            in capsys.readouterr().out)
+
+
+def test_piped_setup_still_reads_the_token_and_never_hangs(install,
+                                                           monkeypatch,
+                                                           capsys) -> None:
+    """No tty: one plain line from the pipe, getpass is never touched."""
+    import getpass
+    import io
+
+    install(run_egress="island")
+
+    def _no_console(*_a, **_k):
+        raise AssertionError("getpass was used with no terminal")
+    monkeypatch.setattr(getpass, "getpass", _no_console)
+    # Restored after the test, so an end-of-input here never leaks.
+    monkeypatch.setattr(cli, "_stdin_exhausted", False)
+    monkeypatch.setattr(cli.sys, "stdin",
+                        io.StringIO(f"y\n{_LAN_HUB}\n{_TYPED_TOKEN}\n"))
+    assert cli._stdin_is_tty() is False
+
+    path = cli._setup_ha_step(_interactive_args(),
+                              {"may_offer_lan_integrations": True},
+                              non_interactive=False,
+                              posture={"run_egress": "island"})
+    assert path and Path(path).exists()
+    out = capsys.readouterr().out
+    assert "(hidden): " in out
+    assert _TYPED_TOKEN not in out
+
+
+def test_piped_setup_at_end_of_input_skips_rather_than_hangs(
+        install, monkeypatch, capsys) -> None:
+    import io
+
+    cfg_dir = install(run_egress="island")
+    monkeypatch.setattr(cli, "_stdin_exhausted", False)
+    monkeypatch.setattr(cli.sys, "stdin", io.StringIO(f"y\n{_LAN_HUB}\n"))
+    path = cli._setup_ha_step(_interactive_args(),
+                              {"may_offer_lan_integrations": True},
+                              non_interactive=False,
+                              posture={"run_egress": "island"})
+    assert path == ""
+    assert not _ha_file(cfg_dir).exists()
+    assert ("Incomplete, so Home Assistant is skipped for now."
+            in capsys.readouterr().out)

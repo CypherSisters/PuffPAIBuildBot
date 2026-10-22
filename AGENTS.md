@@ -558,7 +558,8 @@ not_yet, nothing_found` (`schema.STATUSES`, owner words in `schema.WORDS`).
   file to rewriting it, and a move stops (`changed`) if the plain value
   changed before it writes. While a plain copy is there it is used first
   (newest). No machine key on this computer: the plain copy stays. `--ha-token -` (or
-  empty, or the bare flag) asks without echo or reads piped input; a token
+  empty, or the bare flag) asks without echo or reads piped input, and so
+  does the interactive setup question (`cli._read_pin`); a token
   typed after `--ha-token` still works and warns. The iPod import helper is
   never given the Jellyfin key; the bridge rescans itself.
 - **Outside code runs on this computer after one Yes** (`integrate/run_here.py`):
