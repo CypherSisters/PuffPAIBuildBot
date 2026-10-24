@@ -23,8 +23,8 @@ GPREDICT = """\
 Gpredict
 ========
 
-Gpredict is a real-time satellite tracking and orbit prediction program
-for the Linux desktop. It uses the SGP4/SDP4 propagation algorithms.
+Gpredict shows where satellites are right now and when they will pass
+overhead, on a Linux desktop computer.
 
 Requirements
 ------------

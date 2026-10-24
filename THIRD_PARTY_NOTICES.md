@@ -90,6 +90,18 @@ requirement for tool servers (`requirements.txt`).
 
 ---
 
+## OpenClaw (process rules)
+
+Two files in `src/puffpai/finding/` follow process rules adapted from
+OpenClaw; both say so in their first lines.
+
+- `find.py`: the rule from OpenClaw's `clawhub` skill, search before saying
+  you can't. A search finds and shows; it never installs.
+- `install.py`: the order of OpenClaw's `skills verify` then `install`:
+  say what a skill is and what it runs, ask, then install it pinned.
+
+---
+
 ## Python dependencies (base runtime + voice/dev/desktop extras, transitive)
 
 | Name                                     | Version     | License                                                        | URL                                                                                                                |
@@ -310,13 +322,12 @@ so neither table above lists them:
 
 | Asset | Path | License | Upstream |
 |---|---|---|---|
-| React (UMD production build) | `dashboard/public/vendor/js/react.production.min.js` | MIT (per the file's own `@license` header) | https://react.dev/ |
-| React DOM (UMD production build) | `dashboard/public/vendor/js/react-dom.production.min.js` | MIT (per the file's own `@license` header) | https://react.dev/ |
-| Babel standalone | `dashboard/public/vendor/js/babel.min.js` | MIT | https://babeljs.io/docs/babel-standalone |
+| React (UMD production build) | `dashboard/public/vendor/react/react.production.min.js` | MIT (per the file's own `@license` header) | https://react.dev/ |
+| React DOM (UMD production build) | `dashboard/public/vendor/react/react-dom.production.min.js` | MIT (per the file's own `@license` header) | https://react.dev/ |
 | TalkingHead English lip-sync | `dashboard/public/talkinghead/lipsync-en.mjs` | MIT (per the TalkingHead repository's LICENSE) | https://github.com/met4citizen/TalkingHead |
 | Material Symbols Rounded (icon font) | `dashboard/public/fonts/material-symbols-rounded.woff2` | Apache-2.0 (per the upstream repository's LICENSE) | https://github.com/google/material-design-icons |
 
-These three JS files are served to the standalone HTML apps in
+The two React files are served to the standalone HTML apps in
 `dashboard/public/*.html`, which run without the Next.js bundler; `react`
 and `react-dom` also appear in the JavaScript table above because the
 dashboard proper installs them from npm as well.
@@ -325,6 +336,23 @@ Most dashboard icons are drawn from `@mdi/js` (Apache-2.0), already listed
 in the JavaScript table; the Material Symbols Rounded ligature face above is
 the one icon font served as a file, self-hosted from `dashboard/public/fonts/`
 and preloaded by `app/layout.tsx`, never from Google's CDN.
+
+---
+
+## Scaffold vendor files
+
+Files in `src/puffpai/assemble/scaffold/vendor/`, copied into the apps
+BuildBot assembles so they run without fetching anything from a CDN:
+
+| Asset | Path (`src/puffpai/assemble/scaffold/vendor/…`) | License | Upstream |
+|---|---|---|---|
+| hls.js 1.6.15 (minified build) | `hls-1.6.15.min.js` | Apache-2.0, Copyright (c) 2017 Dailymotion (`hls.js-LICENSE.txt` beside it) | https://github.com/video-dev/hls.js |
+| Fredoka (the same file as the dashboard's) | `fredoka.woff2` | OFL-1.1, Copyright 2016 The Fredoka Project Authors (`fredoka-OFL.txt` beside it) | https://github.com/google/fonts/tree/a60a77e14f28abd4ef243a1b5dfc48df0cec5205/ofl/fredoka |
+| Nunito (the same file as the dashboard's) | `nunito.woff2` | OFL-1.1, Copyright 2014 The Nunito Project Authors (`nunito-OFL.txt` beside it) | https://github.com/google/fonts/tree/8b0a1d0f5983c89bc2b93f1b5fb55f9e252744b5/ofl/nunito |
+| World land outline | `world.js` | Public domain: Natural Earth 1:110m land (v5.1.2), as its header says (https://www.naturalearthdata.com/about/terms-of-use/) | https://www.naturalearthdata.com/ |
+
+`world.js` holds the Natural Earth land shapes as one SVG path
+(equirectangular, in a 360 by 180 box).
 
 ---
 
@@ -386,6 +414,25 @@ source when its snapshot was taken; "to confirm" says why one could not be.
 | `config/wordlists/en_US.dic` | en_US Hunspell dictionary 2020.12.07, SCOWL size 60, http://wordlist.aspell.net | SCOWL's own licence (read from its Copyright file and README): permission to use, copy, modify, distribute and sell for any purpose without fee, keeping the copyright and permission notice; parts from Ispell under Geoff Kuenning's BSD licence and other listed sources | Kevin Atkinson and the SCOWL contributors | Used unchanged, to tell ordinary words from names on this computer. |
 | `config/where_to_look.json`, the `licence_words` part | the licence texts kept verbatim in `tests/fixtures/recorded_web/license_*.txt`: Apache License 2.0 (https://www.apache.org/licenses/LICENSE-2.0), GNU GPL 2.0 and 3.0, LGPL 2.1 and 3.0, AGPL 3.0 (https://www.gnu.org/licenses/), Mozilla Public License 2.0 (https://www.mozilla.org/MPL/2.0/), SIL Open Font License 1.1 (https://openfontlicense.org), CC0 1.0 and the Creative Commons 4.0 licences (https://creativecommons.org/licenses/) | each licence text's own terms for copying it (the FSF texts: verbatim copies may be distributed; Creative Commons: its legal code is dedicated under CC0) | the publishers named | Each text as lowercase words in order, built by `python -m puffpai.catalogs.snapshot_build_code licence`, used only to recognise a project's licence file; never shown or sent |
 | `config/wordlists/NOTICE.txt` | written for this project from the dictionary's README | the notice reproduces SCOWL's copyright and permission text verbatim, as that licence requires | as above | The licence notice for `en_US.dic`. |
+
+---
+
+## Test fixtures
+
+Recorded answers in `tests/fixtures/` that keep third-party content. They
+are read only by the tests; BuildBot itself never uses them.
+
+| Fixture | Path | Source | Licence |
+|---|---|---|---|
+| wedding-planner by subchibeats (README, page and git refs) | `tests/fixtures/recorded_web/subchibeats_README.md`, `subchibeats_index.html`, `info_refs_subchibeats.pktline` | https://github.com/subchibeats/wedding-planner | MIT, Copyright (c) 2026 Sahib Singh; its LICENSE is kept beside them as `subchibeats_LICENSE` |
+| ClawHub skills (SKILL.md texts and files) | `tests/fixtures/build/real/*.json` (rows whose `ref` starts with `clawhub:`), `tests/fixtures/finding/download__wedding-planner.zip` and `verify__*.json` | https://clawhub.ai | MIT-0 (no attribution required; listed for clarity) |
+| tweakcn look registry, cut | `tests/fixtures/looks/tweakcn_registry_cut.json` | https://tweakcn.com/r/themes/registry.json (https://github.com/jnsahaj/tweakcn) | Apache-2.0 |
+| shadcn/ui look registry and colours, cut | `tests/fixtures/looks/shadcn_registry_cut.json`, `shadcn_colors_cut.json` | https://ui.shadcn.com (https://github.com/shadcn-ui/ui) | MIT |
+| Wikibooks answers for the book Machine Knitting (titles, page ids, revisions and the front page's contents list) | `tests/fixtures/books/wb_*.json` | https://en.wikibooks.org/wiki/Machine_Knitting | CC BY-SA 4.0, by the Wikibooks contributors. The `Edges` page text is a stand-in written for the tests. |
+| skills.sh and Hermes Agent skill listings | `tests/fixtures/build/real/*.json` (rows whose `ref` starts with `skills.sh:` or `hermes:`) | https://skills.sh and https://github.com/NousResearch/hermes-agent | Only each skill's frontmatter (name and description) and listing words are kept; the rest of each `skill_md` is a stand-in written for the tests. The `agentbay-ai/agentbay-skills` row is written for the tests in full. |
+
+`tests/fixtures/finding/raw__bambu-labs_SKILL.md` is a stand-in written for
+the tests in place of the earthtojake/text-to-cad skill.
 
 ---
 
